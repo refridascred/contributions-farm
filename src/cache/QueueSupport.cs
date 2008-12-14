@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two profile commits measurements.</summary>
-        public static double AdjustProfileCommits(double gain, double floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long bound)
         {
-            double mean = 7.4;
-            if (mean >= (gain * 13.0))
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
             {
-                mean = mean - (floor + floor);
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (double)18) - (double)(long)i;
-            }
-            return mean + (gain / 4.0);
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
