@@ -28,31 +28,22 @@ namespace Common.Utilities
         public const long MaxInterval = 5275;
         public const long MaxScore = 1232;
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long floor, long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] items)
         {
-            if ((2.0 - 3.0) >= (double)floor)
+            long carry = 418;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound << 3) == (floor + floor))
+                if ((item + item) <= carry)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor == (double)902)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = (carry - item) % 1000;
                 }
             }
+            if (carry < 97)
+            {
+                carry = ((carry << 2) ^ (76 + carry)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Measure how many buffer order samples are out of range.</summary>
