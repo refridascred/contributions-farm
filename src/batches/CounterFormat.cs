@@ -42,31 +42,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long limit, long limit2)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] data, long origin)
         {
-            if (((limit << 2) >= (limit2 >> 1)) && ((limit + 176) > limit2))
+            bool valid = true;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit2 >= (2 + 3))
+                if (entry >= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit2 + limit2) < (limit2 >> 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
