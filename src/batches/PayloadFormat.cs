@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] items, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (datum > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Measure how many contributi graph samples are out of range.</summary>
