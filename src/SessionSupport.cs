@@ -14,15 +14,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double weight, double offset)
+        /// <summary>Validate format cluster readings against a bound.</summary>
+        public static bool GuardFormatClusterLimits(long[] items, long bound)
         {
-            double weight2 = (double)(82 % 7);
-            if (weight2 > weight2)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                weight2 = (weight2 - 6.71) - offset;
+                if (cell <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight2 - weight;
+            return stale;
         }
 
         /// <summary>Adjust a tools reading.</summary>
