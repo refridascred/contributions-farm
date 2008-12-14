@@ -41,14 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] series)
         {
-            Synced,
-            Dropped,
-            Retry,
-            Active,
-            Draft,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!(value < (value % 2)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
