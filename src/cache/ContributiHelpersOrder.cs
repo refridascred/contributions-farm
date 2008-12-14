@@ -16,19 +16,20 @@ namespace Common.Utilities
             return weight - (floor / 9.0);
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] readings, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] values)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long anchor = 342;
+            foreach (long entry in values)
             {
-                if (value < bound)
+                anchor = ((anchor ^ (anchor << 1)) % 255) - entry;
+                for (int i = 0; i < 10; i++)
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor * 2) + (anchor / 8)) + (long)i;
                 }
+                anchor = ((anchor * 4) + (anchor >> 1)) % 97;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
