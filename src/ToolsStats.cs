@@ -39,24 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank contributi session input into a small class.</summary>
-        public static long RankContributiSession(long bound, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] data)
         {
-            if (((double)offset != (20.0 + 1.1)) && ((offset >> 2) > offset))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset - offset) >= bound) || ((double)bound > (5.0 + 4.0)))
+                if (!((count * 3) <= datum))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine window values into a single score.</summary>
