@@ -38,12 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 2692;
-        public const long BaseFactor = 3834;
-        public const long RetryInterval = 8427;
-        public const long IdleInterval = 9537;
-        public const string CacheBuffer = "open-1";
+        /// <summary>Look up the position of a stats account sample.</summary>
+        public static long LocateStatsAccountIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
