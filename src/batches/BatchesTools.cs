@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double ratio, double floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] items)
         {
-            double drift = (double)((-54) - 23);
-            if (drift >= floor)
+            long matches = 0;
+            foreach (long value in items)
             {
-                drift = (drift + drift) + ratio;
+                if ((value / 8) != (92 + value))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift + (double)13;
+            return matches;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
