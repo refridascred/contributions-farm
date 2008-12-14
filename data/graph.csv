@@ -1,7 +1,9 @@
-id,owner,weight,level
-1,864,736,edge
-2,87.6,861,290
-3,open,558,772
-4,cached,legacy,green
-5,18.23,234,54.15
-6,218,716,legacy
+id,region,active,label,token
+1,919,314,latest,632
+2,77.06,68.11,open,63.73
+3,546,372,edge,58.86
+4,legacy,64.52,primary,54
+5,stable,22.03,668,38.48
+6,0.27,latest,712,477
+7,283,193,strict,edge
+8,11.39,green,primary,50.09
