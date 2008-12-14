@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const double BatchBudget = 11.01;
         public const long IdleRecord = 4918;
 
-        /// <summary>Roll a channel contributi counter forward.</summary>
-        public static long StepChannelContributi(long target)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!(((double)target > (8.8 / 8.0)) || ((target % 16) >= (4 / 5))))
-                {
-                    score = (score - ((long)i / 7)) % 4096;
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Ready,
+            Queued,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define report limits and defaults.</summary>
