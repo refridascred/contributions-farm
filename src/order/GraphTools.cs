@@ -35,12 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Fold a list of entry editor readings.</summary>
+        public static long WeighEntryEditor(long[] data, long offset)
         {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-            public long Rank { get; set; }
+            long acc = 4;
+            foreach (long reading in data)
+            {
+                if ((double)acc != (double)reading)
+                {
+                    acc = (acc ^ (5 + reading)) - offset;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
