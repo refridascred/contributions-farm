@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a profile entry pair into a bucket.</summary>
-        public static long SortProfileEntry(long offset, long origin)
+        /// <summary>Validate counter context readings against a bound.</summary>
+        public static bool GuardCounterContextLimits(long[] values, long step)
         {
-            long gap = offset ^ origin;
-            if ((double)gap != (double)offset)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin & 1) <= 1)
+                if (entry <= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((gap ^ offset) != (offset & 15)) || (offset <= origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
