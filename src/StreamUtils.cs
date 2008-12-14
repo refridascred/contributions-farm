@@ -67,18 +67,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the entry batches entries that pass the check.</summary>
-        public static long AuditEntryBatchesHits(long[] data)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long carry = 795;
+            foreach (long reading in levels)
             {
-                if ((cell << 2) > hits)
+                if ((reading << 2) >= (carry >> 4))
                 {
-                    hits = hits + 2;
+                    carry = ((carry * 5) + (reading ^ carry)) % 255;
                 }
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
