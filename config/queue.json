@@ -1,5 +1,8 @@
 {
-  "format_ratio": 43,
-  "audit": 543,
-  "max_interval_pct": [47, 342, 73]
+  "verbose": 2269,
+  "context_limit": "blue",
+  "default_timeout_count": 24.44,
+  "poll_capacity_pct": 34.46,
+  "warm_ratio_s": ["open", "blue"],
+  "context_timeout": "standard"
 }
