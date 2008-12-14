@@ -34,13 +34,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
+            Stale,
+            Retry,
+            Queued,
+            New,
+            Pending,
         }
 
         /// <summary>Accumulate farm queue samples.</summary>
