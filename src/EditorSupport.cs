@@ -44,13 +44,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Queued,
-            Active,
-            Done,
-            Idle,
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a metric snapshot.</summary>
