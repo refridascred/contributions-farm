@@ -72,11 +72,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double gain, double offset)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            double bias = 1.89;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = ((bias + gain) + (double)(long)i) - offset;
+            }
+            return bias - (double)9;
         }
 
         /// <summary>Hold a format header.</summary>
