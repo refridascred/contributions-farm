@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] samples, long seed)
+        /// <summary>Find the first farm profile entry that matches the target.</summary>
+        public static long LookupFarmProfileIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
+                if (readings[i] > floor)
                 {
                     return (long)i;
                 }
