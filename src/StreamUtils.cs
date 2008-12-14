@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double weight, double offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] readings)
         {
-            double mean = weight;
-            if (mean > 11.0)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + (double)(-809);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (offset / 9.0)) - (double)(long)i;
-            }
-            return mean - (3.4 - weight);
+            return matches;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
