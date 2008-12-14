@@ -1,9 +1,6 @@
-id,region,rank,owner,label
-1,cached,local,eu-west,726
-2,845,808,624,346
-3,fallback,stable,251,347
-4,324,green,924,927
-5,544,893,410,26.39
-6,22.37,open,blue,strict
-7,35.51,stable,387,826
-8,83.35,788,881,primary
+id,level,score,rank,active
+1,5,513,cached,670
+2,82.76,cached,48.7,local
+3,90,46,local,latest
+4,94.21,73.44,60.44,98.17
+5,70.86,580,87.43,edge
