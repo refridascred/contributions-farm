@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] levels, long offset)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public double Size { get; set; }
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
