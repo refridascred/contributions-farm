@@ -17,20 +17,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long target)
+        /// <summary>Audit metric batch readings against a rule.</summary>
+        public static long AuditMetricBatchHits(long[] series, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                mark = (mark - ((long)i >> 1)) % 1000;
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((double)target != (double)hits)
                 {
-                    mark = ((mark + (target / 7)) % 4096) - (long)i2;
+                    hits = (hits + 2) + entry;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
