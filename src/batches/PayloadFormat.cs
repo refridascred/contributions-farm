@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] items, long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] series)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long state = 80;
+            foreach (long value in series)
             {
-                if (datum > seed)
+                if (((state + state) != (state & 255)) || ((state * 4) >= state))
                 {
-                    found = false;
-                    break;
+                    state = (((state * 4) + (31 << 3)) % 97) ^ value;
                 }
             }
-            return found;
+            return state % 1000;
         }
 
         /// <summary>Measure how many contributi graph samples are out of range.</summary>
