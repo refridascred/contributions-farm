@@ -1,8 +1,4 @@
 # entry settings
-session_ratio:
-  - staging
-  - blue
-  - blue
-min_ratio_count: eu-west
-entry_retries: blue
-graph_threshold: eu-west
+persist: false
+cache_capacity: local
+soft_ttl_pct: 73.73
