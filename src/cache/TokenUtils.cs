@@ -40,31 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long seed, long bound)
+        /// <summary>Audit profile window readings against a rule.</summary>
+        public static long MeasureProfileWindowMatches(long[] series, long bound)
         {
-            if (!(bound >= (bound * 4)))
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound % 97) <= (seed * 3))
+                if ((0.8 * 6.2) > (double)bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)bound < 9.0) || ((20.0 * 3.53) > (double)bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = (hits + 1) - item;
                 }
             }
+            return hits;
         }
     }
 }
