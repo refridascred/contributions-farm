@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            Paused,
-            Pending,
             Queued,
-            Closed,
-            Draft,
+            Paused,
+            Dropped,
+            Synced,
+            Active,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
