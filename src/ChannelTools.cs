@@ -14,11 +14,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 2995;
-        public const long LimitToken = 1079;
-        public const long CacheTimeout = 7361;
-        public const double LimitLevel = 9.05;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] items, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit context editor readings against a rule.</summary>
         public static long CountContextEditorGaps(long[] items, long seed)
