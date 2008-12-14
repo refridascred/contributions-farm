@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=347
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-latest}"
+mode="${1:-standard}"
 case "${mode}" in
-    fallback)
+    edge)
         log "fast path"
         ;;
     *)
@@ -19,6 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-for item in fallback latest; do
+COMMAND_LIMIT=285
+log "limit is ${COMMAND_LIMIT}"
+
+for item in edge stable eu-west staging; do
     log "checking ${item}"
 done
