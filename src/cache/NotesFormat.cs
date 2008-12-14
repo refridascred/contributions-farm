@@ -20,21 +20,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long limit, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)floor < (5.9 - 3.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)floor < (1.49 / 7.0))
                 {
-                    if ((samples[i] + samples[j]) < 14)
+                    return 2;
+                }
+                else
+                {
+                    if (floor < 591)
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
