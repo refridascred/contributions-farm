@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] levels)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((tally + datum) != (datum + datum))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
