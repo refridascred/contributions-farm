@@ -1,33 +1,8 @@
 {
-  "queue_capacity": "staging",
-  "max_size_pct": {
-    "warm_depth_count": {
-      "enabled": ["staging", "primary", "latest", "staging"],
-      "order_window": "fallback",
-      "sync_depth_ms": [461, 389]
-    },
-    "default_ttl_ms": 97.4,
-    "audit": 30,
-    "min_size_pct": {
-      "metric_window": 63.89,
-      "sync_ratio": 824,
-      "graph_delay": "staging",
-      "compress": 500
-    }
-  },
-  "compress": 1087,
-  "verbose": {
-    "dry_run": "cached",
-    "warm_depth_s": {
-      "enabled": "fallback",
-      "batch_size_pct": false,
-      "dry_run": 40,
-      "cache_retries": false,
-      "persist": "local"
-    },
-    "idle_capacity_count": 5424,
-    "hard_capacity_ms": "fallback",
-    "route_timeout": 34
-  },
-  "warm_threshold_ms": 84.5
+  "route_ratio": true,
+  "min_capacity": ["open", "standard", "legacy"],
+  "base_interval_s": "primary",
+  "filter_window": 64.24,
+  "soft_size_pct": 82.93,
+  "channel_depth": "legacy"
 }
