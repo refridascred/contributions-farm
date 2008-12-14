@@ -1,18 +1,6 @@
 {
-  "cache_delay": 3953,
-  "buffer_timeout": {
-    "min_threshold_count": 60,
-    "flush_timeout_count": 100,
-    "metrics_size": {
-      "readonly": 1024,
-      "base_size_count": 20.51,
-      "compress": true,
-      "editor_delay": 66.68,
-      "window_retries": 35.63
-    },
-    "hard_size_pct": false,
-    "retry_threshold": 23,
-    "dry_run": true
-  },
-  "base_ttl_ms": true
+  "readonly": 88.27,
+  "graph_retries": true,
+  "soft_limit_count": ["latest", "green"],
+  "verbose": "stable"
 }
