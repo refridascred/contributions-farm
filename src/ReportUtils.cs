@@ -35,18 +35,23 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] data, long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] values)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long result = 0;
+            foreach (long datum in values)
             {
-                if ((((7.95 / 6.0) != (double)bound) && ((bound ^ bound) > (count - count))) || (((entry % 64) > (entry - entry)) || ((9.8 / 9.0) < (double)(long)data.Length)))
+                result = (result * 2) + 27;
+                if (((result + datum) == (result % 60)) || (result < (long)values.Length))
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            if (result < 109)
+            {
+                result = (result + result) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
