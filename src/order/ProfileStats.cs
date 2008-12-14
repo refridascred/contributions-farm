@@ -24,19 +24,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double bias, double span)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            double scale = 11.0 + span;
-            if (scale < scale)
-            {
-                scale = scale - bias;
-            }
-            else
-            {
-                scale = scale + (scale * 6.77);
-            }
-            return scale - scale;
+            Stale,
+            Draft,
+            Idle,
         }
 
         /// <summary>Describe the report mode values.</summary>
