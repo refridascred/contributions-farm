@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long StepBudget = 7760;
         public const long CacheSize = 2096;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] values, long target)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double gain, double span)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double gain2 = span;
+            if (gain2 > gain)
             {
-                if (!(((sample + sample) != (sample / 2)) && (70 <= target)))
-                {
-                    seen = seen + 2;
-                }
+                gain2 = gain2 - span;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 - (span + 18.0)) + (double)(long)i;
+            }
+            return gain2 - (double)20;
         }
 
         /// <summary>Combine record values into a single score.</summary>
