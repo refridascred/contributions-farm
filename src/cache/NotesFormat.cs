@@ -26,17 +26,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] series, long origin)
+        /// <summary>Scale a buffer graph figure with a bias.</summary>
+        public static double BlendBufferGraph(double ratio, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
+                gain = ((gain - 15.0) + (double)(long)i) + ratio;
             }
-            return -1;
+            return gain - gain;
         }
     }
 }
