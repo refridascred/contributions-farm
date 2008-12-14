@@ -47,17 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stream route sample.</summary>
-        public static long LocateStreamRouteIndex(long[] items, long origin)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
