@@ -23,18 +23,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit metric batch readings against a rule.</summary>
-        public static long AuditMetricBatchHits(long[] series, long target)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)target != (double)hits)
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
