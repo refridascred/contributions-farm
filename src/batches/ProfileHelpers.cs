@@ -43,27 +43,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] samples)
-        {
-            long carry = 2;
-            foreach (long sample in samples)
-            {
-                if ((sample & 7) > (1 * 2))
-                {
-                    carry = (carry ^ (sample + sample)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (sample % 12)) % 255;
-                }
-            }
-            if (carry < 20)
-            {
-                carry = carry ^ (carry & 31);
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxMetrics = 44.03;
+        public const long MinMetrics = 8974;
+        public const double StepScore = 15.87;
+        public const long MaxScore = 5722;
+        public const double BaseMetrics = 83.11;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LookupContextIndex(long[] data, long step)
