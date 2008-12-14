@@ -69,10 +69,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseSize = 5631;
-        public const string DefaultInterval = "latest-edge";
-        public const string SoftInterval = "strict-v2";
-        public const long CacheTools = 8157;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] readings, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (offset < tally)
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
+        }
     }
 }
