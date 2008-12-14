@@ -73,22 +73,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next support report value from a seed.</summary>
-        public static long DeriveSupportReport(long limit)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result << 2) ^ ((long)i >> 3)) % 97;
-                if (((limit * 4) > (limit >> 5)) || ((result ^ 0) != (result + (long)i)))
-                {
-                    result = (result + ((long)i % 16)) % 101;
-                    result = ((result << 2) ^ limit) % 97;
-                }
-                result = (result ^ (limit - limit)) % 97;
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public long Total { get; set; }
+            public double Score { get; set; }
         }
     }
 }
