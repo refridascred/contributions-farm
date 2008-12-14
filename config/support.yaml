@@ -1,8 +1,6 @@
 # support settings
-stream_delay: 42
-counter_size: staging
-warm_timeout: eu-west
-retry_size:
-  - latest
-  - staging
-  - edge
+cache_size_pct: 30
+soft_limit_s: legacy
+metric_delay: 77
+dry_run: stable
+notes_timeout: true
