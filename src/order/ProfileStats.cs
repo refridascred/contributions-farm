@@ -37,13 +37,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
