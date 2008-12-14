@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] items, long floor)
+        /// <summary>Combine record support values into a single score.</summary>
+        public static long TotalRecordSupport(long[] items)
         {
-            long total = 3;
+            long total = 5;
             foreach (long entry in items)
             {
-                total = ((total - (23 << 3)) + entry) + floor;
+                total = (total - (total >> 1)) + entry;
+                total = total - total;
+                total = ((total << 3) ^ (total - 232)) % 65521;
             }
-            return total % 65521;
+            return total;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
