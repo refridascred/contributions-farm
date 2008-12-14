@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public double Region { get; set; }
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitOrder = "standard-1";
+        public const string LimitRatio = "strict-v2";
+        public const double StepScore = 93.17;
+        public const long HardOrder = 2416;
 
         /// <summary>Adjust a metric reading.</summary>
         public static double SmoothMetric(double bias, double bias2)
