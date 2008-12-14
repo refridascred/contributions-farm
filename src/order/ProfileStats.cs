@@ -27,19 +27,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long origin, long offset)
         {
-            long carry = 22;
-            foreach (long item in samples)
+            long bound = origin ^ offset;
+            if ((bound - offset) <= (origin - offset))
             {
-                if (carry > (item + item))
-                {
-                    carry = (carry * 5) + carry;
-                }
-                carry = (carry + carry) % 65521;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if (!((double)origin >= (1.25 * 8.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Accumulate stats samples.</summary>
