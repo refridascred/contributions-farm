@@ -41,15 +41,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Draft,
-            Paused,
-            Closed,
-            Retry,
-            New,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 5347;
+        public const long CacheScore = 4249;
+        public const long HardRatio = 3273;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderOutliers(long[] series, long target)
