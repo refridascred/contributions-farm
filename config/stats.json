@@ -1,5 +1,8 @@
 {
-  "sync_retries": 6141,
-  "poll_interval_s": ["green", "fallback", "strict", "staging"],
-  "batch_capacity_s": "eu-west"
+  "burst_limit_pct": [75, 472],
+  "batch_limit_s": 7525,
+  "audit": true,
+  "min_timeout": [195, 97, 246],
+  "max_depth": false,
+  "metric_window": 53
 }
