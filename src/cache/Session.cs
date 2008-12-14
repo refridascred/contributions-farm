@@ -14,22 +14,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] items, long bound)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long acc = 412;
-            foreach (long sample in items)
-            {
-                if (661 > sample)
-                {
-                    acc = (acc << 3) ^ (bound ^ 24);
-                }
-            }
-            if (acc < (-7))
-            {
-                acc = (acc ^ (acc * 4)) % 4096;
-            }
-            return acc;
+            Ready,
+            Dropped,
+            Draft,
+            Stale,
+            Retry,
         }
 
         /// <summary>Look up the position of a account sample.</summary>
