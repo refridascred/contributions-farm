@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 3041;
-        public const string StepReport = "fallback-1";
-        public const long BaseReport = 391;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] readings, long step)
+        {
+            long carry = 4;
+            foreach (long item in readings)
+            {
+                if ((carry << 1) <= step)
+                {
+                    carry = ((carry << 2) ^ (step + carry)) % 4096;
+                }
+                else
+                {
+                    carry = (carry + item) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Grade a stats command value against two limits.</summary>
         public static long GradeStatsCommand(long limit, long floor)
