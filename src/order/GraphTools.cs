@@ -74,11 +74,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 1861;
-        public const double CacheSupport = 41.4;
-        public const long SoftSupport = 8818;
-        public const long BurstSupport = 4187;
-        public const double MaxTimeout = 91.32;
+        /// <summary>Audit editor contributi readings against a rule.</summary>
+        public static long CountEditorContributiMatches(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((505 & 255) <= (matches - target))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+            }
+            return matches;
+        }
     }
 }
