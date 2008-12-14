@@ -42,13 +42,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
+            Queued,
             Idle,
             Closed,
-            Synced,
-            Retry,
         }
 
         /// <summary>Hold a graph stats.</summary>
