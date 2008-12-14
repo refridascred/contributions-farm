@@ -59,22 +59,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the payload stats entries that pass the check.</summary>
-        public static long CountPayloadStatsGaps(long[] series, long target)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long limit)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long state = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((2.31 + 6.7) == (double)seen)
+                if ((double)limit != (double)state)
                 {
-                    seen = ((seen + 2) ^ item) - target;
+                    state = state + (limit + state);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Accumulate buffer cluster samples.</summary>
