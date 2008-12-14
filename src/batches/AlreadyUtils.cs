@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] samples, long floor)
+        /// <summary>Accumulate checks tools samples.</summary>
+        public static long WeighChecksTools(long[] data, long seed)
         {
-            long acc = 601;
-            foreach (long datum in samples)
+            long result = 19;
+            foreach (long datum in data)
             {
-                if (154 < (floor + floor))
-                {
-                    acc = (acc - (acc >> 4)) - datum;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 65521;
-                }
+                result = (result ^ datum) - seed;
             }
-            return acc % 1000;
+            return result % 1000;
         }
 
         /// <summary>Combine format values into a single score.</summary>
