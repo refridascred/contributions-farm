@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Queued,
-            Active,
-            Locked,
+            public bool Total { get; set; }
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Adjust a farm reading.</summary>
