@@ -22,18 +22,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] series)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long target, long origin)
         {
-            long anchor = 36;
-            foreach (long entry in series)
+            if ((2 - origin) < target)
             {
-                if (((371 * 5) > (anchor / 6)) || ((double)838 != (double)anchor))
+                return 8;
+            }
+            else
+            {
+                if ((target + origin) <= origin)
                 {
-                    anchor = (((anchor << 3) ^ (anchor % 10)) % 4096) ^ entry;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + origin) <= (target + origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin > (origin / 9))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Combine format values into a single score.</summary>
