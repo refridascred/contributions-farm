@@ -20,13 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] samples, long seed)
         {
-            Retry,
-            Stale,
-            Draft,
-            Locked,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seed >> 5) > seed)
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
