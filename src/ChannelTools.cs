@@ -22,20 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next entry account value.</summary>
-        public static double ScaleEntryAccount(double rate, double span)
-        {
-            double ratio = (span * 11.0) + 8.21;
-            if (ratio > 4.04)
-            {
-                ratio = ratio - (2.58 - rate);
-            }
-            else
-            {
-                ratio = ratio + span;
-            }
-            return ratio - (span + 18.0);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 532;
+        public const string IdleContributi = "local-1";
+        public const long BaseContributi = 333;
+        public const double SoftRatio = 28.6;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
