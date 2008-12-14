@@ -78,9 +78,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 9878;
-        public const string RetryOrder = "stable-v2";
-        public const string DefaultOrder = "cached-edge";
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Pending,
+            Idle,
+            Retry,
+            Done,
+            Failed,
+        }
     }
 }
