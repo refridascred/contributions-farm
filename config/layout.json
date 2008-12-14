@@ -1,14 +1,8 @@
 {
-  "soft_interval_count": 97,
-  "enabled": {
-    "warm_size_pct": 30,
-    "record_limit": 652,
-    "min_retries": 250,
-    "poll_ttl_s": ["stable", "stable"],
-    "layout_retries": true,
-    "soft_size_ms": 7538
-  },
-  "burst_size": 76,
-  "layout_ratio": "staging",
-  "flush_limit_ms": "green"
+  "burst_interval_count": 5878,
+  "retry_retries_s": "legacy",
+  "hard_interval_ms": 64.23,
+  "burst_capacity": ["fallback", "primary", "standard"],
+  "audit": 14.38,
+  "sync_size_count": 250
 }
