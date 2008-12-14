@@ -37,13 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] readings, long bound)
         {
-            Queued,
-            Idle,
-            Pending,
-            Synced,
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
