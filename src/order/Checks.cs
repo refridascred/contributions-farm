@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] series, long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (value < seed)
+                if ((8.8 - 6.8) <= (double)count)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) ^ value;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
