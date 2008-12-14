@@ -14,11 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
