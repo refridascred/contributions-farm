@@ -1,7 +1,8 @@
 {
-  "queue_limit": "primary",
-  "verbose": 6739,
-  "burst_interval": "latest",
-  "soft_capacity_count": "local",
-  "audit": "local"
+  "strict": "fallback",
+  "max_timeout": true,
+  "hard_ttl_s": "open",
+  "retry_ttl_pct": false,
+  "hard_retries": "staging",
+  "hard_timeout_count": true
 }
