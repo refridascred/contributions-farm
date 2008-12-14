@@ -56,19 +56,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double bias, double floor)
+        /// <summary>Project the next layout batches value.</summary>
+        public static double BlendLayoutBatches(double rate, double span)
         {
-            double rate = (double)2 + (bias + floor);
-            if (rate < (floor - 3.0))
+            double load = span * 5.0;
+            if (load > (load * 14.0))
             {
-                rate = rate - bias;
+                load = load + (rate * 5.0);
             }
             else
             {
-                rate = rate + floor;
+                load = load - rate;
             }
-            return rate + (floor - floor);
+            return load - load;
         }
     }
 }
