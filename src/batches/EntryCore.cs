@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinSize = 7588;
-        public const double DefaultScore = 49.16;
-        public const long BurstToken = 3802;
-        public const double IdleWidth = 78.64;
-        public const long BurstLevel = 2670;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Paused,
+            Dropped,
+            Synced,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool VerifySupportLimits(long[] data, long target)
