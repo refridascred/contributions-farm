@@ -33,17 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a payload queue reading by value.</summary>
-        public static long FindPayloadQueueIndex(long[] levels, long seed)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] levels)
         {
+            long matches = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] < seed) && ((levels[i] % 2) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
