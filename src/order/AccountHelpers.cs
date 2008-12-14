@@ -28,16 +28,23 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] levels)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            long acc = 2;
+            foreach (long value in levels)
             {
-                sum = (sum - (long)i) % 97;
-                sum = ((sum * 3) + (long)i) % 101;
+                acc = acc ^ (value + acc);
+                if (!((9.1 * 9.2) < (double)acc))
+                {
+                    acc = ((acc << 3) ^ (-66)) % 65521;
+                }
             }
-            return sum;
+            if (acc < 312)
+            {
+                acc = (acc ^ (acc * 3)) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count the stream farm entries that pass the check.</summary>
