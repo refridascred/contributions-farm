@@ -1,6 +1,41 @@
 # entry settings
-base_capacity_ms:
-  - 315
-  - 41
-checks_limit: cached
-cluster_depth: 81.42
+burst_delay: legacy
+flush_size_count:
+  batches_ratio:
+    - open
+    - stable
+    - standard
+  order_timeout: local
+  warm_delay:
+    poll_timeout_pct: 83.57
+    batch_retries: strict
+    profile_timeout: true
+hard_size_pct:
+  enabled:
+    - 488
+    - 235
+    - 10
+  warm_delay: 1024
+  poll_size: primary
+  counter_timeout:
+    verbose: 7203
+    min_size_ms: strict
+    min_limit_s: 250
+    base_window_pct:
+      - 17
+      - 247
+      - 189
+      - 245
+  verbose:
+    - 166
+    - 161
+compress: 321
+stats_limit:
+  flush_capacity_count: 90
+  batch_delay: 6884
+  token_ratio:
+    - 44
+    - 36
+    - 14
+    - 170
+  min_limit_pct: legacy
