@@ -1,34 +1,22 @@
 # support settings
-audit:
-  - 432
-  - 334
-default_ratio_ms:
-  enabled:
-    - legacy
-    - eu-west
-    - staging
-  base_threshold_count: false
-  idle_ttl:
-    schema_delay: 19.61
-    order_interval: local
-    base_ttl_ms: 15
-    sync_timeout_count: 9103
-    idle_capacity_s: true
-  compress: false
-  layout_interval: true
-  graph_threshold: edge
-flush_size: 60
-default_window_pct: fallback
-support_delay:
-  session_delay:
-    - 213
-    - 13
-  token_ratio: 37
-  dry_run: local
-  poll_depth_ms: false
-  soft_ttl:
-    sync_delay_count: eu-west
-    batch_ttl_count: standard
-    hard_threshold: local
-    flush_size_pct: false
-  cache_depth_s: true
+max_ratio: latest
+burst_capacity: 3633
+support_size: false
+batch_limit:
+  cache_threshold:
+    persist: 71
+    counter_delay: 99
+    cache_window: 60
+    hard_limit_pct:
+      - staging
+      - standard
+    cache_size_pct: 6871
+    idle_window_ms: legacy
+  idle_interval: false
+  retry_capacity_ms: 4146
+  idle_delay_count: eu-west
+poll_delay_ms:
+  batches_ttl: open
+  cache_threshold: true
+  flush_retries: 60
+  support_timeout: legacy
