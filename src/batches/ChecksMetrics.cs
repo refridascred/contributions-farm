@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double gain, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = offset;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = ((weight + offset) + (double)(long)i) + gain;
             }
-            return seen;
+            return weight - (offset / 2.0);
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
