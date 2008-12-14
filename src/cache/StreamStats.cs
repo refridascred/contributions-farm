@@ -12,22 +12,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] data)
+        /// <summary>Measure how many profile already samples are out of range.</summary>
+        public static long MeasureProfileAlreadyMatches(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (((8 - hits) < datum) && !(datum >= (datum ^ 585)))
+                if ((bound ^ bound) != (entry << 2))
                 {
-                    hits = hits + 1;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Rank already input into a small class.</summary>
