@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long bound)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double gain, double span)
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
+            double bias = (double)(34 + 2);
+            if (bias <= (gain + 8.0))
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                bias = bias - (double)477;
             }
-            return anchor;
+            return bias - span;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
