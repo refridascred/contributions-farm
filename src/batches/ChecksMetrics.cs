@@ -64,18 +64,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream account samples are out of range.</summary>
-        public static long TallyStreamAccountMatches(long[] levels, long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((double)matches <= (5.68 - 6.0))
+                if (sample != origin)
                 {
-                    matches = ((matches + 2) - entry) + seed;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
