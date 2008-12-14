@@ -1,6 +1,7 @@
-id,rank,score
-1,627,767
-2,902,stable
-3,25.42,26.57
-4,blue,508
-5,standard,0
+id,label,region,weight,owner
+1,82.98,19.95,45.92,719
+2,staging,849,29,legacy
+3,fallback,86,90.67,32.54
+4,931,539,912,standard
+5,primary,30.54,eu-west,84.21
+6,57,236,35,205
