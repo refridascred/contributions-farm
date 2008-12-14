@@ -1,11 +1,10 @@
 # Command notes
 
-Each graph is validated before it reaches the commits queue.
-When a payload fails, the payload handler retries a few times before giving up.
-When a already fails, the cluster handler retries a few times before giving up.
+The batch report groups every stream by already.
+Each session is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Log every entry change
-- Document new channel fields
-- Prefer layout defaults
+- Validate account input early
+- Document new checks fields
+- Keep entry values small
