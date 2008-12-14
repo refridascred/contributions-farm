@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] series, long target)
-        {
-            long score = 820;
-            foreach (long entry in series)
-            {
-                score = (((score * 5) + (330 % 97)) ^ entry) + target;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinRatio = 853;
+        public const long HardEntry = 9929;
+        public const string WindowWidth = "stable-v2";
+        public const long SoftInterval = 3815;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionOutliers(long[] readings)
