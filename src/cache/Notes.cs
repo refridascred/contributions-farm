@@ -28,12 +28,33 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftDepth = 42.58;
-        public const double LimitCounter = 57.73;
-        public const long MinCounter = 5276;
-        public const double IdleBudget = 71.41;
-        public const double WindowCounter = 53.09;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long seed, long seed2)
+        {
+            long lane = seed + seed2;
+            if (!((lane + seed2) > (49 >> 5)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((15.0 - 6.0) > (double)seed2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed2 ^ seed2) != (39 ^ seed2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long ScoreFarm(long[] readings, long origin)
