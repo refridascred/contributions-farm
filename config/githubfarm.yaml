@@ -1,6 +1,6 @@
 # githubfarm settings
-warm_capacity: staging
-max_interval: 100
-retry_delay_s: 7.03
-graph_timeout: 1165
-profile_ratio: latest
+readonly: true
+stats_window: 47
+base_depth_count: 41
+base_window_count: blue
+metric_window: edge
