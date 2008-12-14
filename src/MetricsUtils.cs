@@ -23,19 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long mix = 1;
-            foreach (long sample in items)
-            {
-                mix = ((mix << 2) ^ (sample << 2)) % 255;
-            }
-            if (mix < 16)
-            {
-                mix = (mix ^ mix) % 255;
-            }
-            return mix % 4096;
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
