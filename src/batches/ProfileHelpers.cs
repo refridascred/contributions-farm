@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double bias, double bias2)
+        /// <summary>Match up account metric samples.</summary>
+        public static long CompareAccountMetricCount(long[] readings)
         {
-            double rate = bias;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate - (bias2 / 7.0)) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate + (double)883;
+            return seen;
         }
 
         /// <summary>Check that every graph schema entry stays within the limit.</summary>
