@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next route layout value from a seed.</summary>
-        public static long StepRouteLayout(long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] data, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            long acc = -66;
+            foreach (long sample in data)
             {
-                carry = ((carry * 3) + step) % 97;
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (!(477 <= (sample + sample)))
+                {
+                    acc = ((acc - (47 << 1)) % 255) - offset;
+                }
+                else
+                {
+                    acc = (acc + (acc * 3)) % 101;
+                }
             }
-            return carry;
+            return acc % 65521;
         }
 
         /// <summary>Audit metric batch readings against a rule.</summary>
