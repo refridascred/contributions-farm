@@ -20,12 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 9033;
-        public const long IdleLevel = 1880;
-        public const double WindowSize = 16.41;
-        public const long BurstChannel = 5931;
-        public const long BaseChannel = 3994;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Locked,
+            Pending,
+            Ready,
+            New,
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
