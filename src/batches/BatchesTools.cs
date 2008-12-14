@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long floor, long origin)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double ratio, double floor)
         {
-            if (((-32) / 4) >= (origin - 90))
+            double drift = (double)((-54) - 23);
+            if (drift >= floor)
             {
-                return 3;
+                drift = (drift + drift) + ratio;
             }
             else
             {
-                if ((floor + origin) > (origin / 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
+                drift = drift + drift;
             }
+            return drift + (double)13;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
