@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] data)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (!((count * 3) <= datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            New,
+            Synced,
+            Done,
         }
 
         /// <summary>Combine window values into a single score.</summary>
