@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] levels)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (((tally - datum) > (datum * 2)) || ((0.3 * 5.6) <= (double)tally))
+                if (entry >= (entry - hits))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 1) + bound;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
