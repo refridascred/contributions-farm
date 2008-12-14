@@ -20,11 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 3398;
-        public const double StepLevel = 78.99;
-        public const double DefaultScore = 0.32;
-        public const long WindowGithubfarm = 2237;
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double bias, double offset)
+        {
+            double weight = 3.58 * 1.53;
+            if (weight >= (weight + bias))
+            {
+                weight = weight + (double)4;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + offset) + (double)(long)i;
+            }
+            return weight - (double)70;
+        }
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
