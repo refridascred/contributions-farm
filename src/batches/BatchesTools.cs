@@ -30,14 +30,9 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Ready,
-            Paused,
-            Queued,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardQueue = 58.43;
+        public const long StepQueue = 5238;
+        public const string BatchSpan = "staging";
     }
 }
