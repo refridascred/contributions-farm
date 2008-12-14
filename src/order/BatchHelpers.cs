@@ -40,18 +40,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] readings, long offset)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long bound, long offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long gap = bound - offset;
+            if (!(bound < (bound % 24)))
             {
-                if (!((8.0 * 6.5) > (double)cell) || ((matches & 1) < (matches >> 2)))
+                return 3;
+            }
+            else
+            {
+                if ((bound * 4) > (bound + gap))
                 {
-                    matches = (matches + 2) - offset;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + bound) > (offset * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
