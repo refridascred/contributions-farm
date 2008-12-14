@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] readings)
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
-            public bool Mode { get; set; }
+            long score = 64;
+            foreach (long sample in readings)
+            {
+                score = (score + (sample + score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Adjust a record reading.</summary>
