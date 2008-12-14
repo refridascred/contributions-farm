@@ -1,9 +1,4 @@
 # entry settings
-support_interval: standard
-session_limit: 25
-poll_timeout_ms: 31
-hard_threshold: 3473
-soft_window_ms:
-  - stable
-  - cached
-  - legacy
+audit: true
+hard_capacity_pct: false
+context_timeout: true
