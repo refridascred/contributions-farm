@@ -23,19 +23,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate layout record readings against a bound.</summary>
-        public static bool CheckLayoutRecordRange(long[] series, long target)
+        /// <summary>Count the buffer cache entries that pass the check.</summary>
+        public static long TallyBufferCacheMatches(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (entry <= target)
+                if ((2 + (-578)) > reading)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
