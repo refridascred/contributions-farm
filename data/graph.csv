@@ -1,6 +1,6 @@
-id,score,ratio,token,rank
-1,open,27.14,72.12,93
-2,blue,standard,59.72,95.51
-3,21.87,fallback,776,open
-4,97.12,standard,880,315
-5,912,7.93,staging,61.63
+id,weight,score,token,state
+1,321,cached,150,5.62
+2,906,334,55.56,local
+3,fallback,77.21,34.33,83.6
+4,2.18,819,159,legacy
+5,61.17,cached,546,open
