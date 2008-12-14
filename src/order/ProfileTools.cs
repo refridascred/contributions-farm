@@ -29,18 +29,11 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] levels)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (!((hits ^ hits) > 592))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many account metric samples are out of range.</summary>
