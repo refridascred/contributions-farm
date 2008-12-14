@@ -35,10 +35,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardLevel = 15.48;
-        public const long CacheTimeout = 7707;
-        public const long BatchWidth = 3232;
-        public const long LimitBatch = 5553;
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            New,
+            Ready,
+            Closed,
+            Failed,
+        }
     }
 }
