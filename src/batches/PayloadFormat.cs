@@ -45,16 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long state = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                state = state ^ offset;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
