@@ -1,14 +1,7 @@
 {
-  "batch_depth": {
-    "flush_limit": true,
-    "farm_delay": ["fallback", "staging", "staging"],
-    "githubfarm_interval": 500,
-    "cache_ratio_pct": "staging",
-    "flush_ttl_pct": "legacy"
-  },
-  "support_retries": 500,
-  "cache_capacity_count": 8.19,
-  "base_window": [174, 150],
-  "stream_threshold": "strict",
-  "report_depth": 2
+  "window_interval": [494, 375],
+  "dry_run": "standard",
+  "poll_ratio": "eu-west",
+  "idle_depth": "standard",
+  "base_ratio_count": 1301
 }
