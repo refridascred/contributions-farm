@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const double LimitSpan = 61.41;
         public const long BaseSpan = 9381;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] readings, long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long state = 72;
+            foreach (long datum in readings)
             {
-                if (item != origin)
+                if (((double)datum <= (0.4 / 8.0)) && ((double)state != (double)155))
                 {
-                    flag = false;
-                    break;
+                    state = (state << 2) ^ (datum - offset);
                 }
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Hold a token entry.</summary>
