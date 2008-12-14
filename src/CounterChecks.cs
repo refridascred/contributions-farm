@@ -49,19 +49,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Blend two order payload measurements.</summary>
-        public static double ProjectOrderPayload(double rate, double offset)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double ratio = (double)74;
-            if (ratio <= (rate * 14.0))
-            {
-                ratio = ratio - (rate * 14.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - offset;
+            Locked,
+            Idle,
+            Done,
+            Queued,
+            Active,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
