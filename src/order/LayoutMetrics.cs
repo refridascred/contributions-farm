@@ -37,22 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] readings, long seed)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] data)
         {
-            long mark = 5;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((seed >> 3) == (422 - 6)) && ((value + mark) >= (value ^ seed)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark * 5) + (54 ^ mark)) % 4096;
-                }
-                else
-                {
-                    mark = (mark ^ (6 + value)) % 1000;
+                    if ((data[i] - data[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
     }
 }
