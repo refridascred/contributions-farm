@@ -67,11 +67,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] values, long floor)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            long result = 8;
+            foreach (long sample in values)
+            {
+                result = ((result * 5) + (result - sample)) + floor;
+            }
+            if (result > (-247))
+            {
+                result = (result + (result / 2)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Find the first batches profile entry that matches the target.</summary>
