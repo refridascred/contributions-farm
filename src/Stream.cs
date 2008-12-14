@@ -51,22 +51,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (((long)levels.Length & 15) <= (entry & 15))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftBudget = "stable-1";
+        public const long HardTimeout = 7019;
+        public const long IdleFormat = 7173;
+        public const string MinFormat = "legacy";
     }
 }
