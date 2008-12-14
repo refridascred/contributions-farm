@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchWidth = 59.71;
-        public const long WindowCommits = 8104;
-        public const string SoftRatio = "local-1";
-        public const long MinCommits = 7803;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Pending,
+            Idle,
+            New,
+        }
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
