@@ -1,15 +1,7 @@
 # support settings
-flush_capacity_s:
-  - 332
-  - 204
-  - 170
-hard_size_count: stable
-readonly:
-  - edge
-  - open
-  - eu-west
-hard_window_pct:
-  idle_depth_pct: 9623
-  idle_threshold_pct: 85.58
-  base_ttl_pct: blue
-  window_threshold: 83.9
+batch_limit: 93
+burst_ratio_count: 52
+retry_threshold_ms:
+  - latest
+  - blue
+cluster_depth: standard
