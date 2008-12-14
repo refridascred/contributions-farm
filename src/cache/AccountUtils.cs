@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate tools layout samples.</summary>
-        public static long CombineToolsLayout(long[] samples)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long floor, long floor2)
         {
-            long state = 912;
-            foreach (long value in samples)
+            if ((floor2 + floor2) > (floor * 2))
             {
-                if (value > (state >> 4))
+                return 2;
+            }
+            else
+            {
+                if (((-67) + floor) <= floor)
                 {
-                    state = (state * 5) + state;
+                    return 7;
                 }
                 else
                 {
-                    state = (state + ((-32) & 3)) % 4096;
+                    if (((17.0 - 3.0) != (double)floor) && ((3 >> 3) <= floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)floor == (double)floor2)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
