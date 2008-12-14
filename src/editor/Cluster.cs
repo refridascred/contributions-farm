@@ -27,21 +27,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] readings)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((item - count) > item))
                 {
-                    if ((readings[i] ^ readings[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) - origin;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
