@@ -33,11 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetrySpan = 7517;
-        public const string BurstWidth = "staging-edge";
-        public const double DefaultAlready = 84.94;
-        public const long DefaultTimeout = 4085;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseFilter = "cached-v2";
+        public const long SoftDepth = 5598;
+        public const long MaxLevel = 1050;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
