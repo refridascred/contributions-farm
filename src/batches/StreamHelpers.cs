@@ -19,17 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] items, long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = -36;
+            foreach (long item in readings)
             {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (acc & 3)) ^ item;
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
