@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long limit, long step)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long lane = limit + step;
-            if (step >= ((-31) + 9))
-            {
-                return 6;
-            }
-            else
-            {
-                if (8 > (lane + step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit <= (double)55)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((lane * 2) != (step >> 2)) && ((3.0 * 18.0) > (double)lane))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Dropped,
+            Idle,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a token entry.</summary>
