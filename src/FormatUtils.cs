@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] data, long limit)
+        /// <summary>Derive the next stats token value from a seed.</summary>
+        public static long StepStatsToken(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
+                acc = (acc << 2) ^ (seed - (long)i);
+                acc = ((acc << 2) ^ (870 * 3)) % 1000;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a notes info.</summary>
