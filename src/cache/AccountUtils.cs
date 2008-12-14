@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchTimeout = 7822;
-        public const string LimitDepth = "fallback";
-        public const string SoftEditor = "primary";
-        public const long HardCount = 2434;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepScore = 4603;
+        public const double SoftTools = 60.02;
+        public const long RetrySize = 4327;
+        public const long SoftCount = 6889;
+        public const double DefaultTools = 55.44;
 
         /// <summary>Count the channel farm entries that pass the check.</summary>
         public static long MeasureChannelFarmHits(long[] readings, long origin)
