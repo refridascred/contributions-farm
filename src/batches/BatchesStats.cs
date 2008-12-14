@@ -44,38 +44,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Classify a metrics command pair into a bucket.</summary>
-        public static long GradeMetricsCommand(long origin, long floor)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            if (!((origin ^ floor) <= (floor + floor)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin == (12.0 + 9.34))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor % 24) == (origin + 0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (origin < (floor ^ 17))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
