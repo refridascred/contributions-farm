@@ -55,20 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] items, long bound)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchScore = 56.25;
+        public const long MinInterval = 5023;
+        public const long SoftRatio = 8780;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long IterateRecord(long bound)
