@@ -33,18 +33,13 @@ namespace Common.Utilities
         public const string BurstEntry = "alpha-edge";
         public const long LimitEntry = 5548;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] samples)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (((count & 1) >= (long)samples.Length) || ((137 ^ sample) > count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Closed,
+            Queued,
+            Paused,
         }
     }
 }
