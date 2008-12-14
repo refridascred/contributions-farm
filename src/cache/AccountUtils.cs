@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first report token entry that matches the target.</summary>
-        public static long LookupReportTokenIndex(long[] samples, long target)
+        /// <summary>Count the farm contributi entries that pass the check.</summary>
+        public static long CountFarmContributiMatches(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((samples[i] == target) && ((samples[i] % 2) != 0))
+                if (((9 + seen) == (21 + seed)) || !((seed % 2) <= 25))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
