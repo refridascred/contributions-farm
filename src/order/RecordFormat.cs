@@ -48,15 +48,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] samples, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                total = ((total * 4) + (long)i) % 101;
+                if (datum >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Hold a graph stats.</summary>
