@@ -37,12 +37,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchLevel = "legacy-v2";
-        public const long BaseSize = 6658;
-        public const long RetryTimeout = 6976;
-        public const string BurstEntry = "alpha-edge";
-        public const long LimitEntry = 5548;
+        /// <summary>Classify a payload record pair into a bucket.</summary>
+        public static long RankPayloadRecord(long seed, long bound)
+        {
+            if (((bound % 7) >= (seed ^ seed)) || ((bound + seed) >= (seed - bound)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed + seed) < (4 + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((4 + seed) > (seed ^ seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
