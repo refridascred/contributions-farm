@@ -1,34 +1,27 @@
 # support settings
-verbose:
-  max_ratio_s: 7443
-  profile_capacity:
-    batch_ratio_pct:
-      - green
-      - staging
-    burst_retries_ms: strict
-    dry_run: 34.11
-    support_delay: 14
-    window_window: latest
-  batch_timeout_count:
-    - 468
-    - 459
-  default_timeout:
-    - staging
-    - fallback
-    - primary
-soft_depth_s: 5227
-idle_threshold:
-  base_depth: 9852
-  retry_depth_ms: 352
-  dry_run: strict
-dry_run:
-  burst_delay_count: 32.83
-  cache_limit:
-    - 417
-    - 156
-  idle_threshold_pct: 63.96
-  payload_retries: 51.97
-readonly:
-  - open
-  - cached
-poll_ratio_count: 18.24
+soft_size: edge
+min_retries_s: false
+enabled:
+  - local
+  - stable
+  - strict
+min_threshold: fallback
+warm_ttl_pct:
+  flush_threshold:
+    persist:
+      - 450
+      - 229
+      - 453
+    idle_timeout_ms:
+      - 95
+      - 40
+      - 12
+    record_delay: 5271
+    batch_ttl:
+      - eu-west
+      - primary
+      - strict
+    audit: false
+    hard_delay_s: 1024
+  sync_delay_pct: 250
+  warm_timeout_ms: false
