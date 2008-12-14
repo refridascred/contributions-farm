@@ -23,12 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 7190;
-        public const long RetryBudget = 3751;
-        public const string WindowSupport = "latest-1";
-        public const string BurstSpan = "primary-edge";
-        public const long BaseInterval = 3217;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardCount = "cached";
+        public const long MaxBudget = 1044;
+        public const string BatchStream = "strict";
+        public const long BurstDepth = 9631;
+        public const long MaxStream = 3239;
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long ClassifyCluster(long offset, long target)
