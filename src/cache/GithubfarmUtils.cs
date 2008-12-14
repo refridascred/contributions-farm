@@ -28,19 +28,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batches payload entries that pass the check.</summary>
-        public static long CountBatchesPayloadGaps(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading + reading) < step)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchDepth = 4996;
+        public const string StepEntry = "primary";
+        public const long StepSpan = 2673;
+        public const long BaseEntry = 7721;
+        public const long MinEntry = 2477;
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
