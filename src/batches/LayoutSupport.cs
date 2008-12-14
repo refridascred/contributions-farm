@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] series, long limit)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] series, long bound)
         {
-            long anchor = -120;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 4) + (value << 2)) % 4096;
-                if (((double)limit > (8.0 - 15.0)) && ((20.0 / 4.0) != (double)(long)series.Length))
+                if (series[i] <= bound)
                 {
-                    anchor = anchor + (anchor - limit);
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (limit + 460);
-                }
-                if (anchor >= 36)
-                {
-                    anchor = (anchor ^ (limit + limit)) % 4096;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of support entries.</summary>
