@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] series, long target)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long bound)
         {
-            long mix = 563;
-            foreach (long sample in series)
+            long state = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (15.0 > (double)target)
+                state = state ^ (bound & 1);
+                if (bound <= state)
                 {
-                    mix = (((mix << 3) ^ (mix - mix)) % 101) - sample;
+                    state = state ^ (state - state);
+                    break;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            if (mix < (-5))
-            {
-                mix = ((mix << 3) ^ (target - target)) % 1000;
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Fold a list of account readings.</summary>
