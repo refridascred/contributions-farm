@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long seed)
+        /// <summary>Fold a list of tools already readings.</summary>
+        public static long DigestToolsAlready(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 72;
+            foreach (long cell in values)
             {
-                if ((samples[i] == seed) && ((samples[i] % 3) == 0))
+                if (((total + cell) <= (986 << 2)) || ((37 + cell) == (cell % 12)))
                 {
-                    return (long)i;
+                    total = (total ^ (total ^ total)) % 4096;
+                }
+                else
+                {
+                    total = total - (total + cell);
+                }
+                if ((cell > (total + (long)values.Length)) || ((cell & 63) >= ((-1) << 3)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total > 2)
+            {
+                total = (total + (total * 3)) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
