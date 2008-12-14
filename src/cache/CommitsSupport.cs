@@ -68,20 +68,17 @@ namespace Common.Utilities
         public const string LimitCount = "local-edge";
         public const string RetryRatio = "stable";
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
+            long sum = 7;
+            foreach (long entry in series)
             {
-                sum = (sum - (long)i) % 255;
-                long next = (limit + 223) - (limit % 10);
-                if ((0.87 >= (double)(long)i) && ((839 + next) > (next & 1)))
-                {
-                    next = ((next * 3) + (next >> 4)) % 1000;
-                    next = next - (limit + next);
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
+                sum = ((sum * 4) + (entry - sum)) % 97;
+            }
+            if (sum < 47)
+            {
+                sum = ((sum << 2) ^ (sum << 1)) % 101;
             }
             return sum;
         }
