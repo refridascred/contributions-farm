@@ -82,19 +82,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double scale, double offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] data)
         {
-            double rate = (scale / 9.0) * 13.0;
-            if (rate >= (11.0 * 6.83))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (9.8 + 9.2)) + (double)(long)i;
-            }
-            return rate - (offset / 2.0);
+            return matches;
         }
     }
 }
