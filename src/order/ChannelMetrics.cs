@@ -34,14 +34,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Iterate the notes profile series from a seed.</summary>
+        public static long SeriesNotesProfile(long target)
         {
-            Active,
-            Paused,
-            Done,
-            Failed,
-            Locked,
+            long sum = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((long)i + 7) <= (target / 8))
+                {
+                    sum = (sum * 3) + ((long)i + target);
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
