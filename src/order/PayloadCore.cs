@@ -13,13 +13,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Queued,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 7428;
+        public const string RetrySpan = "strict-v2";
+        public const long RetryTimeout = 2406;
+        public const string SoftWindow = "stable-edge";
+        public const long SoftFactor = 7330;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double RetryScore = 0.41;
