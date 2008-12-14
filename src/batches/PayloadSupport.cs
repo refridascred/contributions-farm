@@ -32,23 +32,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double rate, double offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] data)
         {
-            double gain = rate;
-            if (gain > (double)(-55))
+            long mark = 7;
+            foreach (long datum in data)
             {
-                gain = gain + gain;
+                if (!((datum ^ mark) > (mark % 2)))
+                {
+                    mark = mark - (mark ^ mark);
+                    mark = ((mark << 2) ^ (42 ^ 4)) % 97;
+                }
+                if (!((long)data.Length <= (0 - datum)))
+                {
+                    mark = (mark * 2) + (mark - mark);
+                    mark = (mark + (mark & 127)) % 101;
+                }
+                if ((long)data.Length >= (datum >> 1))
+                {
+                    mark = (mark * 3) + 6;
+                }
             }
-            else
-            {
-                gain = gain + rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (gain - offset)) + (double)(long)i;
-            }
-            return gain - (double)1;
+            return mark % 1000;
         }
     }
 }
