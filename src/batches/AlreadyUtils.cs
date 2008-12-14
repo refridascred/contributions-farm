@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long StepBudget = 7760;
         public const long CacheSize = 2096;
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
+            Draft,
+            Stale,
+            Retry,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
