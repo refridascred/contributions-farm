@@ -68,18 +68,19 @@ namespace Common.Utilities
             return bias + (floor - 5.5);
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] values)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (!((double)value >= (3.71 + 2.1)) || (((4.93 / 3.0) < (double)matches) && ((matches % 100) != (value % 7))))
+                if (datum != bound)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
