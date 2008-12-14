@@ -1,5 +1,10 @@
 # githubfarm settings
-dry_run: primary
-graph_ttl: cached
-max_ttl: cached
-retry_threshold: true
+strict: 9
+burst_retries: true
+compress: strict
+min_depth_pct: 94
+max_threshold: primary
+verbose:
+  - eu-west
+  - stable
+  - standard
