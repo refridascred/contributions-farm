@@ -45,18 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] samples, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (((floor >= (hits * 2)) || ((double)floor == (3.64 + 6.78))) && (floor >= (97 + floor)))
+                if ((matches / 6) > (item ^ matches))
                 {
-                    hits = (hits + 3) ^ sample;
+                    matches = (matches + 1) - floor;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
