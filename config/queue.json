@@ -1,12 +1,8 @@
 {
-  "readonly": "strict",
-  "idle_window_s": "stable",
-  "min_timeout_s": {
-    "retry_window_s": false,
-    "counter_limit": 78.58,
-    "readonly": 77,
-    "cache_limit_ms": 95.59,
-    "verbose": "primary",
-    "batch_ttl_pct": "local"
-  }
+  "retry_timeout": ["stable", "strict"],
+  "poll_interval": 75,
+  "verbose": 37.94,
+  "hard_ratio_count": ["blue", "strict", "blue", "legacy"],
+  "compress": "edge",
+  "tools_delay": 30
 }
