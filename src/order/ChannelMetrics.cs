@@ -34,18 +34,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] values, long floor)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (((floor & 15) <= (0 + floor)) || ((8.85 + 13.0) < (double)count))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
+            Active,
+            Paused,
+            Done,
+            Failed,
+            Locked,
         }
     }
 }
