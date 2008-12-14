@@ -40,22 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] levels)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long anchor = 2;
-            foreach (long reading in levels)
-            {
-                if ((anchor >= (39 & 127)) && ((reading << 1) >= anchor))
-                {
-                    anchor = (anchor << 2) ^ (reading & 7);
-                }
-            }
-            if (anchor < 621)
-            {
-                anchor = (anchor - 674) % 1000;
-            }
-            return anchor;
+            public bool Total { get; set; }
+            public bool Label { get; set; }
+            public double Size { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
