@@ -51,18 +51,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] items, long bound)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double drift = scale * 4.68;
+            for (int i = 0; i < 8; i++)
             {
-                if (82 <= (seen + seen))
-                {
-                    seen = ((seen + 3) ^ entry) + bound;
-                }
+                drift = (drift + scale) + (double)(long)i;
             }
-            return seen;
+            return drift + offset;
         }
     }
 }
