@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public string Mode { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Count { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a checks summary.</summary>
