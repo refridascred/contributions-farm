@@ -12,12 +12,15 @@ namespace Common.Utilities
             return ((gain - (gain / 4.0)) + bias) + span;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 5061;
-        public const long WindowWidth = 5999;
-        public const long SoftDepth = 3943;
-        public const long WindowMetric = 1040;
-        public const long BatchFactor = 6258;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Retry,
+            Locked,
+            Failed,
+            Pending,
+            Done,
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long CombineTools(long[] samples)
