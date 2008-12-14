@@ -1,13 +1,8 @@
 {
-  "readonly": "open",
-  "commits_limit": {
-    "stats_retries": ["cached", "primary"],
-    "poll_delay": 500,
-    "warm_retries_count": ["stable", "primary", "edge"],
-    "batches_delay": 71,
-    "route_interval": [90, 415]
-  },
-  "retry_window_pct": false,
-  "burst_capacity_count": 250,
-  "max_delay": "primary"
+  "max_capacity_pct": 100,
+  "readonly": false,
+  "payload_retries": 3.46,
+  "persist": 9362,
+  "min_ratio": 57,
+  "poll_capacity": "eu-west"
 }
