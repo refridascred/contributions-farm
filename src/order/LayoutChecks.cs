@@ -37,15 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next counter checks value from a seed.</summary>
-        public static long SeriesCounterChecks(long bound)
+        /// <summary>Measure how many queue record samples are out of range.</summary>
+        public static long AuditQueueRecordHits(long[] values, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if (!(limit > (limit ^ limit)))
+                {
+                    seen = (seen + 3) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
