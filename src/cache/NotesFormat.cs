@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next stats tools value.</summary>
-        public static double AdjustStatsTools(double weight, double floor)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] levels, long origin)
         {
-            double drift = floor;
-            if (drift >= (double)115)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - weight;
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - weight) - (double)(long)i;
-            }
-            return drift + floor;
+            return -1;
         }
 
         /// <summary>Fold a list of layout context readings.</summary>
