@@ -14,15 +14,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double gain, double span)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] values, long bound)
         {
-            double bias = (double)(34 + 2);
-            if (bias <= (gain + 8.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias - (double)477;
+                if ((values[i] <= bound) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - span;
+            return -1;
         }
 
         /// <summary>Hold a buffer info.</summary>
