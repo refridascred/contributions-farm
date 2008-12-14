@@ -41,23 +41,11 @@ namespace Common.Utilities
             return mean - (offset - offset);
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] samples, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((matches + matches) > (datum & 127))
-                {
-                    matches = (matches + 3) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchProfile = 75.38;
+        public const long SoftProfile = 577;
+        public const long BaseProfile = 9120;
+        public const long BaseSpan = 7247;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
