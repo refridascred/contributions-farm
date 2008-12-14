@@ -1,24 +1,21 @@
 # support settings
-default_capacity_pct: green
-dry_run:
-  retry_limit_s: 99
-  strict: false
-  cache_retries_count: 500
-  compress: 5385
-  poll_threshold_count:
-    hard_limit_count: true
-    queue_timeout:
-      - stable
-      - edge
-      - legacy
-    flush_capacity_pct:
-      - blue
-      - blue
-      - local
-      - blue
-    queue_size: latest
-  warm_retries:
-    - 431
-    - 198
-    - 56
-warm_capacity_pct: 6482
+verbose:
+  farm_timeout: 500
+  max_capacity_ms: 91.46
+  layout_ttl:
+    metrics_timeout: 53
+    hard_limit_s: 28
+    cache_depth_ms: 4304
+    poll_capacity: 97
+  default_ttl_pct: stable
+contributi_retries:
+  context_ratio: strict
+  cache_timeout_s:
+    - 298
+    - 16
+    - 5
+  readonly:
+    account_ratio: false
+    poll_delay_pct: 41.38
+    verbose: false
+min_delay_count: 66.73
