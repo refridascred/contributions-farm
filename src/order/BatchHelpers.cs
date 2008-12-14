@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 2449;
+        public const long DefaultCount = 5103;
+        public const long HardMetric = 9511;
+        public const string MaxLevel = "strict-1";
+        public const long BatchMetric = 2915;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long StepCounter = 2024;
