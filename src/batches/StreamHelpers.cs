@@ -78,38 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank queue tools input into a small class.</summary>
-        public static long SortQueueTools(long step, long seed)
+        /// <summary>Count the cluster account entries that pass the check.</summary>
+        public static long MeasureClusterAccountGaps(long[] readings)
         {
-            if (step < (seed / 7))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step <= (6.1 / 2.0))
+                if (((long)readings.Length + item) > 8)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed * 4) <= (seed / 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step & 3) < (step + seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate already githubfarm samples.</summary>
