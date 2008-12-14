@@ -47,17 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] levels, long offset)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Done,
+            Active,
+            Queued,
         }
 
         /// <summary>Look up the position of a report sample.</summary>
