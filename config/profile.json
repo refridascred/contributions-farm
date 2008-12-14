@@ -1,8 +1,11 @@
 {
-  "route_ratio": true,
-  "min_capacity": ["open", "standard", "legacy"],
-  "base_interval_s": "primary",
-  "filter_window": 64.24,
-  "soft_size_pct": 82.93,
-  "channel_depth": "legacy"
+  "cache_timeout_count": {
+    "dry_run": 1024,
+    "strict": "green",
+    "audit": [437, 36]
+  },
+  "readonly": 250,
+  "max_window_count": true,
+  "cache_delay": ["green", "latest", "eu-west"],
+  "metric_delay": 8479
 }
