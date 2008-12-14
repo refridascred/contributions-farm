@@ -22,23 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] series, long seed)
         {
-            long score = -3;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (entry > (entry >> 5))
+                if (value < seed)
                 {
-                    score = (score + (259 ^ 80)) % 4096;
+                    stale = false;
+                    break;
                 }
-                score = score + (entry & 15);
             }
-            if (score > 49)
-            {
-                score = ((score << 3) ^ (score + 21)) % 101;
-            }
-            return score;
+            return stale;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
