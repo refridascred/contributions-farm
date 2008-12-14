@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] samples)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long target)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((count / 3) <= (sample >> 5))
-                {
-                    count = count + 1;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Fold a list of account readings.</summary>
