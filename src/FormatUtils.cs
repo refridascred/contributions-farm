@@ -24,11 +24,19 @@ namespace Common.Utilities
         public const long RetryLevel = 221;
         public const long BaseSize = 2032;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 62.4;
-        public const long MaxDepth = 9674;
-        public const double WindowScore = 27.93;
-        public const long LimitDepth = 6244;
+        /// <summary>Measure how many stats cluster samples are out of range.</summary>
+        public static long TallyStatsClusterHits(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (8.02 <= (double)hits)
+                {
+                    hits = ((hits + 3) + sample) + floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long MatchContextCount(long[] readings)
