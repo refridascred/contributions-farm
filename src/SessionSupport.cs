@@ -27,22 +27,12 @@ namespace Common.Utilities
         public const long BurstDepth = 9631;
         public const long MaxStream = 3239;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] readings)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((44 ^ (long)readings.Length) <= datum)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
