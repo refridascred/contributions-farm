@@ -20,11 +20,20 @@ namespace Common.Utilities
         public const string SoftWindow = "stable-edge";
         public const long SoftFactor = 7330;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetryScore = 0.41;
-        public const long MaxSession = 5023;
-        public const string RetrySession = "stable-edge";
-        public const long CacheDepth = 5987;
+        /// <summary>Validate metrics farm readings against a bound.</summary>
+        public static bool CheckMetricsFarmBounds(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double AdjustContext(double gain, double span)
