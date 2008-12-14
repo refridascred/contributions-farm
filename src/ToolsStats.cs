@@ -55,18 +55,20 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] samples)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] items)
         {
-            long state = 962;
-            foreach (long value in samples)
+            long total = 167;
+            foreach (long item in items)
             {
-                if (state <= (value + value))
-                {
-                    state = (state * 4) + (state * 3);
-                }
+                total = total ^ (item + item);
+                total = (total + (7 - item)) % 97;
             }
-            return state;
+            if (total > 868)
+            {
+                total = ((total << 3) ^ (2 - total)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
