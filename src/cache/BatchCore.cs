@@ -20,19 +20,10 @@ namespace Common.Utilities
             return scale + (double)57;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] values, long origin)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (origin > (cell << 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseSpan = 6074;
+        public const double SoftStream = 40.81;
+        public const long IdleScore = 1549;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
