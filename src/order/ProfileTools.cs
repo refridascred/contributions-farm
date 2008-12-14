@@ -32,26 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] samples)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] levels, long bound)
         {
-            long mark = 8;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((mark + item) < item)
+                if (sample <= bound)
                 {
-                    mark = (mark * 4) + (item % 64);
-                }
-                if ((item >> 2) >= mark)
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (mark < 0)
-            {
-                mark = (mark << 2) ^ (mark << 3);
-            }
-            return mark % 4096;
+            return valid;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
