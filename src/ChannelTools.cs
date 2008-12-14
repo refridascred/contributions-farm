@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine record support values into a single score.</summary>
-        public static long TotalRecordSupport(long[] items)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long total = 5;
-            foreach (long entry in items)
-            {
-                total = (total - (total >> 1)) + entry;
-                total = total - total;
-                total = ((total << 3) ^ (total - 232)) % 65521;
-            }
-            return total;
+            Queued,
+            Synced,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
