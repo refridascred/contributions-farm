@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of token format readings.</summary>
-        public static long MatchTokenFormatCount(long[] values)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Dropped,
+            Paused,
+            Queued,
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
