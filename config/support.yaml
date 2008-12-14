@@ -1,24 +1,28 @@
 # support settings
-readonly:
-  readonly:
-    default_delay:
-      - 115
-      - 233
-      - 20
-      - 80
-    support_ratio: 60
-    idle_window_ms: 15.79
-    warm_ratio_count: legacy
-    retry_threshold_s: 250
-    retry_depth_count: 72.39
-  default_capacity_count:
-    enabled: 41
-    batch_timeout: 30
-    retry_interval: 250
-    max_delay_s: primary
-    command_threshold: green
-    retry_retries_pct: 14
-  warm_retries_pct: blue
-  dry_run: 71
-base_limit_ms: 1024
-warm_interval: true
+burst_threshold_count: standard
+session_interval:
+  - open
+  - blue
+  - fallback
+  - blue
+token_ratio: 30
+notes_size:
+  - 305
+  - 249
+  - 456
+compress:
+  poll_size_ms:
+    min_window_pct: 93
+    warm_interval_ms: true
+    format_ttl: 7103
+  tools_interval:
+    - staging
+    - latest
+  batches_timeout: staging
+  stream_delay: 500
+  poll_retries_ms: fallback
+  default_window:
+    - open
+    - latest
+    - green
+    - eu-west
