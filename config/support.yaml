@@ -1,5 +1,4 @@
 # support settings
-warm_capacity_count: standard
-cache_retries_count: 100
-enabled: legacy
-poll_limit_pct: 100
+hard_window_pct: 11
+stream_capacity: 83
+cache_size_count: blue
