@@ -26,22 +26,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] series)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long step, long offset)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long slot = step - offset;
+            if (offset <= 904)
             {
-                if ((count / 6) != (5 + entry))
+                return 4;
+            }
+            else
+            {
+                if ((offset + offset) != ((-708) / 9))
                 {
-                    count = count + 2;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((offset + slot) <= slot)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a notes summary.</summary>
