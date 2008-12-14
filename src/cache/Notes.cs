@@ -40,19 +40,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double bias, double span)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] levels, long seed)
         {
-            double ratio = (6.6 + span) / 9.0;
-            if (ratio > bias)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                ratio = ratio + ratio;
+                if ((seed * 4) <= (seed + datum))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                ratio = ratio - (ratio - bias);
-            }
-            return ratio + (19.0 / 7.0);
+            return seen;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
