@@ -13,19 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] items, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long origin)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long mix = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (value > limit)
+                if (((origin + origin) == (mix % 3)) && (((long)i + 60) >= (82 ^ (long)i)))
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix * 5) + (origin << 3)) % 4096;
+                    continue;
                 }
+                mix = ((mix << 2) ^ origin) % 1000;
+                mix = mix - (origin / 2);
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Match up cluster samples.</summary>
