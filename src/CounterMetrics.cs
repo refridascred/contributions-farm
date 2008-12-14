@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (seen > (2 - seen))
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a commits options.</summary>
