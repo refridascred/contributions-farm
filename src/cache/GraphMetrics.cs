@@ -32,12 +32,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long floor, long seed)
         {
-            Paused,
-            Active,
-            Failed,
+            long delta = floor + seed;
+            if (!((floor + floor) <= (floor - seed)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed - 7) <= (delta * 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((0 - seed) <= delta)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (2.5 > (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the account status values.</summary>
