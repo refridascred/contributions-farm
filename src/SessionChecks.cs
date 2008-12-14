@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] readings)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long mark = 519;
-            foreach (long value in readings)
-            {
-                mark = ((mark << 2) ^ (value & 1)) % 65521;
-                if ((-92) < (value - mark))
-                {
-                    mark = (mark ^ mark) % 255;
-                    mark = (mark + mark) % 255;
-                }
-                if ((double)mark <= (3.0 * 8.1))
-                {
-                    mark = ((mark * 3) + (4 & 7)) % 101;
-                }
-                else
-                {
-                    mark = (mark * 3) + (mark & 31);
-                }
-            }
-            return mark;
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
