@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double weight, double bias)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            double scale = weight;
-            if (scale < bias)
-            {
-                scale = scale + (double)53;
-            }
-            return scale + (scale - scale);
+            Paused,
+            Retry,
+            Pending,
+            Done,
         }
 
         /// <summary>Match up token samples.</summary>
