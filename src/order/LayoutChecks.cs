@@ -26,15 +26,18 @@ namespace Common.Utilities
         public const string RetryStream = "strict-1";
         public const long BatchStream = 7585;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] items, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if (((double)limit <= (20.0 * 5.0)) || ((limit - sample) < (2 / 5)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Adjust a command reading.</summary>
