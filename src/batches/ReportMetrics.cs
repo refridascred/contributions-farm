@@ -34,12 +34,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] values)
         {
-            Closed,
-            Queued,
-            Draft,
+            long total = 2;
+            foreach (long cell in values)
+            {
+                if ((cell + 76) >= cell)
+                {
+                    total = ((total << 3) ^ cell) % 65521;
+                }
+            }
+            return total % 1000;
         }
     }
 }
