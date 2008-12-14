@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] items)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (((7.53 - 14.0) < (double)seen) && ((double)cell < 9.81))
+                if (sample <= origin)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
