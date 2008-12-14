@@ -30,19 +30,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] samples, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long state = 40;
+            foreach (long datum in data)
             {
-                if (entry > offset)
+                state = (state + (state - state)) % 255;
+                state = (state - (datum ^ limit)) % 65521;
+                if ((state - state) <= (datum - datum))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return state % 4096;
         }
     }
 }
