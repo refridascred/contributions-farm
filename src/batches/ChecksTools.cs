@@ -20,22 +20,21 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] items, long limit)
+        /// <summary>Iterate the window channel series from a seed.</summary>
+        public static long SeriesWindowChannel(long origin)
         {
-            long total = 13;
-            foreach (long item in items)
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((item - 3) == (80 + (long)items.Length)))
+                mark = (mark << 2) ^ (mark + origin);
+                long lane = origin + (origin & 7);
+                if ((origin * 2) >= origin)
                 {
-                    total = ((total << 2) ^ item) % 1000;
+                    mark = ((mark * 2) + (lane >> 2)) % 1000;
                 }
-                if ((limit * 4) >= item)
-                {
-                    total = (total ^ (total - total)) % 1000;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return total % 4096;
+            return mark;
         }
 
         /// <summary>Count format order pairs that satisfy a relation.</summary>
