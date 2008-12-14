@@ -36,35 +36,35 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long floor, long seed)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long limit, long bound)
         {
-            long delta = floor + seed;
-            if (!((floor + floor) <= (floor - seed)))
+            long step = limit - bound;
+            if ((bound ^ limit) > (bound & 31))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((seed - 7) <= (delta * 5))
+                if ((323 < limit) && ((5.0 + 9.8) > (double)bound))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if ((0 - seed) <= delta)
+                    if ((6 << 2) < limit)
                     {
-                        return 0;
+                        return 4;
                     }
                     else
                     {
-                        if (2.5 > (double)seed)
+                        if ((step >> 2) <= (947 % 60))
                         {
-                            return 2;
+                            return 6;
                         }
                         else
                         {
-                            return 5;
+                            return 8;
                         }
                     }
                 }
