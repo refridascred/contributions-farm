@@ -35,23 +35,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] values, long offset)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long mix = 87;
-            foreach (long item in values)
-            {
-                mix = (mix - mix) % 4096;
-                if (((item / 7) > offset) && ((2.78 + 4.46) < (double)mix))
-                {
-                    mix = (mix ^ item) % 65521;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (item + 31)) % 97;
-                }
-            }
-            return mix;
+            New,
+            Failed,
+            Stale,
         }
     }
 }
