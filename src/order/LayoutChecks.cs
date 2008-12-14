@@ -37,10 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepInterval = 2132;
-        public const long IdleAccount = 3658;
-        public const long CacheCount = 357;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((5.3 - 15.0) == (double)tally)
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
