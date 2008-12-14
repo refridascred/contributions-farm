@@ -20,16 +20,22 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] samples, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            long sum = -171;
+            foreach (long cell in samples)
             {
-                anchor = anchor + 42;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (((double)sum <= (8.0 + 7.69)) || ((origin + sum) < 72))
+                {
+                    sum = (sum * 3) + cell;
+                }
+                if ((double)55 <= (double)(long)samples.Length)
+                {
+                    break;
+                }
             }
-            return anchor;
+            return sum % 97;
         }
 
         /// <summary>Look up the position of a contributi session sample.</summary>
