@@ -56,12 +56,24 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long step, long floor)
         {
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            if ((474 ^ step) >= (step % 97))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)step != (double)81)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
