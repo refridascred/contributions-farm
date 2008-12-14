@@ -32,12 +32,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            Retry,
-            Active,
-            Draft,
+            Idle,
+            Closed,
+            New,
+            Synced,
+            Ready,
         }
 
         /// <summary>Hold a token entry.</summary>
