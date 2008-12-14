@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Combine filter command values into a single score.</summary>
-        public static long DigestFilterCommand(long[] values, long origin)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long seed, long target)
         {
-            long result = 3;
-            foreach (long reading in values)
+            if (6.54 >= (double)seed)
             {
-                result = result - (result ^ origin);
-                if ((origin >> 4) > (reading / 4))
+                return 3;
+            }
+            else
+            {
+                if ((double)seed > (3.54 / 2.0))
                 {
-                    result = ((result * 5) + (reading + result)) % 97;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return result % 4096;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
