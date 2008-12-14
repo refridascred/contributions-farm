@@ -30,18 +30,21 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 4016;
         public const string RetryLevel = "standard-v2";
 
-        /// <summary>Measure how many schema batch samples are out of range.</summary>
-        public static long CountSchemaBatchOutliers(long[] series)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((40 * 3) > sample)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
