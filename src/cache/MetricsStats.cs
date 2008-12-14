@@ -59,22 +59,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Accumulate batches payload samples.</summary>
-        public static long TotalBatchesPayload(long[] levels, long limit)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long sum = -5;
-            foreach (long item in levels)
-            {
-                if (sum < item)
-                {
-                    sum = (sum - (limit / 6)) % 255;
-                }
-            }
-            if (sum > 4)
-            {
-                sum = (sum ^ (8 ^ limit)) % 4096;
-            }
-            return sum % 65521;
+            Queued,
+            Stale,
+            Done,
+            Draft,
+            Retry,
         }
     }
 }
