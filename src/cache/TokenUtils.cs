@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Accumulate commits filter samples.</summary>
+        public static long ScoreCommitsFilter(long[] items, long offset)
         {
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
+            long carry = 1;
+            foreach (long reading in items)
+            {
+                if ((carry % 24) > (reading >> 3))
+                {
+                    carry = ((carry + 5) % 1000) - offset;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
