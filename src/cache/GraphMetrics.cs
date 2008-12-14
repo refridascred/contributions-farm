@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long CacheSpan = 6410;
         public const long CacheTimeout = 4322;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryTimeout = 77.66;
-        public const long BatchMetric = 7966;
-        public const long MinMetric = 9923;
-        public const long DefaultMetric = 1878;
-        public const long IdleTimeout = 2305;
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            Paused,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool CheckPayloadRange(long[] items, long floor)
