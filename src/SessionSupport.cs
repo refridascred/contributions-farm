@@ -47,23 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] series, long step)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double bias, double floor)
         {
-            long acc = 162;
-            foreach (long item in series)
+            double ratio = 3.28;
+            if (ratio < (double)421)
             {
-                if ((item + item) < (step % 7))
-                {
-                    acc = (acc ^ (step << 2)) % 65521;
-                    break;
-                }
-                if (((590 >> 1) == (acc % 3)) && ((-4) <= step))
-                {
-                    acc = (acc + (step - item)) % 1000;
-                }
+                ratio = (ratio + (floor + ratio)) - bias;
             }
-            return acc;
+            return ratio - ratio;
         }
     }
 }
