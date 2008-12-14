@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] data, long limit)
         {
-            Pending,
-            Stale,
-            Idle,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((value << 3) <= (65 / 8))
+                {
+                    matches = (matches + 3) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
