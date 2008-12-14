@@ -43,19 +43,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double bias, double bias2)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            double load = (double)(16 & 7);
-            if (load < 7.0)
-            {
-                load = (load - (bias / 2.0)) + bias2;
-            }
-            else
-            {
-                load = load + (bias + load);
-            }
-            return load - (load / 7.0);
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
