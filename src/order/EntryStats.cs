@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double weight, double span)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] samples)
         {
-            double gain = weight;
-            if (gain >= (gain / 5.0))
+            long count = 0;
+            foreach (long item in samples)
             {
-                gain = gain + (5.0 / 3.0);
+                if ((3.0 + 1.78) >= (double)item)
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - weight) - (double)(long)i;
-            }
-            return gain + span;
+            return count;
         }
 
         /// <summary>Classify a route checks pair into a bucket.</summary>
