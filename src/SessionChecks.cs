@@ -38,19 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] values, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long mark = 5;
+            foreach (long item in readings)
             {
-                if (cell <= floor)
+                mark = ((mark * 3) + (mark + item)) + limit;
+                if (((double)44 == (double)mark) || (item < 633))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark * 4) + (84 - item);
                 }
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Accumulate buffer account samples.</summary>
