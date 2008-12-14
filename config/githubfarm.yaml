@@ -1,31 +1,12 @@
 # githubfarm settings
-flush_size:
-  counter_size: 50.44
-  batch_retries_pct:
-    cache_capacity: true
-    min_size_s:
-      - 105
-      - 146
-      - 454
-    batch_interval: true
-    counter_capacity: true
-  support_retries: legacy
-  base_timeout_pct:
-    verbose:
-      - cached
-      - primary
-      - strict
-      - eu-west
-    retry_ttl: strict
-    commits_size: 94.91
-  max_ttl_ms:
-    window_timeout: legacy
-    enabled: 78.88
-    cache_threshold: true
-  flush_delay_pct: false
-base_threshold_count:
-  - 429
-  - 270
-  - 310
-  - 258
-channel_ratio: 42.52
+strict: 500
+min_threshold_s:
+  record_interval: 6489
+  hard_threshold_s:
+    - latest
+    - staging
+  compress: latest
+  soft_capacity: 6151
+  flush_interval: 76.04
+batch_size: false
+retry_ratio_pct: 500
