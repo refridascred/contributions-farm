@@ -26,24 +26,12 @@ namespace Common.Utilities
         public const double DefaultScore = 0.32;
         public const long WindowGithubfarm = 2237;
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long bound, long floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            if (!((floor + bound) > (84 >> 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((bound * 4) > (bound << 3)) || ((floor << 2) != (floor / 6)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Pending,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a tools header.</summary>
