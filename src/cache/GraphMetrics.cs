@@ -44,13 +44,29 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long step)
         {
-            Queued,
-            Retry,
-            Synced,
-            Done,
+            long result = step;
+            for (int i = 0; i < 22; i++)
+            {
+                result = (result + (step + result)) % 65521;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = (((result << 3) ^ step) % 65521) - (long)i2;
+                }
+                if (((long)i + result) < result)
+                {
+                    result = (result ^ (51 - step)) % 97;
+                    break;
+                }
+                else
+                {
+                    result = (result + result) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
