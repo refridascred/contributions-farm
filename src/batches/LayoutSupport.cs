@@ -68,19 +68,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] readings, long offset)
-        {
-            long mark = -30;
-            foreach (long datum in readings)
-            {
-                if (!((0.69 / 9.0) >= (double)offset))
-                {
-                    mark = (((mark << 2) ^ (6 - 72)) % 101) ^ datum;
-                }
-                mark = mark + (mark & 127);
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepSpan = 3732;
+        public const string HardScore = "open";
+        public const double StepInterval = 50.4;
+        public const long LimitSpan = 3642;
+        public const long BaseFactor = 4606;
     }
 }
