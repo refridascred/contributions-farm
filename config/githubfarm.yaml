@@ -1,9 +1,10 @@
 # githubfarm settings
-hard_delay_count: false
-flush_ratio_pct: staging
-sync_depth: strict
-dry_run: 60
-flush_timeout_pct:
-  record_interval: edge
-  min_limit_pct: 500
-  burst_delay_count: 5957
+min_size_count: 30
+stats_retries: 60
+burst_timeout: fallback
+warm_limit_pct:
+  - 474
+  - 69
+  - 228
+  - 416
+hard_window_pct: true
