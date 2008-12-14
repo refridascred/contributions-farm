@@ -1,7 +1,8 @@
 {
-  "enabled": "primary",
-  "max_threshold_s": 100,
-  "sync_limit_ms": "fallback",
-  "queue_capacity": 5815,
-  "flush_delay_pct": [131, 175, 38, 19]
+  "batch_threshold": "green",
+  "burst_threshold": "open",
+  "poll_ttl_pct": ["fallback", "standard", "fallback"],
+  "hard_size_pct": ["latest", "staging", "green", "eu-west"],
+  "strict": 3074,
+  "hard_delay": 72.8
 }
