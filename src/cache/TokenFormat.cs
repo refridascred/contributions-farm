@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const string StepDepth = "strict";
         public const string CacheMetrics = "alpha";
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Active,
-            Idle,
-            Dropped,
-            Stale,
-            Closed,
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the cluster level values.</summary>
