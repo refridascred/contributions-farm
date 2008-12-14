@@ -39,13 +39,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] levels, long seed)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((seed * 5) >= (9 << 1))
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
         }
     }
 }
