@@ -1,9 +1,11 @@
 # githubfarm settings
-base_retries: stable
-burst_retries_ms: edge
-graph_retries: 1024
-soft_limit_count: local
-readonly:
-  - 203
-  - 111
-  - 408
+cache_retries_pct:
+  readonly: 79.47
+  route_ratio: 4764
+  min_capacity_pct: cached
+soft_ratio_pct: 80
+soft_window_pct:
+  - local
+  - strict
+  - standard
+layout_threshold: false
