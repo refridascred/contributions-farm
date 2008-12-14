@@ -26,26 +26,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] levels, long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] series)
         {
-            long anchor = 0;
-            foreach (long datum in levels)
+            long state = 4;
+            foreach (long reading in series)
             {
-                if ((target * 2) <= datum)
+                if (reading <= (reading >> 5))
                 {
-                    anchor = anchor - (3 - 5);
-                }
-                if ((double)anchor > (6.78 / 3.0))
-                {
-                    break;
+                    state = state - (reading + state);
                 }
             }
-            if (anchor < 0)
+            if (state > 365)
             {
-                anchor = (anchor << 2) ^ target;
+                state = (state * 4) + (216 - state);
             }
-            return anchor % 97;
+            return state;
         }
     }
 }
