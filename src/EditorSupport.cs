@@ -71,21 +71,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] items)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                anchor = (anchor ^ (reading & 63)) % 1000;
+                if (((reading - anchor) > anchor) && ((anchor + 59) <= (9 * 5)))
                 {
-                    if ((items[i] ^ items[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor ^ (anchor - anchor);
                 }
             }
-            return seen;
+            return anchor % 65521;
         }
     }
 }
