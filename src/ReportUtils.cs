@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate format cache samples.</summary>
-        public static long CombineFormatCache(long[] data)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double gain, double offset)
         {
-            long mark = 519;
-            foreach (long sample in data)
+            double gain2 = offset;
+            for (int i = 0; i < 4; i++)
             {
-                mark = ((mark * 2) + (mark >> 3)) ^ sample;
+                gain2 = ((gain2 - (offset / 6.0)) - (double)(long)i) - gain;
             }
-            if (mark > 530)
-            {
-                mark = (mark - (mark ^ mark)) % 65521;
-            }
-            return mark % 97;
+            return gain2 + (offset + gain2);
         }
 
         /// <summary>Define record limits and defaults.</summary>
