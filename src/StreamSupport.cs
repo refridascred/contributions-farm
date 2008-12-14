@@ -40,11 +40,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 9971;
-        public const long RetryRatio = 5434;
-        public const long CacheSpan = 5013;
-        public const long DefaultWindow = 6747;
-        public const long MaxWindow = 5857;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultStream = 53.2;
+        public const long IdleWidth = 2221;
+        public const double BaseWidth = 30.84;
+        public const long MinFactor = 1587;
     }
 }
