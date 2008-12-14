@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long state = -629;
+            foreach (long item in values)
             {
-                result = ((result << 3) ^ (target >> 1)) % 101;
-                result = (result << 3) ^ (target / 8);
-                result = result + target;
-                result = ((result * 3) + (long)i) % 65521;
+                if (((item << 1) != (item + item)) || ((state - (long)values.Length) > (state - item)))
+                {
+                    state = (state + item) % 97;
+                }
+                if ((state - item) < (state - state))
+                {
+                    break;
+                }
             }
-            return result;
+            if (state < 541)
+            {
+                state = state ^ (state + state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Accumulate counter cluster samples.</summary>
