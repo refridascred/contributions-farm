@@ -35,21 +35,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                long tally = mix;
-                if ((76 - 108) < tally)
-                {
-                    mix = (mix ^ (32 + origin)) % 97;
-                    mix = (mix ^ origin) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate farm queue samples.</summary>
