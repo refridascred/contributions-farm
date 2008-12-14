@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] samples)
         {
-            Draft,
-            New,
-            Locked,
-            Synced,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((matches ^ (-130)) != (value - value))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many contributi graph samples are out of range.</summary>
