@@ -23,12 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public long Label { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 2596;
+        public const long MaxBatches = 7432;
+        public const double LimitCount = 37.76;
+        public const long MinSpan = 6850;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long FoldQueue(long[] readings)
