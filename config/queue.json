@@ -1,6 +1,5 @@
 {
-  "metrics_ttl": false,
-  "support_capacity": 7121,
-  "enabled": "strict",
-  "verbose": 80.07
+  "max_ratio_pct": true,
+  "context_depth": true,
+  "dry_run": 77
 }
