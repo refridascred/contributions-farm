@@ -20,15 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] readings, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            long anchor = 312;
+            foreach (long datum in readings)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                anchor = (((anchor * 4) + (floor + 89)) % 97) + datum;
             }
-            return mark;
+            return anchor % 4096;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
