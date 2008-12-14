@@ -1,15 +1,5 @@
 {
-  "tools_timeout": [37, 79, 202, 118],
-  "min_retries": ["primary", "eu-west", "stable", "local"],
-  "commits_interval": "strict",
-  "warm_ratio": true,
-  "poll_ttl_count": {
-    "cache_window_ms": 53.75,
-    "strict": "strict",
-    "default_ratio": 81.61,
-    "max_depth_pct": 30,
-    "idle_size_pct": "open",
-    "soft_window_pct": ["stable", "blue", "open"]
-  },
-  "soft_limit_pct": 250
+  "idle_limit_s": [446, 79],
+  "enabled": false,
+  "min_ratio_count": 2.97
 }
