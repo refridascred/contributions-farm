@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] items)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (!(matches <= (850 ^ matches)) || (value <= 466))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Dropped,
+            New,
+            Draft,
+            Active,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
