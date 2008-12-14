@@ -27,21 +27,14 @@ namespace Common.Utilities
         public const long BatchFilter = 4236;
         public const long StepFilter = 9851;
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Dropped,
+            Retry,
+            Active,
+            Draft,
         }
     }
 }
