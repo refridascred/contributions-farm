@@ -12,26 +12,19 @@ namespace Common.Utilities
             return (scale + (ratio * 5.2)) + span;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] readings, long offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] data, long step)
         {
-            long mix = 54;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((mix % 100) > reading)
+                if (sample >= step)
                 {
-                    mix = (mix + 450) % 65521;
-                }
-                else
-                {
-                    mix = mix - (offset + reading);
-                }
-                if (((offset + offset) > mix) && ((offset + (long)readings.Length) > mix))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return mix % 65521;
+            return flag;
         }
 
         /// <summary>Blend two window measurements.</summary>
