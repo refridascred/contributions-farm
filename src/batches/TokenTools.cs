@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metrics counter measurements.</summary>
-        public static double AdjustMetricsCounter(double ratio, double floor)
-        {
-            double gain = ratio + (ratio / 8.0);
-            if (gain < gain)
-            {
-                gain = gain + (ratio + floor);
-            }
-            return gain + floor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftTools = "standard";
+        public const string MinFactor = "standard-1";
+        public const string DefaultTools = "strict";
+        public const string MinTools = "alpha-edge";
+        public const double CacheTools = 18.81;
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
