@@ -1,5 +1,24 @@
 {
-  "base_delay_s": "green",
-  "batch_depth_s": 64.87,
-  "filter_timeout": false
+  "max_threshold_count": [323, 393, 489, 52],
+  "retry_size": 30,
+  "sync_threshold_ms": {
+    "order_threshold": false,
+    "dry_run": 76.86,
+    "audit": "stable"
+  },
+  "enabled": false,
+  "token_ttl": {
+    "dry_run": 59.19,
+    "sync_ratio": 30,
+    "max_depth_pct": false,
+    "soft_delay_s": "open",
+    "batch_interval": {
+      "audit": 17.2,
+      "window_retries": 2933,
+      "soft_threshold_ms": "strict",
+      "soft_threshold_pct": [39, 48, 126],
+      "sync_capacity": 1024
+    },
+    "compress": 100
+  }
 }
