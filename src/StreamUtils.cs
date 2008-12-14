@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] levels, long bound)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double mean = weight;
+            if (mean > 11.0)
             {
-                if ((item * 4) > (item + bound))
-                {
-                    tally = tally + 3;
-                }
+                mean = mean + (double)(-809);
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (offset / 9.0)) - (double)(long)i;
+            }
+            return mean - (3.4 - weight);
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
