@@ -14,14 +14,16 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long offset)
         {
-            Stale,
-            New,
-            Active,
-            Retry,
-            Dropped,
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = acc + ((long)i << 1);
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a support header.</summary>
