@@ -12,18 +12,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] readings)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long sum = 28;
+            foreach (long cell in levels)
             {
-                if ((seen ^ seen) <= (item * 4))
+                if (((long)levels.Length - bound) == (cell % 2))
                 {
-                    seen = seen + 2;
+                    sum = (sum << 3) ^ bound;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
