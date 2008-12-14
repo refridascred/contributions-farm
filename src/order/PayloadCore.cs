@@ -39,18 +39,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] levels, long seed)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((seed * 5) >= (9 << 1))
-                {
-                    count = (count + 1) + datum;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
     }
 }
