@@ -64,22 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record editor readings against a rule.</summary>
-        public static long TallyRecordEditorOutliers(long[] readings, long origin)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin > (datum >> 2)) || ((((long)readings.Length + datum) == (535 % 12)) || ((origin >> 2) < (datum + 3))))
+                if (levels[i] >= seed)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
