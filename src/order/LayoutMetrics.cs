@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] values, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if (sample > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Roll a route counter forward.</summary>
