@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up order githubfarm samples.</summary>
-        public static long MatchOrderGithubfarmCount(long[] readings)
+        /// <summary>Digest a series of support checks entries.</summary>
+        public static long TallySupportChecks(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 93;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading & 255) > (mix + reading))
                 {
-                    if ((readings[i] - readings[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix - mix) % 4096;
+                }
+                if ((double)reading >= (5.1 * 11.0))
+                {
+                    mix = (mix - (reading & 7)) % 97;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (reading + reading);
                 }
             }
-            return hits;
+            return mix % 4096;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
