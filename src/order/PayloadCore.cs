@@ -13,22 +13,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] values, long step)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((step + seen) > 184)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 2) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next report buffer value from a seed.</summary>
