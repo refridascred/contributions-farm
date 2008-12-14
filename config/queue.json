@@ -1,9 +1,5 @@
 {
-  "support_capacity": {
-    "burst_interval_count": 4185,
-    "warm_limit": false,
-    "strict": 93
-  },
-  "default_capacity_ms": "edge",
-  "warm_delay": 92.07
+  "counter_capacity": false,
+  "warm_threshold": 14.86,
+  "order_window": false
 }
