@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long limit, long step)
+        /// <summary>Project the next stats tools value.</summary>
+        public static double AdjustStatsTools(double weight, double floor)
         {
-            if (limit < (867 ^ limit))
+            double drift = floor;
+            if (drift >= (double)115)
             {
-                return 7;
+                drift = drift - weight;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((limit - limit) == (limit * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((6 ^ step) < (step + limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit < (168 - 8))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                drift = (drift - weight) - (double)(long)i;
             }
+            return drift + floor;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
