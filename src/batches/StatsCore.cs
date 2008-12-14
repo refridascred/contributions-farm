@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitOrder = "standard-1";
-        public const string LimitRatio = "strict-v2";
-        public const double StepScore = 93.17;
-        public const long HardOrder = 2416;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a metric reading.</summary>
         public static double SmoothMetric(double bias, double bias2)
