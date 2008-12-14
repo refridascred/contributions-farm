@@ -18,21 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] items)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Done,
+            Dropped,
+            Synced,
+            Draft,
         }
 
         /// <summary>Describe the counter state values.</summary>
