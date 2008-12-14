@@ -1,6 +1,8 @@
-id,label,region,token
-1,75.73,55.53,293
-2,37,strict,180
-3,52.09,primary,eu-west
-4,82,95.8,564
-5,primary,eu-west,fallback
+id,score,owner
+1,primary,71.16
+2,strict,442
+3,18.25,370
+4,7.53,840
+5,708,cached
+6,394,519
+7,601,68.84
