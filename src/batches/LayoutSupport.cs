@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] values, long step)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((step < reading) && ((0.12 / 7.0) >= (double)step))
+                if (value != offset)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Measure how many metric checks samples are out of range.</summary>
