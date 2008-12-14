@@ -70,11 +70,21 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] items)
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
