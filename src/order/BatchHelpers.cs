@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] data)
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((10.0 / 4.0) <= (double)entry)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a context options.</summary>
