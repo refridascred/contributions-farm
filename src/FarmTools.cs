@@ -13,15 +13,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double bias, double bias2)
+        /// <summary>Count metrics githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsGithubfarmCount(long[] data)
         {
-            double scale = bias2 * 20.0;
-            if (scale <= scale)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale + scale) + bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale + (double)461;
+            return hits;
         }
 
         /// <summary>Look up the position of a tools cache sample.</summary>
