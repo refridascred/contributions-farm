@@ -21,21 +21,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of layout context readings.</summary>
-        public static long OverlapLayoutContextCount(long[] readings)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Synced,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
