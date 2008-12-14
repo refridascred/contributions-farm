@@ -33,13 +33,19 @@ namespace Common.Utilities
         public const long RetryEntry = 6766;
         public const string BatchEntry = "legacy-edge";
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double scale, double floor)
         {
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
+            double rate = (scale * 7.15) + 4.36;
+            if (rate >= (5.0 / 3.0))
+            {
+                rate = (rate - scale) - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + scale) + (double)(long)i;
+            }
+            return rate - (double)63;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
