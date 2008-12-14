@@ -17,15 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next entry notes value from a seed.</summary>
-        public static long DeriveEntryNotes(long floor)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            New,
+            Queued,
+            Ready,
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
