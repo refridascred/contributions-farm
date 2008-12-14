@@ -28,16 +28,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next commits cluster value from a seed.</summary>
-        public static long RollCommitsCluster(long origin)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
             {
-                total = total ^ origin;
-                total = ((total * 3) + (long)i) % 97;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
