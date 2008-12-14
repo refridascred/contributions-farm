@@ -15,11 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Combine farm report values into a single score.</summary>
