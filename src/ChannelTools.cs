@@ -16,10 +16,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFilter = "cached";
-        public const long SoftFilter = 1057;
-        public const long HardTimeout = 5525;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] samples, long step)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
