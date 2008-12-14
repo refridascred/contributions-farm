@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] items, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long total = 3;
+            foreach (long entry in items)
             {
-                if (((2.8 + 2.0) == (double)(long)items.Length) && ((double)tally < (5.0 - 6.09)))
-                {
-                    tally = ((tally + 2) - cell) - bound;
-                }
+                total = ((total - (23 << 3)) + entry) + floor;
             }
-            return tally;
+            return total % 65521;
         }
 
         /// <summary>Hold a record summary.</summary>
