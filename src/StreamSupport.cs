@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] values, long floor)
         {
-            Dropped,
-            New,
-            Draft,
-            Active,
+            long total = 64;
+            foreach (long item in values)
+            {
+                total = (total << 3) ^ item;
+                if ((double)floor == (20.0 * 8.27))
+                {
+                    break;
+                }
+            }
+            if (total < 0)
+            {
+                total = total ^ floor;
+            }
+            return total;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
