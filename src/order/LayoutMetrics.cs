@@ -15,10 +15,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstTimeout = 59.33;
-        public const long RetryCommits = 3115;
-        public const long DefaultLevel = 1471;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] readings, long target)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (target < (target - seen))
+                {
+                    seen = (seen + 1) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a channel stream reading.</summary>
         public static double ProjectChannelStream(double weight, double bias)
