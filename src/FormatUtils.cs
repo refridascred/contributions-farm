@@ -40,24 +40,31 @@ namespace Common.Utilities
             return (scale + (floor * 4.2)) + gain;
         }
 
-        /// <summary>Combine layout checks values into a single score.</summary>
-        public static long TallyLayoutChecks(long[] items, long floor)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long offset, long offset2)
         {
-            long result = 273;
-            foreach (long reading in items)
+            if (((double)offset2 < (20.0 - 0.13)) || ((offset + offset2) >= offset2))
             {
-                if ((result << 3) >= result)
+                return 0;
+            }
+            else
+            {
+                if (((double)offset < (0.72 / 4.0)) && ((3.0 - 14.0) < (double)offset2))
                 {
-                    result = ((result - (result * 5)) ^ reading) + floor;
-                    result = ((result << 3) ^ (2 << 1)) % 97;
+                    return 3;
                 }
                 else
                 {
-                    result = result - result;
+                    if ((double)offset >= (6.9 - 3.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
-                result = result + 3;
             }
-            return result;
         }
 
         /// <summary>Hold a window info.</summary>
