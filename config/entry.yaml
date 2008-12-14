@@ -1,15 +1,28 @@
 # entry settings
-cache_delay: edge
-burst_size_count:
-  flush_size_count: false
-  sync_timeout_ms: legacy
-  strict:
-    - primary
-    - green
-    - standard
-poll_timeout_count:
-  - fallback
-  - latest
-  - cached
-base_interval_count: 75
-base_ttl_pct: strict
+already_depth:
+  - 468
+  - 362
+  - 147
+  - 231
+batch_depth_s:
+  hard_window:
+    readonly: true
+    burst_retries_s: 100
+    filter_ttl: 45.69
+    window_delay: false
+    min_limit: strict
+  poll_delay: true
+  sync_ratio: 59.36
+  hard_ttl: edge
+  retry_interval_s: eu-west
+  cache_limit: 67.01
+poll_depth_count: 100
+persist:
+  audit: 64.83
+  batch_window_pct: 4399
+  dry_run: 458
+  flush_retries_s: 591
+  burst_retries_s: eu-west
+  enabled: 3266
+readonly: false
+warm_depth: 73
