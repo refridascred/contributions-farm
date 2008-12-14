@@ -39,10 +39,14 @@ namespace Common.Utilities
         public const double DefaultAlready = 84.94;
         public const long DefaultTimeout = 4085;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCount = 1065;
-        public const long CacheCluster = 6336;
-        public const double WindowCluster = 90.63;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Queued,
+            Pending,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long CombineSchema(long[] values, long floor)
