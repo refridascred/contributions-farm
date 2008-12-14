@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 4535;
-        public const long BaseQueue = 3396;
-        public const long HardQueue = 5334;
-        public const long WindowSize = 3448;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((step ^ (long)i) > (score ^ score))
+                {
+                    score = (score - (step + score)) % 65521;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long StepCounter = 2024;
