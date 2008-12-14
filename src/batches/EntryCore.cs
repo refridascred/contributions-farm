@@ -35,15 +35,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a farm stats.</summary>
