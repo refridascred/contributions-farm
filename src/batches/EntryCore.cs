@@ -30,22 +30,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] levels)
         {
-            long state = 651;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (!((state - 350) < state))
+                if ((double)seen < (19.0 + 2.0))
                 {
-                    state = ((state * 3) + (state >> 3)) + cell;
-                }
-                if ((3.0 + 18.0) == (double)state)
-                {
-                    break;
+                    seen = (seen + 3) - value;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Fold a list of command readings.</summary>
