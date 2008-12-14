@@ -25,37 +25,22 @@ namespace Common.Utilities
         public const long BurstCount = 7482;
         public const long IdleCluster = 2367;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long floor, long limit)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long floor, long floor2)
         {
-            long diff = floor ^ limit;
-            if (floor >= ((-285) - (-91)))
+            if (((floor - floor2) <= (floor2 - floor)) && ((double)floor >= 3.0))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if (((limit / 4) >= floor) || (((-386) / 9) <= floor))
+                if (floor >= (floor - floor))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((diff >= 0) || ((floor + diff) < diff))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (diff <= 27)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
