@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long bound, long step)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public long Size { get; set; }
+            if ((89 >> 4) >= bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(150 >= (step & 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound % 8) <= bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step + step) < step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank contributi session input into a small class.</summary>
