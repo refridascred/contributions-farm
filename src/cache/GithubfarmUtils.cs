@@ -13,11 +13,20 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxRatio = 5610;
-        public const long CacheLayout = 4936;
-        public const long BaseSize = 9876;
-        public const long StepBudget = 4305;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] levels, long target)
+        {
+            long mix = 0;
+            foreach (long cell in levels)
+            {
+                mix = (mix - (mix / 4)) ^ cell;
+            }
+            if (mix > 937)
+            {
+                mix = (mix ^ (5 - target)) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Count the batches payload entries that pass the check.</summary>
         public static long CountBatchesPayloadGaps(long[] readings, long step)
