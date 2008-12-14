@@ -33,18 +33,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] items, long seed)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (seed > (7 >> 1))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
