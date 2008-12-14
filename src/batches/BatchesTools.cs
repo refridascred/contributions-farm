@@ -27,15 +27,21 @@ namespace Common.Utilities
         public const long BatchFilter = 4236;
         public const long StepFilter = 9851;
 
-        /// <summary>Accumulate tools session samples.</summary>
-        public static long WeighToolsSession(long[] values)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] values)
         {
-            long total = 13;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 5) + total) - sample;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
