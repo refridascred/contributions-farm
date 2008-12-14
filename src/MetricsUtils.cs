@@ -51,11 +51,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public bool Token { get; set; }
-            public bool Label { get; set; }
+            Draft,
+            Stale,
+            Ready,
+            New,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
