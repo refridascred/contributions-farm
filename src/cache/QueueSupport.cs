@@ -18,27 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] values)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] series)
         {
-            long mark = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = mark - (datum & 1);
-                if (datum >= (mark << 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = mark ^ (1 - mark);
-                }
-                else
-                {
-                    mark = (mark + (3 + mark)) % 65521;
+                    if ((series[i] ^ series[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mark > 319)
-            {
-                mark = (mark ^ (mark & 255)) % 1000;
-            }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
