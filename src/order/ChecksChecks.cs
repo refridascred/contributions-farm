@@ -22,18 +22,22 @@ namespace Common.Utilities
         public const long BurstToken = 4744;
         public const long CacheToken = 1963;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] levels)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long sum = 806;
+            foreach (long cell in data)
             {
-                if ((reading - seen) < (reading + seen))
+                if ((double)sum <= 2.0)
                 {
-                    seen = seen + 2;
+                    sum = ((sum ^ (floor + floor)) % 255) ^ cell;
                 }
             }
-            return seen;
+            if (sum > 19)
+            {
+                sum = ((sum << 3) ^ floor) % 1000;
+            }
+            return sum;
         }
     }
 }
