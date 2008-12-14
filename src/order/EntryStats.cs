@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (!((matches * 2) == (matches % 97)))
+                if ((reading / 2) < (reading + reading))
                 {
-                    matches = (matches + 1) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
