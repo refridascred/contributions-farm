@@ -54,12 +54,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstTimeout = "staging-1";
-        public const double IdleOrder = 73.55;
-        public const long RetryOrder = 4836;
-        public const string BatchBudget = "latest";
-        public const long StepLevel = 3200;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item < 17.0)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double BurstStats = 38.77;
