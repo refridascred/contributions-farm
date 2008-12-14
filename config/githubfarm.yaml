@@ -1,16 +1,9 @@
 # githubfarm settings
-commits_ratio:
-  readonly: false
-  filter_ttl: standard
-  enabled: 250
-hard_interval_ms:
-  - local
-  - stable
-batch_depth_s:
-  hard_timeout: 7.34
-  burst_ratio: 7124
-  poll_size: false
-  strict: staging
-editor_capacity: 16.39
-warm_limit_pct: staging
-record_timeout: 5496
+hard_delay_count: false
+flush_ratio_pct: staging
+sync_depth: strict
+dry_run: 60
+flush_timeout_pct:
+  record_interval: edge
+  min_limit_pct: 500
+  burst_delay_count: 5957
