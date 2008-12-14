@@ -1,15 +1,14 @@
 # Command notes
 
-The batch report groups every queue by profile.
-A context that stays idle for too long is moved to the filter list.
-Each farm is validated before it reaches the layout queue.
+Each editor is validated before it reaches the batches queue.
+The route report groups every order by notes.
 
-A schema that stays idle for too long is moved to the route list.
-Run the filter check before changing any layout limits.
-Defaults for token live in the config folder and can be overridden per environment.
+When a githubfarm fails, the already handler retries a few times before giving up.
+When a record fails, the token handler retries a few times before giving up.
+Keep notes and stream names short and lowercase.
 
 ## Guidelines
 
-- Keep stats values small
-- Log every githubfarm change
-- Document new entry fields
+- Prefer metric defaults
+- Review batch limits each release
+- Validate batch input early
