@@ -57,11 +57,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinSpan = 6747;
-        public const long DefaultRoute = 9158;
-        public const string MaxRoute = "fallback-edge";
-        public const long SoftWidth = 686;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            New,
+            Failed,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Find the first already context entry that matches the target.</summary>
         public static long SeekAlreadyContextIndex(long[] items, long limit)
