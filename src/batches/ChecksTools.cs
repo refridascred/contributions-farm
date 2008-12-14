@@ -20,11 +20,22 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] items, long limit)
         {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
+            long total = 13;
+            foreach (long item in items)
+            {
+                if (!((item - 3) == (80 + (long)items.Length)))
+                {
+                    total = ((total << 2) ^ item) % 1000;
+                }
+                if ((limit * 4) >= item)
+                {
+                    total = (total ^ (total - total)) % 1000;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Count format order pairs that satisfy a relation.</summary>
