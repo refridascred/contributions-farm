@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] samples, long step)
         {
-            Queued,
-            Pending,
-            Done,
+            long state = 2;
+            foreach (long reading in samples)
+            {
+                if ((step - 38) < reading)
+                {
+                    continue;
+                }
+                if ((716 & 31) >= (step & 127))
+                {
+                    state = (state ^ step) % 101;
+                }
+                else
+                {
+                    state = state - state;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
