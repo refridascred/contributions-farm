@@ -60,23 +60,13 @@ namespace Common.Utilities
         public const long MinInterval = 5023;
         public const long SoftRatio = 8780;
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double weight, double bias)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            double bias2 = (double)((-267) / 9);
-            if (bias2 >= 5.1)
-            {
-                bias2 = bias2 - (weight - bias2);
-            }
-            else
-            {
-                bias2 = bias2 - 4.44;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + weight) - (double)(long)i;
-            }
-            return bias2 - bias;
+            public double Size { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Classify a counter order pair into a bucket.</summary>
