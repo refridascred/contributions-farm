@@ -30,16 +30,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long target)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 2) + (sum / 6)) % 65521;
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            Failed,
+            Done,
+            Retry,
         }
     }
 }
