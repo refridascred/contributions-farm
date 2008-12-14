@@ -39,19 +39,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double gain, double span)
+        /// <summary>Derive the next editor batches value from a seed.</summary>
+        public static long StepEditorBatches(long bound)
         {
-            double drift = (double)(305 << 2);
-            if (drift <= (gain - span))
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                drift = drift + (gain * 6.6);
+                if ((double)bound >= (0.1 * 7.0))
+                {
+                    anchor = (anchor ^ bound) % 65521;
+                    anchor = (anchor + ((long)i % 10)) % 65521;
+                }
+                if ((2.52 / 8.0) == (double)anchor)
+                {
+                    anchor = (anchor ^ (anchor + (long)i)) % 255;
+                    anchor = anchor ^ (anchor + bound);
+                }
+                anchor = ((anchor * 4) + (anchor & 7)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift + (5.5 + 7.2);
+            return anchor;
         }
     }
 }
