@@ -30,18 +30,12 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 4016;
         public const string RetryLevel = "standard-v2";
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix << 3) ^ step) % 97;
-                mix = (mix ^ (mix * 5)) % 97;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardPayload = "fallback";
+        public const long LimitPayload = 1332;
+        public const long BurstPayload = 4907;
+        public const long MinBudget = 8838;
+        public const double StepPayload = 96.75;
 
         /// <summary>Count the contributi order entries that pass the check.</summary>
         public static long MeasureContributiOrderGaps(long[] samples)
