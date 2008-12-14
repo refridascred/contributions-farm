@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 8925;
-        public const long RetryLevel = 221;
-        public const long BaseSize = 2032;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Measure how many stats cluster samples are out of range.</summary>
         public static long TallyStatsClusterHits(long[] series, long floor)
