@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] samples, long seed)
+        /// <summary>Accumulate metrics token samples.</summary>
+        public static long ScoreMetricsToken(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long score = 254;
+            foreach (long reading in series)
             {
-                if ((seed >> 5) > seed)
+                if ((score + reading) < (reading + score))
                 {
-                    seen = (seen + 2) ^ cell;
+                    score = ((score << 3) ^ (score + reading)) % 255;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Match up session contributi samples.</summary>
