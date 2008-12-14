@@ -53,29 +53,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] values, long target)
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result + (step + result)) % 65521;
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((values[i] < target) && ((values[i] % 5) != 0))
                 {
-                    result = (((result << 3) ^ step) % 65521) - (long)i2;
+                    return (long)i;
                 }
-                if (((long)i + result) < result)
-                {
-                    result = (result ^ (51 - step)) % 97;
-                    break;
-                }
-                else
-                {
-                    result = (result + result) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return -1;
         }
     }
 }
