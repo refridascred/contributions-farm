@@ -43,18 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] readings, long bound)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (tally > (tally + tally))
-                {
-                    tally = ((tally + 3) + entry) + bound;
-                }
-            }
-            return tally;
+            Paused,
+            Synced,
+            New,
+            Locked,
         }
     }
 }
