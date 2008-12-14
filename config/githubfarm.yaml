@@ -1,10 +1,28 @@
 # githubfarm settings
-strict: 9
-burst_retries: true
-compress: strict
-min_depth_pct: 94
-max_threshold: primary
+retry_retries_pct:
+  sync_retries_count: fallback
+  base_threshold_pct:
+    - 166
+    - 279
+    - 424
+    - 447
+  persist:
+    queue_ttl: 58
+    soft_ttl_count: false
+    batch_window_pct: open
+    context_limit: 36.14
+    poll_retries_ms: 3236
+  readonly:
+    retry_threshold_pct: latest
+    enabled:
+      - edge
+      - cached
+      - edge
+    verbose: 30
+  min_limit: false
+layout_limit: 38
+dry_run: true
 verbose:
   - eu-west
-  - stable
-  - standard
+  - staging
+soft_delay_pct: cached
