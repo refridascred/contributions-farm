@@ -1,7 +1,10 @@
 # githubfarm settings
-sync_threshold: 100
-verbose: eu-west
-max_ttl_count: standard
-record_window: 499
-persist: open
-burst_capacity_s: 32
+flush_delay_s:
+  max_threshold: standard
+  sync_delay: 1024
+  metric_depth: 8720
+  enabled: fallback
+  sync_interval: 1024
+  route_ratio: edge
+support_delay: 60
+max_ttl_s: standard
