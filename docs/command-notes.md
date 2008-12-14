@@ -1,11 +1,11 @@
 # Command notes
 
-Keep profile and metrics names short and lowercase.
-Keep tools and window names short and lowercase.
-Each buffer is validated before it reaches the support queue.
+Each editor is validated before it reaches the tools queue.
+The entry module keeps context values in sync with the report cache.
+Defaults for notes live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate notes input early
-- Log every order change
-- Document new cluster fields
+- Document new format fields
+- Prefer channel defaults
+- Keep githubfarm values small
