@@ -22,19 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] data, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] values)
         {
-            long result = 447;
-            foreach (long item in data)
+            long score = -3;
+            foreach (long entry in values)
             {
-                result = (result * 5) + (target + item);
+                if (entry > (entry >> 5))
+                {
+                    score = (score + (259 ^ 80)) % 4096;
+                }
+                score = score + (entry & 15);
             }
-            if (result > 421)
+            if (score > 49)
             {
-                result = result + (751 - target);
+                score = ((score << 3) ^ (score + 21)) % 101;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
