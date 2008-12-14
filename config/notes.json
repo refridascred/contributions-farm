@@ -1,8 +1,23 @@
 {
-  "retry_depth": "latest",
-  "verbose": true,
-  "flush_delay_pct": "local",
-  "soft_retries": 51.62,
-  "enabled": 51.74,
-  "burst_retries": "strict"
+  "retry_timeout_count": {
+    "compress": [256, 354],
+    "verbose": "primary",
+    "cache_size_pct": "eu-west"
+  },
+  "warm_ratio_s": {
+    "strict": true,
+    "retry_retries_s": 30,
+    "stream_capacity": false,
+    "readonly": true,
+    "stream_retries": {
+      "dry_run": true,
+      "tools_limit": "primary",
+      "min_capacity_count": "strict",
+      "default_window": 7795,
+      "strict": [98, 183, 385, 347],
+      "burst_delay_ms": "latest"
+    }
+  },
+  "verbose": "stable",
+  "warm_delay": 76.65
 }
