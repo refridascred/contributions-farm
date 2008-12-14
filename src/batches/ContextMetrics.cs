@@ -99,13 +99,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] samples, long step)
         {
-            Dropped,
-            Idle,
-            Done,
-            Pending,
+            long acc = 928;
+            foreach (long item in samples)
+            {
+                acc = (((acc + (8 * 3)) % 101) ^ item) - step;
+                acc = acc ^ acc;
+            }
+            return acc % 65521;
         }
     }
 }
