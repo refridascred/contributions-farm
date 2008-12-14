@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] levels, long bound)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!((double)value < (5.5 + 9.0)))
-                {
-                    tally = (tally + 3) + bound;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
