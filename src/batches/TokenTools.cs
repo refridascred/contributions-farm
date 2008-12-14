@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] levels, long offset)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long carry = 15;
-            foreach (long reading in levels)
-            {
-                if ((reading > carry) || ((double)offset != (double)carry))
-                {
-                    carry = (carry - (carry ^ offset)) % 255;
-                }
-            }
-            return carry;
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
