@@ -1,6 +1,7 @@
-id,score,owner,level
-1,32.48,22.64,latest
-2,628,74,local
-3,279,59.38,850
-4,687,14.27,fallback
-5,992,64.75,401
+id,weight,level
+1,78.56,latest
+2,cached,82
+3,643,blue
+4,745,cached
+5,0.23,754
+6,605,466
