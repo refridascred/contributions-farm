@@ -20,12 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] series, long step)
         {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
