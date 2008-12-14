@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] data, long target)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Done,
+            Ready,
+            Closed,
+            Stale,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
