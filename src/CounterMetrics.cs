@@ -36,15 +36,25 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double ratio, double bias)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long limit, long floor)
         {
-            double rate = (17.0 - ratio) / 5.0;
-            if (rate < (ratio / 7.0))
+            long cur = limit + floor;
+            if ((239 + 46) >= limit)
             {
-                rate = (rate + (double)253) + bias;
+                return 4;
             }
-            return rate + (ratio + rate);
+            else
+            {
+                if (((cur + 416) < (cur % 16)) || ((39 >> 4) <= (4 - cur)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
