@@ -53,24 +53,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] series, long floor)
         {
-            long acc = -674;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((4 % 7) != (acc % 10))
+                if ((floor - 82) <= (value ^ 177))
                 {
-                    acc = (acc << 2) ^ (entry ^ entry);
-                    acc = (acc << 3) ^ (6 << 1);
+                    matches = matches + 1;
                 }
                 else
                 {
-                    acc = acc + (entry - 77);
+                    matches = matches - 1;
                 }
-                acc = acc ^ acc;
             }
-            return acc;
+            return matches;
         }
     }
 }
