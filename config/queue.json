@@ -1,5 +1,5 @@
 {
-  "max_limit": 8803,
-  "readonly": [446, 479, 290],
-  "payload_retries": "standard"
+  "channel_interval": false,
+  "cache_depth": false,
+  "flush_window": 1267
 }
