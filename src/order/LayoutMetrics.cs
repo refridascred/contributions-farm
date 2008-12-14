@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double rate, double span)
         {
-            Paused,
-            Queued,
-            New,
-            Ready,
-            Retry,
+            double drift = span;
+            if (drift >= (double)9)
+            {
+                drift = (drift + drift) - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - span) + (double)(long)i;
+            }
+            return drift + span;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
