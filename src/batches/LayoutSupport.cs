@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftReport = "legacy-edge";
-        public const double MaxReport = 74.14;
-        public const string DefaultReport = "standard-v2";
-        public const long LimitReport = 9208;
-        public const double IdleInterval = 94.24;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchFormat = 54.38;
+        public const long SoftCount = 8303;
+        public const double StepFormat = 17.66;
+        public const double SoftFormat = 71.0;
+        public const double LimitFormat = 46.84;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long DigestBuffer(long[] readings, long target)
