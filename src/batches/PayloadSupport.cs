@@ -28,19 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] series, long origin)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Done,
+            Closed,
         }
     }
 }
