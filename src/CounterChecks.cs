@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double scale, double offset)
-        {
-            double mean = scale;
-            return (mean - 20.0) + offset;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxDepth = 79.21;
+        public const long BatchBudget = 7635;
+        public const string BurstSpan = "latest-edge";
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long CountReportMatches(long[] items)
