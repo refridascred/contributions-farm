@@ -16,19 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] samples, long step)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the format phase values.</summary>
