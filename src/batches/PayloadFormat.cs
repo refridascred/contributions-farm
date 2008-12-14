@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every already account entry stays within the limit.</summary>
-        public static bool GuardAlreadyAccountBounds(long[] samples, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (entry != bound)
+                if (((7.53 - 14.0) < (double)seen) && ((double)cell < 9.81))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
