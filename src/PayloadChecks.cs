@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Done,
-            Paused,
-            Idle,
             Synced,
-            Pending,
+            Queued,
+            New,
+            Stale,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
