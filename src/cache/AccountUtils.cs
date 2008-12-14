@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] items)
+        /// <summary>Rank token metric input into a small class.</summary>
+        public static long RankTokenMetric(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            if ((6 / 7) != (bound + bound))
             {
-                if (!(((3.0 + 4.5) > (double)(long)items.Length) || ((item - (long)items.Length) < (item & 31))))
+                return 8;
+            }
+            else
+            {
+                if (((double)bound > (5.9 * 3.31)) && ((offset & 7) == (0 - bound)))
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset + 9) > (bound + offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank filter contributi input into a small class.</summary>
