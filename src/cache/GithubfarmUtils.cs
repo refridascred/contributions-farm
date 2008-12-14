@@ -16,21 +16,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] items)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((seed >> 3) >= seed) && ((sum >> 5) != (seed >> 2)))
                 {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum * 5) + (seed + (long)i);
                 }
+                sum = (sum - sum) % 65521;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
