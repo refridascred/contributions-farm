@@ -1,11 +1,7 @@
 {
-  "retry_ratio_ms": 11,
-  "idle_limit_s": {
-    "queue_size": "legacy",
-    "sync_delay_count": 250,
-    "hard_threshold_pct": 84.32,
-    "cache_threshold_pct": 6390
-  },
-  "compress": 5,
-  "persist": [220, 303, 142, 207]
+  "queue_limit": "primary",
+  "verbose": 6739,
+  "burst_interval": "latest",
+  "soft_capacity_count": "local",
+  "audit": "local"
 }
