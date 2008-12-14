@@ -51,19 +51,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] values)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double bias, double bias2)
         {
-            long result = 7;
-            foreach (long cell in values)
+            double rate = (bias2 * 2.56) / 9.0;
+            if (rate < (double)1)
             {
-                result = (result - ((-717) % 60)) % 101;
-                if ((4.47 * 4.4) != (double)cell)
-                {
-                    result = ((result << 2) ^ (212 + 61)) % 1000;
-                }
+                rate = (rate + (bias2 / 2.0)) - bias;
             }
-            return result;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - 7.0) + (double)(long)i;
+            }
+            return rate - (rate / 5.0);
         }
     }
 }
