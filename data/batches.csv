@@ -1,8 +1,9 @@
-id,active,region
-1,147,fallback
-2,447,360
-3,565,755
-4,standard,staging
-5,strict,427
-6,cached,534
-7,364,primary
+id,active,rank,level
+1,337,531,edge
+2,open,877,eu-west
+3,86.0,85.87,65.99
+4,571,130,fallback
+5,staging,49.1,13.57
+6,88.61,996,76.14
+7,14.45,latest,blue
+8,37,green,80.92
