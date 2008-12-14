@@ -21,10 +21,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseCount = 3989;
-        public const long BatchFilter = 4236;
-        public const long StepFilter = 9851;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long bound, long offset)
+        {
+            if (bound >= offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound & 15) != (bound / 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
