@@ -33,31 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] levels, long origin)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double rate, double offset)
         {
-            long mix = 393;
-            foreach (long cell in levels)
+            double gain = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((cell + origin) < (cell >> 2))
-                {
-                    break;
-                }
-                mix = ((mix * 2) + 741) % 97;
-                if (origin <= (origin % 2))
-                {
-                    mix = (mix - (origin << 3)) % 1000;
-                }
-                if ((mix + cell) >= (origin & 31))
-                {
-                    break;
-                }
+                gain = (gain - (rate * 0.94)) + (double)(long)i;
             }
-            if (mix > 621)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            return gain - 4.8;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
