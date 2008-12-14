@@ -1,11 +1,4 @@
 # githubfarm settings
-cache_retries_pct:
-  readonly: 79.47
-  route_ratio: 4764
-  min_capacity_pct: cached
-soft_ratio_pct: 80
-soft_window_pct:
-  - local
-  - strict
-  - standard
-layout_threshold: false
+cache_retries: 89
+stream_limit: false
+min_window_s: 74.99
