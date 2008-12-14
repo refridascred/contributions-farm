@@ -20,13 +20,17 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Look up the position of a contributi metrics sample.</summary>
+        public static long LookupContributiMetricsIndex(long[] levels, long limit)
         {
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the support mode values.</summary>
