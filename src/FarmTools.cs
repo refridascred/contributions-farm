@@ -39,12 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a tools cache sample.</summary>
-        public static long SeekToolsCacheIndex(long[] values, long step)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] values, long floor)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                if (values[i] > floor)
                 {
                     return (long)i;
                 }
