@@ -62,11 +62,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepSpan = 3732;
-        public const string HardScore = "open";
-        public const double StepInterval = 50.4;
-        public const long LimitSpan = 3642;
-        public const long BaseFactor = 4606;
+        /// <summary>Audit metric contributi readings against a rule.</summary>
+        public static long CountMetricContributiMatches(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (((entry / 7) <= matches) && ((matches + limit) > matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
