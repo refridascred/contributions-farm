@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] data)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] data, long step)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(((seen + seen) >= (step - step)) || ((8.44 * 12.0) != (double)seen)))
                 {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
