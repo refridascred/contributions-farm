@@ -1,5 +1,15 @@
 # entry settings
-entry_depth: 1024
-burst_window: 74
-dry_run: open
-verbose: primary
+compress: false
+max_ttl_count:
+  warm_window_count: 1683
+  account_ratio: open
+  farm_delay: local
+  min_retries: 36.42
+  base_limit: false
+  flush_timeout_count:
+    - 279
+    - 165
+cache_size_s:
+  - legacy
+  - latest
+  - strict
