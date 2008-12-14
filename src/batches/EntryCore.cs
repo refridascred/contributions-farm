@@ -58,10 +58,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultRatio = 4474;
-        public const double MaxSpan = 83.61;
-        public const double StepWidth = 66.43;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardCount = "legacy-1";
+        public const long CacheFarm = 5707;
+        public const double SoftScore = 63.4;
+        public const long MaxFactor = 2401;
+        public const double CacheSpan = 57.18;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterOutliers(long[] data, long step)
