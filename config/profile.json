@@ -1,15 +1,8 @@
 {
-  "filter_delay": {
-    "default_size_pct": "latest",
-    "idle_delay": 88.4,
-    "flush_depth": "blue"
-  },
-  "cache_limit_count": "legacy",
-  "audit": {
-    "stats_ttl": 64.42,
-    "poll_ttl_s": "green",
-    "idle_depth_pct": "blue",
-    "batch_interval": "blue",
-    "burst_limit_s": "cached"
-  }
+  "poll_limit": 60,
+  "default_retries": true,
+  "dry_run": 500,
+  "cache_timeout_s": "green",
+  "min_limit": "staging",
+  "warm_threshold": 250
 }
