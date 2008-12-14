@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Retry,
-            Idle,
-            Active,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultRecord = "primary-1";
+        public const double BatchBudget = 11.01;
+        public const long IdleRecord = 4918;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorGaps(long[] readings, long offset)
