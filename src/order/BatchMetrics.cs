@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 9067;
-        public const double DefaultTimeout = 57.82;
-        public const double MinFactor = 67.51;
-        public const double SoftSize = 66.4;
-        public const long RetryAccount = 4936;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Stale,
+            Locked,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MinWidth = 6120;
