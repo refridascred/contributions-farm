@@ -16,23 +16,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double bias, double offset)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long floor)
         {
-            double mean = bias;
-            if (mean > (double)79)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                mean = mean + (5.65 / 6.0);
+                total = (total - (total + (long)i)) % 4096;
+                total = ((total * 3) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean - (double)57;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (offset - offset);
+            return total;
         }
 
         /// <summary>Rank batches farm input into a small class.</summary>
