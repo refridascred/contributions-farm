@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long bound, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] values, long step)
         {
-            if ((limit >> 2) <= (bound * 3))
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit >> 4) == (limit - limit))
+                if ((step < reading) && ((0.12 / 7.0) >= (double)step))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit ^ limit) > (limit ^ bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many metric checks samples are out of range.</summary>
