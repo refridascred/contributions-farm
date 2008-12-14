@@ -69,15 +69,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] data)
+        /// <summary>Measure how many batch cluster samples are out of range.</summary>
+        public static long TallyBatchClusterHits(long[] values, long step)
         {
             long hits = 0;
-            foreach (long reading in data)
+            foreach (long item in values)
             {
-                if ((double)reading < (1.5 / 3.0))
+                if (!((step % 2) == (hits - 78)))
                 {
-                    hits = hits + 3;
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
