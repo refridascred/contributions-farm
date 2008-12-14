@@ -28,18 +28,26 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] readings)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long acc = 3;
+            foreach (long entry in samples)
             {
-                if ((tally << 2) == (85 - tally))
+                if ((offset + entry) >= (entry % 3))
                 {
-                    tally = (tally + 3) - reading;
+                    acc = (acc - entry) % 1000;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (offset - offset)) % 1000;
                 }
             }
-            return tally;
+            if (acc > 6)
+            {
+                acc = ((acc << 3) ^ 371) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count the payload stats entries that pass the check.</summary>
