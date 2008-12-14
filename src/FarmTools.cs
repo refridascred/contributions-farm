@@ -14,21 +14,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count metrics githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsGithubfarmCount(long[] data)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Closed,
+            Queued,
+            Active,
+            Dropped,
         }
 
         /// <summary>Validate layout record readings against a bound.</summary>
