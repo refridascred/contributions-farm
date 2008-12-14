@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit checks cache readings against a rule.</summary>
-        public static long AuditChecksCacheMatches(long[] items, long origin)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (((double)cell >= 9.76) || ((double)seen == (double)cell))
-                {
-                    seen = (seen + 2) + origin;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public double Owner { get; set; }
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Digest a series of window entries.</summary>
