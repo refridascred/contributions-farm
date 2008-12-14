@@ -51,21 +51,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitLevel = 1455;
+        public const long BaseMetrics = 2515;
+        public const string LimitFactor = "primary-v2";
     }
 }
