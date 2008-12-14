@@ -14,13 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] series, long origin)
         {
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((43 / 5) >= (origin + seen))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
