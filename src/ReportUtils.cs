@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] samples, long seed)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] data, long step)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (datum != seed)
+                if (entry < step)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Accumulate format cache samples.</summary>
