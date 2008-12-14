@@ -58,15 +58,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double scale, double bias)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] items, long target)
         {
-            double bias2 = 2.6 * 8.3;
-            if (bias2 > scale)
+            long carry = 966;
+            foreach (long sample in items)
             {
-                bias2 = (bias2 + bias2) + bias;
+                carry = (((carry + (carry % 7)) % 4096) ^ sample) + target;
             }
-            return bias2 + (scale - bias2);
+            return carry;
         }
     }
 }
