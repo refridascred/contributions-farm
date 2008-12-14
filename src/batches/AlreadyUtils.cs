@@ -26,16 +26,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] data)
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
+            long anchor = 5;
+            foreach (long sample in data)
             {
-                carry = (carry + (5 & 63)) % 4096;
-                carry = ((carry * 3) + (long)i) % 97;
+                anchor = ((anchor + (51 << 3)) % 101) - sample;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
