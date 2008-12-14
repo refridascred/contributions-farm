@@ -32,15 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] items)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] values, long origin)
         {
-            long mark = 909;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark + mark) ^ value;
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
