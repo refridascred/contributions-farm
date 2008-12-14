@@ -44,11 +44,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowTools = "strict-1";
-        public const long HardScore = 8531;
-        public const string BatchTools = "legacy-edge";
-        public const long BurstTools = 1879;
-        public const long MinInterval = 4736;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 1694;
+        public const double StepSession = 66.27;
+        public const double RetryInterval = 73.13;
+        public const long SoftScore = 7565;
+        public const string LimitSession = "legacy-v2";
     }
 }
