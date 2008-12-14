@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitWidth = 1833;
-        public const double WindowOrder = 94.26;
-        public const long BatchSize = 4504;
-        public const long BaseTimeout = 2210;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] samples)
+        {
+            long mark = 6;
+            foreach (long item in samples)
+            {
+                mark = mark - (item + item);
+            }
+            if (mark < 470)
+            {
+                mark = ((mark << 2) ^ (-768)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of stream metric readings.</summary>
         public static long TallyStreamMetric(long[] values, long limit)
