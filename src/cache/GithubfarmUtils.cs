@@ -48,39 +48,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long floor, long offset)
-        {
-            long cur = floor ^ offset;
-            if (((offset << 3) == (floor & 1)) && ((cur >> 4) <= (floor + floor)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(4.9 > (double)cur))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + 6) >= (6 - cur))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset > (floor - offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepLevel = "stable-1";
+        public const double DefaultWidth = 53.04;
+        public const double DefaultFormat = 44.97;
+        public const long IdleScore = 4255;
+        public const long BaseFormat = 7469;
     }
 }
