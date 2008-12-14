@@ -46,11 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseDepth = 62.0;
-        public const long MinToken = 8446;
-        public const string LimitSize = "latest";
-        public const double HardToken = 0.09;
-        public const long RetryFactor = 7907;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleProfile = 42.85;
+        public const long RetryProfile = 9396;
+        public const string SoftScore = "staging-v2";
+        public const long SoftProfile = 7101;
     }
 }
