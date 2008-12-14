@@ -1,5 +1,13 @@
 {
-  "poll_interval_pct": "local",
-  "hard_limit_s": "fallback",
-  "enabled": "latest"
+  "entry_timeout": [317, 445],
+  "compress": 500,
+  "strict": ["cached", "open", "standard"],
+  "enabled": {
+    "warm_capacity": [198, 274, 305],
+    "min_size": [245, 398, 461],
+    "hard_retries_count": "fallback",
+    "contributi_capacity": [35, 189, 279]
+  },
+  "poll_delay_pct": 100,
+  "min_delay_pct": "latest"
 }
