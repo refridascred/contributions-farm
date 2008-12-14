@@ -19,26 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter cluster samples.</summary>
-        public static long WeighCounterCluster(long[] items)
+        /// <summary>Check that every graph schema entry stays within the limit.</summary>
+        public static bool GuardGraphSchemaRange(long[] samples, long origin)
         {
-            long sum = 502;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (sum >= (sum * 5))
+                if (reading != origin)
                 {
-                    sum = ((sum * 5) + 1) % 101;
-                }
-                else
-                {
-                    sum = sum ^ (datum ^ 93);
+                    ok = false;
+                    break;
                 }
             }
-            if (sum > 89)
-            {
-                sum = ((sum << 3) ^ sum) % 1000;
-            }
-            return sum;
+            return ok;
         }
 
         /// <summary>Describe the payload status values.</summary>
