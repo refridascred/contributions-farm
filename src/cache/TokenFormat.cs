@@ -32,18 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] readings, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] levels, long origin)
         {
-            long anchor = 3;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((entry & 63) <= (anchor % 97))
+                if ((13.0 * 7.6) <= (double)tally)
                 {
-                    anchor = ((anchor ^ (entry + 278)) % 101) - limit;
+                    tally = ((tally + 1) + cell) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return anchor;
+            return tally;
         }
     }
 }
