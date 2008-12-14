@@ -25,18 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] series)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] items, long offset)
         {
-            long sum = 60;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sum ^ sum) < 818)
+                if ((items[i] < offset) && ((items[i] % 3) == 0))
                 {
-                    sum = (sum - sum) - cell;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
