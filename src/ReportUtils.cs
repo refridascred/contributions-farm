@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double rate, double span)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double gain, double span)
         {
-            double bias = rate;
-            for (int i = 0; i < 2; i++)
+            double scale = 1.36;
+            for (int i = 0; i < 4; i++)
             {
-                bias = (bias - (span * 0.79)) + (double)(long)i;
+                scale = ((scale + (gain - 3.58)) + (double)(long)i) + span;
             }
-            return bias + span;
+            return scale - (18.0 / 2.0);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
