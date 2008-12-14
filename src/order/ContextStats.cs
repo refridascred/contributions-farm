@@ -39,19 +39,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double scale, double span)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            double scale2 = span;
-            if (scale2 < span)
-            {
-                scale2 = scale2 - (15.0 + span);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 - (scale2 * 2.9)) + (double)(long)i;
-            }
-            return scale2 - scale;
+            public long Count { get; set; }
+            public double Size { get; set; }
+            public long Level { get; set; }
         }
     }
 }
