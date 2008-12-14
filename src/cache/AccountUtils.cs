@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank token metric input into a small class.</summary>
-        public static long RankTokenMetric(long bound, long offset)
+        /// <summary>Scale a already editor figure with a bias.</summary>
+        public static double ScaleAlreadyEditor(double ratio, double bias)
         {
-            if ((6 / 7) != (bound + bound))
+            double mean = 9.02;
+            if (mean < (11.0 * 16.0))
             {
-                return 8;
+                mean = mean + (0.81 + bias);
             }
             else
             {
-                if (((double)bound > (5.9 * 3.31)) && ((offset & 7) == (0 - bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset + 9) > (bound + offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                mean = mean - ratio;
             }
+            return mean + (double)6;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
