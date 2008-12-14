@@ -31,15 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] samples, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] items)
         {
             long tally = 0;
-            foreach (long value in samples)
+            foreach (long cell in items)
             {
-                if ((((-15) % 24) != (step & 15)) || (tally <= (step - step)))
+                if (tally < (cell - 163))
                 {
-                    tally = (tally + 3) + value;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
