@@ -1,22 +1,9 @@
 # githubfarm settings
-route_window: false
-context_limit:
-  soft_timeout:
-    default_ratio_ms:
-      - eu-west
-      - staging
-      - latest
-      - open
-    min_capacity: 40
-    flush_delay_s: legacy
-    max_threshold_count: false
-    sync_interval_s: standard
-  cache_size: legacy
-  sync_size_ms: 98.81
-  retry_interval_s:
-    - 372
-    - 194
-    - 301
-    - 148
-  support_capacity: 18.47
-hard_delay_s: 66
+base_retries: stable
+burst_retries_ms: edge
+graph_retries: 1024
+soft_limit_count: local
+readonly:
+  - 203
+  - 111
+  - 408
