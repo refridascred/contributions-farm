@@ -26,29 +26,35 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long seed, long seed2)
+        /// <summary>Grade a queue already value against two limits.</summary>
+        public static long SortQueueAlready(long offset, long step)
         {
-            long bound = seed + seed2;
-            if (!((seed - bound) >= (bound << 3)))
+            if (((step - offset) <= offset) || (offset >= (step ^ step)))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((bound + seed2) < (seed >> 2))
+                if (((0.82 * 7.9) < (double)step) && ((1.7 - 4.65) != (double)step))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if (6 >= (seed2 ^ seed2))
+                    if (((step - 1) != (offset - step)) || ((double)offset >= (double)step))
                     {
-                        return 0;
+                        return 6;
                     }
                     else
                     {
-                        return 5;
+                        if (((offset - offset) >= (offset + offset)) || ((step >> 2) == (offset * 4)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
