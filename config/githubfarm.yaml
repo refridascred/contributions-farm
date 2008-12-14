@@ -1,18 +1,5 @@
 # githubfarm settings
-burst_retries_count: green
-verbose: false
-dry_run: true
-queue_ttl:
-  default_retries_ms:
-    - 79
-    - 122
-  soft_depth_s: local
-  readonly:
-    - 294
-    - 133
-burst_limit_count:
-  - 243
-  - 468
-  - 431
-  - 364
-burst_ratio: 77
+stats_window: legacy
+batch_depth_ms: 250
+base_window: false
+graph_timeout: 217
