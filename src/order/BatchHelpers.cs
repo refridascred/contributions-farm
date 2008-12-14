@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] data)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double weight = ratio;
+            if (weight >= weight)
             {
-                if ((10.0 / 4.0) <= (double)entry)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = (weight - (double)5) + bias;
             }
-            return hits;
+            return weight + (double)170;
         }
 
         /// <summary>Hold a context options.</summary>
