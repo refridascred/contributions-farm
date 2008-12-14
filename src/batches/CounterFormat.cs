@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long bound, long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsOutliers(long[] levels)
         {
-            if (((origin + bound) > (origin + 233)) || ((origin / 3) < (origin ^ bound)))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin * 4) == (bound & 127))
+                if (((tally - datum) > (datum * 2)) || ((0.3 * 5.6) <= (double)tally))
                 {
-                    return 3;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if (!((bound & 15) < (bound ^ 0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
