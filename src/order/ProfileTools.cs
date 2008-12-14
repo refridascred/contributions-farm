@@ -15,20 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] items, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((((long)i / 4) != (mark >> 4)) || ((6.0 + 0.78) < (double)mark))
+                if (reading <= seed)
                 {
-                    mark = mark ^ (bound - mark);
+                    ready = false;
+                    break;
                 }
-                mark = (mark << 2) ^ (long)i;
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Define report limits and defaults.</summary>
