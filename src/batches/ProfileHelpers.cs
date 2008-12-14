@@ -55,17 +55,22 @@ namespace Common.Utilities
         public const long MaxScore = 5722;
         public const double BaseMetrics = 83.11;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] data, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -77;
+            foreach (long datum in data)
             {
-                if ((data[i] > step) && ((data[i] % 2) != 0))
+                if ((double)anchor != (9.61 / 9.0))
                 {
-                    return (long)i;
+                    anchor = (anchor + ((long)data.Length - datum)) % 65521;
                 }
             }
-            return -1;
+            if (anchor < (-203))
+            {
+                anchor = (anchor - ((long)data.Length >> 5)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first already context entry that matches the target.</summary>
