@@ -23,10 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstScore = 2417;
-        public const string BurstSize = "strict-edge";
-        public const long MaxLevel = 8485;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 7190;
+        public const long RetryBudget = 3751;
+        public const string WindowSupport = "latest-1";
+        public const string BurstSpan = "primary-edge";
+        public const long BaseInterval = 3217;
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
