@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long target, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((bound <= (bound >> 2)) && (bound >= (target << 3)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (bound <= (bound ^ target))
                 {
-                    if ((readings[i] ^ readings[j]) == 11)
+                    return 8;
+                }
+                else
+                {
+                    if (((-7) & 1) > bound)
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound << 3) != (target % 7))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate entry checks samples.</summary>
