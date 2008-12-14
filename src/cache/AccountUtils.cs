@@ -26,15 +26,18 @@ namespace Common.Utilities
         public const long SoftCount = 6889;
         public const double DefaultTools = 55.44;
 
-        /// <summary>Count the channel farm entries that pass the check.</summary>
-        public static long MeasureChannelFarmHits(long[] readings, long origin)
+        /// <summary>Count batch profile pairs that satisfy a relation.</summary>
+        public static long OverlapBatchProfileCount(long[] levels)
         {
             long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin > (origin & 1)) && ((double)count < 12.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 2) - item;
+                    if ((levels[i] - levels[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
