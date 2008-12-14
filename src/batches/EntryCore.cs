@@ -22,31 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a order cluster value against two limits.</summary>
-        public static long BucketOrderCluster(long origin, long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] data, long target)
         {
-            if (origin <= (origin + 1))
+            bool ok = true;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step ^ step) > (origin + step))
+                if (item <= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((origin + step) <= (origin * 3)) && ((double)step > (7.9 - 6.9)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
