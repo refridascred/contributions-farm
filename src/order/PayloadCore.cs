@@ -30,20 +30,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next report buffer value from a seed.</summary>
-        public static long StepReportBuffer(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((double)offset != (1.73 + 9.97)))
-                {
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchRatio = 3809;
+        public const double WindowBudget = 67.7;
+        public const long BaseContributi = 3708;
 
         /// <summary>Blend two context measurements.</summary>
         public static double AdjustContext(double gain, double span)
