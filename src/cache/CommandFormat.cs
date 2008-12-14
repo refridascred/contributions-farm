@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double weight, double floor)
         {
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
+            double load = (7.87 * 19.0) + (double)5;
+            return ((load - (load * 5.0)) + weight) + floor;
         }
 
         /// <summary>Combine order window values into a single score.</summary>
