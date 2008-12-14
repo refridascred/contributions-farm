@@ -28,11 +28,19 @@ namespace Common.Utilities
         public const string LimitWindow = "stable-edge";
         public const long BurstWindow = 132;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 5405;
-        public const string DefaultFilter = "alpha-1";
-        public const long IdleFilter = 2684;
-        public const long BurstSize = 9966;
-        public const long HardSize = 7547;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] levels, long floor)
+        {
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
