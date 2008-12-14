@@ -50,15 +50,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the payload account series from a seed.</summary>
-        public static long SeriesPayloadAccount(long floor)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            New,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the entry kind values.</summary>
