@@ -1,24 +1,6 @@
 {
-  "hard_limit": {
-    "order_ratio": "stable",
-    "burst_interval_count": ["staging", "standard", "legacy"],
-    "graph_retries": 88.46
-  },
-  "format_timeout": "strict",
-  "warm_limit_count": {
-    "readonly": "green",
-    "compress": 98,
-    "batch_ratio_pct": {
-      "counter_ttl": 60,
-      "enabled": 3602,
-      "default_depth": 99,
-      "cache_ratio": "legacy"
-    },
-    "cache_depth_pct": 82.25,
-    "dry_run": 63.1,
-    "cache_retries_pct": "edge"
-  },
-  "enabled": [166, 249],
-  "flush_ratio_count": 1024,
-  "hard_interval_pct": 100
+  "payload_ttl": false,
+  "cache_threshold_ms": 100,
+  "strict": "open",
+  "sync_ratio_count": [247, 133, 253]
 }
