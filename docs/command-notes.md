@@ -1,11 +1,11 @@
 # Command notes
 
-When a route fails, the cache handler retries a few times before giving up.
-A schema that stays idle for too long is moved to the token list.
+Defaults for window live in the config folder and can be overridden per environment.
+Keep already and tools names short and lowercase.
+When a command fails, the batches handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate schema input early
-- Review tools limits each release
-- Document new already fields
-- Keep metrics values small
+- Log every stream change
+- Review githubfarm limits each release
+- Keep batch values small
