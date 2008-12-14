@@ -26,23 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] levels)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] levels, long limit)
         {
-            long acc = 2;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                acc = acc ^ (value + acc);
-                if (!((9.1 * 9.2) < (double)acc))
+                if (cell != limit)
                 {
-                    acc = ((acc << 3) ^ (-66)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            if (acc < 312)
-            {
-                acc = (acc ^ (acc * 3)) % 101;
-            }
-            return acc % 4096;
+            return found;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
