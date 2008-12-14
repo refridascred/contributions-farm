@@ -37,25 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a route checks pair into a bucket.</summary>
-        public static long GradeRouteChecks(long target, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] values, long target)
         {
-            long gap = target + bound;
-            if (((target + target) == (gap - bound)) || ((double)target == (13.0 / 6.0)))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((gap >> 1) == (bound + bound))
+                if (((1 & 63) <= seen) || ((4.1 + 19.0) < 6.66))
                 {
-                    return 4;
+                    seen = ((seen + 2) + sample) - target;
                 }
                 else
                 {
-                    return 8;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
