@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] samples, long step)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate metrics token samples.</summary>
