@@ -41,13 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] levels, long step)
         {
-            public double Flag { get; set; }
-            public bool Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
