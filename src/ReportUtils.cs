@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double rate, double span)
         {
-            Retry,
-            Pending,
-            Queued,
+            double bias = rate;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (span * 0.79)) + (double)(long)i;
+            }
+            return bias + span;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
