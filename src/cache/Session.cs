@@ -26,17 +26,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] items, long offset)
+        /// <summary>Compare every pair of channel support readings.</summary>
+        public static long OverlapChannelSupportCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] < offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
