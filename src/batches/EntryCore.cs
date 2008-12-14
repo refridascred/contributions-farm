@@ -60,12 +60,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] samples)
         {
-            Locked,
-            Synced,
-            Done,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
