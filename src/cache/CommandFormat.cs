@@ -22,19 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double weight, double offset)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            double gain = (offset - offset) / 5.0;
-            if (gain < weight)
-            {
-                gain = gain + offset;
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain + (15.0 - 2.0);
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
