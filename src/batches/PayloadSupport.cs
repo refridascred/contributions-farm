@@ -25,12 +25,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double rate, double offset)
         {
-            Ready,
-            Done,
-            Closed,
+            double gain = rate;
+            if (gain > (double)(-55))
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain + rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (gain - offset)) + (double)(long)i;
+            }
+            return gain - (double)1;
         }
     }
 }
