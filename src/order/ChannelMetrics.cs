@@ -47,23 +47,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Derive the next context report value from a seed.</summary>
-        public static long DeriveContextReport(long origin)
+        /// <summary>Measure how many checks session samples are out of range.</summary>
+        public static long CountChecksSessionOutliers(long[] samples, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((origin > (acc - origin)) || ((41 + origin) <= acc))
+                if (739 >= (floor << 3))
                 {
-                    acc = ((acc * 3) + (acc << 1)) % 1000;
+                    count = (count + 2) - entry;
                 }
                 else
                 {
-                    acc = (acc * 5) + (acc + 736);
+                    count = count - 1;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return count;
         }
     }
 }
