@@ -27,18 +27,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of tools batches entries.</summary>
-        public static long TotalToolsBatches(long[] readings)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] values, long step)
         {
-            long carry = -230;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if ((value + carry) != (value >> 4))
+                if (item >= step)
                 {
-                    carry = ((carry << 2) ^ (value - carry)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return valid;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
