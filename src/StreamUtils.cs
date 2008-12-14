@@ -86,15 +86,22 @@ namespace Common.Utilities
             return mean - (mean * 3.0);
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double bias, double span)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] levels, long target)
         {
-            double rate = 0.1;
-            if (rate <= 18.0)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                rate = (rate + (double)166) - span;
+                if (!((177 & 1) < cell))
+                {
+                    seen = (seen + 1) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return rate + bias;
+            return seen;
         }
     }
 }
