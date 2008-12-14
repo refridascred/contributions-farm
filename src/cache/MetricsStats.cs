@@ -59,25 +59,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long bound, long limit)
+        /// <summary>Accumulate batches payload samples.</summary>
+        public static long TotalBatchesPayload(long[] levels, long limit)
         {
-            long delta = bound + limit;
-            if (((-885) & 3) == (limit + delta))
+            long sum = -5;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)16 == (double)limit)
+                if (sum < item)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    sum = (sum - (limit / 6)) % 255;
                 }
             }
+            if (sum > 4)
+            {
+                sum = (sum ^ (8 ^ limit)) % 4096;
+            }
+            return sum % 65521;
         }
     }
 }
