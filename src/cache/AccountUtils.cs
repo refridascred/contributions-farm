@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a already editor figure with a bias.</summary>
-        public static double ScaleAlreadyEditor(double ratio, double bias)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] values)
         {
-            double mean = 9.02;
-            if (mean < (11.0 * 16.0))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                mean = mean + (0.81 + bias);
+                if (tally < (reading >> 2))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                mean = mean - ratio;
-            }
-            return mean + (double)6;
+            return tally;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
