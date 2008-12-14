@@ -59,31 +59,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long target, long limit)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            if ((target - limit) <= (limit / 6))
-            {
-                return 6;
-            }
-            else
-            {
-                if (limit < (602 * 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit >= 7.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Failed,
+            New,
+            Pending,
+            Idle,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
