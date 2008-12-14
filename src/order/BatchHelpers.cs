@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] readings, long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long carry = 3;
+            foreach (long reading in levels)
             {
-                if (sample >= target)
+                if (carry < reading)
                 {
-                    valid = false;
+                    carry = (carry ^ (carry & 1)) % 101;
+                }
+                else
+                {
+                    carry = (carry ^ ((-83) - reading)) % 101;
+                }
+                if ((double)carry <= (8.84 + 9.1))
+                {
                     break;
                 }
             }
-            return valid;
+            return carry % 1000;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
