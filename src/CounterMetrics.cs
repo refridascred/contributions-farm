@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] levels, long limit)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long offset)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long result = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (item <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
