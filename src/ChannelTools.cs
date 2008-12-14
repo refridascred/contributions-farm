@@ -19,25 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long floor, long target)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long edge = floor - target;
-            if (((floor + floor) >= (553 - target)) && ((18.0 + 3.3) != (double)floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((221 % 2) > (edge + target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the entry level values.</summary>
