@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many buffer payload samples are out of range.</summary>
-        public static long CountBufferPayloadOutliers(long[] levels, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long state = 5;
+            foreach (long datum in levels)
             {
-                if ((double)cell < (8.6 - 9.0))
+                for (int i = 0; i < 10; i++)
                 {
-                    hits = (hits + 2) - limit;
+                    state = ((state - (state & 3)) + (long)i) - datum;
                 }
-                else
+                if (state > 8)
                 {
-                    hits = hits - 1;
+                    state = (state * 3) + 7;
+                }
+                if ((1.44 / 5.0) >= (double)state)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (state < 3)
+            {
+                state = (state - (target % 10)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
