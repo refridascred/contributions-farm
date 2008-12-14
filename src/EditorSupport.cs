@@ -15,14 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long step)
         {
-            Paused,
-            Active,
-            Ready,
-            Draft,
-            Idle,
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((step & 63) < (anchor % 5)))
+                {
+                    anchor = ((anchor * 4) + anchor) % 1000;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Combine context values into a single score.</summary>
