@@ -72,19 +72,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] levels, long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (item >= limit)
+                if (!((double)(-218) > (double)sample))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
