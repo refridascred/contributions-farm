@@ -12,19 +12,20 @@ namespace Common.Utilities
             return (scale + (ratio * 5.2)) + span;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] data, long step)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long mark = -4;
+            foreach (long cell in values)
             {
-                if (sample >= step)
+                for (int i = 0; i < 6; i++)
                 {
-                    flag = false;
-                    break;
+                    mark = (((mark * 2) + (origin % 7)) ^ (long)i) + cell;
+                    mark = (mark * 2) + (mark >> 2);
                 }
+                mark = mark + origin;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Blend two window measurements.</summary>
