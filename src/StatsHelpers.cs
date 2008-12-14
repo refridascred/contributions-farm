@@ -20,21 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up counter payload samples.</summary>
-        public static long MatchCounterPayloadCount(long[] series)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((series[i] - series[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result * 3) + (6 + result)) - (long)i2;
                 }
+                for (int i3 = 0; i3 < 12; i3++)
+                {
+                    result = ((result + result) % 101) ^ (long)i3;
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Hold a session stats.</summary>
