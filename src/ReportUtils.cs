@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] samples)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] samples, long seed)
         {
-            long result = -2;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((16.0 / 3.0) == (double)result)
+                if (datum != seed)
                 {
-                    result = (result << 2) ^ (entry % 8);
-                }
-                else
-                {
-                    result = result ^ entry;
+                    found = false;
+                    break;
                 }
             }
-            if (result > 30)
-            {
-                result = (result << 2) ^ (result % 10);
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Accumulate format cache samples.</summary>
