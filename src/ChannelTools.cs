@@ -19,14 +19,12 @@ namespace Common.Utilities
         public const long SoftFilter = 1057;
         public const long HardTimeout = 5525;
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Active,
-            Draft,
-            Paused,
-            Pending,
-            Queued,
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
