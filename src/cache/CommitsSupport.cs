@@ -66,19 +66,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] series)
+        /// <summary>Measure how many metrics stats samples are out of range.</summary>
+        public static long AuditMetricsStatsGaps(long[] items)
         {
-            long sum = 7;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                sum = ((sum * 4) + (entry - sum)) % 97;
+                if (((entry % 100) == (matches + matches)) && (0.21 >= (double)matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (sum < 47)
-            {
-                sum = ((sum << 2) ^ (sum << 1)) % 101;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
