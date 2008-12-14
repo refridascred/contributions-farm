@@ -25,19 +25,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] items, long floor)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry <= floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] - samples[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the account status values.</summary>
