@@ -56,26 +56,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] series)
+        /// <summary>Look up the position of a stream route sample.</summary>
+        public static long LocateStreamRouteIndex(long[] items, long origin)
         {
-            long result = -529;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)entry <= (7.4 + 19.0))
+                if (items[i] >= origin)
                 {
-                    result = result + 57;
-                }
-                else
-                {
-                    result = (result - (result & 31)) % 1000;
-                }
-                if (((6 + entry) == (result - entry)) || ((0.1 - 3.11) >= (double)result))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
