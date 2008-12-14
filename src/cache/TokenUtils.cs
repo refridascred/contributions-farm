@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long origin)
         {
-            Paused,
-            Retry,
-            Pending,
-            Done,
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Match up token samples.</summary>
