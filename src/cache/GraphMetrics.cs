@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseSpan = 1696;
-        public const double IdleWidth = 57.77;
-        public const string RetrySpan = "fallback-1";
+        /// <summary>Blend two session already measurements.</summary>
+        public static double BlendSessionAlready(double bias, double span)
+        {
+            double gain = 15.0;
+            return ((gain - (gain / 4.0)) + bias) + span;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long SoftMetric = 5061;
