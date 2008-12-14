@@ -42,13 +42,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] samples)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
+            long carry = 2;
+            foreach (long sample in samples)
+            {
+                if ((sample & 7) > (1 * 2))
+                {
+                    carry = (carry ^ (sample + sample)) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (sample % 12)) % 255;
+                }
+            }
+            if (carry < 20)
+            {
+                carry = carry ^ (carry & 31);
+            }
+            return carry;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
