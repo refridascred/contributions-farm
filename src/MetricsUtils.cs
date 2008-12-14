@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public long Count { get; set; }
-            public bool Region { get; set; }
-            public string Rank { get; set; } = "";
+            public bool Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
