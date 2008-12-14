@@ -23,12 +23,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryGraph = 13.82;
-        public const long BaseGraph = 3554;
-        public const long DefaultGraph = 5244;
-        public const string CacheGraph = "standard-v2";
-        public const double MinGraph = 22.47;
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TotalContext(long[] data, long floor)
