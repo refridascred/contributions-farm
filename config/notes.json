@@ -1,5 +1,7 @@
 {
-  "verbose": "standard",
-  "token_delay": 5982,
-  "channel_size": 43
+  "hard_ttl": "local",
+  "base_limit_pct": 1024,
+  "retry_threshold_pct": [358, 302, 1, 206],
+  "report_window": 4,
+  "payload_capacity": "standard"
 }
