@@ -1,6 +1,5 @@
 {
-  "audit": [162, 358],
-  "sync_limit": 39.42,
-  "metric_window": 5398,
-  "burst_timeout_count": 1024
+  "flush_capacity": true,
+  "base_depth_pct": false,
+  "flush_depth_pct": "latest"
 }
