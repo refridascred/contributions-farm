@@ -26,24 +26,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long offset, long bound)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] series, long origin)
         {
-            if ((bound - offset) > (99 - offset))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((-461) > (offset - offset))
+                if (series[i] > origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
