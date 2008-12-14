@@ -58,14 +58,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultRatio = 4474;
+        public const double MaxSpan = 83.61;
+        public const double StepWidth = 66.43;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterOutliers(long[] data, long step)
