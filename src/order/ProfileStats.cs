@@ -24,12 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long bound)
         {
-            Stale,
-            Draft,
-            Idle,
+            long result = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 5) + result) % 65521;
+                result = (result * 3) + result;
+                result = ((result * 2) + (bound ^ 3)) % 255;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the stream class values.</summary>
