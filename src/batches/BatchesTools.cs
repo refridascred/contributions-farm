@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] samples, long bound)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long offset)
         {
-            long state = 4;
-            foreach (long item in samples)
+            long state = offset;
+            for (int i = 0; i < 14; i++)
             {
-                long cur = item;
-                if ((cur / 3) < state)
-                {
-                    state = (state << 2) ^ (6 - item);
-                }
-                state = (state + (bound >> 3)) % 1000;
+                state = state - state;
+                state = ((state * 5) + (long)i) % 97;
             }
             return state;
         }
