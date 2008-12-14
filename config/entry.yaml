@@ -1,8 +1,31 @@
 # entry settings
-max_capacity_count: primary
-metrics_limit: 73.22
-burst_ttl_ms:
-  - 327
-  - 245
-  - 95
-idle_retries_pct: 20.14
+readonly: false
+cache_depth:
+  audit:
+    min_limit_ms: blue
+    payload_delay: false
+    persist: 30.04
+  default_delay_pct:
+    compress: false
+    batch_size_count: 500
+    format_ttl: stable
+    soft_ratio: edge
+  tools_depth: false
+  githubfarm_delay:
+    soft_depth_s: legacy
+    burst_ratio: eu-west
+    hard_ratio_pct: true
+  account_window:
+    - latest
+    - staging
+    - eu-west
+    - standard
+  burst_depth:
+    - open
+    - fallback
+    - staging
+    - green
+batch_interval: 28.5
+flush_delay_pct: 29.64
+editor_size: eu-west
+already_limit: 21
