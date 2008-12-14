@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const double IdleLevel = 8.29;
         public const long MaxBudget = 3066;
 
-        /// <summary>Check that every command metrics entry stays within the limit.</summary>
-        public static bool ValidateCommandMetricsRange(long[] series, long seed)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Level { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
