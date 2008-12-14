@@ -13,13 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
-            public double Flag { get; set; }
+            Failed,
+            Retry,
+            Stale,
+            Paused,
         }
 
         /// <summary>Derive the next counter payload value from a seed.</summary>
