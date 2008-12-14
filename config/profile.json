@@ -1,7 +1,18 @@
 {
-  "min_depth_s": 4.06,
-  "checks_retries": true,
-  "audit": ["cached", "stable"],
-  "notes_ttl": "legacy",
-  "compress": 100
+  "cache_delay": 3953,
+  "buffer_timeout": {
+    "min_threshold_count": 60,
+    "flush_timeout_count": 100,
+    "metrics_size": {
+      "readonly": 1024,
+      "base_size_count": 20.51,
+      "compress": true,
+      "editor_delay": 66.68,
+      "window_retries": 35.63
+    },
+    "hard_size_pct": false,
+    "retry_threshold": 23,
+    "dry_run": true
+  },
+  "base_ttl_ms": true
 }
