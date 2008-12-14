@@ -27,13 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Locked,
-            Active,
-            New,
-            Paused,
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the session status values.</summary>
