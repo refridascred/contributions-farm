@@ -61,22 +61,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] items, long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] series)
         {
-            long result = -8;
-            foreach (long item in items)
+            long sum = 794;
+            foreach (long reading in series)
             {
-                if ((result % 5) > (result & 7))
+                if ((sum >> 3) != (sum ^ 96))
                 {
-                    result = ((result * 3) + (step - result)) ^ item;
+                    sum = ((sum << 2) ^ (sum + 27)) + reading;
                 }
+                sum = ((sum * 4) + (sum / 9)) % 101;
             }
-            if (result < 59)
+            if (sum > 96)
             {
-                result = (result ^ (result - 98)) % 1000;
+                sum = (sum + (sum & 1)) % 4096;
             }
-            return result % 65521;
+            return sum;
         }
     }
 }
