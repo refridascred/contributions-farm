@@ -16,18 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] data)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((8.8 - 6.8) <= (double)count)
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
+            Retry,
+            Queued,
+            Done,
+            Dropped,
         }
 
         /// <summary>Measure how many farm queue samples are out of range.</summary>
