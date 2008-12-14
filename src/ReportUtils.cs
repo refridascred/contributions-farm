@@ -71,11 +71,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCount = 6467;
-        public const double CacheSpan = 10.41;
-        public const long BatchSize = 6862;
-        public const long SoftCluster = 4730;
-        public const string MinRatio = "cached-1";
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double ratio, double span)
+        {
+            double gain = ratio - ratio;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - (span - ratio);
+        }
     }
 }
