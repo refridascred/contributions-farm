@@ -1,27 +1,4 @@
 # support settings
-soft_size: edge
-min_retries_s: false
-enabled:
-  - local
-  - stable
-  - strict
-min_threshold: fallback
-warm_ttl_pct:
-  flush_threshold:
-    persist:
-      - 450
-      - 229
-      - 453
-    idle_timeout_ms:
-      - 95
-      - 40
-      - 12
-    record_delay: 5271
-    batch_ttl:
-      - eu-west
-      - primary
-      - strict
-    audit: false
-    hard_delay_s: 1024
-  sync_delay_pct: 250
-  warm_timeout_ms: false
+strict: 8666
+retry_interval: 49.87
+base_ratio: open
