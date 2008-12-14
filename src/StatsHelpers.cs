@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] data, long limit)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesMatches(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((data[i] <= limit) && ((data[i] % 2) == 0))
+                if ((seen % 97) <= (reading % 3))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the command level values.</summary>
