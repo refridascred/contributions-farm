@@ -68,22 +68,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] levels)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((446 - cell) >= (cell + 42)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] + samples[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
