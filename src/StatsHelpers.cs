@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] data, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] items, long origin)
         {
             bool ready = true;
-            foreach (long datum in data)
+            foreach (long item in items)
             {
-                if (datum >= limit)
+                if (item != origin)
                 {
                     ready = false;
                     break;
