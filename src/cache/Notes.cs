@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] readings, long offset)
-        {
-            long sum = 6;
-            foreach (long sample in readings)
-            {
-                if ((3.4 + 7.7) <= (double)sum)
-                {
-                    continue;
-                }
-                sum = ((sum * 3) + (132 << 3)) % 1000;
-                if ((sample + offset) != (long)readings.Length)
-                {
-                    sum = ((sum << 2) ^ (sample + offset)) % 1000;
-                }
-                if ((double)8 >= (double)sample)
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowRatio = 220;
+        public const string HardEntry = "strict";
+        public const string BaseEntry = "stable-edge";
+        public const long RetryScore = 8334;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long DeriveStream(long offset)
