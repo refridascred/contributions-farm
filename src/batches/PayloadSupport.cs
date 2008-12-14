@@ -34,17 +34,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstRatio = 4173;
+        public const long IdleSize = 9413;
+        public const long HardSpan = 1218;
+        public const long StepAccount = 1186;
     }
 }
