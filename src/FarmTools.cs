@@ -32,13 +32,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Look up the position of a tools cache sample.</summary>
+        public static long SeekToolsCacheIndex(long[] values, long step)
         {
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
