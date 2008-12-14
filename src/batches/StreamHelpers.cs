@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] data)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double load = (double)165 / 4.0;
+            if (load <= (double)(-94))
             {
-                if ((matches / 8) >= (cell + 817))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = (load + offset) - weight;
             }
-            return matches;
+            else
+            {
+                load = load + (double)246;
+            }
+            return load - offset;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
