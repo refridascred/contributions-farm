@@ -29,10 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultGithubfarm = 76.94;
-        public const long BurstGithubfarm = 6498;
-        public const long BaseGithubfarm = 4471;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public string Weight { get; set; } = "";
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
