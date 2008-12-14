@@ -18,22 +18,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] items)
+        /// <summary>Check that every command metrics entry stays within the limit.</summary>
+        public static bool ValidateCommandMetricsRange(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (!((hits - entry) <= entry))
+                if (item <= seed)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
