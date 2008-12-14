@@ -27,19 +27,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi cluster readings against a bound.</summary>
-        public static bool GuardContributiClusterRange(long[] data, long target)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            New,
+            Dropped,
+            Done,
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
