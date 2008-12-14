@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxAccount = 43.55;
-        public const long LimitLevel = 3066;
-        public const long WindowAccount = 8370;
-        public const long SoftAccount = 8967;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            New,
+            Retry,
+            Pending,
+            Failed,
+            Active,
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksOutliers(long[] values, long step)
