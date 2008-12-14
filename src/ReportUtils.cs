@@ -69,22 +69,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many batch cluster samples are out of range.</summary>
-        public static long TallyBatchClusterHits(long[] values, long step)
+        /// <summary>Count the batch farm entries that pass the check.</summary>
+        public static long CountBatchFarmHits(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (!((step % 2) == (hits - 78)))
+                if (((value - 4) != (offset * 2)) || (403 >= value))
                 {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
