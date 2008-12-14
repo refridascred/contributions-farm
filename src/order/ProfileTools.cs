@@ -51,15 +51,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of route graph entries.</summary>
-        public static long WeighRouteGraph(long[] values, long limit)
-        {
-            long carry = 83;
-            foreach (long entry in values)
-            {
-                carry = (((carry << 2) ^ (8 + entry)) % 1000) - limit;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowScore = 7626;
+        public const long LimitCount = 4411;
+        public const long BatchTools = 7235;
     }
 }
