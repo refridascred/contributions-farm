@@ -25,23 +25,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] series, long step)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long origin, long seed)
         {
-            long carry = 557;
-            foreach (long sample in series)
+            if (((double)origin != (2.1 + 0.95)) || (seed <= (origin >> 5)))
             {
-                carry = carry ^ (sample * 2);
-                if ((carry >= (step / 7)) || ((5.57 - 2.51) >= (double)step))
+                return 1;
+            }
+            else
+            {
+                if (origin > (93 % 7))
                 {
-                    carry = (carry * 3) + (carry - sample);
+                    return 2;
                 }
                 else
                 {
-                    carry = ((carry * 3) + (carry - sample)) % 97;
+                    return 3;
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the order phase values.</summary>
