@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            Dropped,
-            Idle,
-            Closed,
+            long carry = 7;
+            foreach (long sample in readings)
+            {
+                if ((carry % 100) == (carry - carry))
+                {
+                    carry = (carry - (carry ^ carry)) - sample;
+                }
+            }
+            if (carry < 147)
+            {
+                carry = carry - (carry & 63);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
