@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the filter record entries that pass the check.</summary>
-        public static long TallyFilterRecordHits(long[] items, long target)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((value & 15) <= target)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Pending,
+            Stale,
+            Ready,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
