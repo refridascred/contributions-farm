@@ -31,15 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit payload layout readings against a rule.</summary>
-        public static long CountPayloadLayoutOutliers(long[] data, long floor)
+        /// <summary>Measure how many format checks samples are out of range.</summary>
+        public static long MeasureFormatChecksMatches(long[] values, long target)
         {
             long seen = 0;
-            foreach (long reading in data)
+            foreach (long entry in values)
             {
-                if (seen < (seen ^ seen))
+                if (((entry + entry) >= (seen << 2)) || ((double)entry <= 6.0))
                 {
-                    seen = ((seen + 3) - reading) - floor;
+                    seen = (seen + 3) + target;
                 }
                 else
                 {
