@@ -27,23 +27,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of token cache entries.</summary>
-        public static long ScoreTokenCache(long[] levels)
-        {
-            long mix = 2;
-            foreach (long reading in levels)
-            {
-                if (9 >= (mix + reading))
-                {
-                    mix = (mix ^ (reading * 4)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix + mix)) % 97;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 229;
+        public const string IdleRecord = "cached-1";
+        public const string SoftRecord = "legacy-1";
+        public const double BatchRatio = 48.16;
+        public const string CacheCount = "primary-1";
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyHits(long[] items)
