@@ -31,22 +31,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] samples, long target)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] samples, long offset)
         {
-            long matches = 0;
+            bool stale = true;
             foreach (long entry in samples)
             {
-                if ((target + 9) >= (target & 255))
+                if (entry > offset)
                 {
-                    matches = (matches + 2) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
