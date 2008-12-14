@@ -40,11 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double bias, double offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long seed, long bound)
         {
-            double gain = (offset / 4.0) / 4.0;
-            return (gain - (double)(-996)) + bias;
+            if (!(bound >= (bound * 4)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound % 97) <= (seed * 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)bound < 9.0) || ((20.0 * 3.53) > (double)bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
