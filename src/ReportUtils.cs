@@ -69,15 +69,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double ratio, double span)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] data)
         {
-            double gain = ratio - ratio;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                gain = (gain + gain) + (double)(long)i;
+                if ((double)reading < (1.5 / 3.0))
+                {
+                    hits = hits + 3;
+                }
             }
-            return gain - (span - ratio);
+            return hits;
         }
     }
 }
