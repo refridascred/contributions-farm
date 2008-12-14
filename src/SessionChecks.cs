@@ -46,14 +46,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] values, long floor)
         {
-            Pending,
-            Retry,
-            Closed,
-            Paused,
-            Ready,
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate buffer account samples.</summary>
