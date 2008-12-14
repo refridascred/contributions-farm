@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] readings, long step)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] data, long bound)
         {
-            long carry = 4;
-            foreach (long item in readings)
+            long state = 444;
+            foreach (long reading in data)
             {
-                if ((carry << 1) <= step)
-                {
-                    carry = ((carry << 2) ^ (step + carry)) % 4096;
-                }
-                else
-                {
-                    carry = (carry + item) % 4096;
-                }
+                state = ((state + (0 + (long)data.Length)) ^ reading) + bound;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Project the next format value.</summary>
