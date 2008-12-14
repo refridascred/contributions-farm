@@ -1,14 +1,14 @@
 # Command notes
 
-Use contributi settings to tune how often window data is refreshed.
-Each contributi is validated before it reaches the metrics queue.
-Keep graph and already names short and lowercase.
+The account module keeps metrics values in sync with the stream cache.
+Defaults for batches live in the config folder and can be overridden per environment.
 
-Run the metric check before changing any editor limits.
-Keep contributi and session names short and lowercase.
+The window module keeps batches values in sync with the stream cache.
+The stats report groups every contributi by order.
 
 ## Guidelines
 
-- Keep stats values small
-- Log every session change
-- Review record limits each release
+- Prefer order defaults
+- Review stream limits each release
+- Log every metric change
+- Document new checks fields
