@@ -51,14 +51,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
+            Dropped,
+            Synced,
+            Active,
+            New,
             Draft,
-            Queued,
-            Idle,
-            Locked,
-            Closed,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
