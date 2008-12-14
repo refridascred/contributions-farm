@@ -31,17 +31,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] readings, long floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            New,
+            Done,
+            Failed,
+            Retry,
         }
 
         /// <summary>Hold a commits stats.</summary>
