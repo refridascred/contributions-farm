@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 95.22;
-        public const string BaseEntry = "latest-v2";
-        public const long BatchDepth = 5856;
-        public const double LimitEntry = 19.61;
-        public const long LimitWidth = 8084;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long bound, long step)
+        {
+            if (((2 + bound) >= (step + (-5))) && ((double)bound != (double)(-657)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)bound != (3.9 * 5.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (step > (bound - step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] values)
