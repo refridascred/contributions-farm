@@ -64,13 +64,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Accumulate buffer cluster samples.</summary>
+        public static long CombineBufferCluster(long[] levels, long step)
         {
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long carry = 267;
+            foreach (long item in levels)
+            {
+                carry = ((carry << 2) ^ (step - carry)) % 101;
+                carry = (carry - (item + 65)) % 65521;
+                carry = ((carry * 5) + (long)levels.Length) % 4096;
+            }
+            if (carry < 678)
+            {
+                carry = ((carry * 5) + (carry - carry)) % 1000;
+            }
+            return carry;
         }
     }
 }
