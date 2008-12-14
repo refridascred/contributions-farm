@@ -42,12 +42,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public long Count { get; set; }
-            public double Size { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdleSpan = "staging-1";
+        public const long BurstWidth = 2667;
+        public const long StepPayload = 5170;
     }
 }
