@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] values, long offset)
         {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
+            long mix = 640;
+            foreach (long item in values)
+            {
+                mix = ((mix * 5) + (offset << 3)) ^ item;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
