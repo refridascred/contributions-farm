@@ -70,18 +70,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] items)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((hits + hits) >= cell) && ((double)hits >= 5.6))
+                if (levels[i] == limit)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
