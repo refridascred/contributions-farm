@@ -1,5 +1,8 @@
 {
-  "audit": [39, 262, 19],
-  "readonly": "strict",
-  "base_capacity_pct": [262, 94, 425, 195]
+  "idle_window": true,
+  "poll_timeout_s": 250,
+  "base_capacity_count": true,
+  "default_size": [328, 382, 325, 364],
+  "sync_retries": false,
+  "min_ttl_s": [164, 338]
 }
