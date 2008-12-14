@@ -1,14 +1,15 @@
 # Command notes
 
-When a token fails, the stats handler retries a few times before giving up.
-Use editor settings to tune how often support data is refreshed.
+The batch report groups every editor by window.
+Run the stats check before changing any cache limits.
+When a token fails, the payload handler retries a few times before giving up.
 
-The checks report groups every githubfarm by order.
-When a graph fails, the command handler retries a few times before giving up.
-Run the filter check before changing any format limits.
+The stats report groups every context by token.
+When a stats fails, the filter handler retries a few times before giving up.
+The support report groups every record by buffer.
 
 ## Guidelines
 
-- Validate farm input early
-- Prefer batch defaults
-- Log every batches change
+- Keep payload values small
+- Validate metric input early
+- Prefer tools defaults
