@@ -1,6 +1,10 @@
-id,rank,active,count
-1,32,34.07,60.61
-2,fallback,975,green
-3,legacy,standard,stable
-4,419,local,open
-5,legacy,335,330
+id,score,weight,region,count
+1,63.33,primary,primary,open
+2,primary,cached,83.28,300
+3,641,standard,933,edge
+4,285,primary,501,121
+5,896,64.92,413,1.92
+6,528,474,506,35.34
+7,66.11,165,standard,640
+8,21.23,stable,950,583
+9,green,472,28.35,198
