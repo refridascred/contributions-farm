@@ -15,39 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank entry support input into a small class.</summary>
-        public static long BucketEntrySupport(long offset, long seed)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long slot = offset ^ seed;
-            if ((28 + seed) >= (seed >> 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((9.51 / 4.0) >= (0.7 * 9.4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset ^ slot) <= seed) && ((seed + slot) <= offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((0 / 8) == (offset % 12))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Combine context values into a single score.</summary>
