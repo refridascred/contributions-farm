@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many checks notes samples are out of range.</summary>
-        public static long AuditChecksNotesGaps(long[] samples, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((limit / 5) < limit)
-                {
-                    hits = (hits + 3) - reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleInterval = 3062;
+        public const double IdleLevel = 8.29;
+        public const long MaxBudget = 3066;
 
         /// <summary>Check that every command metrics entry stays within the limit.</summary>
         public static bool ValidateCommandMetricsRange(long[] series, long seed)
