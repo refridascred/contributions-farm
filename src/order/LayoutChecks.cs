@@ -61,11 +61,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 5277;
-        public const long CacheBatch = 7165;
-        public const string StepBatch = "stable";
-        public const string CacheBudget = "open-edge";
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Pending,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string BatchFactor = "latest-v2";
