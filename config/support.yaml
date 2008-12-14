@@ -1,6 +1,4 @@
 # support settings
-support_ratio: green
-poll_limit_s: 68
-strict: 16.72
-max_delay_s: 35.86
-idle_ttl_pct: 6331
+retry_interval_ms: 5
+counter_retries: 33.56
+hard_threshold: 80.41
