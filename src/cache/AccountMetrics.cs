@@ -43,12 +43,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 5159;
+        public const double BatchTimeout = 80.69;
+        public const string BatchCommits = "standard";
+        public const long SoftRatio = 2300;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
