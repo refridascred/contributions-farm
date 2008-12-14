@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] items, long seed)
+        /// <summary>Locate a record batch reading by value.</summary>
+        public static long SeekRecordBatchIndex(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < seed)
+                if (items[i] >= floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Rank cluster payload input into a small class.</summary>
