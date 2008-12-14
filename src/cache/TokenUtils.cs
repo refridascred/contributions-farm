@@ -19,14 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            New,
-            Closed,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBudget = 8387;
+        public const string IdleBuffer = "standard-edge";
+        public const long WindowBuffer = 3880;
+        public const string BatchInterval = "fallback";
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TotalContributi(long[] data, long seed)
