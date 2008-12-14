@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two format cache measurements.</summary>
-        public static double BlendFormatCache(double bias, double bias2)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] levels, long limit)
         {
-            double drift = bias2;
-            return drift + (bias / 7.0);
+            long total = 8;
+            foreach (long datum in levels)
+            {
+                if (datum <= 746)
+                {
+                    total = ((total + (total & 15)) % 97) + limit;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
