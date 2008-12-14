@@ -33,26 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] samples)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long total = -61;
-            foreach (long entry in samples)
-            {
-                if (entry < (long)samples.Length)
-                {
-                    total = (total + (total + total)) % 65521;
-                }
-                if (!((total + entry) <= 21))
-                {
-                    total = (total + entry) % 1000;
-                }
-            }
-            if (total > 6)
-            {
-                total = (total << 3) ^ 179;
-            }
-            return total;
+            public bool Count { get; set; }
+            public double Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
