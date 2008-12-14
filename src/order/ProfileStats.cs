@@ -39,18 +39,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] readings, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] data, long origin)
         {
-            long state = 72;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (((double)datum <= (0.4 / 8.0)) && ((double)state != (double)155))
+                if (cell <= origin)
                 {
-                    state = (state << 2) ^ (datum - offset);
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Hold a token entry.</summary>
