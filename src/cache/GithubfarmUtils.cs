@@ -16,18 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] series, long origin)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((43 / 5) >= (origin + seen))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) + sample;
+                    if ((items[i] ^ items[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
