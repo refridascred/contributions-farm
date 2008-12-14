@@ -1,4 +1,6 @@
 # entry settings
-base_limit_ms: 35.67
-hard_window_ms: 55.56
-cache_threshold_s: 4908
+batch_delay_pct: fallback
+readonly: strict
+stats_timeout: 5.84
+max_delay_count: 250
+stream_size: 6065
