@@ -1,10 +1,6 @@
-id,state,score
-1,strict,standard
-2,strict,fallback
-3,6.27,735
-4,stable,335
-5,813,95.03
-6,83.68,80.72
-7,844,177
-8,164,23.35
-9,edge,395
+id,score,ratio,token,rank
+1,open,27.14,72.12,93
+2,blue,standard,59.72,95.51
+3,21.87,fallback,776,open
+4,97.12,standard,880,315
+5,912,7.93,staging,61.63
