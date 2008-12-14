@@ -1,8 +1,10 @@
 # entry settings
-flush_timeout_ms:
-  - eu-west
-  - latest
-  - staging
-min_window_s: 3
-base_retries_s: 7084
-cache_retries_ms: 9757
+warm_window_pct: true
+persist:
+  editor_size: true
+  readonly: 27
+  retry_limit_ms: strict
+  idle_window_s: eu-west
+base_ratio: 36.49
+warm_depth_count: fallback
+stream_ttl: 477
