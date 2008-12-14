@@ -19,13 +19,17 @@ namespace Common.Utilities
         public const long BurstCount = 1727;
         public const long WindowDepth = 4344;
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] series, long seed)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many payload cache samples are out of range.</summary>
