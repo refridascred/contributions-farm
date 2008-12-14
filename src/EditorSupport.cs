@@ -15,19 +15,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Rank entry support input into a small class.</summary>
+        public static long BucketEntrySupport(long offset, long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
+            long slot = offset ^ seed;
+            if ((28 + seed) >= (seed >> 4))
             {
-                if (!((step & 63) < (anchor % 5)))
-                {
-                    anchor = ((anchor * 4) + anchor) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((9.51 / 4.0) >= (0.7 * 9.4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset ^ slot) <= seed) && ((seed + slot) <= offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((0 / 8) == (offset % 12))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine context values into a single score.</summary>
