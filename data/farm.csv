@@ -1,7 +1,9 @@
-id,weight,level
-1,78.56,latest
-2,cached,82
-3,643,blue
-4,745,cached
-5,0.23,754
-6,605,466
+id,level,region
+1,233,97.33
+2,97.29,181
+3,93,905
+4,fallback,legacy
+5,66.6,27.67
+6,289,cached
+7,112,31.45
+8,open,eu-west
