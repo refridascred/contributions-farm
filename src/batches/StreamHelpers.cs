@@ -53,19 +53,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long bound, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
+            if ((bound & 7) == (bound / 7))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = (anchor - anchor) - (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if (seed < (bound / 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((seed + seed) != (bound << 3)) || ((seed & 7) != (bound + bound)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank queue tools input into a small class.</summary>
