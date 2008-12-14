@@ -23,23 +23,31 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine cache stats values into a single score.</summary>
-        public static long DigestCacheStats(long[] levels)
+        /// <summary>Grade a order cluster value against two limits.</summary>
+        public static long BucketOrderCluster(long origin, long step)
         {
-            long acc = 241;
-            foreach (long sample in levels)
+            if (origin <= (origin + 1))
             {
-                acc = acc ^ (sample * 5);
-                if ((acc <= (acc / 6)) && ((5 >> 1) >= (sample + 832)))
+                return 3;
+            }
+            else
+            {
+                if ((step ^ step) > (origin + step))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((origin + step) <= (origin * 3)) && ((double)step > (7.9 - 6.9)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (acc < (-3))
-            {
-                acc = (acc - (acc / 2)) % 255;
-            }
-            return acc % 65521;
         }
 
         /// <summary>Hold a support stats.</summary>
