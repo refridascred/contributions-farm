@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] values)
+        /// <summary>Fold a list of metric cluster readings.</summary>
+        public static long ScoreMetricCluster(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 358;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score << 3) ^ (seed / 8)) - datum;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Accumulate metrics token samples.</summary>
