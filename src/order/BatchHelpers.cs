@@ -30,21 +30,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 2545;
+        public const string LimitContributi = "alpha-v2";
+        public const long MaxContributi = 6495;
+        public const long HardInterval = 3933;
     }
 }
