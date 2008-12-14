@@ -30,21 +30,17 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 4016;
         public const string RetryLevel = "standard-v2";
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] values)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix << 3) ^ step) % 97;
+                mix = (mix ^ (mix * 5)) % 97;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the tools status values.</summary>
