@@ -44,12 +44,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxMetrics = 44.03;
-        public const long MinMetrics = 8974;
-        public const double StepScore = 15.87;
-        public const long MaxScore = 5722;
-        public const double BaseMetrics = 83.11;
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long DigestMetrics(long[] data)
