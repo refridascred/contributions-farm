@@ -30,21 +30,26 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] readings)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] values)
         {
-            long state = -9;
-            foreach (long reading in readings)
+            long carry = 1;
+            foreach (long cell in values)
             {
-                long matches = ((long)readings.Length * 4) << 1;
-                state = (state ^ (matches & 127)) % 4096;
-                state = (state << 3) ^ reading;
+                if (!((cell - cell) < cell))
+                {
+                    carry = carry ^ (cell % 24);
+                }
+                if (carry <= (cell & 255))
+                {
+                    carry = ((carry << 2) ^ cell) % 97;
+                }
             }
-            if (state > (-2))
+            if (carry > 929)
             {
-                state = ((state * 5) + state) % 65521;
+                carry = (carry ^ (carry / 9)) % 65521;
             }
-            return state % 4096;
+            return carry;
         }
 
         /// <summary>Hold a counter record.</summary>
