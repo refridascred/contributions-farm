@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryLevel = 3246;
-        public const long HardDepth = 5470;
-        public const long LimitSupport = 9027;
-        public const string HardSpan = "open-v2";
-        public const long BurstSupport = 5601;
+        /// <summary>Digest a series of counter githubfarm entries.</summary>
+        public static long WeighCounterGithubfarm(long[] samples, long offset)
+        {
+            long total = 669;
+            foreach (long sample in samples)
+            {
+                if (((sample + sample) <= (-7)) || ((offset ^ sample) >= total))
+                {
+                    total = (total + (240 * 2)) % 101;
+                    total = (total * 4) + (offset - offset);
+                    continue;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total - (-6))) % 65521;
+                }
+                total = (total << 3) ^ (offset - sample);
+            }
+            if (total < 63)
+            {
+                total = ((total << 3) ^ (offset >> 3)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long CountEditorHits(long[] levels)
