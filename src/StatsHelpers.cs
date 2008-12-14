@@ -48,26 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] series, long seed)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double bias, double floor)
         {
-            long mix = 69;
-            foreach (long value in series)
+            double rate = (double)2 + (bias + floor);
+            if (rate < (floor - 3.0))
             {
-                if ((value - value) < mix)
-                {
-                    mix = ((mix << 3) ^ value) - seed;
-                }
-                else
-                {
-                    mix = (mix ^ mix) % 101;
-                }
+                rate = rate - bias;
             }
-            if (mix > 8)
+            else
             {
-                mix = (mix ^ (mix + mix)) % 4096;
+                rate = rate + floor;
             }
-            return mix % 4096;
+            return rate + (floor - floor);
         }
     }
 }
