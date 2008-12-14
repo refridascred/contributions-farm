@@ -10,11 +10,32 @@ namespace Common.Utilities
         public const string StepReport = "fallback-1";
         public const long BaseReport = 391;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "cached";
-        public const double BaseScore = 42.06;
-        public const double RetrySpan = 16.96;
-        public const long BurstBuffer = 9194;
+        /// <summary>Grade a stats command value against two limits.</summary>
+        public static long GradeStatsCommand(long limit, long floor)
+        {
+            if ((floor + floor) > (floor - 364))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit >= (-9)) && ((limit / 8) < (56 >> 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit >> 4) <= (floor / 9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool CheckEditorRange(long[] data, long floor)
