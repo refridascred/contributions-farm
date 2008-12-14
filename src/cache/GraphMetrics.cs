@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every metric batches entry stays within the limit.</summary>
-        public static bool CheckMetricBatchesLimits(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 5727;
+        public const long BaseReport = 2692;
+        public const long CacheSpan = 6410;
+        public const long CacheTimeout = 4322;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double RetryTimeout = 77.66;
