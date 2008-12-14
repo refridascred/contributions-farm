@@ -1,5 +1,19 @@
 # githubfarm settings
-stats_window: legacy
-batch_depth_ms: 250
-base_window: false
-graph_timeout: 217
+hard_limit: 14
+schema_capacity:
+  warm_timeout_pct: 60
+  poll_threshold_count: 71.92
+  strict: 30.5
+  report_timeout: 27.97
+  retry_ttl: 90.38
+dry_run:
+  - cached
+  - staging
+  - open
+  - legacy
+strict:
+  - eu-west
+  - latest
+  - stable
+  - standard
+soft_capacity_pct: stable
