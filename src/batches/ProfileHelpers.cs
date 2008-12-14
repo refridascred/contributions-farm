@@ -57,12 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepWidth = "alpha-edge";
-        public const string BurstTimeout = "alpha-v2";
-        public const long WindowCount = 849;
-        public const long LimitSupport = 4251;
-        public const string MaxSize = "alpha-v2";
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((1.0 - 0.9) == (double)origin)
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first already context entry that matches the target.</summary>
         public static long SeekAlreadyContextIndex(long[] items, long limit)
