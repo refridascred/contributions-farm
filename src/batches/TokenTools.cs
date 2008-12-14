@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepCluster = "stable-1";
-        public const long BurstCluster = 5528;
-        public const long SoftCluster = 1318;
-        public const double CacheCluster = 95.0;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 1353;
+        public const double StepNotes = 12.36;
+        public const long CacheNotes = 172;
+        public const double MaxNotes = 50.74;
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
