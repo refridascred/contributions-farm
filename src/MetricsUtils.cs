@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] samples, long step)
+        /// <summary>Roll a cache channel counter forward.</summary>
+        public static long RollCacheChannel(long limit)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long result = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((double)value <= 2.0))
-                {
-                    seen = (seen + 1) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = result ^ (long)i;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
