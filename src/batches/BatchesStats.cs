@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long seed, long seed2)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] readings, long target)
         {
-            long prev = seed + seed2;
-            if (((5 ^ prev) != (94 % 2)) || ((seed - 6) < (7 ^ prev)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed2 == (3.3 - 9.4))
+                if (readings[i] == target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((prev + seed2) >= 397)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a cluster record.</summary>
