@@ -1,6 +1,4 @@
 # githubfarm settings
-readonly: true
-stats_window: 47
-base_depth_count: 41
-base_window_count: blue
-metric_window: edge
+max_depth_ms: true
+report_ttl: 250
+queue_delay: false
