@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long step, long offset)
         {
-            Queued,
-            Dropped,
-            Idle,
-            Ready,
-            Stale,
+            long bound = step + offset;
+            if ((double)bound < (9.67 / 2.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((8.2 - 2.1) >= (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)11 <= (8.57 / 8.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (2.02 + 10.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph options.</summary>
