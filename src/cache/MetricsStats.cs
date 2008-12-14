@@ -36,20 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double weight, double span)
-        {
-            double mean = weight;
-            if (mean > (double)7)
-            {
-                mean = mean - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (20.0 - mean)) + (double)(long)i;
-            }
-            return mean - (8.4 - weight);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxSpan = 9728;
+        public const double LimitStats = 87.54;
+        public const double BurstScore = 82.19;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
