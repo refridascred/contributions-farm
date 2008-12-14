@@ -47,10 +47,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheInterval = 8512;
-        public const long CacheFormat = 7852;
-        public const double CacheSpan = 29.59;
-        public const string SoftFactor = "fallback-v2";
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Synced,
+            Done,
+            New,
+            Pending,
+            Ready,
+        }
     }
 }
