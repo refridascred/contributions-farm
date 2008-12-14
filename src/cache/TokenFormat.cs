@@ -16,20 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] levels)
-        {
-            long state = 5;
-            foreach (long datum in levels)
-            {
-                state = ((state * 2) + (datum * 5)) % 4096;
-            }
-            if (state > 0)
-            {
-                state = state + (9 - 3);
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseDepth = 2795;
+        public const long SoftCommits = 3724;
+        public const long MaxCommits = 1637;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BaseFactor = 7764;
