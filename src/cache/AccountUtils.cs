@@ -32,14 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Rank filter contributi input into a small class.</summary>
+        public static long RankFilterContributi(long origin, long seed)
         {
-            Draft,
-            Idle,
-            Failed,
-            Queued,
-            Dropped,
+            if ((double)seed < (11.0 * 0.99))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed % 24) < (origin + origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (37 >= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin / 9) < (seed & 127))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count batch profile pairs that satisfy a relation.</summary>
