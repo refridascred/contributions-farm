@@ -14,11 +14,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
+            Stale,
+            New,
+            Active,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a support header.</summary>
