@@ -16,14 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] items, long target)
         {
-            Idle,
-            Failed,
-            Retry,
-            Active,
-            Pending,
+            long carry = 977;
+            foreach (long sample in items)
+            {
+                carry = ((carry * 5) + (728 / 8)) + sample;
+            }
+            if (carry > 520)
+            {
+                carry = ((carry << 3) ^ (target + target)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Audit payload layout readings against a rule.</summary>
