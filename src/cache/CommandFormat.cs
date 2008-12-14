@@ -20,11 +20,13 @@ namespace Common.Utilities
         public const double HardCount = 11.68;
         public const long RetryFarm = 6881;
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public long Level { get; set; }
-            public bool Size { get; set; }
+            Draft,
+            Ready,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
