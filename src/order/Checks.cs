@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Token { get; set; }
+            Active,
+            Synced,
+            Stale,
         }
 
         /// <summary>Blend two report measurements.</summary>
