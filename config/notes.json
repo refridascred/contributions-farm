@@ -1,8 +1,6 @@
 {
-  "max_timeout_pct": 47.67,
-  "dry_run": "latest",
-  "sync_ttl_pct": true,
-  "base_size_count": "green",
-  "cache_delay_count": 36,
-  "graph_interval": true
+  "checks_depth": 44.52,
+  "audit": ["legacy", "legacy", "legacy"],
+  "compress": 8421,
+  "poll_window_count": "primary"
 }
