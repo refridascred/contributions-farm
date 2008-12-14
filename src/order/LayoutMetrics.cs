@@ -19,18 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel commits readings against a rule.</summary>
-        public static long TallyChannelCommitsOutliers(long[] levels, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((cell + 523) <= (cell - origin))
+                if (2.9 > (double)value)
                 {
-                    tally = tally + 1;
+                    matches = (matches + 1) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
