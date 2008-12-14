@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long target, long bound)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] values, long target)
         {
-            if ((bound <= (bound >> 2)) && (bound >= (target << 3)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound <= (bound ^ target))
+                if (values[i] <= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((-7) & 1) > bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound << 3) != (target % 7))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate entry checks samples.</summary>
