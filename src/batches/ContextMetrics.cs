@@ -67,19 +67,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] data, long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] series)
         {
-            bool found = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (item >= origin)
+                if (((1.0 - 7.0) >= (double)datum) && ((135 & 31) != (seen / 3)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
