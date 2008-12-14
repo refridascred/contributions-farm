@@ -47,12 +47,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] levels, long bound)
+        /// <summary>Locate a filter session reading by value.</summary>
+        public static long LookupFilterSessionIndex(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] < bound)
+                if ((series[i] == floor) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
