@@ -13,31 +13,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a editor metric pair into a bucket.</summary>
-        public static long BucketEditorMetric(long offset, long step)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] samples)
         {
-            if ((double)step > 20.0)
+            long state = 13;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6.65 - 0.7) < (double)step)
+                if (((long)samples.Length + state) <= 4)
                 {
-                    return 7;
+                    state = (state ^ (734 + state)) ^ sample;
                 }
                 else
                 {
-                    if ((2.7 - 4.6) <= (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = (state - 29) % 97;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Audit profile window readings against a rule.</summary>
