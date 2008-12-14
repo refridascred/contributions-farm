@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const double BatchBudget = 11.01;
         public const long IdleRecord = 4918;
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] items)
         {
-            Ready,
-            Queued,
-            Stale,
-            Dropped,
+            long mark = 89;
+            foreach (long reading in items)
+            {
+                if ((reading + mark) >= (long)items.Length)
+                {
+                    mark = (mark << 3) ^ (reading / 6);
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define report limits and defaults.</summary>
