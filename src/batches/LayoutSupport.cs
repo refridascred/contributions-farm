@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchFormat = 54.38;
-        public const long SoftCount = 8303;
-        public const double StepFormat = 17.66;
-        public const double SoftFormat = 71.0;
-        public const double LimitFormat = 46.84;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long bound, long limit)
+        {
+            if ((limit >> 2) <= (bound * 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit >> 4) == (limit - limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit ^ limit) > (limit ^ bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many metric checks samples are out of range.</summary>
         public static long TallyMetricChecksMatches(long[] series)
