@@ -23,14 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] values, long step)
         {
-            Synced,
-            Failed,
-            Stale,
-            Closed,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate token filter readings against a bound.</summary>
