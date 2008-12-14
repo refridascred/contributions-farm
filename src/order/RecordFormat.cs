@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] series, long floor)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate contributi cluster readings against a bound.</summary>
