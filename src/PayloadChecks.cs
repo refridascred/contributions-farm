@@ -43,11 +43,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long floor)
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = (acc ^ (8 - (long)i)) % 97;
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
