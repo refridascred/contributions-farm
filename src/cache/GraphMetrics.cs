@@ -44,12 +44,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
+            Queued,
+            Retry,
+            Synced,
             Done,
-            Failed,
-            Ready,
         }
     }
 }
