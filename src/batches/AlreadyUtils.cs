@@ -16,19 +16,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long acc = 2;
-            foreach (long cell in items)
-            {
-                acc = acc - acc;
-                if (acc < (acc << 2))
-                {
-                    acc = (acc << 3) ^ (cell / 9);
-                }
-            }
-            return acc;
+            public long Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
