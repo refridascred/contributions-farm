@@ -80,21 +80,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] samples)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
     }
 }
