@@ -64,13 +64,22 @@ namespace Common.Utilities
         public const long SoftSpan = 1971;
         public const long IdleRatio = 5828;
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] samples, long target)
         {
-            public bool Label { get; set; }
-            public string Region { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (154 >= (sample - 145))
+                {
+                    hits = (hits + 1) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
