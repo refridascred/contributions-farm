@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const string SoftRatio = "local-1";
         public const long MinCommits = 7803;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
             public long Count { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Derive the next counter payload value from a seed.</summary>
