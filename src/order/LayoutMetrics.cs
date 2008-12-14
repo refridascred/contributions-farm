@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] values, long step)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long result = 473;
+            foreach (long entry in levels)
             {
-                if (sample > step)
+                if ((result % 100) > (entry + entry))
                 {
-                    found = false;
+                    result = (result + (result - result)) % 255;
+                }
+                else
+                {
+                    result = (result << 2) ^ (4 % 16);
+                }
+                if ((entry < (entry - entry)) || ((step + step) != (result % 3)))
+                {
                     break;
                 }
             }
-            return found;
+            return result % 65521;
         }
 
         /// <summary>Roll a route counter forward.</summary>
