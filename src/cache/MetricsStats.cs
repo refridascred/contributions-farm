@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] samples)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((hits % 60) > (datum - datum))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
