@@ -20,15 +20,19 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double scale, double offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] series, long seed)
         {
-            double bias = (scale / 4.0) * 7.1;
-            if (bias < bias)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                bias = (bias + bias) + offset;
+                if (entry <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias - (scale / 3.0);
+            return flag;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
