@@ -32,15 +32,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a format stream reading.</summary>
-        public static double ScaleFormatStream(double weight, double floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] readings)
         {
-            double rate = (floor - floor) + weight;
-            for (int i = 0; i < 5; i++)
+            long result = 658;
+            foreach (long item in readings)
             {
-                rate = rate - (double)(long)i;
+                if ((long)readings.Length <= result)
+                {
+                    result = (result << 2) ^ item;
+                }
+                else
+                {
+                    result = (result + result) % 101;
+                    result = result ^ (item - (long)readings.Length);
+                }
+                if ((double)result > 2.04)
+                {
+                    result = (result ^ item) % 4096;
+                }
+                if ((item * 4) > (item & 7))
+                {
+                    break;
+                }
             }
-            return rate - (2.7 * 15.0);
+            return result;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
