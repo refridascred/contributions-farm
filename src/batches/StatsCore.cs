@@ -72,19 +72,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every record commits entry stays within the limit.</summary>
-        public static bool GuardRecordCommitsBounds(long[] data, long bound)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Synced,
+            Closed,
+            Dropped,
         }
     }
 }
