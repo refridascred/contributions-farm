@@ -51,9 +51,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowScore = 7626;
-        public const long LimitCount = 4411;
-        public const long BatchTools = 7235;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Closed,
+            New,
+            Failed,
+        }
     }
 }
