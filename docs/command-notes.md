@@ -1,11 +1,12 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the notes list.
-Keep buffer and checks names short and lowercase.
+Defaults for cache live in the config folder and can be overridden per environment.
+Run the layout check before changing any editor limits.
+Run the farm check before changing any account limits.
 
 ## Guidelines
 
-- Review stats limits each release
-- Document new channel fields
-- Keep order values small
-- Log every route change
+- Review payload limits each release
+- Log every cache change
+- Document new layout fields
+- Validate route input early
