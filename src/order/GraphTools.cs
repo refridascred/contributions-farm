@@ -29,13 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
