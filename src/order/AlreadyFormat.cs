@@ -49,22 +49,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultSpan = 6087;
+        public const double BatchFactor = 61.9;
+        public const long LimitRatio = 4308;
+        public const long MaxLevel = 691;
 
         /// <summary>Roll a support counter forward.</summary>
         public static long RollSupport(long target)
