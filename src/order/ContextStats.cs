@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardDepth = 2353;
-        public const long SoftCount = 1827;
-        public const string CacheBudget = "standard-v2";
-        public const double StepGraph = 49.07;
+        /// <summary>Count the entry batches entries that pass the check.</summary>
+        public static long CountEntryBatchesGaps(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((origin >> 2) < (datum & 1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long SeriesReport(long target)
