@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftSize = 3295;
-        public const long MaxSize = 424;
-        public const long IdleBatch = 9107;
-        public const long StepScore = 709;
-        public const string MaxBatch = "legacy-edge";
+        /// <summary>Check that every context filter entry stays within the limit.</summary>
+        public static bool GuardContextFilterLimits(long[] series, long bound)
+        {
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the buffer metrics series from a seed.</summary>
         public static long RollBufferMetrics(long step)
