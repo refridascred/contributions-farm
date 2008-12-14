@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] values)
-        {
-            long state = -629;
-            foreach (long item in values)
-            {
-                if (((item << 1) != (item + item)) || ((state - (long)values.Length) > (state - item)))
-                {
-                    state = (state + item) % 97;
-                }
-                if ((state - item) < (state - state))
-                {
-                    break;
-                }
-            }
-            if (state < 541)
-            {
-                state = state ^ (state + state);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 3401;
+        public const long StepAccount = 73;
+        public const long MaxAccount = 3286;
+        public const long DefaultWidth = 9097;
 
         /// <summary>Accumulate counter cluster samples.</summary>
         public static long WeighCounterCluster(long[] items)
