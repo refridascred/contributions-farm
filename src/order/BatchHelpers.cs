@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] levels, long bound)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((step ^ (long)i) > (score ^ score))
+                if (!((double)value < (5.5 + 9.0)))
                 {
-                    score = (score - (step + score)) % 65521;
+                    tally = (tally + 3) + bound;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
