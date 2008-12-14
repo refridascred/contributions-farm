@@ -22,17 +22,14 @@ namespace Common.Utilities
         public const long BurstCount = 1727;
         public const long WindowDepth = 4344;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] series, long seed)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Stale,
+            Done,
+            Idle,
+            Paused,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
