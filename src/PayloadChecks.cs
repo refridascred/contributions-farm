@@ -47,24 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if (762 <= floor)
-                {
-                    sum = ((sum * 4) + floor) % 4096;
-                }
-                else
-                {
-                    sum = (sum + floor) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftFactor = 3804;
+        public const long WindowDepth = 6545;
+        public const string BaseBudget = "standard-1";
+        public const long LimitFactor = 2961;
+        public const long LimitBudget = 5576;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double StepMetrics = 22.12;
