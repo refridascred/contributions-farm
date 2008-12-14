@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] items, long target)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long limit, long step)
         {
-            long acc = 83;
-            foreach (long cell in items)
+            if (limit < (867 ^ limit))
             {
-                acc = ((acc ^ (cell / 3)) % 4096) - target;
+                return 7;
             }
-            if (acc > (-96))
+            else
             {
-                acc = ((acc << 3) ^ (acc & 1)) % 101;
+                if ((limit - limit) == (limit * 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((6 ^ step) < (step + limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit < (168 - 8))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
