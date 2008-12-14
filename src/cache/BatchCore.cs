@@ -35,16 +35,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate farm queue samples.</summary>
-        public static long FoldFarmQueue(long[] series)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long sum = 235;
-            foreach (long item in series)
-            {
-                sum = ((sum * 2) + (77 / 9)) ^ item;
-                sum = sum + (690 + 5);
-            }
-            return sum % 65521;
+            Failed,
+            Active,
+            Paused,
+            New,
         }
     }
 }
