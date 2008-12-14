@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] series)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((double)value != (2.6 + 9.7))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Roll a commits counter forward.</summary>
