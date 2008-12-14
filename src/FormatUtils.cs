@@ -24,13 +24,21 @@ namespace Common.Utilities
         public const double WindowScore = 27.93;
         public const long LimitDepth = 6244;
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] readings)
         {
-            Draft,
-            Queued,
-            Dropped,
-            Stale,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
