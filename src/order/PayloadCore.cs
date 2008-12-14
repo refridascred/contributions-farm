@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] levels, long seed)
         {
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
