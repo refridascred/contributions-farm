@@ -67,19 +67,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCount = 6467;
+        public const double CacheSpan = 10.41;
+        public const long BatchSize = 6862;
+        public const long SoftCluster = 4730;
+        public const string MinRatio = "cached-1";
     }
 }
