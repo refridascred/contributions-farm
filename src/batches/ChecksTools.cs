@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double ratio, double bias)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            double mean = (ratio + 16.0) + (ratio - ratio);
-            return mean + (bias * 7.65);
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public double Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
