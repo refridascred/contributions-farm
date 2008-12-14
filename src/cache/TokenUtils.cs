@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] levels, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if (((double)datum != (10.0 / 8.0)) && !(datum > (origin / 2)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the filter mode values.</summary>
