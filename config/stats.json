@@ -1,5 +1,6 @@
 {
-  "checks_window": 8677,
-  "report_capacity": 986,
-  "hard_timeout_ms": 7204
+  "payload_interval": ["standard", "strict", "standard"],
+  "sync_delay": "strict",
+  "max_threshold_count": false,
+  "compress": ["local", "blue", "latest", "cached"]
 }
