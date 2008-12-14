@@ -1,7 +1,6 @@
 {
-  "cache_capacity_s": "legacy",
-  "min_ratio_ms": 93.78,
-  "profile_size": true,
-  "max_interval_ms": 16,
-  "compress": "green"
+  "idle_delay_count": 30,
+  "stream_capacity": 88.08,
+  "base_threshold_pct": 1024,
+  "graph_depth": 2114
 }
