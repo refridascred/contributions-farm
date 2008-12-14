@@ -39,13 +39,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
+            long score = 644;
+            foreach (long sample in series)
+            {
+                score = score + (sample >> 4);
+                if ((sample + sample) == (4 % 60))
+                {
+                    score = (score << 2) ^ (74 - sample);
+                }
+            }
+            if (score < 40)
+            {
+                score = (score - (score & 1)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of stats window readings.</summary>
