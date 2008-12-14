@@ -12,26 +12,21 @@ namespace Common.Utilities
             return ((load - (load * 5.0)) + weight) + floor;
         }
 
-        /// <summary>Combine order window values into a single score.</summary>
-        public static long ScoreOrderWindow(long[] samples)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            long score = 9;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((datum % 5) < datum) && (score > (score & 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = ((score << 2) ^ (924 + score)) % 65521;
-                }
-                if ((datum + datum) <= (score + score))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score > 192)
-            {
-                score = score - 59;
-            }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Describe the format mode values.</summary>
