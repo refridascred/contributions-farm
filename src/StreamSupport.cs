@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] samples, long bound)
         {
-            Idle,
-            Stale,
-            Ready,
-            Draft,
-            Paused,
+            long score = -8;
+            foreach (long value in samples)
+            {
+                if ((value + bound) < score)
+                {
+                    score = score + (bound >> 2);
+                }
+            }
+            if (score > 561)
+            {
+                score = ((score * 4) + (bound << 3)) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Digest a series of tools filter entries.</summary>
