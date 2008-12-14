@@ -1,6 +1,5 @@
 {
-  "cache_timeout": "cached",
-  "soft_threshold_ms": "latest",
-  "batch_ttl": false,
-  "cache_retries_count": true
+  "checks_limit": "fallback",
+  "compress": 81.94,
+  "payload_depth": false
 }
