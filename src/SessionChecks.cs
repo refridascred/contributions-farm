@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] samples, long target)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
