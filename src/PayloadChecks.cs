@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
+            Done,
             Synced,
-            Queued,
-            New,
             Stale,
         }
 
