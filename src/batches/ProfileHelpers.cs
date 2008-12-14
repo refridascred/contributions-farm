@@ -57,14 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Closed,
-            Dropped,
-            New,
-            Locked,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepWidth = "alpha-edge";
+        public const string BurstTimeout = "alpha-v2";
+        public const long WindowCount = 849;
+        public const long LimitSupport = 4251;
+        public const string MaxSize = "alpha-v2";
 
         /// <summary>Find the first already context entry that matches the target.</summary>
         public static long SeekAlreadyContextIndex(long[] items, long limit)
