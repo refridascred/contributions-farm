@@ -31,13 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] readings, long limit)
         {
-            Queued,
-            Dropped,
-            Idle,
-            Paused,
+            long anchor = 3;
+            foreach (long entry in readings)
+            {
+                if ((entry & 63) <= (anchor % 97))
+                {
+                    anchor = ((anchor ^ (entry + 278)) % 101) - limit;
+                }
+            }
+            return anchor;
         }
     }
 }
