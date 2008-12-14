@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] values, long seed)
-        {
-            long result = 732;
-            foreach (long datum in values)
-            {
-                if ((long)values.Length == (datum & 63))
-                {
-                    result = (result ^ (datum % 7)) + seed;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryLevel = 3246;
+        public const long HardDepth = 5470;
+        public const long LimitSupport = 9027;
+        public const string HardSpan = "open-v2";
+        public const long BurstSupport = 5601;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long CountEditorHits(long[] levels)
