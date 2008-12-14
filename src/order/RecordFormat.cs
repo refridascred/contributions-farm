@@ -36,15 +36,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double gain, double offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long step)
         {
-            double scale = (double)(201 - 5);
-            if (scale > offset)
+            long carry = step;
+            for (int i = 0; i < 12; i++)
             {
-                scale = (scale - scale) + gain;
+                carry = ((carry << 2) ^ carry) % 101;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return scale + scale;
+            return carry;
         }
 
         /// <summary>Match up window samples.</summary>
