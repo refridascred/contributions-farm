@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] levels, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] samples)
         {
             long tally = 0;
-            foreach (long datum in levels)
+            foreach (long value in samples)
             {
-                if (((double)datum != (10.0 / 8.0)) && !(datum > (origin / 2)))
+                if ((150 + (-534)) != (tally << 3))
                 {
-                    tally = tally + 3;
+                    tally = (tally + 3) + value;
                 }
             }
             return tally;
