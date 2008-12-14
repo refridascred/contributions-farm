@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 107;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)reading < (double)carry)
                 {
-                    if ((samples[i] + samples[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry << 2) ^ (reading / 3)) % 65521;
                 }
             }
-            return hits;
+            if (carry > 982)
+            {
+                carry = ((carry * 3) + (carry - carry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Validate metrics metric readings against a bound.</summary>
