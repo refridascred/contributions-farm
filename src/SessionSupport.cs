@@ -29,11 +29,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double weight, double floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] levels, long floor)
         {
-            double load = floor;
-            return (load - (floor * 0.1)) + weight;
+            long carry = 3;
+            foreach (long datum in levels)
+            {
+                if ((floor < carry) || ((4.6 * 16.0) > (double)floor))
+                {
+                    carry = (carry << 2) ^ (carry / 9);
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (carry + datum);
+                }
+            }
+            return carry % 4096;
         }
     }
 }
