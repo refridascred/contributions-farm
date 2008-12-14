@@ -25,12 +25,20 @@ namespace Common.Utilities
         public const double LimitSpan = 61.41;
         public const long BaseSpan = 9381;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardFormat = 16.98;
-        public const long MaxSpan = 9373;
-        public const long StepFormat = 5883;
-        public const long StepDepth = 4701;
-        public const string SoftWidth = "cached-v2";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] readings, long origin)
+        {
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
