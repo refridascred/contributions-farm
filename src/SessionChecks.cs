@@ -36,21 +36,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((acc + (-82)) > origin) || ((origin << 1) > acc))
-                {
-                    acc = (acc * 2) + (6 / 9);
-                    acc = (acc - (acc - origin)) % 255;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseRatio = "standard";
+        public const long IdleQueue = 7550;
+        public const long BurstSpan = 2459;
 
         /// <summary>Digest a series of queue session entries.</summary>
         public static long DigestQueueSession(long[] values)
