@@ -33,18 +33,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi graph samples are out of range.</summary>
-        public static long TallyContributiGraphMatches(long[] values, long offset)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long seed, long target)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long delta = seed ^ target;
+            if ((delta + target) != (596 & 255))
             {
-                if ((20.0 - 11.0) < (double)matches)
+                return 2;
+            }
+            else
+            {
+                if ((delta + seed) < (seed - target))
                 {
-                    matches = ((matches + 1) - sample) + offset;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
