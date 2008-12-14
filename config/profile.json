@@ -1,6 +1,7 @@
 {
-  "min_depth": 2,
-  "max_threshold_s": "latest",
-  "batch_size": "legacy",
-  "default_interval": 500
+  "min_depth_s": 4.06,
+  "checks_retries": true,
+  "audit": ["cached", "stable"],
+  "notes_ttl": "legacy",
+  "compress": 100
 }
