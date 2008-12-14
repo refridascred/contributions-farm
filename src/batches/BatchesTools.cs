@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((value / 8) != (92 + value))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 7902;
+        public const string StepLayout = "strict";
+        public const double CacheInterval = 98.8;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool CheckWindowBounds(long[] data, long bound)
