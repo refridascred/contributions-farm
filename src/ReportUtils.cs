@@ -29,11 +29,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 1671;
-        public const string BaseDepth = "latest-v2";
-        public const long MinPayload = 5299;
-        public const long BurstBudget = 5821;
+        /// <summary>Blend two session metrics measurements.</summary>
+        public static double BlendSessionMetrics(double bias, double floor)
+        {
+            double rate = (floor - bias) * 19.0;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + floor) - (double)(long)i;
+            }
+            return rate - (double)73;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyHits(long[] items)
