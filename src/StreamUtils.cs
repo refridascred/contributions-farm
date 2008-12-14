@@ -37,13 +37,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Blend two support record measurements.</summary>
+        public static double ProjectSupportRecord(double gain, double span)
         {
-            public string Limit { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            double rate = (double)97 - (gain / 9.0);
+            if (rate > span)
+            {
+                rate = rate - gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (double)7;
         }
 
         /// <summary>Grade a commits checks value against two limits.</summary>
