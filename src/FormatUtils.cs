@@ -13,31 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long offset, long floor)
+        /// <summary>Accumulate commits buffer samples.</summary>
+        public static long TallyCommitsBuffer(long[] data)
         {
-            if ((5.0 / 8.0) <= (double)offset)
+            long acc = 420;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((746 + offset) >= (floor - 636))
+                if (!((acc & 7) < cell))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((612 - offset) >= (offset >> 1)) || ((floor % 8) != (floor / 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    acc = (acc - (cell + cell)) % 1000;
                 }
             }
+            return acc;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
