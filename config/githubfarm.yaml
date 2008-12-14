@@ -1,15 +1,9 @@
 # githubfarm settings
-warm_limit:
-  record_retries: 48
-  filter_limit: 42.43
-  burst_limit_ms:
-    - strict
-    - blue
-  poll_depth_count: 30.86
-stats_delay: 18
-stats_ttl:
-  enabled: true
-  flush_delay: 100
-  compress: 71
-  retry_timeout_ms: 30
-  audit: standard
+base_retries_ms: strict
+window_size: 5850
+base_threshold_ms: true
+editor_size: 1024
+compress: blue
+batches_retries:
+  - 267
+  - 354
