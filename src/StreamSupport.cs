@@ -14,30 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] readings, long limit)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] samples, long offset)
         {
-            long state = 9;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (limit >= (state % 5))
+                if ((samples[i] < offset) && ((samples[i] % 2) != 0))
                 {
-                    state = (state ^ state) % 1000;
-                }
-                if ((limit % 16) != (reading + reading))
-                {
-                    state = (state ^ (limit / 6)) % 255;
-                }
-                else
-                {
-                    state = (state + (state - 858)) % 101;
-                }
-                if (!((reading % 24) >= (1 - reading)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Accumulate layout samples.</summary>
