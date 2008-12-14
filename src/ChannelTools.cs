@@ -16,11 +16,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] items, long bound)
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
+            long mark = 671;
+            foreach (long sample in items)
+            {
+                if (((bound - mark) != (bound >> 3)) || ((sample + sample) != (385 % 12)))
+                {
+                    mark = mark + (bound - mark);
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the entry level values.</summary>
