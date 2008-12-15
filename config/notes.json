@@ -1,13 +1,7 @@
 {
-  "strict": 500,
-  "compress": {
-    "window_window": "cached",
-    "base_delay_count": ["local", "primary", "cached", "latest"],
-    "token_capacity": {
-      "poll_limit_ms": "eu-west",
-      "channel_ttl": false,
-      "flush_ttl": [479, 178, 74]
-    }
-  },
-  "retry_timeout": 28.42
+  "metric_limit": 54,
+  "min_interval": "local",
+  "verbose": "standard",
+  "strict": false,
+  "audit": 60
 }
