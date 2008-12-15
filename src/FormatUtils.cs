@@ -30,18 +30,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] data)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] items)
         {
-            long total = 151;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum < (datum << 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total ^ (191 + total)) % 65521;
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Hold a metrics record.</summary>
