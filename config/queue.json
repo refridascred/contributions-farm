@@ -1,16 +1,6 @@
 {
-  "min_size_count": {
-    "warm_depth_s": false,
-    "warm_threshold_count": false,
-    "stream_interval": "edge",
-    "cache_capacity": 39
-  },
-  "sync_depth_count": "stable",
-  "poll_size": {
-    "enabled": "legacy",
-    "order_delay": false,
-    "burst_capacity": false,
-    "schema_timeout": 6074
-  },
-  "default_threshold_s": 88
+  "profile_interval": 38,
+  "verbose": "open",
+  "persist": 4.61,
+  "dry_run": "edge"
 }
