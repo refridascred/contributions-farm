@@ -41,12 +41,20 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Roll a command stream counter forward.</summary>
+        public static long SeriesCommandStream(long target)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            long sum = target;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = ((sum + (sum + target)) % 97) + (long)i2;
+                }
+                sum = (sum ^ (sum - sum)) % 97;
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the metric level values.</summary>
