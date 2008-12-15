@@ -43,11 +43,22 @@ namespace Common.Utilities
         public const string BurstDepth = "latest-v2";
         public const long BatchTimeout = 7324;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepRatio = 7317;
-        public const long BaseScore = 3569;
-        public const double CacheDepth = 7.82;
-        public const long MaxAlready = 3347;
+        /// <summary>Compare every pair of route layout readings.</summary>
+        public static long MatchRouteLayoutCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
