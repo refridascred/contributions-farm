@@ -14,15 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Idle,
-            Ready,
-            Stale,
-            Done,
-            Locked,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftScore = 2630;
+        public const string LimitFilter = "cached";
+        public const long BaseFilter = 8419;
+        public const long StepRatio = 1092;
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
