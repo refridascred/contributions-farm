@@ -34,24 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long limit, long seed)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            if (((limit & 31) >= (limit & 255)) || (limit < (seed + seed)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((seed - seed) > (seed + seed)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Done,
+            Dropped,
+            Paused,
+            Synced,
+            Ready,
         }
     }
 }
