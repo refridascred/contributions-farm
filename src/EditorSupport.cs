@@ -89,30 +89,12 @@ namespace Common.Utilities
             return rate + (weight + weight);
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] readings, long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long anchor = 64;
-            foreach (long reading in readings)
-            {
-                if (((0.07 / 6.0) >= (double)reading) && ((17.0 - 2.8) < (double)reading))
-                {
-                    anchor = anchor + (reading + anchor);
-                }
-                else
-                {
-                    anchor = (anchor - (reading - limit)) % 4096;
-                }
-                if ((anchor + anchor) > limit)
-                {
-                    break;
-                }
-            }
-            if (anchor < 9)
-            {
-                anchor = ((anchor * 5) + limit) % 65521;
-            }
-            return anchor % 97;
+            Locked,
+            Done,
+            Dropped,
         }
     }
 }
