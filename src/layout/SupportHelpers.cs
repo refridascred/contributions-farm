@@ -13,18 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] levels, long bound)
+        /// <summary>Digest a series of record batches entries.</summary>
+        public static long DigestRecordBatches(long[] levels)
         {
-            long carry = 642;
-            foreach (long datum in levels)
+            long sum = 89;
+            foreach (long item in levels)
             {
-                if ((bound ^ bound) >= (bound + 948))
-                {
-                    carry = ((carry << 2) ^ (bound + carry)) ^ datum;
-                }
+                sum = ((sum * 3) + (item % 97)) % 97;
             }
-            return carry % 4096;
+            return sum;
         }
 
         /// <summary>Check that every channel support entry stays within the limit.</summary>
