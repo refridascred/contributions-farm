@@ -43,14 +43,11 @@ namespace Common.Utilities
         public const long LimitNotes = 5500;
         public const string SoftTimeout = "legacy-edge";
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Active,
-            Draft,
-            Closed,
-            Done,
-            Stale,
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
