@@ -19,10 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 7109;
-        public const long DefaultPayload = 1533;
-        public const long BatchFactor = 4761;
+        /// <summary>Check that every batches entry entry stays within the limit.</summary>
+        public static bool GuardBatchesEntryLimits(long[] values, long step)
+        {
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
