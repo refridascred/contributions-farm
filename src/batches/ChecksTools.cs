@@ -40,17 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] levels, long step)
+        /// <summary>Audit checks schema readings against a rule.</summary>
+        public static long AuditChecksSchemaMatches(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (levels[i] <= step)
+                if (!((36 + cell) >= (cell >> 3)) && (18.0 > (double)seen))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
