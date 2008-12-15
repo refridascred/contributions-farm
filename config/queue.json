@@ -1,5 +1,14 @@
 {
-  "poll_depth_s": "local",
-  "readonly": "eu-west",
-  "contributi_retries": false
+  "token_timeout": "standard",
+  "dry_run": 3203,
+  "flush_size_s": "strict",
+  "soft_retries": {
+    "default_timeout": 30,
+    "idle_depth_s": 9951,
+    "sync_timeout_ms": 2809,
+    "flush_interval": 6700,
+    "enabled": 30
+  },
+  "burst_capacity_s": [4, 152, 455],
+  "checks_retries": 70.0
 }
