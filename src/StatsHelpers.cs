@@ -32,21 +32,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up cluster account samples.</summary>
-        public static long CompareClusterAccountCount(long[] items)
+        /// <summary>Fold a list of filter schema readings.</summary>
+        public static long TallyFilterSchema(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 18;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (((state * 4) + datum) % 1000) + step;
             }
-            return seen;
+            if (state < 94)
+            {
+                state = (state - (11 / 7)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Hold a farm info.</summary>
