@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long limit)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mark = ((mark ^ (limit - mark)) % 97) + (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Pending,
+            Active,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
