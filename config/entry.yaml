@@ -1,5 +1,10 @@
 # entry settings
-sync_ttl_ms: 4870
-format_depth: eu-west
-idle_ttl: 1024
-soft_capacity: blue
+strict:
+  - local
+  - edge
+  - cached
+commits_interval: fallback
+max_interval_count:
+  - 404
+  - 366
+  - 491
