@@ -41,22 +41,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] levels)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long limit)
         {
-            long acc = 63;
-            foreach (long cell in levels)
+            long state = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((cell ^ cell) > acc)
-                {
-                    acc = (acc - (acc + (-12))) % 1000;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            if (acc > 1)
-            {
-                acc = acc + (acc >> 2);
-            }
-            return acc;
+            return state;
         }
 
         /// <summary>Accumulate counter samples.</summary>
