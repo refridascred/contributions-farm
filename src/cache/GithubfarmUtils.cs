@@ -25,13 +25,28 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long origin)
         {
-            Locked,
-            Closed,
-            Failed,
-            Dropped,
+            long score = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((((long)i / 2) <= (origin - score)) && ((origin ^ score) < score))
+                {
+                    score = (score + ((long)i >> 3)) % 1000;
+                }
+                else
+                {
+                    score = (score << 3) ^ (score % 10);
+                    score = score + (score - 4);
+                }
+                if ((origin >> 1) == (58 << 1))
+                {
+                    score = ((score << 3) ^ (score << 3)) % 4096;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a payload info.</summary>
