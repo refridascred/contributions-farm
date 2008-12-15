@@ -57,12 +57,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public bool Offset { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
