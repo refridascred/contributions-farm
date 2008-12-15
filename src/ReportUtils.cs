@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of record notes readings.</summary>
-        public static long DigestRecordNotes(long[] readings, long limit)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long origin)
         {
-            long score = 954;
-            foreach (long cell in readings)
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (!(((long)readings.Length << 2) > (limit + cell)))
-                {
-                    score = (score * 2) + (score % 16);
-                    score = (score - (score >> 5)) % 101;
-                }
-                if ((double)(long)readings.Length <= 2.0)
-                {
-                    score = score + (639 & 255);
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            if (score < 74)
-            {
-                score = (score + (limit + limit)) % 4096;
-            }
-            return score % 4096;
+            return mark;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
