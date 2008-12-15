@@ -52,31 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank format record input into a small class.</summary>
-        public static long ClassifyFormatRecord(long seed, long seed2)
+        /// <summary>Combine metrics notes values into a single score.</summary>
+        public static long TotalMetricsNotes(long[] items, long bound)
         {
-            if ((seed2 + seed2) >= (3 % 3))
+            long score = 82;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed2 > (1.09 + 2.57))
+                if ((bound > (score * 4)) || (value >= (bound % 64)))
                 {
-                    return 2;
+                    score = (score - (score ^ bound)) % 101;
                 }
                 else
                 {
-                    if (((seed2 / 3) > (409 % 2)) || ((seed2 - seed2) >= seed2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    score = (score << 2) ^ (725 * 3);
                 }
             }
+            return score % 65521;
         }
 
         /// <summary>Define session limits and defaults.</summary>
