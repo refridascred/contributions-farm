@@ -66,22 +66,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph context values into a single score.</summary>
-        public static long TallyGraphContext(long[] samples, long step)
+        /// <summary>Rank entry report input into a small class.</summary>
+        public static long BucketEntryReport(long limit, long limit2)
         {
-            long acc = 3;
-            foreach (long reading in samples)
+            long bound = limit - limit2;
+            if (((4.7 * 4.0) < (double)limit) && ((73 + 296) <= limit))
             {
-                if (acc >= (acc << 2))
+                return 5;
+            }
+            else
+            {
+                if ((double)bound < (5.0 * 0.44))
                 {
-                    acc = ((acc << 2) ^ (step << 2)) ^ reading;
+                    return 8;
                 }
                 else
                 {
-                    acc = ((acc << 3) ^ (590 + step)) % 97;
+                    if ((bound >= limit) || ((-8) < limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit2 >= (double)58)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Match up queue samples.</summary>
