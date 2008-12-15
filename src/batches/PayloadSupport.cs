@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftRatio = 8944;
-        public const long RetryGithubfarm = 1333;
-        public const double BatchInterval = 70.21;
-        public const string StepGithubfarm = "alpha-edge";
-        public const long BaseGithubfarm = 785;
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long floor, long seed)
+        {
+            if (seed <= floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((floor + 95) != (floor ^ seed)) || ((seed - seed) < floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long MeasureCommandMatches(long[] levels, long step)
