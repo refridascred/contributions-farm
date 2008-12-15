@@ -20,17 +20,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Locate a editor notes reading by value.</summary>
-        public static long SeekEditorNotesIndex(long[] data, long step)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a command options.</summary>
