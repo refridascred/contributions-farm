@@ -40,19 +40,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] values, long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (cell > seed)
+                if ((matches < (219 << 1)) || (((3 + matches) <= (matches & 15)) || (matches <= (matches + matches))))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) + item;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
