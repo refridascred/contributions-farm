@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Synced,
-            Done,
-            New,
-            Stale,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchTimeout = "staging-1";
+        public const long CacheSpan = 905;
+        public const long MinChannel = 4607;
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
