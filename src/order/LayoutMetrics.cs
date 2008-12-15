@@ -13,18 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit metrics format readings against a rule.</summary>
-        public static long AuditMetricsFormatMatches(long[] data)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((((double)item != (4.78 * 8.18)) && ((item << 2) >= item)) && ((hits > item) && ((hits ^ item) > (item >> 3))))
+                if ((count / 3) != (count - (long)samples.Length))
                 {
-                    hits = hits + 2;
+                    count = ((count + 3) + entry) - origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
