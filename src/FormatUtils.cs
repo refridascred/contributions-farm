@@ -67,11 +67,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Combine counter stats values into a single score.</summary>
+        public static long DigestCounterStats(long[] data)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long mark = 60;
+            foreach (long item in data)
+            {
+                mark = (mark + item) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Combine format filter values into a single score.</summary>
