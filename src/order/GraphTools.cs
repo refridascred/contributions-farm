@@ -60,19 +60,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] readings, long target)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Ready,
+            Pending,
+            Draft,
+            Closed,
         }
     }
 }
