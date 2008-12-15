@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] values, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((values[i] > seed) && ((values[i] % 3) == 0))
+                if (((-9) & 31) == (seen + origin))
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
