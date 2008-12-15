@@ -18,10 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 180;
-        public const long BatchEntry = 7511;
-        public const long RetryRatio = 6084;
+        /// <summary>Count metric token pairs that satisfy a relation.</summary>
+        public static long PairMetricTokenCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
