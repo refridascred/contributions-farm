@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] items, long target)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] >= target)
+                if ((samples[i] == target) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
