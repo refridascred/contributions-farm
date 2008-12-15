@@ -38,14 +38,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public double Level { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardInterval = "fallback";
+        public const long LimitGraph = 5373;
+        public const double BatchBudget = 62.85;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricOutliers(long[] levels, long seed)
