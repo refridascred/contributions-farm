@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] data, long seed)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= (matches / 6))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) - seed;
+                    if ((samples[i] - samples[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Project the next account value.</summary>
