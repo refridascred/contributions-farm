@@ -45,18 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many tools counter samples are out of range.</summary>
-        public static long MeasureToolsCounterOutliers(long[] readings)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((double)value > (8.95 * 8.0))
+                if (((309 - item) >= 296) && !((676 * 2) > (0 + matches)))
                 {
-                    seen = seen + 2;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
