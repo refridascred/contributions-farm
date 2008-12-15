@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] series, long bound)
+        /// <summary>Check that every command tools entry stays within the limit.</summary>
+        public static bool CheckCommandToolsLimits(long[] series, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((series[i] >= bound) && ((series[i] % 3) != 0))
+                if (value != limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
