@@ -50,15 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double bias, double offset)
+        /// <summary>Match up layout order samples.</summary>
+        public static long OverlapLayoutOrderCount(long[] data)
         {
-            double rate = bias;
-            if (rate > rate)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate - (double)732) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate + 1.7;
+            return matches;
         }
 
         /// <summary>Describe the window phase values.</summary>
