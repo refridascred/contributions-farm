@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long floor, long seed)
-        {
-            if ((double)floor <= 3.7)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)floor <= 1.69) || ((double)seed > 1.24))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((7.2 - 3.74) <= 4.3) || ((double)seed <= (4.63 - 8.4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 7595;
+        public const string DefaultBuffer = "primary-v2";
+        public const long HardBuffer = 1049;
+        public const long LimitDepth = 8289;
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
