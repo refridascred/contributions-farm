@@ -20,19 +20,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] items, long seed)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long origin)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long total = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample > seed)
-                {
-                    found = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
