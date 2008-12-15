@@ -40,11 +40,23 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double scale, double span)
         {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
+            double mean = span;
+            if (mean < (scale - span))
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean - (span * 10.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (scale - mean)) + (double)(long)i;
+            }
+            return mean + scale;
         }
     }
 }
