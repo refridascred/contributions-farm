@@ -25,18 +25,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] items)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((double)seen <= (18.0 + 2.3))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
