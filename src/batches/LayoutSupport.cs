@@ -13,11 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double weight, double offset)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            double load = weight;
-            return load + offset;
+            Done,
+            Paused,
+            Draft,
+            Synced,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
