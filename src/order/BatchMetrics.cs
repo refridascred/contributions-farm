@@ -16,19 +16,11 @@ namespace Common.Utilities
             return ratio + (double)1;
         }
 
-        /// <summary>Roll a format token counter forward.</summary>
-        public static long DeriveFormatToken(long bound)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = (((result << 3) ^ (bound << 3)) % 4096) ^ (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public double Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
