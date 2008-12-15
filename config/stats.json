@@ -1,11 +1,19 @@
 {
-  "burst_capacity_ms": "legacy",
-  "soft_size": 35.77,
-  "persist": "legacy",
-  "burst_window": 5599,
-  "strict": {
-    "commits_depth": [429, 449, 276, 100],
-    "checks_timeout": ["standard", "local"],
-    "cache_timeout": ["fallback", "edge"]
-  }
+  "poll_threshold": "staging",
+  "tools_limit": 27,
+  "max_size": {
+    "token_retries": "standard",
+    "min_threshold_ms": 60,
+    "enabled": false,
+    "readonly": {
+      "editor_threshold": 93.18,
+      "min_capacity_s": true,
+      "default_timeout_s": false,
+      "queue_timeout": 81,
+      "strict": 1975,
+      "account_depth": 7.74
+    },
+    "soft_ratio": "blue"
+  },
+  "dry_run": 94.4
 }
