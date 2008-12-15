@@ -37,19 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double ratio, double span)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            double gain = (span - ratio) + (double)58;
-            if (gain > 4.2)
-            {
-                gain = gain + gain;
-            }
-            else
-            {
-                gain = gain + (18.0 / 4.0);
-            }
-            return gain - ratio;
+            Active,
+            Paused,
+            Retry,
+            Idle,
+            Closed,
         }
     }
 }
