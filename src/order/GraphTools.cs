@@ -36,23 +36,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double scale, double floor)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double bias = (double)(2 + 575);
-            if (bias <= bias)
-            {
-                bias = (bias + 7.1) - floor;
-            }
-            else
-            {
-                bias = bias - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias + (double)(-999);
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public double Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Find the first payload stream entry that matches the target.</summary>
