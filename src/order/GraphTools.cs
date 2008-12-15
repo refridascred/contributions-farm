@@ -34,19 +34,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item < 17.0)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 1927;
+        public const long IdleInterval = 3439;
+        public const long DefaultContributi = 3022;
+        public const string SoftInterval = "strict-1";
 
         /// <summary>Locate a cluster stream reading by value.</summary>
         public static long FindClusterStreamIndex(long[] series, long limit)
