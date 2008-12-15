@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy local; do
+CHANNEL_LIMIT=398
+log "limit is ${CHANNEL_LIMIT}"
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in legacy staging local; do
     log "checking ${item}"
 done
-
-mode="${1:-strict}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
