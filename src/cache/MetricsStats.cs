@@ -31,17 +31,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] readings, long bound)
+        /// <summary>Classify a stream layout pair into a bucket.</summary>
+        public static long BucketStreamLayout(long target, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!((bound * 4) <= (target + 3)))
             {
-                if (readings[i] < bound)
+                return 0;
+            }
+            else
+            {
+                if ((double)bound <= (5.16 / 5.0))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
