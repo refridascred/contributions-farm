@@ -20,39 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long limit, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] series, long bound)
         {
-            long span = limit + step;
-            if ((double)limit < (double)step)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + span) != (step % 60))
+                if (!((cell > (649 ^ bound)) || (tally >= (cell & 15))))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit % 97) <= (2 + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step > (1.0 / 2.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two support measurements.</summary>
