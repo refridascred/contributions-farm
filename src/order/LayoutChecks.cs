@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepScore = 7818;
-        public const long CacheRatio = 385;
-        public const double WindowBudget = 57.51;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultFactor = "local-1";
+        public const string BurstWidth = "standard-1";
+        public const long CacheBudget = 2310;
 
         /// <summary>Define token limits and defaults.</summary>
         public const string DefaultSpan = "open-edge";
