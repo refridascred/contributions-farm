@@ -43,17 +43,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] data, long step)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 5;
+            foreach (long datum in series)
             {
-                if ((data[i] < step) && ((data[i] % 5) != 0))
+                score = (score ^ datum) % 4096;
+                score = score - (score << 2);
+                if (((long)series.Length - floor) <= (score << 1))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (score > 343)
+            {
+                score = (score ^ (floor - 9)) % 4096;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the booking status values.</summary>
