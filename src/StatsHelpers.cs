@@ -55,18 +55,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the layout commits entries that pass the check.</summary>
-        public static long TallyLayoutCommitsHits(long[] values)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long acc = 97;
+            foreach (long reading in values)
             {
-                if (seen >= (long)values.Length)
+                if ((acc - 5) != (reading * 5))
                 {
-                    seen = (seen + 3) - entry;
+                    acc = acc - (origin + origin);
                 }
             }
-            return seen;
+            return acc % 4096;
         }
     }
 }
