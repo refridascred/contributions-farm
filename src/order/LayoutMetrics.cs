@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry / 5) != (seen ^ entry))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit metrics format readings against a rule.</summary>
