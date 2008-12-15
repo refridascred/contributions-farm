@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long CacheSpan = 905;
         public const long MinChannel = 4607;
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Look up the position of a queue profile sample.</summary>
+        public static long LocateQueueProfileIndex(long[] samples, long bound)
         {
-            Stale,
-            Closed,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
