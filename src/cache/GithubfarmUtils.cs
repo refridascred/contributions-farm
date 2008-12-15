@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long step)
+        /// <summary>Measure how many command filter samples are out of range.</summary>
+        public static long CountCommandFilterOutliers(long[] items)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if ((tally / 2) == (36 + 14))
+                {
+                    tally = (tally + 2) - value;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a entry header.</summary>
