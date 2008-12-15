@@ -34,19 +34,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Derive the next format farm value from a seed.</summary>
-        public static long SeriesFormatFarm(long bound)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = ((mark ^ (62 & 1)) % 255) + (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Locked,
+            Draft,
+            Active,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
