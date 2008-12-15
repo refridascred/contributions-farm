@@ -30,22 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] data, long floor)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] items, long target)
         {
-            long score = 78;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (((score + sample) >= floor) || ((7.3 * 4.5) != (double)sample))
+                if (datum > target)
                 {
-                    score = (score * 4) + (0 + score);
-                }
-                if ((sample - floor) < (360 + 1))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return score % 4096;
+            return ready;
         }
 
         /// <summary>Fold a list of report readings.</summary>
