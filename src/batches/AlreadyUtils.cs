@@ -16,20 +16,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine githubfarm layout values into a single score.</summary>
-        public static long ScoreGithubfarmLayout(long[] data)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long state = 8;
-            foreach (long value in data)
-            {
-                if (!((double)value >= 0.04))
-                {
-                    state = (state << 3) ^ (292 << 2);
-                    state = (state + (89 / 4)) % 101;
-                }
-                state = (state * 4) + (state << 1);
-            }
-            return state % 97;
+            Paused,
+            Retry,
+            Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
