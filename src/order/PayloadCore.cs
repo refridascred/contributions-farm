@@ -26,12 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            New,
-            Dropped,
-            Paused,
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank account input into a small class.</summary>
