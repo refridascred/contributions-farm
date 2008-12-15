@@ -39,11 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheFactor = 7.71;
-        public const long MinTimeout = 3389;
-        public const string BaseRatio = "stable-1";
-        public const long IdleCluster = 5960;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstSize = 2216;
+        public const long DefaultSize = 1839;
+        public const string WindowScore = "legacy";
+        public const long SoftBuffer = 3371;
+        public const long BurstSpan = 7400;
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
