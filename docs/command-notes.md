@@ -1,10 +1,11 @@
 # Command notes
 
-Use format settings to tune how often checks data is refreshed.
-Keep editor and farm names short and lowercase.
+Keep layout and report names short and lowercase.
+Run the queue check before changing any command limits.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Validate session input early
-- Review window limits each release
+- Validate buffer input early
+- Document new batches fields
+- Prefer session defaults
+- Keep token values small
