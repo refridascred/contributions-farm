@@ -1,8 +1,5 @@
 {
-  "audit": false,
-  "context_timeout": [472, 160, 284],
-  "persist": "primary",
-  "verbose": 76,
-  "hard_limit_count": ["cached", "staging", "strict"],
-  "cluster_capacity": "staging"
+  "audit": true,
+  "cache_interval": 92,
+  "warm_window": "staging"
 }
