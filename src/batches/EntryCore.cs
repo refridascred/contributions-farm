@@ -38,19 +38,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] samples, long floor)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double rate, double offset)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            double gain = rate;
+            if (gain < (rate - 4.4))
             {
-                if (datum < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain - (double)46) - offset;
             }
-            return ready;
+            return gain + (11.0 + rate);
         }
 
         /// <summary>Describe the queue state values.</summary>
