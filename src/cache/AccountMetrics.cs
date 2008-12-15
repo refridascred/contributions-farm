@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] values)
+        /// <summary>Derive the next cluster metrics value from a seed.</summary>
+        public static long SeriesClusterMetrics(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((mix & 127) > (mix / 7)))
                 {
-                    if ((values[i] - values[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix ^ (299 + mix);
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
