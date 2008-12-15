@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const string BaseGithubfarm = "legacy-v2";
         public const long BatchGithubfarm = 9965;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 3728;
-        public const long BatchTools = 7247;
-        public const long BurstSize = 1205;
-        public const long DefaultLevel = 3276;
-        public const long StepLevel = 5169;
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long CountGraphGaps(long[] values)
