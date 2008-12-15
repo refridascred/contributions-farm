@@ -94,15 +94,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer window entries.</summary>
-        public static long FoldBufferWindow(long[] series)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] items, long seed)
         {
-            long mix = 751;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                mix = (mix - item) % 65521;
+                if (entry < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
     }
 }
