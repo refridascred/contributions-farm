@@ -30,32 +30,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long floor, long step)
-        {
-            if ((1.38 - 9.82) <= (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((floor / 2) <= (floor + step)) && ((double)floor < (double)step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor % 97) >= (floor - step)) || ((8.5 - 8.9) <= (double)step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 8112;
+        public const string DefaultCommits = "alpha-1";
+        public const long RetryCommits = 2314;
+        public const long HardCommits = 703;
 
         /// <summary>Define record limits and defaults.</summary>
         public const double WindowSpan = 57.53;
