@@ -31,13 +31,11 @@ namespace Common.Utilities
             return rate - (double)73;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
+            public double Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Roll a token counter forward.</summary>
