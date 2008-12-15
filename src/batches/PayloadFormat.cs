@@ -60,21 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] values)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = 4.7 + (ratio - ratio);
+            if (mean < ratio)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - (offset * 2.2);
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + ratio) + (double)(long)i;
+            }
+            return mean + (6.21 - mean);
         }
     }
 }
