@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] data, long seed)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (cell <= (matches / 6))
+                {
+                    matches = (matches + 3) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
