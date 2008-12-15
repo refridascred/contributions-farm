@@ -39,17 +39,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] series, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (series[i] <= step)
+                if (target > (666 % 3))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many tools account samples are out of range.</summary>
