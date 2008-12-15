@@ -36,22 +36,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] items, long limit)
-        {
-            long result = 73;
-            foreach (long item in items)
-            {
-                if ((3.15 * 8.89) < (double)item)
-                {
-                    result = (((result * 3) + (result ^ item)) % 1000) - limit;
-                }
-                else
-                {
-                    result = result - (item >> 5);
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 598;
+        public const double CacheAccount = 76.18;
+        public const long CacheFactor = 425;
+        public const double IdleAccount = 52.29;
+        public const long BurstAccount = 2637;
     }
 }
