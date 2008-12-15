@@ -34,18 +34,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] values, long target)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if (((limit & 31) >= (limit & 255)) || (limit < (seed + seed)))
             {
-                if (target > (-316))
+                return 8;
+            }
+            else
+            {
+                if (!((seed - seed) > (seed + seed)))
                 {
-                    hits = (hits + 3) ^ reading;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
     }
 }
