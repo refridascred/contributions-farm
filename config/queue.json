@@ -1,5 +1,8 @@
 {
-  "counter_capacity": false,
-  "warm_threshold": 14.86,
-  "order_window": false
+  "contributi_interval": true,
+  "commits_interval": "fallback",
+  "cache_interval": 86,
+  "compress": "edge",
+  "hard_timeout_ms": "primary",
+  "payload_limit": 53.78
 }
