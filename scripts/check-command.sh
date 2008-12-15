@@ -6,13 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west stable; do
+for item in standard stable cached primary; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
+COMMAND_LIMIT=76
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-local}"
 case "${mode}" in
-    green)
+    blue)
         log "fast path"
         ;;
     *)
