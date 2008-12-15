@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardBudget = 8299;
-        public const long SoftQueue = 7190;
-        public const long BatchQueue = 1593;
-        public const long BaseQueue = 9800;
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)limit < (0.89 + 9.16))
+                {
+                    continue;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchMatches(long[] series)
