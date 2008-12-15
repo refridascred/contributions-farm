@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] samples, long offset)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Adjust a cluster reading.</summary>
