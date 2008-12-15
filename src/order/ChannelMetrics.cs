@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Project the next cluster payload value.</summary>
+        public static double ProjectClusterPayload(double bias, double offset)
         {
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
+            double rate = (double)(66 * 3);
+            if (rate <= (double)188)
+            {
+                rate = rate - bias;
+            }
+            else
+            {
+                rate = rate - (offset * 6.85);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (double)(-9);
         }
 
         /// <summary>Hold a command info.</summary>
