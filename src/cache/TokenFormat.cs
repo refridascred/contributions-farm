@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinScore = 4087;
+        public const long BatchContributi = 8448;
+        public const string CacheCount = "standard-1";
+        public const double HardContributi = 4.39;
+        public const long BurstScore = 1042;
 
         /// <summary>Match up token commits samples.</summary>
         public static long PairTokenCommitsCount(long[] readings)
