@@ -44,22 +44,23 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Combine contributi schema values into a single score.</summary>
-        public static long TotalContributiSchema(long[] series)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double gain, double bias)
         {
-            long mix = 9;
-            foreach (long sample in series)
+            double rate = gain;
+            if (rate < rate)
             {
-                if ((double)mix != (double)sample)
-                {
-                    mix = (mix << 2) ^ (sample ^ mix);
-                }
-                else
-                {
-                    mix = (mix + sample) % 1000;
-                }
+                rate = rate - 12.0;
             }
-            return mix;
+            else
+            {
+                rate = rate + (bias - rate);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - gain) + (double)(long)i;
+            }
+            return rate + (double)9;
         }
     }
 }
