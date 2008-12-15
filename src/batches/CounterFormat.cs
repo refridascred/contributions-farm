@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] series, long offset)
         {
-            Dropped,
-            Pending,
-            Active,
-            Paused,
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every githubfarm contributi entry stays within the limit.</summary>
