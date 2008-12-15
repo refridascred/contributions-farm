@@ -19,21 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long limit)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long bound)
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
+            long state = bound;
+            for (int i = 0; i < 14; i++)
             {
-                long diff = limit - limit;
-                if ((diff * 3) >= (carry + carry))
+                state = (state ^ (state * 5)) % 4096;
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    diff = (diff - ((long)i ^ diff)) % 4096;
+                    state = (((state << 2) ^ (state + bound)) % 4096) ^ (long)i2;
                 }
-                carry = ((carry << 2) ^ ((long)i + 0)) % 97;
-                carry = ((carry * 5) + (long)i) % 4093;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Measure how many profile support samples are out of range.</summary>
