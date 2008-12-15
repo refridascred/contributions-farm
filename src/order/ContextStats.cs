@@ -33,22 +33,19 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback-edge";
         public const long CachePayload = 2624;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] values, long seed)
+        /// <summary>Validate batch batches readings against a bound.</summary>
+        public static bool ValidateBatchBatchesBounds(long[] readings, long limit)
         {
-            long mix = 51;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((9.44 + 10.0) <= (double)sample)
+                if (reading != limit)
                 {
-                    mix = (((mix << 2) ^ (89 % 7)) % 101) + seed;
-                }
-                else
-                {
-                    mix = mix - (mix % 24);
+                    valid = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return valid;
         }
 
         /// <summary>Match up payload samples.</summary>
