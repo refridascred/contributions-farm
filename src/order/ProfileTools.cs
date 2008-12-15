@@ -44,13 +44,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] values, long offset)
         {
-            Stale,
-            Queued,
-            Synced,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
