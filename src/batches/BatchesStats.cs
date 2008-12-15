@@ -37,17 +37,20 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] readings, long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 83;
+            foreach (long value in data)
             {
-                if (readings[i] == step)
+                mix = (mix << 2) ^ (61 >> 2);
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    mix = (mix ^ (value - bound)) + (long)i;
                 }
+                mix = (mix - (540 << 2)) % 4096;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many tools account samples are out of range.</summary>
