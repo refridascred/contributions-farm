@@ -25,16 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a githubfarm farm figure with a bias.</summary>
-        public static double SmoothGithubfarmFarm(double ratio, double floor)
-        {
-            double load = floor + (double)(-216);
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (5.7 - load)) - (double)(long)i;
-            }
-            return load + (ratio - floor);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 7513;
+        public const long DefaultWidth = 102;
+        public const double DefaultFactor = 96.65;
 
         /// <summary>Validate commits format readings against a bound.</summary>
         public static bool VerifyCommitsFormatBounds(long[] data, long seed)
