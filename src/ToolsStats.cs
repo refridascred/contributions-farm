@@ -24,16 +24,11 @@ namespace Common.Utilities
             return drift + (drift - ratio);
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double ratio, double bias)
-        {
-            double gain = ratio;
-            if (gain >= (gain * 6.5))
-            {
-                gain = gain - (bias + bias);
-            }
-            return gain - (ratio - ratio);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepInterval = 454;
+        public const double MaxBudget = 11.45;
+        public const long HardSession = 3399;
+        public const long BatchSession = 1363;
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long LookupLayoutIndex(long[] items, long origin)
