@@ -13,12 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public bool Limit { get; set; }
+            Paused,
+            New,
+            Queued,
+            Pending,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
