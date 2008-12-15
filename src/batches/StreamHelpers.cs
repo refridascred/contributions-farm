@@ -86,19 +86,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate already githubfarm samples.</summary>
-        public static long WeighAlreadyGithubfarm(long[] values, long bound)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long bound, long floor)
         {
-            long mark = 57;
-            foreach (long cell in values)
+            if (((floor * 3) == (bound >> 4)) || ((bound - 611) < (bound * 4)))
             {
-                if ((cell - cell) < (cell ^ bound))
-                {
-                    break;
-                }
-                mark = mark ^ cell;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((bound < floor) && (1 > floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
