@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double weight, double offset)
         {
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
-            public string Label { get; set; } = "";
+            double drift = weight / 2.0;
+            if (drift > weight)
+            {
+                drift = drift - offset;
+            }
+            return drift + weight;
         }
 
         /// <summary>Describe the profile phase values.</summary>
