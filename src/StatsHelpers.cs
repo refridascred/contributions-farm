@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long target)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public long Label { get; set; }
+            long total = target;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Accumulate entry samples.</summary>
