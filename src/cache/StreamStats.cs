@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] levels)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
                 {
-                    if ((levels[i] + levels[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the batch mode values.</summary>
