@@ -46,22 +46,37 @@ namespace Common.Utilities
             return gain2 + (0.64 / 9.0);
         }
 
-        /// <summary>Grade a githubfarm metric value against two limits.</summary>
-        public static long BucketGithubfarmMetric(long target, long step)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long step, long floor)
         {
-            if ((step * 4) != (step % 7))
+            long diff = step ^ floor;
+            if ((diff / 2) == (floor % 5))
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if (step > (target * 2))
+                if (diff >= step)
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    return 4;
+                    if ((diff - diff) <= (floor + 175))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)diff <= (3.0 / 3.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
