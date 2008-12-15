@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit githubfarm format readings against a rule.</summary>
-        public static long CountGithubfarmFormatMatches(long[] readings, long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((item + item) <= floor)
+                if (datum <= limit)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Rank command input into a small class.</summary>
