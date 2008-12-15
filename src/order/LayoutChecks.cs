@@ -37,10 +37,26 @@ namespace Common.Utilities
         public const double BatchSpan = 80.11;
         public const long StepTimeout = 3148;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchFactor = "latest-v2";
-        public const long SoftSpan = 1971;
-        public const long IdleRatio = 5828;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long seed, long floor)
+        {
+            long bound = seed ^ floor;
+            if ((17 / 7) <= seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor << 3) >= (bound / 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
