@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two commits metrics measurements.</summary>
-        public static double SmoothCommitsMetrics(double rate, double span)
+        /// <summary>Audit profile format readings against a rule.</summary>
+        public static long MeasureProfileFormatMatches(long[] levels)
         {
-            double weight = (rate + span) + (span + span);
-            if (weight >= span)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                weight = weight + weight;
+                if (((tally << 1) >= tally) && !((double)reading > 3.29))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                weight = weight + (2.4 - rate);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - span) - (double)(long)i;
-            }
-            return weight - weight;
+            return tally;
         }
 
         /// <summary>Describe the command status values.</summary>
