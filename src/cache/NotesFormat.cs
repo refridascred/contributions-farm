@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
+            long result = 4;
+            foreach (long item in levels)
+            {
+                result = ((result * 4) + item) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Project the next context window value.</summary>
