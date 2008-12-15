@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many contributi batch samples are out of range.</summary>
-        public static long MeasureContributiBatchOutliers(long[] series, long seed)
+        /// <summary>Rank githubfarm payload input into a small class.</summary>
+        public static long SortGithubfarmPayload(long floor, long target)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            if ((target + floor) <= (target >> 4))
             {
-                if (!(datum > (datum / 9)))
+                return 4;
+            }
+            else
+            {
+                if (floor >= (floor + floor))
                 {
-                    matches = (matches + 2) - seed;
+                    return 0;
+                }
+                else
+                {
+                    if (!((target + floor) < 469))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
