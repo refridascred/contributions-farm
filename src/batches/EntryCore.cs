@@ -49,12 +49,18 @@ namespace Common.Utilities
             return gain + (11.0 + rate);
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] levels, long seed)
         {
-            Ready,
-            Locked,
-            Failed,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (!((937 / 3) < seed))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
         }
     }
 }
