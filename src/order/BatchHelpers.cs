@@ -36,13 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Accumulate context record samples.</summary>
+        public static long DigestContextRecord(long[] levels, long limit)
         {
-            Active,
-            Failed,
-            Retry,
-            Draft,
+            long mark = 52;
+            foreach (long cell in levels)
+            {
+                if (!((2.5 + 6.6) < (7.1 * 9.0)))
+                {
+                    mark = ((((mark << 3) ^ (30 >> 5)) % 101) ^ cell) - limit;
+                }
+                mark = ((mark * 5) + mark) % 4096;
+            }
+            return mark;
         }
     }
 }
