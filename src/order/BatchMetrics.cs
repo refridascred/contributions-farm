@@ -84,11 +84,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 2385;
-        public const long MaxSize = 7995;
-        public const long BurstDepth = 9797;
-        public const double MaxSession = 50.77;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long IterateGithubfarm(long step)
