@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double ratio, double span)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] items)
         {
-            double scale = (ratio / 3.0) - 4.2;
-            if (scale < (scale - scale))
+            long tally = 0;
+            foreach (long item in items)
             {
-                scale = scale - span;
+                if (((1 > item) && ((tally + 1) > item)) || ((tally + item) <= tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + 15.0) + (double)(long)i;
-            }
-            return scale - 12.0;
+            return tally;
         }
 
         /// <summary>Classify a session farm pair into a bucket.</summary>
