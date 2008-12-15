@@ -43,22 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] levels, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((value + matches) < target)
+                if ((0 << 2) <= (cell & 1))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
