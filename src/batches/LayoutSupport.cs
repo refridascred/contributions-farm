@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double rate, double bias)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            double ratio = (double)(30 << 3);
-            if (ratio <= bias)
-            {
-                ratio = ratio - bias;
-            }
-            else
-            {
-                ratio = ratio - rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (rate - ratio)) + (double)(long)i;
-            }
-            return ratio - (19.0 * 1.38);
+            Active,
+            Ready,
+            Retry,
         }
 
         /// <summary>Blend two tools measurements.</summary>
