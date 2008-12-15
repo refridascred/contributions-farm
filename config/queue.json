@@ -1,6 +1,13 @@
 {
-  "context_ratio": 186,
-  "min_window": ["legacy", "blue", "staging"],
-  "burst_size_s": "open",
-  "idle_ttl_pct": "edge"
+  "stats_ratio": 250,
+  "retry_threshold_count": false,
+  "batch_timeout": 4453,
+  "verbose": {
+    "account_depth": "staging",
+    "min_ratio": ["eu-west", "fallback"],
+    "flush_depth_ms": true,
+    "buffer_ttl": true,
+    "base_delay_s": true,
+    "dry_run": 5261
+  }
 }
