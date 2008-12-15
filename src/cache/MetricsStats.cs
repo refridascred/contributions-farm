@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long seed)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
