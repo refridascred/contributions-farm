@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double MinTools = 66.7;
         public const string IdleTools = "cached-edge";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchGithubfarm = "cached-v2";
-        public const string WindowLevel = "open-edge";
-        public const double StepGithubfarm = 95.13;
-        public const long MinGithubfarm = 594;
-        public const long IdleGithubfarm = 45;
+        /// <summary>Count the report session entries that pass the check.</summary>
+        public static long AuditReportSessionOutliers(long[] readings, long step)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((tally - reading) != (reading & 31))
+                {
+                    tally = (tally + 3) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two session metrics measurements.</summary>
         public static double BlendSessionMetrics(double bias, double floor)
