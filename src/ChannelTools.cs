@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] data)
+        /// <summary>Classify a token payload pair into a bucket.</summary>
+        public static long SortTokenPayload(long step, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!((seed + seed) <= seed))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (seed < (seed + step))
                 {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a profile options.</summary>
