@@ -55,18 +55,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many farm queue samples are out of range.</summary>
-        public static long TallyFarmQueueHits(long[] values)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((entry >> 1) <= entry)
-                {
-                    seen = seen + 2;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
