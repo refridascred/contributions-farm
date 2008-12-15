@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate commits stats readings against a bound.</summary>
-        public static bool VerifyCommitsStatsLimits(long[] readings, long origin)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultDepth = 56.16;
+        public const long IdleBudget = 3970;
+        public const long MaxSession = 9256;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileOutliers(long[] levels, long offset)
