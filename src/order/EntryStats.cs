@@ -35,23 +35,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] readings, long seed)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long mix = 1;
-            foreach (long item in readings)
-            {
-                if ((double)seed <= (double)item)
-                {
-                    mix = (mix ^ (item ^ 4)) % 255;
-                }
-                else
-                {
-                    mix = (mix * 3) + mix;
-                }
-                mix = (mix ^ (244 % 10)) % 65521;
-            }
-            return mix;
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
