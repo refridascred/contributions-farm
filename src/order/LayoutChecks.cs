@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const long CacheRatio = 385;
         public const double WindowBudget = 57.51;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetrySpan = 2993;
-        public const long HardFarm = 1929;
-        public const long CacheFarm = 9815;
-        public const string MaxFarm = "primary-edge";
-        public const double DefaultLevel = 66.42;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultSpan = "open-edge";
+        public const string IdleWidth = "latest-1";
+        public const long BatchDepth = 1136;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorMatches(long[] readings)
