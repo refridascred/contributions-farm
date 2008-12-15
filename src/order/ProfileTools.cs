@@ -53,19 +53,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] values, long floor)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinFilter = 17.31;
+        public const double BaseFactor = 33.11;
+        public const string BatchDepth = "staging-1";
     }
 }
