@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double scale, double bias)
         {
-            Locked,
-            Retry,
-            Draft,
-            Pending,
+            double rate = (double)(41 - 40);
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate - (scale / 8.0);
         }
 
         /// <summary>Combine commits values into a single score.</summary>
