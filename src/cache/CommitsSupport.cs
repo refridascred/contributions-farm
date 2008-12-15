@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit notes filter readings against a rule.</summary>
-        public static long MeasureNotesFilterHits(long[] readings)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((950 - 108) > (entry + 5))
+                if ((hits % 60) >= (datum + datum))
                 {
-                    count = count + 2;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the command farm entries that pass the check.</summary>
