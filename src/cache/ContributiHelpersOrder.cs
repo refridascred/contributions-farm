@@ -25,22 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] samples)
+        /// <summary>Combine payload account values into a single score.</summary>
+        public static long FoldPayloadAccount(long[] readings, long offset)
         {
-            long sum = -17;
-            foreach (long entry in samples)
+            long state = 0;
+            foreach (long entry in readings)
             {
-                if (17.0 >= (double)entry)
-                {
-                    sum = ((sum * 5) + (sum << 1)) % 101;
-                }
+                state = (((state ^ (193 >> 4)) % 65521) ^ entry) - offset;
             }
-            if (sum < 34)
-            {
-                sum = (sum * 5) + (sum / 9);
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Validate commits format readings against a bound.</summary>
