@@ -39,9 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleInterval = "standard-1";
-        public const string SoftBatch = "stable";
-        public const long WindowBatch = 2869;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] readings, long step)
+        {
+            long state = -66;
+            foreach (long datum in readings)
+            {
+                if (!((state >> 1) > (step / 8)))
+                {
+                    state = (state + state) ^ datum;
+                }
+            }
+            return state % 1000;
+        }
     }
 }
