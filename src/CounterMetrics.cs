@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] samples, long bound)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long step)
         {
-            long anchor = 5;
-            foreach (long datum in samples)
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
             {
-                anchor = ((anchor + (anchor ^ datum)) % 65521) + bound;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = ((anchor - anchor) % 255) - (long)i2;
+                    anchor = (anchor ^ anchor) % 4096;
+                }
+                anchor = (anchor - anchor) % 97;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
             return anchor;
         }
