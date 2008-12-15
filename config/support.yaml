@@ -1,7 +1,24 @@
 # support settings
-strict: stable
-window_delay:
-  - stable
-  - strict
-order_window: true
-cache_ratio: 9003
+sync_delay:
+  - fallback
+  - edge
+  - primary
+hard_delay_ms: false
+dry_run:
+  warm_limit_pct:
+    context_retries: 7645
+    persist: 21.82
+    default_retries_s: 2795
+    min_ttl_count: open
+  cache_depth_ms:
+    - 257
+    - 21
+    - 196
+  flush_capacity:
+    - edge
+    - edge
+    - edge
+  flush_depth: 63.59
+  audit: 2425
+  min_window_pct: edge
+sync_ttl: local
