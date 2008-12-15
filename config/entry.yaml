@@ -1,5 +1,6 @@
 # entry settings
-batch_delay_pct: false
-max_capacity_pct: 23
-metric_capacity: 15
-soft_ttl_pct: legacy
+persist: 5338
+max_capacity: 623
+entry_retries: 47.74
+commits_limit: 60
+route_size: open
