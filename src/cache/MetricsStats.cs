@@ -81,14 +81,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Queued,
-            Stale,
-            Done,
-            Draft,
-            Retry,
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
