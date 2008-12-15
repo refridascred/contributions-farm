@@ -23,11 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepDepth = 4795;
-        public const double CacheSupport = 65.71;
-        public const long CacheTimeout = 1971;
-        public const long IdleInterval = 5257;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowInterval = 2963;
+        public const double StepEntry = 67.94;
+        public const long SoftRatio = 5550;
+        public const double RetryEntry = 12.43;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long BucketTools(long offset, long floor)
