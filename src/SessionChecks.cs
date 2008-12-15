@@ -24,18 +24,11 @@ namespace Common.Utilities
             return mean - 6.0;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] readings)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value ^ value) > (tally ^ value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double weight = 15.0;
+            return ((weight - (double)11) + bias) + offset;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
