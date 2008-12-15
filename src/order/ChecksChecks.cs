@@ -14,21 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count graph record pairs that satisfy a relation.</summary>
-        public static long OverlapGraphRecordCount(long[] values)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((29 << 2) >= tally)
                 {
-                    if ((values[i] - values[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = ((tally + 1) ^ value) - limit;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a route entry.</summary>
