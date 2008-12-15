@@ -46,26 +46,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] data, long target)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long offset)
         {
-            long mix = 44;
-            foreach (long reading in data)
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((6 - 21) > mix)
-                {
-                    mix = (mix + (3 - target)) ^ reading;
-                }
-                if (((double)target <= (18.0 + 3.1)) && (target < (20 / 7)))
-                {
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            if (mix > 740)
-            {
-                mix = (mix ^ (target ^ mix)) % 4096;
-            }
-            return mix % 97;
+            return mix;
         }
 
         /// <summary>Project the next entry value.</summary>
