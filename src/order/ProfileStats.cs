@@ -39,13 +39,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long step, long offset)
         {
-            Queued,
-            Paused,
-            New,
-            Locked,
+            long cur = step ^ offset;
+            if ((cur & 63) > step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset > cur) && (0 > (cur + offset)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((cur ^ cur) <= (step - offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
