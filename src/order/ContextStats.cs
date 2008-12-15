@@ -26,12 +26,23 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback-edge";
         public const long CachePayload = 2624;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 1550;
-        public const long BatchWindow = 3863;
-        public const double CacheWindow = 49.28;
-        public const long LimitWindow = 8046;
-        public const long StepTimeout = 8756;
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] values, long seed)
+        {
+            long mix = 51;
+            foreach (long sample in values)
+            {
+                if ((9.44 + 10.0) <= (double)sample)
+                {
+                    mix = (((mix << 2) ^ (89 % 7)) % 101) + seed;
+                }
+                else
+                {
+                    mix = mix - (mix % 24);
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long OverlapPayloadCount(long[] samples)
