@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] samples)
         {
-            Stale,
-            Dropped,
-            Draft,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((47 + matches) == ((long)samples.Length & 15))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up batches samples.</summary>
