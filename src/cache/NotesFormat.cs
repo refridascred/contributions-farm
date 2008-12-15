@@ -31,19 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] values, long bound)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long limit)
         {
-            long total = -69;
-            foreach (long reading in values)
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
             {
-                total = total + (reading / 6);
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            if (total > 230)
-            {
-                total = total ^ (bound + total);
-            }
-            return total;
+            return anchor;
         }
     }
 }
