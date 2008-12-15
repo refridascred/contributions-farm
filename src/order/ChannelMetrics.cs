@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseInterval = 604;
-        public const string HardTimeout = "fallback-edge";
-        public const long MaxTimeout = 6898;
-        public const long SoftCount = 1438;
-        public const long RetryEditor = 8373;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long WeighChecks(long[] data)
