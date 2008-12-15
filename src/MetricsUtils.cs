@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] series, long limit)
+        /// <summary>Match up metric support samples.</summary>
+        public static long CompareMetricSupportCount(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell >= limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] - items[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Hold a checks stats.</summary>
