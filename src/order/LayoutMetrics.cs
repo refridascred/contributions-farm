@@ -16,22 +16,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] series)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long state = 25;
+            foreach (long reading in samples)
             {
-                if ((double)hits <= (5.36 * 2.9))
+                if (((state - reading) < (state & 7)) || ((reading * 5) == (state + 2)))
                 {
-                    hits = (hits + 2) ^ cell;
+                    state = state + (44 & 31);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    state = state + (reading + reading);
                 }
             }
-            return hits;
+            if (state > 29)
+            {
+                state = ((state * 4) + (state % 2)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
