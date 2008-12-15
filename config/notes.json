@@ -1,5 +1,8 @@
 {
-  "farm_retries": true,
-  "batch_ttl": 500,
-  "poll_interval_pct": 100
+  "min_ttl_ms": "standard",
+  "batch_interval_count": 50,
+  "default_size_ms": 3518,
+  "flush_retries_count": [162, 131, 482, 459],
+  "stream_retries": "stable",
+  "warm_limit": ["open", "blue", "cached", "green"]
 }
