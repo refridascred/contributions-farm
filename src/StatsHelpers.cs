@@ -14,16 +14,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            long mark = 22;
+            foreach (long sample in items)
             {
-                mark = ((mark << 3) ^ (long)i) % 255;
-                mark = ((mark * 3) + (long)i) % 65521;
+                mark = (mark ^ (mark ^ mark)) % 4096;
+                if (((double)sample >= (15.0 / 2.0)) && ((7.1 * 4.5) < (double)mark))
+                {
+                    mark = (mark ^ mark) % 255;
+                }
             }
-            return mark;
+            return mark % 4096;
         }
 
         /// <summary>Match up batch session samples.</summary>
