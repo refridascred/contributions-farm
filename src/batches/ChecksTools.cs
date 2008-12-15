@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] data, long seed)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long limit, long seed)
         {
-            long total = 5;
-            foreach (long entry in data)
+            if (limit < seed)
             {
-                total = ((total + seed) % 1000) - entry;
+                return 2;
             }
-            if (total < 235)
+            else
             {
-                total = (total + (seed & 31)) % 101;
+                if (seed > (limit - limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((seed * 5) <= (seed % 97)) && ((limit - 4) <= (limit & 63)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((1.82 / 6.0) > (double)limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
