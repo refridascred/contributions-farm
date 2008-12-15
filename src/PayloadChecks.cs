@@ -19,20 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats queue values into a single score.</summary>
-        public static long TallyStatsQueue(long[] data, long offset)
-        {
-            long anchor = 5;
-            foreach (long sample in data)
-            {
-                anchor = (((anchor - (anchor << 2)) % 4096) ^ sample) + offset;
-                if (anchor <= ((long)data.Length - 7))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxTimeout = 5043;
+        public const double RetryTimeout = 81.14;
+        public const long HardCache = 146;
+        public const long RetryCache = 5864;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long SeriesCommand(long bound)
