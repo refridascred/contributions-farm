@@ -32,13 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public double Total { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Grade a report value against two limits.</summary>
