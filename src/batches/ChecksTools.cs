@@ -34,19 +34,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] items, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (item < floor)
+                if (!((0 ^ (-300)) <= value))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
