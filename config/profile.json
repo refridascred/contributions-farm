@@ -1,5 +1,11 @@
 {
-  "cluster_ratio": "green",
-  "batch_threshold_s": "stable",
-  "base_ratio_count": ["green", "stable", "staging", "green"]
+  "hard_interval": false,
+  "hard_window_s": 29.67,
+  "persist": "standard",
+  "audit": {
+    "retry_ratio": 1024,
+    "persist": [203, 249, 75, 492],
+    "batch_ratio": 27
+  },
+  "default_ratio": "staging"
 }
