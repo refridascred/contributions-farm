@@ -1,6 +1,6 @@
 # support settings
-cache_size_s: true
-idle_interval_s: false
-token_timeout: true
-readonly: false
-session_retries: standard
+dry_run: true
+readonly: edge
+warm_ratio_ms: 60
+entry_ratio: 79.47
+burst_threshold_pct: 8578
