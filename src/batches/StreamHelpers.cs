@@ -54,14 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Count the window tools entries that pass the check.</summary>
+        public static long MeasureWindowToolsMatches(long[] series, long bound)
         {
-            Queued,
-            Done,
-            Active,
-            Retry,
-            Closed,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((bound & 15) > (matches << 3))
+                {
+                    matches = (matches + 1) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the batches phase values.</summary>
