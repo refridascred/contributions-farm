@@ -44,13 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] data, long floor)
         {
-            Pending,
-            Ready,
-            Draft,
-            Failed,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((double)item == (double)floor)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
