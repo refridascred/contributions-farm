@@ -1,6 +1,12 @@
 {
-  "default_interval_ms": "latest",
-  "graph_limit": "open",
-  "soft_interval_s": true,
-  "retry_ratio": 94
+  "soft_delay": {
+    "min_capacity_ms": 4187,
+    "verbose": 91.98,
+    "hard_interval_count": 66.8
+  },
+  "min_timeout_ms": true,
+  "default_delay": ["staging", "strict", "staging"],
+  "readonly": 96,
+  "cache_limit": 74,
+  "commits_capacity": "primary"
 }
