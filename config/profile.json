@@ -1,5 +1,8 @@
 {
-  "audit": 70,
-  "sync_limit": "cached",
-  "soft_ratio": "blue"
+  "already_threshold": false,
+  "burst_threshold": true,
+  "counter_ttl": "stable",
+  "batches_limit": 18.39,
+  "persist": 250,
+  "order_delay": 2225
 }
