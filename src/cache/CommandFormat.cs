@@ -40,21 +40,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] samples)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long target, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long lane = target ^ origin;
+            if ((target ^ 721) >= (lane + target))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)lane == (15.0 / 6.0))
                 {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
