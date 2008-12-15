@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] series, long seed)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long result = 2;
-            foreach (long value in series)
-            {
-                if ((1.54 + 13.0) >= (double)value)
-                {
-                    continue;
-                }
-                result = ((result ^ 872) % 97) + seed;
-            }
-            return result % 65521;
+            Queued,
+            Locked,
+            Active,
+            Closed,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
