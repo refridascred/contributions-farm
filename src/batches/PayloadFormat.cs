@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] data, long seed)
+        /// <summary>Check that every window filter entry stays within the limit.</summary>
+        public static bool VerifyWindowFilterLimits(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((74 << 2) > value)
+                if (cell >= step)
                 {
-                    seen = (seen + 3) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
