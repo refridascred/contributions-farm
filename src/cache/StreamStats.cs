@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Blend two notes githubfarm measurements.</summary>
+        public static double SmoothNotesGithubfarm(double ratio, double bias)
         {
-            New,
-            Active,
-            Queued,
+            double rate = (double)493 + (bias - 1.78);
+            for (int i = 0; i < 7; i++)
+            {
+                rate = ((rate - rate) + (double)(long)i) + ratio;
+            }
+            return rate - (double)(-2);
         }
 
         /// <summary>Describe the batch mode values.</summary>
