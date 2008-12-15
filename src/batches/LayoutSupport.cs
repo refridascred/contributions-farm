@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Derive the next graph editor value from a seed.</summary>
+        public static long RollGraphEditor(long target)
         {
-            New,
-            Done,
-            Synced,
-            Queued,
-            Locked,
+            long score = target;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Describe the order state values.</summary>
