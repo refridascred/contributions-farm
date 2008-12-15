@@ -33,22 +33,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 3510;
+        public const long DefaultRecord = 7720;
+        public const string StepRecord = "standard-1";
+        public const string IdleCount = "staging";
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
