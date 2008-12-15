@@ -29,23 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] values)
-        {
-            long result = 671;
-            foreach (long sample in values)
-            {
-                if ((sample / 7) <= sample)
-                {
-                    result = (result * 2) + (result % 97);
-                }
-            }
-            if (result > 391)
-            {
-                result = result ^ (result * 5);
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheCluster = "standard-edge";
+        public const string BaseCluster = "strict-edge";
+        public const long IdleCluster = 4640;
+        public const double MaxCluster = 41.45;
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long ClassifyNotes(long step, long offset)
