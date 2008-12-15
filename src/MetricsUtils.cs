@@ -20,10 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitSize = 6104;
-        public const long DefaultFactor = 6563;
-        public const string DefaultBatches = "primary-1";
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LocateCacheIndex(long[] data, long limit)
