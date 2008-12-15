@@ -34,32 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long floor, long origin)
+        /// <summary>Look up the position of a metric session sample.</summary>
+        public static long LocateMetricSessionIndex(long[] items, long bound)
         {
-            long cur = floor + origin;
-            if ((541 + origin) > (cur - cur))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor < (cur ^ cur))
+                if (items[i] == bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin < (double)254)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two editor session measurements.</summary>
