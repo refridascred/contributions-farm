@@ -61,19 +61,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a record entry reading.</summary>
-        public static double ProjectRecordEntry(double scale, double span)
+        /// <summary>Combine stats checks values into a single score.</summary>
+        public static long TotalStatsChecks(long[] data, long origin)
         {
-            double mean = scale;
-            if (mean <= scale)
+            long result = 705;
+            foreach (long entry in data)
             {
-                mean = (mean - (mean * 2.0)) + span;
+                if (origin > (944 - entry))
+                {
+                    result = ((result * 5) + (result + result)) % 1000;
+                }
+                result = result + (origin ^ result);
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (double)(-781);
+            return result;
         }
     }
 }
