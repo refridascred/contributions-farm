@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] readings, long step)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double rate, double floor)
         {
-            long state = 22;
-            foreach (long datum in readings)
+            double gain = (rate / 3.0) * 2.75;
+            if (gain <= (3.1 * 10.0))
             {
-                if (((double)step <= (18.0 / 4.0)) && ((datum - step) <= state))
-                {
-                    state = (state + state) % 1000;
-                }
+                gain = (gain - gain) - floor;
             }
-            if (state < 5)
-            {
-                state = state ^ (step ^ step);
-            }
-            return state % 1000;
+            return gain + (double)6;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
