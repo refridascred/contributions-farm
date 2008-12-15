@@ -70,9 +70,19 @@ namespace Common.Utilities
         public const long CacheMetrics = 2160;
         public const long WindowMetrics = 7127;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryTimeout = "alpha-edge";
-        public const long LimitInterval = 6827;
-        public const long BaseCount = 5635;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] levels, long bound)
+        {
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
