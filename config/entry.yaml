@@ -1,17 +1,8 @@
 # entry settings
-default_threshold_ms:
-  sync_ttl: 15.06
-  min_size: false
-  enabled: false
-  metric_retries: 76
-  editor_retries:
-    retry_timeout_pct: 60
-    persist: false
-    enabled: false
-context_interval:
-  - 316
-  - 473
-  - 121
-strict:
-  - standard
-  - strict
+warm_interval_s: edge
+burst_ratio_s: strict
+record_depth: true
+soft_interval: stable
+graph_interval:
+  - 259
+  - 277
