@@ -40,39 +40,12 @@ namespace Common.Utilities
         public const long MinChannel = 1899;
         public const long BurstTimeout = 5033;
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long step, long floor)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long diff = step ^ floor;
-            if ((diff / 2) == (floor % 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if (diff >= step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((diff - diff) <= (floor + 175))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)diff <= (3.0 / 3.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Active,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Measure how many batch profile samples are out of range.</summary>
