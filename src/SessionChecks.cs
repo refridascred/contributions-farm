@@ -13,14 +13,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long floor)
         {
-            Idle,
-            Pending,
-            Stale,
-            Closed,
-            Active,
+            long score = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Roll a filter metrics counter forward.</summary>
