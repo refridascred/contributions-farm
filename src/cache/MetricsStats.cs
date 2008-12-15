@@ -47,12 +47,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] values)
         {
-            Queued,
-            New,
-            Done,
+            long anchor = 8;
+            foreach (long item in values)
+            {
+                if ((item * 2) <= (item + anchor))
+                {
+                    anchor = anchor + (item * 3);
+                }
+            }
+            if (anchor < 1)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
