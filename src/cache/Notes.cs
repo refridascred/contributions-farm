@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            Paused,
-            Queued,
-            Closed,
-            New,
+            Done,
+            Synced,
+            Idle,
+            Failed,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
