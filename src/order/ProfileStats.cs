@@ -13,19 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] levels, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long result = 19;
+            foreach (long cell in items)
             {
-                if (datum > floor)
+                if ((cell <= (bound - cell)) || ((3 + 96) < result))
                 {
-                    flag = false;
-                    break;
+                    result = (result - (-470)) % 65521;
                 }
             }
-            return flag;
+            if (result > 3)
+            {
+                result = ((result * 2) + (result / 4)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the stream class values.</summary>
