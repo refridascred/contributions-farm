@@ -1,8 +1,16 @@
 {
-  "batch_delay_s": 4557,
-  "editor_limit": "stable",
-  "session_capacity": 11.63,
-  "retry_depth_count": "standard",
-  "buffer_ttl": 1024,
-  "base_threshold_s": 49.23
+  "burst_interval": {
+    "idle_window_count": ["edge", "stable", "local", "edge"],
+    "sync_ttl_count": 30.58,
+    "batch_retries_ms": 38.32,
+    "metric_delay": [463, 407, 389],
+    "hard_ratio_s": "open",
+    "base_ratio_ms": {
+      "batch_interval": 19,
+      "graph_delay": 3.75,
+      "min_window": 54
+    }
+  },
+  "context_retries": "fallback",
+  "order_threshold": "edge"
 }
