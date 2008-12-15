@@ -44,18 +44,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format context readings.</summary>
-        public static long DigestFormatContext(long[] items, long limit)
-        {
-            long mark = -96;
-            foreach (long item in items)
-            {
-                if (!((mark + item) < item))
-                {
-                    mark = (mark * 3) + limit;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 9460;
+        public const long LimitRatio = 1124;
+        public const double DefaultBudget = 27.75;
     }
 }
