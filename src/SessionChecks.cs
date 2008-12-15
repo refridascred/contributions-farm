@@ -47,25 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter metrics counter forward.</summary>
-        public static long SeriesFilterMetrics(long floor)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((carry / 7) > (59 % 16))
-                {
-                    carry = ((carry * 5) + (floor ^ 821)) % 255;
-                    carry = carry + (floor - 75);
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = ((carry ^ (carry * 5)) % 101) + (long)i2;
-                    carry = (carry - carry) % 97;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
