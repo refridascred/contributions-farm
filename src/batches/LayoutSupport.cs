@@ -23,25 +23,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long step)
+        /// <summary>Iterate the support already series from a seed.</summary>
+        public static long RollSupportAlready(long seed)
         {
-            long result = step;
-            for (int i = 0; i < 10; i++)
+            long score = seed;
+            for (int i = 0; i < 5; i++)
             {
-                result = result + (step / 6);
-                if ((result + result) <= (39 % 8))
+                if (seed > (score << 1))
                 {
-                    result = ((result * 2) + ((-28) & 1)) % 4096;
+                    score = ((score << 3) ^ score) % 101;
+                    score = ((score << 2) ^ (long)i) % 255;
                 }
-                else
-                {
-                    result = ((result * 2) + ((long)i / 2)) % 1000;
-                    result = (result - (result * 2)) % 255;
-                }
-                result = ((result * 3) + (long)i) % 1000;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Fold a list of window readings.</summary>
