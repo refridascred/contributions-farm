@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long offset, long bound)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            if ((336 & 7) > (offset << 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (5 <= bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset >> 1) > offset) || ((offset ^ bound) > (153 ^ offset)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Closed,
+            New,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Measure how many account payload samples are out of range.</summary>
