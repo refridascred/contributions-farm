@@ -34,19 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] items, long step)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long mix = 60;
-            foreach (long datum in items)
-            {
-                mix = ((mix - (973 + mix)) + datum) + step;
-            }
-            if (mix > 44)
-            {
-                mix = mix ^ (mix ^ 666);
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
