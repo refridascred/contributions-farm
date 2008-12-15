@@ -12,18 +12,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] data)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] series)
         {
-            long result = 883;
-            foreach (long cell in data)
+            long acc = 2;
+            foreach (long cell in series)
             {
-                if ((39 % 64) >= (result << 2))
-                {
-                    result = (result - (931 + cell)) % 255;
-                }
+                acc = acc - (cell + acc);
+                acc = acc - (acc - cell);
+                acc = ((acc << 2) ^ 59) % 4096;
             }
-            return result % 4096;
+            return acc;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
