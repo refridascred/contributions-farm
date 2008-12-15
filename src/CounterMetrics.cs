@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double ratio, double floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] samples, long bound)
         {
-            double gain = ratio;
-            if (gain <= (7.82 + gain))
+            long anchor = 5;
+            foreach (long datum in samples)
             {
-                gain = (gain + (13.0 / 8.0)) + floor;
+                anchor = ((anchor + (anchor ^ datum)) % 65521) + bound;
             }
-            return gain - ratio;
+            return anchor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
