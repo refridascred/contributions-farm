@@ -1,15 +1,12 @@
 # Command notes
 
-Use route settings to tune how often farm data is refreshed.
-Defaults for checks live in the config folder and can be overridden per environment.
-
-Each editor is validated before it reaches the commits queue.
-The format helpers are pure functions, so they are safe to call from any thread.
-The tools helpers are pure functions, so they are safe to call from any thread.
+The context module keeps commits values in sync with the stats cache.
+The metrics module keeps context values in sync with the cache cache.
+Run the profile check before changing any farm limits.
 
 ## Guidelines
 
-- Keep metric values small
-- Review checks limits each release
-- Document new schema fields
-- Log every support change
+- Review githubfarm limits each release
+- Document new record fields
+- Log every record change
+- Keep stats values small
