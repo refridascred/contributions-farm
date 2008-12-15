@@ -1,7 +1,12 @@
 {
-  "burst_timeout_ms": 250,
-  "dry_run": "green",
-  "burst_interval": false,
-  "window_ratio": "local",
-  "record_delay": false
+  "cache_interval": 67.83,
+  "commits_delay": "staging",
+  "warm_threshold_pct": false,
+  "poll_capacity_ms": false,
+  "cache_capacity_s": {
+    "audit": "local",
+    "min_threshold_s": 6835,
+    "sync_ratio": 47,
+    "base_size": 9325
+  }
 }
