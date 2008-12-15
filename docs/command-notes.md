@@ -1,11 +1,11 @@
 # Command notes
 
-Run the commits check before changing any metric limits.
-The channel helpers are pure functions, so they are safe to call from any thread.
-Use farm settings to tune how often batch data is refreshed.
+The command report groups every support by command.
+Each channel is validated before it reaches the githubfarm queue.
+Run the graph check before changing any metrics limits.
 
 ## Guidelines
 
-- Prefer context defaults
-- Log every order change
-- Validate batches input early
+- Keep record values small
+- Document new stream fields
+- Log every token change
