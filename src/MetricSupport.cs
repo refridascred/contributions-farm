@@ -35,19 +35,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] items, long floor)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long mix = 316;
-            foreach (long reading in items)
-            {
-                mix = ((mix + floor) % 4096) + reading;
-            }
-            if (mix < 94)
-            {
-                mix = (mix - (floor << 1)) % 97;
-            }
-            return mix;
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
