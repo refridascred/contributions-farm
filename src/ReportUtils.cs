@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "stable-v2";
-        public const double IdleLevel = 71.91;
-        public const long MaxTimeout = 2393;
-        public const double MinTools = 66.7;
-        public const string IdleTools = "cached-edge";
+        /// <summary>Fold a list of record notes readings.</summary>
+        public static long DigestRecordNotes(long[] readings, long limit)
+        {
+            long score = 954;
+            foreach (long cell in readings)
+            {
+                if (!(((long)readings.Length << 2) > (limit + cell)))
+                {
+                    score = (score * 2) + (score % 16);
+                    score = (score - (score >> 5)) % 101;
+                }
+                if ((double)(long)readings.Length <= 2.0)
+                {
+                    score = score + (639 & 255);
+                }
+            }
+            if (score < 74)
+            {
+                score = (score + (limit + limit)) % 4096;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
