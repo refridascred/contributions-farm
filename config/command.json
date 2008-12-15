@@ -1,6 +1,8 @@
 {
-  "already_window": 100,
-  "cache_delay_count": ["stable", "fallback", "edge", "local"],
-  "default_ratio_ms": 74.15,
-  "entry_interval": "latest"
+  "batch_limit_count": "green",
+  "burst_window_s": "primary",
+  "cache_delay": 18.1,
+  "format_interval": ["green", "fallback", "open"],
+  "checks_timeout": 22,
+  "strict": "cached"
 }
