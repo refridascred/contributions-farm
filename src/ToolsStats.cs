@@ -52,18 +52,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit profile buffer readings against a rule.</summary>
-        public static long CountProfileBufferOutliers(long[] items, long offset)
+        /// <summary>Compare every pair of cluster queue readings.</summary>
+        public static long CompareClusterQueueCount(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((97 ^ tally) == (tally + (long)items.Length))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = ((tally + 1) - datum) - offset;
+                    if ((values[i] + values[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
