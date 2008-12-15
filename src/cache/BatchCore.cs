@@ -75,15 +75,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches tools values into a single score.</summary>
-        public static long FoldBatchesTools(long[] levels)
-        {
-            long score = 578;
-            foreach (long cell in levels)
-            {
-                score = ((score << 2) ^ cell) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 3910;
+        public const double MaxTimeout = 88.13;
+        public const double BaseLevel = 35.65;
+        public const long SoftCount = 1407;
+        public const string BatchProfile = "staging-edge";
     }
 }
