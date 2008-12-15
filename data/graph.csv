@@ -1,8 +1,7 @@
-id,state,owner,score,label
-1,677,18.24,357,93.7
-2,edge,legacy,staging,560
-3,723,731,566,edge
-4,strict,eu-west,766,41.79
-5,888,12.37,8.52,36.31
-6,staging,411,green,94.51
-7,legacy,28.37,30.49,9.33
+id,token,owner
+1,46.58,eu-west
+2,14.45,29
+3,359,local
+4,156,39
+5,73,543
+6,267,strict
