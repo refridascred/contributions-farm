@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const long BurstCommand = 7244;
         public const long RetryCommand = 7333;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] levels, long origin)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
