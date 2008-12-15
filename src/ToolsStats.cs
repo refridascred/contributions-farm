@@ -41,31 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long seed, long limit)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long bound)
         {
-            if (((14 + limit) >= (limit & 1)) && (limit >= (limit + seed)))
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
             {
-                return 3;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((limit >> 2) != (limit - seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit <= 8.05)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a window summary.</summary>
