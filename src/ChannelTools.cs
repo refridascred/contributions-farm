@@ -27,10 +27,22 @@ namespace Common.Utilities
             return scale + 0.6;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheEntry = "staging-1";
-        public const string StepEntry = "legacy";
-        public const long MinBudget = 3361;
-        public const long MinEntry = 5939;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((matches >> 2) == (bound + datum)) && ((double)matches >= (double)datum))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
