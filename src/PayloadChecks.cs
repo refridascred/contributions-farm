@@ -70,11 +70,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Grade a queue profile value against two limits.</summary>
+        public static long RankQueueProfile(long offset, long offset2)
         {
-            public bool Count { get; set; }
-            public double Level { get; set; }
+            long offset3 = offset - offset2;
+            if (((8.11 + 9.35) < (double)offset) || (offset2 > (offset3 + offset2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)offset2 != (10.0 + 7.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((offset3 << 1) > offset) && ((double)offset >= (3.2 / 8.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset / 7) <= (offset2 + offset3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate contributi checks samples.</summary>
