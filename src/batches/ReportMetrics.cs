@@ -13,11 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the profile phase values.</summary>
