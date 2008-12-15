@@ -1,6 +1,8 @@
-id,label,region,score,count
-1,legacy,47.13,standard,staging
-2,157,36.72,local,12.14
-3,primary,141,49,green
-4,41.68,20.59,93.35,466
-5,22.11,local,605,932
+id,state,owner,score,label
+1,677,18.24,357,93.7
+2,edge,legacy,staging,560
+3,723,731,566,edge
+4,strict,eu-west,766,41.79
+5,888,12.37,8.52,36.31
+6,staging,411,green,94.51
+7,legacy,28.37,30.49,9.33
