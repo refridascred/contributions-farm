@@ -25,21 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stream metrics pairs that satisfy a relation.</summary>
-        public static long MatchStreamMetricsCount(long[] items)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 1;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((datum & 31) <= (target + target))
                 {
-                    if ((items[i] + items[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor << 3) ^ (target * 2);
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
