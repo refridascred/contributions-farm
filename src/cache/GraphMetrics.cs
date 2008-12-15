@@ -48,18 +48,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many batch profile samples are out of range.</summary>
-        public static long MeasureBatchProfileMatches(long[] levels)
+        /// <summary>Accumulate command cluster samples.</summary>
+        public static long ScoreCommandCluster(long[] series, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long mark = 53;
+            foreach (long sample in series)
             {
-                if ((entry + count) >= entry)
-                {
-                    count = count + 3;
-                }
+                mark = ((mark ^ sample) % 255) + step;
             }
-            return count;
+            return mark;
         }
     }
 }
