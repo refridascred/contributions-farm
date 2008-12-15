@@ -45,10 +45,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardInterval = "fallback";
-        public const long LimitGraph = 5373;
-        public const double BatchBudget = 62.85;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinWidth = 16.98;
+        public const string SoftStream = "local-1";
+        public const long BaseLevel = 4798;
+        public const long BurstRatio = 7532;
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
