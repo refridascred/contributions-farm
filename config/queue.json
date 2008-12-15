@@ -1,10 +1,8 @@
 {
-  "flush_ratio": {
-    "retry_window": 30,
-    "flush_size": 6954,
-    "graph_timeout": true
-  },
-  "support_threshold": ["blue", "strict", "primary"],
-  "poll_threshold_count": 12.58,
-  "persist": "staging"
+  "record_ttl": "open",
+  "batch_depth": "edge",
+  "contributi_capacity": 2719,
+  "order_size": 100,
+  "sync_interval_s": 500,
+  "dry_run": true
 }
