@@ -48,12 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 1842;
-        public const double WindowEditor = 73.12;
-        public const string HardEditor = "standard-1";
-        public const long StepEditor = 4169;
-        public const double MinEditor = 33.23;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            New,
+            Draft,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelBounds(long[] readings, long target)
