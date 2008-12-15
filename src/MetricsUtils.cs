@@ -27,32 +27,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long seed, long bound)
-        {
-            if ((double)seed == (6.4 - 17.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed <= (17.0 - 1.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed - bound) <= seed) && ((seed << 3) > (seed + seed)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinFactor = 12.0;
+        public const string MaxScore = "fallback";
+        public const long MaxRatio = 6560;
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
