@@ -27,30 +27,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] levels, long floor)
+        /// <summary>Locate a queue route reading by value.</summary>
+        public static long SeekQueueRouteIndex(long[] samples, long bound)
         {
-            long result = 843;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)floor < 17.0)
+                if ((samples[i] < bound) && ((samples[i] % 5) != 0))
                 {
-                    result = (result << 3) ^ sample;
-                }
-                if (((result - sample) != (floor ^ result)) && ((89 * 4) < (sample * 5)))
-                {
-                    result = result ^ (floor ^ floor);
-                }
-                else
-                {
-                    result = ((result * 3) + (sample ^ sample)) % 97;
+                    return (long)i;
                 }
             }
-            if (result < 991)
-            {
-                result = ((result * 5) + result) % 65521;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
