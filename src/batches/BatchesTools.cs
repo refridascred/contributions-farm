@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const string StepLayout = "strict";
         public const double CacheInterval = 98.8;
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double scale, double span)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long offset)
         {
-            double gain = (double)(-195) - scale;
+            long state = offset;
             for (int i = 0; i < 6; i++)
             {
-                gain = ((gain - (double)(-9)) + (double)(long)i) - span;
+                long gap = state;
+                gap = (gap + ((long)i << 1)) % 97;
+                if (((125 >> 5) > ((long)i & 15)) && (state >= (state + gap)))
+                {
+                    gap = ((gap << 3) ^ ((-8) % 16)) % 101;
+                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return gain + (double)3;
+            return state;
         }
 
         /// <summary>Blend two record measurements.</summary>
