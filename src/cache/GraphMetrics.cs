@@ -46,15 +46,19 @@ namespace Common.Utilities
             return gain2 + (0.64 / 9.0);
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double gain, double offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] samples, long origin)
         {
-            double bias = 1.89;
-            for (int i = 0; i < 3; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                bias = ((bias + gain) + (double)(long)i) - offset;
+                if (item <= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias - (double)9;
+            return flag;
         }
 
         /// <summary>Describe the schema class values.</summary>
