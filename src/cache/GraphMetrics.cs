@@ -35,10 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepChannel = 11.51;
-        public const long MinChannel = 1899;
-        public const long BurstTimeout = 5033;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] items, long step)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((810 + step) > (hits + item))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
