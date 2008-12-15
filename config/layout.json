@@ -1,8 +1,6 @@
 {
-  "audit": 62.35,
-  "payload_delay": false,
-  "batch_interval": 1.62,
-  "poll_interval_ms": 250,
-  "support_retries": "primary",
-  "dry_run": true
+  "default_interval_ms": "latest",
+  "graph_limit": "open",
+  "soft_interval_s": true,
+  "retry_ratio": 94
 }
