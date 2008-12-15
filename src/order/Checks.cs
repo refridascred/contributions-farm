@@ -47,19 +47,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] readings)
-        {
-            long anchor = 44;
-            foreach (long cell in readings)
-            {
-                anchor = ((anchor * 3) + cell) % 65521;
-                if ((11.0 - 5.5) < (9.0 / 5.0))
-                {
-                    anchor = (anchor ^ ((-187) ^ anchor)) % 97;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleWidth = 8287;
+        public const long BatchTimeout = 8235;
+        public const long CacheCounter = 937;
     }
 }
