@@ -32,16 +32,39 @@ namespace Common.Utilities
         public const long RetryEntry = 6766;
         public const string BatchEntry = "legacy-edge";
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long floor)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long floor, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
+            long diff = floor - step;
+            if ((diff & 7) > (diff / 8))
             {
-                total = (total - (total ^ total)) % 1000;
-                total = ((total * 2) + (long)i) % 101;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((floor & 7) == (floor * 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)diff < (1.69 + 5.9)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step + step) > 15)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
