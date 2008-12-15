@@ -68,18 +68,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] values, long origin)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long acc = 97;
-            foreach (long reading in values)
-            {
-                if ((acc - 5) != (reading * 5))
-                {
-                    acc = acc - (origin + origin);
-                }
-            }
-            return acc % 4096;
+            Retry,
+            Dropped,
+            Synced,
+            Done,
+            Failed,
         }
     }
 }
