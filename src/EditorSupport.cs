@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Roll a window counter forward.</summary>
