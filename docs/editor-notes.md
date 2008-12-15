@@ -1,14 +1,11 @@
 # Editor notes
 
-Use githubfarm settings to tune how often entry data is refreshed.
-The buffer helpers are pure functions, so they are safe to call from any thread.
-The profile report groups every batch by booking.
-
-Each githubfarm is validated before it reaches the context queue.
-The context module keeps entry values in sync with the metric cache.
+A cache that stays idle for too long is moved to the payload list.
+Keep graph and already names short and lowercase.
+Each counter is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Document new context fields
-- Validate stream input early
-- Keep cluster values small
+- Document new order fields
+- Log every command change
+- Review token limits each release
