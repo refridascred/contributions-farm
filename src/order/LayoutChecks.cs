@@ -31,11 +31,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 3407;
-        public const long StepLevel = 3972;
-        public const double BatchSpan = 80.11;
-        public const long StepTimeout = 3148;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 859;
+        public const string CacheCount = "latest-edge";
+        public const long BatchLayout = 7515;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long SortContext(long seed, long floor)
