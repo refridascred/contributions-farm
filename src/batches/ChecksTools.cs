@@ -59,11 +59,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] readings)
         {
-            public double Label { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((733 % 64) > datum)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
