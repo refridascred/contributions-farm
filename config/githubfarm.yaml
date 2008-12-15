@@ -1,4 +1,7 @@
 # githubfarm settings
-strict: legacy
-sync_depth_ms: stable
-min_threshold_s: stable
+audit: staging
+soft_size:
+  - 429
+  - 144
+min_ratio_pct: 3509
+warm_interval: 76.86
