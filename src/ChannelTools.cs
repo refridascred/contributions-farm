@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long RetryCounter = 2082;
         public const double MaxCounter = 19.43;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] data, long origin)
+        /// <summary>Check that every batch tools entry stays within the limit.</summary>
+        public static bool ValidateBatchToolsBounds(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (data[i] < origin)
+                if (datum <= bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
