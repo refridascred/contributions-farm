@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Stale,
-            Pending,
-            Queued,
-            Synced,
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
