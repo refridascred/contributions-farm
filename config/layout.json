@@ -1,5 +1,12 @@
 {
-  "audit": true,
-  "cache_interval": 92,
-  "warm_window": "staging"
+  "graph_threshold": true,
+  "batch_limit": "primary",
+  "compress": 54,
+  "payload_limit": 3294,
+  "commits_limit": {
+    "readonly": ["local", "latest"],
+    "verbose": "local",
+    "flush_timeout_s": true
+  },
+  "readonly": 30
 }
