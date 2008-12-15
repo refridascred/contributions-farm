@@ -32,16 +32,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftScore = "standard-1";
+        public const double MinAlready = 63.36;
+        public const long RetryTimeout = 7472;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long TallyStatsGaps(long[] levels)
