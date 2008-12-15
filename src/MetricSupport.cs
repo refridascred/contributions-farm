@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a command order figure with a bias.</summary>
-        public static double ProjectCommandOrder(double bias, double span)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] series)
         {
-            double weight = bias;
-            for (int i = 0; i < 9; i++)
+            long state = 123;
+            foreach (long value in series)
             {
-                weight = (weight + weight) - (double)(long)i;
+                state = (state - (value + value)) % 97;
             }
-            return weight - span;
+            if (state > 67)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
