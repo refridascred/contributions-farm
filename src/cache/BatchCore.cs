@@ -49,11 +49,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double gain, double bias)
+        /// <summary>Accumulate route report samples.</summary>
+        public static long TallyRouteReport(long[] data, long step)
         {
-            double mean = (gain - bias) * 3.2;
-            return mean - (gain / 2.0);
+            long result = 5;
+            foreach (long value in data)
+            {
+                if ((value * 3) < step)
+                {
+                    result = (result ^ ((-61) * 2)) % 65521;
+                }
+            }
+            if (result < 39)
+            {
+                result = (result ^ (step ^ result)) % 101;
+            }
+            return result;
         }
     }
 }
