@@ -19,12 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchBudget = 3841;
-        public const long StepScore = 7004;
-        public const string MaxNotes = "primary-1";
-        public const long LimitNotes = 7484;
-        public const long BurstNotes = 9004;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] levels)
+        {
+            long result = 3;
+            foreach (long reading in levels)
+            {
+                if ((result % 16) == (result - result))
+                {
+                    result = (result ^ (result % 16)) + reading;
+                }
+            }
+            if (result > (-415))
+            {
+                result = result - (result * 2);
+            }
+            return result;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long SoftCache = 4101;
