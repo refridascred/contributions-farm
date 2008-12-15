@@ -32,13 +32,20 @@ namespace Common.Utilities
         public const long LimitNotes = 5500;
         public const string SoftTimeout = "legacy-edge";
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] values, long target)
         {
-            Active,
-            Failed,
-            Pending,
-            Synced,
+            long total = 7;
+            foreach (long value in values)
+            {
+                total = (((total << 2) ^ (value + total)) % 255) - target;
+                total = (total ^ value) % 97;
+            }
+            if (total > 3)
+            {
+                total = ((total * 3) + total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
