@@ -1,7 +1,13 @@
 # githubfarm settings
-poll_interval: standard
-verbose: 8.66
-flush_interval_pct: true
-warm_limit_pct: 72
-flush_depth_s: 71
-command_retries: 74.22
+readonly: 4999
+format_delay:
+  - 9
+  - 459
+  - 428
+  - 349
+profile_size: 100
+notes_ttl:
+  - 17
+  - 28
+  - 478
+  - 430
