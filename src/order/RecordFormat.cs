@@ -31,18 +31,16 @@ namespace Common.Utilities
         public const long LimitNotes = 5500;
         public const string SoftTimeout = "legacy-edge";
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] readings, long limit)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long step)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((4.0 - 6.2) != (double)limit)
-                {
-                    tally = (tally + 3) ^ datum;
-                }
+                acc = acc ^ step;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the profile class values.</summary>
