@@ -66,18 +66,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (((matches + cell) > (cell + 3)) && !(cell > (matches + cell)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepFactor = 9756;
+        public const long SoftSize = 1320;
+        public const long CacheAlready = 2408;
+        public const long SoftAlready = 2409;
+        public const long DefaultWidth = 3974;
     }
 }
