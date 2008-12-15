@@ -33,15 +33,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double rate, double bias)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] values, long target)
         {
-            double drift = (double)(-70) * 9.98;
-            for (int i = 0; i < 3; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                drift = ((drift + (rate * 8.3)) + (double)(long)i) - bias;
+                if (reading >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift - drift;
+            return found;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
