@@ -47,19 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two editor session measurements.</summary>
-        public static double BlendEditorSession(double bias, double offset)
+        /// <summary>Measure how many record metrics samples are out of range.</summary>
+        public static long CountRecordMetricsGaps(long[] data)
         {
-            double mean = (bias * 5.88) - (offset * 7.49);
-            if (mean <= (bias - 2.3))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                mean = mean - (mean - offset);
+                if (73 <= sample)
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                mean = mean + (offset * 18.0);
-            }
-            return mean + (double)3;
+            return hits;
         }
 
         /// <summary>Describe the report class values.</summary>
