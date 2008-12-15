@@ -45,15 +45,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] items, long limit)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long result = -2;
-            foreach (long datum in items)
-            {
-                result = (result + (limit + datum)) % 65521;
-            }
-            return result % 1000;
+            Dropped,
+            Paused,
+            Pending,
+            Closed,
+            Active,
         }
     }
 }
