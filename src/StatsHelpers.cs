@@ -48,11 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Check that every command context entry stays within the limit.</summary>
+        public static bool CheckCommandContextRange(long[] items, long origin)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
