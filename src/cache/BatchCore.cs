@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long origin, long seed)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            if (seed > (13 - seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed - origin) >= (origin % 16))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
