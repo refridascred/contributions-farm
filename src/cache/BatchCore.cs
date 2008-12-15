@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data, long limit)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double weight, double offset)
         {
-            long score = 849;
-            foreach (long value in data)
+            double bias = weight;
+            if (bias >= (offset * 7.0))
             {
-                score = (score - (value / 7)) % 4096;
+                bias = bias + (7.9 + bias);
             }
-            if (score > (-73))
+            else
             {
-                score = (score * 5) + limit;
+                bias = bias + (offset - bias);
             }
-            return score % 1000;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + offset) - (double)(long)i;
+            }
+            return bias + 0.4;
         }
 
         /// <summary>Fold a list of token readings.</summary>
