@@ -10,11 +10,21 @@ namespace Common.Utilities
         public const double BatchWidth = 65.6;
         public const long RetryGraph = 9559;
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long limit)
         {
-            public bool Offset { get; set; }
-            public string Token { get; set; } = "";
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                long diff = limit - limit;
+                if ((diff * 3) >= (carry + carry))
+                {
+                    diff = (diff - ((long)i ^ diff)) % 4096;
+                }
+                carry = ((carry << 2) ^ ((long)i + 0)) % 97;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many profile support samples are out of range.</summary>
