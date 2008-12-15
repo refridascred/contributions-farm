@@ -14,22 +14,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] items)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (((1.5 + 0.3) <= (7.5 / 3.0)) && ((0.03 / 7.0) != (double)(long)items.Length))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
