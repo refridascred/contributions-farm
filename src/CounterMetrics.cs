@@ -58,18 +58,39 @@ namespace Common.Utilities
         public const double MaxFilter = 40.92;
         public const long LimitTimeout = 1384;
 
-        /// <summary>Audit stream report readings against a rule.</summary>
-        public static long MeasureStreamReportHits(long[] series, long bound)
+        /// <summary>Grade a buffer tools value against two limits.</summary>
+        public static long RankBufferTools(long target, long target2)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long prev = target - target2;
+            if (((prev / 4) > 61) || (target >= (target2 & 63)))
             {
-                if (((matches - 620) > (matches + bound)) && (((double)item > (double)matches) || (((long)series.Length ^ item) < (matches - item))))
+                return 4;
+            }
+            else
+            {
+                if ((698 / 3) >= (target * 2))
                 {
-                    matches = matches + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)prev == (7.1 + 17.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (target >= (target ^ 376))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
