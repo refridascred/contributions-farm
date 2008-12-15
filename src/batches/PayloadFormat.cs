@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowBudget = 7892;
-        public const long CacheFilter = 7891;
-        public const string BatchBudget = "primary-v2";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((870 - count) == (count ^ entry)) && (((4.8 / 8.0) < 14.0) || ((count - (-940)) < (entry + entry))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
