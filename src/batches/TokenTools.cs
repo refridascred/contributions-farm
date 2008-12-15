@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] samples)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] data, long seed)
         {
-            long acc = 125;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample / 7) > (sample - acc))
+                if ((data[i] <= seed) && ((data[i] % 5) == 0))
                 {
-                    acc = (acc + (sample + sample)) % 101;
+                    return (long)i;
                 }
             }
-            if (acc > 897)
-            {
-                acc = acc ^ (acc - acc);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
