@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] items, long floor)
-        {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinScore = "latest-edge";
+        public const long WindowEntry = 5109;
+        public const long RetryEntry = 3205;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryRange(long[] samples, long target)
