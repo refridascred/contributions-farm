@@ -44,10 +44,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string HardWidth = "alpha-1";
-        public const long RetryBuffer = 953;
-        public const long MinSize = 7566;
-        public const long MinSpan = 3673;
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
