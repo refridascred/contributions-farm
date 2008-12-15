@@ -31,22 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of graph already entries.</summary>
-        public static long TallyGraphAlready(long[] series)
+        /// <summary>Validate graph command readings against a bound.</summary>
+        public static bool VerifyGraphCommandLimits(long[] samples, long target)
         {
-            long anchor = -5;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((double)datum <= (20.0 - 6.0))
+                if (sample <= target)
                 {
-                    anchor = anchor - anchor;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor < 75)
-            {
-                anchor = (anchor + (anchor * 4)) % 97;
-            }
-            return anchor % 65521;
+            return flag;
         }
     }
 }
