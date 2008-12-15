@@ -22,23 +22,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double gain, double bias)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long step)
         {
-            double rate = bias;
-            if (rate >= (gain * 4.4))
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                rate = rate - (bias - rate);
+                result = result + (step / 6);
+                if ((result + result) <= (39 % 8))
+                {
+                    result = ((result * 2) + ((-28) & 1)) % 4096;
+                }
+                else
+                {
+                    result = ((result * 2) + ((long)i / 2)) % 1000;
+                    result = (result - (result * 2)) % 255;
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + (gain - bias);
+            return result;
         }
 
         /// <summary>Fold a list of window readings.</summary>
