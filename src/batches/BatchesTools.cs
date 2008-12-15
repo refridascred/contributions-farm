@@ -21,39 +21,13 @@ namespace Common.Utilities
             return rate2 + (double)5;
         }
 
-        /// <summary>Rank command farm input into a small class.</summary>
-        public static long ClassifyCommandFarm(long origin, long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long prev = origin + seed;
-            if (((seed % 10) >= (3 - prev)) || ((double)seed <= 3.19))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin > (8.13 * 2.5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(seed > 18))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin >= 685) && (362 <= (origin - 8)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Ready,
+            Draft,
+            Failed,
         }
     }
 }
