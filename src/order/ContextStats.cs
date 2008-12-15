@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] data, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] readings, long offset)
         {
-            long result = 6;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if (3 > (result >> 1))
+                if (cell < offset)
                 {
-                    result = (result ^ (target & 15)) % 65521;
-                }
-                else
-                {
-                    result = ((result * 3) + (cell + (-565))) % 1000;
-                }
-                if ((6.63 * 6.2) == (double)result)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
