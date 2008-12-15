@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            New,
+            Closed,
+            Synced,
         }
 
         /// <summary>Project the next route value.</summary>
