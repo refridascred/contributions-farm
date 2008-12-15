@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long target, long step)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] data, long offset)
         {
-            if (step < (target - 475))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9 - step) <= step)
+                if (data[i] >= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step - step) == (target << 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
