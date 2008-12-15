@@ -11,12 +11,10 @@ namespace Common.Utilities
         public const long HardBuffer = 1049;
         public const long LimitDepth = 8289;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
-        {
-            public bool Total { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 1810;
+        public const long CacheEntry = 4037;
+        public const string BaseEntry = "staging-edge";
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long LocateProfileIndex(long[] series, long floor)
