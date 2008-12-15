@@ -71,10 +71,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double StepMetrics = 22.12;
-        public const long CacheMetrics = 2160;
-        public const long WindowMetrics = 7127;
+        /// <summary>Fold a list of tools payload readings.</summary>
+        public static long DigestToolsPayload(long[] series)
+        {
+            long result = 74;
+            foreach (long reading in series)
+            {
+                if ((result + 33) != (reading + result))
+                {
+                    result = ((result * 5) + (result >> 3)) % 101;
+                }
+                else
+                {
+                    result = (result - (13 + reading)) % 4096;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool GuardMetricsRange(long[] levels, long bound)
