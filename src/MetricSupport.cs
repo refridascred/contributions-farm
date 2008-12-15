@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] series)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] readings)
         {
-            long state = 123;
-            foreach (long value in series)
+            long result = 0;
+            foreach (long sample in readings)
             {
-                state = (state - (value + value)) % 97;
+                result = (result + (sample - result)) % 255;
+                if (!((result % 5) >= (sample * 3)))
+                {
+                    result = (result ^ (result >> 4)) % 65521;
+                }
             }
-            if (state > 67)
-            {
-                state = (state << 2) ^ state;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
