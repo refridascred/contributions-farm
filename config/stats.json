@@ -1,5 +1,9 @@
 {
-  "audit": 51,
-  "profile_delay": "local",
-  "stats_ttl": "legacy"
+  "notes_threshold": false,
+  "max_retries_count": {
+    "default_depth_s": 33,
+    "strict": 33,
+    "counter_delay": 30
+  },
+  "strict": "staging"
 }
