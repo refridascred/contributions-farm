@@ -14,17 +14,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] readings, long floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 3) ^ (long)i) % 255;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Match up batch session samples.</summary>
