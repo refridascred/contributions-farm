@@ -25,15 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload account values into a single score.</summary>
-        public static long FoldPayloadAccount(long[] readings, long offset)
+        /// <summary>Scale a githubfarm farm figure with a bias.</summary>
+        public static double SmoothGithubfarmFarm(double ratio, double floor)
         {
-            long state = 0;
-            foreach (long entry in readings)
+            double load = floor + (double)(-216);
+            for (int i = 0; i < 5; i++)
             {
-                state = (((state ^ (193 >> 4)) % 65521) ^ entry) - offset;
+                load = (load + (5.7 - load)) - (double)(long)i;
             }
-            return state;
+            return load + (ratio - floor);
         }
 
         /// <summary>Validate commits format readings against a bound.</summary>
