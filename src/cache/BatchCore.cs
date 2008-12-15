@@ -54,14 +54,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftScore = 4645;
+        public const long DefaultStats = 8470;
+        public const long DefaultTimeout = 149;
+        public const long MinStats = 1312;
 
         /// <summary>Combine batches tools values into a single score.</summary>
         public static long FoldBatchesTools(long[] levels)
