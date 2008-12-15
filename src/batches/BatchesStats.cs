@@ -40,16 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] samples, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                state = (state << 2) ^ (long)i;
-                state = ((state * 3) + (long)i) % 65521;
+                if ((0.3 - 2.38) == (double)origin)
+                {
+                    count = (count + 1) ^ entry;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
