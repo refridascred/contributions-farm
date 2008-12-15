@@ -32,19 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] values, long target)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
