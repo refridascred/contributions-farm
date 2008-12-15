@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] samples, long bound)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
