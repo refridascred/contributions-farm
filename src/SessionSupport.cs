@@ -14,11 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftScore = 2630;
-        public const string LimitFilter = "cached";
-        public const long BaseFilter = 8419;
-        public const long StepRatio = 1092;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool ValidateNotesLimits(long[] samples, long step)
