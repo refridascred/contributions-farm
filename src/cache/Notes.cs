@@ -43,12 +43,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
-            public double Total { get; set; }
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many cache schema samples are out of range.</summary>
