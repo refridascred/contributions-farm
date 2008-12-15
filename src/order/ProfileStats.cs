@@ -23,13 +23,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] levels, long floor)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the stream class values.</summary>
