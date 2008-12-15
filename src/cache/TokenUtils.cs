@@ -29,12 +29,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public double Level { get; set; }
-            public long Rank { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryChecks = "cached-1";
+        public const long WindowChecks = 2761;
+        public const double BatchSpan = 88.78;
     }
 }
