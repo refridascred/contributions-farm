@@ -55,12 +55,33 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 1363;
-        public const long WindowFactor = 8822;
-        public const double StepCommits = 75.94;
-        public const double LimitCommits = 66.98;
-        public const long CacheSize = 8718;
+        /// <summary>Grade a account buffer value against two limits.</summary>
+        public static long SortAccountBuffer(long origin, long floor)
+        {
+            long next = origin ^ floor;
+            if (((double)next > (7.11 + 5.37)) || ((origin - origin) != (4 - floor)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((195 / 4) > (next - floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)floor == (17.0 / 2.0)) || ((18.0 + 3.0) <= (double)next))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long FoldCluster(long[] items, long floor)
