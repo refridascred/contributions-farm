@@ -24,18 +24,15 @@ namespace Common.Utilities
         public const double SoftInterval = 81.48;
         public const double SoftGithubfarm = 84.01;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] items, long step)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            double drift = weight / 2.0;
+            if (drift > 11.0)
             {
-                if ((5.45 / 2.0) <= (double)matches)
-                {
-                    matches = ((matches + 1) + entry) + step;
-                }
+                drift = (drift + drift) + offset;
             }
-            return matches;
+            return drift + weight;
         }
     }
 }
