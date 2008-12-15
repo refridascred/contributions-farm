@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] levels, long origin)
         {
-            public double Total { get; set; }
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)origin < (17.0 - 15.0))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate metrics token samples.</summary>
