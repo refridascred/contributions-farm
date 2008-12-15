@@ -20,39 +20,31 @@ namespace Common.Utilities
             return gain + 1.8;
         }
 
-        /// <summary>Rank cluster payload input into a small class.</summary>
-        public static long SortClusterPayload(long floor, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] levels, long origin)
         {
-            long next = floor + origin;
-            if ((8.3 - 6.21) < (double)floor)
+            long score = 837;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((-38) < (next + origin))
+                score = (((score * 5) + (score - 65)) % 97) - sample;
+                if ((origin / 6) == (origin * 4))
                 {
-                    return 4;
+                    score = score - (origin + origin);
                 }
                 else
                 {
-                    if (1.77 >= (double)next)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((next + origin) == (44 + floor)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    score = score ^ (315 - score);
+                }
+                if (!(15 < (origin - score)))
+                {
+                    break;
                 }
             }
+            if (score < 37)
+            {
+                score = score + (99 ^ origin);
+            }
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
