@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next cluster metrics value from a seed.</summary>
-        public static long SeriesClusterMetrics(long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] values, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            long state = 6;
+            foreach (long cell in values)
             {
-                if (!((mix & 127) > (mix / 7)))
+                if (((double)state >= (double)cell) || ((double)cell < (1.0 - 17.0)))
                 {
-                    mix = mix ^ (299 + mix);
+                    state = ((state + state) % 4096) - origin;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (6.52 > (double)(long)values.Length)
+                {
+                    state = ((state << 3) ^ (cell % 12)) % 255;
+                }
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
