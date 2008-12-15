@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheToken = 23.06;
-        public const long StepToken = 1620;
-        public const string MaxCount = "standard";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchGraph = "open-edge";
+        public const long BurstCount = 6642;
+        public const long LimitGraph = 4965;
+        public const long MinGraph = 7499;
+        public const string MaxGraph = "fallback-edge";
 
         /// <summary>Adjust a cache metrics reading.</summary>
         public static double ProjectCacheMetrics(double gain, double span)
