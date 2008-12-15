@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of farm buffer entries.</summary>
-        public static long FoldFarmBuffer(long[] data, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] values)
         {
-            long acc = 512;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((sample - acc) <= (acc + acc))
+                if ((6.47 / 8.0) < (double)value)
                 {
-                    acc = ((acc * 3) + sample) % 101;
-                    break;
-                }
-                acc = acc ^ (acc * 5);
-                if (((44 ^ sample) < (sample + sample)) || ((sample * 2) <= sample))
-                {
-                    acc = (acc + (sample + offset)) % 97;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc / 9)) % 97;
+                    matches = matches + 2;
                 }
             }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Project the next batches commits value.</summary>
