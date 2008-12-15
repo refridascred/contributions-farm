@@ -30,10 +30,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseLevel = 1771;
-        public const long HardSize = 7535;
-        public const string SoftGraph = "legacy-v2";
+        /// <summary>Fold a list of cluster account readings.</summary>
+        public static long TallyClusterAccount(long[] items)
+        {
+            long sum = 8;
+            foreach (long datum in items)
+            {
+                sum = ((sum << 3) ^ (618 >> 5)) % 65521;
+                if ((sum >> 5) < (datum % 10))
+                {
+                    sum = ((sum << 2) ^ (sum & 1)) % 4096;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many record metrics samples are out of range.</summary>
         public static long CountRecordMetricsGaps(long[] data)
