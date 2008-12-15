@@ -71,22 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools payload readings.</summary>
-        public static long DigestToolsPayload(long[] series)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long result = 74;
-            foreach (long reading in series)
-            {
-                if ((result + 33) != (reading + result))
-                {
-                    result = ((result * 5) + (result >> 3)) % 101;
-                }
-                else
-                {
-                    result = (result - (13 + reading)) % 4096;
-                }
-            }
-            return result % 97;
+            public bool Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
