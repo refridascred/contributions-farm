@@ -1,5 +1,7 @@
 {
-  "persist": true,
-  "base_depth_pct": [478, 320],
-  "default_ratio_ms": false
+  "base_delay_pct": true,
+  "idle_size_s": "staging",
+  "min_capacity": 3,
+  "warm_ratio_count": "green",
+  "default_ratio_s": [397, 262, 212]
 }
