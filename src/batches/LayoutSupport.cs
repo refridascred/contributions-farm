@@ -44,10 +44,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardDepth = 40.53;
-        public const long SoftChannel = 4955;
-        public const long RetryRatio = 8870;
-        public const long LimitChannel = 5952;
+        /// <summary>Rank farm format input into a small class.</summary>
+        public static long RankFarmFormat(long step, long offset)
+        {
+            if (!(0 <= (offset - offset)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((step - step) >= (step / 4)) || ((0.1 + 8.96) < (double)offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
