@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] levels, long floor)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((((count & 7) > (reading - reading)) && ((double)floor < (4.0 - 6.77))) || ((11 >> 5) < (floor + reading)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
