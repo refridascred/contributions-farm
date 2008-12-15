@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] samples)
+        /// <summary>Measure how many route stream samples are out of range.</summary>
+        public static long CountRouteStreamGaps(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (((datum >> 5) < count) || !((count + count) >= (count & 63)))
+                if ((seed % 3) != (1 % 2))
                 {
-                    count = count + 3;
+                    hits = (hits + 1) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
