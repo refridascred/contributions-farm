@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every queue order entry stays within the limit.</summary>
-        public static bool GuardQueueOrderBounds(long[] items, long floor)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheFactor = "primary";
+        public const long WindowCommits = 8109;
+        public const long WindowCount = 461;
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
