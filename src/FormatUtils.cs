@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleInterval = 3062;
-        public const double IdleLevel = 8.29;
-        public const long MaxBudget = 3066;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = ((mark ^ (limit - mark)) % 97) + (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
