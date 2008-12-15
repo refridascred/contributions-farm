@@ -27,18 +27,10 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Look up the position of a metric session sample.</summary>
-        public static long LocateMetricSessionIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseLevel = 1771;
+        public const long HardSize = 7535;
+        public const string SoftGraph = "legacy-v2";
 
         /// <summary>Measure how many record metrics samples are out of range.</summary>
         public static long CountRecordMetricsGaps(long[] data)
