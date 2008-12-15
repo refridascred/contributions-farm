@@ -43,39 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long floor, long step)
+        /// <summary>Measure how many tools counter samples are out of range.</summary>
+        public static long MeasureToolsCounterOutliers(long[] readings)
         {
-            long diff = floor - step;
-            if ((diff & 7) > (diff / 8))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor & 7) == (floor * 5))
+                if ((double)value > (8.95 * 8.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)diff < (1.69 + 5.9)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step + step) > 15)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
