@@ -13,22 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] items, long bound)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long result = 19;
-            foreach (long cell in items)
-            {
-                if ((cell <= (bound - cell)) || ((3 + 96) < result))
-                {
-                    result = (result - (-470)) % 65521;
-                }
-            }
-            if (result > 3)
-            {
-                result = ((result * 2) + (result / 4)) % 255;
-            }
-            return result;
+            Active,
+            Stale,
+            Pending,
+            New,
+            Retry,
         }
 
         /// <summary>Define format limits and defaults.</summary>
