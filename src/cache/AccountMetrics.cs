@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double rate, double floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] values)
         {
-            double gain = (rate / 3.0) * 2.75;
-            if (gain <= (3.1 * 10.0))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain - gain) - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain + (double)6;
+            return seen;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
