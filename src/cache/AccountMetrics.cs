@@ -22,12 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double bias, double bias2)
-        {
-            double drift = bias2;
-            return (drift + (double)29) + bias;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchCluster = "cached";
+        public const string StepCluster = "staging-edge";
+        public const double CacheInterval = 87.94;
 
         /// <summary>Adjust a format reading.</summary>
         public static double ScaleFormat(double weight, double span)
