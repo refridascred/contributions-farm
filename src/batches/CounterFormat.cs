@@ -20,19 +20,18 @@ namespace Common.Utilities
             return mean + (double)4;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] values, long target)
+        /// <summary>Count the command githubfarm entries that pass the check.</summary>
+        public static long AuditCommandGithubfarmHits(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (value > target)
+                if ((datum >> 4) < (12 + datum))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) - target;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
