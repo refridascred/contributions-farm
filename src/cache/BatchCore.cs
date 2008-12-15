@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long limit, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data, long limit)
         {
-            long lane = limit ^ floor;
-            if ((limit < (floor % 3)) || (floor > (floor + limit)))
+            long score = 849;
+            foreach (long value in data)
             {
-                return 8;
+                score = (score - (value / 7)) % 4096;
             }
-            else
+            if (score > (-73))
             {
-                if ((lane >> 3) > (419 + floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (7.4 >= (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)lane > (18.0 * 6.71)) || ((lane - limit) < (65 ^ floor)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                score = (score * 5) + limit;
             }
+            return score % 1000;
         }
 
         /// <summary>Fold a list of token readings.</summary>
