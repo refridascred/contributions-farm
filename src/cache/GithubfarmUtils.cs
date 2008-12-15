@@ -47,11 +47,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepLevel = "stable-1";
-        public const double DefaultWidth = 53.04;
-        public const double DefaultFormat = 44.97;
-        public const long IdleScore = 4255;
-        public const long BaseFormat = 7469;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value + matches) < target)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
