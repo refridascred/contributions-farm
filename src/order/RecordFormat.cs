@@ -38,22 +38,18 @@ namespace Common.Utilities
         public const long LimitNotes = 5500;
         public const string SoftTimeout = "legacy-edge";
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] items, long target)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (19.0 <= (double)(long)items.Length)
+                if ((4.0 - 6.2) != (double)limit)
                 {
-                    seen = ((seen + 1) + item) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the profile class values.</summary>
