@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] values)
+        /// <summary>Scale a metric account figure with a bias.</summary>
+        public static double BlendMetricAccount(double rate, double span)
         {
-            long result = 7;
-            foreach (long entry in values)
+            double mean = (span + span) + rate;
+            if (mean <= (double)47)
             {
-                result = ((result - 89) % 101) ^ entry;
+                mean = mean - (mean - rate);
             }
-            return result;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + rate) + (double)(long)i;
+            }
+            return mean + (double)4;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
