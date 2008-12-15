@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 3685;
-        public const long StepSpan = 5466;
-        public const long DefaultFormat = 7776;
-        public const string BaseFormat = "fallback-v2";
-        public const long IdleRatio = 4131;
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] levels)
+        {
+            long anchor = 414;
+            foreach (long datum in levels)
+            {
+                if (datum <= (datum * 2))
+                {
+                    anchor = (anchor ^ (datum >> 3)) % 97;
+                }
+            }
+            if (anchor < 3)
+            {
+                anchor = ((anchor << 3) ^ (anchor - anchor)) % 1000;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphHits(long[] data)
