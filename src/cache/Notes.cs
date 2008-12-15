@@ -31,16 +31,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long target)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long target, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
+            long step = target + offset;
+            if (!(step <= (7 << 2)))
             {
-                sum = (sum << 3) ^ sum;
-                sum = ((sum * 2) + (long)i) % 101;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if (5.81 > (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (offset > (step >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema snapshot.</summary>
