@@ -27,23 +27,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of profile token entries.</summary>
-        public static long WeighProfileToken(long[] values, long origin)
+        /// <summary>Measure how many counter stream samples are out of range.</summary>
+        public static long MeasureCounterStreamMatches(long[] items)
         {
-            long sum = 69;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long item in items)
             {
-                sum = sum - (origin << 3);
-                if ((double)cell < (1.55 / 4.0))
+                if ((60 / 9) > (item * 4))
                 {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            if (sum > 74)
-            {
-                sum = ((sum << 2) ^ (sum - origin)) % 255;
-            }
-            return sum;
+            return hits;
         }
     }
 }
