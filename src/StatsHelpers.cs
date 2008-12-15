@@ -26,15 +26,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double bias, double offset)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            double weight = bias + 5.0;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + offset) + (double)(long)i;
-            }
-            return weight - offset;
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a checks summary.</summary>
