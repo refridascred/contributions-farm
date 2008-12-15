@@ -59,22 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] readings)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            double scale = (double)(84 & 1);
+            for (int i = 0; i < 8; i++)
             {
-                if ((733 % 64) > datum)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = ((scale - (double)(long)i) - ratio) + floor;
             }
-            return tally;
+            return scale - (0.67 / 5.0);
         }
     }
 }
