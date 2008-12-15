@@ -1,8 +1,13 @@
 {
-  "default_ratio_count": 100,
-  "editor_depth": [26, 348, 168, 300],
-  "readonly": 60,
-  "commits_window": 10,
-  "channel_capacity": 8615,
-  "default_size": [153, 392, 494, 304]
+  "batches_ttl": ["blue", "fallback", "open", "standard"],
+  "cache_depth_count": 9236,
+  "warm_ratio": "cached",
+  "sync_timeout_count": {
+    "hard_size_pct": "green",
+    "retry_capacity": 60,
+    "max_limit_ms": "cached",
+    "flush_retries_count": 27,
+    "idle_ttl_count": ["strict", "open", "strict", "staging"],
+    "audit": 30
+  }
 }
