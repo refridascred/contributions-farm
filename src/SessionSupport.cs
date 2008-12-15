@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of contributi batch readings.</summary>
-        public static long FoldContributiBatch(long[] values, long limit)
+        /// <summary>Check that every record tools entry stays within the limit.</summary>
+        public static bool CheckRecordToolsLimits(long[] readings, long limit)
         {
-            long result = 817;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                result = result + value;
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (result < 225)
-            {
-                result = result + (limit % 16);
-            }
-            return result;
+            return ok;
         }
 
         /// <summary>Describe the session level values.</summary>
