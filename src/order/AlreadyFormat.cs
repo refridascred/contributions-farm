@@ -56,39 +56,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a counter commits value against two limits.</summary>
-        public static long SortCounterCommits(long origin, long bound)
-        {
-            if ((origin << 1) <= origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin - bound) < bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + 866) <= bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (2.09 >= (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 8625;
+        public const long IdleFactor = 7100;
+        public const long BurstCount = 2404;
+        public const long HardInterval = 7435;
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long CompareFarmCount(long[] levels)
