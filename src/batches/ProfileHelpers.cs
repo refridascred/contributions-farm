@@ -39,18 +39,26 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] levels, long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long acc = 316;
+            foreach (long item in levels)
             {
-                if (((limit % 64) > (datum ^ datum)) || ((datum > (hits % 2)) || (limit > (limit / 7))))
+                if ((item * 3) >= (target + acc))
                 {
-                    hits = hits + 1;
+                    acc = (acc - ((long)levels.Length ^ item)) % 65521;
+                }
+                if ((8 >> 1) < (acc - target))
+                {
+                    acc = (acc << 3) ^ (target << 2);
+                }
+                else
+                {
+                    acc = (acc + target) % 255;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Blend two format notes measurements.</summary>
