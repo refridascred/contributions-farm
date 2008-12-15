@@ -43,12 +43,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Validate commits format readings against a bound.</summary>
+        public static bool VerifyCommitsFormatBounds(long[] data, long seed)
         {
-            Draft,
-            Queued,
-            Done,
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
