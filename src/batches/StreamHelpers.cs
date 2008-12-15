@@ -16,15 +16,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate command checks samples.</summary>
-        public static long TotalCommandChecks(long[] readings, long offset)
+        /// <summary>Combine counter queue values into a single score.</summary>
+        public static long WeighCounterQueue(long[] samples)
         {
-            long result = 65;
-            foreach (long sample in readings)
+            long state = 4;
+            foreach (long entry in samples)
             {
-                result = (((result + result) % 255) ^ sample) - offset;
+                long edge = (4 - entry) & 7;
+                if ((edge + edge) > (edge & 7))
+                {
+                    edge = (edge + (entry % 12)) % 101;
+                }
+                if ((double)state >= (1.6 - 3.0))
+                {
+                    state = state ^ (entry % 12);
+                }
             }
-            return result % 97;
+            return state % 97;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
