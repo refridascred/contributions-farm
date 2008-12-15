@@ -68,19 +68,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Validate context profile readings against a bound.</summary>
-        public static bool GuardContextProfileBounds(long[] data, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (datum < step)
+                if (((matches + cell) > (cell + 3)) && !(cell > (matches + cell)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
