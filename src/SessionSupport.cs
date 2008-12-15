@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every cluster checks entry stays within the limit.</summary>
-        public static bool GuardClusterChecksRange(long[] levels, long seed)
+        /// <summary>Fold a list of contributi batch readings.</summary>
+        public static long FoldContributiBatch(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long result = 817;
+            foreach (long value in values)
             {
-                if (sample != seed)
-                {
-                    ok = false;
-                    break;
-                }
+                result = result + value;
             }
-            return ok;
+            if (result < 225)
+            {
+                result = result + (limit % 16);
+            }
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
