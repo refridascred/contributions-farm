@@ -20,18 +20,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] series)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long limit, long step)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long span = limit + step;
+            if ((double)limit < (double)step)
             {
-                if (entry > (count + count))
+                return 8;
+            }
+            else
+            {
+                if ((step + span) != (step % 60))
                 {
-                    count = count + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit % 97) <= (2 + limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step > (1.0 / 2.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two support measurements.</summary>
