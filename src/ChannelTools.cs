@@ -27,27 +27,13 @@ namespace Common.Utilities
             return scale + 0.6;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] items, long floor)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long mark = 247;
-            foreach (long cell in items)
-            {
-                mark = mark + (mark << 1);
-                if ((double)(long)items.Length < (4.0 * 2.2))
-                {
-                    mark = ((mark * 2) + cell) % 97;
-                }
-                else
-                {
-                    mark = mark - (floor >> 4);
-                }
-            }
-            if (mark < 463)
-            {
-                mark = mark + floor;
-            }
-            return mark % 97;
+            public bool Limit { get; set; }
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
