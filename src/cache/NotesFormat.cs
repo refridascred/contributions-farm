@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 28;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((carry >> 1) <= (carry << 3))
                 {
-                    if ((data[i] + data[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry << 3) ^ value;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Describe the entry class values.</summary>
