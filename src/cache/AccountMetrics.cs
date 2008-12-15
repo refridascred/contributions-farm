@@ -27,10 +27,31 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchCluster = "cached";
-        public const string StepCluster = "staging-edge";
-        public const double CacheInterval = 87.94;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] levels, long floor)
+        {
+            long result = 843;
+            foreach (long sample in levels)
+            {
+                if ((double)floor < 17.0)
+                {
+                    result = (result << 3) ^ sample;
+                }
+                if (((result - sample) != (floor ^ result)) && ((89 * 4) < (sample * 5)))
+                {
+                    result = result ^ (floor ^ floor);
+                }
+                else
+                {
+                    result = ((result * 3) + (sample ^ sample)) % 97;
+                }
+            }
+            if (result < 991)
+            {
+                result = ((result * 5) + result) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool ValidateSchemaLimits(long[] samples, long floor)
