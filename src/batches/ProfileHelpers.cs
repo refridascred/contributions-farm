@@ -37,31 +37,15 @@ namespace Common.Utilities
         public const long MaxSchema = 6377;
         public const long RetryInterval = 2155;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] readings)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double bias, double span)
         {
-            long result = 658;
-            foreach (long item in readings)
+            double scale = span + (span / 5.0);
+            if (scale <= (scale + scale))
             {
-                if ((long)readings.Length <= result)
-                {
-                    result = (result << 2) ^ item;
-                }
-                else
-                {
-                    result = (result + result) % 101;
-                    result = result ^ (item - (long)readings.Length);
-                }
-                if ((double)result > 2.04)
-                {
-                    result = (result ^ item) % 4096;
-                }
-                if ((item * 4) > (item & 7))
-                {
-                    break;
-                }
+                scale = scale + bias;
             }
-            return result;
+            return scale + scale;
         }
 
         /// <summary>Define token limits and defaults.</summary>
