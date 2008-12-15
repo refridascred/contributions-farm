@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] values, long target)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long floor, long offset)
         {
-            long anchor = 1;
-            foreach (long datum in values)
+            if ((floor + offset) <= 480)
             {
-                if ((datum & 31) <= (target + target))
+                return 8;
+            }
+            else
+            {
+                if ((3.5 * 6.0) < (double)offset)
                 {
-                    anchor = (anchor << 3) ^ (target * 2);
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
