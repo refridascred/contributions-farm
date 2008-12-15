@@ -1,14 +1,14 @@
 # Command notes
 
-Each editor is validated before it reaches the tools queue.
-When a context fails, the counter handler retries a few times before giving up.
+When a notes fails, the queue handler retries a few times before giving up.
+Use counter settings to tune how often session data is refreshed.
 
-Keep buffer and stream names short and lowercase.
-A format that stays idle for too long is moved to the token list.
-Run the token check before changing any account limits.
+The cluster report groups every order by route.
+Use editor settings to tune how often filter data is refreshed.
 
 ## Guidelines
 
-- Keep route values small
-- Prefer payload defaults
-- Document new batches fields
+- Keep schema values small
+- Validate metrics input early
+- Review editor limits each release
+- Log every cache change
