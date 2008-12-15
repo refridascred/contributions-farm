@@ -1,7 +1,8 @@
 {
-  "metric_limit": 54,
-  "min_interval": "local",
-  "verbose": "standard",
-  "strict": false,
-  "audit": 60
+  "contributi_ttl": "latest",
+  "queue_threshold": 47,
+  "soft_retries": 9,
+  "account_limit": 250,
+  "compress": ["latest", "legacy", "eu-west"],
+  "retry_size_s": ["fallback", "eu-west", "local"]
 }
