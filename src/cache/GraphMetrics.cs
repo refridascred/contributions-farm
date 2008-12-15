@@ -66,11 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitQueue = "alpha";
-        public const long DefaultLevel = 3733;
-        public const double StepInterval = 95.28;
-        public const long MaxWidth = 6002;
-        public const long StepTimeout = 9605;
+        /// <summary>Measure how many batch profile samples are out of range.</summary>
+        public static long MeasureBatchProfileMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + count) >= entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
