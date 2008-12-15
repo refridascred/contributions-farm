@@ -16,15 +16,11 @@ namespace Common.Utilities
             return ratio + (span / 5.0);
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long target)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
