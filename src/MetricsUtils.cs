@@ -20,13 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
-            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the already state values.</summary>
