@@ -22,21 +22,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = (double)0 * 5.5;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = ((rate + (double)93) - (double)(long)i) - scale;
             }
-            return seen;
+            return rate + floor;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
