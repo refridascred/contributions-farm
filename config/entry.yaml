@@ -1,23 +1,5 @@
 # entry settings
-burst_retries_pct: 49.63
-checks_window: 47
-soft_limit: true
-burst_size_pct: strict
-enabled:
-  readonly: false
-  sync_depth_s: true
-  filter_capacity: blue
-  context_delay:
-    audit: 500
-    soft_ratio_count: primary
-    soft_retries_s: 9806
-    burst_retries_pct: latest
-  persist: latest
-  graph_timeout:
-    default_window_s: local
-    batch_delay_pct:
-      - eu-west
-      - stable
-      - green
-    strict: true
-batch_window_count: false
+burst_size_ms: 1024
+strict: cached
+token_interval: strict
+audit: 91.01
