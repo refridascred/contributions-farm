@@ -36,13 +36,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public bool Rank { get; set; }
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
