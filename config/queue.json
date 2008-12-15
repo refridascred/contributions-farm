@@ -1,16 +1,8 @@
 {
-  "burst_interval": {
-    "idle_window_count": ["edge", "stable", "local", "edge"],
-    "sync_ttl_count": 30.58,
-    "batch_retries_ms": 38.32,
-    "metric_delay": [463, 407, 389],
-    "hard_ratio_s": "open",
-    "base_ratio_ms": {
-      "batch_interval": 19,
-      "graph_delay": 3.75,
-      "min_window": 54
-    }
-  },
-  "context_retries": "fallback",
-  "order_threshold": "edge"
+  "strict": "blue",
+  "readonly": 100,
+  "hard_delay": "eu-west",
+  "flush_timeout": 4,
+  "persist": 18.89,
+  "idle_threshold_ms": 26
 }
