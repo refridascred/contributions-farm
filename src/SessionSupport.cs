@@ -20,16 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 2342;
+        public const long DefaultBudget = 2439;
+        public const long CacheQueue = 6758;
+        public const long BaseQueue = 507;
 
         /// <summary>Validate graph command readings against a bound.</summary>
         public static bool VerifyGraphCommandLimits(long[] samples, long target)
