@@ -1,7 +1,8 @@
 {
-  "burst_interval_s": ["latest", "standard", "eu-west"],
-  "poll_capacity_count": "stable",
-  "schema_interval": ["staging", "primary", "primary", "cached"],
-  "warm_depth": 1262,
-  "default_ttl": 1024
+  "batch_delay_s": 4557,
+  "editor_limit": "stable",
+  "session_capacity": 11.63,
+  "retry_depth_count": "standard",
+  "buffer_ttl": 1024,
+  "base_threshold_s": 49.23
 }
