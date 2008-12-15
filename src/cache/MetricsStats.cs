@@ -26,12 +26,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "stable-v2";
-        public const long MinInterval = 7052;
-        public const long BurstInterval = 5680;
-        public const string SoftCommand = "fallback-edge";
-        public const string WindowBudget = "primary-v2";
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] samples)
+        {
+            long acc = 207;
+            foreach (long item in samples)
+            {
+                if (!((item * 3) != (acc / 9)))
+                {
+                    acc = (acc + (acc & 127)) % 1000;
+                    acc = (acc - item) % 101;
+                }
+                if ((118 + acc) != (acc >> 3))
+                {
+                    acc = ((acc * 3) + (417 ^ item)) % 65521;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long RollSession(long offset)
