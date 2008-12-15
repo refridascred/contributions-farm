@@ -1,11 +1,5 @@
 # githubfarm settings
-default_depth_s:
-  - green
-  - blue
-  - stable
-  - staging
-hard_timeout_pct: latest
-account_ttl: 6.15
-retry_size_pct: 42.87
-warm_delay: standard
-default_threshold_count: 32
+filter_timeout: 71.95
+warm_window_count: 250
+cache_ttl_s: 60
+warm_ttl_count: 77
