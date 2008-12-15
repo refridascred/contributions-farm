@@ -42,23 +42,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] readings, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (((cell - matches) > (5 >> 2)) || (cell <= (matches << 1)))
                 {
-                    anchor = (anchor - (anchor >> 5)) + (long)i2;
+                    matches = (matches + 2) + offset;
                 }
-                if (2 > origin)
-                {
-                    anchor = ((anchor << 2) ^ (origin % 3)) % 101;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Grade a commits checks value against two limits.</summary>
