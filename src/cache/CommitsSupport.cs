@@ -66,21 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of route layout readings.</summary>
-        public static long MatchRouteLayoutCount(long[] values)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate profile samples.</summary>
