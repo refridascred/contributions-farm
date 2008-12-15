@@ -18,25 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long floor, long offset)
-        {
-            if ((floor + offset) <= 480)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((3.5 * 6.0) < (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BaseFarm = 61.31;
+        public const double BurstFarm = 55.89;
+        public const long BurstCount = 3242;
+        public const string SoftFarm = "primary-1";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long StepRatio = 9199;
