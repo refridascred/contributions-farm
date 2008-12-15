@@ -101,13 +101,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long floor, long limit)
         {
-            New,
-            Stale,
-            Retry,
-            Idle,
+            long gap = floor - limit;
+            if ((583 > (limit + (-53))) || ((limit >> 4) <= (floor << 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((limit * 3) >= (limit * 5)) || ((868 / 8) <= gap))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + gap) == (limit >> 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
