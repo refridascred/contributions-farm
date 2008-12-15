@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultRatio = 5171;
-        public const long MaxSupport = 5049;
-        public const long MinFactor = 2533;
-        public const long StepBudget = 8765;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Paused,
+            New,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long BucketTools(long offset, long floor)
