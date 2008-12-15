@@ -21,21 +21,15 @@ namespace Common.Utilities
             return weight + (7.43 - span);
         }
 
-        /// <summary>Match up editor route samples.</summary>
-        public static long CompareEditorRouteCount(long[] items)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 5;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state - reading) % 255) - origin;
             }
-            return hits;
+            return state % 4096;
         }
     }
 }
