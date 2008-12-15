@@ -48,11 +48,20 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 5573;
-        public const long BaseToken = 6925;
-        public const long BurstBudget = 3938;
-        public const long MaxToken = 6948;
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] data, long step)
+        {
+            long sum = 4;
+            foreach (long item in data)
+            {
+                sum = (((sum << 2) ^ (item + sum)) % 97) + step;
+                if ((item % 100) != (89 & 1))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long ClassifyFarm(long floor, long seed)
