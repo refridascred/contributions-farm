@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long limit, long floor)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
+            long lane = limit ^ floor;
+            if ((limit < (floor % 3)) || (floor > (floor + limit)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((lane >> 3) > (419 + floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (7.4 >= (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)lane > (18.0 * 6.71)) || ((lane - limit) < (65 ^ floor)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of token readings.</summary>
