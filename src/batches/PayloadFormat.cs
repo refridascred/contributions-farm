@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public double Size { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 192;
+        public const long BurstSchema = 2862;
+        public const long DefaultWidth = 5494;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long DeriveWindow(long offset)
