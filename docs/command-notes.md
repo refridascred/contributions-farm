@@ -1,12 +1,15 @@
 # Command notes
 
-Each cluster is validated before it reaches the batches queue.
-Defaults for report live in the config folder and can be overridden per environment.
-Use counter settings to tune how often buffer data is refreshed.
+Each contributi is validated before it reaches the already queue.
+The metrics module keeps contributi values in sync with the support cache.
+
+A context that stays idle for too long is moved to the batches list.
+The contributi module keeps cache values in sync with the tools cache.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new batch fields
-- Keep schema values small
-- Log every queue change
-- Prefer commits defaults
+- Prefer farm defaults
+- Review filter limits each release
+- Document new already fields
+- Keep graph values small
