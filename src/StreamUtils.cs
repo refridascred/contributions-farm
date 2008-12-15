@@ -21,21 +21,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of batches contributi readings.</summary>
-        public static long CompareBatchesContributiCount(long[] levels)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long step, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((step < (step + step)) && ((51 ^ step) > step))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((double)step < (double)323) && ((20.0 / 3.0) > (double)step))
                 {
-                    if ((levels[i] + levels[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a batches stats.</summary>
