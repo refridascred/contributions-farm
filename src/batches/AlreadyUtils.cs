@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long origin, long floor)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] samples)
         {
-            if (origin > 583)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)origin > (20.0 - 5.08)) && ((14.0 + 1.58) <= (double)floor))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(origin >= floor))
+                    if ((samples[i] + samples[j]) == 10)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the commits kind values.</summary>
