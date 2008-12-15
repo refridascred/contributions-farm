@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long BatchQueue = 1593;
         public const long BaseQueue = 9800;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 3235;
-        public const string BurstChannel = "stable";
-        public const string SoftChannel = "fallback";
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (!((8.2 + 4.37) == (double)tally))
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
