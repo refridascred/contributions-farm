@@ -46,19 +46,18 @@ namespace Common.Utilities
             return gain2 + (0.64 / 9.0);
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] samples, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (item <= origin)
+                if (tally > (934 % 24))
                 {
-                    flag = false;
-                    break;
+                    tally = ((tally + 2) + item) - floor;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Describe the schema class values.</summary>
