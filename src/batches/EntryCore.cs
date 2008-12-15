@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long seed)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] samples, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seed ^ seed) > sum)
+                if (samples[i] < origin)
                 {
-                    sum = sum ^ (sum + sum);
+                    return (long)i;
                 }
-                else
-                {
-                    sum = (sum - sum) % 255;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
