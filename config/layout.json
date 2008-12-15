@@ -1,11 +1,5 @@
 {
-  "flush_threshold": ["local", "eu-west", "latest", "stable"],
-  "hard_ttl_s": {
-    "base_depth_count": [59, 232, 95],
-    "audit": false,
-    "hard_ttl_s": 3.3,
-    "retry_capacity_ms": ["legacy", "eu-west", "blue"],
-    "poll_interval": 3
-  },
-  "burst_threshold": 7015
+  "default_timeout_ms": false,
+  "layout_capacity": "legacy",
+  "soft_capacity_ms": 1024
 }
