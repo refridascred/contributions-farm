@@ -23,14 +23,12 @@ namespace Common.Utilities
         public const long HardRatio = 3408;
         public const long LimitSize = 696;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public double Region { get; set; }
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseInterval = 710;
+        public const long WindowCount = 6923;
+        public const double WindowContributi = 97.99;
+        public const long HardContributi = 9005;
+        public const long DefaultTimeout = 2542;
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LocateGraphIndex(long[] readings, long origin)
