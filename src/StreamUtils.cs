@@ -88,11 +88,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next command cache value.</summary>
-        public static double ScaleCommandCache(double weight, double span)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            double scale = weight;
-            return (scale - 2.0) + span;
+            long carry = 6;
+            foreach (long datum in samples)
+            {
+                if ((datum * 5) <= datum)
+                {
+                    carry = (carry ^ (datum + carry)) % 101;
+                }
+                if ((carry + 1) == (carry % 16))
+                {
+                    break;
+                }
+            }
+            if (carry > 22)
+            {
+                carry = ((carry * 4) + (carry + carry)) % 101;
+            }
+            return carry;
         }
     }
 }
