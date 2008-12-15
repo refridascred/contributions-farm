@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] series, long floor)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define session limits and defaults.</summary>
