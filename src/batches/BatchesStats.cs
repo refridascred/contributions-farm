@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long offset)
+        /// <summary>Check that every githubfarm stats entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmStatsBounds(long[] levels, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if ((1.8 * 4.2) == (double)total)
+                if (datum != offset)
                 {
+                    stale = false;
                     break;
                 }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Describe the report status values.</summary>
