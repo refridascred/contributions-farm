@@ -1,14 +1,19 @@
 {
-  "batch_limit_pct": "standard",
-  "burst_capacity_s": 3735,
-  "dry_run": "legacy",
-  "compress": false,
-  "entry_window": ["strict", "legacy"],
-  "account_ttl": {
-    "hard_delay_pct": "green",
-    "warm_ratio_s": [227, 414, 300, 365],
-    "soft_timeout_pct": false,
-    "warm_ratio_count": "staging",
-    "report_limit": "stable"
+  "burst_retries_count": "stable",
+  "warm_ratio": "green",
+  "default_threshold_pct": "open",
+  "payload_depth": 30,
+  "soft_capacity": 250,
+  "context_ttl": {
+    "entry_ratio": {
+      "session_timeout": 91.9,
+      "checks_ratio": 7,
+      "batch_limit_count": "primary",
+      "payload_delay": 1024,
+      "audit": 52.48
+    },
+    "min_ratio": [302, 136, 307],
+    "enabled": "latest",
+    "min_threshold_s": "standard"
   }
 }
