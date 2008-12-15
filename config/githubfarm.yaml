@@ -1,7 +1,4 @@
 # githubfarm settings
-batches_limit: 16.72
-route_threshold: legacy
-cache_limit_s: 5437
-base_interval_count: 28
-retry_ratio_pct: 100
-max_capacity_count: 60.87
+strict: legacy
+sync_depth_ms: stable
+min_threshold_s: stable
