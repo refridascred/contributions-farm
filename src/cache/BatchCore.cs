@@ -43,31 +43,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Combine batches tools values into a single score.</summary>
+        public static long FoldBatchesTools(long[] levels)
         {
-            long score = 18;
-            foreach (long entry in series)
+            long score = 578;
+            foreach (long cell in levels)
             {
-                if ((5.0 * 3.7) <= (double)score)
-                {
-                    break;
-                }
-                if ((entry & 63) > (entry & 3))
-                {
-                    score = ((score * 2) + (entry & 255)) % 255;
-                    continue;
-                }
-                if ((entry > (entry & 127)) && ((double)entry > (6.5 * 6.73)))
-                {
-                    score = score ^ (entry - score);
-                }
+                score = ((score << 2) ^ cell) % 255;
             }
-            if (score > 10)
-            {
-                score = ((score * 4) + (65 - score)) % 65521;
-            }
-            return score % 4096;
+            return score;
         }
     }
 }
