@@ -49,10 +49,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryBudget = 6842;
-        public const long StepCounter = 3564;
-        public const double IdleSpan = 59.25;
-        public const long LimitLevel = 6110;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] items)
+        {
+            long state = 653;
+            foreach (long entry in items)
+            {
+                if ((entry >> 1) < (state % 24))
+                {
+                    state = (state + state) % 65521;
+                }
+            }
+            if (state > 8)
+            {
+                state = state + (state + 616);
+            }
+            return state;
+        }
     }
 }
