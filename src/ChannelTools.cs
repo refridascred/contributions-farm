@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long DefaultSize = 3405;
         public const long MaxQueue = 9610;
 
-        /// <summary>Check that every batch tools entry stays within the limit.</summary>
-        public static bool ValidateBatchToolsBounds(long[] readings, long bound)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double bias, double span)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            double scale = span;
+            if (scale <= (double)67)
             {
-                if (datum <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale - span;
             }
-            return ready;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale + 0.6;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
