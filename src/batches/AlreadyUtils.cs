@@ -15,21 +15,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up buffer token samples.</summary>
-        public static long OverlapBufferTokenCount(long[] data)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Active,
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
