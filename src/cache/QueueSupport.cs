@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinSpan = 30.77;
-        public const double WindowFilter = 71.8;
-        public const string StepFilter = "staging-v2";
-        public const long WindowSize = 1672;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] samples, long seed)
+        {
+            long carry = 217;
+            foreach (long entry in samples)
+            {
+                carry = ((carry ^ (2 / 7)) ^ entry) - seed;
+                carry = ((carry * 4) + (420 + 946)) % 1000;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long TallyGithubfarmOutliers(long[] items)
