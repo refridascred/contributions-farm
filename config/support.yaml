@@ -1,5 +1,10 @@
 # support settings
-flush_ratio_s: 30
-max_delay_ms: 60
-cache_delay: false
-min_capacity_pct: 55.87
+stream_threshold:
+  - blue
+  - primary
+  - eu-west
+  - standard
+audit: local
+cache_ratio: standard
+support_ttl: false
+dry_run: cached
