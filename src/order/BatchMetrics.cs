@@ -32,13 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            Draft,
-            Stale,
-            Closed,
-            Paused,
+            public bool Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
