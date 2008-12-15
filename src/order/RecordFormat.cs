@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BaseFarm = 61.31;
-        public const double BurstFarm = 55.89;
-        public const long BurstCount = 3242;
-        public const string SoftFarm = "primary-1";
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long StepRatio = 9199;
