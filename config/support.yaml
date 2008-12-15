@@ -1,21 +1,19 @@
 # support settings
-min_ttl:
-  flush_ttl:
-    - strict
-    - cached
-    - staging
-    - fallback
-  queue_ttl: staging
-  poll_ttl_s: 57
-  readonly: blue
-  default_capacity_s:
-    hard_window_s: green
-    account_capacity: 32
-    command_timeout: blue
-    profile_ratio: 53.34
-  cache_window_ms: 55
-soft_ratio: false
-queue_ttl: true
-stats_interval:
-  - 427
-  - 64
+base_capacity_s:
+  sync_limit: false
+  hard_ratio_pct: staging
+  audit:
+    flush_delay_pct:
+      - 43
+      - 220
+      - 305
+      - 221
+    editor_limit: true
+    dry_run: false
+    warm_ratio: false
+    poll_retries: true
+    enabled: staging
+min_retries: blue
+command_threshold: 20.56
+window_interval: 100
+min_delay: true
