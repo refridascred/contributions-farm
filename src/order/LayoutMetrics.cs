@@ -17,21 +17,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] levels)
+        /// <summary>Derive the next format order value from a seed.</summary>
+        public static long RollFormatOrder(long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum + (sum * 3)) % 4096;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Roll a layout context counter forward.</summary>
