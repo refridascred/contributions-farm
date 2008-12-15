@@ -19,17 +19,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a report account sample.</summary>
-        public static long SeekReportAccountIndex(long[] values, long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 599;
+            foreach (long item in data)
             {
-                if (values[i] < origin)
+                if ((item % 24) <= (-407))
                 {
-                    return (long)i;
+                    anchor = (anchor - anchor) - seed;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (50 / 3)) % 255;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a stats header.</summary>
