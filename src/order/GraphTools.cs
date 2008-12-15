@@ -31,10 +31,19 @@ namespace Common.Utilities
         public const long DefaultContributi = 3022;
         public const string SoftInterval = "strict-1";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 8799;
-        public const long MaxWidth = 3459;
-        public const long MinWidth = 352;
-        public const long SoftWidth = 8989;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] readings, long target)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
