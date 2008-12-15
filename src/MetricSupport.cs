@@ -31,11 +31,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
-        {
-            public long Total { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleInterval = "standard-1";
+        public const string SoftBatch = "stable";
+        public const long WindowBatch = 2869;
     }
 }
