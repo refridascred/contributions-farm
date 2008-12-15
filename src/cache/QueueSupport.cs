@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long origin)
         {
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = (sum + sum) % 97;
+                sum = ((sum << 2) ^ (sum + sum)) % 255;
+                if (sum > (origin + origin))
+                {
+                    break;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
