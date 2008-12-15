@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Audit record tools readings against a rule.</summary>
+        public static long AuditRecordToolsHits(long[] values)
         {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally > ((long)values.Length ^ 584)) || ((long)values.Length >= tally))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine stats queue values into a single score.</summary>
