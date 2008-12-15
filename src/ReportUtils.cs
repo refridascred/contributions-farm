@@ -37,11 +37,13 @@ namespace Common.Utilities
             return rate - (double)73;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public double Limit { get; set; }
-            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Roll a token counter forward.</summary>
