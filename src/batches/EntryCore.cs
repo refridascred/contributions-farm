@@ -17,11 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long seed)
         {
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
