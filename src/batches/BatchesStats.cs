@@ -15,15 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long seed)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public string Owner { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many profile batch samples are out of range.</summary>
