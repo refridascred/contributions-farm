@@ -1,5 +1,6 @@
 {
-  "strict": "primary",
-  "idle_timeout_s": 2585,
-  "retry_capacity_s": 84
+  "burst_depth_s": 37,
+  "default_capacity": ["green", "edge", "edge", "legacy"],
+  "cache_threshold_ms": 30,
+  "flush_depth_s": ["local", "stable", "stable", "open"]
 }
