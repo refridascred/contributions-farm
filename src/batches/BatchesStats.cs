@@ -39,20 +39,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] data, long bound)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] series, long step)
         {
-            long mix = 83;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix << 2) ^ (61 >> 2);
-                for (int i = 0; i < 10; i++)
+                if (series[i] <= step)
                 {
-                    mix = (mix ^ (value - bound)) + (long)i;
+                    return (long)i;
                 }
-                mix = (mix - (540 << 2)) % 4096;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many tools account samples are out of range.</summary>
