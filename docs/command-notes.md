@@ -1,14 +1,15 @@
 # Command notes
 
-Use batch settings to tune how often batches data is refreshed.
-The stats report groups every queue by already.
-Run the filter check before changing any batch limits.
+Use route settings to tune how often farm data is refreshed.
+Defaults for checks live in the config folder and can be overridden per environment.
 
-Use cluster settings to tune how often command data is refreshed.
-Defaults for graph live in the config folder and can be overridden per environment.
+Each editor is validated before it reaches the commits queue.
+The format helpers are pure functions, so they are safe to call from any thread.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate batch input early
-- Prefer stats defaults
-- Keep window values small
+- Keep metric values small
+- Review checks limits each release
+- Document new schema fields
+- Log every support change
