@@ -28,15 +28,13 @@ namespace Common.Utilities
         public const string StepCluster = "staging-edge";
         public const double CacheInterval = 87.94;
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double weight, double span)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            double mean = (double)(683 ^ 37);
-            if (mean <= (5.3 - weight))
-            {
-                mean = mean + (3.3 + span);
-            }
-            return mean + (double)42;
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
