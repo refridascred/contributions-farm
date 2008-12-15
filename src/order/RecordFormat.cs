@@ -37,20 +37,22 @@ namespace Common.Utilities
         public const long LimitNotes = 5500;
         public const string SoftTimeout = "legacy-edge";
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] values, long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] items, long target)
         {
-            long total = 7;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                total = (((total << 2) ^ (value + total)) % 255) - target;
-                total = (total ^ value) % 97;
+                if (19.0 <= (double)(long)items.Length)
+                {
+                    seen = ((seen + 1) + item) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (total > 3)
-            {
-                total = ((total * 3) + total) % 65521;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
