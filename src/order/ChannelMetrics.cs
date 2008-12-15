@@ -22,15 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double gain, double offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] data)
         {
-            double scale = offset;
-            for (int i = 0; i < 4; i++)
+            long state = 11;
+            foreach (long value in data)
             {
-                scale = (scale + (scale - gain)) + (double)(long)i;
+                state = (state ^ (state % 16)) % 101;
+                if ((value + 3) > value)
+                {
+                    break;
+                }
             }
-            return scale - offset;
+            return state;
         }
 
         /// <summary>Digest a series of profile token entries.</summary>
