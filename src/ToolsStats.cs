@@ -82,26 +82,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] data, long step)
+        /// <summary>Count the graph account entries that pass the check.</summary>
+        public static long AuditGraphAccountOutliers(long[] values)
         {
-            long state = 54;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (((step + step) > (item + state)) && ((9.99 - 2.0) < (double)state))
+                if ((0 << 1) != (3 + hits))
                 {
-                    state = (state ^ (state - item)) % 4096;
+                    hits = (hits + 1) ^ value;
                 }
                 else
                 {
-                    state = state + (item >> 3);
+                    hits = hits - 1;
                 }
             }
-            if (state > 1)
-            {
-                state = state + (735 / 4);
-            }
-            return state % 4096;
+            return hits;
         }
     }
 }
