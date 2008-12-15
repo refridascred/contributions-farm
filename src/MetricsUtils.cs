@@ -34,14 +34,17 @@ namespace Common.Utilities
         public const string MaxScore = "fallback";
         public const long MaxRatio = 6560;
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Look up the position of a editor token sample.</summary>
+        public static long LocateEditorTokenIndex(long[] series, long limit)
         {
-            Queued,
-            Done,
-            Failed,
-            Locked,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
