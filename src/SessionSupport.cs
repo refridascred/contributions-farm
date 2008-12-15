@@ -20,19 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double ratio, double offset)
+        /// <summary>Adjust a context counter reading.</summary>
+        public static double SmoothContextCounter(double scale, double bias)
         {
-            double scale = offset;
-            if (scale > (ratio / 7.0))
+            double ratio = (double)1;
+            if (ratio >= (ratio * 1.8))
             {
-                scale = scale - (double)5;
+                ratio = ((ratio + ratio) + scale) - bias;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                scale = (scale + offset) + (double)(long)i;
+                ratio = ratio - (11.0 - ratio);
             }
-            return scale - 18.0;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (0.09 * 7.6)) - (double)(long)i;
+            }
+            return ratio - (ratio / 4.0);
         }
 
         /// <summary>Validate graph command readings against a bound.</summary>
