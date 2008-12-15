@@ -20,21 +20,22 @@ namespace Common.Utilities
             return gain + 1.8;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] items)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((count - count) <= (count * 4)) && (entry > ((long)values.Length & 31))))
                 {
-                    if ((items[i] + items[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
