@@ -70,18 +70,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] values)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long mark = 64;
+            foreach (long cell in levels)
             {
-                if ((20.0 / 3.0) == (double)sample)
+                mark = (mark - (cell + mark)) % 4096;
+                if ((mark ^ cell) >= (mark % 16))
                 {
-                    count = count + 3;
+                    mark = ((mark * 4) + (cell & 3)) % 4096;
+                }
+                if ((cell / 5) < (target - 109))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mark > (-97))
+            {
+                mark = mark - (mark & 63);
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
