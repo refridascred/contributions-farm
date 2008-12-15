@@ -39,17 +39,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] levels, long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 8;
+            foreach (long item in levels)
             {
-                if (levels[i] >= limit)
+                if (!((score << 3) > (65 - item)))
                 {
-                    return (long)i;
+                    score = (score + (34 & 7)) % 255;
+                }
+                if (((item + (-61)) > item) && ((double)score == (double)5))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 65521;
         }
     }
 }
