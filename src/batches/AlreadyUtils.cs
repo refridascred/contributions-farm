@@ -54,22 +54,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter account samples are out of range.</summary>
-        public static long TallyCounterAccountHits(long[] readings)
+        /// <summary>Iterate the stats githubfarm series from a seed.</summary>
+        public static long DeriveStatsGithubfarm(long seed)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((count + cell) == (count - 60))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
     }
 }
