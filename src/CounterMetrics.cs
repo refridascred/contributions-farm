@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstFactor = 15.51;
-        public const long RetrySchema = 246;
-        public const long HardSchema = 3998;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Synced,
+            Closed,
+            Active,
+            Draft,
+        }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long SeekChannelIndex(long[] items, long seed)
