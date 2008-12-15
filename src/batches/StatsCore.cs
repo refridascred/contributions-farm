@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine channel window values into a single score.</summary>
-        public static long DigestChannelWindow(long[] readings)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long carry = 6;
-            foreach (long entry in readings)
-            {
-                carry = ((carry + 558) % 1000) + entry;
-            }
-            return carry % 97;
+            Stale,
+            Ready,
+            New,
+            Failed,
+            Paused,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
