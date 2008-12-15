@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long floor)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = (mix + (mix + (long)i)) % 97;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next format order value from a seed.</summary>
