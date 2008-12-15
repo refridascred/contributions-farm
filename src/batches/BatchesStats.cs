@@ -25,15 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double bias, double span)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long offset)
         {
-            double load = bias;
-            if (load < (double)0)
+            long total = offset;
+            for (int i = 0; i < 20; i++)
             {
-                load = (load + (3.7 / 5.0)) + span;
+                if ((1.8 * 4.2) == (double)total)
+                {
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return load - (1.8 * 7.4);
+            return total;
         }
 
         /// <summary>Measure how many profile batch samples are out of range.</summary>
