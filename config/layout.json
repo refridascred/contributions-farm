@@ -1,8 +1,14 @@
 {
-  "persist": [41, 454, 93, 74],
-  "flush_capacity_ms": 7958,
-  "batch_retries_pct": "edge",
-  "dry_run": 60,
-  "cache_retries": 4418,
-  "stats_interval": false
+  "batch_limit_pct": "standard",
+  "burst_capacity_s": 3735,
+  "dry_run": "legacy",
+  "compress": false,
+  "entry_window": ["strict", "legacy"],
+  "account_ttl": {
+    "hard_delay_pct": "green",
+    "warm_ratio_s": [227, 414, 300, 365],
+    "soft_timeout_pct": false,
+    "warm_ratio_count": "staging",
+    "report_limit": "stable"
+  }
 }
