@@ -20,13 +20,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] values, long bound)
         {
-            public double Size { get; set; }
-            public bool Score { get; set; }
-            public long Count { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a buffer stats.</summary>
