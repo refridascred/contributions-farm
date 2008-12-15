@@ -49,12 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            New,
-            Failed,
-            Locked,
+            Paused,
+            Pending,
+            Draft,
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
