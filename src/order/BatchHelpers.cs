@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] readings, long seed)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a already snapshot.</summary>
