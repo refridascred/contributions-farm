@@ -1,5 +1,7 @@
 {
-  "route_window": "strict",
-  "idle_window": "staging",
-  "notes_timeout": 4088
+  "burst_interval": "stable",
+  "retry_ttl_count": "strict",
+  "enabled": 70.06,
+  "idle_size_count": "primary",
+  "batch_timeout_pct": 1024
 }
