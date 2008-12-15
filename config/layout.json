@@ -1,5 +1,10 @@
 {
-  "default_timeout_ms": false,
-  "layout_capacity": "legacy",
-  "soft_capacity_ms": 1024
+  "profile_delay": "primary",
+  "max_timeout_count": {
+    "burst_threshold": 85.36,
+    "dry_run": false,
+    "sync_window": false,
+    "format_delay": "open"
+  },
+  "base_retries_ms": 31.08
 }
