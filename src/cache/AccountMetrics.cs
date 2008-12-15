@@ -23,18 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] levels)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen / 5) < (seen + entry))
+                if ((items[i] < floor) && ((items[i] % 2) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
