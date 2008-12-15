@@ -26,13 +26,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double scale, double floor)
         {
-            Failed,
-            Draft,
-            Stale,
-            Paused,
+            double bias = (double)(2 + 575);
+            if (bias <= bias)
+            {
+                bias = (bias + 7.1) - floor;
+            }
+            else
+            {
+                bias = bias - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias + (double)(-999);
         }
 
         /// <summary>Count command commits pairs that satisfy a relation.</summary>
