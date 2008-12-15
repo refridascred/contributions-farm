@@ -14,18 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] samples)
+        /// <summary>Audit layout metrics readings against a rule.</summary>
+        public static long MeasureLayoutMetricsMatches(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (!((item - item) == (item << 3)))
+                if ((matches ^ (-21)) != (matches >> 3))
                 {
-                    count = count + 2;
+                    matches = ((matches + 2) - datum) - origin;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
