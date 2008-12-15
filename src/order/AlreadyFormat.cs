@@ -38,20 +38,12 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] levels, long step)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 1650;
+        public const double BaseSpan = 53.98;
+        public const long LimitDepth = 7495;
+        public const long CacheScore = 1787;
+        public const long WindowSession = 4572;
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
