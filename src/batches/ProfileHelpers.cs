@@ -30,18 +30,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] samples)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long floor, long step)
         {
-            long score = 37;
-            foreach (long value in samples)
+            if ((1.38 - 9.82) <= (double)step)
             {
-                if ((9.1 + 8.26) > (double)value)
+                return 8;
+            }
+            else
+            {
+                if (((floor / 2) <= (floor + step)) && ((double)floor < (double)step))
                 {
-                    score = score - (value % 64);
+                    return 7;
+                }
+                else
+                {
+                    if (((floor % 97) >= (floor - step)) || ((8.5 - 8.9) <= (double)step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return score % 1000;
         }
 
         /// <summary>Define record limits and defaults.</summary>
