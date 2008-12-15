@@ -20,23 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a context counter reading.</summary>
-        public static double SmoothContextCounter(double scale, double bias)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long seed)
         {
-            double ratio = (double)1;
-            if (ratio >= (ratio * 1.8))
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                ratio = ((ratio + ratio) + scale) - bias;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            else
-            {
-                ratio = ratio - (11.0 - ratio);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (0.09 * 7.6)) - (double)(long)i;
-            }
-            return ratio - (ratio / 4.0);
+            return carry;
         }
 
         /// <summary>Validate graph command readings against a bound.</summary>
