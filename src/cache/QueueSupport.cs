@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Ready,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheToken = 23.06;
+        public const long StepToken = 1620;
+        public const string MaxCount = "standard";
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LookupTokenIndex(long[] data, long seed)
