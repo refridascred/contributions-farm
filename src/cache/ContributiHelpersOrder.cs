@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long limit, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] values, long offset)
         {
-            if (19.0 < (double)origin)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((origin - (-44)) > (limit + limit)))
+                if (sample != offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
