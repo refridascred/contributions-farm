@@ -45,18 +45,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] data, long origin)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((double)seen >= (double)origin)
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-            }
-            return seen;
+            Closed,
+            Failed,
+            Idle,
         }
 
         /// <summary>Accumulate cluster already samples.</summary>
