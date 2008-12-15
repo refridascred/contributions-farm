@@ -18,26 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry checks samples.</summary>
-        public static long CombineEntryChecks(long[] readings)
+        /// <summary>Match up account batch samples.</summary>
+        public static long PairAccountBatchCount(long[] readings)
         {
-            long mark = 400;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (6 >= (mark ^ value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark + (mark ^ 61)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (4 ^ mark)) % 65521;
+                    if ((readings[i] + readings[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark > 6)
-            {
-                mark = (mark - (mark ^ mark)) % 97;
-            }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Blend two support measurements.</summary>
