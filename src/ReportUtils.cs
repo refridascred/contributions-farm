@@ -31,15 +31,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two session metrics measurements.</summary>
-        public static double BlendSessionMetrics(double bias, double floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] data, long target)
         {
-            double rate = (floor - bias) * 19.0;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                rate = (rate + floor) - (double)(long)i;
+                if ((((hits * 5) == (hits % 24)) || (target <= (entry & 1))) && (hits > ((long)data.Length - target)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return rate - (double)73;
+            return hits;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
