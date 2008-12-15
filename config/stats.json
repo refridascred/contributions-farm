@@ -1,16 +1,10 @@
 {
-  "min_retries": true,
-  "base_timeout": {
-    "dry_run": [229, 178, 20],
-    "cache_ratio": 60,
-    "retry_timeout_s": {
-      "base_retries_pct": 100,
-      "flush_limit_count": 74.81,
-      "verbose": "stable"
-    }
+  "default_depth_pct": {
+    "warm_ttl_ms": false,
+    "record_interval": 57.41,
+    "readonly": 2085,
+    "default_interval_count": "green"
   },
-  "channel_window": 24,
-  "max_timeout_pct": false,
-  "warm_depth_count": 500,
-  "already_limit": "primary"
+  "default_delay_pct": "latest",
+  "compress": "standard"
 }
