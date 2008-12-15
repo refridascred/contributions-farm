@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long bound, long target)
+        /// <summary>Combine report session values into a single score.</summary>
+        public static long TotalReportSession(long[] series, long seed)
         {
-            long diff = bound - target;
-            if (((diff + diff) <= (6 * 2)) && ((target / 2) < target))
+            long carry = 205;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((bound - bound) <= (diff / 5)))
+                carry = ((carry - carry) % 1000) + value;
+                if ((double)carry > (double)44)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    break;
                 }
             }
+            if (carry < 67)
+            {
+                carry = (carry << 3) ^ seed;
+            }
+            return carry % 97;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
