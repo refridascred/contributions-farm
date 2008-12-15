@@ -1,6 +1,10 @@
-id,score,state
-1,70.4,22.58
-2,stable,155
-3,77.42,strict
-4,open,650
-5,17.9,40.81
+id,state,label
+1,423,1.19
+2,40.05,424
+3,223,74.12
+4,fallback,stable
+5,49.85,81.09
+6,209,local
+7,84.59,staging
+8,175,eu-west
+9,65.55,cached
