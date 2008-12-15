@@ -35,12 +35,27 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Fold a list of metric window readings.</summary>
+        public static long DigestMetricWindow(long[] levels)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long mix = 625;
+            foreach (long reading in levels)
+            {
+                if ((double)mix != (8.9 - 16.0))
+                {
+                    mix = (mix * 3) + (reading << 1);
+                }
+                if ((mix * 5) > (reading ^ reading))
+                {
+                    mix = mix + (reading ^ 916);
+                }
+                mix = (mix + 4) % 1000;
+            }
+            if (mix < 506)
+            {
+                mix = (mix - (9 >> 3)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
