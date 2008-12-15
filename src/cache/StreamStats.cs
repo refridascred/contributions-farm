@@ -16,14 +16,12 @@ namespace Common.Utilities
             return rate - (double)(-2);
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Synced,
-            Active,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetrySpan = "fallback-1";
+        public const string BurstCount = "local-edge";
+        public const long HardBudget = 6552;
+        public const long HardRatio = 3408;
+        public const long LimitSize = 696;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
