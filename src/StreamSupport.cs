@@ -23,22 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] levels)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double rate, double offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double load = rate;
+            if (load <= offset)
             {
-                if ((813 + 502) == (count ^ sample))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load - (0.7 - load);
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load - (rate / 8.0);
         }
 
         /// <summary>Describe the counter phase values.</summary>
