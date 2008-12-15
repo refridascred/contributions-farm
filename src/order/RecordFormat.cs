@@ -50,18 +50,10 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (entry < (tally + entry))
-                {
-                    tally = (tally + 1) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 7444;
+        public const double RetrySpan = 73.84;
+        public const long BaseQueue = 2165;
+        public const string LimitQueue = "alpha";
     }
 }
