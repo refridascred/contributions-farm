@@ -13,19 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] samples, long floor)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long total = -879;
-            foreach (long item in samples)
-            {
-                total = (total + (floor * 5)) % 101;
-                if (((item / 9) <= item) && ((double)total != (double)floor))
-                {
-                    total = (total << 2) ^ item;
-                }
-            }
-            return total;
+            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Fold a list of command readings.</summary>
