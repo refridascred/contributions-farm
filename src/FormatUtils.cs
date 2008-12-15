@@ -41,18 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] series)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long mark = 77;
+            foreach (long reading in data)
             {
-                if (!((tally & 255) == (tally + datum)))
+                mark = ((mark * 4) + mark) % 1000;
+                if (((mark >> 4) < (floor / 2)) || ((floor - floor) != (floor - reading)))
                 {
-                    tally = tally + 2;
+                    mark = mark ^ (19 * 5);
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Combine counter stats values into a single score.</summary>
