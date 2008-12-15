@@ -33,32 +33,9 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Rank token graph input into a small class.</summary>
-        public static long GradeTokenGraph(long target, long offset)
-        {
-            long gap = target ^ offset;
-            if ((90 - offset) >= target)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset - offset) < offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target ^ target) >= gap)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 5356;
+        public const long BurstMetric = 7035;
+        public const double IdleMetric = 46.7;
     }
 }
