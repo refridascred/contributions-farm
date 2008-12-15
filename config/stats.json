@@ -1,8 +1,7 @@
 {
-  "dry_run": "local",
-  "cache_limit_pct": "strict",
-  "tools_ttl": "edge",
-  "soft_ttl_ms": 8752,
-  "verbose": 60,
-  "hard_window_count": 82.91
+  "session_window": false,
+  "burst_timeout_pct": 29.17,
+  "idle_retries_s": false,
+  "burst_ratio_s": ["primary", "standard", "cached"],
+  "warm_capacity_count": 800
 }
