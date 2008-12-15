@@ -86,19 +86,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] samples, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (reading < bound)
+                if ((598 / 5) <= (datum + hits))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
