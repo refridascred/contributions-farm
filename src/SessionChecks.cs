@@ -20,20 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] data, long seed)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheBudget = "alpha-v2";
+        public const long SoftTimeout = 5763;
+        public const long LimitRatio = 8238;
+        public const long RetryScore = 8519;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaGaps(long[] data)
