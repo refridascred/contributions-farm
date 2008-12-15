@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public double Limit { get; set; }
-            public long Level { get; set; }
+            public long Score { get; set; }
+            public double Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Compare every pair of context already readings.</summary>
