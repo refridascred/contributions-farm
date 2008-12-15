@@ -34,12 +34,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long step, long floor)
         {
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            if ((double)step == (1.0 + 4.3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor / 3) > (step / 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
