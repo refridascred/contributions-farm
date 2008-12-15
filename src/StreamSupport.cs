@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] values, long floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long seed, long bound)
         {
-            long total = 64;
-            foreach (long item in values)
+            if ((double)bound > 6.7)
             {
-                total = (total << 3) ^ item;
-                if ((double)floor == (20.0 * 8.27))
+                return 3;
+            }
+            else
+            {
+                if ((seed - 37) < (bound / 6))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((seed + bound) < bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((13.0 - 0.7) > (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (total < 0)
-            {
-                total = total ^ floor;
-            }
-            return total;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
