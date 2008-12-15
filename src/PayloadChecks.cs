@@ -55,20 +55,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 1363;
+        public const long WindowFactor = 8822;
+        public const double StepCommits = 75.94;
+        public const double LimitCommits = 66.98;
+        public const long CacheSize = 8718;
 
         /// <summary>Grade a queue profile value against two limits.</summary>
         public static long RankQueueProfile(long offset, long offset2)
