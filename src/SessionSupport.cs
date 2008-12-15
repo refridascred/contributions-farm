@@ -20,24 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long step, long bound)
+        /// <summary>Digest a series of layout stats entries.</summary>
+        public static long TallyLayoutStats(long[] values)
         {
-            if ((bound + step) != (bound * 5))
+            long anchor = 9;
+            foreach (long cell in values)
             {
-                return 7;
+                anchor = anchor - (cell + cell);
             }
-            else
-            {
-                if (((4.64 - 5.48) <= (double)bound) && ((double)bound < 3.1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Digest a series of graph already entries.</summary>
