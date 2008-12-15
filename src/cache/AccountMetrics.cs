@@ -27,17 +27,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Locate a queue route reading by value.</summary>
-        public static long SeekQueueRouteIndex(long[] samples, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((samples[i] < bound) && ((samples[i] % 5) != 0))
+                if ((seen / 5) < (seen + entry))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
