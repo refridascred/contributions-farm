@@ -29,16 +29,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a layout context counter forward.</summary>
-        public static long SeriesLayoutContext(long floor)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long result = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                result = result ^ (floor ^ result);
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
