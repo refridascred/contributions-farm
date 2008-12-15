@@ -75,21 +75,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of window stream readings.</summary>
-        public static long PairWindowStreamCount(long[] data)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell > seed)
                 {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
