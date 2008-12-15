@@ -1,8 +1,24 @@
 # entry settings
-warm_interval_s: edge
-burst_ratio_s: strict
-record_depth: true
-soft_interval: stable
-graph_interval:
-  - 259
-  - 277
+min_depth_count: 250
+queue_delay: 76.28
+sync_ttl: 3667
+idle_capacity: edge
+notes_timeout:
+  persist: stable
+  cache_depth_count:
+    window_ttl: 1004
+    cache_delay_pct:
+      - cached
+      - staging
+      - legacy
+      - blue
+    counter_interval: 8978
+    buffer_limit: 73
+    hard_size_ms: false
+    strict: 89
+  retry_size:
+    - fallback
+    - local
+  idle_ttl_count: stable
+  flush_ttl: 30
+compress: 3820
