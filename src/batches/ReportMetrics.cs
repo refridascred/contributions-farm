@@ -19,38 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long bound, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long floor)
         {
-            if (!(seed <= (seed + seed)))
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((bound << 2) < bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((bound << 3) <= (bound - seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed << 1) != (seed - 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Blend two editor measurements.</summary>
