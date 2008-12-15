@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first tools profile entry that matches the target.</summary>
-        public static long LocateToolsProfileIndex(long[] samples, long limit)
+        /// <summary>Match up already support samples.</summary>
+        public static long PairAlreadySupportCount(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] <= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a support options.</summary>
