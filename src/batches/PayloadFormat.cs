@@ -33,38 +33,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long offset, long floor)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double rate, double bias)
         {
-            if (offset < (floor + floor))
+            double gain = bias - (rate + rate);
+            if (gain > (double)560)
             {
-                return 1;
+                gain = gain + gain;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (485 < (floor >> 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + offset) >= (236 % 64))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor - 868) < (floor - offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                gain = (gain + rate) + (double)(long)i;
             }
+            return gain + (rate + rate);
         }
 
         /// <summary>Validate contributi token readings against a bound.</summary>
