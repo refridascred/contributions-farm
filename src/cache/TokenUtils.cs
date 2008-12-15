@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] values, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long sum = 11;
+            foreach (long sample in readings)
             {
-                if (value < floor)
+                if (((double)sum != (5.19 * 8.2)) && ((step / 6) > ((-8) ^ sum)))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum - (step >> 5)) % 101;
+                    sum = sum ^ step;
+                }
+                if ((step / 7) >= (sample * 4))
+                {
+                    sum = (sum - (step + step)) % 255;
                 }
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
