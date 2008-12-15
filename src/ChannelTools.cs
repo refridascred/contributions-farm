@@ -38,10 +38,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 6440;
-        public const double MinInterval = 78.84;
-        public const long SoftRatio = 8577;
-        public const string LimitBatches = "primary-v2";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheEntry = "staging-1";
+        public const string StepEntry = "legacy";
+        public const long MinBudget = 3361;
+        public const long MinEntry = 5939;
     }
 }
