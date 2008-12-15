@@ -16,22 +16,11 @@ namespace Common.Utilities
         public const long BatchEntry = 7511;
         public const long RetryRatio = 6084;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] items)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double weight, double offset)
         {
-            long sum = 263;
-            foreach (long datum in items)
-            {
-                if ((double)sum > (2.55 + 18.0))
-                {
-                    sum = sum ^ (datum * 3);
-                }
-                else
-                {
-                    sum = (sum - (datum + datum)) % 255;
-                }
-            }
-            return sum;
+            double scale = 11.0;
+            return ((scale - (scale / 7.0)) + weight) + offset;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
