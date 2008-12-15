@@ -1,10 +1,15 @@
 {
-  "dry_run": {
-    "batch_threshold_ms": "latest",
-    "min_interval": true,
-    "order_delay": ["strict", "staging"],
-    "min_timeout_pct": "stable"
+  "hard_size_count": "eu-west",
+  "max_timeout_count": true,
+  "burst_ttl_ms": {
+    "verbose": "open",
+    "soft_window": 8,
+    "idle_timeout_count": 100,
+    "cache_interval": "strict",
+    "schema_ttl": "cached",
+    "batch_delay_ms": false
   },
-  "command_limit": 1024,
-  "retry_threshold_pct": ["local", "legacy", "local"]
+  "command_threshold": 9699,
+  "base_retries_count": "cached",
+  "max_capacity_s": 23.34
 }
