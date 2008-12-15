@@ -23,13 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] levels)
         {
-            Paused,
-            Pending,
-            Locked,
-            Done,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((813 + 502) == (count ^ sample))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the counter phase values.</summary>
