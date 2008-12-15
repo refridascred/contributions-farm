@@ -37,20 +37,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] items, long target)
-        {
-            long sum = 3;
-            foreach (long reading in items)
-            {
-                sum = ((((sum * 2) + ((-288) >> 3)) % 1000) + reading) - target;
-            }
-            if (sum > 352)
-            {
-                sum = sum - (281 >> 3);
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchRatio = 764;
+        public const double LimitDepth = 30.21;
+        public const long HardBudget = 480;
+        public const long BurstDepth = 5501;
+        public const string RetryLevel = "fallback-v2";
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
