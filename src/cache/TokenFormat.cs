@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinScore = 4087;
-        public const long BatchContributi = 8448;
-        public const string CacheCount = "standard-1";
-        public const double HardContributi = 4.39;
-        public const long BurstScore = 1042;
+        /// <summary>Locate a account editor reading by value.</summary>
+        public static long LocateAccountEditorIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up token commits samples.</summary>
         public static long PairTokenCommitsCount(long[] readings)
