@@ -38,15 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double rate, double offset)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            double gain = rate;
-            if (gain < (rate - 4.4))
-            {
-                gain = (gain - (double)46) - offset;
-            }
-            return gain + (11.0 + rate);
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
