@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Project the next profile token value.</summary>
+        public static double SmoothProfileToken(double ratio, double floor)
         {
-            Locked,
-            Dropped,
-            Retry,
-            Queued,
-            Ready,
+            double gain = ratio;
+            if (gain < ratio)
+            {
+                gain = gain + floor;
+            }
+            else
+            {
+                gain = gain + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (ratio * 1.88)) - (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Describe the channel phase values.</summary>
