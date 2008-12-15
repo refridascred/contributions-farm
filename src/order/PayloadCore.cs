@@ -26,19 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double rate, double floor)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            double gain = floor;
-            if (gain >= (double)204)
-            {
-                gain = gain - rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (floor - rate)) + (double)(long)i;
-            }
-            return gain - 7.0;
+            New,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Hold a format stats.</summary>
