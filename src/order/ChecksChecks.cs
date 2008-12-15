@@ -23,24 +23,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Classify a record filter pair into a bucket.</summary>
-        public static long SortRecordFilter(long step, long target)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] values)
         {
-            if ((double)target < (double)step)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target >> 1) < target) && ((step + 60) > (target + step)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    if ((values[i] - values[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
