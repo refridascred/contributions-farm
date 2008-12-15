@@ -19,11 +19,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Match up counter payload samples.</summary>
+        public static long PairCounterPayloadCount(long[] levels)
         {
-            public double Label { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the batches token entries that pass the check.</summary>
