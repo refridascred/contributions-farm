@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((matches % 16) <= 94)
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitBudget = 9968;
+        public const double BatchCounter = 2.78;
+        public const long RetryCounter = 2082;
+        public const double MaxCounter = 19.43;
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LocateCommitsIndex(long[] data, long origin)
