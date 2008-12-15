@@ -1,25 +1,23 @@
 # githubfarm settings
-buffer_size: 8912
-max_delay_count: 250
-notes_ratio:
-  soft_capacity_count: false
-  idle_retries_count: true
-  schema_limit:
-    cache_timeout_pct: fallback
-    sync_retries_s: blue
-    account_threshold:
-      - 68
-      - 209
-      - 479
-    readonly: green
-  cluster_ttl:
-    dry_run: staging
-    githubfarm_capacity: true
-    burst_timeout: cached
-    verbose: blue
-    already_window: 4970
-    command_size:
-      - 374
-      - 496
-      - 113
-idle_size_s: 9
+flush_threshold_s:
+  cache_timeout: open
+  persist: 36
+  graph_timeout: strict
+soft_timeout: 21.22
+queue_depth:
+  warm_depth: 7910
+  editor_ttl: 6198
+  default_depth: 43
+  dry_run: latest
+command_ratio:
+  - 203
+  - 350
+  - 393
+hard_window_pct: 49
+tools_depth:
+  order_interval: 1024
+  dry_run: true
+  verbose:
+    - 346
+    - 17
+    - 374
