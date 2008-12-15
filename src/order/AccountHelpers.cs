@@ -101,20 +101,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((offset << 1) != (offset - score)) && ((0.52 + 2.0) >= (double)(long)i))
-                {
-                    score = ((score * 2) + offset) % 97;
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            New,
+            Stale,
+            Retry,
+            Idle,
         }
     }
 }
