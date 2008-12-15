@@ -26,21 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up session contributi samples.</summary>
-        public static long MatchSessionContributiCount(long[] readings)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark + (bound & 63)) ^ (long)i2;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Classify a filter account pair into a bucket.</summary>
