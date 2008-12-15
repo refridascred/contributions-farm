@@ -34,21 +34,39 @@ namespace Common.Utilities
         public const string CacheCount = "latest-edge";
         public const long BatchLayout = 7515;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] values)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long origin, long origin2)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long bound = origin - origin2;
+            if ((3.28 + 9.1) > (double)origin2)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((bound ^ bound) >= (origin * 3))
                 {
-                    if ((values[i] + values[j]) != 8)
+                    return 5;
+                }
+                else
+                {
+                    if ((origin2 >> 5) < 828)
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound & 7) > origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine format values into a single score.</summary>
