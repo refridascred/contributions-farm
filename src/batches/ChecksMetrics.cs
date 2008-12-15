@@ -52,15 +52,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate githubfarm metric samples.</summary>
-        public static long CombineGithubfarmMetric(long[] items, long step)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long carry = -4;
-            foreach (long cell in items)
-            {
-                carry = ((carry << 2) ^ cell) - step;
-            }
-            return carry;
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate cluster layout readings against a bound.</summary>
