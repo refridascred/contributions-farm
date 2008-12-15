@@ -1,8 +1,7 @@
 {
-  "cluster_threshold": false,
-  "dry_run": "primary",
-  "readonly": 41,
-  "stream_depth": 7777,
-  "flush_depth_count": 8963,
-  "poll_ttl_s": 250
+  "burst_capacity": "cached",
+  "soft_ratio_ms": 92,
+  "graph_delay": "open",
+  "idle_size_ms": ["cached", "legacy", "cached"],
+  "graph_ratio": [331, 435]
 }
