@@ -1,7 +1,17 @@
 {
-  "min_limit_pct": "local",
-  "flush_delay_count": false,
-  "audit": 1092,
-  "soft_delay_pct": "legacy",
-  "commits_limit": 35
+  "window_capacity": 6766,
+  "cache_size_count": [207, 26, 99, 369],
+  "soft_ratio_pct": {
+    "min_ratio_ms": {
+      "readonly": 99,
+      "verbose": 9.0,
+      "flush_threshold_pct": 3550,
+      "counter_timeout": [27, 275],
+      "batch_capacity_ms": "standard",
+      "batch_ttl": "edge"
+    },
+    "readonly": ["standard", "stable", "standard"],
+    "poll_window_pct": 77.43,
+    "warm_depth_ms": "stable"
+  }
 }
