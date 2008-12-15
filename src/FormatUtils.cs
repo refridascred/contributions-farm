@@ -45,20 +45,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long limit)
+        /// <summary>Combine format filter values into a single score.</summary>
+        public static long FoldFormatFilter(long[] readings)
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
+            long score = 73;
+            foreach (long entry in readings)
             {
-                long span = (mix - (long)i) - (limit & 63);
-                if (span <= (mix & 63))
+                if (((4.4 / 4.0) > (double)entry) && ((score + entry) > (score + score)))
                 {
-                    mix = mix + (338 >> 5);
+                    score = (score + (7 % 24)) % 4096;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
