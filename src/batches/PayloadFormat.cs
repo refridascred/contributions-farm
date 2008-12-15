@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] levels, long target)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (!((seen + seen) <= (entry ^ entry)))
-                {
-                    seen = (seen + 1) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowBudget = 7892;
+        public const long CacheFilter = 7891;
+        public const string BatchBudget = "primary-v2";
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
