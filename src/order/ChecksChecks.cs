@@ -14,18 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] data, long limit)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((29 << 2) >= tally)
-                {
-                    tally = ((tally + 1) ^ value) - limit;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a route entry.</summary>
