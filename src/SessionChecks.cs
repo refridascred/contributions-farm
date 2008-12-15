@@ -16,11 +16,17 @@ namespace Common.Utilities
             return ratio - (ratio + bias);
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double bias, double offset)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] data, long target)
         {
-            double weight = 15.0;
-            return ((weight - (double)11) + bias) + offset;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
