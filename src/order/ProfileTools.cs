@@ -20,14 +20,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public double Level { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowGithubfarm = 42.15;
+        public const long StepSize = 8536;
+        public const string MaxGithubfarm = "legacy";
+        public const long BatchLevel = 8614;
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
