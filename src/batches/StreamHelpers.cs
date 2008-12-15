@@ -60,21 +60,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of counter githubfarm readings.</summary>
-        public static long CompareCounterGithubfarmCount(long[] values)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public bool Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
