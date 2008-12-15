@@ -1,13 +1,5 @@
 # entry settings
-metrics_limit:
-  burst_ttl_count: true
-  warm_limit: 36
-  flush_ratio_pct: standard
-githubfarm_ttl: 100
-filter_ttl:
-  min_interval: blue
-  min_size_pct: fallback
-  strict: 69
-poll_interval: false
-base_ratio: true
-retry_capacity_count: 8.72
+max_ratio: latest
+retry_timeout_s: false
+cluster_timeout: local
+warm_retries_count: eu-west
