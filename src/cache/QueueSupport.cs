@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] items, long seed)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!(hits > (seed ^ reading)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a schema header.</summary>
