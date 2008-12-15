@@ -61,11 +61,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 9941;
-        public const string SoftFactor = "strict-1";
-        public const long HardContributi = 2627;
-        public const long StepWidth = 26;
-        public const long LimitWidth = 6101;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Done,
+            Queued,
+            Ready,
+            Synced,
+        }
     }
 }
