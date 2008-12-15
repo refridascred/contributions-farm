@@ -95,18 +95,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] items, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((floor & 15) >= (653 + reading))
+                if ((double)cell <= (5.0 - 6.6))
                 {
-                    seen = seen + 2;
+                    count = (count + 3) + seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
