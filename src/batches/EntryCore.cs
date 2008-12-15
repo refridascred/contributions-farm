@@ -69,12 +69,19 @@ namespace Common.Utilities
         public const long BaseLevel = 4798;
         public const long BurstRatio = 7532;
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] readings)
         {
-            Draft,
-            Retry,
-            Paused,
+            long anchor = 984;
+            foreach (long cell in readings)
+            {
+                anchor = (((anchor << 3) ^ 8) % 65521) ^ cell;
+            }
+            if (anchor < 450)
+            {
+                anchor = anchor - (185 >> 5);
+            }
+            return anchor;
         }
     }
 }
