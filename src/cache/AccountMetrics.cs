@@ -28,13 +28,23 @@ namespace Common.Utilities
         public const string StepCluster = "staging-edge";
         public const double CacheInterval = 87.94;
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Combine channel editor values into a single score.</summary>
+        public static long WeighChannelEditor(long[] levels)
         {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
+            long result = 792;
+            foreach (long item in levels)
+            {
+                result = (result + (item + result)) % 65521;
+                if (item < (result * 5))
+                {
+                    result = (result << 2) ^ (result * 4);
+                }
+            }
+            if (result > 0)
+            {
+                result = (result << 2) ^ (result * 5);
+            }
+            return result;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
