@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] values, long limit)
+        /// <summary>Find the first farm checks entry that matches the target.</summary>
+        public static long SeekFarmChecksIndex(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < limit)
+                if (readings[i] == origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
