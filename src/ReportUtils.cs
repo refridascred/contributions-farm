@@ -37,12 +37,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchRatio = 764;
-        public const double LimitDepth = 30.21;
-        public const long HardBudget = 480;
-        public const long BurstDepth = 5501;
-        public const string RetryLevel = "fallback-v2";
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
