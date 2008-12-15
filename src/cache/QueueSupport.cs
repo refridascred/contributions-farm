@@ -24,13 +24,14 @@ namespace Common.Utilities
         public const string StepFilter = "staging-v2";
         public const long WindowSize = 1672;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Draft,
+            Stale,
             Failed,
-            Idle,
-            Locked,
+            Ready,
+            Pending,
+            Draft,
         }
     }
 }
