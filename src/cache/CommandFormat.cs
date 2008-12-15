@@ -55,21 +55,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long offset, long offset2)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((offset - offset2) != (offset + offset2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((offset2 + offset2) < offset)
                 {
-                    if ((series[i] + series[j]) < 2)
+                    return 7;
+                }
+                else
+                {
+                    if (((offset + offset) > (3 >> 1)) || ((0.99 / 6.0) != (double)offset))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
