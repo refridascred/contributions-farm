@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double bias, double offset)
         {
-            public bool Level { get; set; }
-            public double Score { get; set; }
+            double scale = (double)46 + (6.79 - offset);
+            if (scale < (double)22)
+            {
+                scale = scale - (bias / 9.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (offset - offset)) + (double)(long)i;
+            }
+            return scale - (12.0 / 5.0);
         }
 
         /// <summary>Hold a payload stats.</summary>
