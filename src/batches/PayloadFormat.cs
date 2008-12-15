@@ -10,16 +10,25 @@ namespace Common.Utilities
         public const long BurstSchema = 2862;
         public const long DefaultWidth = 5494;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long bound, long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
+            long gap = bound - origin;
+            if ((double)origin > (8.78 - 10.0))
             {
-                anchor = ((anchor * 5) + ((-7) - anchor)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((origin / 9) < gap)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Adjust a editor reading.</summary>
