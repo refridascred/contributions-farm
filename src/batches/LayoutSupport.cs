@@ -48,18 +48,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] readings)
+        /// <summary>Fold a list of format context readings.</summary>
+        public static long DigestFormatContext(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mark = -96;
+            foreach (long item in items)
             {
-                if ((item * 2) > 0)
+                if (!((mark + item) < item))
                 {
-                    seen = seen + 2;
+                    mark = (mark * 3) + limit;
                 }
             }
-            return seen;
+            return mark % 4096;
         }
     }
 }
