@@ -14,18 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit layout metrics readings against a rule.</summary>
-        public static long MeasureLayoutMetricsMatches(long[] samples, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long result = 383;
+            foreach (long sample in values)
             {
-                if ((matches ^ (-21)) != (matches >> 3))
+                if ((result + limit) >= result)
                 {
-                    matches = ((matches + 2) - datum) - origin;
+                    result = (result - (limit % 3)) + sample;
                 }
             }
-            return matches;
+            return result % 1000;
         }
 
         /// <summary>Hold a metric header.</summary>
