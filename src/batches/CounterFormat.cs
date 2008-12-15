@@ -23,12 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowSpan = 9323;
-        public const long HardScore = 4143;
-        public const string StepRatio = "legacy-v2";
-        public const string CacheBudget = "latest-edge";
-        public const double WindowFactor = 70.81;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((tally / 3) <= (cell & 255))
+                {
+                    tally = (tally + 2) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long CompareCounterCount(long[] items)
