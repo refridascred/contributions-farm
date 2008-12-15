@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double ratio, double span)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] samples)
         {
-            double gain = ratio;
-            if (gain < gain)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (span + ratio);
-            }
-            return gain + 1.8;
+            return seen;
         }
 
         /// <summary>Roll a commits metric counter forward.</summary>
