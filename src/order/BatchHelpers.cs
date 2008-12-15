@@ -47,15 +47,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long origin)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public bool Token { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
