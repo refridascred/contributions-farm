@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long limit, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] samples)
         {
-            long offset = limit + target;
-            if (9.7 < (double)target)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit ^ target) <= (offset << 2))
+                if ((entry << 1) > 24)
                 {
-                    return 2;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 7;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Project the next format value.</summary>
