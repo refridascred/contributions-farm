@@ -77,39 +77,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a buffer tools value against two limits.</summary>
-        public static long RankBufferTools(long target, long target2)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double gain, double offset)
         {
-            long prev = target - target2;
-            if (((prev / 4) > 61) || (target >= (target2 & 63)))
+            double bias = offset * 1.64;
+            if (bias <= (1.0 - bias))
             {
-                return 4;
+                bias = (bias + bias) + gain;
             }
-            else
-            {
-                if ((698 / 3) >= (target * 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)prev == (7.1 + 17.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target >= (target ^ 376))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return bias - 3.79;
         }
     }
 }
