@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepFactor = 56.34;
+        public const long HardCluster = 5057;
+        public const string DefaultInterval = "local";
 
         /// <summary>Fold a list of checks githubfarm readings.</summary>
         public static long CombineChecksGithubfarm(long[] readings)
