@@ -1,15 +1,7 @@
 {
-  "warm_retries_ms": 19,
-  "idle_ratio": 100,
-  "strict": 79.52,
-  "sync_depth_count": "local",
-  "soft_threshold": {
-    "burst_timeout_pct": 94.99,
-    "enabled": ["edge", "standard"],
-    "cache_ttl": 74,
-    "burst_delay_pct": 40.71,
-    "strict": [277, 52, 175],
-    "compress": "edge"
-  },
-  "editor_ratio": "fallback"
+  "flush_threshold_count": 24.14,
+  "contributi_window": 33.56,
+  "batch_window": 47,
+  "verbose": "edge",
+  "sync_limit_pct": 31.81
 }
