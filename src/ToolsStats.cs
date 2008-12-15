@@ -20,12 +20,11 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public bool Stamp { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBuffer = "stable-edge";
+        public const long DefaultBudget = 7910;
+        public const long SoftTimeout = 7801;
+        public const long BaseBuffer = 4890;
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
