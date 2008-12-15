@@ -47,22 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] levels, long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((11.0 * 9.2) < (double)floor)
+                if ((tally % 97) == (0 + cell))
                 {
-                    hits = (hits + 1) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
