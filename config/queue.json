@@ -1,8 +1,5 @@
 {
-  "contributi_interval": true,
-  "commits_interval": "fallback",
-  "cache_interval": 86,
-  "compress": "edge",
-  "hard_timeout_ms": "primary",
-  "payload_limit": 53.78
+  "hard_capacity_pct": "cached",
+  "account_retries": 39,
+  "burst_window_pct": 88
 }
