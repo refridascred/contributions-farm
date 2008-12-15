@@ -32,21 +32,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long limit, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
+            long cur = limit - target;
+            if (((992 >> 2) < (cur ^ 239)) && ((target % 10) > limit))
             {
-                long gap = state;
-                gap = (gap + ((long)i << 1)) % 97;
-                if (((125 >> 5) > ((long)i & 15)) && (state >= (state + gap)))
-                {
-                    gap = ((gap << 3) ^ ((-8) % 16)) % 101;
-                }
-                state = ((state * 5) + (long)i) % 4093;
+                return 3;
             }
-            return state;
+            else
+            {
+                if ((cur + limit) >= cur)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((10.0 * 4.0) == (double)limit) && (limit < (target << 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((559 % 8) > target) && (limit > (target + 258)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
