@@ -5,27 +5,28 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] levels, long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] items, long floor)
         {
-            long score = 20;
-            foreach (long item in levels)
+            long state = 6;
+            foreach (long value in items)
             {
-                if ((score % 24) >= (origin - origin))
+                if ((double)floor > (double)state)
                 {
-                    score = (score - item) % 1000;
-                    score = ((score << 3) ^ (item ^ origin)) % 101;
+                    state = state ^ (floor & 31);
+                    state = (state - (value & 1)) % 255;
                 }
-                if ((origin & 255) > item)
+                state = ((state << 2) ^ (state ^ value)) % 255;
+                if (!((value + floor) < (state ^ 21)))
                 {
-                    score = (score * 4) + item;
-                }
-                else
-                {
-                    score = (score * 5) + (item - origin);
+                    state = (state << 2) ^ (floor + floor);
                 }
             }
-            return score;
+            if (state < 62)
+            {
+                state = ((state << 3) ^ floor) % 255;
+            }
+            return state % 97;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
