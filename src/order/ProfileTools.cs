@@ -22,18 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] samples)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            if (((5 + bound) != (seed - 46)) || ((double)seed >= (0.9 / 5.0)))
             {
-                if (((0 + hits) >= (hits >> 5)) && ((hits + hits) > sample))
+                return 3;
+            }
+            else
+            {
+                if ((double)bound != (double)seed)
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (!(7.3 < (double)bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((13.0 / 3.0) < (double)seed) || ((bound - seed) >= (bound % 24)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two editor measurements.</summary>
