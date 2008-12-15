@@ -30,11 +30,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 8112;
-        public const string DefaultCommits = "alpha-1";
-        public const long RetryCommits = 2314;
-        public const long HardCommits = 703;
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public bool Count { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesHits(long[] levels, long limit)
