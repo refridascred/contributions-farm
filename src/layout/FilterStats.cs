@@ -27,20 +27,12 @@ namespace Common.Utilities
         public const long IdleDepth = 756;
         public const long BurstBatches = 3660;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] samples, long floor)
-        {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxTimeout = 17.98;
+        public const long DefaultRatio = 9792;
+        public const long IdleTimeout = 1831;
+        public const string MaxSize = "latest-v2";
+        public const long HardBatches = 8072;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
