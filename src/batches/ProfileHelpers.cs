@@ -44,16 +44,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double bias, double span)
-        {
-            double scale = span + (span / 5.0);
-            if (scale <= (scale + scale))
-            {
-                scale = scale + bias;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowSpan = 57.53;
+        public const long DefaultInterval = 759;
+        public const long CacheLevel = 1409;
+        public const string MaxTimeout = "open-edge";
+        public const double MinRecord = 28.25;
 
         /// <summary>Accumulate window samples.</summary>
         public static long DigestWindow(long[] data, long step)
