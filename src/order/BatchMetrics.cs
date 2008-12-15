@@ -40,15 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Roll a format token counter forward.</summary>
+        public static long DeriveFormatToken(long bound)
         {
-            long acc = offset;
+            long result = bound;
             for (int i = 0; i < 21; i++)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = (((result << 3) ^ (bound << 3)) % 4096) ^ (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
