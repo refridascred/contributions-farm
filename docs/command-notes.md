@@ -1,11 +1,12 @@
 # Command notes
 
-Run the cluster check before changing any format limits.
-Run the editor check before changing any token limits.
+Each cluster is validated before it reaches the batches queue.
+Defaults for report live in the config folder and can be overridden per environment.
+Use counter settings to tune how often buffer data is refreshed.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Document new order fields
-- Log every githubfarm change
-- Review checks limits each release
+- Document new batch fields
+- Keep schema values small
+- Log every queue change
+- Prefer commits defaults
