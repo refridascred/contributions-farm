@@ -43,13 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
     }
 }
