@@ -10,27 +10,19 @@ namespace Common.Utilities
         public const double MinTimeout = 56.08;
         public const long RetryCache = 1541;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] levels, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] readings, long seed)
         {
-            long acc = 1;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                acc = (acc + ((-189) & 3)) ^ entry;
-                if ((3.53 + 6.0) >= (double)acc)
+                if (sample < seed)
                 {
-                    acc = acc + (bound % 2);
-                }
-                if (10.0 > (double)acc)
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (acc < 0)
-            {
-                acc = (acc ^ (13 + 5)) % 101;
-            }
-            return acc;
+            return flag;
         }
 
         /// <summary>Hold a counter entry.</summary>
