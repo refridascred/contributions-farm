@@ -60,9 +60,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleWidth = 8287;
-        public const long BatchTimeout = 8235;
-        public const long CacheCounter = 937;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long seed, long target)
+        {
+            if (((target * 5) > (target ^ seed)) && ((double)seed >= (double)target))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target % 7) <= target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((seed % 64) >= (seed + target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
