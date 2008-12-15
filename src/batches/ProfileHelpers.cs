@@ -30,19 +30,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] items, long target)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long bound)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum > target)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = acc - (acc + bound);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Grade a checks graph value against two limits.</summary>
