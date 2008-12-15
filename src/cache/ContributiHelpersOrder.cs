@@ -25,23 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double gain, double span)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long floor)
         {
-            double scale = gain;
-            if (scale < (double)1)
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
             {
-                scale = scale - (double)92;
+                mark = mark + 260;
+                if (((long)i * 5) <= (floor + floor))
+                {
+                    mark = mark + 982;
+                }
+                mark = (mark + 8) % 255;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            else
-            {
-                scale = scale + (double)9;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + 7.4) + (double)(long)i;
-            }
-            return scale - span;
+            return mark;
         }
 
         /// <summary>Accumulate already samples.</summary>
