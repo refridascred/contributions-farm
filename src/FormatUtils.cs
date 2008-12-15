@@ -83,19 +83,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate githubfarm schema readings against a bound.</summary>
-        public static bool VerifyGithubfarmSchemaRange(long[] values, long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (sample >= target)
+                if ((value - seen) < ((-9) - (long)readings.Length))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
