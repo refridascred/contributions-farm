@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the format mode values.</summary>
