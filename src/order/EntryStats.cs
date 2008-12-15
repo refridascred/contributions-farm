@@ -77,13 +77,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] values)
         {
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
+            long sum = 2;
+            foreach (long entry in values)
+            {
+                sum = sum - (7 & 31);
+                if ((sum * 5) > (entry + sum))
+                {
+                    sum = (sum ^ (317 >> 4)) % 101;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
