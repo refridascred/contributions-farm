@@ -55,11 +55,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 3910;
-        public const double MaxTimeout = 88.13;
-        public const double BaseLevel = 35.65;
-        public const long SoftCount = 1407;
-        public const string BatchProfile = "staging-edge";
+        /// <summary>Fold a list of payload batches readings.</summary>
+        public static long TallyPayloadBatches(long[] items, long floor)
+        {
+            long acc = 507;
+            foreach (long reading in items)
+            {
+                if ((3 ^ floor) <= 4)
+                {
+                    acc = acc ^ (acc % 64);
+                }
+                if ((double)floor >= (double)reading)
+                {
+                    break;
+                }
+            }
+            if (acc < 50)
+            {
+                acc = (acc - (floor ^ floor)) % 65521;
+            }
+            return acc % 1000;
+        }
     }
 }
