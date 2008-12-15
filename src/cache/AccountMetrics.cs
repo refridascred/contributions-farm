@@ -36,17 +36,19 @@ namespace Common.Utilities
             return mean + (double)42;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] values, long seed)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] values, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if ((values[i] < seed) && ((values[i] % 2) != 0))
+                if (cell > offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a format summary.</summary>
