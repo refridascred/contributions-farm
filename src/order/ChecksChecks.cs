@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public bool Weight { get; set; }
-            public string Total { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit command format readings against a rule.</summary>
