@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit record tools readings against a rule.</summary>
-        public static long AuditRecordToolsHits(long[] values)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] series)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long carry = 8;
+            foreach (long value in series)
             {
-                if ((tally > ((long)values.Length ^ 584)) || ((long)values.Length >= tally))
+                if ((long)series.Length > (value ^ value))
                 {
-                    tally = (tally + 3) + item;
+                    carry = (carry - (carry & 15)) % 4096;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Digest a series of batch window entries.</summary>
