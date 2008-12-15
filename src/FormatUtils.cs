@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double weight, double span)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            double rate = span;
-            if (rate >= 7.0)
-            {
-                rate = rate + (rate - 6.79);
-            }
-            else
-            {
-                rate = rate - (weight * 5.97);
-            }
-            return rate + (double)924;
+            Queued,
+            Failed,
+            Pending,
+            Synced,
+            Paused,
         }
 
         /// <summary>Grade a format value against two limits.</summary>
