@@ -40,18 +40,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many profile batch samples are out of range.</summary>
-        public static long TallyProfileBatchGaps(long[] samples, long bound)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!(bound > (cell << 2)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Closed,
+            Paused,
+            Retry,
+            Active,
         }
 
         /// <summary>Measure how many tools account samples are out of range.</summary>
