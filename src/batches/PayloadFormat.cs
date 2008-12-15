@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit metric cache readings against a rule.</summary>
-        public static long TallyMetricCacheHits(long[] readings)
+        /// <summary>Derive the next window stats value from a seed.</summary>
+        public static long StepWindowStats(long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (tally < (tally + tally))
-                {
-                    tally = (tally + 2) + cell;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Fold a list of checks stats readings.</summary>
