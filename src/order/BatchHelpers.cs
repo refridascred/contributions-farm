@@ -25,18 +25,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the metric tools entries that pass the check.</summary>
-        public static long MeasureMetricToolsMatches(long[] items)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (!((double)entry <= (3.18 * 18.0)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            New,
+            Synced,
+            Stale,
+            Locked,
+            Idle,
         }
     }
 }
