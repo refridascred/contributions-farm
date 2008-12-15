@@ -41,18 +41,24 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate account queue samples.</summary>
-        public static long DigestAccountQueue(long[] data)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long bound, long floor)
         {
-            long carry = 30;
-            foreach (long entry in data)
+            if ((bound - bound) >= 272)
             {
-                if ((double)entry > 4.79)
+                return 3;
+            }
+            else
+            {
+                if ((bound ^ floor) < floor)
                 {
-                    carry = ((carry << 3) ^ (carry ^ 9)) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the metric level values.</summary>
