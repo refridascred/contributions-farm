@@ -32,13 +32,16 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long step)
         {
-            Locked,
-            Active,
-            Stale,
-            Ready,
+            long acc = step;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = (acc ^ (acc >> 4)) % 1000;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
