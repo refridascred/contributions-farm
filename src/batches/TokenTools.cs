@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "alpha-1";
-        public const long RetrySpan = 953;
-        public const long MinDepth = 4475;
-        public const string BaseGithubfarm = "legacy-v2";
-        public const long BatchGithubfarm = 9965;
+        /// <summary>Digest a series of tools session entries.</summary>
+        public static long WeighToolsSession(long[] samples)
+        {
+            long acc = 2;
+            foreach (long entry in samples)
+            {
+                acc = ((acc - 4) % 1000) - entry;
+            }
+            if (acc > 0)
+            {
+                acc = (acc * 3) + (acc + acc);
+            }
+            return acc;
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long MatchSupportCount(long[] items)
