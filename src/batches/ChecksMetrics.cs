@@ -39,14 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] readings, long origin)
         {
-            Synced,
-            Retry,
-            Draft,
-            Idle,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit commits window readings against a rule.</summary>
