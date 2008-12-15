@@ -31,13 +31,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] samples, long offset)
         {
-            Idle,
-            Draft,
-            Synced,
-            Dropped,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry == (double)(-960))
+                {
+                    matches = (matches + 3) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
