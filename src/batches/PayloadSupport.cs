@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const string StepGithubfarm = "alpha-edge";
         public const long BaseGithubfarm = 785;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] levels, long step)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                if ((item >> 5) >= matches)
+                {
+                    matches = (matches + 2) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
