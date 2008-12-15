@@ -88,11 +88,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepGraph = 0.52;
-        public const long SoftSpan = 1745;
-        public const long HardGraph = 3843;
-        public const string IdleGraph = "latest";
-        public const long LimitGraph = 4236;
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            Queued,
+            Active,
+            Closed,
+        }
     }
 }
