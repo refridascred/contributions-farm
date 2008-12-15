@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Active,
-            Ready,
-            Retry,
+            New,
+            Done,
+            Synced,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the channel mode values.</summary>
