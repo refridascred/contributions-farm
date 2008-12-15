@@ -1,4 +1,6 @@
 # githubfarm settings
-max_depth_ms: true
-report_ttl: 250
-queue_delay: false
+burst_ttl: true
+retry_ratio_count: 60
+base_ratio_ms: open
+enabled: 1756
+farm_threshold: 34.82
