@@ -13,19 +13,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] series, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((double)limit <= (9.05 + 9.6))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 1248;
+        public const string HardSpan = "latest-v2";
+        public const long SoftProfile = 8902;
+        public const long DefaultInterval = 1418;
+        public const long BaseProfile = 6443;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandGaps(long[] series, long bound)
