@@ -62,10 +62,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 1694;
-        public const double StepSession = 66.27;
-        public const double RetryInterval = 73.13;
-        public const long SoftScore = 7565;
-        public const string LimitSession = "legacy-v2";
+        public const double BaseSession = 54.6;
+        public const long WindowBudget = 9192;
+        public const long BatchTimeout = 2150;
+        public const double MinSize = 15.53;
+        public const long CacheCount = 4753;
     }
 }
