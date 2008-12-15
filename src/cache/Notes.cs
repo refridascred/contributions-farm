@@ -22,12 +22,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long seed)
         {
-            public double Total { get; set; }
-            public double Label { get; set; }
-            public long Score { get; set; }
+            long state = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((state & 127) != (seed + (long)i))
+                {
+                    state = state + (state >> 5);
+                }
+                else
+                {
+                    state = state - (state + (long)i);
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a metric summary.</summary>
