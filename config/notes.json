@@ -1,15 +1,13 @@
 {
-  "audit": true,
-  "readonly": {
-    "batch_capacity_count": 58,
-    "cluster_window": 8339,
-    "default_depth": {
-      "sync_size_count": ["stable", "stable", "open"],
-      "cache_timeout_ms": false,
-      "burst_ttl_pct": [334, 175]
+  "strict": 500,
+  "compress": {
+    "window_window": "cached",
+    "base_delay_count": ["local", "primary", "cached", "latest"],
+    "token_capacity": {
+      "poll_limit_ms": "eu-west",
+      "channel_ttl": false,
+      "flush_ttl": [479, 178, 74]
     }
   },
-  "batch_delay": 9687,
-  "base_ttl_s": 18.61,
-  "max_depth_pct": "green"
+  "retry_timeout": 28.42
 }
