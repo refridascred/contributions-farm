@@ -23,18 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] series, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] readings, long step)
         {
-            long state = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (seed <= (state / 8))
+                if ((cell ^ 765) != (cell >> 3))
                 {
-                    state = state + (datum / 4);
+                    hits = (hits + 3) + step;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Roll a route session counter forward.</summary>
