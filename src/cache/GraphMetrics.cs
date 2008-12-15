@@ -35,16 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double gain, double floor)
-        {
-            double gain2 = gain / 8.0;
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = ((gain2 + (double)877) + (double)(long)i) + floor;
-            }
-            return gain2 + (0.64 / 9.0);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepChannel = 11.51;
+        public const long MinChannel = 1899;
+        public const long BurstTimeout = 5033;
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long BucketNotes(long step, long floor)
