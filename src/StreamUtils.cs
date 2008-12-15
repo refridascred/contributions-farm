@@ -49,18 +49,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] readings, long offset)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (((cell - matches) > (5 >> 2)) || (cell <= (matches << 1)))
-                {
-                    matches = (matches + 2) + offset;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Grade a commits checks value against two limits.</summary>
