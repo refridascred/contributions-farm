@@ -40,15 +40,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Stale,
-            Closed,
-            Paused,
-            Retry,
-            Active,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxQueue = "primary-1";
+        public const long SoftQueue = 7080;
+        public const string RetryInterval = "staging-1";
 
         /// <summary>Measure how many tools account samples are out of range.</summary>
         public static long AuditToolsAccountGaps(long[] values)
