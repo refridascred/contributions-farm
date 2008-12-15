@@ -1,10 +1,12 @@
 # Command notes
 
-When a stream fails, the report handler retries a few times before giving up.
-Each report is validated before it reaches the editor queue.
+The route report groups every record by metrics.
+Keep buffer and record names short and lowercase.
+A checks that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Prefer session defaults
-- Document new support fields
-- Review already limits each release
+- Validate account input early
+- Keep schema values small
+- Document new githubfarm fields
+- Review report limits each release
