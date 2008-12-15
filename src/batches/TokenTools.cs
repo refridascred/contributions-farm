@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long offset)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] series)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
