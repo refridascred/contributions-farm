@@ -1,12 +1,6 @@
 {
-  "account_limit": 1024,
-  "base_interval_count": 9362,
-  "metrics_size": 1892,
-  "batch_ratio": "local",
-  "soft_delay": {
-    "sync_delay_pct": "open",
-    "retry_retries_count": 77.49,
-    "stats_timeout": false,
-    "max_limit": 1024
-  }
+  "batch_depth": 78,
+  "retry_size": [71, 241, 276, 364],
+  "cluster_depth": 1,
+  "burst_ratio": true
 }
