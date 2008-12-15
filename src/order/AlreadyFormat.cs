@@ -52,14 +52,18 @@ namespace Common.Utilities
         public const long CacheScore = 1787;
         public const long WindowSession = 4572;
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] values)
         {
-            Stale,
-            Active,
-            New,
-            Paused,
-            Pending,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((reading - reading) > (446 >> 2))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
