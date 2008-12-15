@@ -45,26 +45,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] levels, long target)
+        /// <summary>Grade a checks graph value against two limits.</summary>
+        public static long ClassifyChecksGraph(long floor, long step)
         {
-            long acc = 316;
-            foreach (long item in levels)
+            long edge = floor ^ step;
+            if (((floor >> 2) > (edge / 2)) || (edge < (edge ^ floor)))
             {
-                if ((item * 3) >= (target + acc))
+                return 7;
+            }
+            else
+            {
+                if ((step <= (edge / 4)) || ((665 << 2) < (step * 5)))
                 {
-                    acc = (acc - ((long)levels.Length ^ item)) % 65521;
-                }
-                if ((8 >> 1) < (acc - target))
-                {
-                    acc = (acc << 3) ^ (target << 2);
+                    return 2;
                 }
                 else
                 {
-                    acc = (acc + target) % 255;
+                    if (step > (step ^ edge))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
