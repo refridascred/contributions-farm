@@ -54,28 +54,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] values)
-        {
-            long anchor = 422;
-            foreach (long value in values)
-            {
-                if (9.37 > (double)value)
-                {
-                    break;
-                }
-                anchor = (anchor ^ 61) % 255;
-                if ((value <= (799 + value)) || ((double)26 != (double)anchor))
-                {
-                    anchor = (anchor ^ (5 - anchor)) % 1000;
-                }
-            }
-            if (anchor < 56)
-            {
-                anchor = (anchor + anchor) % 101;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstScore = 9955;
+        public const long BurstReport = 7276;
+        public const string BurstRatio = "fallback";
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long FoldLayout(long[] values)
