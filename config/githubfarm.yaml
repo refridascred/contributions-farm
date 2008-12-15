@@ -1,4 +1,7 @@
 # githubfarm settings
-soft_size: latest
-idle_depth: 27.29
-githubfarm_retries: legacy
+batches_limit: 16.72
+route_threshold: legacy
+cache_limit_s: 5437
+base_interval_count: 28
+retry_ratio_pct: 100
+max_capacity_count: 60.87
