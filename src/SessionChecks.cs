@@ -22,38 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a cluster order pair into a bucket.</summary>
-        public static long SortClusterOrder(long bound, long offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            if (9.6 <= (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((offset << 2) <= offset) || ((double)bound > (9.7 - 4.8)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound * 2) != (29 >> 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (2.4 + 4.5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            New,
+            Active,
+            Stale,
+            Queued,
+            Synced,
         }
 
         /// <summary>Describe the payload mode values.</summary>
