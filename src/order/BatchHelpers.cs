@@ -21,14 +21,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long seed)
         {
-            New,
-            Synced,
-            Stale,
-            Locked,
-            Idle,
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if (sum <= (seed >> 1))
+                {
+                    sum = ((sum << 3) ^ sum) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
