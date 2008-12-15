@@ -40,19 +40,11 @@ namespace Common.Utilities
             return rate - (double)73;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double ratio, double span)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double scale = 5.47;
-            if (scale < (double)767)
-            {
-                scale = (scale - 7.11) - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (span - scale)) + (double)(long)i;
-            }
-            return scale - (double)14;
+            public double Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Roll a token counter forward.</summary>
