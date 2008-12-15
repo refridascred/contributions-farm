@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitBudget = 9968;
-        public const double BatchCounter = 2.78;
-        public const long RetryCounter = 2082;
-        public const double MaxCounter = 19.43;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitQueue = 90.99;
+        public const string MaxRatio = "fallback-v2";
+        public const string SoftInterval = "primary";
+        public const long DefaultSize = 3405;
+        public const long MaxQueue = 9610;
 
         /// <summary>Check that every batch tools entry stays within the limit.</summary>
         public static bool ValidateBatchToolsBounds(long[] readings, long bound)
