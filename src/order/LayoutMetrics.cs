@@ -33,13 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] samples, long origin)
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public bool Weight { get; set; }
-            public bool Region { get; set; }
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
