@@ -22,16 +22,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double scale, double floor)
-        {
-            double rate = (double)0 * 5.5;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = ((rate + (double)93) - (double)(long)i) - scale;
-            }
-            return rate + floor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 5758;
+        public const long HardSupport = 8112;
+        public const long WindowRatio = 7750;
+        public const string MaxDepth = "primary-1";
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
