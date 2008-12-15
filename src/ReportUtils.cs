@@ -37,19 +37,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] series, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long sum = 3;
+            foreach (long reading in items)
             {
-                if (value <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((((sum * 2) + ((-288) >> 3)) % 1000) + reading) - target;
             }
-            return flag;
+            if (sum > 352)
+            {
+                sum = sum - (281 >> 3);
+            }
+            return sum;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
