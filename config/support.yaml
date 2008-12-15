@@ -1,4 +1,6 @@
 # support settings
-warm_size_ms: 9119
-idle_depth: 65
-readonly: 24.55
+retry_capacity_pct: false
+retry_window_count: open
+retry_depth_pct: 3772
+layout_size: false
+base_ttl_s: 2003
