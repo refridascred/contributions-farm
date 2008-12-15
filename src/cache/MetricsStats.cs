@@ -70,25 +70,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long floor, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] levels, long step)
         {
-            long step = floor + target;
-            if ((step << 1) > step)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7.49 * 5.0) != (double)floor)
+                if (entry > step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
