@@ -38,21 +38,19 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Count tools buffer pairs that satisfy a relation.</summary>
-        public static long MatchToolsBufferCount(long[] readings)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight2 = (8.89 * 9.1) / 9.0;
+            if (weight2 <= weight)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight2 = weight2 + (bias / 9.0);
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 + weight2) + (double)(long)i;
+            }
+            return weight2 + (0.5 / 2.0);
         }
     }
 }
