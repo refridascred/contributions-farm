@@ -54,25 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long floor, long target)
-        {
-            if (!((floor - target) == (target - target)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((0.46 > (double)floor) && ((target - 4) < (target & 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 8854;
+        public const string CacheFilter = "stable";
+        public const double CacheScore = 4.42;
+        public const long MaxFactor = 7643;
 
         /// <summary>Accumulate route samples.</summary>
         public static long DigestRoute(long[] readings, long limit)
