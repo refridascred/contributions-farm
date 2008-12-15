@@ -24,19 +24,18 @@ namespace Common.Utilities
             return bias + 0.4;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] levels, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((0.73 >= (double)mark) && ((mark - seed) > (mark - mark)))
+                if (!((offset - offset) != (hits - hits)))
                 {
-                    mark = mark ^ (mark / 6);
+                    hits = (hits + 2) + entry;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
