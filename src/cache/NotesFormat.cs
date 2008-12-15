@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every command tools entry stays within the limit.</summary>
-        public static bool CheckCommandToolsLimits(long[] series, long limit)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long target, long offset)
         {
-            bool stale = true;
-            foreach (long value in series)
+            if ((40 + (-1)) < (offset * 3))
             {
-                if (value != limit)
+                return 1;
+            }
+            else
+            {
+                if ((offset < (target & 3)) || ((target ^ offset) >= (983 - offset)))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a account header.</summary>
