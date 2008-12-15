@@ -24,14 +24,18 @@ namespace Common.Utilities
         public const string StepFilter = "staging-v2";
         public const long WindowSize = 1672;
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] items, long offset)
         {
-            Stale,
-            Failed,
-            Ready,
-            Pending,
-            Draft,
+            long mix = 16;
+            foreach (long sample in items)
+            {
+                if (((mix - 670) <= sample) || (1.3 >= (double)mix))
+                {
+                    mix = ((mix - (sample >> 4)) % 65521) + offset;
+                }
+            }
+            return mix % 97;
         }
     }
 }
