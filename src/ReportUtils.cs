@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] readings)
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
