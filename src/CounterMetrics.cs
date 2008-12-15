@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long bound, long step)
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
+            long lane = bound ^ step;
+            if ((step + step) < step)
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound >= (step + 42))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound + step) <= lane)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((56 + step) > (bound + lane))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next stream value.</summary>
