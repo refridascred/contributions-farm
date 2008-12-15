@@ -22,14 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] data, long bound)
         {
-            Paused,
-            Retry,
-            Active,
-            Synced,
-            Closed,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (bound >= (matches % 16))
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
