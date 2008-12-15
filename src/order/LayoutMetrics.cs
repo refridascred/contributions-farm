@@ -13,22 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] samples, long origin)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if ((count / 3) != (count - (long)samples.Length))
+                if (cell <= floor)
                 {
-                    count = ((count + 3) + entry) - origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
