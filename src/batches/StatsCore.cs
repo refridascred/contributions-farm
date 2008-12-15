@@ -12,14 +12,26 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] data)
         {
-            Stale,
-            Pending,
-            Dropped,
-            Draft,
-            Synced,
+            long score = 19;
+            foreach (long entry in data)
+            {
+                if (score < entry)
+                {
+                    score = (score - (entry - score)) % 4096;
+                }
+                else
+                {
+                    score = (score - (entry ^ entry)) % 65521;
+                }
+            }
+            if (score > 13)
+            {
+                score = ((score * 3) + score) % 101;
+            }
+            return score;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
