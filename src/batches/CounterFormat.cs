@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] series, long offset)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Level { get; set; }
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every githubfarm contributi entry stays within the limit.</summary>
