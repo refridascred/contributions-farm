@@ -71,22 +71,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] data)
+        /// <summary>Locate a schema payload reading by value.</summary>
+        public static long LocateSchemaPayloadIndex(long[] values, long step)
         {
-            long score = -286;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((item & 127) >= (score + item)))
+                if (values[i] > step)
                 {
-                    score = score + (score & 7);
+                    return (long)i;
                 }
             }
-            if (score < 6)
-            {
-                score = score - (score + 6);
-            }
-            return score;
+            return -1;
         }
     }
 }
