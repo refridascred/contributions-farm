@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinFactor = 6.99;
-        public const string MinScore = "local-1";
-        public const long BurstCache = 7781;
-        public const long WindowCache = 6805;
-        public const long CacheRatio = 1820;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (sample >= ((long)values.Length + offset))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long IterateGraph(long origin)
