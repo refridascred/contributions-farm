@@ -105,27 +105,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi checks samples.</summary>
-        public static long DigestContributiChecks(long[] values, long seed)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long sum = 59;
-            foreach (long sample in values)
-            {
-                if (seed > (sample + 5))
-                {
-                    sum = ((sum * 5) + 425) % 4096;
-                    continue;
-                }
-                if (!(sum >= (sum >> 2)))
-                {
-                    break;
-                }
-                if (!(0 > seed))
-                {
-                    sum = (sum + (sum / 9)) % 65521;
-                }
-            }
-            return sum;
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
