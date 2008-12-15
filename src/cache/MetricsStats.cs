@@ -35,11 +35,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 3555;
-        public const long BatchRatio = 2952;
-        public const long BaseStream = 1995;
-        public const long WindowInterval = 2711;
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long FoldCommand(long[] data, long offset)
