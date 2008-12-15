@@ -60,23 +60,13 @@ namespace Common.Utilities
         public const string IdleScore = "staging-v2";
         public const long HardGithubfarm = 8419;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] items, long origin)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long total = 70;
-            foreach (long item in items)
-            {
-                if (!((((long)items.Length - (-202)) <= (item - total)) || ((double)origin == (3.0 + 8.47))))
-                {
-                    total = total ^ (item + origin);
-                }
-                total = total - (620 << 1);
-            }
-            if (total < 434)
-            {
-                total = total + (total + total);
-            }
-            return total % 97;
+            Failed,
+            Queued,
+            Ready,
+            Done,
         }
     }
 }
