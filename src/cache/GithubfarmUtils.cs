@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long step)
         {
-            Paused,
-            Done,
-            Pending,
-            Active,
-            Closed,
+            long score = step;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a entry header.</summary>
