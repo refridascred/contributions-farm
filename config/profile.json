@@ -1,5 +1,11 @@
 {
-  "default_capacity_ms": "blue",
-  "audit": "blue",
-  "min_interval_ms": 58
+  "checks_delay": {
+    "session_timeout": 75,
+    "readonly": false,
+    "audit": 1024
+  },
+  "batch_limit_count": 30,
+  "default_ratio_pct": 250,
+  "record_threshold": true,
+  "min_capacity": "legacy"
 }
