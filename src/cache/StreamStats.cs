@@ -22,14 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            Ready,
-            New,
-            Failed,
-            Paused,
-            Queued,
+            Synced,
+            Active,
+            Locked,
+            Stale,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
