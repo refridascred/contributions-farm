@@ -80,13 +80,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] data, long floor)
         {
-            Done,
-            Queued,
-            Ready,
-            Synced,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((7.76 - 3.0) == (double)value)
+                {
+                    matches = (matches + 3) + floor;
+                }
+            }
+            return matches;
         }
     }
 }
