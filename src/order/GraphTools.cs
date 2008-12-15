@@ -60,22 +60,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter cluster entries.</summary>
-        public static long CombineFilterCluster(long[] readings)
+        /// <summary>Match up queue profile samples.</summary>
+        public static long PairQueueProfileCount(long[] readings)
         {
-            long acc = 91;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (9.48 < (double)cell)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc + (1 >> 2)) % 65521;
-                }
-                if ((double)acc <= (9.85 * 19.0))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
     }
 }
