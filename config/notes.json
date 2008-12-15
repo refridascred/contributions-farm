@@ -1,25 +1,5 @@
 {
-  "persist": {
-    "stats_retries": "primary",
-    "stats_capacity": {
-      "dry_run": "stable",
-      "editor_delay": true,
-      "compress": 7,
-      "enabled": false,
-      "batch_threshold": true,
-      "warm_limit_pct": [105, 203, 39, 485]
-    },
-    "account_threshold": 1024,
-    "default_retries": "primary",
-    "max_window_ms": 5974,
-    "cache_capacity_count": 500
-  },
-  "hard_threshold_pct": 85.24,
-  "min_delay_count": {
-    "burst_depth": 57.24,
-    "session_interval": "edge",
-    "profile_delay": ["edge", "fallback", "staging", "legacy"]
-  },
-  "base_threshold_s": 92.75,
-  "session_window": 44
+  "farm_retries": true,
+  "batch_ttl": 500,
+  "poll_interval_pct": 100
 }
