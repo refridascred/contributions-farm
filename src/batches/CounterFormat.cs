@@ -14,11 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] levels, long bound)
         {
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of counter commits readings.</summary>
