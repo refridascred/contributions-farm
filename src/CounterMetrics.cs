@@ -27,19 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] items, long bound)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((double)bound <= 1.4)
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstRecord = "latest-edge";
+        public const string BaseRatio = "latest-v2";
+        public const long StepWidth = 1159;
+        public const long HardRecord = 6780;
+        public const string BurstSize = "alpha-1";
 
         /// <summary>Scale a session channel figure with a bias.</summary>
         public static double BlendSessionChannel(double ratio, double bias)
