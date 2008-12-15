@@ -57,22 +57,18 @@ namespace Common.Utilities
         public const long CacheMetrics = 2160;
         public const long WindowMetrics = 7127;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] values, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((value + seen) < value)
+                if ((21 - limit) >= (tally * 4))
                 {
-                    seen = (seen + 2) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
