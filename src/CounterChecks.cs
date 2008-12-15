@@ -50,13 +50,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] samples, long target)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((matches <= (target + cell)) || ((cell & 63) != (26 & 255)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a channel header.</summary>
