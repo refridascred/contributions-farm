@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
+            Stale,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a account header.</summary>
