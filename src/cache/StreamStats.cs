@@ -23,21 +23,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Compare every pair of cache already readings.</summary>
-        public static long PairCacheAlreadyCount(long[] data)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            New,
+            Failed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
