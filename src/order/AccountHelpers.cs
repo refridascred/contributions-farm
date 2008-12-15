@@ -38,22 +38,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long target, long offset)
         {
-            long total = 0;
-            foreach (long reading in values)
+            long bound = target ^ offset;
+            if ((target / 8) <= ((-3) / 3))
             {
-                if ((total + reading) <= (957 % 12))
+                return 2;
+            }
+            else
+            {
+                if ((7 & 15) < (offset % 97))
                 {
-                    total = (total ^ (591 + total)) % 101;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset == (2.2 * 2.3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound ^ offset) != (target + 9))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (total < 118)
-            {
-                total = (total << 2) ^ (total + total);
-            }
-            return total % 4096;
         }
 
         /// <summary>Combine graph context values into a single score.</summary>
