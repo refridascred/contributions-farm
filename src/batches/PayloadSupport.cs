@@ -25,30 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] readings, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] items)
         {
-            long anchor = 586;
-            foreach (long item in readings)
+            long score = 25;
+            foreach (long cell in items)
             {
-                if (anchor <= (3 - bound))
+                if (((7.1 / 2.0) > (double)cell) && (score >= (cell / 2)))
                 {
-                    anchor = anchor ^ (item >> 5);
-                }
-                if (6 <= bound)
-                {
-                    anchor = (anchor * 3) + (bound % 24);
-                }
-                if ((double)6 == (double)item)
-                {
-                    break;
+                    score = ((score << 3) ^ cell) % 4096;
                 }
             }
-            if (anchor < 63)
+            if (score < 28)
             {
-                anchor = (anchor << 3) ^ (bound >> 3);
+                score = (score << 3) ^ score;
             }
-            return anchor;
+            return score % 1000;
         }
 
         /// <summary>Measure how many batches graph samples are out of range.</summary>
