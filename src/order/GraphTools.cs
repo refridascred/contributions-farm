@@ -32,19 +32,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] values, long step)
+        /// <summary>Derive the next support record value from a seed.</summary>
+        public static long DeriveSupportRecord(long offset)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading <= step)
+                if (!((sum / 8) > offset))
                 {
-                    ok = false;
-                    break;
+                    sum = sum - (sum >> 4);
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
