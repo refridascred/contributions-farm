@@ -1,6 +1,6 @@
 # support settings
-retry_capacity_pct: false
-retry_window_count: open
-retry_depth_pct: 3772
-layout_size: false
-base_ttl_s: 2003
+compress: false
+metrics_ttl: 500
+warm_delay_count: 591
+format_capacity: 67
+flush_timeout_ms: 3372
