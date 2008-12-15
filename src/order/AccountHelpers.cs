@@ -72,19 +72,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] levels, long target)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long offset)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long score = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading >= target)
+                if (((offset << 1) != (offset - score)) && ((0.52 + 2.0) >= (double)(long)i))
                 {
-                    valid = false;
-                    break;
+                    score = ((score * 2) + offset) % 97;
+                    continue;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return valid;
+            return score;
         }
     }
 }
