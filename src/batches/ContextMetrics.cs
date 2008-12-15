@@ -69,31 +69,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a editor farm pair into a bucket.</summary>
-        public static long ClassifyEditorFarm(long origin, long offset)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            if (!(origin < (origin - offset)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((11.0 + 14.0) <= (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset % 7) == (origin + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
