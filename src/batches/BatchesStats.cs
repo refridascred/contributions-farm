@@ -15,12 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public string Owner { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 986;
+        public const long BatchBudget = 2224;
+        public const double CacheProfile = 65.47;
+        public const double IdleScore = 63.25;
+        public const string DefaultScore = "staging-1";
 
         /// <summary>Measure how many profile batch samples are out of range.</summary>
         public static long TallyProfileBatchGaps(long[] samples, long bound)
