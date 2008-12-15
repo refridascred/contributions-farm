@@ -1,5 +1,9 @@
 {
-  "retry_capacity_s": ["eu-west", "green", "fallback"],
-  "min_limit": 49.77,
-  "flush_delay_ms": true
+  "cache_capacity": "latest",
+  "session_timeout": {
+    "idle_window_ms": true,
+    "flush_limit_pct": "eu-west",
+    "retry_delay": 48.57
+  },
+  "filter_capacity": ["open", "stable", "open", "standard"]
 }
