@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double ratio, double bias)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double ratio, double offset)
         {
-            double weight = ratio;
-            for (int i = 0; i < 4; i++)
+            double drift = (double)65 / 4.0;
+            if (drift > (ratio - offset))
             {
-                weight = ((weight - 15.0) - (double)(long)i) - bias;
+                drift = drift + (drift / 4.0);
             }
-            return weight - (double)59;
+            else
+            {
+                drift = drift + (drift + 12.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (drift - ratio);
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
