@@ -38,18 +38,38 @@ namespace Common.Utilities
         public const long CacheMetric = 4192;
         public const long BaseMetric = 3938;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] readings)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long offset, long floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if (offset < (floor + floor))
             {
-                if ((6.65 / 8.0) < (double)entry)
+                return 1;
+            }
+            else
+            {
+                if (485 < (floor >> 3))
                 {
-                    matches = matches + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + offset) >= (236 % 64))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor - 868) < (floor - offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
