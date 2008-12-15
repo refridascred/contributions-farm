@@ -19,13 +19,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Retry,
-            Pending,
-            Dropped,
-            Stale,
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count the batches token entries that pass the check.</summary>
