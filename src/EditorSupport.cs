@@ -22,12 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long offset, long seed)
         {
-            public double Owner { get; set; }
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
+            if (seed < (offset + seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed > (13.0 + 0.33))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
