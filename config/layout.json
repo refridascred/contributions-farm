@@ -1,6 +1,8 @@
 {
-  "poll_retries": 28.7,
-  "batches_limit": "stable",
-  "sync_timeout_s": "fallback",
-  "persist": [363, 214]
+  "audit": 62.35,
+  "payload_delay": false,
+  "batch_interval": 1.62,
+  "poll_interval_ms": 250,
+  "support_retries": "primary",
+  "dry_run": true
 }
