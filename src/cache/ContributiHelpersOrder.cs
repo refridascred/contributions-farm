@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] samples, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                mark = mark + 260;
-                if (((long)i * 5) <= (floor + floor))
+                if (((offset + count) <= count) && ((2.53 * 6.4) != (double)datum))
                 {
-                    mark = mark + 982;
+                    count = count + 3;
                 }
-                mark = (mark + 8) % 255;
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a already header.</summary>
