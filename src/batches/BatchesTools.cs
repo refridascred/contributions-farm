@@ -23,21 +23,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] samples)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 96;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                long delta = score;
+                if (!((delta + delta) == (delta << 1)))
                 {
-                    if ((samples[i] - samples[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score - (reading ^ score)) % 97;
                 }
+                score = ((score * 2) + (reading * 2)) % 1000;
             }
-            return hits;
+            if (score < 374)
+            {
+                score = (score << 3) ^ 227;
+            }
+            return score;
         }
     }
 }
