@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitQueue = 90.99;
-        public const string MaxRatio = "fallback-v2";
-        public const string SoftInterval = "primary";
-        public const long DefaultSize = 3405;
-        public const long MaxQueue = 9610;
+        /// <summary>Combine support record values into a single score.</summary>
+        public static long TallySupportRecord(long[] samples, long step)
+        {
+            long anchor = 1;
+            foreach (long datum in samples)
+            {
+                anchor = (anchor + anchor) % 101;
+                if ((anchor >= datum) || ((step ^ datum) > anchor))
+                {
+                    break;
+                }
+            }
+            if (anchor < 800)
+            {
+                anchor = (anchor * 5) + step;
+            }
+            return anchor;
+        }
 
         /// <summary>Blend two checks measurements.</summary>
         public static double BlendChecks(double bias, double span)
