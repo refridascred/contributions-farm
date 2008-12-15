@@ -86,24 +86,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long bound, long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] samples, long offset)
         {
-            if (((floor * 3) == (bound >> 4)) || ((bound - 611) < (bound * 4)))
+            bool ok = true;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound < floor) && (1 > floor))
+                if (item < offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
