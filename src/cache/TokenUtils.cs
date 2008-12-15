@@ -20,14 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] levels, long step)
         {
-            Closed,
-            Paused,
-            Idle,
-            Synced,
-            Stale,
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
