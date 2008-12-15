@@ -17,18 +17,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] series)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((8.2 + 4.37) == (double)tally))
+                if ((data[i] >= origin) && ((data[i] % 5) != 0))
                 {
-                    tally = (tally + 3) + cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a graph summary.</summary>
