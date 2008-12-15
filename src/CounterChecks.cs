@@ -14,19 +14,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of report cluster readings.</summary>
-        public static long FoldReportCluster(long[] items)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] series)
         {
-            long score = 2;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score - entry) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (score > (-140))
-            {
-                score = ((score << 3) ^ score) % 65521;
-            }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
