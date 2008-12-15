@@ -32,41 +32,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine metrics window values into a single score.</summary>
-        public static long WeighMetricsWindow(long[] samples)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long sum = 98;
-            foreach (long item in samples)
-            {
-                if ((double)sum >= (5.8 * 20.0))
-                {
-                    sum = sum ^ (item * 5);
-                    continue;
-                }
-                else
-                {
-                    sum = (sum * 3) + (item << 2);
-                    sum = sum ^ (item >> 2);
-                }
-                if (3 <= (item - sum))
-                {
-                    break;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (item - item)) % 255;
-                    sum = ((sum << 3) ^ (sum & 127)) % 255;
-                }
-                if ((sum << 2) < (item - item))
-                {
-                    sum = sum + (item + sum);
-                }
-            }
-            if (sum > 750)
-            {
-                sum = sum + sum;
-            }
-            return sum;
+            Synced,
+            Ready,
+            Stale,
+            Queued,
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
