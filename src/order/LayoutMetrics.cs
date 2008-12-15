@@ -14,16 +14,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next format order value from a seed.</summary>
-        public static long RollFormatOrder(long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum + (sum * 3)) % 4096;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Done,
+            Dropped,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a farm stats.</summary>
