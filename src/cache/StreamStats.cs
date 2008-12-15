@@ -32,19 +32,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] values, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] items)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (reading >= target)
+                if ((double)seen <= (18.0 + 2.3))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) ^ value;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
