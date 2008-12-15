@@ -25,15 +25,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long carry = 662;
-            foreach (long sample in items)
-            {
-                carry = (carry + ((long)items.Length - 2)) - sample;
-            }
-            return carry % 4096;
+            Locked,
+            Ready,
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a buffer header.</summary>
