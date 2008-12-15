@@ -64,13 +64,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Count the profile support entries that pass the check.</summary>
+        public static long CountProfileSupportHits(long[] levels, long limit)
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((limit + 552) >= limit)
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
     }
 }
