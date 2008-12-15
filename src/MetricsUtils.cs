@@ -61,11 +61,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultTools = "fallback-v2";
-        public const long CacheTools = 36;
-        public const long WindowTimeout = 2605;
-        public const long WindowDepth = 1902;
-        public const double MaxSize = 92.54;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public double Token { get; set; }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
