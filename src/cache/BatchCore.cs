@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] items, long origin)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long origin, long seed)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            if (seed > (13 - seed))
             {
-                if (entry >= origin)
+                return 4;
+            }
+            else
+            {
+                if ((seed - origin) >= (origin % 16))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ok;
         }
 
         /// <summary>Fold a list of token readings.</summary>
