@@ -20,18 +20,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit session format readings against a rule.</summary>
-        public static long CountSessionFormatOutliers(long[] series, long floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (((reading & 7) > seen) || (reading < (6 - 79)))
-                {
-                    seen = (seen + 2) + floor;
-                }
-            }
-            return seen;
+            Stale,
+            Idle,
+            Retry,
+            Synced,
         }
     }
 }
