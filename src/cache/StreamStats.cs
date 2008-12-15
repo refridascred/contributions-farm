@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of schema token entries.</summary>
-        public static long TotalSchemaToken(long[] levels)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] levels)
         {
-            long state = 55;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(5.6 <= (double)entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state * 3) + (entry + state)) % 97;
-                }
-                if (((long)levels.Length + entry) > (entry >> 4))
-                {
-                    state = state - (state + state);
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Describe the cache status values.</summary>
