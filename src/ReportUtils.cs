@@ -19,38 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long floor, long limit)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            if ((1.54 - 9.27) < (double)limit)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor > (floor - limit))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit * 4) == (floor + 754))
+                    if ((items[i] - items[j]) > 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((floor / 6) == (limit >> 2)) || (limit < (limit >> 1)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a order counter forward.</summary>
