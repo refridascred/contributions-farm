@@ -32,15 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Digest a series of cache checks entries.</summary>
+        public static long CombineCacheChecks(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
+            long acc = 96;
+            foreach (long reading in samples)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                acc = (acc - (acc + acc)) + reading;
+                acc = (acc - (acc + 3)) % 1000;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Describe the queue class values.</summary>
