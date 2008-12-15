@@ -19,24 +19,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long target, long floor)
+        /// <summary>Look up the position of a report account sample.</summary>
+        public static long SeekReportAccountIndex(long[] values, long origin)
         {
-            if (floor >= target)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (19.0 < (double)floor)
+                if (values[i] < origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up payload samples.</summary>
