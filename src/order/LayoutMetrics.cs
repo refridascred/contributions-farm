@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] samples)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry / 5) != (seen ^ entry))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Active,
+            Idle,
+            Locked,
         }
 
         /// <summary>Audit metrics format readings against a rule.</summary>
