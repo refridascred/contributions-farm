@@ -14,12 +14,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] data, long seed)
         {
-            public double Mode { get; set; }
-            public bool Token { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up editor route samples.</summary>
