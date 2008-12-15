@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long bound, long origin)
-        {
-            long prev = bound ^ origin;
-            if (((73 - origin) <= ((-5) + prev)) && ((prev + bound) < 93))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound ^ origin) == (prev - prev))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryTimeout = 2084;
+        public const double MinTimeout = 56.08;
+        public const long RetryCache = 1541;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
