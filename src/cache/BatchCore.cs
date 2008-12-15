@@ -55,24 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long floor, long origin)
+        /// <summary>Digest a series of schema notes entries.</summary>
+        public static long DigestSchemaNotes(long[] items)
         {
-            if (((double)origin <= (5.0 - 0.54)) || ((1.0 * 14.0) >= (4.47 + 5.39)))
+            long result = 78;
+            foreach (long cell in items)
             {
-                return 0;
+                result = ((result << 3) ^ (cell % 8)) % 65521;
             }
-            else
-            {
-                if (16.0 > (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return result;
         }
     }
 }
