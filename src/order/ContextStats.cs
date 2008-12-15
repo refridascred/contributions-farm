@@ -32,21 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] samples)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
