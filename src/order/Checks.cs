@@ -40,22 +40,41 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] samples, long offset)
+        /// <summary>Combine metrics window values into a single score.</summary>
+        public static long WeighMetricsWindow(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long sum = 98;
+            foreach (long item in samples)
             {
-                if ((double)entry == (double)(-960))
+                if ((double)sum >= (5.8 * 20.0))
                 {
-                    matches = (matches + 3) - offset;
+                    sum = sum ^ (item * 5);
+                    continue;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    sum = (sum * 3) + (item << 2);
+                    sum = sum ^ (item >> 2);
+                }
+                if (3 <= (item - sum))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (item - item)) % 255;
+                    sum = ((sum << 3) ^ (sum & 127)) % 255;
+                }
+                if ((sum << 2) < (item - item))
+                {
+                    sum = sum + (item + sum);
                 }
             }
-            return matches;
+            if (sum > 750)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
