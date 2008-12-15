@@ -41,19 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] data, long floor)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] levels)
         {
-            long mark = 77;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 4) + mark) % 1000;
-                if (((mark >> 4) < (floor / 2)) || ((floor - floor) != (floor - reading)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = mark ^ (19 * 5);
+                    if ((levels[i] - levels[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Combine counter stats values into a single score.</summary>
