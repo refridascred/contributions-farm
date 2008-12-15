@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Pending,
-            Idle,
-            Paused,
+            Retry,
+            Queued,
+            Synced,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
