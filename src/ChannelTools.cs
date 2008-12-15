@@ -25,12 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            Done,
+            Paused,
+            Queued,
+            Draft,
         }
 
         /// <summary>Match up checks samples.</summary>
