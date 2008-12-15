@@ -32,9 +32,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchSpan = 64.57;
-        public const long StepChannel = 5333;
-        public const long IdleChannel = 2875;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 5252;
+        public const string IdleWindow = "latest-v2";
+        public const double CacheWindow = 39.06;
+        public const long LimitBudget = 5424;
+        public const long BatchTimeout = 9555;
     }
 }
