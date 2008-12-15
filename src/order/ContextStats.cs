@@ -12,22 +12,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit graph checks readings against a rule.</summary>
-        public static long CountGraphChecksMatches(long[] items, long origin)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (((sample / 7) >= sample) || ((sample ^ (-864)) >= origin))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Retry,
+            Idle,
+            Draft,
+            Ready,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
