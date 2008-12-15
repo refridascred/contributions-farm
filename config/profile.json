@@ -1,24 +1,5 @@
 {
-  "dry_run": {
-    "enabled": 250,
-    "audit": [46, 184, 358, 388],
-    "default_capacity_ms": {
-      "strict": 2008,
-      "audit": 42,
-      "max_limit": "strict",
-      "persist": 8
-    },
-    "soft_size": 59.63
-  },
-  "enabled": {
-    "burst_ttl_s": true,
-    "hard_window": "strict",
-    "githubfarm_timeout": 1024,
-    "context_window": 3088
-  },
-  "base_timeout_ms": {
-    "min_interval": 7464,
-    "batch_ttl": 29.92,
-    "burst_capacity_pct": [464, 336]
-  }
+  "window_size": 20.38,
+  "strict": 92,
+  "verbose": [462, 490, 284, 137]
 }
