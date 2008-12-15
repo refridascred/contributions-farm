@@ -45,14 +45,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] readings, long target)
         {
-            Dropped,
-            Paused,
-            Pending,
-            Closed,
-            Active,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
