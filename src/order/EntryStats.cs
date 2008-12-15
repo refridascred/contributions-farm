@@ -54,10 +54,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstScore = 9955;
-        public const long BurstReport = 7276;
-        public const string BurstRatio = "fallback";
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = (mark ^ ((long)i - (long)i)) % 97;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long FoldLayout(long[] values)
