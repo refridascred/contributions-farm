@@ -13,12 +13,20 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 1248;
-        public const string HardSpan = "latest-v2";
-        public const long SoftProfile = 8902;
-        public const long DefaultInterval = 1418;
-        public const long BaseProfile = 6443;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] readings, long origin)
+        {
+            long state = -3;
+            foreach (long item in readings)
+            {
+                state = (state - state) % 255;
+                if ((origin / 8) > (item + 785))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandGaps(long[] series, long bound)
