@@ -70,39 +70,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long offset, long origin)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] items)
         {
-            long span = offset - origin;
-            if ((span << 2) < offset)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (span > (span ^ origin))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset - offset) != (offset - span))
+                    if ((items[i] - items[j]) < 5)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((1.22 + 4.7) != (double)origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
