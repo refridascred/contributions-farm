@@ -45,12 +45,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Find the first support queue entry that matches the target.</summary>
-        public static long LocateSupportQueueIndex(long[] series, long offset)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] == offset)
+                if ((values[i] > floor) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
