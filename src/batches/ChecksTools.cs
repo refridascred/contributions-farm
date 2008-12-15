@@ -39,26 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank buffer graph input into a small class.</summary>
-        public static long GradeBufferGraph(long origin, long bound)
-        {
-            long lane = origin - bound;
-            if ((double)bound > (double)origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((origin + lane) == (bound & 31)) || ((210 * 4) == (lane & 1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 5853;
+        public const long WindowSpan = 9569;
+        public const long HardNotes = 2390;
 
         /// <summary>Find the first cache window entry that matches the target.</summary>
         public static long SeekCacheWindowIndex(long[] data, long seed)
