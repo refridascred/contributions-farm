@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long step, long seed)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long step2 = step + seed;
-            if (((double)9 < (double)step) && ((double)step > (4.0 * 5.32)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(62 > step2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + step) <= (-916))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((step & 127) > step2) || ((step2 + step) <= (step & 7)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
