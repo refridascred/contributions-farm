@@ -1,5 +1,5 @@
 {
-  "batch_capacity_count": 29,
-  "route_window": 69,
-  "idle_threshold_s": "green"
+  "default_capacity_ms": "blue",
+  "audit": "blue",
+  "min_interval_ms": 58
 }
