@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowRatio = 220;
-        public const string HardEntry = "strict";
-        public const string BaseEntry = "stable-edge";
-        public const long RetryScore = 8334;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] samples, long limit)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long DeriveStream(long offset)
