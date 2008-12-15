@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the entry batches entries that pass the check.</summary>
-        public static long CountEntryBatchesGaps(long[] levels, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((origin >> 2) < (datum & 1))
+                if (entry > floor)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
