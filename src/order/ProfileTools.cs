@@ -62,9 +62,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinFilter = 17.31;
-        public const double BaseFactor = 33.11;
-        public const string BatchDepth = "staging-1";
+        /// <summary>Measure how many commits farm samples are out of range.</summary>
+        public static long AuditCommitsFarmMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!((item + seen) < (item % 2)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
