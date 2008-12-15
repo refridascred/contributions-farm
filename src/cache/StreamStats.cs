@@ -39,10 +39,17 @@ namespace Common.Utilities
         public const string StepRecord = "standard-1";
         public const string IdleCount = "staging";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheInterval = 1545;
-        public const long BatchTimeout = 3448;
-        public const long RetryCache = 9106;
-        public const string MaxCache = "local";
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
