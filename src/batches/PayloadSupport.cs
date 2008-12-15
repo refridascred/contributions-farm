@@ -43,13 +43,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Measure how many batches graph samples are out of range.</summary>
+        public static long AuditBatchesGraphGaps(long[] readings)
         {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((count & 7) > (34 - count))
+                {
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
