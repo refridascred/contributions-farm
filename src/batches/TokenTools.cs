@@ -20,18 +20,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] levels)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((matches >> 1) < matches)
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            double weight2 = weight;
+            return (weight2 - weight) + offset;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
