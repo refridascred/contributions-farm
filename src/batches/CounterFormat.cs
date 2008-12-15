@@ -29,14 +29,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Compare every pair of counter commits readings.</summary>
+        public static long PairCounterCommitsCount(long[] items)
         {
-            Done,
-            Dropped,
-            Paused,
-            Synced,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
