@@ -39,24 +39,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Iterate the session metric series from a seed.</summary>
-        public static long RollSessionMetric(long origin)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] values, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
+            long result = 97;
+            foreach (long entry in values)
             {
-                if ((((long)i / 6) < mark) || ((1.0 + 6.85) != (double)origin))
+                if ((result + result) < result)
                 {
-                    mark = mark + (mark >> 5);
+                    result = ((result - (entry & 3)) % 97) - floor;
                 }
-                else
-                {
-                    mark = mark ^ (origin ^ origin);
-                    mark = (mark * 5) + (mark - mark);
-                }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return result;
         }
     }
 }
