@@ -14,12 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] values, long step)
         {
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (!((reading << 2) > step))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
