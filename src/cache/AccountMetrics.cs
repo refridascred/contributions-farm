@@ -38,13 +38,17 @@ namespace Common.Utilities
             return mean + (double)42;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] values, long seed)
         {
-            Draft,
-            Failed,
-            Queued,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < seed) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a format summary.</summary>
