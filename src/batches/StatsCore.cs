@@ -100,22 +100,16 @@ namespace Common.Utilities
             return mean - (floor / 5.0);
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] samples, long seed)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long origin)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)cell <= (5.0 - 6.6))
-                {
-                    count = (count + 3) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = (acc ^ (origin << 3)) % 101;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
     }
 }
