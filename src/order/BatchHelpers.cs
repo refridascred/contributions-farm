@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
+            Stale,
+            Idle,
+            Pending,
+            Ready,
         }
 
         /// <summary>Hold a payload record.</summary>
