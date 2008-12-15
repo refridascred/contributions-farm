@@ -68,21 +68,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] items)
+        /// <summary>Adjust a record entry reading.</summary>
+        public static double ProjectRecordEntry(double scale, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = scale;
+            if (mean <= scale)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = (mean - (mean * 2.0)) + span;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (double)(-781);
         }
     }
 }
