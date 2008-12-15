@@ -66,40 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry report input into a small class.</summary>
-        public static long BucketEntryReport(long limit, long limit2)
-        {
-            long bound = limit - limit2;
-            if (((4.7 * 4.0) < (double)limit) && ((73 + 296) <= limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound < (5.0 * 0.44))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound >= limit) || ((-8) < limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)limit2 >= (double)58)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 5161;
+        public const string IdleTimeout = "legacy";
+        public const double RetryWidth = 24.84;
+        public const string BatchContributi = "staging-v2";
 
         /// <summary>Match up queue samples.</summary>
         public static long MatchQueueCount(long[] items)
