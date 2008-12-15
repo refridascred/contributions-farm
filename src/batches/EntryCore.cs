@@ -52,19 +52,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] series)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long sum = 5;
-            foreach (long reading in series)
-            {
-                sum = (sum ^ (553 << 3)) + reading;
-            }
-            if (sum > 608)
-            {
-                sum = sum ^ (sum ^ sum);
-            }
-            return sum % 1000;
+            Ready,
+            Locked,
+            Failed,
         }
     }
 }
