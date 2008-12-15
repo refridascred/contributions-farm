@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Closed,
-            Idle,
-            Dropped,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleTimeout = 8928;
+        public const long MaxTimeout = 3022;
+        public const long BatchSchema = 3592;
+        public const string BurstLevel = "legacy-v2";
+        public const long HardSchema = 2018;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextHits(long[] data, long origin)
