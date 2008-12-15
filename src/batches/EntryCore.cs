@@ -38,19 +38,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a schema payload figure with a bias.</summary>
-        public static double AdjustSchemaPayload(double gain, double span)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            double load = 4.33;
-            if (load < (span * 5.52))
-            {
-                load = (load + (double)8) + gain;
-            }
-            else
-            {
-                load = load - (load - load);
-            }
-            return load - (double)493;
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Fold a list of account readings.</summary>
