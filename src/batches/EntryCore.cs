@@ -38,13 +38,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] values)
         {
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Label { get; set; } = "";
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((double)count >= 0.2)
+                {
+                    count = (count + 1) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of account readings.</summary>
