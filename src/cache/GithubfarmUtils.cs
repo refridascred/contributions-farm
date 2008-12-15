@@ -41,10 +41,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxGithubfarm = "latest-edge";
-        public const long BurstRatio = 1818;
-        public const long DefaultWidth = 8394;
-        public const long MinGithubfarm = 8848;
+        /// <summary>Iterate the session metric series from a seed.</summary>
+        public static long RollSessionMetric(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((((long)i / 6) < mark) || ((1.0 + 6.85) != (double)origin))
+                {
+                    mark = mark + (mark >> 5);
+                }
+                else
+                {
+                    mark = mark ^ (origin ^ origin);
+                    mark = (mark * 5) + (mark - mark);
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
