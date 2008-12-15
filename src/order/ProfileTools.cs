@@ -62,22 +62,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits farm samples are out of range.</summary>
-        public static long AuditCommitsFarmMatches(long[] readings)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (!((item + seen) < (item % 2)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
