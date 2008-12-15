@@ -1,7 +1,10 @@
-id,label,score
-1,84.08,616
-2,79.24,strict
-3,blue,staging
-4,legacy,65.82
-5,37.49,79.89
-6,eu-west,93.5
+id,count,state
+1,latest,blue
+2,362,98.96
+3,72,strict
+4,717,latest
+5,standard,413
+6,901,519
+7,97.64,latest
+8,58.14,841
+9,433,358
