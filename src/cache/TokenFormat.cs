@@ -29,18 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] readings, long limit)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            double drift = (double)(397 * 3);
+            if (drift > 8.84)
             {
-                if ((cell > (cell / 7)) && (((12.0 / 5.0) == (double)cell) && ((limit - cell) > cell)))
-                {
-                    seen = seen + 1;
-                }
+                drift = (drift + (bias + 18.0)) - ratio;
             }
-            return seen;
+            else
+            {
+                drift = drift + bias;
+            }
+            return drift + drift;
         }
     }
 }
