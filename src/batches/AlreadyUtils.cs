@@ -25,18 +25,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] items, long seed)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (((double)value < 6.2) || !(4 >= (value ^ (long)items.Length)))
+                if (datum >= origin)
                 {
-                    count = (count + 3) + seed;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Count the format stream entries that pass the check.</summary>
