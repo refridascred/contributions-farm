@@ -30,14 +30,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public bool Count { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstDepth = 3998;
+        public const long HardWidth = 1091;
+        public const long HardTools = 9813;
+        public const long MaxLevel = 3730;
+        public const long IdleLevel = 6861;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long FoldReport(long[] levels, long target)
