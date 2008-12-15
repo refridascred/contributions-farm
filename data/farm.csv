@@ -1,8 +1,7 @@
-id,weight,ratio,owner,level
-1,primary,736,897,82.5
-2,legacy,local,289,943
-3,local,legacy,377,372
-4,723,edge,green,staging
-5,773,green,319,28.44
-6,green,381,staging,948
-7,805,91.09,108,67.8
+id,ratio,token
+1,stable,746
+2,edge,503
+3,310,strict
+4,89.65,23.76
+5,569,7.57
+6,934,0.91
