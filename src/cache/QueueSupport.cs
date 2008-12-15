@@ -31,11 +31,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long limit, long step)
         {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
+            if (((step + step) >= (883 + 223)) || ((limit & 255) > step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit + 1) >= (limit >> 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step * 2) <= (step - 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
