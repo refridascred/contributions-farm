@@ -1,10 +1,7 @@
 # support settings
-stream_threshold:
-  - blue
-  - primary
-  - eu-west
-  - standard
-audit: local
-cache_ratio: standard
-support_ttl: false
-dry_run: cached
+buffer_timeout: 24
+burst_ttl: 95
+compress:
+  strict: 100
+  min_depth_pct: 4856
+  batch_capacity_count: 74
