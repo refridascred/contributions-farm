@@ -59,21 +59,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] data)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long floor, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = floor + limit;
+            if (!((next >> 1) > (next << 3)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((floor + limit) < (floor >> 4))
                 {
-                    if ((data[i] ^ data[j]) == 19)
+                    return 3;
+                }
+                else
+                {
+                    if ((16.0 - 9.0) <= (double)limit)
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)next >= (double)951)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
