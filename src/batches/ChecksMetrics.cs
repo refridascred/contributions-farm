@@ -40,38 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long limit, long offset)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            if ((limit ^ 231) != (offset ^ offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if (447 > (limit + limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((limit & 127) > (limit - offset)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((offset & 15) > (offset << 1)) || ((limit + offset) <= (offset / 5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Retry,
+            Draft,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Hold a token summary.</summary>
