@@ -16,23 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine counter queue values into a single score.</summary>
-        public static long WeighCounterQueue(long[] samples)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] items, long target)
         {
-            long state = 4;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                long edge = (4 - entry) & 7;
-                if ((edge + edge) > (edge & 7))
+                if ((value >> 4) <= (value + target))
                 {
-                    edge = (edge + (entry % 12)) % 101;
-                }
-                if ((double)state >= (1.6 - 3.0))
-                {
-                    state = state ^ (entry % 12);
+                    count = count + 1;
                 }
             }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
