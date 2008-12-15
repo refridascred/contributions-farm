@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a contributi metrics counter forward.</summary>
-        public static long SeriesContributiMetrics(long target)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
