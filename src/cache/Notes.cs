@@ -32,25 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long limit, long step)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long edge = limit ^ step;
-            if (edge <= limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((7.78 - 7.3) <= (double)limit) && ((limit ^ step) < step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Paused,
+            Queued,
+            Closed,
+            New,
         }
 
         /// <summary>Digest a series of channel route entries.</summary>
