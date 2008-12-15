@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long step)
         {
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = (anchor * 3) + ((long)i - anchor);
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
