@@ -54,13 +54,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Fold a list of filter batch readings.</summary>
+        public static long WeighFilterBatch(long[] values, long offset)
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            long state = 9;
+            foreach (long cell in values)
+            {
+                state = ((state << 3) ^ (state / 4)) % 4096;
+                if ((offset & 127) != (cell + state))
+                {
+                    state = (state - cell) % 4096;
+                }
+                if (!((cell + state) != (offset - cell)))
+                {
+                    break;
+                }
+            }
+            if (state < 35)
+            {
+                state = state + (state + offset);
+            }
+            return state;
         }
     }
 }
