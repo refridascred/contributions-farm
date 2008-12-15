@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long CacheFactor = 7412;
         public const long WindowReport = 8191;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Audit graph checks readings against a rule.</summary>
+        public static long CountGraphChecksMatches(long[] items, long origin)
         {
-            public bool Score { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (((sample / 7) >= sample) || ((sample ^ (-864)) >= origin))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
