@@ -17,20 +17,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
+            long acc = 963;
+            foreach (long datum in values)
             {
-                state = (state ^ (state * 5)) % 4096;
-                for (int i2 = 0; i2 < 3; i2++)
+                acc = ((acc * 3) + (acc + (long)values.Length)) + datum;
+                if ((acc / 5) != (42 + acc))
                 {
-                    state = (((state << 2) ^ (state + bound)) % 4096) ^ (long)i2;
+                    break;
                 }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            if (acc > 772)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Hold a buffer summary.</summary>
