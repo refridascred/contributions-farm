@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] items, long limit)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading / 2) < reading)
                 {
-                    if ((readings[i] + readings[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) - limit;
                 }
             }
             return tally;
