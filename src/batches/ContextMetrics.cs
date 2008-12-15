@@ -60,13 +60,15 @@ namespace Common.Utilities
         public const long MinInterval = 5023;
         public const long SoftRatio = 8780;
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long step)
         {
-            public double Size { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public double Owner { get; set; }
+            long score = step;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Adjust a notes reading.</summary>
