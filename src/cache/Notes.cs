@@ -75,12 +75,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] data, long bound)
         {
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
