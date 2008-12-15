@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm profile readings against a rule.</summary>
-        public static long AuditGithubfarmProfileGaps(long[] samples, long target)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((target / 3) != (hits % 100))
-                {
-                    hits = (hits + 2) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
