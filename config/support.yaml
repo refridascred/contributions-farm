@@ -1,24 +1,15 @@
 # support settings
-sync_delay:
-  - fallback
-  - edge
-  - primary
-hard_delay_ms: false
-dry_run:
-  warm_limit_pct:
-    context_retries: 7645
-    persist: 21.82
-    default_retries_s: 2795
-    min_ttl_count: open
-  cache_depth_ms:
-    - 257
-    - 21
-    - 196
-  flush_capacity:
-    - edge
-    - edge
-    - edge
-  flush_depth: 63.59
-  audit: 2425
-  min_window_pct: edge
-sync_ttl: local
+editor_interval: true
+hard_ratio_ms: fallback
+retry_retries_pct:
+  - blue
+  - open
+  - standard
+  - green
+warm_timeout_count: true
+burst_ratio_s:
+  hard_capacity: 1024
+  warm_interval_count: 4161
+  dry_run: 61.9
+  min_ttl_count: staging
+flush_delay_count: 500
