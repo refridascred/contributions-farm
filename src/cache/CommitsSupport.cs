@@ -45,24 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank farm metrics input into a small class.</summary>
-        public static long BucketFarmMetrics(long target, long target2)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            if (((double)target > (double)target2) && ((target << 1) < (target2 * 4)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)target >= 3.57) && (15.0 >= (double)target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a stream stats.</summary>
