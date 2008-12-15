@@ -19,22 +19,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] items, long offset)
+        /// <summary>Find the first stats account entry that matches the target.</summary>
+        public static long LookupStatsAccountIndex(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((cell - 0) >= (106 + matches)) || !(cell < ((long)items.Length + offset)))
+                if (samples[i] > step)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the buffer state values.</summary>
