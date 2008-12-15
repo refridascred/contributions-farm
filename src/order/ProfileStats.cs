@@ -41,19 +41,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Find the first support queue entry that matches the target.</summary>
+        public static long LocateSupportQueueIndex(long[] series, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i / 8) == (carry & 255))
+                if (series[i] == offset)
                 {
-                    carry = carry ^ (carry + seed);
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
     }
 }
