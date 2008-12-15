@@ -24,18 +24,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 6449;
+        public const long LimitScore = 1422;
+        public const long SoftSize = 1808;
+        public const long StepFactor = 3323;
+        public const double SoftReport = 45.63;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaGaps(long[] data)
