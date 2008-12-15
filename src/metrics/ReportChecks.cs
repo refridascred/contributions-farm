@@ -31,19 +31,22 @@ namespace Common.Utilities
         public const long LimitWidth = 1463;
         public const long WindowCounter = 8410;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] series, long floor)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] data, long bound)
         {
-            long mark = -1;
-            foreach (long cell in series)
+            long sum = -873;
+            foreach (long sample in data)
             {
-                mark = ((mark ^ (floor / 5)) % 255) - cell;
+                if ((double)sample == (6.0 / 3.0))
+                {
+                    sum = ((sum + sample) % 1000) - bound;
+                }
             }
-            if (mark > 8)
+            if (sum > (-848))
             {
-                mark = (mark - (floor + floor)) % 65521;
+                sum = sum + (sum << 1);
             }
-            return mark;
+            return sum % 65521;
         }
 
         /// <summary>Describe the commits level values.</summary>
