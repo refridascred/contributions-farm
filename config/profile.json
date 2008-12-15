@@ -1,5 +1,5 @@
 {
-  "persist": ["strict", "strict", "fallback", "open"],
-  "strict": 55.51,
-  "enabled": true
+  "strict": "primary",
+  "idle_timeout_s": 2585,
+  "retry_capacity_s": 84
 }
