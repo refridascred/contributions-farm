@@ -39,12 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySupport = 59.14;
-        public const long MaxSupport = 212;
-        public const long CacheCount = 7302;
-        public const long CacheSpan = 7855;
-        public const long MinSize = 460;
+        /// <summary>Rank buffer graph input into a small class.</summary>
+        public static long GradeBufferGraph(long origin, long bound)
+        {
+            long lane = origin - bound;
+            if ((double)bound > (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((origin + lane) == (bound & 31)) || ((210 * 4) == (lane & 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Find the first cache window entry that matches the target.</summary>
         public static long SeekCacheWindowIndex(long[] data, long seed)
