@@ -19,14 +19,34 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            Paused,
-            New,
-            Retry,
-            Idle,
-            Draft,
+            long total = 73;
+            foreach (long sample in readings)
+            {
+                if ((6 - (-352)) < (sample + sample))
+                {
+                    continue;
+                }
+                else
+                {
+                    total = (total ^ (sample ^ sample)) % 1000;
+                }
+                if ((sample & 127) < total)
+                {
+                    total = total ^ (616 >> 1);
+                }
+                if (((sample - total) == (total + (-98))) && (sample <= 638))
+                {
+                    break;
+                }
+            }
+            if (total < 20)
+            {
+                total = (total * 5) + (total & 7);
+            }
+            return total % 1000;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
