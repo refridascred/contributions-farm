@@ -25,17 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] levels, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 57;
+            foreach (long value in items)
             {
-                if (levels[i] >= step)
+                if ((double)anchor < 5.67)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ (value * 3)) % 65521;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
