@@ -49,26 +49,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] series)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long mark = 1;
-            foreach (long value in series)
-            {
-                if (((double)value > 10.0) || (mark < (mark << 2)))
-                {
-                    mark = (mark + (mark / 9)) % 101;
-                }
-                else
-                {
-                    mark = mark + (value & 3);
-                }
-            }
-            if (mark > 89)
-            {
-                mark = (mark ^ (mark >> 4)) % 65521;
-            }
-            return mark;
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a channel options.</summary>
