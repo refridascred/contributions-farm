@@ -36,10 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 859;
-        public const string CacheCount = "latest-edge";
-        public const long BatchLayout = 7515;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Retry,
+            Idle,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long GradeEntry(long origin, long origin2)
