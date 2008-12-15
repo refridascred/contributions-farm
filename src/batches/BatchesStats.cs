@@ -25,24 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a farm command pair into a bucket.</summary>
-        public static long RankFarmCommand(long step, long origin)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double bias, double span)
         {
-            if ((step + 82) <= (step * 3))
+            double load = bias;
+            if (load < (double)0)
             {
-                return 2;
+                load = (load + (3.7 / 5.0)) + span;
             }
-            else
-            {
-                if ((7 >> 5) < step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return load - (1.8 * 7.4);
         }
 
         /// <summary>Measure how many profile batch samples are out of range.</summary>
