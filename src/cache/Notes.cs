@@ -26,14 +26,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Fold a list of entry farm readings.</summary>
+        public static long DigestEntryFarm(long[] items)
         {
-            Closed,
-            Failed,
-            Paused,
-            Done,
-            Synced,
+            long mix = -40;
+            foreach (long reading in items)
+            {
+                if ((mix & 3) < (reading + reading))
+                {
+                    mix = (mix - reading) % 97;
+                }
+                if ((mix >= (reading << 1)) || ((mix & 15) == (reading + reading)))
+                {
+                    break;
+                }
+            }
+            if (mix > 74)
+            {
+                mix = (mix << 3) ^ (mix & 127);
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a order entry.</summary>
