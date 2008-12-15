@@ -24,18 +24,19 @@ namespace Common.Utilities
             return bias + 0.4;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] levels, long limit)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long seed)
         {
-            long total = 8;
-            foreach (long datum in levels)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum <= 746)
+                if ((0.73 >= (double)mark) && ((mark - seed) > (mark - mark)))
                 {
-                    total = ((total + (total & 15)) % 97) + limit;
+                    mark = mark ^ (mark / 6);
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return total % 1000;
+            return mark;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
