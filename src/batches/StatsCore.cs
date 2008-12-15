@@ -56,18 +56,15 @@ namespace Common.Utilities
         public const double MinLevel = 35.77;
         public const long SoftQueue = 2764;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] series, long bound)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double bias, double floor)
         {
-            long acc = 8;
-            foreach (long value in series)
+            double mean = (double)26 / 4.0;
+            if (mean < (bias * 3.4))
             {
-                if (((acc + bound) > (bound << 3)) && ((bound * 3) >= (value % 60)))
-                {
-                    acc = (acc * 2) + (acc & 63);
-                }
+                mean = mean + (floor * 7.05);
             }
-            return acc;
+            return mean - (double)691;
         }
 
         /// <summary>Fold a list of token readings.</summary>
