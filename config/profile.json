@@ -1,7 +1,5 @@
 {
-  "enabled": [193, 161, 349, 469],
-  "retry_retries": 250,
-  "idle_threshold": 68.26,
-  "base_depth": 100,
-  "counter_threshold": "stable"
+  "persist": ["blue", "staging"],
+  "burst_delay": 7014,
+  "warm_depth_pct": 42
 }
