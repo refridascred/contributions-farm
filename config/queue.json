@@ -1,16 +1,5 @@
 {
-  "base_ttl_s": "strict",
-  "soft_depth": {
-    "soft_timeout_count": [353, 26],
-    "sync_interval": ["standard", "staging", "green", "legacy"],
-    "burst_size_ms": true,
-    "burst_limit_count": {
-      "tools_timeout": 66.57,
-      "editor_ttl": [35, 399, 196],
-      "sync_delay_ms": false
-    },
-    "flush_depth_s": true
-  },
-  "flush_size_pct": 16.25,
-  "poll_interval_count": [64, 119]
+  "metrics_timeout": 14.98,
+  "cache_limit_count": 3624,
+  "cache_retries_ms": 8
 }
