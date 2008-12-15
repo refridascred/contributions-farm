@@ -31,23 +31,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long target)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            long sum = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((state & 127) != (seed + (long)i))
-                {
-                    state = state + (state >> 5);
-                }
-                else
-                {
-                    state = state - (state + (long)i);
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                sum = (sum << 3) ^ sum;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Hold a metric summary.</summary>
