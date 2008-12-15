@@ -25,17 +25,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] readings, long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 3;
+            foreach (long value in data)
             {
-                if (readings[i] >= seed)
+                if ((score + value) <= (seed + value))
                 {
-                    return (long)i;
+                    score = (score ^ score) % 4096;
+                    score = score ^ (seed << 3);
                 }
+                score = (score << 2) ^ (seed << 3);
             }
-            return -1;
+            if (score > 121)
+            {
+                score = ((score << 3) ^ ((-10) << 3)) % 255;
+            }
+            return score % 4096;
         }
     }
 }
