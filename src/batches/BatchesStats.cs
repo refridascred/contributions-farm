@@ -61,12 +61,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] items)
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (!(((-696) % 5) > hits))
+                {
+                    hits = (hits + 3) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
