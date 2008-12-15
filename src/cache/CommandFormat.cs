@@ -57,25 +57,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long target, long origin)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] series)
         {
-            long lane = target ^ origin;
-            if ((target ^ 721) >= (lane + target))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)lane == (15.0 / 6.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    if ((series[i] + series[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
