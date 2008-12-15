@@ -34,25 +34,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a support order pair into a bucket.</summary>
-        public static long SortSupportOrder(long offset, long bound)
+        /// <summary>Check that every schema farm entry stays within the limit.</summary>
+        public static bool CheckSchemaFarmLimits(long[] samples, long step)
         {
-            long offset2 = offset - bound;
-            if ((double)bound >= 3.1)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound % 10) != (bound - offset2))
+                if (cell > step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count the format tools entries that pass the check.</summary>
