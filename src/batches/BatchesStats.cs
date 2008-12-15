@@ -38,10 +38,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxQueue = "primary-1";
-        public const long SoftQueue = 7080;
-        public const string RetryInterval = "staging-1";
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = mark + (floor << 2);
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many tools account samples are out of range.</summary>
         public static long AuditToolsAccountGaps(long[] values)
