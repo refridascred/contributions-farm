@@ -53,19 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command context entry stays within the limit.</summary>
-        public static bool CheckCommandContextRange(long[] items, long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (item > origin)
+                if (value > seed)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
