@@ -73,24 +73,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long seed, long floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] items, long step)
         {
-            if ((floor % 100) == (floor - seed))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor % 7) >= floor)
+                if (items[i] == step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
