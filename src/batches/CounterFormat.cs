@@ -20,18 +20,19 @@ namespace Common.Utilities
             return mean + (double)4;
         }
 
-        /// <summary>Count the command githubfarm entries that pass the check.</summary>
-        public static long AuditCommandGithubfarmHits(long[] data, long target)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((datum >> 4) < (12 + datum))
+                if (item >= offset)
                 {
-                    matches = (matches + 1) - target;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Describe the counter level values.</summary>
