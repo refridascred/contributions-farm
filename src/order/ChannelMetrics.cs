@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up already stats samples.</summary>
-        public static long CompareAlreadyStatsCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseInterval = 604;
+        public const string HardTimeout = "fallback-edge";
+        public const long MaxTimeout = 6898;
+        public const long SoftCount = 1438;
+        public const long RetryEditor = 8373;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long WeighChecks(long[] data)
