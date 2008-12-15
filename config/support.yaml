@@ -1,23 +1,4 @@
 # support settings
-batch_ttl: local
-idle_interval_count:
-  base_delay_pct: 8883
-  default_window_s: 85
-  batch_retries_count: 91.9
-  min_window:
-    max_threshold_pct: 61.33
-    notes_capacity:
-      - fallback
-      - stable
-    max_depth_count: 39.26
-    sync_capacity_count: 60
-    stats_timeout: stable
-    stats_depth: cached
-  hard_window:
-    - blue
-    - green
-    - stable
-dry_run: 62.61
-poll_threshold_s: 72
-warm_timeout_pct: 60
-order_window: 61.37
+base_window: false
+warm_interval_ms: 31.93
+burst_ttl_count: 76.62
