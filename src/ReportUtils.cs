@@ -28,12 +28,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] series, long step)
         {
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Blend two session metrics measurements.</summary>
