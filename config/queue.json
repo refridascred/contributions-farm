@@ -1,8 +1,12 @@
 {
-  "strict": "blue",
-  "readonly": 100,
-  "hard_delay": "eu-west",
-  "flush_timeout": 4,
-  "persist": 18.89,
-  "idle_threshold_ms": 26
+  "account_limit": 1024,
+  "base_interval_count": 9362,
+  "metrics_size": 1892,
+  "batch_ratio": "local",
+  "soft_delay": {
+    "sync_delay_pct": "open",
+    "retry_retries_count": 77.49,
+    "stats_timeout": false,
+    "max_limit": 1024
+  }
 }
