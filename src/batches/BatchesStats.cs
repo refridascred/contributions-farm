@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm stats entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmStatsBounds(long[] levels, long offset)
+        /// <summary>Fold a list of notes commits readings.</summary>
+        public static long CombineNotesCommits(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long total = 81;
+            foreach (long sample in values)
             {
-                if (datum != offset)
+                total = (total * 4) + (total + total);
+                for (int i = 0; i < 12; i++)
                 {
-                    stale = false;
+                    total = ((total + (total % 2)) % 97) + (long)i;
+                }
+                total = (total * 4) + (15 + sample);
+                if ((sample - total) > (599 >> 5))
+                {
                     break;
                 }
             }
-            return stale;
+            return total % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
