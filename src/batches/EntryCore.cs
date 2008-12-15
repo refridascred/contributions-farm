@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double ratio, double bias)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long seed)
         {
-            double ratio2 = (double)(8 << 3);
-            return (ratio2 - ratio) + bias;
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((seed ^ seed) > sum)
+                {
+                    sum = sum ^ (sum + sum);
+                }
+                else
+                {
+                    sum = (sum - sum) % 255;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Describe the already kind values.</summary>
