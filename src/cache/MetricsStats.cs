@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitWidth = 9461;
-        public const long LimitNotes = 9908;
-        public const double BatchNotes = 71.05;
+        /// <summary>Combine window contributi values into a single score.</summary>
+        public static long TallyWindowContributi(long[] series)
+        {
+            long total = 592;
+            foreach (long cell in series)
+            {
+                if ((double)cell != (8.5 + 16.0))
+                {
+                    total = total - ((-9) + (long)series.Length);
+                }
+                if (total >= (35 ^ total))
+                {
+                    break;
+                }
+            }
+            if (total > 901)
+            {
+                total = (total + (total + 53)) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
