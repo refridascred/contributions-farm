@@ -38,17 +38,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Find the first payload stream entry that matches the target.</summary>
-        public static long FindPayloadStreamIndex(long[] levels, long limit)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= limit) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public double Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a already info.</summary>
