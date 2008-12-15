@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (span * 2.8) * 7.7;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = ((rate + rate) + (double)(long)i) + bias;
             }
-            return tally;
+            return rate + (span / 6.0);
         }
 
         /// <summary>Rank channel input into a small class.</summary>
