@@ -46,16 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next report schema value from a seed.</summary>
-        public static long DeriveReportSchema(long target)
+        /// <summary>Validate commits order readings against a bound.</summary>
+        public static bool ValidateCommitsOrderRange(long[] readings, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                carry = ((carry * 4) + carry) % 101;
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (datum < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Locate a filter session reading by value.</summary>
