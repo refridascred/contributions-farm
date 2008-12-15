@@ -57,12 +57,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public string Token { get; set; } = "";
             public long Rank { get; set; }
-            public bool Weight { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
