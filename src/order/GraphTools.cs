@@ -37,13 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] data, long step)
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
