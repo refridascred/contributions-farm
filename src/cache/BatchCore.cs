@@ -62,22 +62,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route report samples.</summary>
-        public static long TallyRouteReport(long[] data, long step)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long result = 5;
-            foreach (long value in data)
-            {
-                if ((value * 3) < step)
-                {
-                    result = (result ^ ((-61) * 2)) % 65521;
-                }
-            }
-            if (result < 39)
-            {
-                result = (result ^ (step ^ result)) % 101;
-            }
-            return result;
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
     }
 }
