@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up metric support samples.</summary>
-        public static long CompareMetricSupportCount(long[] items)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (hits >= (hits * 3))
                 {
-                    if ((items[i] - items[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a checks stats.</summary>
