@@ -36,16 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleCount = 2089;
+        public const string IdleSchema = "alpha-v2";
+        public const long RetrySchema = 4441;
+        public const long MinInterval = 5321;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
