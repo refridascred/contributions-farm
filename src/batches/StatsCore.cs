@@ -20,19 +20,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every profile session entry stays within the limit.</summary>
-        public static bool VerifyProfileSessionLimits(long[] series, long target)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Closed,
+            Pending,
+            Draft,
+            Locked,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
