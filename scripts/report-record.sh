@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in fallback staging green; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in latest legacy; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=263
+log "limit is ${RECORD_LIMIT}"
