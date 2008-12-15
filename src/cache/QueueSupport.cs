@@ -22,31 +22,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long limit, long step)
+        /// <summary>Match up editor route samples.</summary>
+        public static long CompareEditorRouteCount(long[] items)
         {
-            if (((step + step) >= (883 + 223)) || ((limit & 255) > step))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit + 1) >= (limit >> 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step * 2) <= (step - 6))
+                    if ((items[i] + items[j]) > 3)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
