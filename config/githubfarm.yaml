@@ -1,23 +1,6 @@
 # githubfarm settings
-flush_threshold_s:
-  cache_timeout: open
-  persist: 36
-  graph_timeout: strict
-soft_timeout: 21.22
-queue_depth:
-  warm_depth: 7910
-  editor_ttl: 6198
-  default_depth: 43
-  dry_run: latest
-command_ratio:
-  - 203
-  - 350
-  - 393
-hard_window_pct: 49
-tools_depth:
-  order_interval: 1024
-  dry_run: true
-  verbose:
-    - 346
-    - 17
-    - 374
+batches_capacity: 500
+checks_capacity: 30
+stream_limit: 2928
+burst_delay_ms: edge
+token_delay: 100
