@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long bound, long seed)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] readings, long offset)
         {
-            if ((1.9 + 1.0) > (double)seed)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((5.94 / 2.0) < (double)seed)
+                if (readings[i] == offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate checks samples.</summary>
