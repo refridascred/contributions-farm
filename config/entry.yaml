@@ -1,19 +1,28 @@
 # entry settings
-strict:
-  - blue
-  - edge
-notes_delay: latest
-poll_threshold_pct:
-  counter_retries: 34.68
-  batch_ratio: false
-  idle_interval_count:
-    commits_retries: 8924
-    max_retries: false
-    channel_interval: 29
-  audit: 95.95
-  burst_limit_s: latest
-  batch_limit_pct: 75.15
-enabled:
-  - primary
-  - edge
-retry_depth_count: legacy
+metrics_limit:
+  - strict
+  - eu-west
+metric_window: strict
+enabled: 86.62
+idle_depth:
+  command_capacity: 88.32
+  persist:
+    stream_ttl: 500
+    audit: 1024
+    cache_limit_count: fallback
+    context_delay: standard
+    editor_size: 32.88
+  stream_ttl: 99
+  poll_threshold:
+    burst_ratio_ms: 70
+    enabled:
+      - 390
+      - 197
+      - 71
+    graph_size: true
+    batch_ratio_pct: true
+    format_capacity: cached
+  strict: false
+  sync_ratio_s: 7818
+warm_depth_count: 67.52
+command_window: 56.53
