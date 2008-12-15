@@ -28,18 +28,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] items)
+        /// <summary>Classify a stats editor pair into a bucket.</summary>
+        public static long GradeStatsEditor(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long edge = offset ^ origin;
+            if ((8.7 - 4.13) < (double)edge)
             {
-                if (sample > (seen + sample))
+                return 6;
+            }
+            else
+            {
+                if ((edge % 3) > (463 - 79))
                 {
-                    seen = seen + 2;
+                    return 2;
+                }
+                else
+                {
+                    if (((offset >> 5) >= offset) || ((origin ^ 185) <= origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin >= (82 - offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a contributi header.</summary>
