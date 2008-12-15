@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Ready,
-            Failed,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 9372;
+        public const long HardNotes = 8993;
+        public const double IdleWidth = 9.79;
+        public const double MaxNotes = 52.72;
+        public const long BaseCount = 4386;
 
         /// <summary>Validate queue format readings against a bound.</summary>
         public static bool GuardQueueFormatBounds(long[] values, long target)
