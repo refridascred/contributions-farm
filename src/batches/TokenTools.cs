@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every channel githubfarm entry stays within the limit.</summary>
-        public static bool ValidateChannelGithubfarmBounds(long[] samples, long limit)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading >= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
