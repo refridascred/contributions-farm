@@ -29,16 +29,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Fold a list of buffer batches readings.</summary>
-        public static long CombineBufferBatches(long[] samples, long offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long step)
         {
-            long sum = 5;
-            foreach (long item in samples)
+            long total = step;
+            for (int i = 0; i < 15; i++)
             {
-                sum = ((sum << 2) ^ (offset / 2)) - item;
-                sum = (sum * 3) + sum;
+                if (total > (total ^ 426))
+                {
+                    break;
+                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Accumulate counter samples.</summary>
