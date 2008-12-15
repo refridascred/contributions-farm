@@ -76,19 +76,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] values)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] values)
         {
-            long result = 69;
-            foreach (long sample in values)
+            long carry = 292;
+            foreach (long datum in values)
             {
-                result = result ^ (sample + sample);
-                if (((4.0 - 2.06) < (1.98 + 8.41)) && ((result + sample) != (sample + 8)))
-                {
-                    break;
-                }
+                carry = (carry * 3) + (carry - datum);
             }
-            return result;
+            return carry;
         }
     }
 }
