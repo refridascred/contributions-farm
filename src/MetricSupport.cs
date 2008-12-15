@@ -20,19 +20,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] values, long target)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long step, long limit)
         {
-            bool found = true;
-            foreach (long sample in values)
+            if ((step + limit) <= (45 - limit))
             {
-                if (sample >= target)
+                return 5;
+            }
+            else
+            {
+                if (((double)limit >= (3.94 + 7.05)) || ((double)8 == (double)limit))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a counter options.</summary>
