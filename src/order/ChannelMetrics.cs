@@ -34,21 +34,32 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] data)
+        /// <summary>Rank token graph input into a small class.</summary>
+        public static long GradeTokenGraph(long target, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long gap = target ^ offset;
+            if ((90 - offset) >= target)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((offset - offset) < offset)
                 {
-                    if ((data[i] - data[j]) > 4)
+                    return 2;
+                }
+                else
+                {
+                    if ((target ^ target) >= gap)
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return matches;
         }
     }
 }
