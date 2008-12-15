@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many tools token samples are out of range.</summary>
-        public static long AuditToolsTokenOutliers(long[] values, long offset)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (!(618 <= (entry + offset)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the order state values.</summary>
