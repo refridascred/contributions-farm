@@ -57,22 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache schema samples are out of range.</summary>
-        public static long TallyCacheSchemaOutliers(long[] levels, long step)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + reading) <= ((-531) - hits))
-                {
-                    hits = (hits + 2) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
