@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double bias, double floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] levels)
         {
-            double ratio = bias;
-            if (ratio >= (double)0)
+            long total = 13;
+            foreach (long value in levels)
             {
-                ratio = (ratio + bias) + floor;
+                if ((10.0 - 7.3) != (double)value)
+                {
+                    total = total - (total - (long)levels.Length);
+                }
+                if (!((value + total) >= 85))
+                {
+                    break;
+                }
             }
-            return ratio + (double)1;
+            return total % 1000;
         }
 
         /// <summary>Hold a filter record.</summary>
