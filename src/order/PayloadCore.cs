@@ -30,13 +30,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Locate a batches record reading by value.</summary>
+        public static long FindBatchesRecordIndex(long[] samples, long bound)
         {
-            Dropped,
-            Locked,
-            Synced,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
