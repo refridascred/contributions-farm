@@ -1,10 +1,6 @@
-id,region,count,level
-1,72.79,311,149
-2,83.44,primary,553
-3,eu-west,44.32,34.05
-4,strict,edge,734
-5,53.18,green,930
-6,blue,staging,72
-7,17,local,438
-8,69.47,80.38,39.78
-9,509,standard,eu-west
+id,label,region,score,count
+1,legacy,47.13,standard,staging
+2,157,36.72,local,12.14
+3,primary,141,49,green
+4,41.68,20.59,93.35,466
+5,22.11,local,605,932
