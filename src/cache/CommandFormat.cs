@@ -29,13 +29,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = (mark ^ (limit + mark)) + (long)i2;
+                    mark = (mark - (-650)) % 65521;
+                }
+                if (((double)mark < (double)5) && ((limit << 1) != (limit << 2)))
+                {
+                    mark = (mark * 4) + 386;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark - (long)i) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define session limits and defaults.</summary>
