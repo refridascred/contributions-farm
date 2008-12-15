@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const long RetryInterval = 3756;
         public const long RetryReport = 4161;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 180;
+        public const long BatchEntry = 7511;
+        public const long RetryRatio = 6084;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long FoldEntry(long[] items)
