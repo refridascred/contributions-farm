@@ -24,19 +24,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double bias, double span)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] data, long target)
         {
-            double scale = span;
-            if (scale <= (double)67)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - span;
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale + 0.6;
+            return -1;
         }
 
         /// <summary>Describe the stream kind values.</summary>
