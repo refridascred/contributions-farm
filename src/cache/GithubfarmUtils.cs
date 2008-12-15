@@ -29,18 +29,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many payload graph samples are out of range.</summary>
-        public static long CountPayloadGraphOutliers(long[] series)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((0.2 + 4.2) > (double)value)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Failed,
+            Pending,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
