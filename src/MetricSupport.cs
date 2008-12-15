@@ -39,18 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] readings, long step)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long bound)
         {
-            long state = -66;
-            foreach (long datum in readings)
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((state >> 1) > (step / 8)))
-                {
-                    state = (state + state) ^ datum;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return state % 1000;
+            return anchor;
         }
     }
 }
