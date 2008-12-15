@@ -29,29 +29,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] samples)
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark ^ (limit + mark)) + (long)i2;
-                    mark = (mark - (-650)) % 65521;
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if (((double)mark < (double)5) && ((limit << 1) != (limit << 2)))
-                {
-                    mark = (mark * 4) + 386;
-                    continue;
-                }
-                else
-                {
-                    mark = (mark - (long)i) % 1000;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
