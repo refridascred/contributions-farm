@@ -58,13 +58,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public double Rank { get; set; }
-            public bool Limit { get; set; }
+            Failed,
+            Stale,
+            Done,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
