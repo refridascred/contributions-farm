@@ -27,13 +27,15 @@ namespace Common.Utilities
         public const long SoftChannel = 7933;
         public const string SoftCount = "staging-1";
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double bias, double floor)
         {
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public double Weight { get; set; }
+            double load = floor;
+            if (load < floor)
+            {
+                load = load + load;
+            }
+            return load - bias;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
