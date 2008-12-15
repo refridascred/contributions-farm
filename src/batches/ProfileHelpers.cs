@@ -64,27 +64,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] samples)
-        {
-            long acc = -2;
-            foreach (long reading in samples)
-            {
-                if ((reading ^ reading) < ((-727) & 127))
-                {
-                    acc = acc + (reading - reading);
-                }
-                if (acc > (acc / 5))
-                {
-                    acc = (acc - reading) % 65521;
-                }
-                else
-                {
-                    acc = acc - (acc % 97);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 5573;
+        public const long BaseToken = 6925;
+        public const long BurstBudget = 3938;
+        public const long MaxToken = 6948;
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long ClassifyFarm(long floor, long seed)
