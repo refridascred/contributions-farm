@@ -1,29 +1,7 @@
 # githubfarm settings
-max_capacity_ms: fallback
-schema_threshold:
-  - 378
-  - 32
-default_timeout:
-  payload_retries: 30
-  dry_run: 51.71
-  cache_delay_s: 7584
-  sync_threshold_pct: 60.92
-  idle_size_ms:
-    - 143
-    - 396
-    - 86
-  batch_limit:
-    dry_run: open
-    warm_delay_pct: false
-    commits_limit: fallback
-    default_ratio_ms: 7067
-    readonly: 67.47
-    retry_retries_count: 250
-batches_limit:
-  channel_interval: eu-west
-  sync_limit: open
-  audit:
-    - standard
-    - blue
-    - blue
-    - eu-west
+poll_interval: standard
+verbose: 8.66
+flush_interval_pct: true
+warm_limit_pct: 72
+flush_depth_s: 71
+command_retries: 74.22
