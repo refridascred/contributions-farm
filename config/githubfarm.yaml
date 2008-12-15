@@ -1,7 +1,11 @@
 # githubfarm settings
-audit: staging
-soft_size:
-  - 429
-  - 144
-min_ratio_pct: 3509
-warm_interval: 76.86
+default_depth_s:
+  - green
+  - blue
+  - stable
+  - staging
+hard_timeout_pct: latest
+account_ttl: 6.15
+retry_size_pct: 42.87
+warm_delay: standard
+default_threshold_count: 32
