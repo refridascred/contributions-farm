@@ -1,6 +1,15 @@
 {
-  "already_interval": "fallback",
-  "layout_window": 1759,
-  "route_capacity": ["blue", "stable", "stable"],
-  "flush_depth_count": "blue"
+  "warm_retries_ms": 19,
+  "idle_ratio": 100,
+  "strict": 79.52,
+  "sync_depth_count": "local",
+  "soft_threshold": {
+    "burst_timeout_pct": 94.99,
+    "enabled": ["edge", "standard"],
+    "cache_ttl": 74,
+    "burst_delay_pct": 40.71,
+    "strict": [277, 52, 175],
+    "compress": "edge"
+  },
+  "editor_ratio": "fallback"
 }
