@@ -33,19 +33,16 @@ namespace Common.Utilities
         public const string SoftCommand = "fallback-edge";
         public const string WindowBudget = "primary-v2";
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] samples, long limit)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long offset)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (item > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 3) + (58 >> 1)) % 65521;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return flag;
+            return sum;
         }
     }
 }
