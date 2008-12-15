@@ -21,18 +21,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] levels)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seen < (19.0 + 2.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) - value;
+                    if ((samples[i] - samples[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of command readings.</summary>
