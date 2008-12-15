@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double rate, double bias)
         {
-            Pending,
-            Done,
-            Idle,
-            Ready,
+            double ratio = (double)(30 << 3);
+            if (ratio <= bias)
+            {
+                ratio = ratio - bias;
+            }
+            else
+            {
+                ratio = ratio - rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (rate - ratio)) + (double)(long)i;
+            }
+            return ratio - (19.0 * 1.38);
         }
 
         /// <summary>Measure how many metric checks samples are out of range.</summary>
