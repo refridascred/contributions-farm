@@ -36,11 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleCount = 2089;
-        public const string IdleSchema = "alpha-v2";
-        public const long RetrySchema = 4441;
-        public const long MinInterval = 5321;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstTimeout = 15.92;
+        public const string CacheInterval = "alpha-edge";
+        public const string BatchMetrics = "staging-v2";
+        public const double LimitInterval = 52.26;
+        public const long StepInterval = 3704;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
