@@ -20,11 +20,20 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowGithubfarm = 42.15;
-        public const long StepSize = 8536;
-        public const string MaxGithubfarm = "legacy";
-        public const long BatchLevel = 8614;
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double gain, double floor)
+        {
+            double drift = gain;
+            if (drift < gain)
+            {
+                drift = drift + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + gain) - (double)(long)i;
+            }
+            return drift + (drift / 6.0);
+        }
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
