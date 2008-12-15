@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] series)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] items, long step)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)entry <= (5.36 + 5.63)) && ((matches >> 4) < (matches & 3)))
                 {
-                    if ((series[i] ^ series[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) - step;
                 }
             }
             return matches;
