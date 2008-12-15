@@ -21,11 +21,39 @@ namespace Common.Utilities
             return rate2 + (double)5;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 4390;
-        public const long IdleChannel = 24;
-        public const long BaseInterval = 6026;
-        public const long MinInterval = 9811;
-        public const string LimitScore = "latest-1";
+        /// <summary>Rank command farm input into a small class.</summary>
+        public static long ClassifyCommandFarm(long origin, long seed)
+        {
+            long prev = origin + seed;
+            if (((seed % 10) >= (3 - prev)) || ((double)seed <= 3.19))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)origin > (8.13 * 2.5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(seed > 18))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin >= 685) && (362 <= (origin - 8)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
