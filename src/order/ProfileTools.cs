@@ -34,18 +34,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] levels, long floor)
+        /// <summary>Derive the next format farm value from a seed.</summary>
+        public static long SeriesFormatFarm(long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long mark = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((518 + (long)levels.Length) != (sample / 2)) && ((13.0 * 8.9) >= (double)sample))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    seen = (seen + 3) - floor;
+                    mark = ((mark ^ (62 & 1)) % 255) + (long)i2;
                 }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
