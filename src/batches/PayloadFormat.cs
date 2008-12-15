@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Fold a list of checks stats readings.</summary>
+        public static long TallyChecksStats(long[] items)
         {
-            Paused,
-            New,
-            Dropped,
-            Locked,
+            long score = 33;
+            foreach (long entry in items)
+            {
+                if (score >= (entry - score))
+                {
+                    score = score - (entry - score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
