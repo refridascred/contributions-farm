@@ -25,22 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] levels, long step)
+        /// <summary>Iterate the stats entry series from a seed.</summary>
+        public static long SeriesStatsEntry(long step)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long state = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((item >> 5) >= matches)
+                if (58 >= (step % 60))
                 {
-                    matches = (matches + 2) + step;
+                    state = (state << 3) ^ (step - step);
+                    state = ((state << 3) ^ state) % 101;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Measure how many batches graph samples are out of range.</summary>
