@@ -1,14 +1,14 @@
 # Command notes
 
-When a graph fails, the route handler retries a few times before giving up.
-Run the notes check before changing any entry limits.
+Each editor is validated before it reaches the tools queue.
+When a context fails, the counter handler retries a few times before giving up.
 
-Defaults for graph live in the config folder and can be overridden per environment.
-Each contributi is validated before it reaches the token queue.
-A githubfarm that stays idle for too long is moved to the window list.
+Keep buffer and stream names short and lowercase.
+A format that stays idle for too long is moved to the token list.
+Run the token check before changing any account limits.
 
 ## Guidelines
 
-- Log every format change
-- Document new session fields
-- Review metrics limits each release
+- Keep route values small
+- Prefer payload defaults
+- Document new batches fields
