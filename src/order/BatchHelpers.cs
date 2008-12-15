@@ -36,18 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the already contributi entries that pass the check.</summary>
-        public static long AuditAlreadyContributiHits(long[] data, long target)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((double)target >= 4.22)
-                {
-                    matches = (matches + 1) - cell;
-                }
-            }
-            return matches;
+            Active,
+            Failed,
+            Retry,
+            Draft,
         }
     }
 }
