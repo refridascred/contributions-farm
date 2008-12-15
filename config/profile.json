@@ -1,11 +1,12 @@
 {
-  "hard_interval": false,
-  "hard_window_s": 29.67,
-  "persist": "standard",
-  "audit": {
-    "retry_ratio": 1024,
-    "persist": [203, 249, 75, 492],
-    "batch_ratio": 27
+  "cache_ratio_s": [432, 490, 478, 433],
+  "compress": 6682,
+  "persist": [369, 404],
+  "readonly": {
+    "token_retries": 5331,
+    "strict": "eu-west",
+    "batches_size": "cached"
   },
-  "default_ratio": "staging"
+  "batches_retries": "green",
+  "base_interval": ["strict", "edge", "latest"]
 }
