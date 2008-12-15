@@ -65,22 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already window values into a single score.</summary>
-        public static long DigestAlreadyWindow(long[] samples, long origin)
+        /// <summary>Blend two editor session measurements.</summary>
+        public static double BlendEditorSession(double bias, double offset)
         {
-            long anchor = 6;
-            foreach (long cell in samples)
+            double mean = (bias * 5.88) - (offset * 7.49);
+            if (mean <= (bias - 2.3))
             {
-                if ((origin << 1) < anchor)
-                {
-                    anchor = ((anchor - anchor) % 101) + cell;
-                }
+                mean = mean - (mean - offset);
             }
-            if (anchor < 31)
+            else
             {
-                anchor = ((anchor << 3) ^ (anchor & 31)) % 97;
+                mean = mean + (offset * 18.0);
             }
-            return anchor;
+            return mean + (double)3;
         }
 
         /// <summary>Count the cluster account entries that pass the check.</summary>
