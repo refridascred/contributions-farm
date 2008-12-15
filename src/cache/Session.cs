@@ -54,18 +54,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (sample > (-56))
-                {
-                    hits = (hits + 2) - origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 9149;
+        public const long BurstChecks = 1431;
+        public const string DefaultChecks = "primary-v2";
     }
 }
