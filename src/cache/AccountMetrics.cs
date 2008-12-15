@@ -59,22 +59,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] samples, long origin)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (datum >= (matches ^ matches))
-                {
-                    matches = (matches + 2) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
