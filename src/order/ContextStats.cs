@@ -33,21 +33,24 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback-edge";
         public const long CachePayload = 2624;
 
-        /// <summary>Match up graph metrics samples.</summary>
-        public static long MatchGraphMetricsCount(long[] readings)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long target, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (floor >= target)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (19.0 < (double)floor)
                 {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up payload samples.</summary>
