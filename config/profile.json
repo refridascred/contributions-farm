@@ -1,14 +1,14 @@
 {
-  "route_threshold": "eu-west",
-  "retry_timeout_pct": {
-    "default_interval_ms": "open",
-    "strict": [429, 344, 484, 415],
-    "soft_delay_pct": 69.97,
-    "audit": 80,
-    "persist": true,
-    "context_ratio": "cached"
+  "entry_interval": "staging",
+  "compress": "stable",
+  "batches_timeout": {
+    "max_size_count": 60,
+    "retry_depth_pct": 35,
+    "enabled": 79.8,
+    "session_delay": ["stable", "legacy"],
+    "max_window_pct": "standard",
+    "stream_depth": 60
   },
-  "payload_size": 60,
-  "persist": true,
-  "warm_timeout_pct": 72
+  "batch_limit_pct": 500,
+  "base_size": "stable"
 }
