@@ -20,18 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] series, long bound)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            double drift = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((cell > (649 ^ bound)) || (tally >= (cell & 15))))
-                {
-                    tally = tally + 2;
-                }
+                drift = ((drift - (17.0 / 5.0)) - (double)(long)i) - rate;
             }
-            return tally;
+            return drift + (offset + 3.0);
         }
 
         /// <summary>Blend two support measurements.</summary>
