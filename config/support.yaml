@@ -1,10 +1,7 @@
 # support settings
-commits_depth:
-  - latest
+strict: stable
+window_delay:
+  - stable
   - strict
-  - legacy
-batches_interval: 1603
-retry_interval_ms: true
-retry_limit_s: 100
-max_retries_s: 1157
-audit: primary
+order_window: true
+cache_ratio: 9003
