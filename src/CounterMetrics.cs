@@ -23,18 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] samples)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] items, long bound)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)bound <= 1.4)
                 {
-                    if ((samples[i] - samples[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + entry;
                 }
             }
             return seen;
