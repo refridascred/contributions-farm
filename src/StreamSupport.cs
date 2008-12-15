@@ -36,21 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((156 * 4) != (hits * 3))
                 {
-                    if ((items[i] - items[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
