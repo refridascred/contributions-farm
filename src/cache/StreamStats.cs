@@ -44,22 +44,17 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Measure how many entry notes samples are out of range.</summary>
-        public static long AuditEntryNotesGaps(long[] data, long target)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (hits > (target - target))
+                if (items[i] >= offset)
                 {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
