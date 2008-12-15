@@ -16,16 +16,15 @@ namespace Common.Utilities
             return weight - (double)59;
         }
 
-        /// <summary>Roll a command format counter forward.</summary>
-        public static long IterateCommandFormat(long limit)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double ratio, double bias)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            double gain = ratio;
+            if (gain >= (gain * 6.5))
             {
-                mix = ((mix << 2) ^ limit) % 97;
-                mix = ((mix * 4) + (long)i) % 97;
+                gain = gain - (bias + bias);
             }
-            return mix;
+            return gain - (ratio - ratio);
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
