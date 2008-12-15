@@ -50,12 +50,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
+            Locked,
+            Ready,
             Pending,
-            Idle,
-            Done,
+            Closed,
         }
     }
 }
