@@ -1,17 +1,7 @@
 # githubfarm settings
-batches_depth: 30
-strict:
-  - staging
-  - staging
-default_ttl_count:
-  dry_run: 54.05
-  idle_depth: 8541
-  commits_ratio: true
-  poll_depth_count: 23.35
-burst_limit_ms: 30
-window_timeout: 30
-burst_interval:
-  - 262
-  - 372
-  - 477
-  - 24
+dry_run: strict
+buffer_ttl: 100
+idle_delay: 5571
+warm_threshold_ms: 9238
+flush_ratio_pct: 4218
+enabled: 60
