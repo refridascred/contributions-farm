@@ -57,21 +57,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] series)
+        /// <summary>Scale a session channel figure with a bias.</summary>
+        public static double BlendSessionChannel(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)86 * 8.2;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = ((drift - (1.3 * 7.57)) - (double)(long)i) + bias;
             }
-            return matches;
+            return drift + ratio;
         }
     }
 }
