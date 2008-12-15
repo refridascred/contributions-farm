@@ -1,4 +1,9 @@
 # entry settings
-metrics_capacity: 30
-base_interval: 51
-githubfarm_ttl: 31.94
+idle_size: false
+sync_limit: 4336
+default_capacity_s:
+  soft_interval_s: 2
+  commits_limit: cached
+  burst_limit: 100
+  cache_ratio: cached
+max_limit_pct: 1024
