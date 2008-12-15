@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] data, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "alpha-1";
+        public const long RetrySpan = 953;
+        public const long MinDepth = 4475;
+        public const string BaseGithubfarm = "legacy-v2";
+        public const long BatchGithubfarm = 9965;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryTools = 3728;
