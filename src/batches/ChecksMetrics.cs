@@ -52,13 +52,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public string Score { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftDepth = 983;
+        public const long CacheQueue = 817;
+        public const long StepQueue = 2384;
 
         /// <summary>Validate cluster layout readings against a bound.</summary>
         public static bool GuardClusterLayoutRange(long[] data, long seed)
