@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftWidth = 5034;
-        public const long RetrySpan = 9654;
-        public const long CacheChecks = 2155;
-        public const long DefaultSize = 8123;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseTimeout = 9906;
+        public const double CacheRecord = 85.05;
+        public const double HardRecord = 41.19;
+        public const long BurstRecord = 8461;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksHits(long[] samples)
