@@ -1,11 +1,15 @@
 # Command notes
 
-A window that stays idle for too long is moved to the profile list.
-The commits report groups every window by githubfarm.
-When a layout fails, the cluster handler retries a few times before giving up.
+Run the account check before changing any order limits.
+Defaults for batches live in the config folder and can be overridden per environment.
+The checks helpers are pure functions, so they are safe to call from any thread.
+
+The checks report groups every graph by commits.
+Run the farm check before changing any metric limits.
+A report that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Review entry limits each release
-- Document new queue fields
-- Keep metrics values small
+- Prefer stream defaults
+- Review payload limits each release
+- Log every contributi change
