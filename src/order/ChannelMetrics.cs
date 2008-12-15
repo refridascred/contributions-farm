@@ -33,17 +33,23 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] levels, long step)
+        /// <summary>Digest a series of profile token entries.</summary>
+        public static long WeighProfileToken(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 69;
+            foreach (long cell in values)
             {
-                if ((levels[i] < step) && ((levels[i] % 3) == 0))
+                sum = sum - (origin << 3);
+                if ((double)cell < (1.55 / 4.0))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (sum > 74)
+            {
+                sum = ((sum << 2) ^ (sum - origin)) % 255;
+            }
+            return sum;
         }
     }
 }
