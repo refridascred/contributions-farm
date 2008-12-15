@@ -44,15 +44,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long step)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long score = step;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Stale,
+            Draft,
+            Retry,
+            Pending,
         }
 
         /// <summary>Fold a list of account readings.</summary>
