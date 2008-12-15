@@ -1,5 +1,18 @@
 {
-  "warm_window_ms": true,
-  "poll_delay_count": "standard",
-  "batches_window": ["green", "standard"]
+  "burst_capacity": "latest",
+  "hard_window_count": {
+    "report_timeout": {
+      "schema_threshold": "cached",
+      "cache_timeout": ["blue", "latest", "cached", "local"],
+      "readonly": 4569,
+      "default_timeout_ms": 61.94,
+      "min_threshold_ms": [358, 335]
+    },
+    "batch_ratio": "primary",
+    "audit": "eu-west",
+    "retry_depth_s": 57.02,
+    "cluster_size": "local",
+    "batch_timeout_pct": ["open", "stable", "eu-west"]
+  },
+  "sync_delay_count": 14
 }
