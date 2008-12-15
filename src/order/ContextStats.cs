@@ -57,11 +57,16 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long floor)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
+            long total = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                total = (total ^ ((long)i / 9)) % 4096;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
