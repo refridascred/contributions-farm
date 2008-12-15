@@ -35,17 +35,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Find the first token already entry that matches the target.</summary>
-        public static long LocateTokenAlreadyIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= limit) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseCount = "latest";
+        public const double StepMetric = 85.35;
+        public const long StepFactor = 5110;
+        public const string CacheMetric = "strict-1";
     }
 }
