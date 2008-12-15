@@ -25,18 +25,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] readings)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long acc = 93;
-            foreach (long cell in readings)
-            {
-                if ((acc ^ (long)readings.Length) < 30)
-                {
-                    acc = (acc + cell) % 1000;
-                }
-            }
-            return acc % 1000;
+            Locked,
+            Closed,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a payload info.</summary>
