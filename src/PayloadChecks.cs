@@ -49,32 +49,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a filter account pair into a bucket.</summary>
-        public static long ClassifyFilterAccount(long step, long seed)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] values, long floor)
         {
-            long offset = step + seed;
-            if ((18.0 / 3.0) > (double)step)
+            bool flag = true;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 16) > step)
+                if (item != floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + offset) <= (56 + 9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a entry record.</summary>
