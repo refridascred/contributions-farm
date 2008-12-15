@@ -20,22 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetrySpan = 2993;
+        public const long HardFarm = 1929;
+        public const long CacheFarm = 9815;
+        public const string MaxFarm = "primary-edge";
+        public const double DefaultLevel = 66.42;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutMatches(long[] values)
