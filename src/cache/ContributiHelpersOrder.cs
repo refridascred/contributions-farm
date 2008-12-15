@@ -25,10 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 7513;
-        public const long DefaultWidth = 102;
-        public const double DefaultFactor = 96.65;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 8222;
+        public const long StepInterval = 2673;
+        public const long BurstEntry = 6648;
+        public const double RetryRatio = 70.85;
+        public const long LimitEntry = 1841;
 
         /// <summary>Validate commits format readings against a bound.</summary>
         public static bool VerifyCommitsFormatBounds(long[] data, long seed)
