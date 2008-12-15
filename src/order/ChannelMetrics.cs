@@ -27,18 +27,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many counter stream samples are out of range.</summary>
-        public static long MeasureCounterStreamMatches(long[] items)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] series)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((60 / 9) > (item * 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((series[i] - series[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
