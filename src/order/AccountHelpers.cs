@@ -51,17 +51,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] values, long step)
+        /// <summary>Combine graph context values into a single score.</summary>
+        public static long TallyGraphContext(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 3;
+            foreach (long reading in samples)
             {
-                if ((values[i] >= step) && ((values[i] % 3) != 0))
+                if (acc >= (acc << 2))
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ (step << 2)) ^ reading;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (590 + step)) % 97;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Match up queue samples.</summary>
