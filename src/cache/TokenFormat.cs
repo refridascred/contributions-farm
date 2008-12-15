@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long target, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] readings, long origin)
         {
-            long span = target + offset;
-            if (((offset - target) < (offset * 5)) && ((0.37 + 8.21) <= (double)span))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((offset - target) >= ((-443) & 255)))
+                if (((double)origin >= (16.0 + 1.6)) || ((seen >> 1) < origin))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((target + 5) <= offset) || (offset >= (span % 12)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((-3) ^ offset) <= (offset / 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = (seen + 2) + value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
