@@ -1,13 +1,5 @@
 {
-  "stats_ratio": 250,
-  "retry_threshold_count": false,
-  "batch_timeout": 4453,
-  "verbose": {
-    "account_depth": "staging",
-    "min_ratio": ["eu-west", "fallback"],
-    "flush_depth_ms": true,
-    "buffer_ttl": true,
-    "base_delay_s": true,
-    "dry_run": 5261
-  }
+  "persist": true,
+  "base_depth_pct": [478, 320],
+  "default_ratio_ms": false
 }
