@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine window contributi values into a single score.</summary>
-        public static long TallyWindowContributi(long[] series)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long seed)
         {
-            long total = 592;
-            foreach (long cell in series)
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)cell != (8.5 + 16.0))
-                {
-                    total = total - ((-9) + (long)series.Length);
-                }
-                if (total >= (35 ^ total))
-                {
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            if (total > 901)
-            {
-                total = (total + (total + 53)) % 4096;
-            }
-            return total;
+            return anchor;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
