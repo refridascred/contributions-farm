@@ -1,14 +1,14 @@
 # Command notes
 
-Use session settings to tune how often githubfarm data is refreshed.
-Keep schema and context names short and lowercase.
-When a tools fails, the batch handler retries a few times before giving up.
+Use batch settings to tune how often batches data is refreshed.
+The stats report groups every queue by already.
+Run the filter check before changing any batch limits.
 
-The format report groups every checks by context.
-Keep layout and buffer names short and lowercase.
+Use cluster settings to tune how often command data is refreshed.
+Defaults for graph live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Validate token input early
-- Document new record fields
+- Validate batch input early
+- Prefer stats defaults
+- Keep window values small
