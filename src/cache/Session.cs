@@ -45,13 +45,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] items, long origin)
         {
-            public bool Score { get; set; }
-            public bool Label { get; set; }
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (sample > (-56))
+                {
+                    hits = (hits + 2) - origin;
+                }
+            }
+            return hits;
         }
     }
 }
