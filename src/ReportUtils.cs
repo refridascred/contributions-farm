@@ -54,25 +54,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Count contributi cluster pairs that satisfy a relation.</summary>
+        public static long MatchContributiClusterCount(long[] items)
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (3 < (state >> 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    long diff = 39;
-                    state = ((state << 2) ^ diff) % 65521;
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    long seen = (target ^ target) + (target >> 2);
-                    state = state ^ (seen + seen);
-                }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return seen;
         }
     }
 }
