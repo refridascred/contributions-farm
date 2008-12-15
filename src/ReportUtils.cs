@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double MinTools = 66.7;
         public const string IdleTools = "cached-edge";
 
-        /// <summary>Count the report session entries that pass the check.</summary>
-        public static long AuditReportSessionOutliers(long[] readings, long step)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((tally - reading) != (reading & 31))
-                {
-                    tally = (tally + 3) - step;
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two session metrics measurements.</summary>
