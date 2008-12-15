@@ -1,16 +1,14 @@
 # already settings
-hard_threshold: stable
-record_size:
-  record_size: 100
-  retry_ttl_count: 6749
-  idle_depth_s: 88.43
-  enabled: latest
-  already_delay:
-    - eu-west
-    - blue
-flush_threshold_pct: 1024
-strict: 60
-filter_size:
-  - legacy
-  - fallback
-idle_limit: 2663
+soft_window: true
+base_capacity: strict
+idle_size_count:
+  - local
+  - green
+flush_limit_ms:
+  base_delay: false
+  cluster_interval:
+    - 417
+    - 139
+    - 215
+  contributi_timeout: true
+  min_interval_pct: 100
