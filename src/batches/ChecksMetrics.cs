@@ -73,19 +73,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] samples, long bound)
-        {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchCount = "staging-edge";
+        public const long StepLevel = 1237;
+        public const long WindowSize = 683;
+        public const long BurstBuffer = 6684;
+        public const string DefaultInterval = "latest-1";
     }
 }
