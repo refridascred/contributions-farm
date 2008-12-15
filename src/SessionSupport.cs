@@ -25,10 +25,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseMetrics = "local-v2";
-        public const long StepMetrics = 6964;
-        public const long CacheWidth = 120;
-        public const long RetryWidth = 6316;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
+        }
     }
 }
