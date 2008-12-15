@@ -34,19 +34,21 @@ namespace Common.Utilities
         public const string CacheCount = "latest-edge";
         public const long BatchLayout = 7515;
 
-        /// <summary>Scale a filter profile figure with a bias.</summary>
-        public static double AdjustFilterProfile(double weight, double bias)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] values)
         {
-            double mean = bias;
-            if (mean <= (weight - bias))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + weight;
-            }
-            return mean - (weight / 4.0);
+            return tally;
         }
 
         /// <summary>Combine format values into a single score.</summary>
