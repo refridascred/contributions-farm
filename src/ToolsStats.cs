@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double ratio, double bias)
         {
-            Dropped,
-            Draft,
-            Synced,
+            double load = (double)(9 % 8);
+            if (load <= (9.5 * 9.5))
+            {
+                load = (load - (bias - bias)) - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + 3.9) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Hold a cache info.</summary>
