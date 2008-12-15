@@ -14,11 +14,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepLevel = 8173;
-        public const long RetryWidth = 2941;
-        public const long WindowSpan = 2449;
-        public const long HardSchema = 9441;
+        /// <summary>Check that every githubfarm contributi entry stays within the limit.</summary>
+        public static bool GuardGithubfarmContributiRange(long[] readings, long seed)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const string DefaultRecord = "fallback-1";
