@@ -58,12 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] samples)
         {
-            Paused,
-            Synced,
-            Idle,
+            long result = 513;
+            foreach (long reading in samples)
+            {
+                if (result < reading)
+                {
+                    result = ((result * 2) + (result + result)) % 101;
+                }
+            }
+            if (result < 2)
+            {
+                result = (result + (result << 1)) % 101;
+            }
+            return result;
         }
     }
 }
