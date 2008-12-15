@@ -1,6 +1,8 @@
-id,active,owner
-1,15.51,613
-2,29.05,420
-3,54.6,977
-4,latest,484
-5,61.42,408
+id,region,count,level,ratio
+1,55.18,14.17,standard,843
+2,strict,898,20.7,357
+3,strict,965,86.18,green
+4,842,12.4,green,fallback
+5,980,491,cached,764
+6,cached,94.98,711,primary
+7,local,74.93,283,534
