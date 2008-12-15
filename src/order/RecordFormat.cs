@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
