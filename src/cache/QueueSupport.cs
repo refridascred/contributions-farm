@@ -19,22 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] levels)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double rate, double floor)
         {
-            long result = 3;
-            foreach (long reading in levels)
+            double ratio = 6.7 * 4.5;
+            if (ratio < (rate + ratio))
             {
-                if ((result % 16) == (result - result))
-                {
-                    result = (result ^ (result % 16)) + reading;
-                }
+                ratio = ratio + ratio;
             }
-            if (result > (-415))
-            {
-                result = result - (result * 2);
-            }
-            return result;
+            return ratio - floor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
