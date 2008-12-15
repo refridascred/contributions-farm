@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchGraph = "open-edge";
-        public const long BurstCount = 6642;
-        public const long LimitGraph = 4965;
-        public const long MinGraph = 7499;
-        public const string MaxGraph = "fallback-edge";
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)target < 0.79)
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a cache metrics reading.</summary>
         public static double ProjectCacheMetrics(double gain, double span)
