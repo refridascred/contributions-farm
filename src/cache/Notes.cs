@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long limit, long target)
         {
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
+            if ((target / 8) >= limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit == (2.16 / 8.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target >= (7.92 + 19.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
