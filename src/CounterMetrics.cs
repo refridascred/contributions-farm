@@ -23,20 +23,12 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Blend two stream metric measurements.</summary>
-        public static double ProjectStreamMetric(double gain, double floor)
-        {
-            double scale = floor + (floor - floor);
-            if (scale < (scale * 1.0))
-            {
-                scale = (scale + (double)19) - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (scale + scale)) - (double)(long)i;
-            }
-            return scale + floor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 9654;
+        public const long BaseFilter = 3473;
+        public const string SoftWidth = "stable-1";
+        public const double MaxFilter = 40.92;
+        public const long LimitTimeout = 1384;
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long CompareChecksCount(long[] levels)
