@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long offset, long floor)
         {
-            Done,
-            Draft,
-            Queued,
-            Active,
-            Idle,
+            if ((double)floor <= (8.2 * 6.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor / 8) <= (floor * 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Classify a farm command pair into a bucket.</summary>
