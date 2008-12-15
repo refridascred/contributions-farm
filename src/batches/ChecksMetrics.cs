@@ -52,13 +52,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] readings, long bound)
         {
-            public bool Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading >= (8.0 + 2.0))
+                {
+                    hits = (hits + 2) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
