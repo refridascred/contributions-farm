@@ -39,13 +39,10 @@ namespace Common.Utilities
         public const string StepRecord = "standard-1";
         public const string IdleCount = "staging";
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Locked,
-            Closed,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheInterval = 1545;
+        public const long BatchTimeout = 3448;
+        public const long RetryCache = 9106;
+        public const string MaxCache = "local";
     }
 }
