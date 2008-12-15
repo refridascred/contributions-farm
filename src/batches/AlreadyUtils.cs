@@ -20,22 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] values)
+        /// <summary>Match up buffer token samples.</summary>
+        public static long OverlapBufferTokenCount(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum - datum) > hits)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] + data[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a session snapshot.</summary>
