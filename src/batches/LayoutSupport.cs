@@ -21,15 +21,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long step)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
