@@ -1,22 +1,11 @@
 # entry settings
-stats_limit: primary
-already_delay: 4131
-persist: 53.32
-commits_depth:
-  already_delay:
-    - 447
-    - 8
-  strict: local
-  record_threshold: 9480
-  burst_window_s: 3808
-  report_size:
-    burst_timeout_pct: 31.29
-    burst_limit_count:
-      - eu-west
-      - blue
-    poll_window_pct: 46.19
-  route_depth:
-    default_depth: stable
-    idle_delay: 15.4
-    verbose: blue
-    dry_run: 32.75
+dry_run:
+  - strict
+  - local
+profile_interval: true
+batch_window:
+  - green
+  - latest
+  - fallback
+  - staging
+idle_limit_s: stable
