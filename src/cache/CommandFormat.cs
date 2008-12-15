@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] series)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long target, long floor)
         {
-            long count = 0;
-            foreach (long item in series)
+            long edge = target ^ floor;
+            if ((floor >> 4) > (4 + edge))
             {
-                if ((double)item <= (15.0 / 6.0))
+                return 4;
+            }
+            else
+            {
+                if ((9.82 - 7.65) > (double)floor)
                 {
-                    count = count + 1;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((target * 2) != (4 + edge)) && ((double)edge >= (9.6 - 13.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((edge ^ (-49)) >= floor) || (target < (edge ^ 389)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
