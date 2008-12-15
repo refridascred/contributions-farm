@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every record tools entry stays within the limit.</summary>
-        public static bool CheckRecordToolsLimits(long[] readings, long limit)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Closed,
+            Ready,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the session level values.</summary>
