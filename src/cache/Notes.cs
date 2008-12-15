@@ -26,26 +26,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of entry farm readings.</summary>
-        public static long DigestEntryFarm(long[] items)
+        /// <summary>Combine channel buffer values into a single score.</summary>
+        public static long CombineChannelBuffer(long[] readings)
         {
-            long mix = -40;
-            foreach (long reading in items)
+            long state = 4;
+            foreach (long sample in readings)
             {
-                if ((mix & 3) < (reading + reading))
+                if (((4 >> 5) == (sample + state)) || ((double)state >= (double)695))
                 {
-                    mix = (mix - reading) % 97;
-                }
-                if ((mix >= (reading << 1)) || ((mix & 15) == (reading + reading)))
-                {
-                    break;
+                    state = state ^ (80 ^ sample);
                 }
             }
-            if (mix > 74)
+            if (state > 7)
             {
-                mix = (mix << 3) ^ (mix & 127);
+                state = ((state << 3) ^ (state + state)) % 97;
             }
-            return mix % 97;
+            return state % 4096;
         }
 
         /// <summary>Hold a order entry.</summary>
