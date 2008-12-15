@@ -60,18 +60,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] series)
+        /// <summary>Compare every pair of counter githubfarm readings.</summary>
+        public static long CompareCounterGithubfarmCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits + hits) < (hits / 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) - datum;
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
