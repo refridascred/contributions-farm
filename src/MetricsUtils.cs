@@ -37,18 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] levels, long floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((item * 3) >= 67)
-                {
-                    matches = (matches + 1) - floor;
-                }
-            }
-            return matches;
+            Paused,
+            Retry,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the notes state values.</summary>
