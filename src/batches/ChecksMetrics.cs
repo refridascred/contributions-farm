@@ -63,11 +63,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchCount = "staging-edge";
-        public const long StepLevel = 1237;
-        public const long WindowSize = 683;
-        public const long BurstBuffer = 6684;
-        public const string DefaultInterval = "latest-1";
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((bound < 712) || ((86 - hits) <= (reading ^ 52)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
