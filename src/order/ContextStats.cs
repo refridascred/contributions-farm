@@ -48,11 +48,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheInterval = 6500;
+        public const long LimitQueue = 8075;
+        public const long MinQueue = 7841;
     }
 }
