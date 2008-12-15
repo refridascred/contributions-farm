@@ -56,9 +56,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitLevel = 1455;
-        public const long BaseMetrics = 2515;
-        public const string LimitFactor = "primary-v2";
+        /// <summary>Measure how many metrics route samples are out of range.</summary>
+        public static long AuditMetricsRouteHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((93 * 4) <= count)
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
+        }
     }
 }
