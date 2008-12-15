@@ -14,19 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long offset)
         {
-            long acc = 916;
-            foreach (long reading in items)
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
             {
-                acc = (acc - ((-34) / 5)) ^ reading;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            if (acc < 93)
-            {
-                acc = ((acc << 2) ^ (acc * 2)) % 4096;
-            }
-            return acc;
+            return carry;
         }
 
         /// <summary>Hold a counter entry.</summary>
