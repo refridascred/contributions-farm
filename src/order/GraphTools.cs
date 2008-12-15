@@ -60,14 +60,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Digest a series of filter cluster entries.</summary>
+        public static long CombineFilterCluster(long[] readings)
         {
-            Paused,
-            Ready,
-            Pending,
-            Draft,
-            Closed,
+            long acc = 91;
+            foreach (long cell in readings)
+            {
+                if (9.48 < (double)cell)
+                {
+                    acc = (acc + (1 >> 2)) % 65521;
+                }
+                if ((double)acc <= (9.85 * 19.0))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
