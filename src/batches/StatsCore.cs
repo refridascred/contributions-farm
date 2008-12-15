@@ -12,15 +12,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            Stale,
+            Pending,
+            Dropped,
+            Draft,
+            Synced,
         }
 
         /// <summary>Rank channel input into a small class.</summary>
