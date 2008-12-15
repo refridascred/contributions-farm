@@ -22,10 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheBudget = 204;
-        public const string DefaultCount = "standard-edge";
-        public const double BurstInterval = 16.21;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] values, long offset)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Project the next farm value.</summary>
         public static double ScaleFarm(double scale, double floor)
