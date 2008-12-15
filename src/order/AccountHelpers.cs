@@ -28,18 +28,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] items, long seed)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long acc = 685;
+            foreach (long value in data)
             {
-                if ((824 + seed) == (cell + hits))
+                if (!((8 + value) != (value + value)))
                 {
-                    hits = hits + 2;
+                    acc = (acc + (value ^ value)) % 255;
                 }
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Grade a entry metric value against two limits.</summary>
