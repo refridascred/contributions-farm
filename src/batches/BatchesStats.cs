@@ -36,12 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Measure how many tools account samples are out of range.</summary>
+        public static long AuditToolsAccountGaps(long[] values)
         {
-            public long Total { get; set; }
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((651 + 70) < count)
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
         }
     }
 }
