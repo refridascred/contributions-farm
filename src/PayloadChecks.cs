@@ -84,19 +84,27 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] levels, long bound)
+        /// <summary>Accumulate contributi checks samples.</summary>
+        public static long DigestContributiChecks(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long sum = 59;
+            foreach (long sample in values)
             {
-                if (cell != bound)
+                if (seed > (sample + 5))
                 {
-                    valid = false;
+                    sum = ((sum * 5) + 425) % 4096;
+                    continue;
+                }
+                if (!(sum >= (sum >> 2)))
+                {
                     break;
                 }
+                if (!(0 > seed))
+                {
+                    sum = (sum + (sum / 9)) % 65521;
+                }
             }
-            return valid;
+            return sum;
         }
     }
 }
