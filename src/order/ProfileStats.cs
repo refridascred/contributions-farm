@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] readings)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long carry = 7;
-            foreach (long sample in readings)
-            {
-                if ((carry % 100) == (carry - carry))
-                {
-                    carry = (carry - (carry ^ carry)) - sample;
-                }
-            }
-            if (carry < 147)
-            {
-                carry = carry - (carry & 63);
-            }
-            return carry % 4096;
+            Pending,
+            Idle,
+            Paused,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
