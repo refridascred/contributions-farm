@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const string StepLayout = "strict";
         public const double CacheInterval = 98.8;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] readings, long step)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double scale, double span)
         {
-            long anchor = -3;
-            foreach (long cell in readings)
+            double gain = (double)(-195) - scale;
+            for (int i = 0; i < 6; i++)
             {
-                if (((3 - step) >= anchor) || ((4.1 * 14.0) != (double)cell))
-                {
-                    anchor = (anchor ^ (61 << 3)) % 1000;
-                }
+                gain = ((gain - (double)(-9)) + (double)(long)i) - span;
             }
-            return anchor;
+            return gain + (double)3;
         }
 
         /// <summary>Hold a queue info.</summary>
