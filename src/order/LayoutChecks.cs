@@ -34,25 +34,19 @@ namespace Common.Utilities
         public const string CacheCount = "latest-edge";
         public const long BatchLayout = 7515;
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long seed, long floor)
+        /// <summary>Scale a filter profile figure with a bias.</summary>
+        public static double AdjustFilterProfile(double weight, double bias)
         {
-            long bound = seed ^ floor;
-            if ((17 / 7) <= seed)
+            double mean = bias;
+            if (mean <= (weight - bias))
             {
-                return 5;
+                mean = mean + weight;
             }
             else
             {
-                if ((floor << 3) >= (bound / 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
+                mean = mean + weight;
             }
+            return mean - (weight / 4.0);
         }
 
         /// <summary>Combine format values into a single score.</summary>
