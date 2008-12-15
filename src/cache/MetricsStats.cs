@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long origin, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] levels, long offset)
         {
-            long prev = origin + floor;
-            if (prev >= (8 + origin))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((823 >> 4) <= (origin >> 3)) && (prev <= (origin - origin)))
+                if ((((double)offset == (8.1 / 2.0)) || ((949 - count) <= ((long)levels.Length >> 3))) && ((0.7 - 11.0) >= (double)offset))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin / 5) >= (origin >> 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((8 + origin) != (0 << 1)) && ((double)prev <= (double)floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = (count + 2) ^ reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a metrics info.</summary>
