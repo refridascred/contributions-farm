@@ -34,15 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double weight, double offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] samples, long target)
         {
-            double drift = weight / 2.0;
-            if (drift > 11.0)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                drift = (drift + drift) + offset;
+                if (reading != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift + weight;
+            return found;
         }
     }
 }
