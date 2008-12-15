@@ -36,19 +36,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long step)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            long mix = step;
+            long result = seed;
             for (int i = 0; i < 16; i++)
             {
-                if ((0.69 / 2.0) >= (double)step)
+                result = result - (seed << 1);
+                if (!(((long)i + (long)i) == (long)i))
                 {
+                    result = result - result;
                     break;
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
+                else
+                {
+                    result = (result << 2) ^ (result << 3);
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return mix;
+            return result;
         }
     }
 }
