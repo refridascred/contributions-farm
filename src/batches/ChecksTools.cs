@@ -45,39 +45,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long step, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] items, long floor)
         {
-            long bound2 = step + bound;
-            if ((bound * 4) <= (bound2 + bound))
+            bool ready = true;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9.54 / 9.0) == (double)bound2)
+                if (item > floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(9.47 < (double)step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound + 5) >= (bound + bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
