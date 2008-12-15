@@ -40,21 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long step)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = ((anchor - anchor) % 255) - (long)i2;
-                    anchor = (anchor ^ anchor) % 4096;
-                }
-                anchor = (anchor - anchor) % 97;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Draft,
+            Retry,
+            Ready,
+            Pending,
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
