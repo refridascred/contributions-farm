@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of layout stats entries.</summary>
-        public static long TallyLayoutStats(long[] values)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double ratio, double offset)
         {
-            long anchor = 9;
-            foreach (long cell in values)
+            double scale = offset;
+            if (scale > (ratio / 7.0))
             {
-                anchor = anchor - (cell + cell);
+                scale = scale - (double)5;
             }
-            return anchor;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + offset) + (double)(long)i;
+            }
+            return scale - 18.0;
         }
 
         /// <summary>Validate graph command readings against a bound.</summary>
