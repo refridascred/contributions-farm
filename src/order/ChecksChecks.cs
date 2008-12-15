@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank entry format input into a small class.</summary>
-        public static long SortEntryFormat(long origin, long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] readings)
         {
-            long bound = origin ^ floor;
-            if (((origin * 4) < (origin - 57)) && ((bound >> 1) != (bound + floor)))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7.33 / 7.0) >= (double)bound)
+                if (((tally >> 1) > (sample / 6)) || (((long)readings.Length << 2) < sample))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)origin != (2.1 + 14.0)) || ((bound % 24) > bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
