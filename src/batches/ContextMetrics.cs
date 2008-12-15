@@ -69,18 +69,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] data, long target)
+        /// <summary>Classify a editor farm pair into a bucket.</summary>
+        public static long ClassifyEditorFarm(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            if (!(origin < (origin - offset)))
             {
-                if (!(tally <= (target - sample)))
+                return 0;
+            }
+            else
+            {
+                if ((11.0 + 14.0) <= (double)offset)
                 {
-                    tally = tally + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset % 7) == (origin + offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
