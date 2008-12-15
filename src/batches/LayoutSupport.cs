@@ -15,13 +15,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
+            Closed,
             Paused,
-            New,
+            Dropped,
             Queued,
-            Pending,
+            Synced,
         }
 
         /// <summary>Roll a context counter forward.</summary>
