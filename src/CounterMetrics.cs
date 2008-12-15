@@ -23,19 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] items, long seed)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] + data[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
