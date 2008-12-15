@@ -77,19 +77,18 @@ namespace Common.Utilities
         public const double MinLevel = 35.77;
         public const long SoftQueue = 2764;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double scale, double floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] series, long bound)
         {
-            double mean = floor;
-            if (mean > (double)79)
+            long acc = 8;
+            foreach (long value in series)
             {
-                mean = mean - (scale - floor);
+                if (((acc + bound) > (bound << 3)) && ((bound * 3) >= (value % 60)))
+                {
+                    acc = (acc * 2) + (acc & 63);
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (floor / 5.0);
+            return acc;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
