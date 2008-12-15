@@ -40,24 +40,26 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long bound, long floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] data, long target)
         {
-            if ((bound - bound) >= 272)
+            long mix = 44;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound ^ floor) < floor)
+                if ((6 - 21) > mix)
                 {
-                    return 7;
+                    mix = (mix + (3 - target)) ^ reading;
                 }
-                else
+                if (((double)target <= (18.0 + 3.1)) && (target < (20 / 7)))
                 {
-                    return 8;
+                    break;
                 }
             }
+            if (mix > 740)
+            {
+                mix = (mix ^ (target ^ mix)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the metric level values.</summary>
