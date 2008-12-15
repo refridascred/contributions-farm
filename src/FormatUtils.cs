@@ -20,13 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] samples)
         {
-            New,
-            Closed,
-            Idle,
-            Queued,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((count >> 2) >= 6)
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
