@@ -1,12 +1,11 @@
 # Command notes
 
-Use account settings to tune how often cache data is refreshed.
-Each context is validated before it reaches the format queue.
-Use session settings to tune how often schema data is refreshed.
+The filter report groups every githubfarm by schema.
+The metric helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep stats values small
-- Review tools limits each release
-- Document new counter fields
-- Prefer counter defaults
+- Validate metric input early
+- Document new batch fields
+- Prefer farm defaults
+- Review window limits each release
