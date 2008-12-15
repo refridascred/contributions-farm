@@ -52,11 +52,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double bias, double span)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long limit)
         {
-            double load = span;
-            return (load + 0.3) + bias;
+            long state = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
