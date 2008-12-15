@@ -53,19 +53,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] levels, long origin)
+        /// <summary>Blend two format notes measurements.</summary>
+        public static double ScaleFormatNotes(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            double load = scale;
+            if (load < 8.24)
             {
-                if (datum <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load - 14.0;
             }
-            return flag;
+            else
+            {
+                load = load - (offset + 9.8);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + scale) + (double)(long)i;
+            }
+            return load + 6.4;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
