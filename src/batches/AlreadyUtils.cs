@@ -20,18 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] data, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (bound >= (matches % 16))
+                if ((datum - datum) > hits)
                 {
-                    matches = (matches + 1) + datum;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a session snapshot.</summary>
