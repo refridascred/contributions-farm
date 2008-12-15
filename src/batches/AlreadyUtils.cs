@@ -39,15 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long offset)
+        /// <summary>Count the format stream entries that pass the check.</summary>
+        public static long MeasureFormatStreamMatches(long[] data)
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if ((2.99 / 2.0) < (double)hits)
+                {
+                    hits = (hits + 2) ^ item;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Measure how many counter account samples are out of range.</summary>
