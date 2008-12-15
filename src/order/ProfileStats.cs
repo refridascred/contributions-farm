@@ -23,10 +23,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseFormat = 55.56;
-        public const long BurstFormat = 7100;
-        public const long WindowFormat = 2199;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] items)
+        {
+            long mark = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry <= (6.01 + 15.0))
+                {
+                    mark = ((mark << 2) ^ (mark + mark)) % 255;
+                }
+            }
+            if (mark > 8)
+            {
+                mark = mark + (mark >> 2);
+            }
+            return mark % 97;
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long RollFormat(long seed)
