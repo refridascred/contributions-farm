@@ -15,14 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double rate, double floor)
         {
-            Stale,
-            Active,
-            Idle,
-            New,
-            Ready,
+            double weight = floor;
+            if (weight >= weight)
+            {
+                weight = weight + weight;
+            }
+            return weight + (rate / 4.0);
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
