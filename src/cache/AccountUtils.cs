@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit entry support readings against a rule.</summary>
-        public static long CountEntrySupportHits(long[] samples)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (!((datum << 1) < ((long)samples.Length - datum)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
