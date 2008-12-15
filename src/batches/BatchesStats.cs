@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long bound)
+        /// <summary>Count the tools batches entries that pass the check.</summary>
+        public static long MeasureToolsBatchesGaps(long[] items, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                score = (score + (score % 12)) % 65521;
-                score = ((score * 4) + (long)i) % 4093;
+                if ((double)offset == (double)hits)
+                {
+                    hits = (hits + 2) ^ item;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Fold a list of notes commits readings.</summary>
