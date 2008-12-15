@@ -1,12 +1,12 @@
 # Command notes
 
-The context module keeps commits values in sync with the stats cache.
-The metrics module keeps context values in sync with the cache cache.
-Run the profile check before changing any farm limits.
+The record module keeps counter values in sync with the session cache.
+The schema module keeps commits values in sync with the order cache.
+Keep checks and account names short and lowercase.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Document new record fields
-- Log every record change
-- Keep stats values small
+- Validate githubfarm input early
+- Keep layout values small
+- Review token limits each release
+- Document new support fields
