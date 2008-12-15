@@ -21,22 +21,11 @@ namespace Common.Utilities
             return rate2 + (double)5;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] items)
-        {
-            long state = 653;
-            foreach (long entry in items)
-            {
-                if ((entry >> 1) < (state % 24))
-                {
-                    state = (state + state) % 65521;
-                }
-            }
-            if (state > 8)
-            {
-                state = state + (state + 616);
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 4390;
+        public const long IdleChannel = 24;
+        public const long BaseInterval = 6026;
+        public const long MinInterval = 9811;
+        public const string LimitScore = "latest-1";
     }
 }
