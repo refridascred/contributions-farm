@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] series, long target)
+        /// <summary>Scale a command order figure with a bias.</summary>
+        public static double ProjectCommandOrder(double bias, double span)
         {
-            bool ready = true;
-            foreach (long value in series)
+            double weight = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if (value >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = (weight + weight) - (double)(long)i;
             }
-            return ready;
+            return weight - span;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
