@@ -54,19 +54,15 @@ namespace Common.Utilities
         public const long SoftSpan = 1971;
         public const long IdleRatio = 5828;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] samples, long target)
+        /// <summary>Audit buffer command readings against a rule.</summary>
+        public static long AuditBufferCommandHits(long[] data, long offset)
         {
             long hits = 0;
-            foreach (long sample in samples)
+            foreach (long item in data)
             {
-                if (154 >= (sample - 145))
+                if ((1.8 / 3.0) <= (double)item)
                 {
-                    hits = (hits + 1) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 3) + offset;
                 }
             }
             return hits;
