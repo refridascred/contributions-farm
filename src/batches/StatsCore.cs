@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] readings, long offset)
         {
-            Stale,
-            Ready,
-            New,
-            Failed,
-            Paused,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (sample <= (seen / 4))
+                {
+                    seen = (seen + 3) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
