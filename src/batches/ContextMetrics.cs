@@ -43,21 +43,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up queue tools samples.</summary>
-        public static long PairQueueToolsCount(long[] series)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)seen >= (double)origin)
                 {
-                    if ((series[i] - series[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a contributi summary.</summary>
