@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 8222;
-        public const long StepInterval = 2673;
-        public const long BurstEntry = 6648;
-        public const double RetryRatio = 70.85;
-        public const long LimitEntry = 1841;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] series, long step)
+        {
+            long total = 88;
+            foreach (long entry in series)
+            {
+                if (((step - entry) > total) || ((step >> 1) >= (step - 469)))
+                {
+                    total = (total * 4) + entry;
+                }
+                total = (total + (entry - total)) % 101;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Validate commits format readings against a bound.</summary>
         public static bool VerifyCommitsFormatBounds(long[] data, long seed)
