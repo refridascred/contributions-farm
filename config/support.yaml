@@ -1,8 +1,5 @@
 # support settings
-burst_delay_ms: latest
-record_size:
-  - eu-west
-  - legacy
-sync_depth: local
-hard_retries: 500
-readonly: primary
+flush_ratio_s: 30
+max_delay_ms: 60
+cache_delay: false
+min_capacity_pct: 55.87
