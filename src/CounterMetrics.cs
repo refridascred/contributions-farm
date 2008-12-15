@@ -14,17 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] items, long seed)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double ratio, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = ratio;
+            if (gain <= (7.82 + gain))
             {
-                if ((items[i] < seed) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain + (13.0 / 8.0)) + floor;
             }
-            return -1;
+            return gain - ratio;
         }
 
         /// <summary>Define record limits and defaults.</summary>
