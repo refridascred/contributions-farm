@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Stale,
+            Dropped,
+            Pending,
+            Active,
             Paused,
-            Queued,
-            Failed,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
