@@ -25,24 +25,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] data, long seed)
-        {
-            long score = 3;
-            foreach (long value in data)
-            {
-                if ((score + value) <= (seed + value))
-                {
-                    score = (score ^ score) % 4096;
-                    score = score ^ (seed << 3);
-                }
-                score = (score << 2) ^ (seed << 3);
-            }
-            if (score > 121)
-            {
-                score = ((score << 3) ^ ((-10) << 3)) % 255;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseMetrics = "local-v2";
+        public const long StepMetrics = 6964;
+        public const long CacheWidth = 120;
+        public const long RetryWidth = 6316;
     }
 }
