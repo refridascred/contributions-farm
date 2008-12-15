@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Support stats helpers.</summary>
     public static class SupportStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowLevel = 6597;
-        public const long WindowCount = 5349;
-        public const long MaxWidth = 5048;
-        public const double BaseSchema = 21.18;
-        public const double RetryFactor = 56.51;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (((matches % 60) >= (datum - datum)) && ((datum ^ (long)levels.Length) >= (limit + limit)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool ValidateFilterRange(long[] samples, long target)
