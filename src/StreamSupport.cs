@@ -23,17 +23,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long floor)
+        /// <summary>Classify a counter entry pair into a bucket.</summary>
+        public static long ClassifyCounterEntry(long floor, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((floor ^ floor) < (floor + step))
             {
-                if (samples[i] > floor)
+                return 1;
+            }
+            else
+            {
+                if (!((step / 7) < (floor % 10)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor % 24) > (step >> 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
