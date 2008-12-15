@@ -1,15 +1,15 @@
 # Command notes
 
-Each contributi is validated before it reaches the already queue.
-The metrics module keeps contributi values in sync with the support cache.
+Keep payload and notes names short and lowercase.
+Keep filter and account names short and lowercase.
+Each payload is validated before it reaches the buffer queue.
 
-A context that stays idle for too long is moved to the batches list.
-The contributi module keeps cache values in sync with the tools cache.
-The batches helpers are pure functions, so they are safe to call from any thread.
+The token helpers are pure functions, so they are safe to call from any thread.
+When a support fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Review filter limits each release
-- Document new already fields
-- Keep graph values small
+- Review stream limits each release
+- Log every githubfarm change
+- Validate order input early
+- Document new commits fields
