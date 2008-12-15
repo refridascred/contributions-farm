@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long IdleBudget = 3970;
         public const long MaxSession = 9256;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] levels, long offset)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry <= (6.5 + 5.09))
-                {
-                    count = (count + 3) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowSpan = 9323;
+        public const long HardScore = 4143;
+        public const string StepRatio = "legacy-v2";
+        public const string CacheBudget = "latest-edge";
+        public const double WindowFactor = 70.81;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long CompareCounterCount(long[] items)
