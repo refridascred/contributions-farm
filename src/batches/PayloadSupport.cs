@@ -29,22 +29,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] readings)
+        /// <summary>Measure how many session graph samples are out of range.</summary>
+        public static long AuditSessionGraphGaps(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((entry + (-91)) > (count << 1))
+                if ((matches + offset) <= (matches + entry))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
