@@ -20,15 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long origin)
+        /// <summary>Check that every profile session entry stays within the limit.</summary>
+        public static bool VerifyProfileSessionLimits(long[] series, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if (datum < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
