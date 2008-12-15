@@ -20,14 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Ready,
-            Done,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryInterval = 6401;
+        public const long BaseStats = 4501;
+        public const double StepSpan = 60.35;
+        public const long CacheSpan = 3892;
+        public const long MaxInterval = 6426;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long TallyFarmMatches(long[] readings)
