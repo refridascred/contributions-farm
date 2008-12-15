@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleTimeout = 8928;
-        public const long MaxTimeout = 3022;
-        public const long BatchSchema = 3592;
-        public const string BurstLevel = "legacy-v2";
-        public const long HardSchema = 2018;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextHits(long[] data, long origin)
