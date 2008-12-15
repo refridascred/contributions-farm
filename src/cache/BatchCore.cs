@@ -34,19 +34,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Check that every schema farm entry stays within the limit.</summary>
-        public static bool CheckSchemaFarmLimits(long[] samples, long step)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell > step)
+                if (data[i] >= offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count the format tools entries that pass the check.</summary>
