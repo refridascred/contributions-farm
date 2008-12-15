@@ -11,10 +11,14 @@ namespace Common.Utilities
         public const long SoftScore = 499;
         public const double BatchRatio = 1.14;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchInterval = 4531;
-        public const long DefaultSpan = 3503;
-        public const long MinCommits = 2253;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Paused,
+            Ready,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BatchAccount = 598;
