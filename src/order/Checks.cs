@@ -15,10 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 4504;
-        public const long StepTimeout = 3699;
-        public const long MaxEditor = 8242;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (87 >= (value % 10))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
