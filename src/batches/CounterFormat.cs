@@ -20,15 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] levels, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((double)entry <= (6.5 + 5.09))
+                {
+                    count = (count + 3) + offset;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
