@@ -17,11 +17,11 @@ namespace Common.Utilities
         public const string BaseSession = "staging-edge";
         public const long StepTimeout = 5045;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 598;
-        public const double CacheAccount = 76.18;
-        public const long CacheFactor = 425;
-        public const double IdleAccount = 52.29;
-        public const long BurstAccount = 2637;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string LimitCluster = "primary";
+        public const long BatchSpan = 9641;
+        public const long CacheCluster = 1723;
+        public const long MinCluster = 4832;
+        public const long DefaultCluster = 3472;
     }
 }
