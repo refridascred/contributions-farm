@@ -1,5 +1,8 @@
 # support settings
-enabled: cached
-default_ratio_s: true
-warm_ttl: 2129
-max_retries_ms: 58.08
+burst_delay_ms: latest
+record_size:
+  - eu-west
+  - legacy
+sync_depth: local
+hard_retries: 500
+readonly: primary
