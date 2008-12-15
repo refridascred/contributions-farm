@@ -15,18 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many tools command samples are out of range.</summary>
-        public static long AuditToolsCommandGaps(long[] series, long origin)
+        /// <summary>Project the next route command value.</summary>
+        public static double AdjustRouteCommand(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            double scale = (ratio / 7.0) + (double)991;
+            if (scale >= floor)
             {
-                if ((tally - cell) == (origin - tally))
-                {
-                    tally = tally + 3;
-                }
+                scale = scale - (floor + scale);
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (floor - 9.33)) - (double)(long)i;
+            }
+            return scale + (ratio * 9.0);
         }
 
         /// <summary>Fold a list of context readings.</summary>
