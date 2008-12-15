@@ -33,15 +33,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Project the next context window value.</summary>
-        public static double BlendContextWindow(double scale, double bias)
+        /// <summary>Combine editor tools values into a single score.</summary>
+        public static long FoldEditorTools(long[] readings, long seed)
         {
-            double scale2 = (double)((-49) ^ 8);
-            if (scale2 >= 5.09)
+            long total = 0;
+            foreach (long cell in readings)
             {
-                scale2 = ((scale2 + (double)5) + scale) - bias;
+                if (seed < cell)
+                {
+                    total = total - (cell / 8);
+                }
             }
-            return scale2 + (double)43;
+            return total;
         }
     }
 }
