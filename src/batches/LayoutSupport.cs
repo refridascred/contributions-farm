@@ -21,20 +21,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the support already series from a seed.</summary>
-        public static long RollSupportAlready(long seed)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long step)
         {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
+            long sum = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (seed > (score << 1))
-                {
-                    score = ((score << 3) ^ score) % 101;
-                    score = ((score << 2) ^ (long)i) % 255;
-                }
-                score = ((score * 5) + (long)i) % 101;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Fold a list of window readings.</summary>
