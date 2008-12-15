@@ -33,18 +33,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many profile support samples are out of range.</summary>
-        public static long CountProfileSupportGaps(long[] series, long step)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((917 % 16) == (tally + step))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
