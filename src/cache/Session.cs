@@ -27,12 +27,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] levels, long limit)
         {
-            public long Total { get; set; }
-            public bool Score { get; set; }
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((double)count >= (13.0 / 2.0))
+                {
+                    count = ((count + 1) ^ item) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a metric header.</summary>
