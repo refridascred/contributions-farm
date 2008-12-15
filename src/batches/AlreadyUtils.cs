@@ -62,14 +62,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double ratio, double span)
         {
-            Stale,
-            Dropped,
-            Ready,
-            Draft,
-            Done,
+            double bias = span / 4.0;
+            return (bias - 7.17) + ratio;
         }
     }
 }
