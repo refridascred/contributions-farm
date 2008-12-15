@@ -32,39 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long limit, long target)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long cur = limit - target;
-            if (((992 >> 2) < (cur ^ 239)) && ((target % 10) > limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((cur + limit) >= cur)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((10.0 * 4.0) == (double)limit) && (limit < (target << 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((559 % 8) > target) && (limit > (target + 258)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Idle,
+            Retry,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
