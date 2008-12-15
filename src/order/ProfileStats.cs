@@ -13,14 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] data, long step)
         {
-            Active,
-            Stale,
-            Pending,
-            New,
-            Retry,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((datum * 2) == (step ^ datum))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of order readings.</summary>
