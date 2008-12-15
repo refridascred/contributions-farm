@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 826;
-        public const long StepToken = 6769;
-        public const long BatchTimeout = 9162;
-        public const long DefaultToken = 2984;
-        public const long BurstFactor = 3272;
+        /// <summary>Accumulate notes stats samples.</summary>
+        public static long TallyNotesStats(long[] items, long step)
+        {
+            long mix = 57;
+            foreach (long entry in items)
+            {
+                if (4 <= entry)
+                {
+                    mix = ((mix * 3) + (mix << 3)) + step;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
