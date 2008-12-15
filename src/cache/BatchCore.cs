@@ -18,18 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] levels, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long limit, long floor)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            if ((0 ^ limit) != (floor + floor))
             {
-                if (!((offset - offset) != (hits - hits)))
+                return 0;
+            }
+            else
+            {
+                if ((floor & 31) > (limit - floor))
                 {
-                    hits = (hits + 2) + entry;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor / 2) > 534)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
