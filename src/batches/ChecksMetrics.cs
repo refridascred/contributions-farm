@@ -19,21 +19,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Match up counter payload samples.</summary>
-        public static long PairCounterPayloadCount(long[] levels)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Count the batches token entries that pass the check.</summary>
