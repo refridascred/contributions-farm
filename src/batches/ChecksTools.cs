@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] data, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] data, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 5;
+            foreach (long entry in data)
             {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
+                total = ((total + seed) % 1000) - entry;
             }
-            return -1;
+            if (total < 235)
+            {
+                total = (total + (seed & 31)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
