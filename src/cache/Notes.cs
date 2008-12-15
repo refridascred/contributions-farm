@@ -41,16 +41,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of channel route entries.</summary>
-        public static long FoldChannelRoute(long[] samples, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] levels, long target)
         {
-            long anchor = 33;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                anchor = (anchor + (2 - cell)) - offset;
-                anchor = ((anchor * 2) + (anchor + anchor)) % 97;
+                if ((7.0 / 4.0) >= (double)cell)
+                {
+                    seen = (seen + 2) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
