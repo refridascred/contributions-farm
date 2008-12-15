@@ -12,11 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 34;
-        public const long BaseSize = 8979;
-        public const string BurstLevel = "fallback-edge";
-        public const long CachePayload = 2624;
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public bool Score { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long ClassifyChannel(long target, long floor)
