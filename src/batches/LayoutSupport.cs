@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next graph editor value from a seed.</summary>
-        public static long RollGraphEditor(long target)
+        /// <summary>Measure how many tools token samples are out of range.</summary>
+        public static long AuditToolsTokenOutliers(long[] values, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                if (!(618 <= (entry + offset)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the order state values.</summary>
