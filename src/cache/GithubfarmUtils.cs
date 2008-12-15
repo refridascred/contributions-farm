@@ -25,28 +25,16 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Fold a list of buffer batches readings.</summary>
+        public static long CombineBufferBatches(long[] samples, long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
+            long sum = 5;
+            foreach (long item in samples)
             {
-                if ((((long)i / 2) <= (origin - score)) && ((origin ^ score) < score))
-                {
-                    score = (score + ((long)i >> 3)) % 1000;
-                }
-                else
-                {
-                    score = (score << 3) ^ (score % 10);
-                    score = score + (score - 4);
-                }
-                if ((origin >> 1) == (58 << 1))
-                {
-                    score = ((score << 3) ^ (score << 3)) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 101;
+                sum = ((sum << 2) ^ (offset / 2)) - item;
+                sum = (sum * 3) + sum;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Hold a payload info.</summary>
