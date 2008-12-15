@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] items)
+        /// <summary>Measure how many queue batch samples are out of range.</summary>
+        public static long MeasureQueueBatchMatches(long[] data)
         {
-            long state = 49;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                state = state + (935 + state);
-                state = (state ^ value) % 97;
+                if ((((tally / 8) > (tally & 255)) && ((double)sample < (20.0 - 18.0))) && ((sample / 4) < sample))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (state < 717)
-            {
-                state = (state + ((long)items.Length + state)) % 1000;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
