@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the report context entries that pass the check.</summary>
-        public static long CountReportContextMatches(long[] levels)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((7.74 - 2.0) != (double)cell)
+                if (sample <= floor)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Classify a counter entry pair into a bucket.</summary>
