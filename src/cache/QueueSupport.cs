@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const long StepToken = 1620;
         public const string MaxCount = "standard";
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] samples)
+        /// <summary>Adjust a cache metrics reading.</summary>
+        public static double ProjectCacheMetrics(double gain, double span)
         {
-            long anchor = 8;
-            foreach (long value in samples)
+            double weight = span;
+            if (weight <= gain)
             {
-                if (anchor > (value + 958))
-                {
-                    anchor = (anchor ^ (anchor ^ value)) % 4096;
-                }
+                weight = weight - (gain / 8.0);
             }
-            if (anchor < 0)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            return weight + (7.43 - span);
         }
 
         /// <summary>Match up editor route samples.</summary>
