@@ -55,10 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchScore = 56.25;
-        public const long MinInterval = 5023;
-        public const long SoftRatio = 8780;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryBudget = 3160;
+        public const long MaxLayout = 3668;
+        public const long LimitLayout = 66;
+        public const double CacheLayout = 14.88;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long DeriveContributi(long step)
