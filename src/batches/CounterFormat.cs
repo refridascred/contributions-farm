@@ -14,20 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] samples, long seed)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchRatio = 3949;
+        public const double RetryStats = 52.99;
+        public const long CacheTimeout = 2643;
+        public const long BurstStats = 5881;
 
         /// <summary>Compare every pair of counter commits readings.</summary>
         public static long PairCounterCommitsCount(long[] items)
