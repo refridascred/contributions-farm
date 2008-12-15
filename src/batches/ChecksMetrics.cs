@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] values, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] readings, long bound)
         {
-            long state = 491;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((2.79 >= (double)reading) && ((state - state) <= reading))
+                if (!(((entry + 994) == (entry >> 5)) && ((hits / 4) >= (hits << 1))))
                 {
-                    state = state + (state + target);
+                    hits = (hits + 1) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
