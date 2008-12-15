@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate notes stats samples.</summary>
-        public static long TallyNotesStats(long[] items, long step)
+        /// <summary>Blend two commits metrics measurements.</summary>
+        public static double SmoothCommitsMetrics(double rate, double span)
         {
-            long mix = 57;
-            foreach (long entry in items)
+            double weight = (rate + span) + (span + span);
+            if (weight >= span)
             {
-                if (4 <= entry)
-                {
-                    mix = ((mix * 3) + (mix << 3)) + step;
-                }
+                weight = weight + weight;
             }
-            return mix;
+            else
+            {
+                weight = weight + (2.4 - rate);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - span) - (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Describe the command status values.</summary>
