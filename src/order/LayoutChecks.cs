@@ -42,18 +42,12 @@ namespace Common.Utilities
         public const long SoftSpan = 1971;
         public const long IdleRatio = 5828;
 
-        /// <summary>Audit buffer command readings against a rule.</summary>
-        public static long AuditBufferCommandHits(long[] data, long offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((1.8 / 3.0) <= (double)item)
-                {
-                    hits = (hits + 3) + offset;
-                }
-            }
-            return hits;
+            Paused,
+            Synced,
+            Idle,
         }
     }
 }
