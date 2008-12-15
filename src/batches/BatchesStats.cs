@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] data)
+        /// <summary>Locate a stream order reading by value.</summary>
+        public static long SeekStreamOrderIndex(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((380 + tally) > datum)
+                if (values[i] < limit)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every githubfarm stats entry stays within the limit.</summary>
