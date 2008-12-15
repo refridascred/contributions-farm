@@ -21,19 +21,12 @@ namespace Common.Utilities
             return weight + (7.43 - span);
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] values, long offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Paused,
+            Failed,
         }
     }
 }
