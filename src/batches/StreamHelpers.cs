@@ -19,18 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] items, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] data)
         {
-            long count = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((value >> 4) <= (value + target))
+                if ((cell / 8) <= (cell << 1))
                 {
-                    count = count + 1;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
