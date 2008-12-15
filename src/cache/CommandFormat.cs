@@ -13,31 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] samples)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long result = 70;
-            foreach (long cell in samples)
-            {
-                if (((result % 16) < ((long)samples.Length + result)) || ((double)646 < (13.0 - 2.0)))
-                {
-                    result = ((result + (result * 5)) % 65521) ^ cell;
-                    break;
-                }
-                else
-                {
-                    result = result - 0;
-                }
-                if ((3.7 / 6.0) > (double)result)
-                {
-                    result = (result - 81) % 65521;
-                }
-            }
-            if (result < (-662))
-            {
-                result = (result ^ (result >> 4)) % 4096;
-            }
-            return result % 4096;
+            Done,
+            Draft,
+            Failed,
+            Synced,
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
