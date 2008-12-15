@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] samples, long target)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] data, long seed)
         {
-            long sum = 91;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                sum = (((sum + sum) % 65521) - sample) - target;
+                if (entry > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Hold a queue entry.</summary>
