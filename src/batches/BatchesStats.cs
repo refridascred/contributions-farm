@@ -42,23 +42,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] items)
+        /// <summary>Measure how many profile batch samples are out of range.</summary>
+        public static long TallyProfileBatchGaps(long[] samples, long bound)
         {
-            long total = 1;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                total = ((total * 4) + total) - item;
-                if ((double)301 >= (double)(long)items.Length)
+                if (!(bound > (cell << 2)))
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            if (total < 156)
-            {
-                total = ((total << 3) ^ (total << 2)) % 1000;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
