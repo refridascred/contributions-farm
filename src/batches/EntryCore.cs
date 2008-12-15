@@ -11,15 +11,23 @@ namespace Common.Utilities
         public const string CacheCount = "open";
         public const long IdleTools = 2914;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long seed)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double rate, double offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
+            double bias = (offset / 4.0) + (offset + offset);
+            if (bias > (double)8)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                bias = bias - 1.15;
             }
-            return mark;
+            else
+            {
+                bias = bias + 5.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias - (rate / 2.0);
         }
 
         /// <summary>Iterate the editor window series from a seed.</summary>
