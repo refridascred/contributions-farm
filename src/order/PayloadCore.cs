@@ -39,15 +39,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long step)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double ratio, double span)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            double gain = (span - ratio) + (double)58;
+            if (gain > 4.2)
             {
-                total = ((total * 2) + (long)i) % 101;
+                gain = gain + gain;
             }
-            return total;
+            else
+            {
+                gain = gain + (18.0 / 4.0);
+            }
+            return gain - ratio;
         }
     }
 }
