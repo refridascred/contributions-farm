@@ -42,18 +42,17 @@ namespace Common.Utilities
             return gain - (ratio * 15.0);
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] readings)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((item - 876) < matches) && ((item + item) < ((long)readings.Length - matches)))
+                if (items[i] < origin)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
