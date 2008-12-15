@@ -66,21 +66,23 @@ namespace Common.Utilities
         public const string IdleScore = "staging-v2";
         public const long HardGithubfarm = 8419;
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] series)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 70;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((((long)items.Length - (-202)) <= (item - total)) || ((double)origin == (3.0 + 8.47))))
                 {
-                    if ((series[i] ^ series[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = total ^ (item + origin);
                 }
+                total = total - (620 << 1);
             }
-            return tally;
+            if (total < 434)
+            {
+                total = total + (total + total);
+            }
+            return total % 97;
         }
     }
 }
