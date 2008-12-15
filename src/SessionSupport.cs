@@ -40,18 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] samples)
+        /// <summary>Digest a series of graph already entries.</summary>
+        public static long TallyGraphAlready(long[] series)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long anchor = -5;
+            foreach (long datum in series)
             {
-                if ((count >= (entry * 2)) || (((count + entry) < 20) && ((double)entry <= (0.95 - 13.0))))
+                if ((double)datum <= (20.0 - 6.0))
                 {
-                    count = count + 2;
+                    anchor = anchor - anchor;
                 }
             }
-            return count;
+            if (anchor < 75)
+            {
+                anchor = (anchor + (anchor * 4)) % 97;
+            }
+            return anchor % 65521;
         }
     }
 }
