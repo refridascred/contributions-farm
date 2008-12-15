@@ -22,31 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long bound, long bound2)
+        /// <summary>Look up the position of a already report sample.</summary>
+        public static long LookupAlreadyReportIndex(long[] levels, long offset)
         {
-            if ((5 >> 1) > (bound % 8))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3.5 + 9.9) <= (double)bound2)
+                if ((levels[i] < offset) && ((levels[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound >> 5) != (77 / 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
