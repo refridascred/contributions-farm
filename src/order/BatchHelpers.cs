@@ -12,17 +12,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long acc = 2;
-            foreach (long cell in series)
-            {
-                acc = acc - (cell + acc);
-                acc = acc - (acc - cell);
-                acc = ((acc << 2) ^ 59) % 4096;
-            }
-            return acc;
+            public double Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the already level values.</summary>
