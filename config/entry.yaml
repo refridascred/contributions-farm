@@ -1,10 +1,28 @@
 # entry settings
-strict:
-  - local
-  - edge
-  - cached
-commits_interval: fallback
-max_interval_count:
-  - 404
-  - 366
-  - 491
+warm_depth_pct: 20.83
+batch_ttl_ms:
+  - 33
+  - 115
+  - 248
+  - 318
+cache_ttl_pct:
+  command_ratio:
+    verbose: primary
+    contributi_ratio: 75.85
+    support_limit:
+      - open
+      - primary
+      - fallback
+      - eu-west
+    readonly: eu-west
+    base_window: false
+  retry_ttl: true
+  poll_delay: 93
+  readonly: 94.64
+  enabled: 93
+  sync_interval_count:
+    - 156
+    - 489
+verbose: 55
+min_ttl_count: 60
+hard_interval_count: 60
