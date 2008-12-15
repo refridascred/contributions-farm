@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
-        {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseChecks = 42.04;
+        public const long RetryChecks = 590;
+        public const long WindowSpan = 7660;
+        public const long MaxChecks = 1710;
+        public const string DefaultChecks = "local";
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferRange(long[] levels, long offset)
