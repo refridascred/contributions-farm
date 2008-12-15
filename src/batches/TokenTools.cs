@@ -34,11 +34,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string CacheGithubfarm = "strict";
-        public const long HardGithubfarm = 6325;
-        public const double StepGithubfarm = 87.37;
-        public const long MinGithubfarm = 5599;
-        public const long BatchScore = 4452;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum << 2) ^ ((long)i + seed);
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
