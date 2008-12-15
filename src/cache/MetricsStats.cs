@@ -48,22 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] data, long offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] samples, long limit)
         {
-            long acc = 80;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if ((item % 16) >= (offset << 1))
+                if (item > limit)
                 {
-                    acc = acc - (item & 3);
-                }
-                else
-                {
-                    acc = acc + offset;
+                    flag = false;
+                    break;
                 }
             }
-            return acc;
+            return flag;
         }
     }
 }
