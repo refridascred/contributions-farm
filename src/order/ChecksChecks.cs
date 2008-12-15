@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] items)
         {
-            public bool Level { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
+            long total = 85;
+            foreach (long datum in items)
+            {
+                if (!((datum * 2) < (datum % 3)))
+                {
+                    total = (total - total) % 101;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
