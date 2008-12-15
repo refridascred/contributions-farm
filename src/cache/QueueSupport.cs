@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long StepToken = 1620;
         public const string MaxCount = "standard";
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] data, long seed)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (data[i] > seed)
+                if (((hits / 2) != (137 ^ floor)) && (((5.0 / 9.0) <= (double)entry) && ((entry << 2) != (566 - hits))))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up editor route samples.</summary>
