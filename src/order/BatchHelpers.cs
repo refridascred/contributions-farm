@@ -23,11 +23,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public long Token { get; set; }
-            public double Ratio { get; set; }
+            Stale,
+            Pending,
+            Queued,
+            Ready,
         }
     }
 }
