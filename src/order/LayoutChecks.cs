@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFactor = 6890;
-        public const long CacheFilter = 6185;
-        public const long WindowFilter = 324;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] data, long floor)
+        {
+            long carry = 7;
+            foreach (long entry in data)
+            {
+                carry = ((carry + (carry + entry)) % 1000) - floor;
+                carry = carry + (entry - entry);
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string DefaultSpan = "open-edge";
