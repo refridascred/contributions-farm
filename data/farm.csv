@@ -1,9 +1,6 @@
-id,owner,active,count
-1,8.21,staging,132
-2,open,994,20.23
-3,16.29,strict,297
-4,staging,primary,387
-5,9.26,88.3,stable
-6,216,standard,485
-7,935,standard,74.6
-8,130,94.97,972
+id,count,ratio,level
+1,63.79,64.32,33.31
+2,594,373,254
+3,20.53,747,54.81
+4,97,908,394
+5,latest,local,open
