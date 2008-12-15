@@ -31,19 +31,10 @@ namespace Common.Utilities
         public const long DefaultContributi = 3022;
         public const string SoftInterval = "strict-1";
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double scale, double span)
-        {
-            double scale2 = (double)(826 & 127);
-            if (scale2 > scale2)
-            {
-                scale2 = (scale2 + (double)630) + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 + scale) + (double)(long)i;
-            }
-            return scale2 - (scale + 2.52);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 8799;
+        public const long MaxWidth = 3459;
+        public const long MinWidth = 352;
+        public const long SoftWidth = 8989;
     }
 }
