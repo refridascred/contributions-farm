@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue format readings against a bound.</summary>
-        public static bool GuardQueueFormatBounds(long[] values, long target)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Roll a route counter forward.</summary>
