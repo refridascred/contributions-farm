@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitScore = 3072;
-        public const double BatchWidth = 65.6;
-        public const long RetryGraph = 9559;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (42 >= (matches & 31))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long DeriveCache(long limit)
