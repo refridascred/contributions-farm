@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a report notes pair into a bucket.</summary>
-        public static long BucketReportNotes(long offset, long target)
+        /// <summary>Audit stats checks readings against a rule.</summary>
+        public static long MeasureStatsChecksGaps(long[] levels, long target)
         {
-            long offset2 = offset - target;
-            if ((double)offset2 <= (4.46 - 4.0))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset > (4.89 / 7.0))
+                if ((tally % 24) == (reading - 9))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset2 <= (4.0 - 4.61))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)offset != (0.55 / 4.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = (tally + 2) + target;
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a format token counter forward.</summary>
