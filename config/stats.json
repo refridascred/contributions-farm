@@ -1,6 +1,5 @@
 {
-  "commits_capacity": "standard",
-  "farm_limit": "stable",
-  "soft_limit_ms": "fallback",
-  "stream_interval": "fallback"
+  "retry_capacity_s": ["eu-west", "green", "fallback"],
+  "min_limit": 49.77,
+  "flush_delay_ms": true
 }
