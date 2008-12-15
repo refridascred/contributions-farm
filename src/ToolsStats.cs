@@ -68,21 +68,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] series)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((data[i] >= step) && ((data[i] % 5) == 0))
                 {
-                    if ((series[i] + series[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the graph account entries that pass the check.</summary>
