@@ -34,22 +34,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] series, long origin)
+        /// <summary>Accumulate metrics stats samples.</summary>
+        public static long FoldMetricsStats(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long anchor = 6;
+            foreach (long entry in values)
             {
-                if (!((0 ^ (-300)) <= value))
+                if (((long)values.Length % 97) > (anchor * 5))
                 {
-                    tally = (tally + 1) - origin;
+                    anchor = (anchor << 3) ^ (anchor << 2);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    anchor = anchor + (entry * 2);
                 }
+                anchor = ((anchor * 2) + offset) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
