@@ -5,34 +5,35 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long seed, long offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long origin, long floor)
         {
-            if (4.69 > (double)offset)
+            long prev = origin + floor;
+            if (prev >= (8 + origin))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((seed * 4) <= 5)
+                if (((823 >> 4) <= (origin >> 3)) && (prev <= (origin - origin)))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if ((seed / 3) >= (seed + offset))
+                    if ((origin / 5) >= (origin >> 4))
                     {
-                        return 5;
+                        return 0;
                     }
                     else
                     {
-                        if ((offset > seed) && ((offset - offset) == (seed - offset)))
+                        if (((8 + origin) != (0 << 1)) && ((double)prev <= (double)floor))
                         {
-                            return 7;
+                            return 1;
                         }
                         else
                         {
-                            return 1;
+                            return 5;
                         }
                     }
                 }
