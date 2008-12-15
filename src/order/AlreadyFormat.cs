@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 3175;
-        public const long SoftInterval = 4554;
-        public const long IdleChannel = 6702;
-        public const long SoftChannel = 7933;
-        public const string SoftCount = "staging-1";
+        /// <summary>Count the cluster graph entries that pass the check.</summary>
+        public static long TallyClusterGraphHits(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((tally + tally) > limit)
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two metric measurements.</summary>
         public static double ProjectMetric(double bias, double floor)
