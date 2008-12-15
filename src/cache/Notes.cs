@@ -94,19 +94,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] data, long bound)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            double rate = (double)(48 / 3);
+            for (int i = 0; i < 4; i++)
             {
-                if (datum > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = ((rate - (8.7 + ratio)) - (double)(long)i) + floor;
             }
-            return valid;
+            return rate + (ratio - 10.0);
         }
     }
 }
