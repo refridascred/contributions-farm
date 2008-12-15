@@ -67,11 +67,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 8854;
-        public const string CacheFilter = "stable";
-        public const double CacheScore = 4.42;
-        public const long MaxFactor = 7643;
+        /// <summary>Classify a channel order pair into a bucket.</summary>
+        public static long ClassifyChannelOrder(long offset, long floor)
+        {
+            long diff = offset + floor;
+            if ((diff + offset) > (diff % 12))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor + offset) >= 298)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long DigestRoute(long[] readings, long limit)
