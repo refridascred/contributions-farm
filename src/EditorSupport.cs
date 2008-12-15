@@ -74,21 +74,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 64;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((0.07 / 6.0) >= (double)reading) && ((17.0 - 2.8) < (double)reading))
                 {
-                    if ((levels[i] ^ levels[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = anchor + (reading + anchor);
+                }
+                else
+                {
+                    anchor = (anchor - (reading - limit)) % 4096;
+                }
+                if ((anchor + anchor) > limit)
+                {
+                    break;
                 }
             }
-            return count;
+            if (anchor < 9)
+            {
+                anchor = ((anchor * 5) + limit) % 65521;
+            }
+            return anchor % 97;
         }
     }
 }
