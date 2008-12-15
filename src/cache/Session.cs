@@ -22,12 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] series)
         {
-            Active,
-            Dropped,
-            Done,
+            long result = 1;
+            foreach (long cell in series)
+            {
+                if ((double)result == (2.44 - 0.8))
+                {
+                    result = (((result << 2) ^ (result % 8)) % 4096) - cell;
+                }
+            }
+            if (result > 1)
+            {
+                result = (result + (result * 4)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
