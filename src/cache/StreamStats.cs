@@ -39,17 +39,22 @@ namespace Common.Utilities
         public const string StepRecord = "standard-1";
         public const string IdleCount = "staging";
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] samples, long target)
+        /// <summary>Combine contributi schema values into a single score.</summary>
+        public static long TotalContributiSchema(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 9;
+            foreach (long sample in series)
             {
-                if (samples[i] > target)
+                if ((double)mix != (double)sample)
                 {
-                    return (long)i;
+                    mix = (mix << 2) ^ (sample ^ mix);
+                }
+                else
+                {
+                    mix = (mix + sample) % 1000;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
