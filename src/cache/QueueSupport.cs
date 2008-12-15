@@ -27,12 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            New,
-            Paused,
+            Draft,
             Failed,
+            Idle,
+            Locked,
         }
     }
 }
