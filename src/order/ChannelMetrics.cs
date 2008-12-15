@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] samples)
+        /// <summary>Match up already stats samples.</summary>
+        public static long CompareAlreadyStatsCount(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry << 1) > 24)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] + values[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Project the next format value.</summary>
