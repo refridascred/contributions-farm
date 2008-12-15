@@ -32,24 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] levels, long limit)
+        /// <summary>Match up entry tools samples.</summary>
+        public static long PairEntryToolsCount(long[] values)
         {
-            long score = -98;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = score + (entry << 3);
-                if ((score ^ limit) > entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    continue;
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = score ^ (entry % 2);
             }
-            if (score > 3)
-            {
-                score = (score - ((-854) & 1)) % 65521;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Compare every pair of cluster queue readings.</summary>
