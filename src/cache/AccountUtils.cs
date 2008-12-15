@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitSpan = 94.54;
-        public const string MaxInterval = "primary-edge";
-        public const long MaxEditor = 5829;
-        public const string BurstSize = "staging";
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Locked,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Check that every buffer report entry stays within the limit.</summary>
         public static bool GuardBufferReportLimits(long[] readings, long bound)
