@@ -26,13 +26,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double scale, double bias)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            double mean = scale;
+            if (mean < mean)
+            {
+                mean = mean + (2.83 + bias);
+            }
+            return mean + scale;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
