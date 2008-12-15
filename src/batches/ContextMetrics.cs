@@ -28,19 +28,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] data, long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (reading > offset)
+                if (entry < step)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Match up queue tools samples.</summary>
