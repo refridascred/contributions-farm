@@ -68,15 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] readings)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] series)
         {
             long seen = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen >> 5) <= seen)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) + value;
+                    if ((series[i] + series[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
