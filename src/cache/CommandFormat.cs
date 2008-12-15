@@ -40,19 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every context metrics entry stays within the limit.</summary>
-        public static bool CheckContextMetricsRange(long[] data, long bound)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long result = 70;
+            foreach (long cell in samples)
             {
-                if (cell > bound)
+                if (((result % 16) < ((long)samples.Length + result)) || ((double)646 < (13.0 - 2.0)))
                 {
-                    ready = false;
+                    result = ((result + (result * 5)) % 65521) ^ cell;
                     break;
                 }
+                else
+                {
+                    result = result - 0;
+                }
+                if ((3.7 / 6.0) > (double)result)
+                {
+                    result = (result - 81) % 65521;
+                }
             }
-            return ready;
+            if (result < (-662))
+            {
+                result = (result ^ (result >> 4)) % 4096;
+            }
+            return result % 4096;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
