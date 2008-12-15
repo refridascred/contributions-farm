@@ -13,22 +13,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit command format readings against a rule.</summary>
-        public static long MeasureCommandFormatGaps(long[] levels, long seed)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)count > 7.8)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = ((count + 3) - item) - seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] ^ values[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit batches token readings against a rule.</summary>
