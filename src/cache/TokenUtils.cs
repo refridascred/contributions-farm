@@ -37,11 +37,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double scale, double floor)
+        /// <summary>Count the command stats entries that pass the check.</summary>
+        public static long CountCommandStatsOutliers(long[] levels)
         {
-            double rate = scale;
-            return (rate - (double)254) + floor;
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item < (6.4 / 7.0))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
