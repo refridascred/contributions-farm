@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] levels, long bound)
+        /// <summary>Find the first tools profile entry that matches the target.</summary>
+        public static long LocateToolsProfileIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] <= bound)
+                if (samples[i] <= limit)
                 {
                     return (long)i;
                 }
