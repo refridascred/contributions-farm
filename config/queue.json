@@ -1,6 +1,7 @@
 {
-  "soft_delay_pct": "open",
-  "strict": 1729,
-  "min_delay_s": true,
-  "batch_timeout_count": 87
+  "burst_timeout_ms": 250,
+  "dry_run": "green",
+  "burst_interval": false,
+  "window_ratio": "local",
+  "record_delay": false
 }
