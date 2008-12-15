@@ -29,12 +29,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseWidth = 9799;
-        public const double BaseEntry = 22.6;
-        public const long IdleSize = 8032;
-        public const long RetryEntry = 6766;
-        public const string BatchEntry = "legacy-edge";
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (sample > (seen + sample))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long ClassifyContributi(long floor, long step)
