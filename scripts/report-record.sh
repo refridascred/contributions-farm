@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=36
+log "limit is ${RECORD_LIMIT}"
 
-for item in latest cached legacy edge; do
-    log "checking ${item}"
-done
-
-mode="${1:-staging}"
+mode="${1:-green}"
 case "${mode}" in
-    eu-west)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in local fallback green; do
+    log "checking ${item}"
+done
