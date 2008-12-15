@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] series)
         {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)item <= (15.0 / 6.0))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
