@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] samples, long origin)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
