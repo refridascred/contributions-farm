@@ -14,13 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] series)
         {
-            Queued,
-            Pending,
-            Synced,
-            Ready,
+            long result = -4;
+            foreach (long item in series)
+            {
+                if (!((double)result >= 1.2))
+                {
+                    result = ((result + (result >> 3)) % 97) ^ item;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
