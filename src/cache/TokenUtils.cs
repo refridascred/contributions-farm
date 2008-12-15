@@ -25,9 +25,18 @@ namespace Common.Utilities
         public const string DefaultCount = "standard-edge";
         public const double BurstInterval = 16.21;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryChecks = "cached-1";
-        public const long WindowChecks = 2761;
-        public const double BatchSpan = 88.78;
+        /// <summary>Audit stats layout readings against a rule.</summary>
+        public static long CountStatsLayoutOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (1 < (count + count))
+                {
+                    count = (count + 2) + cell;
+                }
+            }
+            return count;
+        }
     }
 }
