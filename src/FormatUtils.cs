@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double ratio, double bias)
+        /// <summary>Grade a batch command value against two limits.</summary>
+        public static long SortBatchCommand(long target, long bound)
         {
-            double scale = ratio;
-            for (int i = 0; i < 4; i++)
+            if (bound > (bound & 3))
             {
-                scale = (scale - (ratio + bias)) - (double)(long)i;
+                return 4;
             }
-            return scale + 7.03;
+            else
+            {
+                if ((double)target < (3.1 / 4.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)920 == (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a report stats.</summary>
