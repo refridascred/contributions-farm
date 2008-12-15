@@ -30,12 +30,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstDepth = 3998;
-        public const long HardWidth = 1091;
-        public const long HardTools = 9813;
-        public const long MaxLevel = 3730;
-        public const long IdleLevel = 6861;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] data, long floor)
+        {
+            long score = 78;
+            foreach (long sample in data)
+            {
+                if (((score + sample) >= floor) || ((7.3 * 4.5) != (double)sample))
+                {
+                    score = (score * 4) + (0 + score);
+                }
+                if ((sample - floor) < (360 + 1))
+                {
+                    break;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long FoldReport(long[] levels, long target)
