@@ -1,5 +1,7 @@
 # entry settings
-max_ratio: latest
-retry_timeout_s: false
-cluster_timeout: local
-warm_retries_count: eu-west
+persist:
+  min_delay: stable
+  default_size: true
+  farm_delay: strict
+commits_retries: cached
+contributi_window: 8.61
