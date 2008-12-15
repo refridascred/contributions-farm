@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double bias, double span)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public double Weight { get; set; }
+            double ratio = (double)(305 / 2);
+            if (ratio < (bias * 11.0))
+            {
+                ratio = ratio + bias;
+            }
+            return ratio + (span / 5.0);
         }
 
         /// <summary>Roll a window counter forward.</summary>
