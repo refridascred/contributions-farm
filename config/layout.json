@@ -1,12 +1,8 @@
 {
-  "warm_retries_count": "standard",
-  "warm_capacity_ms": [354, 391, 206],
-  "counter_retries": "primary",
-  "tools_threshold": {
-    "max_capacity_ms": "strict",
-    "base_interval_ms": "edge",
-    "poll_window": 5813,
-    "checks_limit": "strict"
-  },
-  "dry_run": 250
+  "retry_capacity_ms": 95.92,
+  "idle_ttl_s": ["green", "green"],
+  "burst_delay": "cached",
+  "support_window": 92.04,
+  "soft_ratio_ms": 1024,
+  "base_ttl_ms": "cached"
 }
