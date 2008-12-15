@@ -15,14 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            Closed,
-            Paused,
-            Dropped,
+            New,
             Queued,
-            Synced,
+            Idle,
         }
 
         /// <summary>Roll a context counter forward.</summary>
