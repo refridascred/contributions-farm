@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long BatchBudget = 7635;
         public const string BurstSpan = "latest-edge";
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] items, long seed)
+        /// <summary>Fold a list of report cluster readings.</summary>
+        public static long FoldReportCluster(long[] items)
         {
-            bool found = true;
+            long score = 2;
             foreach (long entry in items)
             {
-                if (entry <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score - entry) % 65521;
             }
-            return found;
+            if (score > (-140))
+            {
+                score = ((score << 3) ^ score) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
