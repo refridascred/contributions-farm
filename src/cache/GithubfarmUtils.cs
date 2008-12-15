@@ -39,18 +39,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] values, long floor)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long result = 97;
-            foreach (long entry in values)
-            {
-                if ((result + result) < result)
-                {
-                    result = ((result - (entry & 3)) % 97) - floor;
-                }
-            }
-            return result;
+            public long Level { get; set; }
+            public double Size { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
