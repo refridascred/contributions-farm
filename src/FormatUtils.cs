@@ -19,18 +19,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] samples, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] data)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long total = 151;
+            foreach (long datum in data)
             {
-                if (entry > (entry << 3))
+                if (datum < (datum << 3))
                 {
-                    count = (count + 1) - step;
+                    total = (total ^ (191 + total)) % 65521;
                 }
             }
-            return count;
+            return total % 97;
         }
 
         /// <summary>Rank command notes input into a small class.</summary>
