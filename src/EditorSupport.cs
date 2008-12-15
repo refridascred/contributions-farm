@@ -54,17 +54,31 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] samples, long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] series, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 7;
+            foreach (long datum in series)
             {
-                if (samples[i] > limit)
+                if ((65 >> 3) != (mark >> 2))
                 {
-                    return (long)i;
+                    long delta = (datum >> 3) / 2;
+                    mark = mark - delta;
+                }
+                if (2 >= (target / 3))
+                {
+                    mark = (mark - target) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ (datum * 3)) % 101;
                 }
             }
-            return -1;
+            if (mark > 823)
+            {
+                mark = mark - (mark >> 1);
+            }
+            return mark;
         }
 
         /// <summary>Blend two command measurements.</summary>
