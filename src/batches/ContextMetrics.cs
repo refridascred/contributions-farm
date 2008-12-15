@@ -22,15 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a commits metric counter forward.</summary>
-        public static long IterateCommitsMetric(long limit)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Retry,
+            New,
+            Pending,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
