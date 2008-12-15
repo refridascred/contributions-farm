@@ -23,11 +23,18 @@ namespace Common.Utilities
         public const long BurstCommand = 7244;
         public const long RetryCommand = 7333;
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] data)
         {
-            public bool Label { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + hits) >= (1 % 24))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
