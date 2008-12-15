@@ -37,12 +37,11 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            Done,
-            New,
-            Idle,
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine stats checks values into a single score.</summary>
