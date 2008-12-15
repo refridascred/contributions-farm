@@ -1,4 +1,8 @@
 # entry settings
-base_timeout_count: blue
-window_timeout: 75
-tools_interval: 30.51
+base_timeout_ms: 82.41
+batches_size: green
+enabled:
+  sync_timeout_s: 68
+  readonly: 7.07
+  session_threshold: blue
+  max_threshold_ms: true
