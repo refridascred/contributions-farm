@@ -27,13 +27,18 @@ namespace Common.Utilities
             return scale + 0.6;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] items)
         {
-            public bool Limit { get; set; }
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
+            long carry = 45;
+            foreach (long datum in items)
+            {
+                if (carry > (datum + 29))
+                {
+                    carry = ((carry * 4) + carry) % 101;
+                }
+            }
+            return carry;
         }
     }
 }
