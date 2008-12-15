@@ -13,18 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] data)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((reading / 7) < matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the farm mode values.</summary>
