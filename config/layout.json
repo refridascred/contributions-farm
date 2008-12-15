@@ -1,5 +1,11 @@
 {
-  "contributi_threshold": 9309,
-  "warm_ratio_count": ["edge", "fallback", "latest"],
-  "poll_delay": true
+  "flush_threshold": ["local", "eu-west", "latest", "stable"],
+  "hard_ttl_s": {
+    "base_depth_count": [59, 232, 95],
+    "audit": false,
+    "hard_ttl_s": 3.3,
+    "retry_capacity_ms": ["legacy", "eu-west", "blue"],
+    "poll_interval": 3
+  },
+  "burst_threshold": 7015
 }
