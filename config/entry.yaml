@@ -1,8 +1,7 @@
 # entry settings
-base_timeout_ms: 82.41
-batches_size: green
-enabled:
-  sync_timeout_s: 68
-  readonly: 7.07
-  session_threshold: blue
-  max_threshold_ms: true
+dry_run: 3.3
+channel_ttl: 30
+max_interval: true
+default_threshold_pct: 9814
+burst_timeout_ms: 25
+sync_interval: 71.81
