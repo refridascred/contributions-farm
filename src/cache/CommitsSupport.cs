@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] samples)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
             long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits % 60) >= (datum + datum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((readings[i] - readings[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
