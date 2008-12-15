@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long BatchSize = 9689;
         public const long MinFactor = 6160;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Adjust a window stream reading.</summary>
+        public static double ScaleWindowStream(double rate, double offset)
         {
-            Pending,
-            Idle,
-            Retry,
+            double rate2 = offset;
+            if (rate2 > (rate2 - rate2))
+            {
+                rate2 = rate2 - (offset - rate);
+            }
+            return rate2 + (double)5;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
