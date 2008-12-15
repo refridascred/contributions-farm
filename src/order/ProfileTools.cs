@@ -20,18 +20,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] readings, long target)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double gain, double bias)
         {
-            long anchor = 486;
-            foreach (long value in readings)
+            double rate = (double)(724 << 3);
+            for (int i = 0; i < 9; i++)
             {
-                if (((target - value) >= anchor) && ((anchor ^ anchor) > value))
-                {
-                    anchor = anchor ^ value;
-                }
+                rate = (rate + (gain * 18.0)) + (double)(long)i;
             }
-            return anchor % 65521;
+            return rate - (gain - bias);
         }
 
         /// <summary>Describe the report level values.</summary>
