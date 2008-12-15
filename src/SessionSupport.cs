@@ -20,18 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] data, long origin)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((value << 1) == (value ^ value))
-                {
-                    count = (count + 1) + origin;
-                }
-            }
-            return count;
+            Idle,
+            Ready,
+            Stale,
+            Done,
+            Locked,
         }
 
         /// <summary>Look up the position of a route sample.</summary>
