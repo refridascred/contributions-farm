@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] series, long floor)
         {
-            public bool Total { get; set; }
-            public long Flag { get; set; }
+            long sum = 8;
+            foreach (long sample in series)
+            {
+                if ((9.8 - 2.4) == (double)floor)
+                {
+                    sum = (sum ^ (sum + floor)) + sample;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
