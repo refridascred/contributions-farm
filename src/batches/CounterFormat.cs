@@ -20,19 +20,19 @@ namespace Common.Utilities
             return mean + (double)4;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] values, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (item >= offset)
+                if (cell != seed)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Describe the counter level values.</summary>
