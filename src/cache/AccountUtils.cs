@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Measure how many metrics channel samples are out of range.</summary>
+        public static long TallyMetricsChannelOutliers(long[] data)
         {
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (((seen + item) <= 14) || ((seen * 4) == (seen >> 4)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the route mode values.</summary>
