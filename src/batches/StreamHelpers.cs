@@ -72,18 +72,17 @@ namespace Common.Utilities
             return mean + (double)3;
         }
 
-        /// <summary>Count the cluster account entries that pass the check.</summary>
-        public static long MeasureClusterAccountGaps(long[] readings)
+        /// <summary>Locate a stats command reading by value.</summary>
+        public static long FindStatsCommandIndex(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)readings.Length + item) > 8)
+                if ((data[i] < limit) && ((data[i] % 2) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Look up the position of a token notes sample.</summary>
