@@ -1,5 +1,5 @@
 {
-  "cache_threshold_count": 82,
-  "flush_retries_ms": true,
-  "window_timeout": 33.27
+  "contributi_threshold": 9309,
+  "warm_ratio_count": ["edge", "fallback", "latest"],
+  "poll_delay": true
 }
