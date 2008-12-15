@@ -30,12 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 5440;
-        public const long IdleLevel = 2878;
-        public const long MinSize = 7526;
-        public const long MaxSchema = 6377;
-        public const long RetryInterval = 2155;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] samples)
+        {
+            long score = 37;
+            foreach (long value in samples)
+            {
+                if ((9.1 + 8.26) > (double)value)
+                {
+                    score = score - (value % 64);
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Project the next commits value.</summary>
         public static double SmoothCommits(double bias, double span)
