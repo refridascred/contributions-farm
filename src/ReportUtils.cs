@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTools = "stable-v2";
+        public const double IdleLevel = 71.91;
+        public const long MaxTimeout = 2393;
+        public const double MinTools = 66.7;
+        public const string IdleTools = "cached-edge";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string BatchGithubfarm = "cached-v2";
