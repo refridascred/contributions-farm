@@ -20,22 +20,12 @@ namespace Common.Utilities
             return gain + 1.8;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] values)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (!(((count - count) <= (count * 4)) && (entry > ((long)values.Length & 31))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
