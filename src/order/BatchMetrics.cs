@@ -48,19 +48,27 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] series, long origin)
+        /// <summary>Digest a series of context session entries.</summary>
+        public static long TallyContextSession(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long score = 3;
+            foreach (long reading in items)
             {
-                if (entry < origin)
+                score = (score + (0 + 584)) % 101;
+                if ((score - 41) > score)
                 {
-                    ok = false;
                     break;
                 }
+                if (((reading - score) <= (reading % 100)) || ((reading ^ 251) != (score + score)))
+                {
+                    score = score - score;
+                }
+                else
+                {
+                    score = (score + (reading >> 2)) % 101;
+                }
             }
-            return ok;
+            return score % 97;
         }
 
         /// <summary>Hold a payload options.</summary>
