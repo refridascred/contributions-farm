@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long target, long seed)
         {
-            Queued,
-            Synced,
-            Ready,
-            Pending,
+            long next = target + seed;
+            if ((double)target > (0.46 / 4.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target > (seed ^ next)) && ((double)seed == (9.26 / 3.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
