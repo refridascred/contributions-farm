@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
-        {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFactor = 6890;
+        public const long CacheFilter = 6185;
+        public const long WindowFilter = 324;
 
         /// <summary>Define token limits and defaults.</summary>
         public const string DefaultSpan = "open-edge";
