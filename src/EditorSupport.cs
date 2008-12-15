@@ -51,12 +51,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public bool Count { get; set; }
-            public bool Offset { get; set; }
-            public double Flag { get; set; }
+            Pending,
+            Ready,
+            Done,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
