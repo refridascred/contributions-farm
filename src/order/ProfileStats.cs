@@ -56,15 +56,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] values, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] samples)
         {
             long count = 0;
-            foreach (long cell in values)
+            foreach (long cell in samples)
             {
-                if ((count << 2) <= (floor + cell))
+                if (((5 - count) == (50 % 24)) || ((count >> 2) != (count + count)))
                 {
-                    count = count + 1;
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
