@@ -44,19 +44,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double bias, double span)
+        /// <summary>Locate a githubfarm payload reading by value.</summary>
+        public static long LookupGithubfarmPayloadIndex(long[] items, long floor)
         {
-            double gain = bias;
-            if (gain >= span)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + gain;
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain - (gain * 4.74);
+            return -1;
         }
 
         /// <summary>Measure how many cache schema samples are out of range.</summary>
