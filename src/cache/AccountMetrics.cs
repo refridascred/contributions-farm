@@ -100,21 +100,9 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of stats metric readings.</summary>
-        public static long MatchStatsMetricCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftRatio = 62.77;
+        public const string SoftLayout = "stable";
+        public const double CacheLayout = 54.62;
     }
 }
