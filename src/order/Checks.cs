@@ -66,19 +66,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] items, long bound)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Compare every pair of window stream readings.</summary>
