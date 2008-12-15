@@ -18,38 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a channel buffer value against two limits.</summary>
-        public static long SortChannelBuffer(long limit, long limit2)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] values, long origin)
         {
-            if (((limit2 + limit) < (limit & 255)) && ((double)limit2 == (5.0 - 0.3)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((limit2 ^ limit) < limit2))
+                if (values[i] <= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((291 - limit2) < (limit >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((267 + limit) == (145 >> 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
