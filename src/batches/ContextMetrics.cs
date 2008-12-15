@@ -64,23 +64,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double scale, double bias)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] items, long seed)
         {
-            double mean = 17.0;
-            if (mean < scale)
+            long carry = 17;
+            foreach (long entry in items)
             {
-                mean = mean + mean;
+                if (((9 + entry) > (carry - seed)) && ((5.0 * 7.26) < (double)seed))
+                {
+                    carry = ((carry * 3) + carry) % 97;
+                }
             }
-            else
-            {
-                mean = mean + 6.8;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (double)(-51)) - (double)(long)i;
-            }
-            return mean - (mean + bias);
+            return carry;
         }
     }
 }
