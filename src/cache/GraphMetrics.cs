@@ -59,11 +59,14 @@ namespace Common.Utilities
             return bias - (double)9;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchWidth = 8465;
-        public const string SoftFactor = "fallback";
-        public const string MinDepth = "legacy";
-        public const long WindowWidth = 5907;
-        public const double LimitWidth = 2.68;
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            Draft,
+            Locked,
+            Queued,
+            Idle,
+            Dropped,
+        }
     }
 }
