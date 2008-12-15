@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already checks entries that pass the check.</summary>
-        public static long AuditAlreadyChecksGaps(long[] levels)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((1.0 + 19.0) == (double)cell) && (((hits + hits) < hits) || ((double)cell >= (12.0 / 2.0))))
+                if (series[i] > step)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
