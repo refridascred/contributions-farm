@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long origin, long seed)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            if ((2.0 + 2.07) >= (double)seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin >= (seed / 9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Queued,
+            Synced,
+            Ready,
+            Pending,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
