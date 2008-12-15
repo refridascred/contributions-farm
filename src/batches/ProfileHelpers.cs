@@ -84,17 +84,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first already context entry that matches the target.</summary>
-        public static long SeekAlreadyContextIndex(long[] items, long limit)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Dropped,
+            Failed,
+            Paused,
         }
     }
 }
