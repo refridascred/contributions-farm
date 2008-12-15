@@ -1,12 +1,6 @@
 {
-  "queue_size": 2055,
-  "checks_interval": ["fallback", "edge", "cached", "fallback"],
-  "enabled": {
-    "idle_timeout_pct": "staging",
-    "soft_size_count": "blue",
-    "default_ttl_pct": "primary",
-    "warm_retries_ms": "cached"
-  },
-  "warm_interval_count": false,
-  "batch_limit": false
+  "soft_delay_pct": "open",
+  "strict": 1729,
+  "min_delay_s": true,
+  "batch_timeout_count": 87
 }
