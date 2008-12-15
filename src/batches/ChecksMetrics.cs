@@ -31,19 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] samples)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] levels, long floor)
         {
-            long total = 572;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (((total << 2) ^ 89) % 101) ^ entry;
+                if ((levels[i] == floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < 99)
-            {
-                total = ((total << 2) ^ (total - total)) % 101;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
