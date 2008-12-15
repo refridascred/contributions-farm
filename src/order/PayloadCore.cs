@@ -50,17 +50,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = (acc - (acc + 34)) % 1000;
-                acc = acc + (acc + (long)i);
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Draft,
+            Synced,
+            Ready,
+            Active,
         }
     }
 }
