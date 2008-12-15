@@ -57,15 +57,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double ratio, double floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] samples, long limit)
         {
-            double scale = (double)(84 & 1);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = ((scale - (double)(long)i) - ratio) + floor;
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return scale - (0.67 / 5.0);
+            return -1;
         }
     }
 }
