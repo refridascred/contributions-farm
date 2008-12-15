@@ -33,18 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] readings, long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin <= (datum / 7)) || ((origin % 7) <= datum))
+                if ((levels[i] <= target) && ((levels[i] % 2) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank farm metrics input into a small class.</summary>
