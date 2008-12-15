@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next profile token value.</summary>
-        public static double SmoothProfileToken(double ratio, double floor)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double bias, double offset)
         {
-            double gain = ratio;
-            if (gain < ratio)
+            double drift = (offset * 6.5) / 5.0;
+            if (drift < bias)
             {
-                gain = gain + floor;
+                drift = drift - (double)(-59);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                gain = gain + ratio;
+                drift = (drift + bias) + (double)(long)i;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (ratio * 1.88)) - (double)(long)i;
-            }
-            return gain - gain;
+            return drift - 9.0;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
