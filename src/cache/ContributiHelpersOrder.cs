@@ -45,15 +45,21 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long origin)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
