@@ -27,27 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of filter batch readings.</summary>
-        public static long WeighFilterBatch(long[] values, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] series, long bound)
         {
-            long state = 9;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                state = ((state << 3) ^ (state / 4)) % 4096;
-                if ((offset & 127) != (cell + state))
+                if (((313 * 2) >= (bound - sample)) && ((matches >> 5) == (bound + (-77))))
                 {
-                    state = (state - cell) % 4096;
-                }
-                if (!((cell + state) != (offset - cell)))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            if (state < 35)
-            {
-                state = state + (state + offset);
-            }
-            return state;
+            return matches;
         }
     }
 }
