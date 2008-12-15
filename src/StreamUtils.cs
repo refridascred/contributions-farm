@@ -41,12 +41,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] levels)
         {
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            long acc = 88;
+            foreach (long entry in levels)
+            {
+                acc = acc - (520 << 3);
+                acc = (acc * 3) + (entry << 3);
+            }
+            if (acc > 75)
+            {
+                acc = acc - (77 + acc);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Roll a window counter forward.</summary>
