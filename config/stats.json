@@ -1,9 +1,8 @@
 {
-  "notes_threshold": false,
-  "max_retries_count": {
-    "default_depth_s": 33,
-    "strict": 33,
-    "counter_delay": 30
-  },
-  "strict": "staging"
+  "batch_delay_ms": true,
+  "flush_ttl": false,
+  "base_interval": 30,
+  "persist": "local",
+  "audit": 18.8,
+  "burst_depth_count": "blue"
 }
