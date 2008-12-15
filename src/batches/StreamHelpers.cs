@@ -62,17 +62,14 @@ namespace Common.Utilities
             return mean + (double)3;
         }
 
-        /// <summary>Locate a stats command reading by value.</summary>
-        public static long FindStatsCommandIndex(long[] data, long limit)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Done,
+            Active,
+            Retry,
+            Closed,
         }
 
         /// <summary>Look up the position of a token notes sample.</summary>
