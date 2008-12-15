@@ -42,12 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftBudget = 9579;
-        public const long CacheInterval = 6602;
-        public const long BurstRecord = 4610;
-        public const string BurstDepth = "latest-v2";
-        public const long BatchTimeout = 7324;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryScore = 64.46;
+        public const long IdleLevel = 8233;
+        public const long DefaultProfile = 7210;
+        public const double BatchProfile = 97.66;
+        public const long HardProfile = 2277;
 
         /// <summary>Compare every pair of route layout readings.</summary>
         public static long MatchRouteLayoutCount(long[] values)
