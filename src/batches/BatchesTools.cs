@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] samples)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long origin, long target)
         {
-            long acc = 6;
-            foreach (long reading in samples)
+            if ((double)931 > (double)target)
             {
-                acc = (acc * 4) + (acc ^ reading);
-                if ((acc ^ 22) <= reading)
+                return 8;
+            }
+            else
+            {
+                if ((target - origin) > target)
                 {
-                    acc = ((acc * 3) + acc) % 101;
+                    return 6;
                 }
                 else
                 {
-                    acc = acc + reading;
+                    if ((origin <= (target * 4)) && ((target - target) <= (26 * 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (acc > 7)
-            {
-                acc = ((acc << 2) ^ 834) % 101;
-            }
-            return acc % 4096;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
