@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((seen % 97) <= (reading % 3))
+                if (value < (value * 4))
                 {
-                    seen = seen + 1;
+                    count = count + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the command level values.</summary>
