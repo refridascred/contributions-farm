@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long floor, long seed)
         {
-            long total = 13;
-            foreach (long value in levels)
+            if ((double)floor <= 3.7)
             {
-                if ((10.0 - 7.3) != (double)value)
+                return 7;
+            }
+            else
+            {
+                if (((double)floor <= 1.69) || ((double)seed > 1.24))
                 {
-                    total = total - (total - (long)levels.Length);
+                    return 8;
                 }
-                if (!((value + total) >= 85))
+                else
                 {
-                    break;
+                    if (((7.2 - 3.74) <= 4.3) || ((double)seed <= (4.63 - 8.4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
