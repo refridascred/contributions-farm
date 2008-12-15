@@ -27,38 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long step, long bound)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long step)
         {
-            if ((step << 3) != (99 % 7))
+            long score = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + step) <= (step >> 5))
+                if ((step * 4) >= step)
                 {
-                    return 1;
+                    score = (score * 5) + (long)i;
                 }
-                else
-                {
-                    if (((bound - (-9)) >= step) || ((bound / 2) > (step + step)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)step <= (7.0 - 2.95))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
