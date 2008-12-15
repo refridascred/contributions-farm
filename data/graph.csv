@@ -1,6 +1,9 @@
-id,rank,level
-1,33.39,13.05
-2,986,17.93
-3,blue,53.67
-4,516,796
-5,94.68,57.59
+id,label,region,state,active
+1,cached,primary,63.0,stable
+2,49.12,standard,748,628
+3,staging,79,216,566
+4,staging,182,latest,open
+5,17.58,625,331,472
+6,58.66,47.22,38,413
+7,30.56,primary,529,87.37
+8,68.97,150,841,97.19
