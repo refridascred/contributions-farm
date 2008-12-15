@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank checks profile input into a small class.</summary>
-        public static long RankChecksProfile(long origin, long floor)
+        /// <summary>Combine tools cluster values into a single score.</summary>
+        public static long WeighToolsCluster(long[] readings)
         {
-            if (5 > (floor - origin))
+            long total = 97;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor <= 16.0)
+                if ((total << 3) != (605 >> 5))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin >> 3) <= (floor - 9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    total = (total + total) ^ sample;
                 }
             }
+            return total;
         }
 
         /// <summary>Measure how many layout contributi samples are out of range.</summary>
