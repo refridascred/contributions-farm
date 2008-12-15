@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double weight, double bias)
-        {
-            double drift = (bias - bias) / 4.0;
-            return drift - (bias + weight);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepScore = 87.42;
+        public const long CacheFactor = 4141;
+        public const long WindowPayload = 5524;
+        public const double BaseCount = 49.09;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long ScoreMetric(long[] levels, long origin)
