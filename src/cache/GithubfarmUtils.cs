@@ -23,18 +23,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] levels, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (seen < (24 ^ offset))
+                if ((tally - datum) >= tally)
                 {
-                    seen = (seen + 3) - entry;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
