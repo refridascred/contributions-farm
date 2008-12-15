@@ -42,19 +42,38 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine stats checks values into a single score.</summary>
-        public static long TotalStatsChecks(long[] data, long origin)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long origin, long offset)
         {
-            long result = 705;
-            foreach (long entry in data)
+            if ((8.44 + 20.0) < (double)offset)
             {
-                if (origin > (944 - entry))
-                {
-                    result = ((result * 5) + (result + result)) % 1000;
-                }
-                result = result + (origin ^ result);
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((origin & 7) > (origin - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((4 * 5) > offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((offset - offset) != (origin / 4)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
