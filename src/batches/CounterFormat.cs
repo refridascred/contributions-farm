@@ -34,11 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheBuffer = "fallback";
-        public const long IdleBuffer = 9084;
-        public const string WindowSize = "latest-edge";
-        public const long CacheWidth = 415;
-        public const long WindowBuffer = 9303;
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
