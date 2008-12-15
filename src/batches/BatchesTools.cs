@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 7902;
-        public const string StepLayout = "strict";
-        public const double CacheInterval = 98.8;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] samples)
+        {
+            long acc = 6;
+            foreach (long reading in samples)
+            {
+                acc = (acc * 4) + (acc ^ reading);
+                if ((acc ^ 22) <= reading)
+                {
+                    acc = ((acc * 3) + acc) % 101;
+                }
+                else
+                {
+                    acc = acc + reading;
+                }
+            }
+            if (acc > 7)
+            {
+                acc = ((acc << 2) ^ 834) % 101;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long DeriveStats(long offset)
