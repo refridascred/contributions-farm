@@ -22,22 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long limit)
         {
-            long result = 1;
-            foreach (long cell in series)
+            long score = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)result == (2.44 - 0.8))
+                if (!((score % 100) < (score + score)))
                 {
-                    result = (((result << 2) ^ (result % 8)) % 4096) - cell;
+                    score = (score * 4) + ((-31) & 3);
                 }
+                score = (score + limit) % 4096;
+                score = ((score * 5) + (long)i) % 97;
             }
-            if (result > 1)
-            {
-                result = (result + (result * 4)) % 65521;
-            }
-            return result;
+            return score;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
