@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long offset, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] data)
         {
-            if ((double)floor <= (8.2 * 6.0))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor / 8) <= (floor * 3))
+                if ((380 + tally) > datum)
                 {
-                    return 6;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 7;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every githubfarm stats entry stays within the limit.</summary>
