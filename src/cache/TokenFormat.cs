@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] series)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long target, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = target + offset;
+            if (((offset - target) < (offset * 5)) && ((0.37 + 8.21) <= (double)span))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((offset - target) >= ((-443) & 255)))
                 {
-                    if ((series[i] ^ series[j]) < 18)
+                    return 3;
+                }
+                else
+                {
+                    if (((target + 5) <= offset) || (offset >= (span % 12)))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((-3) ^ offset) <= (offset / 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next account value.</summary>
