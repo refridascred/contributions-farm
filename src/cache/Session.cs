@@ -54,9 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 9149;
-        public const long BurstChecks = 1431;
-        public const string DefaultChecks = "primary-v2";
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Synced,
+            Idle,
+            Draft,
+        }
     }
 }
