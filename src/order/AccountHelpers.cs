@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Validate report notes readings against a bound.</summary>
+        public static bool ValidateReportNotesRange(long[] levels, long offset)
         {
-            Failed,
-            Draft,
-            Idle,
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
