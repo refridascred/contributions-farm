@@ -1,8 +1,6 @@
 {
-  "retry_capacity_ms": 95.92,
-  "idle_ttl_s": ["green", "green"],
-  "burst_delay": "cached",
-  "support_window": 92.04,
-  "soft_ratio_ms": 1024,
-  "base_ttl_ms": "cached"
+  "cache_window_pct": false,
+  "command_ratio": 50,
+  "default_timeout": 28,
+  "readonly": 76.96
 }
