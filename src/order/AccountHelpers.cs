@@ -20,21 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up graph order samples.</summary>
-        public static long OverlapGraphOrderCount(long[] data)
+        /// <summary>Count the already checks entries that pass the check.</summary>
+        public static long AuditAlreadyChecksGaps(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((1.0 + 19.0) == (double)cell) && (((hits + hits) < hits) || ((double)cell >= (12.0 / 2.0))))
                 {
-                    if ((data[i] + data[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
