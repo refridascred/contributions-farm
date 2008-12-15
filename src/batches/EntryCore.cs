@@ -43,18 +43,21 @@ namespace Common.Utilities
         public const long LimitGraph = 5373;
         public const double BatchBudget = 62.85;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] levels, long seed)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((937 / 3) < seed))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) ^ cell;
+                    if ((values[i] + values[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
