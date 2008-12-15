@@ -1,12 +1,5 @@
 {
-  "compress": "staging",
-  "sync_ratio": {
-    "layout_ttl": 8588,
-    "window_capacity": 100,
-    "warm_depth_count": "primary",
-    "hard_delay_ms": "edge"
-  },
-  "sync_window": [102, 112, 380],
-  "route_ttl": 77.56,
-  "checks_depth": 72.67
+  "audit": 769,
+  "warm_limit": 67,
+  "cache_capacity": "primary"
 }
