@@ -28,19 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] samples, long target)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a contributi header.</summary>
