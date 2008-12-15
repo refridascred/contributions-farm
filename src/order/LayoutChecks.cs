@@ -31,20 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every notes farm entry stays within the limit.</summary>
-        public static bool VerifyNotesFarmRange(long[] items, long bound)
-        {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 3407;
+        public const long StepLevel = 3972;
+        public const double BatchSpan = 80.11;
+        public const long StepTimeout = 3148;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string BatchFactor = "latest-v2";
