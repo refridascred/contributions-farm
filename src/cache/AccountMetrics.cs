@@ -38,21 +38,13 @@ namespace Common.Utilities
             return mean + (double)42;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Failed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Hold a format summary.</summary>
