@@ -31,16 +31,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long seed)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum << 2) ^ ((long)i + seed);
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
     }
 }
