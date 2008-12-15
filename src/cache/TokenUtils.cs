@@ -20,18 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] series, long floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((floor + floor) == ((long)series.Length + (long)series.Length))
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
+            Idle,
+            Retry,
+            Paused,
+            Done,
         }
 
         /// <summary>Hold a session options.</summary>
