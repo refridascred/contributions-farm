@@ -30,21 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Validate already account readings against a bound.</summary>
+        public static bool VerifyAlreadyAccountBounds(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum <= origin)
                 {
-                    if ((samples[i] - samples[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
