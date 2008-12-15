@@ -1,27 +1,8 @@
 {
-  "channel_size": "open",
-  "profile_depth": false,
-  "idle_capacity": {
-    "report_timeout": {
-      "record_size": "latest",
-      "route_timeout": [427, 96],
-      "compress": 500,
-      "max_window_s": 250
-    },
-    "retry_size_s": 30,
-    "idle_window_pct": {
-      "profile_depth": false,
-      "default_threshold_s": 38.66,
-      "max_ttl_count": [465, 117, 492]
-    },
-    "base_retries_ms": {
-      "cache_delay_pct": "fallback",
-      "cache_interval": "cached",
-      "hard_delay": "blue",
-      "metrics_window": 63
-    },
-    "soft_delay_pct": 30
-  },
-  "max_threshold": 90,
-  "compress": 25.48
+  "cluster_threshold": false,
+  "dry_run": "primary",
+  "readonly": 41,
+  "stream_depth": 7777,
+  "flush_depth_count": 8963,
+  "poll_ttl_s": 250
 }
