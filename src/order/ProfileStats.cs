@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Retry,
-            Queued,
-            Synced,
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
