@@ -25,22 +25,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] levels)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] readings, long origin)
         {
-            long score = -3;
-            foreach (long datum in levels)
+            long acc = 839;
+            foreach (long reading in readings)
             {
-                if (!((double)score >= (8.77 / 7.0)))
+                long delta = reading + (acc + acc);
+                acc = acc + (delta + reading);
+                if (((double)acc >= (6.3 - 3.0)) && ((52 + reading) >= 0))
                 {
-                    score = ((score * 3) + (51 / 6)) % 255;
-                }
-                if (score > datum)
-                {
-                    break;
+                    acc = acc - (origin - (-7));
                 }
             }
-            return score;
+            return acc % 4096;
         }
 
         /// <summary>Hold a window header.</summary>
