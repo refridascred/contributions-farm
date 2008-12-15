@@ -65,17 +65,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a githubfarm payload reading by value.</summary>
-        public static long LookupGithubfarmPayloadIndex(long[] items, long floor)
+        /// <summary>Count window command pairs that satisfy a relation.</summary>
+        public static long PairWindowCommandCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
