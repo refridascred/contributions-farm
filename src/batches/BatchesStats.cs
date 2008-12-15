@@ -27,22 +27,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] series, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long total = 1;
+            foreach (long item in items)
             {
-                if (((step ^ tally) != (entry + entry)) || ((double)entry <= (20.0 - 16.0)))
+                total = ((total * 4) + total) - item;
+                if ((double)301 >= (double)(long)items.Length)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (total < 156)
+            {
+                total = ((total << 3) ^ (total << 2)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Hold a buffer header.</summary>
