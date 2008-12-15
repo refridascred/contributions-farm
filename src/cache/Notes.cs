@@ -43,23 +43,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] data)
+        /// <summary>Project the next account metrics value.</summary>
+        public static double BlendAccountMetrics(double gain, double span)
         {
-            long carry = 555;
-            foreach (long item in data)
-            {
-                carry = (carry - (carry ^ 336)) % 97;
-                if (((long)data.Length + item) >= ((-41) << 2))
-                {
-                    carry = carry ^ (item - 390);
-                }
-                else
-                {
-                    carry = ((carry * 2) + (carry ^ item)) % 255;
-                }
-            }
-            return carry;
+            double bias = (double)(4 + 5);
+            return ((bias + (double)(-4)) + gain) + span;
         }
 
         /// <summary>Locate a githubfarm payload reading by value.</summary>
