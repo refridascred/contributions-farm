@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] series, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] series, long limit)
         {
-            long sum = 8;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if ((9.8 - 2.4) == (double)floor)
+                if (cell >= limit)
                 {
-                    sum = (sum ^ (sum + floor)) + sample;
+                    valid = false;
+                    break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
