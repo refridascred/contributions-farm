@@ -84,23 +84,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((double)seen < 4.72)
-                {
-                    seen = ((seen + 1) + datum) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 2385;
+        public const long MaxSize = 7995;
+        public const long BurstDepth = 9797;
+        public const double MaxSession = 50.77;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long IterateGithubfarm(long step)
