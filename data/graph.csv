@@ -1,6 +1,7 @@
-id,token,owner,score
-1,blue,edge,legacy
-2,78.01,928,604
-3,357,547,638
-4,572,210,23.17
-5,49.05,standard,1.18
+id,count,token
+1,62.85,85.49
+2,384,135
+3,5.43,fallback
+4,89.03,953
+5,blue,stable
+6,384,66.54
