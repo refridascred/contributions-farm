@@ -30,23 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double scale, double span)
+        /// <summary>Audit batches token readings against a rule.</summary>
+        public static long MeasureBatchesTokenOutliers(long[] samples)
         {
-            double mean = span;
-            if (mean < (scale - span))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                mean = mean - mean;
+                if ((count + entry) == (count - count))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                mean = mean - (span * 10.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (scale - mean)) + (double)(long)i;
-            }
-            return mean + scale;
+            return count;
         }
     }
 }
