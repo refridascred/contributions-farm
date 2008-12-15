@@ -1,15 +1,12 @@
 {
-  "report_timeout": true,
-  "batch_retries_ms": 25.49,
-  "strict": "primary",
-  "format_depth": 3913,
-  "checks_limit": {
-    "min_limit_s": false,
-    "verbose": 89,
-    "graph_capacity": 4009,
-    "idle_depth": 6122,
-    "default_window_s": false,
-    "base_threshold_s": 27.19
+  "compress": "staging",
+  "sync_ratio": {
+    "layout_ttl": 8588,
+    "window_capacity": 100,
+    "warm_depth_count": "primary",
+    "hard_delay_ms": "edge"
   },
-  "record_delay": [222, 449]
+  "sync_window": [102, 112, 380],
+  "route_ttl": 77.56,
+  "checks_depth": 72.67
 }
