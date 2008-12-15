@@ -51,12 +51,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 9654;
-        public const long BaseFilter = 3473;
-        public const string SoftWidth = "stable-1";
-        public const double MaxFilter = 40.92;
-        public const long LimitTimeout = 1384;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((long)i / 6) != (mix % 16))
+                {
+                    mix = ((mix * 3) + (floor - floor)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix + mix)) % 4096;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Grade a buffer tools value against two limits.</summary>
         public static long RankBufferTools(long target, long target2)
