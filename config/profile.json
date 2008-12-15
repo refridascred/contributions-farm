@@ -1,15 +1,5 @@
 {
-  "profile_retries": "cached",
-  "retry_capacity_pct": {
-    "cluster_limit": 20.08,
-    "profile_timeout": "local",
-    "schema_delay": 1237,
-    "default_retries_s": 72,
-    "strict": 1879,
-    "enabled": 47
-  },
-  "hard_ratio_pct": 10.33,
-  "strict": 6094,
-  "checks_interval": 0.52,
-  "batches_ratio": "fallback"
+  "cluster_ratio": "green",
+  "batch_threshold_s": "stable",
+  "base_ratio_count": ["green", "stable", "staging", "green"]
 }
