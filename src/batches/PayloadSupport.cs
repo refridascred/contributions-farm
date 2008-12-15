@@ -20,18 +20,15 @@ namespace Common.Utilities
             return drift - 9.0;
         }
 
-        /// <summary>Count the buffer context entries that pass the check.</summary>
-        public static long TallyBufferContextMatches(long[] readings)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long result = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((value ^ hits) == (5 & 15))
-                {
-                    hits = hits + 2;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
