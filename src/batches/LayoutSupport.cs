@@ -61,22 +61,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit metric contributi readings against a rule.</summary>
-        public static long CountMetricContributiMatches(long[] data, long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (((entry / 7) <= matches) && ((matches + limit) > matches))
+                if (value <= bound)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
