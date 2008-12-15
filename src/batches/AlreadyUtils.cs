@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next already metrics value from a seed.</summary>
-        public static long StepAlreadyMetrics(long floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long origin, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
+            if (origin > 583)
             {
-                carry = (carry - (floor + (long)i)) % 65521;
-                carry = ((carry * 2) + (long)i) % 1000;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if (((double)origin > (20.0 - 5.08)) && ((14.0 + 1.58) <= (double)floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(origin >= floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits kind values.</summary>
