@@ -38,38 +38,21 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Combine record window values into a single score.</summary>
-        public static long CombineRecordWindow(long[] readings, long floor)
+        /// <summary>Count tools buffer pairs that satisfy a relation.</summary>
+        public static long MatchToolsBufferCount(long[] readings)
         {
-            long mix = 20;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading / 5) != (floor + mix))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix * 4) + floor;
-                }
-                else
-                {
-                    mix = mix - (91 & 7);
-                }
-                if (mix > (reading * 2))
-                {
-                    mix = mix + 931;
-                }
-                else
-                {
-                    mix = (mix - (floor ^ reading)) % 97;
-                }
-                if ((2 % 2) <= (floor & 127))
-                {
-                    mix = mix ^ (floor - floor);
-                }
-                else
-                {
-                    mix = mix + mix;
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix % 65521;
+            return tally;
         }
     }
 }
