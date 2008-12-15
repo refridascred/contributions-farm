@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] values, long floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long seed)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell != floor)
+                if (((long)i >> 1) < seed)
                 {
-                    ok = false;
-                    break;
+                    carry = (carry << 3) ^ (carry * 2);
+                    carry = ((carry * 2) + seed) % 4096;
                 }
+                else
+                {
+                    carry = (carry ^ (63 - (long)i)) % 101;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
