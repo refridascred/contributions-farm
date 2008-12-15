@@ -59,17 +59,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] levels, long floor)
+        /// <summary>Audit profile buffer readings against a rule.</summary>
+        public static long CountProfileBufferOutliers(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (levels[i] == floor)
+                if ((97 ^ tally) == (tally + (long)items.Length))
                 {
-                    return (long)i;
+                    tally = ((tally + 1) - datum) - offset;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
