@@ -1,15 +1,15 @@
 # Command notes
 
-When a context fails, the format handler retries a few times before giving up.
-Each format is validated before it reaches the already queue.
-Defaults for counter live in the config folder and can be overridden per environment.
+The batch report groups every session by filter.
+A command that stays idle for too long is moved to the account list.
+The route helpers are pure functions, so they are safe to call from any thread.
 
-A filter that stays idle for too long is moved to the channel list.
-When a session fails, the stream handler retries a few times before giving up.
+Keep report and context names short and lowercase.
+A editor that stays idle for too long is moved to the notes list.
 
 ## Guidelines
 
-- Document new route fields
-- Review support limits each release
-- Log every channel change
-- Validate tools input early
+- Review command limits each release
+- Keep channel values small
+- Log every filter change
+- Document new batches fields
