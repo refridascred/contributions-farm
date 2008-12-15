@@ -30,11 +30,17 @@ namespace Common.Utilities
         public const long RetryEntry = 6766;
         public const string BatchEntry = "legacy-edge";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleWindow = "standard";
-        public const long BaseBudget = 7450;
-        public const double SoftInterval = 80.08;
-        public const long SoftSize = 4936;
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                total = (total - (total ^ total)) % 1000;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BaseBatch = 3196;
