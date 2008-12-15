@@ -31,18 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepWidth = 17.14;
+        public const double RetrySpan = 1.93;
+        public const long BurstSpan = 9841;
+        public const long WindowFactor = 5144;
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long LocateCommitsIndex(long[] readings, long origin)
