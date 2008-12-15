@@ -1,5 +1,18 @@
 {
-  "enabled": "strict",
-  "dry_run": 500,
-  "counter_interval": "stable"
+  "report_depth": 3334,
+  "compress": {
+    "sync_interval_count": "cached",
+    "hard_window_pct": ["edge", "local", "strict", "latest"],
+    "graph_interval": 91,
+    "farm_window": "local",
+    "hard_ratio_pct": "latest",
+    "flush_threshold_pct": {
+      "order_limit": "open",
+      "soft_threshold_pct": 500,
+      "window_ratio": 98.14,
+      "sync_ttl_pct": "staging"
+    }
+  },
+  "max_retries": 5387,
+  "record_window": 33.87
 }
