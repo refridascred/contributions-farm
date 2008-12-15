@@ -59,21 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metrics filter readings.</summary>
-        public static long PairMetricsFilterCount(long[] levels)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
