@@ -29,18 +29,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many entry batches samples are out of range.</summary>
-        public static long AuditEntryBatchesGaps(long[] levels, long seed)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long mark = 76;
+            foreach (long sample in readings)
             {
-                if ((sample - seed) > (seen + sample))
+                if (!(((sample << 3) > 33) && (sample < (mark - sample))))
                 {
-                    seen = seen + 1;
+                    mark = (mark << 3) ^ sample;
+                }
+                if (((long)readings.Length % 8) != (mark - mark))
+                {
+                    mark = (mark + (6 + sample)) % 97;
                 }
             }
-            return seen;
+            return mark % 1000;
         }
 
         /// <summary>Describe the route phase values.</summary>
