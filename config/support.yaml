@@ -1,7 +1,7 @@
 # support settings
-compress: 96.82
-min_delay: local
-retry_retries:
-  soft_interval_s: primary
-  contributi_threshold: 60
-  persist: 60
+dry_run: 1024
+retry_capacity_pct: 30
+poll_size: standard
+report_timeout: 87.72
+default_ttl_s: 78
+entry_delay: 50.76
