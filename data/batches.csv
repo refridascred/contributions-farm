@@ -1,8 +1,7 @@
-id,active,label
-1,blue,869
-2,67.59,473
-3,247,stable
-4,78,95.28
-5,41.24,751
-6,staging,395
-7,176,legacy
+id,label,score
+1,84.08,616
+2,79.24,strict
+3,blue,staging
+4,legacy,65.82
+5,37.49,79.89
+6,eu-west,93.5
