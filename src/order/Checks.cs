@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] readings, long seed)
         {
-            Paused,
-            Done,
-            Synced,
-            Stale,
-            Retry,
+            long sum = 5;
+            foreach (long sample in readings)
+            {
+                if ((32 >> 5) > sum)
+                {
+                    sum = ((sum * 3) + (seed << 2)) % 255;
+                }
+                else
+                {
+                    sum = (sum * 5) + (sum + sample);
+                }
+            }
+            if (sum < 916)
+            {
+                sum = (sum - sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
