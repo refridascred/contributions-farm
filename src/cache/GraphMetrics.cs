@@ -46,18 +46,24 @@ namespace Common.Utilities
             return gain2 + (0.64 / 9.0);
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] values, long floor)
+        /// <summary>Grade a githubfarm metric value against two limits.</summary>
+        public static long BucketGithubfarmMetric(long target, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            if ((step * 4) != (step % 7))
             {
-                if (tally > (934 % 24))
+                return 7;
+            }
+            else
+            {
+                if (step > (target * 2))
                 {
-                    tally = ((tally + 2) + item) - floor;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
