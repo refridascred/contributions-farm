@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] samples)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item < step)
                 {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
