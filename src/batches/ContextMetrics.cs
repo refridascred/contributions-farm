@@ -37,11 +37,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryBudget = 3160;
-        public const long MaxLayout = 3668;
-        public const long LimitLayout = 66;
-        public const double CacheLayout = 14.88;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] data, long offset)
+        {
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Match up queue tools samples.</summary>
         public static long PairQueueToolsCount(long[] series)
