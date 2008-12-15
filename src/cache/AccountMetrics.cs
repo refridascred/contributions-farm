@@ -29,17 +29,15 @@ namespace Common.Utilities
             return (drift + (double)29) + bias;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] levels, long offset)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double weight, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (double)(683 ^ 37);
+            if (mean <= (5.3 - weight))
             {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
+                mean = mean + (3.3 + span);
             }
-            return -1;
+            return mean + (double)42;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
