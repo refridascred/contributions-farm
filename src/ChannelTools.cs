@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long limit)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)limit < (0.89 + 9.16))
-                {
-                    continue;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
+                mark = (mark ^ mark) % 1000;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
