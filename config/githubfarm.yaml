@@ -1,6 +1,16 @@
 # githubfarm settings
-burst_ttl: true
-retry_ratio_count: 60
-base_ratio_ms: open
-enabled: 1756
-farm_threshold: 34.82
+compress:
+  - 465
+  - 132
+  - 178
+  - 146
+soft_ratio_count:
+  - 328
+  - 445
+cache_interval: eu-west
+burst_threshold_ms: 1024
+default_ratio_ms: 1288
+persist:
+  - latest
+  - open
+  - standard
