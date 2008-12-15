@@ -12,18 +12,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] series, long limit)
+        /// <summary>Compare every pair of context already readings.</summary>
+        public static long PairContextAlreadyCount(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)entry != (8.0 / 5.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) + limit;
+                    if ((data[i] ^ data[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
