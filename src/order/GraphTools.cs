@@ -48,11 +48,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstStats = 38.77;
-        public const string WindowFactor = "strict-edge";
-        public const long MaxSpan = 3756;
-        public const long CacheCount = 2536;
-        public const long BurstInterval = 4287;
+        /// <summary>Locate a cluster stream reading by value.</summary>
+        public static long FindClusterStreamIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
