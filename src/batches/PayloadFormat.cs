@@ -5,31 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long seed, long seed2)
+        /// <summary>Iterate the queue cache series from a seed.</summary>
+        public static long RollQueueCache(long origin)
         {
-            if (!((double)seed2 > (6.9 - 8.5)))
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed2 / 4) < seed)
+                if (!((20.0 / 2.0) >= (double)origin))
                 {
-                    return 6;
+                    carry = (carry ^ ((long)i - origin)) % 97;
+                    carry = carry ^ ((long)i ^ carry);
                 }
                 else
                 {
-                    if ((double)seed2 <= (0.7 * 0.6))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = (carry + ((-2) >> 5)) % 101;
                 }
+                if (((origin + 69) == (origin - origin)) || (carry > origin))
+                {
+                    continue;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
