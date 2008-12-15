@@ -23,18 +23,24 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit batches token readings against a rule.</summary>
-        public static long MeasureBatchesTokenOutliers(long[] samples)
+        /// <summary>Classify a record filter pair into a bucket.</summary>
+        public static long SortRecordFilter(long step, long target)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            if ((double)target < (double)step)
             {
-                if ((count + entry) == (count - count))
+                return 5;
+            }
+            else
+            {
+                if (((target >> 1) < target) && ((step + 60) > (target + step)))
                 {
-                    count = count + 3;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
     }
 }
