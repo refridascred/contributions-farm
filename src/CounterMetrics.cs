@@ -38,19 +38,21 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double weight, double bias)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] levels)
         {
-            double weight2 = (8.89 * 9.1) / 9.0;
-            if (weight2 <= weight)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight2 = weight2 + (bias / 9.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 + weight2) + (double)(long)i;
-            }
-            return weight2 + (0.5 / 2.0);
+            return seen;
         }
     }
 }
