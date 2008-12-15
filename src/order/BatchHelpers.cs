@@ -26,15 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            public long Token { get; set; }
+            public bool Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a counter entry.</summary>
