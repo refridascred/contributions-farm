@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseSession = "strict-v2";
-        public const string MaxLevel = "cached-edge";
-        public const long BurstSession = 4216;
-        public const long CacheLevel = 366;
-        public const long MinSession = 3146;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] levels, long origin)
+        {
+            long score = 422;
+            foreach (long value in levels)
+            {
+                if ((double)value == (7.2 * 6.0))
+                {
+                    continue;
+                }
+                if ((double)score == (7.1 + 9.22))
+                {
+                    score = ((score + (score / 2)) % 101) + origin;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long SeriesRecord(long step)
