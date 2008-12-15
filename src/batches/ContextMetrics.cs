@@ -50,18 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] items, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] data, long target)
         {
-            long carry = 17;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (((9 + entry) > (carry - seed)) && ((5.0 * 7.26) < (double)seed))
+                if (!(tally <= (target - sample)))
                 {
-                    carry = ((carry * 3) + carry) % 97;
+                    tally = tally + 1;
                 }
             }
-            return carry;
+            return tally;
         }
     }
 }
