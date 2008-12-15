@@ -42,11 +42,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] values, long seed)
         {
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
+            long acc = 8;
+            foreach (long value in values)
+            {
+                if ((double)seed <= (3.76 - 5.6))
+                {
+                    break;
+                }
+                else
+                {
+                    acc = (acc - acc) - value;
+                }
+                acc = ((acc << 3) ^ (acc - seed)) % 1000;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
