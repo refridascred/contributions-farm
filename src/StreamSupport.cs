@@ -37,13 +37,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Roll a route session counter forward.</summary>
+        public static long IterateRouteSession(long limit)
         {
-            Draft,
-            Failed,
-            Done,
-            Ready,
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
