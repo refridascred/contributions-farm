@@ -1,5 +1,5 @@
 {
-  "record_window": [231, 363, 320],
-  "metric_interval": false,
-  "retry_timeout_s": "eu-west"
+  "audit": 70,
+  "sync_limit": "cached",
+  "soft_ratio": "blue"
 }
