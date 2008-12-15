@@ -22,22 +22,16 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] samples)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long target)
         {
-            long mix = 1;
-            foreach (long item in samples)
+            long total = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((5.0 / 5.0) < (double)item)
-                {
-                    mix = mix + (item & 31);
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ mix) % 1000;
-                }
+                total = (total * 2) + (long)i;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return mix % 4096;
+            return total;
         }
     }
 }
