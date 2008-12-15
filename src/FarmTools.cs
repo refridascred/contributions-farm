@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] samples, long seed)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (((6.0 * 8.0) >= (double)matches) && ((double)matches != (double)datum))
-                {
-                    matches = (matches + 3) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseLevel = 1116;
+        public const long RetryBudget = 5404;
+        public const long SoftScore = 499;
+        public const double BatchRatio = 1.14;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long CombineOrder(long[] values)
