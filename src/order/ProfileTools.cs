@@ -16,36 +16,23 @@ namespace Common.Utilities
             return rate + (span / 6.0);
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long seed, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long offset, long seed)
         {
-            if (((5 + bound) != (seed - 46)) || ((double)seed >= (0.9 / 5.0)))
+            long delta = offset - seed;
+            if ((double)seed > 3.0)
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((double)bound != (double)seed)
+                if (15.0 < (double)delta)
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if (!(7.3 < (double)bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((13.0 / 3.0) < (double)seed) || ((bound - seed) >= (bound % 24)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
