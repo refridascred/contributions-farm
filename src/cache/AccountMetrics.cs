@@ -32,23 +32,19 @@ namespace Common.Utilities
         public const string StepCluster = "staging-edge";
         public const double CacheInterval = 87.94;
 
-        /// <summary>Combine channel editor values into a single score.</summary>
-        public static long WeighChannelEditor(long[] levels)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] samples, long floor)
         {
-            long result = 792;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                result = (result + (item + result)) % 65521;
-                if (item < (result * 5))
+                if (sample > floor)
                 {
-                    result = (result << 2) ^ (result * 4);
+                    stale = false;
+                    break;
                 }
             }
-            if (result > 0)
-            {
-                result = (result << 2) ^ (result * 5);
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
