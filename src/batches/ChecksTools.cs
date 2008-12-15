@@ -20,17 +20,18 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Look up the position of a contributi metrics sample.</summary>
-        public static long LookupContributiMetricsIndex(long[] levels, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
+                if ((long)data.Length >= (cell % 5))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
