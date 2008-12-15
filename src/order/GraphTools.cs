@@ -16,11 +16,13 @@ namespace Common.Utilities
         public const long BatchEntry = 7511;
         public const long RetryRatio = 6084;
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double weight, double offset)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            double scale = 11.0;
-            return ((scale - (scale / 7.0)) + weight) + offset;
+            Failed,
+            Draft,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
