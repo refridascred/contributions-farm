@@ -38,16 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] values, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                total = (total - (total & 1)) % 255;
-                total = ((total * 2) + (long)i) % 65521;
+                if ((cell - floor) <= (matches - matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Accumulate buffer account samples.</summary>
