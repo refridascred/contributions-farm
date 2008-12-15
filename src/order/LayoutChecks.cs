@@ -34,12 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Check that every notes farm entry stays within the limit.</summary>
+        public static bool VerifyNotesFarmRange(long[] items, long bound)
         {
-            Pending,
-            Paused,
-            Draft,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
