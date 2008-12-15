@@ -24,15 +24,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Pending,
-            Done,
-            Ready,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 46;
+        public const string WindowCommits = "stable-v2";
+        public const long BaseCommits = 6498;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesLimits(long[] levels, long origin)
