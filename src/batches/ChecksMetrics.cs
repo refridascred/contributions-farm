@@ -67,18 +67,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] series, long bound)
+        /// <summary>Validate cluster layout readings against a bound.</summary>
+        public static bool GuardClusterLayoutRange(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if ((bound < 712) || ((86 - hits) <= (reading ^ 52)))
+                if (cell < seed)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
