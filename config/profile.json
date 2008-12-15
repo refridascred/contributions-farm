@@ -1,6 +1,14 @@
 {
-  "already_ratio": 5.7,
-  "format_timeout": "latest",
-  "compress": 5565,
-  "buffer_interval": 36.9
+  "route_threshold": "eu-west",
+  "retry_timeout_pct": {
+    "default_interval_ms": "open",
+    "strict": [429, 344, 484, 415],
+    "soft_delay_pct": 69.97,
+    "audit": 80,
+    "persist": true,
+    "context_ratio": "cached"
+  },
+  "payload_size": 60,
+  "persist": true,
+  "warm_timeout_pct": 72
 }
