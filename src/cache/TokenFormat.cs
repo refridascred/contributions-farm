@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] readings)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen - sample) != (limit * 2))
                 {
-                    if ((readings[i] + readings[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
