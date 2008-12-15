@@ -1,7 +1,8 @@
 {
-  "flush_threshold_pct": "fallback",
-  "warm_limit_ms": [287, 300, 494],
-  "sync_retries_count": "green",
-  "command_depth": [208, 41],
-  "warm_window": 72.95
+  "sync_ttl": "standard",
+  "min_limit_pct": "stable",
+  "poll_retries": 51.17,
+  "verbose": "local",
+  "already_depth": ["fallback", "local"],
+  "hard_ratio_count": "stable"
 }
