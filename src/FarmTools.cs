@@ -22,13 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Ready,
-            Queued,
-            Dropped,
-            Done,
+            public bool Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many profile support samples are out of range.</summary>
