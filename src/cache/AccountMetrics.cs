@@ -61,13 +61,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public double Weight { get; set; }
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepGraph = 0.52;
+        public const long SoftSpan = 1745;
+        public const long HardGraph = 3843;
+        public const string IdleGraph = "latest";
+        public const long LimitGraph = 4236;
     }
 }
