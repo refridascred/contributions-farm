@@ -1,7 +1,11 @@
 # support settings
-dry_run: 1024
-retry_capacity_pct: 30
-poll_size: standard
-report_timeout: 87.72
-default_ttl_s: 78
-entry_delay: 50.76
+warm_depth_pct:
+  - eu-west
+  - green
+  - edge
+  - edge
+format_ratio:
+  - eu-west
+  - latest
+  - staging
+flush_ratio_ms: 500
