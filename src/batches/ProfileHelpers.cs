@@ -79,11 +79,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
+            Dropped,
+            Pending,
+            Retry,
+            Active,
         }
     }
 }
