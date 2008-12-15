@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every window filter entry stays within the limit.</summary>
-        public static bool VerifyWindowFilterLimits(long[] levels, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (cell >= step)
+                if (!((seen + seen) <= (entry ^ entry)))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) + target;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the stats level values.</summary>
