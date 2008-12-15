@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            Synced,
-            Retry,
-            Idle,
-            Failed,
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = (mix + (mix + (long)i)) % 97;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Match up metrics samples.</summary>
