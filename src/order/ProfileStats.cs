@@ -39,21 +39,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up editor commits samples.</summary>
-        public static long OverlapEditorCommitsCount(long[] samples)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Paused,
+            New,
+            Locked,
         }
     }
 }
