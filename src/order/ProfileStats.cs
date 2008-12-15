@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftDepth = "strict-1";
+        public const string SoftRatio = "stable-1";
+        public const string CacheTools = "alpha-edge";
+        public const long MinTimeout = 7959;
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
