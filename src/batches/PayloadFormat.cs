@@ -48,19 +48,18 @@ namespace Common.Utilities
             return gain + (rate + rate);
         }
 
-        /// <summary>Validate contributi token readings against a bound.</summary>
-        public static bool GuardContributiTokenLimits(long[] samples, long offset)
+        /// <summary>Measure how many account editor samples are out of range.</summary>
+        public static long MeasureAccountEditorOutliers(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (reading != offset)
+                if (cell > origin)
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
