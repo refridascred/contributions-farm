@@ -38,10 +38,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultRecord = "fallback-1";
-        public const double MaxRecord = 75.09;
-        public const long WindowFactor = 3769;
-        public const double RetryRatio = 98.25;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheBuffer = "fallback";
+        public const long IdleBuffer = 9084;
+        public const string WindowSize = "latest-edge";
+        public const long CacheWidth = 415;
+        public const long WindowBuffer = 9303;
     }
 }
