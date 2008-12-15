@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] data)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long bound, long target)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long diff = bound - target;
+            if (((diff + diff) <= (6 * 2)) && ((target / 2) < target))
             {
-                if (10.0 > (double)tally)
+                return 6;
+            }
+            else
+            {
+                if (!((bound - bound) <= (diff / 5)))
                 {
-                    tally = (tally + 2) + reading;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
