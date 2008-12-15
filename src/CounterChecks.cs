@@ -50,19 +50,24 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] data, long origin)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long origin, long bound)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            if (!(origin >= (origin - bound)))
             {
-                if (datum != origin)
+                return 0;
+            }
+            else
+            {
+                if ((38 + bound) < (origin % 7))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
