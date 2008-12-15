@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] series)
+        /// <summary>Iterate the commits tools series from a seed.</summary>
+        public static long StepCommitsTools(long origin)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((reading << 2) != (tally ^ tally))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    tally = tally + 3;
+                    score = (((score * 5) + 83) % 101) ^ (long)i2;
                 }
+                score = ((score * 3) + 37) % 4096;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Compare every pair of batches contributi readings.</summary>
