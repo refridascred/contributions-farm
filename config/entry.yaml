@@ -1,34 +1,23 @@
 # entry settings
-hard_retries_pct:
-  buffer_window: 60
-  base_retries_ms: local
-  warm_interval_s:
-    enabled: 1024
-    max_ttl_s:
-      - 98
-      - 437
-    format_size:
-      - 497
-      - 13
-farm_interval: 8721
-already_ratio:
-  stream_window: 60
-  warm_timeout_pct: 20.66
-  stats_ratio: edge
-  strict: 67.44
-  base_size: stable
-default_ratio_count: 6458
-sync_capacity: 71.27
+report_threshold: 7600
 strict:
-  flush_limit_count: staging
-  batches_limit: edge
-  filter_ratio:
-    burst_delay_ms: primary
-    verbose: 500
-    batch_ttl: local
-    batch_ratio: 83.55
-  sync_delay:
-    - cached
-    - open
-    - standard
+  channel_ttl: 53.58
+  base_depth_pct: 8113
+  base_depth:
     - legacy
+    - latest
+    - staging
+    - eu-west
+  audit:
+    - edge
+    - latest
+    - local
+    - blue
+  persist: cached
+batch_capacity_ms: false
+burst_limit: 250
+warm_ratio_s:
+  - 442
+  - 38
+  - 339
+report_capacity: false
