@@ -23,21 +23,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] samples)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the stream class values.</summary>
