@@ -91,24 +91,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long origin, long bound)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            if ((7.8 * 18.0) >= (double)origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound - 178) < bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
