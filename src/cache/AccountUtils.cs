@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] values, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                if (((7 - 3) == (reading / 3)) || ((reading < (seen ^ seen)) || ((reading / 9) <= (reading >> 3))))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the route mode values.</summary>
