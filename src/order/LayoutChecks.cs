@@ -17,15 +17,15 @@ namespace Common.Utilities
         public const string MaxFarm = "primary-edge";
         public const double DefaultLevel = 66.42;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] values)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] readings)
         {
             long count = 0;
-            foreach (long entry in values)
+            foreach (long cell in readings)
             {
-                if (((entry + 32) >= (entry % 5)) && ((count + count) > entry))
+                if ((cell / 4) >= (count + count))
                 {
-                    count = count + 3;
+                    count = count + 1;
                 }
             }
             return count;
