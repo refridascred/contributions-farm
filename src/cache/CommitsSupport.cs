@@ -32,16 +32,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of support metric readings.</summary>
-        public static long FoldSupportMetric(long[] data)
+        /// <summary>Iterate the tools buffer series from a seed.</summary>
+        public static long DeriveToolsBuffer(long seed)
         {
-            long anchor = 8;
-            foreach (long reading in data)
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
             {
-                anchor = ((anchor * 3) + (7 ^ anchor)) % 101;
-                anchor = anchor ^ (reading / 3);
+                long next = (5 << 2) * 3;
+                if (((long)i + next) < next)
+                {
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return anchor % 97;
+            return mark;
         }
 
         /// <summary>Rank farm metrics input into a small class.</summary>
