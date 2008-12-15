@@ -1,29 +1,5 @@
 # entry settings
-sync_depth_s: 9454
-min_capacity_pct: 7902
-retry_threshold: 91.24
-audit:
-  layout_capacity: cached
-  verbose:
-    verbose:
-      - legacy
-      - local
-    min_timeout:
-      - eu-west
-      - staging
-    payload_ratio: stable
-    soft_window_pct: blue
-    dry_run:
-      - 399
-      - 126
-      - 368
-    session_ttl: true
-  audit: 16
-  idle_threshold_s: 41
-  persist:
-    poll_capacity: latest
-    hard_interval: 6744
-    cache_timeout: edge
-    max_ttl_s: false
-flush_retries_s: 305
-hard_timeout_pct: 100
+batch_delay_pct: false
+max_capacity_pct: 23
+metric_capacity: 15
+soft_ttl_pct: legacy
