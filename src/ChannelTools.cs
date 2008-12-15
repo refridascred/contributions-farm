@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const long BatchQueue = 1593;
         public const long BaseQueue = 9800;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Done,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 3235;
+        public const string BurstChannel = "stable";
+        public const string SoftChannel = "fallback";
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
