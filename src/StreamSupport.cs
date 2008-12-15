@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] readings, long step)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell ^ 765) != (cell >> 3))
-                {
-                    hits = (hits + 3) + step;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Roll a route session counter forward.</summary>
