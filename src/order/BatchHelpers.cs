@@ -28,11 +28,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long step, long floor)
         {
-            public bool Token { get; set; }
-            public double Limit { get; set; }
+            if (step < (floor - floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor >> 1) == (1 + 97))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
