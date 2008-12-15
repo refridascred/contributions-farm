@@ -58,12 +58,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] levels, long floor)
         {
-            Failed,
-            Stale,
-            Done,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
