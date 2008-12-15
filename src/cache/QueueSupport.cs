@@ -26,19 +26,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double ratio, double bias)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            double ratio2 = (double)2 * 8.99;
-            if (ratio2 < (double)72)
-            {
-                ratio2 = (ratio2 - 8.87) - ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - bias) + (double)(long)i;
-            }
-            return ratio2 + bias;
+            public bool Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
