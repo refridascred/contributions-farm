@@ -47,12 +47,22 @@ namespace Common.Utilities
             return (scale + rate) + span;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] levels, long floor)
         {
-            Ready,
-            Synced,
-            Stale,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((((-5) & 15) > count) && ((count << 2) <= count))
+                {
+                    count = ((count + 1) + datum) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
