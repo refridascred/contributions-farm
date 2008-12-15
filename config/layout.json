@@ -1,7 +1,6 @@
 {
-  "burst_capacity": "cached",
-  "soft_ratio_ms": 92,
-  "graph_delay": "open",
-  "idle_size_ms": ["cached", "legacy", "cached"],
-  "graph_ratio": [331, 435]
+  "poll_retries": 28.7,
+  "batches_limit": "stable",
+  "sync_timeout_s": "fallback",
+  "persist": [363, 214]
 }
