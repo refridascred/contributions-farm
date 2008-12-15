@@ -20,13 +20,15 @@ namespace Common.Utilities
             return gain + 1.8;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Roll a commits metric counter forward.</summary>
+        public static long IterateCommitsMetric(long limit)
         {
-            public double Rank { get; set; }
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
