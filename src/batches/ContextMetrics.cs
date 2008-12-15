@@ -20,12 +20,13 @@ namespace Common.Utilities
             return gain + 1.8;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
