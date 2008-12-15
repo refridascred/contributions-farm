@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const string DefaultCount = "standard-edge";
         public const double BurstInterval = 16.21;
 
-        /// <summary>Audit stats layout readings against a rule.</summary>
-        public static long CountStatsLayoutOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (1 < (count + count))
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardRatio = "standard-edge";
+        public const long BatchAlready = 7604;
+        public const long IdleSize = 2371;
+        public const double CacheSpan = 11.23;
+        public const long StepAlready = 4865;
     }
 }
