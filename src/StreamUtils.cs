@@ -44,19 +44,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two support record measurements.</summary>
-        public static double ProjectSupportRecord(double gain, double span)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            double rate = (double)97 - (gain / 9.0);
-            if (rate > span)
-            {
-                rate = rate - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (double)7;
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Grade a commits checks value against two limits.</summary>
