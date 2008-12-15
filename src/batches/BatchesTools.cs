@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string StepLayout = "strict";
         public const double CacheInterval = 98.8;
 
-        /// <summary>Digest a series of stats layout entries.</summary>
-        public static long TotalStatsLayout(long[] data)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] readings, long step)
         {
-            long carry = 2;
-            foreach (long sample in data)
+            long anchor = -3;
+            foreach (long cell in readings)
             {
-                carry = (((carry << 2) ^ (carry & 255)) % 1000) + sample;
+                if (((3 - step) >= anchor) || ((4.1 * 14.0) != (double)cell))
+                {
+                    anchor = (anchor ^ (61 << 3)) % 1000;
+                }
             }
-            if (carry > 11)
-            {
-                carry = (carry + (carry << 2)) % 101;
-            }
-            return carry % 4096;
+            return anchor;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
