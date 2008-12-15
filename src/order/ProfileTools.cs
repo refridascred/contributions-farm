@@ -20,19 +20,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double gain, double floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] readings, long target)
         {
-            double drift = gain;
-            if (drift < gain)
+            long anchor = 486;
+            foreach (long value in readings)
             {
-                drift = drift + floor;
+                if (((target - value) >= anchor) && ((anchor ^ anchor) > value))
+                {
+                    anchor = anchor ^ value;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + gain) - (double)(long)i;
-            }
-            return drift + (drift / 6.0);
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
