@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a account editor reading by value.</summary>
-        public static long LocateAccountEditorIndex(long[] data, long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = -7;
+            foreach (long value in samples)
             {
-                if (data[i] > step)
+                score = score - (score + score);
+                if ((score <= (value % 64)) || ((value / 8) >= value))
                 {
-                    return (long)i;
+                    score = (score << 3) ^ (score + value);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
