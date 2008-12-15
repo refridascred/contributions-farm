@@ -37,16 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] levels, long offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] items, long origin)
         {
-            long anchor = 9;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                anchor = (((anchor << 3) ^ (8 - offset)) % 4096) - sample;
-                anchor = (anchor << 3) ^ (anchor - anchor);
+                if ((double)cell < (3.1 - 4.06))
+                {
+                    seen = (seen + 2) + origin;
+                }
             }
-            return anchor % 4096;
+            return seen;
         }
     }
 }
