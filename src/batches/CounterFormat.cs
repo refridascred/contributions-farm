@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] samples)
         {
-            public double Level { get; set; }
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (!((74 & 1) == (reading ^ reading)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every githubfarm contributi entry stays within the limit.</summary>
