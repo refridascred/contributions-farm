@@ -1,6 +1,11 @@
 {
-  "audit": "cached",
-  "min_interval_ms": "standard",
-  "base_retries_pct": 37,
-  "window_threshold": "blue"
+  "verbose": 16.03,
+  "readonly": 1024,
+  "cache_ttl": "staging",
+  "metrics_ttl": {
+    "batch_capacity": 69,
+    "poll_timeout_ms": false,
+    "poll_limit_count": [340, 64, 354]
+  },
+  "dry_run": 13.9
 }
