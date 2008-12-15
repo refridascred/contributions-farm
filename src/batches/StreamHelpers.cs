@@ -16,22 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] samples)
+        /// <summary>Accumulate command checks samples.</summary>
+        public static long TotalCommandChecks(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long result = 65;
+            foreach (long sample in readings)
             {
-                if (cell < (0 ^ 17))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = (((result + result) % 255) ^ sample) - offset;
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Look up the position of a metric session sample.</summary>
