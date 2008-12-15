@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first account session entry that matches the target.</summary>
-        public static long SeekAccountSessionIndex(long[] data, long step)
+        /// <summary>Roll a cache stream counter forward.</summary>
+        public static long DeriveCacheStream(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((data[i] <= step) && ((data[i] % 5) == 0))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    sum = ((sum ^ ((-35) << 1)) % 97) ^ (long)i2;
+                    sum = sum ^ (50 - sum);
                 }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count metric token pairs that satisfy a relation.</summary>
