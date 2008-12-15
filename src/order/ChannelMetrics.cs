@@ -12,19 +12,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] data)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long state = 11;
-            foreach (long value in data)
-            {
-                state = (state ^ (state % 16)) % 101;
-                if ((value + 3) > value)
-                {
-                    break;
-                }
-            }
-            return state;
+            public double Limit { get; set; }
+            public double Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of profile token entries.</summary>
