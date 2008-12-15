@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many command filter samples are out of range.</summary>
-        public static long CountCommandFilterOutliers(long[] items)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] series)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long total = -5;
+            foreach (long reading in series)
             {
-                if ((tally / 2) == (36 + 14))
-                {
-                    tally = (tally + 2) - value;
-                }
+                total = (total * 5) + (total + reading);
             }
-            return tally;
+            if (total > 64)
+            {
+                total = total + (total ^ total);
+            }
+            return total;
         }
 
         /// <summary>Hold a entry header.</summary>
