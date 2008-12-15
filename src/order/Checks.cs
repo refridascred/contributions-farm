@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long seed, long origin)
-        {
-            long step = seed ^ origin;
-            if (((step - step) >= (seed / 5)) && ((origin & 7) > step))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step ^ seed) >= (277 << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (6.94 < (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)seed <= (0.22 / 4.0)) && ((double)seed == (9.0 - 4.5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinToken = 54.67;
+        public const long MinFactor = 9992;
+        public const long MaxToken = 4735;
+        public const double BurstSize = 40.36;
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
