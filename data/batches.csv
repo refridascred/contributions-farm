@@ -1,7 +1,6 @@
-id,owner,token
-1,blue,368
-2,333,355
-3,88.31,28.23
-4,279,77.66
-5,70.79,blue
-6,cached,43.67
+id,token,weight,active,label
+1,53.88,519,latest,6.18
+2,15.06,latest,499,87.88
+3,96.78,eu-west,staging,976
+4,17.39,83.14,86.0,legacy
+5,5.93,386,820,950
