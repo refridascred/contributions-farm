@@ -36,11 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinSession = 73.85;
-        public const long IdleSession = 2673;
-        public const long StepSession = 8635;
-        public const long MinInterval = 1103;
-        public const double MaxInterval = 39.01;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string CacheGithubfarm = "strict";
+        public const long HardGithubfarm = 6325;
+        public const double StepGithubfarm = 87.37;
+        public const long MinGithubfarm = 5599;
+        public const long BatchScore = 4452;
     }
 }
