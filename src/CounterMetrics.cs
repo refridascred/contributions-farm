@@ -69,15 +69,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double gain, double offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long floor, long target)
         {
-            double bias = offset * 1.64;
-            if (bias <= (1.0 - bias))
+            if (977 > floor)
             {
-                bias = (bias + bias) + gain;
+                return 2;
             }
-            return bias - 3.79;
+            else
+            {
+                if (!(target <= ((-742) ^ floor)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((9.0 * 8.9) == (double)floor) || ((14.0 - 5.0) != (double)target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor - (-960)) < (target % 100))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
