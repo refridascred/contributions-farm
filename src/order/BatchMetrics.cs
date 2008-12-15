@@ -18,18 +18,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] items)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] series, long floor)
         {
-            long total = -116;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum / 9) <= (total + (long)items.Length))
+                if (series[i] < floor)
                 {
-                    total = ((total << 2) ^ datum) % 255;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
