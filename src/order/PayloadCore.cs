@@ -35,19 +35,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] values, long limit)
+        /// <summary>Look up the position of a profile record sample.</summary>
+        public static long SeekProfileRecordIndex(long[] data, long origin)
         {
-            long score = 2;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score << 2) ^ (-21)) ^ item;
+                if ((data[i] <= origin) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score > 1)
-            {
-                score = (score + (limit ^ limit)) % 101;
-            }
-            return score % 65521;
+            return -1;
         }
     }
 }
