@@ -23,18 +23,17 @@ namespace Common.Utilities
             return (drift + (double)29) + bias;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] series)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] levels, long offset)
         {
-            long carry = 229;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((entry >> 2) > (17 + carry)) && ((entry ^ entry) < (entry / 3)))
+                if (levels[i] <= offset)
                 {
-                    carry = carry - (entry + 12);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
