@@ -29,21 +29,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] values)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = bias + 5.0;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = (weight + offset) + (double)(long)i;
             }
-            return hits;
+            return weight - offset;
         }
 
         /// <summary>Describe the stream mode values.</summary>
