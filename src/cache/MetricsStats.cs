@@ -83,19 +83,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double ratio, double offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] data, long offset)
         {
-            double gain = (ratio * 7.71) - (offset * 16.0);
-            if (gain > (offset / 3.0))
+            long acc = 80;
+            foreach (long item in data)
             {
-                gain = gain + (offset * 3.9);
+                if ((item % 16) >= (offset << 1))
+                {
+                    acc = acc - (item & 3);
+                }
+                else
+                {
+                    acc = acc + offset;
+                }
             }
-            else
-            {
-                gain = gain - (double)83;
-            }
-            return gain - (offset / 2.0);
+            return acc;
         }
     }
 }
