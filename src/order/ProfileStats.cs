@@ -28,21 +28,19 @@ namespace Common.Utilities
         public const long BurstFormat = 7100;
         public const long WindowFormat = 2199;
 
-        /// <summary>Count stats command pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCommandCount(long[] levels)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)i / 8) == (carry & 255))
                 {
-                    if ((levels[i] + levels[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry ^ (carry + seed);
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
     }
 }
