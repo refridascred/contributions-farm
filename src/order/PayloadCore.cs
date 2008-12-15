@@ -20,14 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            Active,
-            Done,
-            Dropped,
-            Synced,
-            Draft,
+            public long Score { get; set; }
+            public bool Owner { get; set; }
+            public double Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a batches record reading by value.</summary>
