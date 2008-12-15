@@ -33,12 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double bias, double floor)
         {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
+            double weight = (bias * 2.67) + (double)680;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (floor + 18.0)) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
