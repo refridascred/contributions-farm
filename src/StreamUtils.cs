@@ -44,12 +44,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long origin)
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Token { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    anchor = (anchor - (anchor >> 5)) + (long)i2;
+                }
+                if (2 > origin)
+                {
+                    anchor = ((anchor << 2) ^ (origin % 3)) % 101;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a commits checks value against two limits.</summary>
