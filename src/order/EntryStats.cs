@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] levels, long step)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Done,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the batches mode values.</summary>
