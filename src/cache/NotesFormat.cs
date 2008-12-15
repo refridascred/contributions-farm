@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] levels)
-        {
-            long carry = 28;
-            foreach (long value in levels)
-            {
-                if ((carry >> 1) <= (carry << 3))
-                {
-                    carry = (carry << 3) ^ value;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseSession = "strict-v2";
+        public const string MaxLevel = "cached-edge";
+        public const long BurstSession = 4216;
+        public const long CacheLevel = 366;
+        public const long MinSession = 3146;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long SeriesRecord(long step)
