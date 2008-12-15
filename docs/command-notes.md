@@ -1,12 +1,16 @@
 # Command notes
 
-The editor module keeps cluster values in sync with the window cache.
-Defaults for route live in the config folder and can be overridden per environment.
-Each report is validated before it reaches the report queue.
+A cache that stays idle for too long is moved to the report list.
+A tools that stays idle for too long is moved to the stats list.
+Each channel is validated before it reaches the entry queue.
+
+Defaults for commits live in the config folder and can be overridden per environment.
+Defaults for commits live in the config folder and can be overridden per environment.
+The tools module keeps order values in sync with the format cache.
 
 ## Guidelines
 
-- Log every stats change
-- Document new filter fields
-- Review commits limits each release
-- Keep command values small
+- Validate session input early
+- Review cache limits each release
+- Document new order fields
+- Log every tools change
