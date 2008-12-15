@@ -25,18 +25,19 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] readings)
+        /// <summary>Blend two stream metric measurements.</summary>
+        public static double ProjectStreamMetric(double gain, double floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double scale = floor + (floor - floor);
+            if (scale < (scale * 1.0))
             {
-                if ((entry + entry) != (count - count))
-                {
-                    count = count + 2;
-                }
+                scale = (scale + (double)19) - gain;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (scale + scale)) - (double)(long)i;
+            }
+            return scale + floor;
         }
 
         /// <summary>Scale a session channel figure with a bias.</summary>
