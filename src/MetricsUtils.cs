@@ -25,15 +25,17 @@ namespace Common.Utilities
         public const long DefaultFactor = 6563;
         public const string DefaultBatches = "primary-1";
 
-        /// <summary>Derive the next account editor value from a seed.</summary>
-        public static long SeriesAccountEditor(long seed)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] data, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the notes state values.</summary>
