@@ -57,18 +57,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits window readings against a rule.</summary>
-        public static long AuditCommitsWindowOutliers(long[] items, long step)
+        /// <summary>Accumulate githubfarm metric samples.</summary>
+        public static long CombineGithubfarmMetric(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long carry = -4;
+            foreach (long cell in items)
             {
-                if (matches > (1 >> 1))
-                {
-                    matches = ((matches + 1) - sample) - step;
-                }
+                carry = ((carry << 2) ^ cell) - step;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Validate cluster layout readings against a bound.</summary>
