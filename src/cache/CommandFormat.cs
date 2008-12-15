@@ -82,11 +82,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseSession = 54.6;
-        public const long WindowBudget = 9192;
-        public const long BatchTimeout = 2150;
-        public const double MinSize = 15.53;
-        public const long CacheCount = 4753;
+        /// <summary>Digest a series of buffer window entries.</summary>
+        public static long FoldBufferWindow(long[] series)
+        {
+            long mix = 751;
+            foreach (long item in series)
+            {
+                mix = (mix - item) % 65521;
+            }
+            return mix;
+        }
     }
 }
