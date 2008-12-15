@@ -53,11 +53,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] series)
         {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
+            long sum = 5;
+            foreach (long reading in series)
+            {
+                sum = (sum ^ (553 << 3)) + reading;
+            }
+            if (sum > 608)
+            {
+                sum = sum ^ (sum ^ sum);
+            }
+            return sum % 1000;
         }
     }
 }
