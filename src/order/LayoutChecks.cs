@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepScore = 7818;
+        public const long CacheRatio = 385;
+        public const double WindowBudget = 57.51;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long RetrySpan = 2993;
