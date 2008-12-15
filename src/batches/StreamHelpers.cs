@@ -59,18 +59,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window tools entries that pass the check.</summary>
-        public static long MeasureWindowToolsMatches(long[] series, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((bound & 15) > (matches << 3))
+                if ((20.0 / 3.0) == (double)sample)
                 {
-                    matches = (matches + 1) - datum;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the batches phase values.</summary>
