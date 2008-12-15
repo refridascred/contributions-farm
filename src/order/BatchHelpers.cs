@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a window payload sample.</summary>
-        public static long LocateWindowPayloadIndex(long[] series, long offset)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Failed,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a layout info.</summary>
