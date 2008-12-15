@@ -38,16 +38,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] readings, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = mark + (floor << 2);
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many tools account samples are out of range.</summary>
