@@ -36,12 +36,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long step)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long score = step;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of account readings.</summary>
