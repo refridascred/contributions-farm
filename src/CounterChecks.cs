@@ -71,22 +71,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] levels)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long origin, long bound)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            if ((7.8 * 18.0) >= (double)origin)
             {
-                if ((double)hits < (16.0 * 5.0))
+                return 2;
+            }
+            else
+            {
+                if ((bound - 178) < bound)
                 {
-                    hits = (hits + 2) + sample;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 8;
                 }
             }
-            return hits;
         }
     }
 }
