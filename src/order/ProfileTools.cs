@@ -50,21 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up layout order samples.</summary>
-        public static long OverlapLayoutOrderCount(long[] data)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the window phase values.</summary>
