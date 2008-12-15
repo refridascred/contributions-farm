@@ -6,17 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in eu-west legacy latest standard; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-RECORD_LIMIT=208
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
