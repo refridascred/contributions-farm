@@ -33,17 +33,18 @@ namespace Common.Utilities
             return drift - (double)10;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] readings, long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (readings[i] < step)
+                if ((7.6 * 6.03) > (double)count)
                 {
-                    return (long)i;
+                    count = (count + 2) + datum;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
