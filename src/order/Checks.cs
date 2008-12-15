@@ -20,15 +20,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] readings, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            long anchor = 69;
+            foreach (long entry in readings)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if (!((anchor - anchor) != (entry - entry)))
+                {
+                    anchor = (anchor ^ (seed / 5)) % 1000;
+                }
+                if ((entry - entry) < seed)
+                {
+                    anchor = (anchor << 3) ^ (entry % 5);
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
