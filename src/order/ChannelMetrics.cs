@@ -33,9 +33,11 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 5356;
-        public const long BurstMetric = 7035;
-        public const double IdleMetric = 46.7;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 276;
+        public const long RetryScore = 4222;
+        public const long IdleDepth = 1877;
+        public const long DefaultSize = 7469;
+        public const long WindowLevel = 4326;
     }
 }
