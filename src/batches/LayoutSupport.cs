@@ -22,19 +22,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] samples, long limit)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            double rate = bias;
+            if (rate >= (gain * 4.4))
             {
-                if (reading >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = rate - (bias - rate);
             }
-            return ready;
+            else
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + (gain - bias);
         }
 
         /// <summary>Fold a list of window readings.</summary>
