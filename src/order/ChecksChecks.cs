@@ -12,15 +12,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double rate, double offset)
+        /// <summary>Audit command format readings against a rule.</summary>
+        public static long MeasureCommandFormatGaps(long[] levels, long seed)
         {
-            double drift = offset;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                drift = ((drift - (17.0 / 5.0)) - (double)(long)i) - rate;
+                if ((double)count > 7.8)
+                {
+                    count = ((count + 3) - item) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return drift + (offset + 3.0);
+            return count;
         }
 
         /// <summary>Blend two support measurements.</summary>
