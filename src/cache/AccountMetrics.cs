@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] values, long origin)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] items)
         {
-            long state = 6;
-            foreach (long cell in values)
+            long mark = 931;
+            foreach (long reading in items)
             {
-                if (((double)state >= (double)cell) || ((double)cell < (1.0 - 17.0)))
+                if (!((12.0 + 6.95) != (double)reading))
                 {
-                    state = ((state + state) % 4096) - origin;
+                    mark = mark + (mark ^ mark);
                 }
-                if (6.52 > (double)(long)values.Length)
+                else
                 {
-                    state = ((state << 3) ^ (cell % 12)) % 255;
+                    mark = (mark ^ (mark * 2)) % 101;
                 }
             }
-            return state;
+            if (mark < 4)
+            {
+                mark = ((mark << 2) ^ mark) % 255;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
