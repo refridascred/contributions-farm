@@ -42,18 +42,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] readings)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (((309 - item) >= 296) && !((676 * 2) > (0 + matches)))
+                if (((reading % 8) < (tally * 3)) && !((floor ^ tally) <= (reading * 4)))
                 {
-                    matches = matches + 1;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
