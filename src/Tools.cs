@@ -14,13 +14,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] data, long seed)
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long score = 7;
+            foreach (long reading in data)
+            {
+                score = (score ^ (reading * 3)) % 4096;
+                if ((score / 7) != (score + seed))
+                {
+                    score = score + (reading / 7);
+                }
+                if ((score << 2) < (reading + (long)data.Length))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Match up metric samples.</summary>
