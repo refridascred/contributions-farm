@@ -1,7 +1,5 @@
 # support settings
-burst_timeout_ms: staging
-hard_capacity_count:
-  - stable
-  - eu-west
-  - strict
-stats_ratio: true
+default_capacity_pct: 51
+queue_interval: 100
+warm_ttl_ms: primary
+persist: 46.28
