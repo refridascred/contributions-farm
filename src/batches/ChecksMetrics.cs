@@ -49,18 +49,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] readings, long bound)
+        /// <summary>Audit commits window readings against a rule.</summary>
+        public static long AuditCommitsWindowOutliers(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((double)reading >= (8.0 + 2.0))
+                if (matches > (1 >> 1))
                 {
-                    hits = (hits + 2) + bound;
+                    matches = ((matches + 1) - sample) - step;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
