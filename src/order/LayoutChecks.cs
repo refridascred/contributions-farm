@@ -69,22 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] samples)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] data, long offset)
         {
-            long result = 513;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (result < reading)
+                if (value <= offset)
                 {
-                    result = ((result * 2) + (result + result)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (result < 2)
-            {
-                result = (result + (result << 1)) % 101;
-            }
-            return result;
+            return found;
         }
     }
 }
