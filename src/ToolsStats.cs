@@ -41,13 +41,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long seed, long limit)
         {
-            Ready,
-            Retry,
-            Dropped,
-            Stale,
+            if (((14 + limit) >= (limit & 1)) && (limit >= (limit + seed)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit >> 2) != (limit - seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit <= 8.05)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
