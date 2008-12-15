@@ -34,32 +34,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank tools window input into a small class.</summary>
-        public static long BucketToolsWindow(long step, long seed)
-        {
-            long cur = step - seed;
-            if (((seed - step) > seed) && ((seed + step) <= (cur + 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed == (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step < (9.0 * 5.1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 5995;
+        public const string BurstLevel = "standard-v2";
+        public const string RetryDepth = "standard";
     }
 }
