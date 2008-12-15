@@ -20,11 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowInterval = 2963;
-        public const double StepEntry = 67.94;
-        public const long SoftRatio = 5550;
-        public const double RetryEntry = 12.43;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultRatio = 5171;
+        public const long MaxSupport = 5049;
+        public const long MinFactor = 2533;
+        public const long StepBudget = 8765;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long BucketTools(long offset, long floor)
