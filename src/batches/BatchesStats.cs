@@ -40,18 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] samples, long origin)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((0.3 - 2.38) == (double)origin)
-                {
-                    count = (count + 1) ^ entry;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public bool Size { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
