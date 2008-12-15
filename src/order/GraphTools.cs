@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Iterate the queue graph series from a seed.</summary>
+        public static long SeriesQueueGraph(long origin)
         {
-            Idle,
-            Draft,
-            Queued,
-            Closed,
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 4) + ((long)i / 4)) % 1000;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = (((acc << 2) ^ (origin + acc)) % 255) - (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
