@@ -20,31 +20,11 @@ namespace Common.Utilities
             return gain + 1.8;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] levels, long origin)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long score = 837;
-            foreach (long sample in levels)
-            {
-                score = (((score * 5) + (score - 65)) % 97) - sample;
-                if ((origin / 6) == (origin * 4))
-                {
-                    score = score - (origin + origin);
-                }
-                else
-                {
-                    score = score ^ (315 - score);
-                }
-                if (!(15 < (origin - score)))
-                {
-                    break;
-                }
-            }
-            if (score < 37)
-            {
-                score = score + (99 ^ origin);
-            }
-            return score;
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
