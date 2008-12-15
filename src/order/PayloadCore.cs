@@ -29,18 +29,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Locate a batches record reading by value.</summary>
-        public static long FindBatchesRecordIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardInterval = 2183;
+        public const double BaseLevel = 77.47;
+        public const long DefaultCommits = 3116;
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double ScaleFilter(double ratio, double span)
