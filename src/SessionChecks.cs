@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] levels, long target)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = offset;
+            if (bias <= (bias / 6.0))
             {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
+                bias = bias + (offset + offset);
             }
-            return -1;
+            return bias - (weight / 3.0);
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
