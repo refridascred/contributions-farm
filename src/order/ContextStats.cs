@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public double Level { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleRatio = "standard";
+        public const long CacheFactor = 7412;
+        public const long WindowReport = 8191;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
