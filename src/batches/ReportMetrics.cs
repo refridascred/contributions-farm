@@ -43,15 +43,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double bias, double span)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            double scale = (double)(440 / 6);
-            if (scale < (span + bias))
-            {
-                scale = scale - (span / 3.0);
-            }
-            return scale + bias;
+            Draft,
+            Paused,
+            Pending,
+            Synced,
+            Retry,
         }
     }
 }
