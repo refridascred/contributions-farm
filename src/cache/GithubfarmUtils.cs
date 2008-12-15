@@ -13,20 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long origin)
+        /// <summary>Measure how many tools command samples are out of range.</summary>
+        public static long AuditToolsCommandGaps(long[] series, long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (!((double)(long)i <= (double)origin))
+                if ((tally - cell) == (origin - tally))
                 {
-                    carry = ((carry * 2) + (carry ^ origin)) % 101;
-                    carry = ((carry * 4) + (carry ^ 2)) % 1000;
+                    tally = tally + 3;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Fold a list of context readings.</summary>
