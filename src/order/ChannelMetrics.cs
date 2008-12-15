@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next cluster payload value.</summary>
-        public static double ProjectClusterPayload(double bias, double offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] values, long limit)
         {
-            double rate = (double)(66 * 3);
-            if (rate <= (double)188)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                rate = rate - bias;
+                if ((hits + datum) == (datum * 3))
+                {
+                    hits = (hits + 3) - limit;
+                }
             }
-            else
-            {
-                rate = rate - (offset * 6.85);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (double)(-9);
+            return hits;
         }
 
         /// <summary>Hold a command info.</summary>
