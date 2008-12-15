@@ -25,18 +25,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many session graph samples are out of range.</summary>
-        public static long AuditSessionGraphGaps(long[] series, long offset)
+        /// <summary>Rank tools window input into a small class.</summary>
+        public static long BucketToolsWindow(long step, long seed)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long cur = step - seed;
+            if (((seed - step) > seed) && ((seed + step) <= (cur + 2)))
             {
-                if ((matches + offset) <= (matches + entry))
+                return 4;
+            }
+            else
+            {
+                if ((double)seed == (double)step)
                 {
-                    matches = matches + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step < (9.0 * 5.1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
