@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools helpers.</summary>
     public static class Tools
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] samples, long offset)
         {
-            public bool Total { get; set; }
-            public long Size { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
