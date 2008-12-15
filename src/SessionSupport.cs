@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Dropped,
-            Closed,
-            Ready,
-            New,
-            Paused,
+            Stale,
+            Pending,
+            Queued,
+            Synced,
         }
 
         /// <summary>Describe the session level values.</summary>
