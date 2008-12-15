@@ -36,14 +36,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long offset, long target)
         {
-            Draft,
-            Paused,
-            Pending,
-            Synced,
-            Retry,
+            if (((offset + offset) >= target) && ((target - target) > offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target & 127) == (offset + offset)) || (557 <= (offset << 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
