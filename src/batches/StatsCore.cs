@@ -56,15 +56,13 @@ namespace Common.Utilities
         public const double MinLevel = 35.77;
         public const long SoftQueue = 2764;
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double bias, double floor)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            double mean = (double)26 / 4.0;
-            if (mean < (bias * 3.4))
-            {
-                mean = mean + (floor * 7.05);
-            }
-            return mean - (double)691;
+            New,
+            Active,
+            Retry,
+            Pending,
         }
 
         /// <summary>Fold a list of token readings.</summary>
