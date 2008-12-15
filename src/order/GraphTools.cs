@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long RetryInterval = 3756;
         public const long RetryReport = 4161;
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] readings, long offset)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
