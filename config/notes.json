@@ -1,23 +1,5 @@
 {
-  "dry_run": true,
-  "readonly": true,
-  "retry_limit": {
-    "layout_depth": "legacy",
-    "default_limit": 1024,
-    "max_capacity": "local",
-    "default_retries_pct": 32.51,
-    "batch_capacity": 7895,
-    "readonly": 36
-  },
-  "counter_window": {
-    "cache_interval_count": "open",
-    "min_interval_s": {
-      "window_timeout": [379, 120, 480],
-      "flush_depth": 95,
-      "cache_delay_ms": 500
-    },
-    "max_depth_ms": [421, 429],
-    "command_window": 5.25
-  },
-  "base_threshold": "local"
+  "route_window": "strict",
+  "idle_window": "staging",
+  "notes_timeout": 4088
 }
