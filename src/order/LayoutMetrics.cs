@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] samples, long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long limit, long seed)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            if ((limit > (seed + seed)) || ((seed + limit) < (limit + seed)))
             {
-                if (item < origin)
+                return 2;
+            }
+            else
+            {
+                if ((double)seed != (7.22 - 14.0))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + seed) <= (limit + 219))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit - seed) > (limit >> 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Match up entry samples.</summary>
