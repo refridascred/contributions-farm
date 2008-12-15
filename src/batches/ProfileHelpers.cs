@@ -100,19 +100,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double weight, double span)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] items, long step)
         {
-            double bias = span;
-            if (bias <= (span - 8.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias - (double)268) + weight;
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            return bias - (double)5;
+            return -1;
         }
     }
 }
