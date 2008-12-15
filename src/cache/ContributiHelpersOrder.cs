@@ -5,25 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long limit, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
+            if (19.0 < (double)origin)
             {
-                if ((mark + mark) < mark)
-                {
-                    mark = ((mark << 3) ^ step) % 4096;
-                    continue;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mark = ((mark - (step ^ step)) % 97) ^ (long)i2;
-                    mark = mark + (step >> 1);
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if (!((origin - (-44)) > (limit + limit)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Blend two metric measurements.</summary>
