@@ -37,19 +37,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] levels, long step)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
