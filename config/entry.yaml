@@ -1,10 +1,19 @@
 # entry settings
-poll_retries_ms:
-  - legacy
-  - green
-  - strict
-  - local
-soft_window: 30
-default_delay_pct: 77
-sync_threshold_pct: primary
-idle_retries_pct: false
+strict:
+  - blue
+  - edge
+notes_delay: latest
+poll_threshold_pct:
+  counter_retries: 34.68
+  batch_ratio: false
+  idle_interval_count:
+    commits_retries: 8924
+    max_retries: false
+    channel_interval: 29
+  audit: 95.95
+  burst_limit_s: latest
+  batch_limit_pct: 75.15
+enabled:
+  - primary
+  - edge
+retry_depth_count: legacy
