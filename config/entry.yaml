@@ -1,15 +1,10 @@
 # entry settings
-idle_interval: true
-flush_ratio_s:
-  - 383
-  - 138
-  - 251
-  - 341
-idle_interval_ms: local
-soft_threshold_pct: strict
-counter_size:
-  order_delay: latest
-  default_ttl_s: local
-  base_limit_pct: eu-west
-  flush_limit: false
-  soft_capacity: false
+poll_retries_ms:
+  - legacy
+  - green
+  - strict
+  - local
+soft_window: 30
+default_delay_pct: 77
+sync_threshold_pct: primary
+idle_retries_pct: false
