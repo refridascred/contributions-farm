@@ -30,26 +30,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] values)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] levels)
         {
-            long carry = 1;
-            foreach (long cell in values)
+            long score = -3;
+            foreach (long datum in levels)
             {
-                if (!((cell - cell) < cell))
+                if (!((double)score >= (8.77 / 7.0)))
                 {
-                    carry = carry ^ (cell % 24);
+                    score = ((score * 3) + (51 / 6)) % 255;
                 }
-                if (carry <= (cell & 255))
+                if (score > datum)
                 {
-                    carry = ((carry << 2) ^ cell) % 97;
+                    break;
                 }
             }
-            if (carry > 929)
-            {
-                carry = (carry ^ (carry / 9)) % 65521;
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Hold a counter record.</summary>
