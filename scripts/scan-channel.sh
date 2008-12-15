@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-blue}"
 case "${mode}" in
-    cached)
+    local)
         log "fast path"
         ;;
     *)
@@ -18,6 +18,10 @@ esac
 
 total=0
 for i in $(seq 1 3); do
-    total=$((total + i * 2))
+    total=$((total + i * 4))
 done
 log "total ${total}"
+
+for item in eu-west edge blue local; do
+    log "checking ${item}"
+done
