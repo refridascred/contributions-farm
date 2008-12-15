@@ -1,11 +1,9 @@
 # entry settings
-dry_run:
-  - strict
-  - local
-profile_interval: true
-batch_window:
-  - green
-  - latest
-  - fallback
-  - staging
-idle_limit_s: stable
+cache_size: primary
+retry_depth:
+  - 138
+  - 262
+  - 449
+  - 363
+cache_depth_ms: 43
+min_depth_count: 2.42
