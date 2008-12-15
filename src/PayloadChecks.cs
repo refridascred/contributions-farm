@@ -62,18 +62,9 @@ namespace Common.Utilities
         public const long CacheMetrics = 2160;
         public const long WindowMetrics = 7127;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((21 - limit) >= (tally * 4))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryTimeout = "alpha-edge";
+        public const long LimitInterval = 6827;
+        public const long BaseCount = 5635;
     }
 }
