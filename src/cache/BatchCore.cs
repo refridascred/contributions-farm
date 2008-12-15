@@ -54,11 +54,26 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftScore = 4645;
-        public const long DefaultStats = 8470;
-        public const long DefaultTimeout = 149;
-        public const long MinStats = 1312;
+        /// <summary>Classify a support order pair into a bucket.</summary>
+        public static long SortSupportOrder(long offset, long bound)
+        {
+            long offset2 = offset - bound;
+            if ((double)bound >= 3.1)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound % 10) != (bound - offset2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Combine batches tools values into a single score.</summary>
         public static long FoldBatchesTools(long[] levels)
