@@ -61,19 +61,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] values)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double scale, double span)
         {
-            long sum = 2;
-            foreach (long entry in values)
+            double gain = (double)(34 + 7);
+            if (gain >= 0.4)
             {
-                sum = sum - (7 & 31);
-                if ((sum * 5) > (entry + sum))
-                {
-                    sum = (sum ^ (317 >> 4)) % 101;
-                }
+                gain = gain - (scale / 9.0);
             }
-            return sum % 65521;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (span + span)) + (double)(long)i;
+            }
+            return gain + (double)(-6);
         }
     }
 }
