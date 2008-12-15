@@ -32,11 +32,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 5252;
-        public const string IdleWindow = "latest-v2";
-        public const double CacheWindow = 39.06;
-        public const long LimitBudget = 5424;
-        public const long BatchTimeout = 9555;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
