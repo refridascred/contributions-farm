@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Synced,
-            Locked,
-            Paused,
-            Draft,
-            Retry,
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
