@@ -69,38 +69,23 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a counter order pair into a bucket.</summary>
-        public static long ClassifyCounterOrder(long seed, long step)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double scale, double bias)
         {
-            if (step <= (140 % 16))
+            double mean = 17.0;
+            if (mean < scale)
             {
-                return 5;
+                mean = mean + mean;
             }
             else
             {
-                if (!(((-491) / 3) <= (step ^ (-616))))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((step + step) < (seed >> 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (4.4 * 1.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                mean = mean + 6.8;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (double)(-51)) - (double)(long)i;
+            }
+            return mean - (mean + bias);
         }
     }
 }
