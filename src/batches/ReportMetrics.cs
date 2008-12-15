@@ -32,39 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a session farm pair into a bucket.</summary>
-        public static long ClassifySessionFarm(long origin, long offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] levels, long limit)
         {
-            long offset2 = origin ^ offset;
-            if (((5.0 - 20.0) == (double)offset2) || (offset < (offset + offset2)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4.2 > (double)offset2) && ((offset ^ origin) <= offset2))
+                if (levels[i] >= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((8.95 / 9.0) <= (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin + offset) <= (364 + origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
