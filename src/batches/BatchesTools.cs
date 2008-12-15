@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const string StepLayout = "strict";
         public const double CacheInterval = 98.8;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] data, long bound)
+        /// <summary>Digest a series of stats layout entries.</summary>
+        public static long TotalStatsLayout(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 2;
+            foreach (long sample in data)
             {
-                if ((data[i] == bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (((carry << 2) ^ (carry & 255)) % 1000) + sample;
             }
-            return -1;
+            if (carry > 11)
+            {
+                carry = (carry + (carry << 2)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
