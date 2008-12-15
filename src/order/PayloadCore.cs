@@ -24,11 +24,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryWindow = 39.33;
-        public const string StepTimeout = "primary-edge";
-        public const string SoftTimeout = "alpha-v2";
-        public const double IdleWidth = 96.04;
+        /// <summary>Compare every pair of cluster batch readings.</summary>
+        public static long PairClusterBatchCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long StepFormat(long origin)
