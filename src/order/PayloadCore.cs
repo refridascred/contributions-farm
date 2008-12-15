@@ -30,12 +30,17 @@ namespace Common.Utilities
         public const string SoftTimeout = "alpha-v2";
         public const double IdleWidth = 96.04;
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long origin)
         {
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = (acc - (acc + 34)) % 1000;
+                acc = acc + (acc + (long)i);
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
