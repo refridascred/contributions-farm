@@ -33,21 +33,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] values)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long floor, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long gap = floor - bound;
+            if (!((498 << 3) != (bound - floor)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!((double)bound == (double)3))
                 {
-                    if ((values[i] ^ values[j]) < 5)
+                    return 0;
+                }
+                else
+                {
+                    if (((1 - bound) < (bound + gap)) || (gap < 7))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit batches token readings against a rule.</summary>
