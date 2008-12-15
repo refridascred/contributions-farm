@@ -61,22 +61,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] series)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long state = 1;
-            foreach (long entry in series)
-            {
-                if ((state & 3) > entry)
-                {
-                    state = (state * 5) + (entry ^ 38);
-                }
-            }
-            if (state < 64)
-            {
-                state = (state ^ (state >> 5)) % 65521;
-            }
-            return state % 1000;
+            public double Weight { get; set; }
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
