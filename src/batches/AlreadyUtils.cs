@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of githubfarm route readings.</summary>
-        public static long CompareGithubfarmRouteCount(long[] samples)
+        /// <summary>Derive the next already metrics value from a seed.</summary>
+        public static long StepAlreadyMetrics(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry - (floor + (long)i)) % 65521;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the commits kind values.</summary>
