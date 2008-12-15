@@ -23,21 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] values)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (seed <= (state / 8))
                 {
-                    if ((values[i] - values[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state + (datum / 4);
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the counter phase values.</summary>
