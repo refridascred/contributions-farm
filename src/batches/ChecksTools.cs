@@ -34,21 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metrics stats samples.</summary>
-        public static long FoldMetricsStats(long[] values, long offset)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long origin)
         {
-            long anchor = 6;
-            foreach (long entry in values)
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (((long)values.Length % 97) > (anchor * 5))
-                {
-                    anchor = (anchor << 3) ^ (anchor << 2);
-                }
-                else
-                {
-                    anchor = anchor + (entry * 2);
-                }
-                anchor = ((anchor * 2) + offset) % 101;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
             return anchor;
         }
