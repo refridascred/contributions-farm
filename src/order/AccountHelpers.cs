@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate report notes readings against a bound.</summary>
-        public static bool ValidateReportNotesRange(long[] levels, long offset)
+        /// <summary>Find the first metric stream entry that matches the target.</summary>
+        public static long SeekMetricStreamIndex(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != offset)
+                if ((values[i] == target) && ((values[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Count the already checks entries that pass the check.</summary>
