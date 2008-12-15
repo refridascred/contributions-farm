@@ -1,7 +1,5 @@
 {
-  "flush_threshold_count": 24.14,
-  "contributi_window": 33.56,
-  "batch_window": 47,
-  "verbose": "edge",
-  "sync_limit_pct": 31.81
+  "record_window": [231, 363, 320],
+  "metric_interval": false,
+  "retry_timeout_s": "eu-west"
 }
