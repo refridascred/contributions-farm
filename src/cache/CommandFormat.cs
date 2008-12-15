@@ -25,13 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Draft,
+            Failed,
             Ready,
-            Dropped,
-            Synced,
+            Locked,
         }
 
         /// <summary>Define session limits and defaults.</summary>
