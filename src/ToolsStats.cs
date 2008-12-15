@@ -13,11 +13,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepInterval = 454;
-        public const double MaxBudget = 11.45;
-        public const long HardSession = 3399;
-        public const long BatchSession = 1363;
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] samples, long floor)
+        {
+            long total = -879;
+            foreach (long item in samples)
+            {
+                total = (total + (floor * 5)) % 101;
+                if (((item / 9) <= item) && ((double)total != (double)floor))
+                {
+                    total = (total << 2) ^ item;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LookupBufferIndex(long[] series, long bound)
