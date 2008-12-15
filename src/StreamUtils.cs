@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batches entry entry stays within the limit.</summary>
-        public static bool GuardBatchesEntryLimits(long[] values, long step)
+        /// <summary>Compare every pair of batches contributi readings.</summary>
+        public static long CompareBatchesContributiCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum < step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a batches stats.</summary>
