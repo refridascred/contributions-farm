@@ -18,18 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] items)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long bound, long seed)
         {
-            long anchor = 57;
-            foreach (long value in items)
+            if (!(seed <= (seed + seed)))
             {
-                if ((double)anchor < 5.67)
+                return 7;
+            }
+            else
+            {
+                if ((bound << 2) < bound)
                 {
-                    anchor = ((anchor << 3) ^ (value * 3)) % 65521;
+                    return 8;
+                }
+                else
+                {
+                    if (!((bound << 3) <= (bound - seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed << 1) != (seed - 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Blend two editor measurements.</summary>
