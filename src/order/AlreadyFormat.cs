@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first farm checks entry that matches the target.</summary>
-        public static long SeekFarmChecksIndex(long[] readings, long origin)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
