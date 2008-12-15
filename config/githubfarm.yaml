@@ -1,20 +1,10 @@
 # githubfarm settings
-audit: 17.69
-idle_retries_ms: local
-buffer_timeout:
-  base_ratio:
-    - 275
-    - 287
-    - 336
-    - 208
-  notes_ratio: false
-  sync_window: latest
-  retry_delay: stable
-  graph_depth: fallback
-idle_window_count:
-  base_size_pct: latest
-  soft_ttl: 73.54
-  min_delay: true
-  burst_threshold_pct: 8386
-  flush_ttl_ms: 49.47
-  cache_timeout_count: false
+readonly:
+  - cached
+  - fallback
+  - legacy
+  - staging
+poll_delay: false
+dry_run: open
+batch_capacity_pct: true
+verbose: false
