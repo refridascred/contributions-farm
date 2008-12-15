@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] series)
-        {
-            long mark = 5;
-            foreach (long datum in series)
-            {
-                if (mark > (-8))
-                {
-                    mark = mark - datum;
-                }
-                mark = mark - ((-20) + datum);
-                if ((double)mark == (14.0 * 5.89))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinFactor = 31.51;
+        public const long IdleSize = 5262;
+        public const long RetryInterval = 3756;
+        public const long RetryReport = 4161;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long SeekMetricIndex(long[] readings, long offset)
