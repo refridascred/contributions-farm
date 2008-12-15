@@ -34,10 +34,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseFormat = "standard-edge";
-        public const long SoftCount = 4308;
-        public const string MaxSpan = "standard-edge";
-        public const long IdleFormat = 8608;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double bias, double span)
+        {
+            double scale = (double)(440 / 6);
+            if (scale < (span + bias))
+            {
+                scale = scale - (span / 3.0);
+            }
+            return scale + bias;
+        }
     }
 }
