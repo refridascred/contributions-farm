@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] samples, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (((6.0 * 8.0) >= (double)matches) && ((double)matches != (double)datum))
+                {
+                    matches = (matches + 3) + seed;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Fold a list of order readings.</summary>
