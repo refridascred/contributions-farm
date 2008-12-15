@@ -69,27 +69,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] levels, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] readings, long floor)
         {
-            long mark = 64;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                mark = (mark - (cell + mark)) % 4096;
-                if ((mark ^ cell) >= (mark % 16))
+                if ((1.0 / 3.0) == (double)item)
                 {
-                    mark = ((mark * 4) + (cell & 3)) % 4096;
-                }
-                if ((cell / 5) < (target - 109))
-                {
-                    break;
+                    seen = (seen + 1) + floor;
                 }
             }
-            if (mark > (-97))
-            {
-                mark = mark - (mark & 63);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
