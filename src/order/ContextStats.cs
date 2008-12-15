@@ -19,34 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double gain, double offset)
         {
-            long total = 73;
-            foreach (long sample in readings)
-            {
-                if ((6 - (-352)) < (sample + sample))
-                {
-                    continue;
-                }
-                else
-                {
-                    total = (total ^ (sample ^ sample)) % 1000;
-                }
-                if ((sample & 127) < total)
-                {
-                    total = total ^ (616 >> 1);
-                }
-                if (((sample - total) == (total + (-98))) && (sample <= 638))
-                {
-                    break;
-                }
-            }
-            if (total < 20)
-            {
-                total = (total * 5) + (total & 7);
-            }
-            return total % 1000;
+            double ratio = offset / 9.0;
+            return (ratio - offset) + gain;
         }
 
         /// <summary>Hold a checks stats.</summary>
