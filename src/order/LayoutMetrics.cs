@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 2478;
-        public const long MaxInterval = 9008;
-        public const string MinLayout = "fallback-1";
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] samples, long origin)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long CombineFormat(long[] samples)
