@@ -19,19 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batches commits value.</summary>
-        public static double AdjustBatchesCommits(double rate, double span)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double scale = span + (double)906;
-            if (scale < (scale + rate))
-            {
-                scale = scale - (rate - span);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - rate) - (double)(long)i;
-            }
-            return scale + rate;
+            Retry,
+            Paused,
+            Locked,
+            Synced,
+            Ready,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
