@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 46;
-        public const string WindowCommits = "stable-v2";
-        public const long BaseCommits = 6498;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitCommand = 19.48;
+        public const double LimitScore = 62.69;
+        public const long BurstCommand = 7244;
+        public const long RetryCommand = 7333;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesLimits(long[] levels, long origin)
