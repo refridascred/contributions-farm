@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit profile format readings against a rule.</summary>
-        public static long MeasureProfileFormatMatches(long[] levels)
+        /// <summary>Digest a series of profile channel entries.</summary>
+        public static long ScoreProfileChannel(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long mark = 2;
+            foreach (long cell in readings)
             {
-                if (((tally << 1) >= tally) && !((double)reading > 3.29))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = (mark - (cell * 2)) % 65521;
             }
-            return tally;
+            return mark % 1000;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
