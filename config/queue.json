@@ -1,8 +1,10 @@
 {
-  "verbose": "green",
-  "soft_limit_ms": 4.73,
-  "batch_timeout_ms": 500,
-  "default_limit_pct": 9235,
-  "batch_depth_ms": 58,
-  "window_capacity": ["strict", "staging"]
+  "flush_ratio": {
+    "retry_window": 30,
+    "flush_size": 6954,
+    "graph_timeout": true
+  },
+  "support_threshold": ["blue", "strict", "primary"],
+  "poll_threshold_count": 12.58,
+  "persist": "staging"
 }
