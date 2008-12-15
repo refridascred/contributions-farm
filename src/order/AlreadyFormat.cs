@@ -63,11 +63,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double weight, double bias)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long step)
         {
-            double rate = (bias / 4.0) / 5.0;
-            return rate - (weight + bias);
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = anchor - ((long)i << 1);
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a format record.</summary>
