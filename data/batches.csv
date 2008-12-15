@@ -1,9 +1,7 @@
-id,ratio,label
-1,479,staging
-2,31,84
-3,staging,43.58
-4,34.31,strict
-5,629,71.66
-6,659,staging
-7,cached,strict
-8,edge,97.57
+id,token,count,weight
+1,55.27,14.19,11.74
+2,44.29,standard,258
+3,78.98,78.88,edge
+4,fallback,592,995
+5,35,primary,open
+6,667,51.04,629
