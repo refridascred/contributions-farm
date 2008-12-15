@@ -47,11 +47,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a profile snapshot.</summary>
