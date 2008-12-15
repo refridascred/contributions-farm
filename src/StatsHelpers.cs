@@ -33,19 +33,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of filter schema readings.</summary>
-        public static long TallyFilterSchema(long[] samples, long step)
+        /// <summary>Match up batch session samples.</summary>
+        public static long CompareBatchSessionCount(long[] samples)
         {
-            long state = 18;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (((state * 4) + datum) % 1000) + step;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (state < 94)
-            {
-                state = (state - (11 / 7)) % 255;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a farm info.</summary>
