@@ -20,20 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] levels, long step)
-        {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheBudget = 204;
+        public const string DefaultCount = "standard-edge";
+        public const double BurstInterval = 16.21;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string RetryChecks = "cached-1";
