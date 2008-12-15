@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const string CacheTools = "alpha-edge";
         public const long MinTimeout = 7959;
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] series, long limit)
         {
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry != (8.0 / 5.0))
+                {
+                    hits = (hits + 3) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
