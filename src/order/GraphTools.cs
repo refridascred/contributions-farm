@@ -24,17 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] data, long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 0;
+            foreach (long sample in readings)
             {
-                if ((data[i] == step) && ((data[i] % 3) != 0))
+                total = (total + total) % 101;
+                if ((sample << 3) > (total ^ total))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
