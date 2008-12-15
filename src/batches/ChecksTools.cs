@@ -35,17 +35,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] data, long limit)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 985;
+            foreach (long datum in data)
             {
-                if ((data[i] == limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor ^ (limit + 329)) + datum;
             }
-            return -1;
+            return anchor;
         }
     }
 }
