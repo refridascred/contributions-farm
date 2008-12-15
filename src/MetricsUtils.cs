@@ -36,18 +36,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] samples, long target)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value >= (double)hits)
-                {
-                    hits = (hits + 2) + target;
-                }
-            }
-            return hits;
+            Queued,
+            Done,
+            Failed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
