@@ -1,15 +1,21 @@
 # support settings
-editor_interval: true
-hard_ratio_ms: fallback
-retry_retries_pct:
-  - blue
-  - open
-  - standard
-  - green
-warm_timeout_count: true
-burst_ratio_s:
-  hard_capacity: 1024
-  warm_interval_count: 4161
-  dry_run: 61.9
-  min_ttl_count: staging
-flush_delay_count: 500
+min_ttl:
+  flush_ttl:
+    - strict
+    - cached
+    - staging
+    - fallback
+  queue_ttl: staging
+  poll_ttl_s: 57
+  readonly: blue
+  default_capacity_s:
+    hard_window_s: green
+    account_capacity: 32
+    command_timeout: blue
+    profile_ratio: 53.34
+  cache_window_ms: 55
+soft_ratio: false
+queue_ttl: true
+stats_interval:
+  - 427
+  - 64
