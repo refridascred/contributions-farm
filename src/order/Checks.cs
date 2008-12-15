@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinRatio = 853;
-        public const long HardEntry = 9929;
-        public const string WindowWidth = "stable-v2";
-        public const long SoftInterval = 3815;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Ready,
+            Failed,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long SortGraph(long offset, long bound)
