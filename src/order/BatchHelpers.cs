@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long step, long floor)
+        /// <summary>Look up the position of a window payload sample.</summary>
+        public static long LocateWindowPayloadIndex(long[] series, long offset)
         {
-            if (((floor + floor) > step) || ((6 - floor) < (step + floor)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.06 + 11.0) != (double)floor)
+                if (series[i] == offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step - floor) <= (3 + floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
