@@ -75,17 +75,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long total = target;
-            for (int i = 0; i < 11; i++)
-            {
-                total = total ^ (total + total);
-                total = (total ^ target) % 65521;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
