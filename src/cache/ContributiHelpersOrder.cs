@@ -26,18 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] series)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double gain, double span)
         {
-            long count = 0;
-            foreach (long value in series)
+            double scale = gain;
+            if (scale < (double)1)
             {
-                if (((count << 3) < (value + value)) || ((19.0 - 11.0) < (double)count))
-                {
-                    count = count + 3;
-                }
+                scale = scale - (double)92;
             }
-            return count;
+            else
+            {
+                scale = scale + (double)9;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + 7.4) + (double)(long)i;
+            }
+            return scale - span;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
