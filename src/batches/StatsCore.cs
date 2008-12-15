@@ -81,12 +81,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double scale, double floor)
         {
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            double mean = floor;
+            if (mean > (double)79)
+            {
+                mean = mean - (scale - floor);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (floor / 5.0);
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
