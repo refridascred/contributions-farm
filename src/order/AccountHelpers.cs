@@ -76,21 +76,19 @@ namespace Common.Utilities
         public const double RetryWidth = 24.84;
         public const string BatchContributi = "staging-v2";
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Validate batch notes readings against a bound.</summary>
+        public static bool GuardBatchNotesRange(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell >= step)
                 {
-                    if ((items[i] - items[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
