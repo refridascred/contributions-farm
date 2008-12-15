@@ -46,22 +46,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up entry tools samples.</summary>
-        public static long PairEntryToolsCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseRatio = 7122;
+        public const double BaseLayout = 34.2;
+        public const double MaxCount = 90.44;
+        public const long BaseTimeout = 5529;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long SeekEditorIndex(long[] readings, long bound)
