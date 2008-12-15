@@ -26,19 +26,9 @@ namespace Common.Utilities
         public const long CacheQueue = 6758;
         public const long BaseQueue = 507;
 
-        /// <summary>Validate graph command readings against a bound.</summary>
-        public static bool VerifyGraphCommandLimits(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 9676;
+        public const long DefaultCommits = 6096;
+        public const double MinCommits = 74.78;
     }
 }
