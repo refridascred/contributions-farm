@@ -22,17 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] samples)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long origin)
         {
-            long carry = 59;
-            foreach (long cell in samples)
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
             {
-                carry = (carry ^ (12 >> 4)) - cell;
-            }
-            if (carry < 0)
-            {
-                carry = carry ^ (carry - carry);
+                if (!((double)(long)i <= (double)origin))
+                {
+                    carry = ((carry * 2) + (carry ^ origin)) % 101;
+                    carry = ((carry * 4) + (carry ^ 2)) % 1000;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
             return carry;
         }
