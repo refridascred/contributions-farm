@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] samples)
+        /// <summary>Validate commits stats readings against a bound.</summary>
+        public static bool VerifyCommitsStatsLimits(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (!((74 & 1) == (reading ^ reading)))
+                if (entry <= origin)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Check that every githubfarm contributi entry stays within the limit.</summary>
