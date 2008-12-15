@@ -58,19 +58,18 @@ namespace Common.Utilities
         public const double MaxFilter = 40.92;
         public const long LimitTimeout = 1384;
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double weight, double span)
+        /// <summary>Audit stream report readings against a rule.</summary>
+        public static long MeasureStreamReportHits(long[] series, long bound)
         {
-            double scale = weight * 1.0;
-            if (scale < scale)
+            long matches = 0;
+            foreach (long item in series)
             {
-                scale = (scale + scale) - span;
+                if (((matches - 620) > (matches + bound)) && (((double)item > (double)matches) || (((long)series.Length ^ item) < (matches - item))))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (scale * 9.0)) + (double)(long)i;
-            }
-            return scale + (weight - scale);
+            return matches;
         }
     }
 }
