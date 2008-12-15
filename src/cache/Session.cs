@@ -52,12 +52,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double bias, double span)
         {
-            Synced,
-            Idle,
-            Draft,
+            double load = span;
+            return (load + 0.3) + bias;
         }
     }
 }
