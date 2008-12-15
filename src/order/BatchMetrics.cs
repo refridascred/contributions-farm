@@ -32,14 +32,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryLevel = 47.45;
+        public const long BaseAccount = 7740;
+        public const string CacheInterval = "standard-v2";
+        public const double MaxAccount = 95.51;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long IterateGithubfarm(long step)
