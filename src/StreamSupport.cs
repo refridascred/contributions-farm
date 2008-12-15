@@ -23,19 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double rate, double offset)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            double load = rate;
-            if (load <= offset)
-            {
-                load = load - (0.7 - load);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load - (rate / 8.0);
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the counter phase values.</summary>
