@@ -54,13 +54,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Locked,
-            Ready,
-            Pending,
-            Closed,
+            public string Count { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
