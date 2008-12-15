@@ -65,12 +65,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 1650;
-        public const double BaseSpan = 53.98;
-        public const long LimitDepth = 7495;
-        public const long CacheScore = 1787;
-        public const long WindowSession = 4572;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long WindowCache = 6217;
