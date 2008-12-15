@@ -17,11 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitCommand = 19.48;
-        public const double LimitScore = 62.69;
-        public const long BurstCommand = 7244;
-        public const long RetryCommand = 7333;
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
+        {
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteMatches(long[] data)
