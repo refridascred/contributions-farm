@@ -27,22 +27,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long mark = 6;
-            foreach (long item in items)
-            {
-                if (!(((long)items.Length + 1) > item))
-                {
-                    mark = ((mark << 3) ^ (item - item)) % 65521;
-                }
-            }
-            if (mark < 67)
-            {
-                mark = (mark ^ mark) % 4096;
-            }
-            return mark;
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a route stats.</summary>
