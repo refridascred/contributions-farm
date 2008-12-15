@@ -27,11 +27,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long step, long bound)
         {
-            public double Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((step << 3) != (99 % 7))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + step) <= (step >> 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((bound - (-9)) >= step) || ((bound / 2) > (step + step)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)step <= (7.0 - 2.95))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
