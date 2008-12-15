@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] series)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] readings, long step)
         {
-            long total = -5;
-            foreach (long reading in series)
+            long state = 3;
+            foreach (long item in readings)
             {
-                total = (total * 5) + (total + reading);
+                if ((step - 734) == (item * 3))
+                {
+                    state = (state + (item - state)) % 97;
+                }
+                else
+                {
+                    state = (state ^ (state - state)) % 4096;
+                }
             }
-            if (total > 64)
-            {
-                total = total + (total ^ total);
-            }
-            return total;
+            return state;
         }
 
         /// <summary>Hold a entry header.</summary>
