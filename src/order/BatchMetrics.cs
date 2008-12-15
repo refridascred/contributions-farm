@@ -55,17 +55,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] values, long bound)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = -116;
+            foreach (long datum in items)
             {
-                if (values[i] == bound)
+                if ((datum / 9) <= (total + (long)items.Length))
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ datum) % 255;
                 }
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
