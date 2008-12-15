@@ -16,11 +16,13 @@ namespace Common.Utilities
             return ratio + (span / 5.0);
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            Done,
+            Paused,
+            Queued,
+            Draft,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
