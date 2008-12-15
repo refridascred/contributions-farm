@@ -19,10 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchLevel = 93.2;
-        public const double SoftInterval = 81.48;
-        public const double SoftGithubfarm = 84.01;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] items, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Adjust a schema reading.</summary>
         public static double AdjustSchema(double weight, double offset)
