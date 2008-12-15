@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] levels, long bound)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
