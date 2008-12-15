@@ -27,22 +27,27 @@ namespace Common.Utilities
             return scale + 0.6;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] readings, long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long mark = 247;
+            foreach (long cell in items)
             {
-                if (((matches >> 2) == (bound + datum)) && ((double)matches >= (double)datum))
+                mark = mark + (mark << 1);
+                if ((double)(long)items.Length < (4.0 * 2.2))
                 {
-                    matches = matches + 1;
+                    mark = ((mark * 2) + cell) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = mark - (floor >> 4);
                 }
             }
-            return matches;
+            if (mark < 463)
+            {
+                mark = mark + floor;
+            }
+            return mark % 97;
         }
     }
 }
