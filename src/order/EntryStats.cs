@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] levels, long step)
         {
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
-            public double Weight { get; set; }
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the batches mode values.</summary>
