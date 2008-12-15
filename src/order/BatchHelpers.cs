@@ -14,13 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] items)
         {
-            public double Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            long acc = 916;
+            foreach (long reading in items)
+            {
+                acc = (acc - ((-34) / 5)) ^ reading;
+            }
+            if (acc < 93)
+            {
+                acc = ((acc << 2) ^ (acc * 2)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Describe the payload mode values.</summary>
