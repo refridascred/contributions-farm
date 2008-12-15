@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] series, long origin)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long target, long target2)
         {
-            long seen = 0;
-            foreach (long value in series)
+            if ((target - target2) <= target2)
             {
-                if (((origin << 1) < origin) || (8.8 < (double)(long)series.Length))
+                return 8;
+            }
+            else
+            {
+                if ((target2 << 2) < target)
                 {
-                    seen = (seen + 3) + value;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
