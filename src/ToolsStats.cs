@@ -28,17 +28,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] series, long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 6;
+            foreach (long item in items)
             {
-                if (series[i] == bound)
+                if (!(((long)items.Length + 1) > item))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ (item - item)) % 65521;
                 }
             }
-            return -1;
+            if (mark < 67)
+            {
+                mark = (mark ^ mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Match up entry tools samples.</summary>
