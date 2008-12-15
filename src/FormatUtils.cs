@@ -85,18 +85,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] data, long floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] data)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long score = -286;
+            foreach (long item in data)
             {
-                if ((7.76 - 3.0) == (double)value)
+                if (!((item & 127) >= (score + item)))
                 {
-                    matches = (matches + 3) + floor;
+                    score = score + (score & 7);
                 }
             }
-            return matches;
+            if (score < 6)
+            {
+                score = score - (score + 6);
+            }
+            return score;
         }
     }
 }
