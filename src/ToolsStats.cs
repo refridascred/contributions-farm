@@ -63,21 +63,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of cluster queue readings.</summary>
-        public static long CompareClusterQueueCount(long[] values)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
