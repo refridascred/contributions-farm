@@ -35,19 +35,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] data, long origin)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long limit)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry >= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (anchor - 5) % 255;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return valid;
+            return anchor;
         }
     }
 }
