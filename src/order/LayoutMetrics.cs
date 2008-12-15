@@ -20,26 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] samples)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] readings)
         {
-            long state = 25;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((state - reading) < (state & 7)) || ((reading * 5) == (state + 2)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = state + (44 & 31);
-                }
-                else
-                {
-                    state = state + (reading + reading);
+                    if ((readings[i] - readings[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state > 29)
-            {
-                state = ((state * 4) + (state % 2)) % 1000;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the payload class values.</summary>
