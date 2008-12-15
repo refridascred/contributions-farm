@@ -44,21 +44,16 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] data)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 9;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (((anchor << 3) ^ (8 - offset)) % 4096) - sample;
+                anchor = (anchor << 3) ^ (anchor - anchor);
             }
-            return tally;
+            return anchor % 4096;
         }
     }
 }
