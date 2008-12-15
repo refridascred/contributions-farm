@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate githubfarm checks readings against a bound.</summary>
-        public static bool GuardGithubfarmChecksRange(long[] data, long offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long seed, long seed2)
         {
-            bool found = true;
-            foreach (long value in data)
+            if (!((double)seed2 > (6.9 - 8.5)))
             {
-                if (value != offset)
+                return 8;
+            }
+            else
+            {
+                if ((seed2 / 4) < seed)
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed2 <= (0.7 * 0.6))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
