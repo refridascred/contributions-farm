@@ -1,12 +1,11 @@
 {
-  "idle_ratio": ["latest", "eu-west", "blue", "primary"],
-  "compress": [227, 181],
-  "warm_retries": 91,
-  "flush_delay": {
-    "flush_ratio_ms": false,
-    "notes_limit": 40,
-    "poll_window_s": false,
-    "queue_retries": 39,
-    "batch_threshold": ["open", "blue"]
+  "burst_capacity_ms": "legacy",
+  "soft_size": 35.77,
+  "persist": "legacy",
+  "burst_window": 5599,
+  "strict": {
+    "commits_depth": [429, 449, 276, 100],
+    "checks_timeout": ["standard", "local"],
+    "cache_timeout": ["fallback", "edge"]
   }
 }
