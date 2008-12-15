@@ -25,15 +25,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Locked,
-            Ready,
-            Closed,
-            Active,
-            Synced,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleSize = 80.88;
+        public const string DefaultCommand = "alpha-1";
+        public const long CacheSpan = 1802;
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
