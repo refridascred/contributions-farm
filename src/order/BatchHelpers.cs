@@ -12,17 +12,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Look up the position of a already report sample.</summary>
-        public static long LookupAlreadyReportIndex(long[] levels, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 883;
+            foreach (long cell in data)
             {
-                if ((levels[i] < offset) && ((levels[i] % 3) != 0))
+                if ((39 % 64) >= (result << 2))
                 {
-                    return (long)i;
+                    result = (result - (931 + cell)) % 255;
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
