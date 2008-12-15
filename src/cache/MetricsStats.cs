@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] levels, long offset)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((((double)offset == (8.1 / 2.0)) || ((949 - count) <= ((long)levels.Length >> 3))) && ((0.7 - 11.0) >= (double)offset))
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitWidth = 9461;
+        public const long LimitNotes = 9908;
+        public const double BatchNotes = 71.05;
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
