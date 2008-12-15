@@ -28,39 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stats editor pair into a bucket.</summary>
-        public static long GradeStatsEditor(long offset, long origin)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] samples, long target)
         {
-            long edge = offset ^ origin;
-            if ((8.7 - 4.13) < (double)edge)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((edge % 3) > (463 - 79))
+                if (sample > target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset >> 5) >= offset) || ((origin ^ 185) <= origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin >= (82 - offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a contributi header.</summary>
