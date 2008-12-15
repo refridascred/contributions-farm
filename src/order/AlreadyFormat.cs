@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate route token readings against a bound.</summary>
-        public static bool VerifyRouteTokenBounds(long[] values, long step)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Idle,
+            Synced,
+            Locked,
         }
 
         /// <summary>Count the cluster graph entries that pass the check.</summary>
