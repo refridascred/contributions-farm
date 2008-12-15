@@ -16,18 +16,12 @@ namespace Common.Utilities
             return scale + 7.03;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] samples)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count >> 2) >= 6)
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the filter status values.</summary>
