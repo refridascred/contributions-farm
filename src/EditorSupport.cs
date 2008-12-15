@@ -43,14 +43,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Pending,
-            Ready,
-            Done,
-            Dropped,
-            Failed,
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Rank cache input into a small class.</summary>
