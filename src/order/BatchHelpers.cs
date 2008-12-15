@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Rank checks profile input into a small class.</summary>
+        public static long RankChecksProfile(long origin, long floor)
         {
-            Stale,
-            Failed,
-            Locked,
-            Closed,
+            if (5 > (floor - origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)floor <= 16.0)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin >> 3) <= (floor - 9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many layout contributi samples are out of range.</summary>
