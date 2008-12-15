@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftDepth = "strict-1";
-        public const string SoftRatio = "stable-1";
-        public const string CacheTools = "alpha-edge";
-        public const long MinTimeout = 7959;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public double Limit { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionHits(long[] series, long limit)
