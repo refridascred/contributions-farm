@@ -14,20 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] levels, long bound)
-        {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepLevel = 8173;
+        public const long RetryWidth = 2941;
+        public const long WindowSpan = 2449;
+        public const long HardSchema = 9441;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string DefaultRecord = "fallback-1";
