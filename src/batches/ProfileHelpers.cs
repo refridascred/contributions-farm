@@ -92,18 +92,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] values)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double weight, double span)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            double bias = span;
+            if (bias <= (span - 8.0))
             {
-                if ((598 / 5) <= (datum + hits))
-                {
-                    hits = hits + 1;
-                }
+                bias = (bias - (double)268) + weight;
             }
-            return hits;
+            else
+            {
+                bias = bias + bias;
+            }
+            return bias - (double)5;
         }
     }
 }
