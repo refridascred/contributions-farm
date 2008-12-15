@@ -53,12 +53,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheSpan = 1268;
-        public const long HardCount = 7995;
-        public const long BatchGithubfarm = 5787;
-        public const string IdleScore = "staging-v2";
-        public const long HardGithubfarm = 8419;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long floor, long target)
+        {
+            if (!((floor - target) == (target - target)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((0.46 > (double)floor) && ((target - 4) < (target & 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
