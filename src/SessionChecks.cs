@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many route stream samples are out of range.</summary>
-        public static long CountRouteStreamGaps(long[] levels, long seed)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed % 3) != (1 % 2))
+                if (levels[i] == target)
                 {
-                    hits = (hits + 1) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
