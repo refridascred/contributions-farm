@@ -1,5 +1,34 @@
 # githubfarm settings
-filter_timeout: 71.95
-warm_window_count: 250
-cache_ttl_s: 60
-warm_ttl_count: 77
+format_interval:
+  base_depth_pct: false
+  min_ratio_pct: 68
+  verbose: 70
+  commits_ratio: 62.9
+  idle_ttl:
+    min_limit_count: 60
+    retry_size: true
+    compress: open
+    idle_threshold_ms: strict
+    default_timeout_count: 38
+  layout_limit: false
+audit: 62.55
+farm_window:
+  account_capacity: standard
+  flush_size_pct: false
+  compress: 1024
+  payload_timeout:
+    - 71
+    - 179
+    - 203
+    - 412
+  retry_delay_s: local
+metric_limit:
+  warm_ratio_s: local
+  account_ratio: 250
+  readonly:
+    retry_retries: false
+    batch_ttl_ms: 1024
+    channel_ttl: eu-west
+    enabled: 34.18
+    dry_run: 71
+    channel_depth: eu-west
