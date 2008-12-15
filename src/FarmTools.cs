@@ -11,24 +11,10 @@ namespace Common.Utilities
         public const long SoftScore = 499;
         public const double BatchRatio = 1.14;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] values)
-        {
-            long acc = 963;
-            foreach (long datum in values)
-            {
-                acc = ((acc * 3) + (acc + (long)values.Length)) + datum;
-                if ((acc / 5) != (42 + acc))
-                {
-                    break;
-                }
-            }
-            if (acc > 772)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchInterval = 4531;
+        public const long DefaultSpan = 3503;
+        public const long MinCommits = 2253;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BatchAccount = 598;
