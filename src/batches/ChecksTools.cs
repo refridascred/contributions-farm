@@ -46,15 +46,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] data, long limit)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] levels, long step)
         {
-            long anchor = 985;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor ^ (limit + 329)) + datum;
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
