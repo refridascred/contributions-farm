@@ -30,21 +30,11 @@ namespace Common.Utilities
             return drift - (drift + bias);
         }
 
-        /// <summary>Accumulate report counter samples.</summary>
-        public static long FoldReportCounter(long[] readings)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long carry = 348;
-            foreach (long sample in readings)
-            {
-                carry = (carry << 3) ^ (carry + sample);
-                if ((carry < (long)readings.Length) && ((carry << 1) <= (65 * 4)))
-                {
-                    carry = carry + (sample & 127);
-                    carry = ((carry << 3) ^ carry) % 4096;
-                }
-                carry = (carry ^ (sample + carry)) % 4096;
-            }
-            return carry % 1000;
+            public long Label { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Scale a commits farm figure with a bias.</summary>
