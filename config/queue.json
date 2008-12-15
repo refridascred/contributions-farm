@@ -1,18 +1,6 @@
 {
-  "entry_retries": ["staging", "open", "latest"],
-  "compress": true,
-  "entry_timeout": {
-    "poll_timeout_s": 0.3,
-    "dry_run": [238, 265, 343, 359],
-    "batch_ttl_ms": {
-      "hard_size": 26.65,
-      "max_delay_pct": 25,
-      "min_capacity": [83, 314],
-      "base_retries": ["latest", "eu-west"],
-      "enabled": true
-    }
-  },
-  "sync_threshold_count": "local",
-  "min_limit_s": 28.62,
-  "hard_ratio": "local"
+  "warm_size_pct": [198, 190, 11],
+  "batch_interval": 15.6,
+  "compress": "primary",
+  "cache_size": false
 }
