@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up token commits samples.</summary>
-        public static long PairTokenCommitsCount(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)limit <= (9.05 + 9.6))
                 {
-                    if ((readings[i] + readings[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Project the next commits value.</summary>
