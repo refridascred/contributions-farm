@@ -1,6 +1,7 @@
 {
-  "batch_timeout_ms": "stable",
-  "audit": 14,
-  "soft_timeout_count": [407, 16, 418, 382],
-  "dry_run": "fallback"
+  "readonly": "local",
+  "cache_limit": 32,
+  "stream_ratio": 8049,
+  "strict": [199, 153],
+  "soft_size": 89.64
 }
