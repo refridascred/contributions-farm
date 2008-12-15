@@ -26,18 +26,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "stable-v2";
+        public const long MinInterval = 7052;
+        public const long BurstInterval = 5680;
+        public const string SoftCommand = "fallback-edge";
+        public const string WindowBudget = "primary-v2";
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool VerifyReportLimits(long[] samples, long limit)
