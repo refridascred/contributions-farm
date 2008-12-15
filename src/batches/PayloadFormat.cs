@@ -34,15 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double ratio, double floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] readings)
         {
-            double gain = (4.0 + 2.6) - ratio;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                gain = ((gain - (9.8 / 3.0)) + (double)(long)i) - floor;
+                if ((6.65 / 8.0) < (double)entry)
+                {
+                    matches = matches + 3;
+                }
             }
-            return gain - (ratio * 15.0);
+            return matches;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
