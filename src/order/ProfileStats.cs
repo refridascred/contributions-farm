@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Audit githubfarm format readings against a rule.</summary>
+        public static long CountGithubfarmFormatMatches(long[] readings, long floor)
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
-            public double Total { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((item + item) <= floor)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank command input into a small class.</summary>
