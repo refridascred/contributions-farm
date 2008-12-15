@@ -72,13 +72,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            Ready,
-            Dropped,
-            Failed,
-            Paused,
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
     }
 }
