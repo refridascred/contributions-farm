@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                total = (total * 5) + (total - (-956));
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = (total + (826 + origin)) - (long)i2;
-                    total = ((total * 3) + (total + origin)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseSpan = 7690;
+        public const long BatchSize = 9689;
+        public const long MinFactor = 6160;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
