@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] series, long origin)
+        /// <summary>Accumulate stream githubfarm samples.</summary>
+        public static long CombineStreamGithubfarm(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 2;
+            foreach (long reading in items)
             {
-                if (series[i] <= origin)
+                if ((state + 744) <= (reading & 63))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (state & 7)) % 255;
+                }
+                if (((state - state) != (reading % 8)) || (((-650) / 2) < (reading * 5)))
+                {
+                    state = state ^ ((long)items.Length + reading);
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
