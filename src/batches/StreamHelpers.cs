@@ -60,18 +60,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] readings, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((1.0 / 3.0) == (double)item)
+                if ((hits + hits) < (hits / 5))
                 {
-                    seen = (seen + 1) + floor;
+                    hits = (hits + 3) - datum;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
