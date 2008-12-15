@@ -37,11 +37,19 @@ namespace Common.Utilities
         public const long BurstSpan = 9841;
         public const long WindowFactor = 5144;
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double ratio, double span)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] data, long floor)
         {
-            double weight = span + (span + span);
-            return (weight + 13.0) + ratio;
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate githubfarm metric samples.</summary>
