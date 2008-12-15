@@ -105,9 +105,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSize = 8815;
-        public const double LimitDepth = 27.61;
-        public const long RetryTimeout = 8690;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] levels, long target)
+        {
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
