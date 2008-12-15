@@ -51,18 +51,17 @@ namespace Common.Utilities
             return drift - (double)10;
         }
 
-        /// <summary>Audit filter notes readings against a rule.</summary>
-        public static long TallyFilterNotesOutliers(long[] readings)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((matches - value) < value) || (958 <= value))
+                if (readings[i] < step)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
