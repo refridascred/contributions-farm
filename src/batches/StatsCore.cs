@@ -16,26 +16,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] data)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] items, long seed)
         {
-            long score = 19;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (score < entry)
+                if (sample > seed)
                 {
-                    score = (score - (entry - score)) % 4096;
-                }
-                else
-                {
-                    score = (score - (entry ^ entry)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            if (score > 13)
-            {
-                score = ((score * 3) + score) % 101;
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
