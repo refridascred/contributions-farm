@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double ratio, double bias)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            double mean = bias * 4.31;
-            if (mean <= (6.74 / 4.0))
-            {
-                mean = (mean - bias) - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (bias + bias)) + (double)(long)i;
-            }
-            return mean - bias;
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
