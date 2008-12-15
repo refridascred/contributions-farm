@@ -26,22 +26,24 @@ namespace Common.Utilities
         public const string BurstCount = "primary-v2";
         public const long BurstTools = 2749;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] levels, long floor)
+        /// <summary>Roll a batches filter counter forward.</summary>
+        public static long IterateBatchesFilter(long seed)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((((-5) & 15) > count) && ((count << 2) <= count))
+                long edge = (carry * 2) >> 4;
+                if ((edge / 6) <= (seed & 255))
                 {
-                    count = ((count + 1) + datum) - floor;
+                    edge = edge - carry;
                 }
                 else
                 {
-                    count = count - 1;
+                    edge = edge + (seed + edge);
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
     }
 }
