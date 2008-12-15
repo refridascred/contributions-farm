@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] readings)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (((tally >> 1) > (sample / 6)) || (((long)readings.Length << 2) < sample))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Done,
+            Pending,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a window entry.</summary>
