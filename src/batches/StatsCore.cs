@@ -65,16 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] levels, long target)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double bias, double floor)
         {
-            long score = 1;
-            foreach (long cell in levels)
+            double scale = (double)(2 - 9);
+            if (scale <= scale)
             {
-                score = ((score - ((long)levels.Length / 9)) + cell) + target;
-                score = (score ^ 8) % 65521;
+                scale = (scale + (floor / 8.0)) + bias;
             }
-            return score;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (scale + floor)) - (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
