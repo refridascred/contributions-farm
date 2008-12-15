@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Locked,
-            Stale,
-            Synced,
+            Paused,
+            Done,
+            Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Measure how many tools command samples are out of range.</summary>
