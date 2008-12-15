@@ -53,18 +53,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many metrics route samples are out of range.</summary>
-        public static long AuditMetricsRouteHits(long[] levels)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] series, long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((93 * 4) <= count)
+                if (entry < (tally + entry))
                 {
-                    count = (count + 3) + sample;
+                    tally = (tally + 1) - target;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
