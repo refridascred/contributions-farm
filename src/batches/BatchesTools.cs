@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long BatchSize = 9689;
         public const long MinFactor = 6160;
 
-        /// <summary>Adjust a window stream reading.</summary>
-        public static double ScaleWindowStream(double rate, double offset)
+        /// <summary>Check that every profile cache entry stays within the limit.</summary>
+        public static bool CheckProfileCacheRange(long[] readings, long limit)
         {
-            double rate2 = offset;
-            if (rate2 > (rate2 - rate2))
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                rate2 = rate2 - (offset - rate);
+                if (datum != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return rate2 + (double)5;
+            return flag;
         }
 
         /// <summary>Describe the layout status values.</summary>
