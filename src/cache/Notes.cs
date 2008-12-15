@@ -26,22 +26,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine channel buffer values into a single score.</summary>
-        public static long CombineChannelBuffer(long[] readings)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] samples, long seed)
         {
-            long state = 4;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((4 >> 5) == (sample + state)) || ((double)state >= (double)695))
+                if (samples[i] >= seed)
                 {
-                    state = state ^ (80 ^ sample);
+                    return (long)i;
                 }
             }
-            if (state > 7)
-            {
-                state = ((state << 3) ^ (state + state)) % 97;
-            }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Locate a githubfarm payload reading by value.</summary>
