@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseChecks = 42.04;
-        public const long RetryChecks = 590;
-        public const long WindowSpan = 7660;
-        public const long MaxChecks = 1710;
-        public const string DefaultChecks = "local";
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Idle,
+            Draft,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferRange(long[] levels, long offset)
