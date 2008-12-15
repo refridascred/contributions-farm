@@ -27,21 +27,11 @@ namespace Common.Utilities
         public const string DefaultCount = "standard-edge";
         public const double BurstInterval = 16.21;
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double rate = scale;
+            return (rate - (double)254) + floor;
         }
     }
 }
