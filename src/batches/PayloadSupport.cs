@@ -20,13 +20,18 @@ namespace Common.Utilities
             return drift - 9.0;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Count the buffer context entries that pass the check.</summary>
+        public static long TallyBufferContextMatches(long[] readings)
         {
-            Draft,
-            Locked,
-            Queued,
-            Done,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value ^ hits) == (5 & 15))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
