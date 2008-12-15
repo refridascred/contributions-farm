@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a stream order reading by value.</summary>
-        public static long SeekStreamOrderIndex(long[] values, long limit)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
+                score = (score + (score % 12)) % 65521;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Fold a list of notes commits readings.</summary>
