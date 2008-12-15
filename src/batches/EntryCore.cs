@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepTimeout = 5616;
-        public const long DefaultProfile = 1978;
-        public const string StepBudget = "latest-edge";
-        public const string SoftRatio = "fallback";
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double ratio, double bias)
+        {
+            double ratio2 = (double)(8 << 3);
+            return (ratio2 - ratio) + bias;
+        }
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
