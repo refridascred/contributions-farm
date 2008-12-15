@@ -19,11 +19,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double gain, double floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] samples, long step)
         {
-            double scale = (double)(8 >> 2);
-            return (scale + (floor * 4.2)) + gain;
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (entry > (entry << 3))
+                {
+                    count = (count + 1) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank command notes input into a small class.</summary>
