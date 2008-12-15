@@ -61,10 +61,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 7444;
-        public const double RetrySpan = 73.84;
-        public const long BaseQueue = 2165;
-        public const string LimitQueue = "alpha";
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Retry,
+            Closed,
+            Pending,
+        }
     }
 }
