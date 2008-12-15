@@ -1,7 +1,8 @@
-id,ratio,owner,region
-1,green,local,255
-2,eu-west,latest,510
-3,eu-west,strict,394
-4,816,44.77,65.14
-5,1.62,87.25,994
-6,196,primary,502
+id,region,label
+1,30.9,730
+2,50.29,33.98
+3,edge,54.41
+4,65.71,56.89
+5,443,632
+6,358,970
+7,499,886
