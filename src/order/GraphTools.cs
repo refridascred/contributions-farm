@@ -29,14 +29,19 @@ namespace Common.Utilities
         public const long DefaultContributi = 3022;
         public const string SoftInterval = "strict-1";
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double scale, double span)
         {
-            Queued,
-            Dropped,
-            New,
-            Draft,
-            Pending,
+            double scale2 = (double)(826 & 127);
+            if (scale2 > scale2)
+            {
+                scale2 = (scale2 + (double)630) + span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 + scale) + (double)(long)i;
+            }
+            return scale2 - (scale + 2.52);
         }
     }
 }
