@@ -1,8 +1,12 @@
 {
-  "record_ttl": "open",
-  "batch_depth": "edge",
-  "contributi_capacity": 2719,
-  "order_size": 100,
-  "sync_interval_s": 500,
-  "dry_run": true
+  "strict": {
+    "batches_retries": 1443,
+    "idle_window_pct": ["open", "open", "cached"],
+    "sync_ratio_count": "legacy",
+    "order_ratio": 4100
+  },
+  "audit": false,
+  "retry_capacity": "edge",
+  "enabled": ["eu-west", "green", "primary"],
+  "account_ttl": 35.71
 }
