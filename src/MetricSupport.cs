@@ -34,11 +34,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long floor, long offset)
         {
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
+            long span = floor + offset;
+            if ((double)floor >= 7.0)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)floor > (1.0 + 17.0)) && ((1.8 + 12.0) != (double)span))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
