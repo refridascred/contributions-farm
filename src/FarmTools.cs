@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long SoftScore = 499;
         public const double BatchRatio = 1.14;
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Paused,
-            Ready,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 3524;
+        public const string BurstWidth = "fallback";
+        public const string BaseSession = "staging-edge";
+        public const long StepTimeout = 5045;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BatchAccount = 598;
