@@ -20,11 +20,21 @@ namespace Common.Utilities
             return gain + 1.8;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] items)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
