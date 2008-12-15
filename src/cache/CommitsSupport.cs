@@ -22,11 +22,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Scale a cluster stats figure with a bias.</summary>
-        public static double AdjustClusterStats(double gain, double floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] readings, long origin)
         {
-            double rate = floor;
-            return (rate + (floor - 6.61)) + gain;
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((origin <= (datum / 7)) || ((origin % 7) <= datum))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a filter session reading by value.</summary>
