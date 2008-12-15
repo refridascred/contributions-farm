@@ -29,14 +29,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] readings)
         {
-            Stale,
-            Failed,
-            Pending,
-            Closed,
-            Dropped,
+            long acc = 93;
+            foreach (long cell in readings)
+            {
+                if ((acc ^ (long)readings.Length) < 30)
+                {
+                    acc = (acc + cell) % 1000;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
