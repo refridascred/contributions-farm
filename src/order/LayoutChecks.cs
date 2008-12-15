@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultFactor = "local-1";
-        public const string BurstWidth = "standard-1";
-        public const long CacheBudget = 2310;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string DefaultSpan = "open-edge";
