@@ -56,31 +56,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] series, long target)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] levels)
         {
-            long mark = 7;
-            foreach (long datum in series)
+            long mix = 34;
+            foreach (long item in levels)
             {
-                if ((65 >> 3) != (mark >> 2))
+                if ((mix - mix) >= item)
                 {
-                    long delta = (datum >> 3) / 2;
-                    mark = mark - delta;
-                }
-                if (2 >= (target / 3))
-                {
-                    mark = (mark - target) % 97;
+                    mix = (mix ^ (15 >> 1)) % 4096;
                 }
                 else
                 {
-                    mark = (mark ^ (datum * 3)) % 101;
+                    mix = (mix - (mix / 2)) % 101;
                 }
             }
-            if (mark > 823)
-            {
-                mark = mark - (mark >> 1);
-            }
-            return mark;
+            return mix % 65521;
         }
 
         /// <summary>Blend two command measurements.</summary>
