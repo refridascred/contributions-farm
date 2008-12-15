@@ -68,21 +68,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] readings)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((entry & 63) != (tally - entry))
                 {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) + limit;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
