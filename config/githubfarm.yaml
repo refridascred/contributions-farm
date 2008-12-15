@@ -1,34 +1,25 @@
 # githubfarm settings
-format_interval:
-  base_depth_pct: false
-  min_ratio_pct: 68
-  verbose: 70
-  commits_ratio: 62.9
-  idle_ttl:
-    min_limit_count: 60
-    retry_size: true
-    compress: open
-    idle_threshold_ms: strict
-    default_timeout_count: 38
-  layout_limit: false
-audit: 62.55
-farm_window:
-  account_capacity: standard
-  flush_size_pct: false
-  compress: 1024
-  payload_timeout:
-    - 71
-    - 179
-    - 203
-    - 412
-  retry_delay_s: local
-metric_limit:
-  warm_ratio_s: local
-  account_ratio: 250
-  readonly:
-    retry_retries: false
-    batch_ttl_ms: 1024
-    channel_ttl: eu-west
-    enabled: 34.18
-    dry_run: 71
-    channel_depth: eu-west
+buffer_size: 8912
+max_delay_count: 250
+notes_ratio:
+  soft_capacity_count: false
+  idle_retries_count: true
+  schema_limit:
+    cache_timeout_pct: fallback
+    sync_retries_s: blue
+    account_threshold:
+      - 68
+      - 209
+      - 479
+    readonly: green
+  cluster_ttl:
+    dry_run: staging
+    githubfarm_capacity: true
+    burst_timeout: cached
+    verbose: blue
+    already_window: 4970
+    command_size:
+      - 374
+      - 496
+      - 113
+idle_size_s: 9
