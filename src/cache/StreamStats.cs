@@ -46,12 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] items, long offset)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] >= offset)
+                if ((readings[i] == origin) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
