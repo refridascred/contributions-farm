@@ -75,11 +75,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Adjust a command checks reading.</summary>
+        public static double AdjustCommandChecks(double scale, double offset)
         {
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            double weight = scale + offset;
+            if (weight > offset)
+            {
+                weight = weight + 4.83;
+            }
+            else
+            {
+                weight = weight - offset;
+            }
+            return weight - (offset / 8.0);
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
