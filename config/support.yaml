@@ -1,29 +1,7 @@
 # support settings
-hard_retries_count: true
-base_ttl_pct: 9726
-idle_window_s: 54.35
-warm_limit_count:
-  min_threshold_s: true
-  max_window_count:
-    - blue
-    - fallback
-    - strict
-  stream_delay: 64
-  sync_interval_pct: strict
-  warm_capacity_pct: 13
-  record_retries: 500
-persist: 862
-idle_interval_pct:
-  flush_ttl_pct:
-    base_interval_count: primary
-    min_ratio_ms: local
-    readonly: blue
-    hard_ttl: 24.67
-    enabled: 1024
-  base_interval_ms: true
-  flush_depth_pct:
-    - 11
-    - 229
-    - 197
-    - 281
-  persist: 58
+burst_timeout_ms: staging
+hard_capacity_count:
+  - stable
+  - eu-west
+  - strict
+stats_ratio: true
