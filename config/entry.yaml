@@ -1,13 +1,14 @@
 # entry settings
-dry_run: true
-farm_delay:
-  - 188
-  - 338
-  - 152
-soft_size: green
-min_ratio:
+poll_interval_ms: staging
+retry_threshold_pct:
+  - 176
+  - 281
+  - 134
+  - 28
+flush_delay: 3566
+audit:
   - standard
-  - standard
-  - eu-west
-poll_ttl_ms: stable
-retry_limit_ms: edge
+  - primary
+  - cached
+  - cached
+stats_delay: primary
