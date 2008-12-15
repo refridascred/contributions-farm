@@ -1,33 +1,5 @@
 # entry settings
-burst_limit_count: staging
-layout_threshold: false
-idle_ratio_pct:
-  - 387
-  - 178
-  - 447
-  - 109
-audit: 91.58
-soft_threshold:
-  retry_ratio_s: true
-  order_capacity:
-    entry_threshold: false
-    retry_capacity: 250
-    channel_retries:
-      - cached
-      - latest
-    poll_delay_ms: 25
-  githubfarm_depth: 4473
-  audit: 68.93
-  min_size: 80.21
-  order_ttl:
-    soft_retries: 24.84
-    default_threshold: 79.9
-    cache_depth_s:
-      - 65
-      - 459
-    tools_size: 41
-    metric_window: 2907
-    base_delay_ms:
-      - 317
-      - 280
-cluster_retries: 2.74
+idle_size_count: eu-west
+channel_ratio: 43
+payload_depth: true
+retry_limit_count: 5420
