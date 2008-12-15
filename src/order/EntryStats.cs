@@ -28,23 +28,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] readings, long seed)
         {
-            long mark = 662;
-            foreach (long reading in samples)
+            long mix = 1;
+            foreach (long item in readings)
             {
-                mark = (mark - mark) % 65521;
-                if ((reading * 3) <= reading)
+                if ((double)seed <= (double)item)
                 {
-                    mark = ((mark << 3) ^ (mark << 3)) % 1000;
+                    mix = (mix ^ (item ^ 4)) % 255;
                 }
-                if (reading > (mark & 31))
+                else
                 {
-                    break;
+                    mix = (mix * 3) + mix;
                 }
+                mix = (mix ^ (244 % 10)) % 65521;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Hold a contributi stats.</summary>
