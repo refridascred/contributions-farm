@@ -1,7 +1,17 @@
 # entry settings
-dry_run: 3.3
-channel_ttl: 30
-max_interval: true
-default_threshold_pct: 9814
-burst_timeout_ms: 25
-sync_interval: 71.81
+default_threshold_ms:
+  sync_ttl: 15.06
+  min_size: false
+  enabled: false
+  metric_retries: 76
+  editor_retries:
+    retry_timeout_pct: 60
+    persist: false
+    enabled: false
+context_interval:
+  - 316
+  - 473
+  - 121
+strict:
+  - standard
+  - strict
