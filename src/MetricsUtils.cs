@@ -29,10 +29,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinFactor = 12.0;
-        public const string MaxScore = "fallback";
-        public const long MaxRatio = 6560;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!((double)tally < (18.0 * 7.4)))
+                {
+                    tally = ((tally + 2) + reading) + target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long AuditCommitsGaps(long[] series, long floor)
