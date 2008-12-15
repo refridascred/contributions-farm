@@ -59,14 +59,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheSpan = 1268;
+        public const long HardCount = 7995;
+        public const long BatchGithubfarm = 5787;
+        public const string IdleScore = "staging-v2";
+        public const long HardGithubfarm = 8419;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
