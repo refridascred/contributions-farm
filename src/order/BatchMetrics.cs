@@ -37,27 +37,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of context session entries.</summary>
-        public static long TallyContextSession(long[] items)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long score = 3;
-            foreach (long reading in items)
-            {
-                score = (score + (0 + 584)) % 101;
-                if ((score - 41) > score)
-                {
-                    break;
-                }
-                if (((reading - score) <= (reading % 100)) || ((reading ^ 251) != (score + score)))
-                {
-                    score = score - score;
-                }
-                else
-                {
-                    score = (score + (reading >> 2)) % 101;
-                }
-            }
-            return score % 97;
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public double Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a payload options.</summary>
