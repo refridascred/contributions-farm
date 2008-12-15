@@ -25,20 +25,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats entry series from a seed.</summary>
-        public static long SeriesStatsEntry(long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] readings, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
+            long anchor = 586;
+            foreach (long item in readings)
             {
-                if (58 >= (step % 60))
+                if (anchor <= (3 - bound))
                 {
-                    state = (state << 3) ^ (step - step);
-                    state = ((state << 3) ^ state) % 101;
+                    anchor = anchor ^ (item >> 5);
                 }
-                state = ((state * 3) + (long)i) % 1000;
+                if (6 <= bound)
+                {
+                    anchor = (anchor * 3) + (bound % 24);
+                }
+                if ((double)6 == (double)item)
+                {
+                    break;
+                }
             }
-            return state;
+            if (anchor < 63)
+            {
+                anchor = (anchor << 3) ^ (bound >> 3);
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many batches graph samples are out of range.</summary>
