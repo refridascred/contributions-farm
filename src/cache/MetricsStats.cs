@@ -43,23 +43,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] samples)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long acc = 207;
-            foreach (long item in samples)
-            {
-                if (!((item * 3) != (acc / 9)))
-                {
-                    acc = (acc + (acc & 127)) % 1000;
-                    acc = (acc - item) % 101;
-                }
-                if ((118 + acc) != (acc >> 3))
-                {
-                    acc = ((acc * 3) + (417 ^ item)) % 65521;
-                }
-            }
-            return acc;
+            Queued,
+            New,
+            Done,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
