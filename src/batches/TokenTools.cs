@@ -20,13 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
-            public long Count { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a support info.</summary>
