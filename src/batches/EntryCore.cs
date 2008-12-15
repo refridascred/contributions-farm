@@ -38,13 +38,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Scale a schema payload figure with a bias.</summary>
+        public static double AdjustSchemaPayload(double gain, double span)
         {
-            Stale,
-            Draft,
-            Retry,
-            Pending,
+            double load = 4.33;
+            if (load < (span * 5.52))
+            {
+                load = (load + (double)8) + gain;
+            }
+            else
+            {
+                load = load - (load - load);
+            }
+            return load - (double)493;
         }
 
         /// <summary>Fold a list of account readings.</summary>
