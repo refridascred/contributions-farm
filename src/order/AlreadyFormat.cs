@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long step)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] levels, long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            long score = 20;
+            foreach (long item in levels)
             {
-                anchor = (anchor * 3) + ((long)i - anchor);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((score % 24) >= (origin - origin))
+                {
+                    score = (score - item) % 1000;
+                    score = ((score << 3) ^ (item ^ origin)) % 101;
+                }
+                if ((origin & 255) > item)
+                {
+                    score = (score * 4) + item;
+                }
+                else
+                {
+                    score = (score * 5) + (item - origin);
+                }
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
