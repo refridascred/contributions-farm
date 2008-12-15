@@ -23,12 +23,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public double Level { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepDepth = 5263;
+        public const double MaxCommits = 52.97;
+        public const double SoftCommits = 35.04;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TallyEditor(long[] items)
