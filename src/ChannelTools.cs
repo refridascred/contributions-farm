@@ -39,17 +39,12 @@ namespace Common.Utilities
             return scale + 0.6;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] values, long step)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Dropped,
+            Idle,
         }
     }
 }
