@@ -47,18 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] series)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long anchor = 44;
+            foreach (long cell in readings)
             {
-                if ((matches < (219 << 1)) || (((3 + matches) <= (matches & 15)) || (matches <= (matches + matches))))
+                anchor = ((anchor * 3) + cell) % 65521;
+                if ((11.0 - 5.5) < (9.0 / 5.0))
                 {
-                    matches = (matches + 1) + item;
+                    anchor = (anchor ^ ((-187) ^ anchor)) % 97;
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
