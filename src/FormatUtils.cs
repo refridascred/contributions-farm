@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const double IdleLevel = 8.29;
         public const long MaxBudget = 3066;
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public double Level { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            New,
+            Closed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
