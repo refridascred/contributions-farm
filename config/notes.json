@@ -1,7 +1,5 @@
 {
-  "readonly": "local",
-  "cache_limit": 32,
-  "stream_ratio": 8049,
-  "strict": [199, 153],
-  "soft_size": 89.64
+  "compress": 40.96,
+  "retry_timeout_count": "fallback",
+  "format_window": "blue"
 }
