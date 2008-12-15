@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinFactor = 31.51;
-        public const long IdleSize = 5262;
-        public const long RetryInterval = 3756;
-        public const long RetryReport = 4161;
+        /// <summary>Find the first account session entry that matches the target.</summary>
+        public static long SeekAccountSessionIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= step) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MinEntry = 180;
