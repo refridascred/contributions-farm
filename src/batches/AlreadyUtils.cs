@@ -32,12 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] items, long seed)
         {
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (((double)value < 6.2) || !(4 >= (value ^ (long)items.Length)))
+                {
+                    count = (count + 3) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
