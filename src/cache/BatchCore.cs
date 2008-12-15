@@ -55,15 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema notes entries.</summary>
-        public static long DigestSchemaNotes(long[] items)
+        /// <summary>Count the format tools entries that pass the check.</summary>
+        public static long AuditFormatToolsMatches(long[] data, long limit)
         {
-            long result = 78;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                result = ((result << 3) ^ (cell % 8)) % 65521;
+                if ((hits / 7) <= limit)
+                {
+                    hits = (hits + 2) - item;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
