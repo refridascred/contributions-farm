@@ -27,22 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] items)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] values)
         {
-            long mark = 0;
-            foreach (long entry in items)
+            long result = 671;
+            foreach (long sample in values)
             {
-                if ((double)entry <= (6.01 + 15.0))
+                if ((sample / 7) <= sample)
                 {
-                    mark = ((mark << 2) ^ (mark + mark)) % 255;
+                    result = (result * 2) + (result % 97);
                 }
             }
-            if (mark > 8)
+            if (result > 391)
             {
-                mark = mark + (mark >> 2);
+                result = result ^ (result * 5);
             }
-            return mark % 97;
+            return result;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
