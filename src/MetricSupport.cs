@@ -12,19 +12,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] values)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long mark = 979;
-            foreach (long cell in values)
-            {
-                mark = mark - mark;
-                if (mark > (cell >> 5))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Dropped,
+            Active,
+            Paused,
+            Draft,
         }
 
         /// <summary>Hold a farm summary.</summary>
