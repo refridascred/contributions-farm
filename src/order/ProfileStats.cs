@@ -31,15 +31,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Idle,
-            Closed,
-            New,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseFormat = 55.56;
+        public const long BurstFormat = 7100;
+        public const long WindowFormat = 2199;
 
         /// <summary>Count stats command pairs that satisfy a relation.</summary>
         public static long OverlapStatsCommandCount(long[] levels)
