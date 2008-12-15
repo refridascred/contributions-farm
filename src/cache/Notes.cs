@@ -30,14 +30,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Active,
-            Synced,
-            Draft,
-            Locked,
-            Done,
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a queue info.</summary>
