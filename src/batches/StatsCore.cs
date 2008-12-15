@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] readings, long offset)
+        /// <summary>Combine format notes values into a single score.</summary>
+        public static long ScoreFormatNotes(long[] readings, long step)
         {
-            long seen = 0;
+            long state = 32;
             foreach (long sample in readings)
             {
-                if (sample <= (seen / 4))
-                {
-                    seen = (seen + 3) - offset;
-                }
+                state = (((state * 4) + step) % 101) + sample;
             }
-            return seen;
+            if (state < 4)
+            {
+                state = (state - (step % 8)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
