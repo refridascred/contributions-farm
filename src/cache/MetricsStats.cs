@@ -74,16 +74,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long offset)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long floor, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
+            long step = floor + target;
+            if ((step << 1) > step)
             {
-                sum = ((sum * 3) + (58 >> 1)) % 65521;
-                sum = ((sum * 4) + (long)i) % 101;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((7.49 * 5.0) != (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
