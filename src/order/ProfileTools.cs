@@ -81,12 +81,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long seed, long floor)
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            if ((floor % 100) == (floor - seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor % 7) >= floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
