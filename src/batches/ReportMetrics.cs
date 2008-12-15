@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double weight, double offset)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double ratio, double span)
         {
-            double drift = weight / 2.0;
-            if (drift > weight)
+            double scale = (ratio / 3.0) - 4.2;
+            if (scale < (scale - scale))
             {
-                drift = drift - offset;
+                scale = scale - span;
             }
-            return drift + weight;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + 15.0) + (double)(long)i;
+            }
+            return scale - 12.0;
         }
 
         /// <summary>Describe the profile phase values.</summary>
