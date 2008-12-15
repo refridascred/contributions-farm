@@ -30,22 +30,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of checks filter entries.</summary>
-        public static long CombineChecksFilter(long[] items, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] values)
         {
-            long score = 41;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((score + origin) == (origin ^ 7))
+                if (reading <= (19 >> 3))
                 {
-                    score = (score - score) - reading;
+                    count = count + 2;
                 }
             }
-            if (score < 54)
-            {
-                score = (score ^ origin) % 1000;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Fold a list of format context readings.</summary>
