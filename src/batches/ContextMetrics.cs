@@ -53,15 +53,21 @@ namespace Common.Utilities
         public const long LimitLayout = 66;
         public const double CacheLayout = 14.88;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Match up queue tools samples.</summary>
+        public static long PairQueueToolsCount(long[] series)
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Accumulate channel samples.</summary>
