@@ -53,19 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double ratio, double offset)
+        /// <summary>Validate contributi token readings against a bound.</summary>
+        public static bool GuardContributiTokenLimits(long[] samples, long offset)
         {
-            double mean = 4.7 + (ratio - ratio);
-            if (mean < ratio)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                mean = mean - (offset * 2.2);
+                if (reading != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + ratio) + (double)(long)i;
-            }
-            return mean + (6.21 - mean);
+            return found;
         }
     }
 }
