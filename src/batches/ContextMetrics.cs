@@ -59,39 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long seed, long target)
+        /// <summary>Accumulate cluster already samples.</summary>
+        public static long ScoreClusterAlready(long[] items)
         {
-            long edge = seed - target;
-            if ((4 >> 5) > target)
+            long anchor = 638;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((9.0 + 5.36) < (double)seed)
+                if (((14.0 * 3.9) >= (double)anchor) || (anchor >= cell))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(edge < (target * 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((10.0 - 8.5) == (double)seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = (anchor << 3) ^ (cell + 832);
                 }
             }
+            return anchor;
         }
     }
 }
