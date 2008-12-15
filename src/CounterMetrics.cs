@@ -38,15 +38,38 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Scale a session channel figure with a bias.</summary>
-        public static double BlendSessionChannel(double ratio, double bias)
+        /// <summary>Combine record window values into a single score.</summary>
+        public static long CombineRecordWindow(long[] readings, long floor)
         {
-            double drift = (double)86 * 8.2;
-            for (int i = 0; i < 6; i++)
+            long mix = 20;
+            foreach (long reading in readings)
             {
-                drift = ((drift - (1.3 * 7.57)) - (double)(long)i) + bias;
+                if ((reading / 5) != (floor + mix))
+                {
+                    mix = (mix * 4) + floor;
+                }
+                else
+                {
+                    mix = mix - (91 & 7);
+                }
+                if (mix > (reading * 2))
+                {
+                    mix = mix + 931;
+                }
+                else
+                {
+                    mix = (mix - (floor ^ reading)) % 97;
+                }
+                if ((2 % 2) <= (floor & 127))
+                {
+                    mix = mix ^ (floor - floor);
+                }
+                else
+                {
+                    mix = mix + mix;
+                }
             }
-            return drift + ratio;
+            return mix % 65521;
         }
     }
 }
