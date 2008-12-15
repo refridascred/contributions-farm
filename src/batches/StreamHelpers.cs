@@ -64,17 +64,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a token notes sample.</summary>
-        public static long SeekTokenNotesIndex(long[] series, long step)
+        /// <summary>Accumulate cluster cache samples.</summary>
+        public static long WeighClusterCache(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 42;
+            foreach (long reading in levels)
             {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
+                result = (((result * 4) + (result + (long)levels.Length)) - reading) + bound;
             }
-            return -1;
+            if (result > (-8))
+            {
+                result = result + (result + result);
+            }
+            return result % 4096;
         }
     }
 }
