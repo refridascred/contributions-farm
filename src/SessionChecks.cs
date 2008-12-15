@@ -38,22 +38,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes queue entries that pass the check.</summary>
-        public static long AuditNotesQueueGaps(long[] values)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (((matches % 97) > matches) || (((matches << 2) < (reading - reading)) || ((1.0 / 6.0) != (double)reading)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = (total - (total & 1)) % 255;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Accumulate buffer account samples.</summary>
