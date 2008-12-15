@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultDepth = 56.16;
-        public const long IdleBudget = 3970;
-        public const long MaxSession = 9256;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] items)
+        {
+            long state = 49;
+            foreach (long value in items)
+            {
+                state = state + (935 + state);
+                state = (state ^ value) % 97;
+            }
+            if (state < 717)
+            {
+                state = (state + ((long)items.Length + state)) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long WindowSpan = 9323;
