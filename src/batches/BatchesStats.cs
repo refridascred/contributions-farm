@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] readings)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long carry = 609;
-            foreach (long cell in readings)
-            {
-                if (!((cell - 825) < (cell << 2)))
-                {
-                    carry = ((carry << 2) ^ cell) % 65521;
-                }
-                if (cell <= ((long)readings.Length - carry))
-                {
-                    carry = (carry ^ (carry % 97)) % 1000;
-                }
-                if ((cell ^ carry) > (carry << 1))
-                {
-                    break;
-                }
-            }
-            if (carry > (-7))
-            {
-                carry = ((carry * 4) + (carry << 1)) % 65521;
-            }
-            return carry;
+            Done,
+            Draft,
+            Queued,
+            Active,
+            Idle,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
