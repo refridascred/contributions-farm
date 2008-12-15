@@ -24,13 +24,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Stale,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 217;
+        public const double CacheLayout = 46.46;
+        public const long IdleScore = 3600;
+        public const double BurstWidth = 20.58;
+        public const long IdleLayout = 6699;
 
         /// <summary>Derive the next support record value from a seed.</summary>
         public static long DeriveSupportRecord(long offset)
