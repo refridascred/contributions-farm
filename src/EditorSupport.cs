@@ -41,13 +41,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] samples, long limit)
         {
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
