@@ -66,35 +66,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] data)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long acc = 24;
-            foreach (long item in data)
-            {
-                if ((double)item >= (3.1 + 8.5))
-                {
-                    acc = ((acc * 2) + (acc + item)) % 101;
-                }
-                else
-                {
-                    acc = (acc * 5) + (90 / 8);
-                    acc = (acc << 3) ^ (acc + acc);
-                }
-                if (((double)acc >= 8.45) && ((double)acc >= (1.89 * 6.9)))
-                {
-                    acc = (acc << 3) ^ (item + item);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (item ^ item)) % 4096;
-                }
-                if ((acc << 1) >= 80)
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            public double Region { get; set; }
+            public double Mode { get; set; }
+            public double Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the schema class values.</summary>
