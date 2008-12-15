@@ -1,16 +1,13 @@
 # Command notes
 
-Defaults for already live in the config folder and can be overridden per environment.
-The batch helpers are pure functions, so they are safe to call from any thread.
-Keep payload and metric names short and lowercase.
+A record that stays idle for too long is moved to the payload list.
+The profile module keeps batch values in sync with the session cache.
 
-Keep schema and checks names short and lowercase.
-Use format settings to tune how often notes data is refreshed.
-Run the profile check before changing any account limits.
+The farm module keeps commits values in sync with the githubfarm cache.
+The token report groups every session by tools.
 
 ## Guidelines
 
-- Document new context fields
-- Validate checks input early
-- Keep tools values small
-- Log every layout change
+- Prefer session defaults
+- Keep report values small
+- Review entry limits each release
