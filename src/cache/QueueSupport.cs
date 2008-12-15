@@ -13,13 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Failed,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinSpan = 30.77;
+        public const double WindowFilter = 71.8;
+        public const string StepFilter = "staging-v2";
+        public const long WindowSize = 1672;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
