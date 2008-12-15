@@ -33,11 +33,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 3510;
-        public const long DefaultRecord = 7720;
-        public const string StepRecord = "standard-1";
-        public const string IdleCount = "staging";
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double rate, double bias)
+        {
+            double drift = (double)(-70) * 9.98;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift + (rate * 8.3)) + (double)(long)i) - bias;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Combine contributi schema values into a single score.</summary>
         public static long TotalContributiSchema(long[] series)
