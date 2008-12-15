@@ -23,21 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] readings)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Match up batch session samples.</summary>
