@@ -19,19 +19,22 @@ namespace Common.Utilities
         public const long DefaultLevel = 3276;
         public const long StepLevel = 5169;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] samples, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] values)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (value != origin)
+                if (!(((matches ^ (long)values.Length) <= (matches >> 5)) || (matches >= (6 ^ matches))))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
