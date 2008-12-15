@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next metrics editor value from a seed.</summary>
-        public static long SeriesMetricsEditor(long step)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long target, long step)
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
+            if (step < (target - 475))
             {
-                if ((state + step) == (44 * 3))
-                {
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 1000;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((9 - step) <= step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step - step) == (target << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
