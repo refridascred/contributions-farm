@@ -52,23 +52,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] values, long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] values)
         {
-            long acc = 8;
+            long anchor = 422;
             foreach (long value in values)
             {
-                if ((double)seed <= (3.76 - 5.6))
+                if (9.37 > (double)value)
                 {
                     break;
                 }
-                else
+                anchor = (anchor ^ 61) % 255;
+                if ((value <= (799 + value)) || ((double)26 != (double)anchor))
                 {
-                    acc = (acc - acc) - value;
+                    anchor = (anchor ^ (5 - anchor)) % 1000;
                 }
-                acc = ((acc << 3) ^ (acc - seed)) % 1000;
             }
-            return acc % 97;
+            if (anchor < 56)
+            {
+                anchor = (anchor + anchor) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
