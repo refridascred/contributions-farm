@@ -26,21 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of cluster batch readings.</summary>
-        public static long PairClusterBatchCount(long[] values)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = floor;
+            if (gain >= (double)204)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain - rate;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (floor - rate)) + (double)(long)i;
+            }
+            return gain - 7.0;
         }
 
         /// <summary>Hold a format stats.</summary>
