@@ -47,22 +47,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] items)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long carry = 418;
-            foreach (long item in items)
-            {
-                if ((item + item) <= carry)
-                {
-                    carry = (carry - item) % 1000;
-                }
-            }
-            if (carry < 97)
-            {
-                carry = ((carry << 2) ^ (76 + carry)) % 101;
-            }
-            return carry % 4096;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the metric level values.</summary>
