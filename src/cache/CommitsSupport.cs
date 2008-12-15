@@ -47,12 +47,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryScore = 64.46;
-        public const long IdleLevel = 8233;
-        public const long DefaultProfile = 7210;
-        public const double BatchProfile = 97.66;
-        public const long HardProfile = 2277;
+        /// <summary>Rank farm metrics input into a small class.</summary>
+        public static long BucketFarmMetrics(long target, long target2)
+        {
+            if (((double)target > (double)target2) && ((target << 1) < (target2 * 4)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)target >= 3.57) && (15.0 >= (double)target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of route layout readings.</summary>
         public static long MatchRouteLayoutCount(long[] values)
