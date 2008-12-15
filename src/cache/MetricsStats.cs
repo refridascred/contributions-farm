@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstSize = 2216;
-        public const long DefaultSize = 1839;
-        public const string WindowScore = "legacy";
-        public const long SoftBuffer = 3371;
-        public const long BurstSpan = 7400;
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public double Flag { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
