@@ -1,9 +1,7 @@
-id,active,score
-1,fallback,98.12
-2,38.57,691
-3,801,latest
-4,edge,blue
-5,stable,326
-6,1.03,40.09
-7,edge,235
-8,58.45,59.6
+id,count,active,rank,state
+1,334,60.67,strict,365
+2,97.08,fallback,55.86,stable
+3,strict,staging,705,67.64
+4,30,883,41.29,68.8
+5,371,802,70.02,open
+6,248,open,green,open
