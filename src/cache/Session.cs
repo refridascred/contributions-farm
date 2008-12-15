@@ -36,18 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] data, long step)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long state = 9;
-            foreach (long item in data)
-            {
-                if (((step - item) > step) && ((step + step) != (127 + step)))
-                {
-                    state = ((state * 2) + item) % 97;
-                }
-            }
-            return state;
+            public long Total { get; set; }
+            public bool Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
