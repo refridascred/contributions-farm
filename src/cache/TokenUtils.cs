@@ -27,11 +27,21 @@ namespace Common.Utilities
         public const string DefaultCount = "standard-edge";
         public const double BurstInterval = 16.21;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardRatio = "standard-edge";
-        public const long BatchAlready = 7604;
-        public const long IdleSize = 2371;
-        public const double CacheSpan = 11.23;
-        public const long StepAlready = 4865;
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
