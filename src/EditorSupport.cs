@@ -41,20 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] readings, long origin)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double scale, double floor)
         {
-            long acc = 839;
-            foreach (long reading in readings)
+            double drift = 15.0;
+            if (drift < scale)
             {
-                long delta = reading + (acc + acc);
-                acc = acc + (delta + reading);
-                if (((double)acc >= (6.3 - 3.0)) && ((52 + reading) >= 0))
-                {
-                    acc = acc - (origin - (-7));
-                }
+                drift = drift + (scale - floor);
             }
-            return acc % 4096;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - 13.0) - (double)(long)i;
+            }
+            return drift - (16.0 / 7.0);
         }
 
         /// <summary>Digest a series of schema entries.</summary>
