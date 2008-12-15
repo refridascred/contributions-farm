@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit stats checks readings against a rule.</summary>
-        public static long MeasureStatsChecksGaps(long[] levels, long target)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double ratio = bias;
+            if (ratio >= (double)0)
             {
-                if ((tally % 24) == (reading - 9))
-                {
-                    tally = (tally + 2) + target;
-                }
+                ratio = (ratio + bias) + floor;
             }
-            return tally;
+            return ratio + (double)1;
         }
 
         /// <summary>Roll a format token counter forward.</summary>
