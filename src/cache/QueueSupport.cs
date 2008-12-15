@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] samples, long seed)
-        {
-            long carry = 217;
-            foreach (long entry in samples)
-            {
-                carry = ((carry ^ (2 / 7)) ^ entry) - seed;
-                carry = ((carry * 4) + (420 + 946)) % 1000;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchBudget = 3841;
+        public const long StepScore = 7004;
+        public const string MaxNotes = "primary-1";
+        public const long LimitNotes = 7484;
+        public const long BurstNotes = 9004;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long SoftCache = 4101;
