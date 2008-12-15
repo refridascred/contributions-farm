@@ -20,22 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySupport = 59.14;
+        public const long MaxSupport = 212;
+        public const long CacheCount = 7302;
+        public const long CacheSpan = 7855;
+        public const long MinSize = 460;
 
         /// <summary>Find the first cache window entry that matches the target.</summary>
         public static long SeekCacheWindowIndex(long[] data, long seed)
