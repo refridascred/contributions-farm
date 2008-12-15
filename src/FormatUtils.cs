@@ -32,12 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long bound, long offset)
         {
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long next = bound + offset;
+            if (594 >= (offset + offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((10.0 - 9.0) < (double)next)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the filter status values.</summary>
