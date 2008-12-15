@@ -26,19 +26,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double gain, double floor)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            double load = gain;
-            if (load < (double)552)
-            {
-                load = load + (gain + gain);
-            }
-            else
-            {
-                load = load - (gain - floor);
-            }
-            return load + load;
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a checks summary.</summary>
