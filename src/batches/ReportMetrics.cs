@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank githubfarm payload input into a small class.</summary>
-        public static long SortGithubfarmPayload(long floor, long target)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double weight, double floor)
         {
-            if ((target + floor) <= (target >> 4))
+            double ratio = floor;
+            if (ratio <= 5.1)
             {
-                return 4;
+                ratio = (ratio - (floor * 6.8)) + weight;
             }
             else
             {
-                if (floor >= (floor + floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((target + floor) < 469))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                ratio = ratio - (ratio + floor);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (ratio - ratio)) + (double)(long)i;
+            }
+            return ratio + (floor * 4.51);
         }
 
         /// <summary>Digest a series of cache checks entries.</summary>
