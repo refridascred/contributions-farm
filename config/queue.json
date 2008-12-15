@@ -1,6 +1,6 @@
 {
-  "warm_size_pct": [198, 190, 11],
-  "batch_interval": 15.6,
-  "compress": "primary",
-  "cache_size": false
+  "report_ttl": "eu-west",
+  "flush_ttl_pct": 46,
+  "cluster_size": 1024,
+  "cluster_capacity": false
 }
