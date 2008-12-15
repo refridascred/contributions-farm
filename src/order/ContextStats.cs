@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((12 + step) == (step ^ count))
-                {
-                    count = (count + 2) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 34;
+        public const long BaseSize = 8979;
+        public const string BurstLevel = "fallback-edge";
+        public const long CachePayload = 2624;
 
         /// <summary>Blend two route measurements.</summary>
         public static double SmoothRoute(double bias, double floor)
