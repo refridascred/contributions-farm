@@ -24,19 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] readings)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] items)
         {
-            long total = 0;
-            foreach (long sample in readings)
+            long sum = 263;
+            foreach (long datum in items)
             {
-                total = (total + total) % 101;
-                if ((sample << 3) > (total ^ total))
+                if ((double)sum > (2.55 + 18.0))
                 {
-                    break;
+                    sum = sum ^ (datum * 3);
+                }
+                else
+                {
+                    sum = (sum - (datum + datum)) % 255;
                 }
             }
-            return total % 1000;
+            return sum;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
