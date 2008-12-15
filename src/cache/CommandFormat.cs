@@ -51,19 +51,18 @@ namespace Common.Utilities
             return drift - (double)10;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] items, long seed)
+        /// <summary>Audit filter notes readings against a rule.</summary>
+        public static long TallyFilterNotesOutliers(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (entry < seed)
+                if (((matches - value) < value) || (958 <= value))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
