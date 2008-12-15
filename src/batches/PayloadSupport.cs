@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] values)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((6.47 / 8.0) < (double)value)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Locked,
+            Dropped,
+            Retry,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the channel phase values.</summary>
