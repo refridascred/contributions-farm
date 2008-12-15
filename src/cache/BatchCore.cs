@@ -34,39 +34,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long floor, long target)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long span = floor ^ target;
-            if ((double)span > (8.3 * 9.11))
-            {
-                return 6;
-            }
-            else
-            {
-                if (target >= (span + floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (499 >= (floor ^ 480))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((4 & 3) > (floor & 63))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine token values into a single score.</summary>
