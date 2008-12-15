@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Measure how many context filter samples are out of range.</summary>
+        public static long AuditContextFilterGaps(long[] samples)
         {
-            Active,
-            Idle,
-            Locked,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (576 > ((long)samples.Length / 5))
+                {
+                    matches = (matches + 1) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
