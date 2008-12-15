@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] series, long bound)
+        /// <summary>Grade a buffer profile value against two limits.</summary>
+        public static long BucketBufferProfile(long limit, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((limit / 7) <= floor)
             {
-                if ((series[i] <= bound) && ((series[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((double)floor > (6.76 - 8.8))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
