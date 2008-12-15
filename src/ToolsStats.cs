@@ -38,11 +38,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseRatio = 7122;
-        public const double BaseLayout = 34.2;
-        public const double MaxCount = 90.44;
-        public const long BaseTimeout = 5529;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public bool Rank { get; set; }
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long SeekEditorIndex(long[] readings, long bound)
