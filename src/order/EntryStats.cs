@@ -40,13 +40,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long target)
         {
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
+            long result = target;
+            for (int i = 0; i < 21; i++)
+            {
+                result = (result * 5) + ((long)i - result);
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
