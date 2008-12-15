@@ -52,15 +52,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double bias, double floor)
+        /// <summary>Rank format record input into a small class.</summary>
+        public static long ClassifyFormatRecord(long seed, long seed2)
         {
-            double load = floor;
-            if (load < floor)
+            if ((seed2 + seed2) >= (3 % 3))
             {
-                load = load + load;
+                return 5;
             }
-            return load - bias;
+            else
+            {
+                if ((double)seed2 > (1.09 + 2.57))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((seed2 / 3) > (409 % 2)) || ((seed2 - seed2) >= seed2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
