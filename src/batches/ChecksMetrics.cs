@@ -19,11 +19,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] values, long offset)
         {
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the batches token entries that pass the check.</summary>
