@@ -48,15 +48,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Paused,
+            Retry,
+            Ready,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a window summary.</summary>
