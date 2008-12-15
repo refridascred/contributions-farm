@@ -1,10 +1,12 @@
 {
-  "profile_delay": "primary",
-  "max_timeout_count": {
-    "burst_threshold": 85.36,
-    "dry_run": false,
-    "sync_window": false,
-    "format_delay": "open"
+  "warm_retries_count": "standard",
+  "warm_capacity_ms": [354, 391, 206],
+  "counter_retries": "primary",
+  "tools_threshold": {
+    "max_capacity_ms": "strict",
+    "base_interval_ms": "edge",
+    "poll_window": 5813,
+    "checks_limit": "strict"
   },
-  "base_retries_ms": 31.08
+  "dry_run": 250
 }
