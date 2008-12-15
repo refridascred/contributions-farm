@@ -24,14 +24,13 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Retry,
-            Paused,
+            Draft,
             Locked,
-            Synced,
-            Ready,
+            Queued,
+            Done,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
