@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] readings)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] levels, long seed)
         {
-            long score = 64;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score + (sample + score)) % 101;
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
