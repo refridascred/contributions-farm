@@ -22,19 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] values, long offset)
+        /// <summary>Fold a list of checks githubfarm readings.</summary>
+        public static long CombineChecksGithubfarm(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long mix = 0;
+            foreach (long item in readings)
             {
-                if (entry >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix * 4) + (mix << 2)) % 65521;
+                mix = (mix + (item ^ mix)) % 101;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Hold a stats stats.</summary>
