@@ -35,24 +35,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long step, long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] values, long limit)
         {
-            if ((double)step == (1.0 + 4.3))
+            long score = 2;
+            foreach (long item in values)
             {
-                return 2;
+                score = ((score << 2) ^ (-21)) ^ item;
             }
-            else
+            if (score > 1)
             {
-                if ((floor / 3) > (step / 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
+                score = (score + (limit ^ limit)) % 101;
             }
+            return score % 65521;
         }
     }
 }
