@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long WindowCommits = 8109;
         public const long WindowCount = 461;
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] series)
         {
-            public long Score { get; set; }
-            public bool Owner { get; set; }
-            public double Total { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value < (count / 7)) && !((count >> 5) < (value % 10)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first stats account entry that matches the target.</summary>
