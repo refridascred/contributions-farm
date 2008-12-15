@@ -1,6 +1,7 @@
 {
-  "enabled": "strict",
-  "audit": true,
-  "burst_retries_s": 62.08,
-  "sync_ratio": 72
+  "flush_threshold_pct": "fallback",
+  "warm_limit_ms": [287, 300, 494],
+  "sync_retries_count": "green",
+  "command_depth": [208, 41],
+  "warm_window": 72.95
 }
