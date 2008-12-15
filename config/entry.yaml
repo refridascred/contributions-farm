@@ -1,14 +1,10 @@
 # entry settings
-poll_interval_ms: staging
-retry_threshold_pct:
-  - 176
-  - 281
-  - 134
-  - 28
-flush_delay: 3566
-audit:
-  - standard
-  - primary
-  - cached
-  - cached
-stats_delay: primary
+window_delay: fallback
+record_retries: 14.39
+persist:
+  - 213
+  - 194
+  - 495
+burst_interval_ms: 78
+poll_ttl_s: true
+batch_limit_count: 8.09
