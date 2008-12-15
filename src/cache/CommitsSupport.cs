@@ -14,18 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many account payload samples are out of range.</summary>
-        public static long AuditAccountPayloadGaps(long[] data, long target)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (201 <= (seen - 613))
-                {
-                    seen = ((seen + 2) + reading) - target;
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Validate commits order readings against a bound.</summary>
