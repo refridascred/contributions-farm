@@ -65,21 +65,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count stream metrics pairs that satisfy a relation.</summary>
-        public static long PairStreamMetricsCount(long[] readings)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Stale,
+            Dropped,
+            Ready,
+            Draft,
+            Done,
         }
     }
 }
