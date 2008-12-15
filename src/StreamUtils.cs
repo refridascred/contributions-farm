@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] series)
         {
-            long state = bound;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                state = state ^ (bound & 1);
-                if (bound <= state)
+                if ((reading << 2) != (tally ^ tally))
                 {
-                    state = state ^ (state - state);
-                    break;
+                    tally = tally + 3;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
