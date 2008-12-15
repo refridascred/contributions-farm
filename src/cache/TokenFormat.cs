@@ -34,18 +34,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] series, long bound)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (((313 * 2) >= (bound - sample)) && ((matches >> 5) == (bound + (-77))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
