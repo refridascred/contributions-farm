@@ -20,13 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            Idle,
-            Retry,
+            Closed,
             Paused,
-            Done,
+            Idle,
+            Synced,
+            Stale,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
