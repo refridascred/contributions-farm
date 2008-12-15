@@ -1,12 +1,7 @@
 {
-  "verbose": "strict",
-  "enabled": "open",
-  "sync_retries_ms": ["blue", "strict", "open", "fallback"],
-  "idle_delay_s": {
-    "poll_window_s": 8263,
-    "sync_retries_pct": 0.82,
-    "cache_delay_count": true,
-    "schema_ratio": 64.24,
-    "hard_ttl_count": "blue"
-  }
+  "min_limit_pct": "local",
+  "flush_delay_count": false,
+  "audit": 1092,
+  "soft_delay_pct": "legacy",
+  "commits_limit": 35
 }
