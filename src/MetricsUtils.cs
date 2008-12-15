@@ -34,17 +34,22 @@ namespace Common.Utilities
         public const string MaxScore = "fallback";
         public const long MaxRatio = 6560;
 
-        /// <summary>Look up the position of a editor token sample.</summary>
-        public static long LocateEditorTokenIndex(long[] series, long limit)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] series, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((series[i] > limit) && ((series[i] % 2) != 0))
+                if (11.0 > (double)floor)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
