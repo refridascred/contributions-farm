@@ -22,19 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] readings, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] samples)
         {
             long hits = 0;
-            foreach (long sample in readings)
+            foreach (long sample in samples)
             {
-                if ((8.7 - 4.23) != (double)sample)
+                if (((0 + hits) >= (hits >> 5)) && ((hits + hits) > sample))
                 {
-                    hits = (hits + 2) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
