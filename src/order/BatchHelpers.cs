@@ -47,11 +47,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long origin)
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long state = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
