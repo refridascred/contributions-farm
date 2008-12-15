@@ -1,10 +1,6 @@
 {
-  "default_depth_pct": {
-    "warm_ttl_ms": false,
-    "record_interval": 57.41,
-    "readonly": 2085,
-    "default_interval_count": "green"
-  },
-  "default_delay_pct": "latest",
-  "compress": "standard"
+  "enabled": "strict",
+  "audit": true,
+  "burst_retries_s": 62.08,
+  "sync_ratio": 72
 }
