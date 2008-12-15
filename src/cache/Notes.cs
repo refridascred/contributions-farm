@@ -36,12 +36,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many cache schema samples are out of range.</summary>
