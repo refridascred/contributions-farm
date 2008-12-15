@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long target, long offset)
-        {
-            if ((40 + (-1)) < (offset * 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset < (target & 3)) || ((target ^ offset) >= (983 - offset)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepDepth = 8044;
+        public const long SoftNotes = 3374;
+        public const long MaxSize = 2965;
+        public const double HardNotes = 12.7;
+        public const string CacheScore = "cached-1";
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
