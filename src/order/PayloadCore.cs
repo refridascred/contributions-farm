@@ -50,13 +50,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Draft,
-            Synced,
-            Ready,
-            Active,
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
