@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a profile tools pair into a bucket.</summary>
-        public static long BucketProfileTools(long offset, long target)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            if ((double)target > (2.0 + 8.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset >> 2) < (target >> 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (offset > (1 ^ target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((747 + target) >= (target + target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Look up the position of a token sample.</summary>
