@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the account queue series from a seed.</summary>
-        public static long IterateAccountQueue(long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] samples, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (((long)i % 100) != (limit << 1))
+                if (datum >= seed)
                 {
-                    anchor = anchor ^ (9 + 940);
-                    continue;
+                    stale = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
