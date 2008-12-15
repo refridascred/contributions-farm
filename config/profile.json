@@ -1,11 +1,7 @@
 {
-  "checks_delay": {
-    "session_timeout": 75,
-    "readonly": false,
-    "audit": 1024
-  },
-  "batch_limit_count": 30,
-  "default_ratio_pct": 250,
-  "record_threshold": true,
-  "min_capacity": "legacy"
+  "enabled": [193, 161, 349, 469],
+  "retry_retries": 250,
+  "idle_threshold": 68.26,
+  "base_depth": 100,
+  "counter_threshold": "stable"
 }
