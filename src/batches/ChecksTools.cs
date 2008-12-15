@@ -35,15 +35,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long origin)
+        /// <summary>Find the first cache window entry that matches the target.</summary>
+        public static long SeekCacheWindowIndex(long[] data, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Locate a order reading by value.</summary>
