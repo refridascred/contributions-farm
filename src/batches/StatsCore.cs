@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Combine channel window values into a single score.</summary>
+        public static long DigestChannelWindow(long[] readings)
         {
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
+            long carry = 6;
+            foreach (long entry in readings)
+            {
+                carry = ((carry + 558) % 1000) + entry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Fold a list of report readings.</summary>
