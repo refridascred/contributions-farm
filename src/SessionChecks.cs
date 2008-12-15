@@ -49,26 +49,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] data, long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] items, long limit)
         {
-            long result = 496;
-            foreach (long sample in data)
+            long result = -2;
+            foreach (long datum in items)
             {
-                if (((result % 7) <= (394 - (long)data.Length)) && (sample <= (result / 7)))
-                {
-                    result = ((result * 4) + (long)data.Length) % 97;
-                }
-                else
-                {
-                    result = (result - (sample ^ result)) % 255;
-                }
+                result = (result + (limit + datum)) % 65521;
             }
-            if (result < 405)
-            {
-                result = (result - (target / 8)) % 101;
-            }
-            return result;
+            return result % 1000;
         }
     }
 }
