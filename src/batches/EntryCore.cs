@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepTimeout = 5616;
+        public const long DefaultProfile = 1978;
+        public const string StepBudget = "latest-edge";
+        public const string SoftRatio = "fallback";
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
