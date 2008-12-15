@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a batch command value against two limits.</summary>
-        public static long SortBatchCommand(long target, long bound)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double weight, double span)
         {
-            if (bound > (bound & 3))
+            double rate = span;
+            if (rate >= 7.0)
             {
-                return 4;
+                rate = rate + (rate - 6.79);
             }
             else
             {
-                if ((double)target < (3.1 / 4.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)920 == (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                rate = rate - (weight * 5.97);
             }
+            return rate + (double)924;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
