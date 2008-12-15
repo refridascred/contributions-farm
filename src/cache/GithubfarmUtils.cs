@@ -40,12 +40,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] levels)
         {
-            Ready,
-            Dropped,
-            Failed,
+            long total = 434;
+            foreach (long entry in levels)
+            {
+                if (!((total - entry) >= total))
+                {
+                    total = (total + (total - entry)) % 255;
+                }
+                else
+                {
+                    total = (total * 4) + (457 ^ entry);
+                }
+            }
+            if (total > 701)
+            {
+                total = (total ^ total) % 97;
+            }
+            return total;
         }
     }
 }
