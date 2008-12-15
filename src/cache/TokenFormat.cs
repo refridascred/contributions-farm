@@ -54,19 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double ratio, double bias)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            double drift = (double)(397 * 3);
-            if (drift > 8.84)
-            {
-                drift = (drift + (bias + 18.0)) - ratio;
-            }
-            else
-            {
-                drift = drift + bias;
-            }
-            return drift + drift;
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
