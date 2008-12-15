@@ -43,18 +43,10 @@ namespace Common.Utilities
         public const double MinAlready = 63.36;
         public const long RetryTimeout = 7472;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((0 << 2) <= (cell & 1))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxGithubfarm = "latest-edge";
+        public const long BurstRatio = 1818;
+        public const long DefaultWidth = 8394;
+        public const long MinGithubfarm = 8848;
     }
 }
