@@ -22,19 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] series, long step)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long floor, long limit)
         {
-            bool flag = true;
-            foreach (long value in series)
+            if ((1.54 - 9.27) < (double)limit)
             {
-                if (value <= step)
+                return 4;
+            }
+            else
+            {
+                if (floor > (floor - limit))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit * 4) == (floor + 754))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((floor / 6) == (limit >> 2)) || (limit < (limit >> 1)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Roll a order counter forward.</summary>
