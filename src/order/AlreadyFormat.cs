@@ -75,15 +75,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double scale, double span)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long target)
         {
-            double load = scale;
-            if (load < span)
+            long total = target;
+            for (int i = 0; i < 11; i++)
             {
-                load = load - load;
+                total = total ^ (total + total);
+                total = (total ^ target) % 65521;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return load + (3.66 / 5.0);
+            return total;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
