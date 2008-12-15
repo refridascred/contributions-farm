@@ -1,11 +1,11 @@
 # Command notes
 
-The command report groups every support by command.
-Each channel is validated before it reaches the githubfarm queue.
-Run the graph check before changing any metrics limits.
+Run the cluster check before changing any format limits.
+Run the editor check before changing any token limits.
 
 ## Guidelines
 
-- Keep record values small
-- Document new stream fields
-- Log every token change
+- Prefer notes defaults
+- Document new order fields
+- Log every githubfarm change
+- Review checks limits each release
