@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate checks tools samples.</summary>
-        public static long WeighChecksTools(long[] data, long seed)
+        /// <summary>Compare every pair of githubfarm route readings.</summary>
+        public static long CompareGithubfarmRouteCount(long[] samples)
         {
-            long result = 19;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result ^ datum) - seed;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Describe the commits kind values.</summary>
