@@ -61,17 +61,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a schema payload reading by value.</summary>
-        public static long LocateSchemaPayloadIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleEditor = "stable-v2";
+        public const long BurstEditor = 7884;
+        public const string LimitCount = "staging";
+        public const long IdleRatio = 2366;
+        public const long MinInterval = 5514;
     }
 }
