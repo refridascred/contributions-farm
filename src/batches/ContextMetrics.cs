@@ -58,11 +58,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
