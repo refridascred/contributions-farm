@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] series, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
