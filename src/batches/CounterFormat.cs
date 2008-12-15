@@ -29,21 +29,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of counter commits readings.</summary>
-        public static long PairCounterCommitsCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultRecord = "fallback-1";
+        public const double MaxRecord = 75.09;
+        public const long WindowFactor = 3769;
+        public const double RetryRatio = 98.25;
     }
 }
