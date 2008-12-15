@@ -53,21 +53,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count window command pairs that satisfy a relation.</summary>
-        public static long PairWindowCommandCount(long[] data)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
-            long matches = 0;
+            long hits = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 0)
+                    if ((data[i] ^ data[j]) == 19)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
