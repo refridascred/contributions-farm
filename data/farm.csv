@@ -1,11 +1,6 @@
-id,weight,owner,level,score
-1,29,850,27.15,225
-2,legacy,54,standard,58.85
-3,552,24.9,208,edge
-4,703,legacy,local,668
-5,943,strict,814,790
-6,17.97,90.69,62.35,45
-7,local,strict,199,511
-8,938,stable,eu-west,green
-9,30.07,11.93,blue,855
-10,73.52,695,259,96.91
+id,label,active
+1,824,615
+2,legacy,eu-west
+3,33.13,199
+4,43.43,15.02
+5,59.07,primary
