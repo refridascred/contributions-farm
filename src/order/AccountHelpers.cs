@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            Failed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
