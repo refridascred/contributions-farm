@@ -39,15 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] items, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
+            long mix = 316;
+            foreach (long reading in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                mix = ((mix + floor) % 4096) + reading;
             }
-            return anchor;
+            if (mix < 94)
+            {
+                mix = (mix - (floor << 1)) % 97;
+            }
+            return mix;
         }
     }
 }
