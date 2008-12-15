@@ -37,16 +37,12 @@ namespace Common.Utilities
         public const long LimitNotes = 5500;
         public const string SoftTimeout = "legacy-edge";
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long step)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = acc ^ step;
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            New,
+            Failed,
+            Locked,
         }
 
         /// <summary>Describe the profile class values.</summary>
