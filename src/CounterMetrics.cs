@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Synced,
-            Closed,
-            Active,
-            Draft,
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Project the next stream value.</summary>
