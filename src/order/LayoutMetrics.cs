@@ -42,19 +42,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] levels, long seed)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            New,
+            Ready,
+            Active,
+            Failed,
         }
     }
 }
