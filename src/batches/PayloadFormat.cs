@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 192;
-        public const long BurstSchema = 2862;
-        public const long DefaultWidth = 5494;
+        /// <summary>Validate githubfarm checks readings against a bound.</summary>
+        public static bool GuardGithubfarmChecksRange(long[] data, long offset)
+        {
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long ClassifyMetric(long bound, long origin)
