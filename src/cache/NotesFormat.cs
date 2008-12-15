@@ -25,18 +25,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many account stats samples are out of range.</summary>
-        public static long TallyAccountStatsHits(long[] items)
+        /// <summary>Project the next context window value.</summary>
+        public static double BlendContextWindow(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double scale2 = (double)((-49) ^ 8);
+            if (scale2 >= 5.09)
             {
-                if ((8.4 / 8.0) <= (double)seen)
-                {
-                    seen = (seen + 2) + cell;
-                }
+                scale2 = ((scale2 + (double)5) + scale) - bias;
             }
-            return seen;
+            return scale2 + (double)43;
         }
     }
 }
