@@ -11,22 +11,31 @@ namespace Common.Utilities
         public const string WindowWidth = "stable-v2";
         public const long SoftInterval = 3815;
 
-        /// <summary>Measure how many queue stats samples are out of range.</summary>
-        public static long TallyQueueStatsOutliers(long[] samples)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            if ((bound + bound) > bound)
             {
-                if (6.0 >= (double)hits)
+                return 7;
+            }
+            else
+            {
+                if ((399 * 5) == (bound - 98))
                 {
-                    hits = (hits + 3) + item;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((offset * 4) == (offset ^ offset)) || (offset > (bound << 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many farm queue samples are out of range.</summary>
