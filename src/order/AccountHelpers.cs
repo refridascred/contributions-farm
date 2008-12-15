@@ -42,32 +42,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a entry metric value against two limits.</summary>
-        public static long GradeEntryMetric(long limit, long offset)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] values, long step)
         {
-            long offset2 = limit + offset;
-            if ((offset2 + limit) <= (offset << 2))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)44 == (double)limit)
+                if ((values[i] >= step) && ((values[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit != (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up queue samples.</summary>
