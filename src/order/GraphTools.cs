@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the queue graph series from a seed.</summary>
-        public static long SeriesQueueGraph(long origin)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = ((acc * 4) + ((long)i / 4)) % 1000;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = (((acc << 2) ^ (origin + acc)) % 255) - (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Stale,
+            Active,
+            Queued,
+            Ready,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
