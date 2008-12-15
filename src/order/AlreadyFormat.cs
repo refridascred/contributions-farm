@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] values, long limit)
         {
-            Stale,
-            Idle,
-            Synced,
-            Locked,
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the cluster graph entries that pass the check.</summary>
