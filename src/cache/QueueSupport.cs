@@ -22,11 +22,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 5758;
-        public const long HardSupport = 8112;
-        public const long WindowRatio = 7750;
-        public const string MaxDepth = "primary-1";
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((reading / 7) < matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
