@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Pending,
-            Done,
-            Paused,
-            Dropped,
+            public string Offset { get; set; } = "";
+            public double Token { get; set; }
+            public bool Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of entry readings.</summary>
