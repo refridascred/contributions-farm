@@ -68,18 +68,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] samples, long limit)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry & 63) != (tally - entry))
-                {
-                    tally = (tally + 3) + limit;
-                }
-            }
-            return tally;
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
