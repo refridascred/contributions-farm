@@ -30,9 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 5995;
-        public const string BurstLevel = "standard-v2";
-        public const string RetryDepth = "standard";
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public double Count { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
