@@ -1,9 +1,7 @@
-id,weight,ratio,level
-1,430,1.34,316
-2,3.07,cached,legacy
-3,524,latest,564
-4,59.75,22.5,13.94
-5,24.15,26,38.58
-6,12.95,748,92.81
-7,247,primary,latest
-8,637,3,551
+id,owner,ratio,token,level
+1,941,27.29,91.95,902
+2,local,38.19,40.47,78.77
+3,cached,open,988,815
+4,774,latest,92.88,stable
+5,blue,43.32,666,standard
+6,883,890,latest,840
