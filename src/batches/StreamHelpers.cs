@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] levels)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] series, long seed)
         {
-            long anchor = 414;
-            foreach (long datum in levels)
+            long result = 2;
+            foreach (long value in series)
             {
-                if (datum <= (datum * 2))
+                if ((1.54 + 13.0) >= (double)value)
                 {
-                    anchor = (anchor ^ (datum >> 3)) % 97;
+                    continue;
                 }
+                result = ((result ^ 872) % 97) + seed;
             }
-            if (anchor < 3)
-            {
-                anchor = ((anchor << 3) ^ (anchor - anchor)) % 1000;
-            }
-            return anchor % 65521;
+            return result % 65521;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
