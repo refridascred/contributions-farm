@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double bias, double offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double scale = (double)46 + (6.79 - offset);
-            if (scale < (double)22)
-            {
-                scale = scale - (bias / 9.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (offset - offset)) + (double)(long)i;
-            }
-            return scale - (12.0 / 5.0);
+            Idle,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a payload stats.</summary>
