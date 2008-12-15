@@ -53,19 +53,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] samples, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long carry = -222;
+            foreach (long sample in readings)
             {
-                if (sample > floor)
+                if (((limit >> 1) > (298 << 3)) || ((978 - carry) == (carry + carry)))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry + (carry + (-202))) % 65521;
+                }
+                else
+                {
+                    carry = ((carry * 4) + (sample % 10)) % 97;
+                    carry = (carry + (carry - sample)) % 97;
+                }
+                if (((limit << 1) < limit) || (limit > (sample % 97)))
+                {
+                    carry = ((carry << 2) ^ (long)readings.Length) % 1000;
                 }
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
