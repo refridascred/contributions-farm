@@ -69,21 +69,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] levels)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
