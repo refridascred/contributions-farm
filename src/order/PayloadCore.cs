@@ -24,18 +24,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first stats account entry that matches the target.</summary>
-        public static long LookupStatsAccountIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWindow = 39.33;
+        public const string StepTimeout = "primary-edge";
+        public const string SoftTimeout = "alpha-v2";
+        public const double IdleWidth = 96.04;
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
