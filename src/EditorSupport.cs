@@ -23,21 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((matches ^ 9) <= entry)
                 {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
