@@ -44,9 +44,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 9460;
-        public const long LimitRatio = 1124;
-        public const double DefaultBudget = 27.75;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardDepth = 40.53;
+        public const long SoftChannel = 4955;
+        public const long RetryRatio = 8870;
+        public const long LimitChannel = 5952;
     }
 }
