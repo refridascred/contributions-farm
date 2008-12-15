@@ -29,21 +29,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Match up batch session samples.</summary>
-        public static long CompareBatchSessionCount(long[] samples)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) > 5)
+                    if ((values[i] - values[j]) != 15)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the stream mode values.</summary>
