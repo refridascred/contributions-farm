@@ -37,13 +37,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public long Level { get; set; }
-            public double Size { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            Ready,
+            Dropped,
+            Failed,
         }
     }
 }
