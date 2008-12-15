@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] readings, long target)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long offset)
         {
-            long mix = 272;
-            foreach (long cell in readings)
+            long anchor = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((16.0 + 7.5) == (double)target)
-                {
-                    mix = ((mix + (target + mix)) % 97) + cell;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return mix % 1000;
+            return anchor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
