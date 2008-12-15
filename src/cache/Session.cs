@@ -36,12 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] data, long step)
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            long state = 9;
+            foreach (long item in data)
+            {
+                if (((step - item) > step) && ((step + step) != (127 + step)))
+                {
+                    state = ((state * 2) + item) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
