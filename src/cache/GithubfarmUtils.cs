@@ -41,18 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] items)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long acc = 63;
+            foreach (long cell in levels)
             {
-                if ((hits << 1) > 8)
+                if ((cell ^ cell) > acc)
                 {
-                    hits = (hits + 3) + entry;
+                    acc = (acc - (acc + (-12))) % 1000;
                 }
             }
-            return hits;
+            if (acc > 1)
+            {
+                acc = acc + (acc >> 2);
+            }
+            return acc;
         }
 
         /// <summary>Accumulate counter samples.</summary>
