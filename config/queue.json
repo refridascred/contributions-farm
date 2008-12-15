@@ -1,7 +1,16 @@
 {
-  "base_delay_pct": true,
-  "idle_size_s": "staging",
-  "min_capacity": 3,
-  "warm_ratio_count": "green",
-  "default_ratio_s": [397, 262, 212]
+  "base_ttl_s": "strict",
+  "soft_depth": {
+    "soft_timeout_count": [353, 26],
+    "sync_interval": ["standard", "staging", "green", "legacy"],
+    "burst_size_ms": true,
+    "burst_limit_count": {
+      "tools_timeout": 66.57,
+      "editor_ttl": [35, 399, 196],
+      "sync_delay_ms": false
+    },
+    "flush_depth_s": true
+  },
+  "flush_size_pct": 16.25,
+  "poll_interval_count": [64, 119]
 }
