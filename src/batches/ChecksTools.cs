@@ -38,19 +38,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] items, long floor)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > floor)
+                if ((data[i] == limit) && ((data[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
