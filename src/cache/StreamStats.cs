@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two notes githubfarm measurements.</summary>
-        public static double SmoothNotesGithubfarm(double ratio, double bias)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] readings, long target)
         {
-            double rate = (double)493 + (bias - 1.78);
-            for (int i = 0; i < 7; i++)
+            long mix = 272;
+            foreach (long cell in readings)
             {
-                rate = ((rate - rate) + (double)(long)i) + ratio;
+                if ((16.0 + 7.5) == (double)target)
+                {
+                    mix = ((mix + (target + mix)) % 97) + cell;
+                }
             }
-            return rate - (double)(-2);
+            return mix % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
