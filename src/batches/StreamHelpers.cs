@@ -86,19 +86,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] samples, long offset)
+        /// <summary>Look up the position of a token notes sample.</summary>
+        public static long SeekTokenNotesIndex(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item < offset)
+                if (series[i] > step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
