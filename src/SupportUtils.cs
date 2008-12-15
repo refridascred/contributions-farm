@@ -25,25 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] levels, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((double)seed < (14.0 / 9.0))
+                if (!((hits ^ 90) >= (step ^ hits)))
                 {
-                    sum = (sum - (51 / 2)) % 1000;
-                    continue;
+                    hits = (hits + 3) + sample;
                 }
-                if (seed >= sum)
+                else
                 {
-                    sum = (sum ^ sum) % 4096;
-                    continue;
+                    hits = hits - 1;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
