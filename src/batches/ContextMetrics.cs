@@ -30,19 +30,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] series, long step)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < step)
+                if (data[i] > target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the order mode values.</summary>
