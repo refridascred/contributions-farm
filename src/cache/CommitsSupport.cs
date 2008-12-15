@@ -33,17 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] levels, long target)
+        /// <summary>Accumulate entry metric samples.</summary>
+        public static long CombineEntryMetric(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = -5;
+            foreach (long datum in values)
             {
-                if ((levels[i] <= target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total ^ (datum & 31)) % 255;
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Rank farm metrics input into a small class.</summary>
