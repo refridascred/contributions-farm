@@ -75,19 +75,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a command checks reading.</summary>
-        public static double AdjustCommandChecks(double scale, double offset)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double scale, double span)
         {
-            double weight = scale + offset;
-            if (weight > offset)
+            double load = scale;
+            if (load < span)
             {
-                weight = weight + 4.83;
+                load = load - load;
             }
-            else
-            {
-                weight = weight - offset;
-            }
-            return weight - (offset / 8.0);
+            return load + (3.66 / 5.0);
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
