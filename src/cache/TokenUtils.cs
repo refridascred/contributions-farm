@@ -35,12 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            Done,
+            Failed,
+            Pending,
+            Ready,
         }
     }
 }
