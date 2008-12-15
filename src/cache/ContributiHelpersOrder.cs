@@ -37,18 +37,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] items, long origin)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((double)cell < (3.1 - 4.06))
+                if (value < step)
                 {
-                    seen = (seen + 2) + origin;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
