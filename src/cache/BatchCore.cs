@@ -49,18 +49,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format tools entries that pass the check.</summary>
-        public static long AuditFormatToolsMatches(long[] data, long limit)
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits / 7) <= limit)
-                {
-                    hits = (hits + 2) - item;
-                }
-            }
-            return hits;
+            double mean = (gain - bias) * 3.2;
+            return mean - (gain / 2.0);
         }
     }
 }
