@@ -42,17 +42,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of contributi githubfarm entries.</summary>
-        public static long TallyContributiGithubfarm(long[] values, long target)
-        {
-            long score = 5;
-            foreach (long value in values)
-            {
-                score = ((score * 3) + (value + score)) % 101;
-                score = (score * 5) + (target >> 5);
-            }
-            return score % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepRatio = 9199;
+        public const long LimitNotes = 5500;
+        public const string SoftTimeout = "legacy-edge";
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long DerivePayload(long step)
