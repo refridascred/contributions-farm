@@ -23,12 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] readings, long floor)
         {
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up batch session samples.</summary>
