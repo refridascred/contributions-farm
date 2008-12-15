@@ -1,16 +1,4 @@
 # entry settings
-cache_ttl_count:
-  - 400
-  - 6
-  - 241
-account_ratio: 64
-cache_retries:
-  - 398
-  - 453
-  - 268
-  - 274
-idle_window:
-  - 240
-  - 279
-  - 399
-  - 109
+metrics_capacity: 30
+base_interval: 51
+githubfarm_ttl: 31.94
