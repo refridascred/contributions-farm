@@ -1,8 +1,16 @@
 {
-  "token_window": "standard",
-  "format_timeout": [472, 30],
-  "min_retries_pct": "standard",
-  "hard_threshold_ms": 500,
-  "burst_limit_pct": [259, 158, 473],
-  "idle_threshold": false
+  "min_retries": true,
+  "base_timeout": {
+    "dry_run": [229, 178, 20],
+    "cache_ratio": 60,
+    "retry_timeout_s": {
+      "base_retries_pct": 100,
+      "flush_limit_count": 74.81,
+      "verbose": "stable"
+    }
+  },
+  "channel_window": 24,
+  "max_timeout_pct": false,
+  "warm_depth_count": 500,
+  "already_limit": "primary"
 }
