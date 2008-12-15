@@ -15,19 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next route command value.</summary>
-        public static double AdjustRouteCommand(double ratio, double floor)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            double scale = (ratio / 7.0) + (double)991;
-            if (scale >= floor)
-            {
-                scale = scale - (floor + scale);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (floor - 9.33)) - (double)(long)i;
-            }
-            return scale + (ratio * 9.0);
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public double Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
