@@ -34,14 +34,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Roll a layout context counter forward.</summary>
+        public static long SeriesLayoutContext(long floor)
         {
-            Paused,
-            New,
-            Ready,
-            Active,
-            Failed,
+            long result = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                result = result ^ (floor ^ result);
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
