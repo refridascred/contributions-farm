@@ -48,9 +48,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheInterval = 6500;
-        public const long LimitQueue = 8075;
-        public const long MinQueue = 7841;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepOrder = "staging-edge";
+        public const double MaxTimeout = 49.73;
+        public const long WindowSpan = 5802;
     }
 }
