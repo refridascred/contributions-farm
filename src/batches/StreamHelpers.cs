@@ -64,19 +64,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate cluster cache samples.</summary>
-        public static long WeighClusterCache(long[] levels, long bound)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long result = 42;
-            foreach (long reading in levels)
-            {
-                result = (((result * 4) + (result + (long)levels.Length)) - reading) + bound;
-            }
-            if (result > (-8))
-            {
-                result = result + (result + result);
-            }
-            return result % 4096;
+            Paused,
+            Stale,
+            Queued,
+            Dropped,
+            Synced,
         }
     }
 }
