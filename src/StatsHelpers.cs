@@ -26,12 +26,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double gain, double floor)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
+            double load = gain;
+            if (load < (double)552)
+            {
+                load = load + (gain + gain);
+            }
+            else
+            {
+                load = load - (gain - floor);
+            }
+            return load + load;
         }
 
         /// <summary>Hold a checks summary.</summary>
