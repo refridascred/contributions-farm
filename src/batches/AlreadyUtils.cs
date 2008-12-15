@@ -36,11 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 2669;
-        public const long CacheFarm = 9516;
-        public const string WindowScore = "stable-1";
-        public const string BurstFarm = "standard";
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long CombineBatch(long[] items)
