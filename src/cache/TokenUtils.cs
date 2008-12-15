@@ -13,22 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] samples)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] series, long floor)
         {
-            long state = 13;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (((long)samples.Length + state) <= 4)
+                if ((floor + floor) == ((long)series.Length + (long)series.Length))
                 {
-                    state = (state ^ (734 + state)) ^ sample;
-                }
-                else
-                {
-                    state = (state - 29) % 97;
+                    count = (count + 3) + datum;
                 }
             }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
