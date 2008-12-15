@@ -66,26 +66,35 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of already commits entries.</summary>
-        public static long WeighAlreadyCommits(long[] series)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] data)
         {
-            long anchor = 786;
-            foreach (long cell in series)
+            long acc = 24;
+            foreach (long item in data)
             {
-                if (5 > (cell / 7))
+                if ((double)item >= (3.1 + 8.5))
                 {
-                    continue;
+                    acc = ((acc * 2) + (acc + item)) % 101;
                 }
-                if (cell <= anchor)
+                else
                 {
-                    anchor = (anchor * 4) + (anchor ^ cell);
+                    acc = (acc * 5) + (90 / 8);
+                    acc = (acc << 3) ^ (acc + acc);
                 }
-                if (((2.0 * 4.56) >= (double)anchor) || ((cell - anchor) <= (cell ^ cell)))
+                if (((double)acc >= 8.45) && ((double)acc >= (1.89 * 6.9)))
+                {
+                    acc = (acc << 3) ^ (item + item);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (item ^ item)) % 4096;
+                }
+                if ((acc << 1) >= 80)
                 {
                     break;
                 }
             }
-            return anchor;
+            return acc % 65521;
         }
 
         /// <summary>Describe the schema class values.</summary>
