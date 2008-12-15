@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] values, long step)
+        /// <summary>Count the command farm entries that pass the check.</summary>
+        public static long TallyCommandFarmOutliers(long[] values, long origin)
         {
             long seen = 0;
-            foreach (long reading in values)
+            foreach (long item in values)
             {
-                if (!((reading << 2) > step))
+                if ((double)item > (double)origin)
                 {
-                    seen = seen + 3;
+                    seen = seen + 2;
                 }
             }
             return seen;
