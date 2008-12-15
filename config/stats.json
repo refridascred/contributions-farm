@@ -1,8 +1,20 @@
 {
-  "layout_retries": 250,
-  "hard_window_count": 77,
-  "soft_retries_pct": "fallback",
-  "token_ratio": 3285,
-  "warm_limit": true,
-  "min_interval": "edge"
+  "max_size_pct": {
+    "support_limit": "local",
+    "idle_retries": 3343,
+    "window_size": 1287,
+    "flush_size_s": 29.4,
+    "verbose": true,
+    "default_ratio_ms": "legacy"
+  },
+  "soft_retries_ms": {
+    "stream_limit": 2917,
+    "burst_threshold": "standard",
+    "max_threshold_ms": [99, 32],
+    "warm_capacity_ms": 250
+  },
+  "hard_timeout": 93,
+  "default_timeout_pct": 86.6,
+  "entry_capacity": "latest",
+  "command_threshold": ["staging", "stable"]
 }
