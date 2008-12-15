@@ -1,6 +1,11 @@
-id,count,ratio,level
-1,63.79,64.32,33.31
-2,594,373,254
-3,20.53,747,54.81
-4,97,908,394
-5,latest,local,open
+id,token,ratio,weight,count
+1,924,16.75,191,eu-west
+2,174,eu-west,572,345
+3,fallback,456,green,395
+4,14.91,edge,13.86,178
+5,stable,31.9,427,latest
+6,141,550,91.82,614
+7,480,22,809,2.18
+8,standard,696,standard,68.81
+9,0.64,4.81,latest,84.74
+10,274,123,standard,459
