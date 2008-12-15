@@ -20,25 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long bound, long origin)
+        /// <summary>Measure how many command order samples are out of range.</summary>
+        public static long MeasureCommandOrderHits(long[] series)
         {
-            long gap = bound - origin;
-            if ((double)origin > (8.78 - 10.0))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin / 9) < gap)
+                if (!(((double)sample <= (10.0 + 2.2)) || ((sample / 2) >= (444 - sample))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a editor reading.</summary>
