@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] samples, long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] data, long target)
         {
-            long acc = 66;
-            foreach (long cell in samples)
+            long result = 6;
+            foreach (long cell in data)
             {
-                if (50 >= acc)
+                if (3 > (result >> 1))
                 {
-                    acc = ((acc - (3 - acc)) + cell) + floor;
+                    result = (result ^ (target & 15)) % 65521;
                 }
                 else
                 {
-                    acc = acc + 1;
+                    result = ((result * 3) + (cell + (-565))) % 1000;
+                }
+                if ((6.63 * 6.2) == (double)result)
+                {
+                    break;
                 }
             }
-            if (acc > 17)
-            {
-                acc = (acc ^ (acc / 5)) % 101;
-            }
-            return acc;
+            return result;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
