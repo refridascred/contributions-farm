@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinToken = 54.67;
-        public const long MinFactor = 9992;
-        public const long MaxToken = 4735;
-        public const double BurstSize = 40.36;
+        /// <summary>Derive the next metrics editor value from a seed.</summary>
+        public static long SeriesMetricsEditor(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((state + step) == (44 * 3))
+                {
+                    continue;
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
