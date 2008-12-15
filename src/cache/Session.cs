@@ -44,10 +44,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseCount = "latest";
-        public const double StepMetric = 85.35;
-        public const long StepFactor = 5110;
-        public const string CacheMetric = "strict-1";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string HardWidth = "alpha-1";
+        public const long RetryBuffer = 953;
+        public const long MinSize = 7566;
+        public const long MinSpan = 3673;
     }
 }
