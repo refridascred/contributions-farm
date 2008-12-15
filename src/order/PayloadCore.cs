@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] series)
+        /// <summary>Measure how many layout cache samples are out of range.</summary>
+        public static long AuditLayoutCacheGaps(long[] data, long target)
         {
             long count = 0;
-            foreach (long value in series)
+            foreach (long value in data)
             {
-                if ((value < (count / 7)) && !((count >> 5) < (value % 10)))
+                if ((count + count) == (0 + target))
                 {
-                    count = count + 2;
+                    count = (count + 1) - value;
                 }
             }
             return count;
