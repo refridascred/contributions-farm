@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a metric account figure with a bias.</summary>
-        public static double BlendMetricAccount(double rate, double span)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            double mean = (span + span) + rate;
-            if (mean <= (double)47)
-            {
-                mean = mean - (mean - rate);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + rate) + (double)(long)i;
-            }
-            return mean + (double)4;
+            Stale,
+            Paused,
+            Queued,
+            Failed,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
