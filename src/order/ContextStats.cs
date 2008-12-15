@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] samples, long floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long acc = 66;
+            foreach (long cell in samples)
             {
-                if (entry > floor)
+                if (50 >= acc)
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc - (3 - acc)) + cell) + floor;
+                }
+                else
+                {
+                    acc = acc + 1;
                 }
             }
-            return stale;
+            if (acc > 17)
+            {
+                acc = (acc ^ (acc / 5)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
