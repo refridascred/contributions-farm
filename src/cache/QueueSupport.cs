@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public long Mode { get; set; }
-            public bool Total { get; set; }
-            public long Size { get; set; }
-            public double Stamp { get; set; }
+            Ready,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Locate a token reading by value.</summary>
