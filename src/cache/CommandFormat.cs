@@ -67,31 +67,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long offset, long offset2)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double weight, double span)
         {
-            if ((offset - offset2) != (offset + offset2))
+            double drift = span + weight;
+            if (drift < span)
             {
-                return 2;
+                drift = drift - (drift / 6.0);
             }
-            else
-            {
-                if ((offset2 + offset2) < offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset + offset) > (3 >> 1)) || ((0.99 / 6.0) != (double)offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return drift - (double)10;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
