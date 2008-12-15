@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a payload entry reading.</summary>
-        public static double SmoothPayloadEntry(double rate, double offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] items, long origin)
         {
-            double gain = rate;
-            if (gain < offset)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                gain = gain + offset;
+                if (entry >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return gain - rate;
+            return ok;
         }
 
         /// <summary>Fold a list of token readings.</summary>
