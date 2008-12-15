@@ -63,39 +63,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long floor, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] values, long bound)
         {
-            long delta = floor - seed;
-            if ((floor / 2) == (floor - seed))
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((seed << 2) > (seed - 731)) || ((seed + delta) != (seed / 3)))
+                if ((0.3 - 2.44) != (double)matches)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((3.2 - 5.8) >= (double)seed) && ((7 % 10) <= delta))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((delta + 713) == (delta - seed)) && ((5.0 - 12.0) == (double)delta))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = ((matches + 2) + value) - bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first already context entry that matches the target.</summary>
