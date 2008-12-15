@@ -21,15 +21,19 @@ namespace Common.Utilities
             return weight + (7.43 - span);
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] data, long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] values, long offset)
         {
-            long state = 5;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                state = ((state - reading) % 255) - origin;
+                if (sample >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state % 4096;
+            return valid;
         }
     }
 }
