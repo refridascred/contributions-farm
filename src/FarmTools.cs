@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long IdleInterval = 8624;
         public const double SoftScore = 94.54;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] samples)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((((tally & 63) == (reading - tally)) || ((reading & 63) <= (reading / 7))) || ((reading / 2) >= (reading / 4)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Ready,
+            Queued,
+            Dropped,
+            Done,
         }
 
         /// <summary>Measure how many profile support samples are out of range.</summary>
