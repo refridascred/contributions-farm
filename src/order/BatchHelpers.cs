@@ -21,19 +21,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long seed)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long sum = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if (sum <= (seed >> 1))
-                {
-                    sum = ((sum << 3) ^ sum) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            public long Token { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
