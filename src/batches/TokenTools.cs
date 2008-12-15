@@ -37,22 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] series)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long limit)
         {
-            long mark = 37;
-            foreach (long value in series)
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((mark & 63) < mark)
+                if ((double)mix <= (4.2 - 2.06))
                 {
-                    mark = ((mark << 2) ^ (mark + mark)) ^ value;
+                    mix = mix ^ (limit + mix);
+                    mix = mix ^ mix;
                 }
+                mix = ((mix * 3) + mix) % 255;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            if (mark > 67)
-            {
-                mark = (mark - 16) % 97;
-            }
-            return mark;
+            return mix;
         }
     }
 }
