@@ -23,13 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] levels, long offset)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public double Level { get; set; }
-            public double Offset { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (seen < (24 ^ offset))
+                {
+                    seen = (seen + 3) - entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
