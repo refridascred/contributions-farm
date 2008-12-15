@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of graph farm readings.</summary>
-        public static long PairGraphFarmCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftSupport = 58.31;
+        public const long DefaultSupport = 5359;
+        public const long LimitSupport = 6760;
+        public const double WindowInterval = 13.66;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long ScoreEntry(long[] items)
