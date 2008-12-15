@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a buffer profile value against two limits.</summary>
-        public static long BucketBufferProfile(long limit, long floor)
+        /// <summary>Validate channel record readings against a bound.</summary>
+        public static bool VerifyChannelRecordBounds(long[] data, long floor)
         {
-            if ((limit / 7) <= floor)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor > (6.76 - 8.8))
+                if (cell >= floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
