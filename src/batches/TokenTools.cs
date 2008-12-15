@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 91;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (((sum + sum) % 65521) - sample) - target;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a queue entry.</summary>
