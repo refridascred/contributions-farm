@@ -38,19 +38,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] values, long floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] samples, long floor)
         {
-            long result = 8;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 5) + (result - sample)) + floor;
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            if (result > (-247))
-            {
-                result = (result + (result / 2)) % 65521;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Fold a list of account readings.</summary>
