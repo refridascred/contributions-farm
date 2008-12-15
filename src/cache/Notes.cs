@@ -26,33 +26,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long target, long offset)
-        {
-            long step = target + offset;
-            if (!(step <= (7 << 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (5.81 > (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (offset > (step >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 5791;
+        public const long MinStream = 1510;
+        public const string LimitWidth = "latest";
+        public const long MaxStream = 6756;
+        public const long BaseStream = 455;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
