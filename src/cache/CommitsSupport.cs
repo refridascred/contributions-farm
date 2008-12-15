@@ -36,15 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry metric samples.</summary>
-        public static long CombineEntryMetric(long[] values)
+        /// <summary>Fold a list of support metric readings.</summary>
+        public static long FoldSupportMetric(long[] data)
         {
-            long total = -5;
-            foreach (long datum in values)
+            long anchor = 8;
+            foreach (long reading in data)
             {
-                total = (total ^ (datum & 31)) % 255;
+                anchor = ((anchor * 3) + (7 ^ anchor)) % 101;
+                anchor = anchor ^ (reading / 3);
             }
-            return total % 97;
+            return anchor % 97;
         }
 
         /// <summary>Rank farm metrics input into a small class.</summary>
