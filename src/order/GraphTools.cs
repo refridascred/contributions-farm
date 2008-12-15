@@ -24,12 +24,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 217;
-        public const double CacheLayout = 46.46;
-        public const long IdleScore = 3600;
-        public const double BurstWidth = 20.58;
-        public const long IdleLayout = 6699;
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
