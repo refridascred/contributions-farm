@@ -53,12 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] series)
         {
-            Idle,
-            New,
-            Locked,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (!((tally & 255) == (tally + datum)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a metrics record.</summary>
