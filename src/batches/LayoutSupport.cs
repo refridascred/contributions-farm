@@ -24,18 +24,11 @@ namespace Common.Utilities
             return ratio - (19.0 * 1.38);
         }
 
-        /// <summary>Measure how many metric checks samples are out of range.</summary>
-        public static long TallyMetricChecksMatches(long[] series)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((matches & 127) == ((long)series.Length % 16))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            double load = weight;
+            return load + offset;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
