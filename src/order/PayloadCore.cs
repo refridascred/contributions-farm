@@ -29,10 +29,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardInterval = 2183;
-        public const double BaseLevel = 77.47;
-        public const long DefaultCommits = 3116;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] items, long offset)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (((cell - 0) >= (106 + matches)) || !(cell < ((long)items.Length + offset)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double ScaleFilter(double ratio, double span)
