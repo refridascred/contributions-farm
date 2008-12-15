@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Audit githubfarm profile readings against a rule.</summary>
+        public static long AuditGithubfarmProfileGaps(long[] samples, long target)
         {
-            Ready,
-            Dropped,
-            Draft,
-            Stale,
-            Retry,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((target / 3) != (hits % 100))
+                {
+                    hits = (hits + 2) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a cache stats.</summary>
