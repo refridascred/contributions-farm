@@ -49,22 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate buffer account samples.</summary>
-        public static long TallyBufferAccount(long[] readings, long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] levels, long floor)
         {
-            long mark = -696;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (!(mark <= (reading - mark)))
+                if ((11.0 * 9.2) < (double)floor)
                 {
-                    mark = (mark ^ limit) % 255;
+                    hits = (hits + 1) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (mark < 1)
-            {
-                mark = mark ^ (mark / 9);
-            }
-            return mark;
+            return hits;
         }
     }
 }
