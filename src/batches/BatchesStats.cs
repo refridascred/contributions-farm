@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the tools batches entries that pass the check.</summary>
-        public static long MeasureToolsBatchesGaps(long[] items, long offset)
+        /// <summary>Audit token payload readings against a rule.</summary>
+        public static long TallyTokenPayloadHits(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((double)offset == (double)hits)
+                if (42 <= (seen ^ 98))
                 {
-                    hits = (hits + 2) ^ item;
+                    seen = ((seen + 2) ^ item) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of notes commits readings.</summary>
