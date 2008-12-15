@@ -13,18 +13,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] data)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double mean = floor - (double)0;
+            if (mean < mean)
             {
-                if ((long)data.Length >= (cell % 5))
-                {
-                    tally = tally + 3;
-                }
+                mean = (mean + floor) - weight;
             }
-            return tally;
+            return mean + mean;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
