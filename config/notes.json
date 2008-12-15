@@ -1,5 +1,5 @@
 {
-  "compress": 40.96,
-  "retry_timeout_count": "fallback",
-  "format_window": "blue"
+  "min_retries": [223, 283, 337, 456],
+  "stream_retries": 93.1,
+  "commits_capacity": 2300
 }
