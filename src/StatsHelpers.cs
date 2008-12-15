@@ -23,13 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Failed,
-            Retry,
-            Stale,
-            Paused,
+            Synced,
+            Ready,
+            New,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Fold a list of filter schema readings.</summary>
