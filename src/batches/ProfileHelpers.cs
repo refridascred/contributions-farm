@@ -78,18 +78,26 @@ namespace Common.Utilities
             return load + 6.4;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] values, long bound)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long result = 7;
+            foreach (long datum in levels)
             {
-                if ((0.3 - 2.44) != (double)matches)
+                if ((offset / 8) < (offset - result))
                 {
-                    matches = ((matches + 2) + value) - bound;
+                    result = (result ^ (datum >> 1)) % 4096;
+                }
+                else
+                {
+                    result = result + (offset / 6);
                 }
             }
-            return matches;
+            if (result < 147)
+            {
+                result = ((result << 2) ^ (-137)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Blend two metric measurements.</summary>
