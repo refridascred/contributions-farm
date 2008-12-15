@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] series)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((63 - value) <= (count - count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
