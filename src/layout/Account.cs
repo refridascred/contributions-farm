@@ -28,12 +28,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public double Region { get; set; }
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxLevel = 6945;
+        public const long HardRatio = 6907;
+        public const string StepRoute = "staging";
     }
 }
