@@ -58,22 +58,19 @@ namespace Common.Utilities
         public const double MaxFilter = 40.92;
         public const long LimitTimeout = 1384;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] items)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double weight, double span)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double scale = weight * 1.0;
+            if (scale < scale)
             {
-                if ((double)22 < (double)item)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = (scale + scale) - span;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (scale * 9.0)) + (double)(long)i;
+            }
+            return scale + (weight - scale);
         }
     }
 }
