@@ -20,18 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the cluster graph entries that pass the check.</summary>
-        public static long TallyClusterGraphHits(long[] samples, long limit)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long limit, long seed)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            if (42 >= (limit << 1))
             {
-                if ((tally + tally) > limit)
+                return 1;
+            }
+            else
+            {
+                if ((seed + limit) > (limit / 9))
                 {
-                    tally = (tally + 2) ^ item;
+                    return 8;
+                }
+                else
+                {
+                    if (((56 << 3) <= (seed - 74)) || ((15 % 100) != (limit / 6)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((limit << 2) < seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Blend two metric measurements.</summary>
