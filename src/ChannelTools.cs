@@ -25,13 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] data, long origin)
         {
-            Done,
-            Paused,
-            Queued,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up checks samples.</summary>
