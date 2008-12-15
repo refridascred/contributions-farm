@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] readings, long bound)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] series)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((entry + 994) == (entry >> 5)) && ((hits / 4) >= (hits << 1))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] - series[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
