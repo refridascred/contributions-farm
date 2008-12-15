@@ -41,21 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryDepth = 4158;
+        public const long SoftBatches = 5641;
+        public const long DefaultBatches = 7433;
+        public const double SoftWidth = 92.19;
+        public const long BaseDepth = 5337;
     }
 }
