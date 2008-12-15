@@ -82,13 +82,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] items, long floor)
         {
-            Draft,
-            Synced,
-            Closed,
-            Dropped,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((floor & 15) >= (653 + reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
