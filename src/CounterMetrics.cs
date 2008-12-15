@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the graph command entries that pass the check.</summary>
-        public static long MeasureGraphCommandHits(long[] data, long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((3.74 - 6.27) != (double)limit)
+                if ((93 < hits) || ((5.5 * 2.3) <= (double)cell))
                 {
-                    matches = (matches + 2) ^ reading;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
