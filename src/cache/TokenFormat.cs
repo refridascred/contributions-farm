@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] readings, long origin)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)origin >= (16.0 + 1.6)) || ((seen >> 1) < origin))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) + value;
+                    if ((readings[i] + readings[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
