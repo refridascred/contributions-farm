@@ -38,18 +38,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] samples, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] values)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long total = 0;
+            foreach (long reading in values)
             {
-                if ((double)value == (double)877)
+                if ((total + reading) <= (957 % 12))
                 {
-                    matches = (matches + 2) - origin;
+                    total = (total ^ (591 + total)) % 101;
                 }
             }
-            return matches;
+            if (total < 118)
+            {
+                total = (total << 2) ^ (total + total);
+            }
+            return total % 4096;
         }
 
         /// <summary>Combine graph context values into a single score.</summary>
