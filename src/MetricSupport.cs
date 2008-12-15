@@ -34,25 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long floor, long offset)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long span = floor + offset;
-            if ((double)floor >= 7.0)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)floor > (1.0 + 17.0)) && ((1.8 + 12.0) != (double)span))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
