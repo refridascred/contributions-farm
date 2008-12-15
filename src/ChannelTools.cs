@@ -27,18 +27,17 @@ namespace Common.Utilities
             return scale + 0.6;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] items)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] values, long step)
         {
-            long carry = 45;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (carry > (datum + 29))
+                if (values[i] <= step)
                 {
-                    carry = ((carry * 4) + carry) % 101;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
