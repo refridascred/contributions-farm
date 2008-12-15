@@ -21,21 +21,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count metric token pairs that satisfy a relation.</summary>
-        public static long PairMetricTokenCount(long[] items)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (readings[i] <= target)
                 {
-                    if ((items[i] - items[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the graph mode values.</summary>
