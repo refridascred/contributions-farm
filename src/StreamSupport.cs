@@ -20,10 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 5498;
-        public const string RetrySupport = "latest-1";
-        public const double StepSupport = 90.65;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Ready,
+            Done,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long TallyFarmMatches(long[] readings)
