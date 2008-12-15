@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] data, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((data[i] <= seed) && ((data[i] % 5) == 0))
+                if ((sample * 4) > seen)
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up farm samples.</summary>
