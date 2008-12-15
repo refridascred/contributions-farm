@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const string WindowWidth = "stable-v2";
         public const long SoftInterval = 3815;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] readings)
+        /// <summary>Measure how many queue stats samples are out of range.</summary>
+        public static long TallyQueueStatsOutliers(long[] samples)
         {
             long hits = 0;
-            foreach (long reading in readings)
+            foreach (long item in samples)
             {
-                if (!((reading % 24) != (3 - hits)))
+                if (6.0 >= (double)hits)
                 {
-                    hits = hits + 2;
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
