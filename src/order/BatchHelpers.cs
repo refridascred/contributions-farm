@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] items, long limit)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long bound, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long prev = bound ^ origin;
+            if (((73 - origin) <= ((-5) + prev)) && ((prev + bound) < 93))
             {
-                if (items[i] == limit)
+                return 2;
+            }
+            else
+            {
+                if ((bound ^ origin) == (prev - prev))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a format counter forward.</summary>
