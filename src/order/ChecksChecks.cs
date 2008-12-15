@@ -20,13 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] series)
         {
-            Queued,
-            Ready,
-            New,
-            Idle,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (entry > (count + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two support measurements.</summary>
