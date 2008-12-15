@@ -12,15 +12,27 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Derive the next payload graph value from a seed.</summary>
-        public static long IteratePayloadGraph(long offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] series, long step)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            long sum = 5;
+            foreach (long item in series)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if ((step + item) >= 10)
+                {
+                    sum = ((sum * 3) + (sum << 2)) % 4096;
+                    sum = (sum + item) % 255;
+                }
+                if (item >= (73 << 2))
+                {
+                    sum = ((sum << 2) ^ (step + sum)) % 101;
+                }
+                if ((sum >> 3) <= (sum + sum))
+                {
+                    break;
+                }
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Count the metric payload entries that pass the check.</summary>
