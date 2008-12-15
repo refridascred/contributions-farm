@@ -67,19 +67,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] levels, long seed)
+        /// <summary>Compare every pair of window stream readings.</summary>
+        public static long PairWindowStreamCount(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample != seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
