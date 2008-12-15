@@ -24,12 +24,20 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 6449;
-        public const long LimitScore = 1422;
-        public const long SoftSize = 1808;
-        public const long StepFactor = 3323;
-        public const double SoftReport = 45.63;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaGaps(long[] data)
