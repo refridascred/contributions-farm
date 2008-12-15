@@ -20,22 +20,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] readings, long seed)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long anchor = 69;
-            foreach (long entry in readings)
-            {
-                if (!((anchor - anchor) != (entry - entry)))
-                {
-                    anchor = (anchor ^ (seed / 5)) % 1000;
-                }
-                if ((entry - entry) < seed)
-                {
-                    anchor = (anchor << 3) ^ (entry % 5);
-                }
-            }
-            return anchor;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
