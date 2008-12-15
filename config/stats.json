@@ -1,9 +1,8 @@
 {
-  "cache_capacity": "latest",
-  "session_timeout": {
-    "idle_window_ms": true,
-    "flush_limit_pct": "eu-west",
-    "retry_delay": 48.57
-  },
-  "filter_capacity": ["open", "stable", "open", "standard"]
+  "layout_retries": 250,
+  "hard_window_count": 77,
+  "soft_retries_pct": "fallback",
+  "token_ratio": 3285,
+  "warm_limit": true,
+  "min_interval": "edge"
 }
