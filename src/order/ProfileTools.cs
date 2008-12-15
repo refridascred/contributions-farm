@@ -61,18 +61,13 @@ namespace Common.Utilities
             return rate + 1.7;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] levels)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (!((double)seen <= (5.7 / 2.0)) || (sample > (447 >> 4)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Queued,
+            Pending,
+            Draft,
+            Synced,
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
