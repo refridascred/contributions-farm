@@ -32,11 +32,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 1927;
-        public const long IdleInterval = 3439;
-        public const long DefaultContributi = 3022;
-        public const string SoftInterval = "strict-1";
+        /// <summary>Count command commits pairs that satisfy a relation.</summary>
+        public static long PairCommandCommitsCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool VerifyEditorLimits(long[] readings, long target)
