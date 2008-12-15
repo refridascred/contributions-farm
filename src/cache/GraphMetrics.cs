@@ -22,19 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a profile graph reading.</summary>
-        public static double BlendProfileGraph(double scale, double offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] series, long floor)
         {
-            double gain = scale;
-            if (gain > gain)
+            long mark = 0;
+            foreach (long cell in series)
             {
-                gain = gain + (double)6;
+                if (7.7 <= (double)floor)
+                {
+                    mark = (mark << 3) ^ mark;
+                }
+                if ((double)cell <= (19.0 - 10.0))
+                {
+                    break;
+                }
             }
-            else
+            if (mark > 7)
             {
-                gain = gain + offset;
+                mark = (mark - (mark >> 3)) % 255;
             }
-            return gain + (double)6;
+            return mark % 97;
         }
 
         /// <summary>Blend two order measurements.</summary>
