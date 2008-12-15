@@ -36,18 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a filter session reading by value.</summary>
-        public static long LookupFilterSessionIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == floor) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftBudget = 9579;
+        public const long CacheInterval = 6602;
+        public const long BurstRecord = 4610;
+        public const string BurstDepth = "latest-v2";
+        public const long BatchTimeout = 7324;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long StepRatio = 7317;
