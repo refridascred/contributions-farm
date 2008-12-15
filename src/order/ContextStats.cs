@@ -44,16 +44,9 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                total = (total ^ ((long)i / 9)) % 4096;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 4623;
+        public const string CacheBatches = "fallback-edge";
+        public const double SoftBatches = 68.99;
     }
 }
