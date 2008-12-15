@@ -13,13 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Done,
-            Paused,
-            Draft,
-            Synced,
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
