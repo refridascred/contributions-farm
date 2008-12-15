@@ -13,21 +13,25 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Compare every pair of context already readings.</summary>
-        public static long PairContextAlreadyCount(long[] data)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long floor, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long span = floor + target;
+            if (((double)target <= (18.0 + 2.6)) || ((target + floor) < (target << 3)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((20.0 / 4.0) >= (double)floor) && (span >= (floor % 97)))
                 {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Validate already account readings against a bound.</summary>
