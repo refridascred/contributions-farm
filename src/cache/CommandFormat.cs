@@ -5,35 +5,35 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long target, long floor)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long step, long seed)
         {
-            long edge = target ^ floor;
-            if ((floor >> 4) > (4 + edge))
+            long step2 = step + seed;
+            if (((double)9 < (double)step) && ((double)step > (4.0 * 5.32)))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((9.82 - 7.65) > (double)floor)
+                if (!(62 > step2))
                 {
                     return 6;
                 }
                 else
                 {
-                    if (((target * 2) != (4 + edge)) && ((double)edge >= (9.6 - 13.0)))
+                    if ((seed + step) <= (-916))
                     {
-                        return 0;
+                        return 8;
                     }
                     else
                     {
-                        if (((edge ^ (-49)) >= floor) || (target < (edge ^ 389)))
+                        if (((step & 127) > step2) || ((step2 + step) <= (step & 7)))
                         {
-                            return 2;
+                            return 5;
                         }
                         else
                         {
-                            return 7;
+                            return 2;
                         }
                     }
                 }
