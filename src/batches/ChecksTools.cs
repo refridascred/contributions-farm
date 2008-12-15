@@ -34,18 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] values, long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (((matches + sample) >= (matches % 64)) && (matches <= (matches ^ sample)))
+                if (item < floor)
                 {
-                    matches = (matches + 2) - step;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
