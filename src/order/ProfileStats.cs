@@ -56,32 +56,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long step, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] values, long floor)
         {
-            long cur = step ^ offset;
-            if ((cur & 63) > step)
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset > cur) && (0 > (cur + offset)))
+                if ((count << 2) <= (floor + cell))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((cur ^ cur) <= (step - offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
