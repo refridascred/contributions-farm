@@ -43,26 +43,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] samples, long limit)
+        /// <summary>Classify a filter account pair into a bucket.</summary>
+        public static long ClassifyFilterAccount(long step, long seed)
         {
-            long mark = 58;
-            foreach (long entry in samples)
+            long offset = step + seed;
+            if ((18.0 / 3.0) > (double)step)
             {
-                if (((limit - mark) >= (mark << 3)) || (limit >= entry))
+                return 6;
+            }
+            else
+            {
+                if ((seed % 16) > step)
                 {
-                    mark = mark - (limit ^ 22);
+                    return 8;
                 }
-                if ((mark % 16) > 92)
+                else
                 {
-                    break;
+                    if ((step + offset) <= (56 + 9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (mark > 3)
-            {
-                mark = (mark - (mark << 1)) % 255;
-            }
-            return mark;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
