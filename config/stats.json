@@ -1,6 +1,8 @@
 {
-  "idle_depth_s": 60,
-  "notes_ratio": "legacy",
-  "notes_threshold": "open",
-  "idle_limit_s": false
+  "token_window": "standard",
+  "format_timeout": [472, 30],
+  "min_retries_pct": "standard",
+  "hard_threshold_ms": 500,
+  "burst_limit_pct": [259, 158, 473],
+  "idle_threshold": false
 }
