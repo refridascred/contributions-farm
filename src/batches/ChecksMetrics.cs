@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] items, long target)
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
