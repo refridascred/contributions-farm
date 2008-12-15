@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double bias, double span)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] series)
         {
-            double ratio = (double)(305 / 2);
-            if (ratio < (bias * 11.0))
+            long seen = 0;
+            foreach (long value in series)
             {
-                ratio = ratio + bias;
+                if ((5.67 * 2.6) == (double)seen)
+                {
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return ratio + (span / 5.0);
+            return seen;
         }
 
         /// <summary>Describe the payload level values.</summary>
