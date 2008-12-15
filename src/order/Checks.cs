@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long MaxToken = 4735;
         public const double BurstSize = 40.36;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] data, long offset)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((cell / 6) == (offset - cell))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public bool Score { get; set; }
+            public long Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a buffer stats.</summary>
