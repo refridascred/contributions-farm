@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] items, long limit)
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < limit) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a cluster order pair into a bucket.</summary>
