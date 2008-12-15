@@ -1,15 +1,13 @@
 {
-  "hard_size_count": "eu-west",
-  "max_timeout_count": true,
-  "burst_ttl_ms": {
-    "verbose": "open",
-    "soft_window": 8,
-    "idle_timeout_count": 100,
-    "cache_interval": "strict",
-    "schema_ttl": "cached",
-    "batch_delay_ms": false
-  },
-  "command_threshold": 9699,
-  "base_retries_count": "cached",
-  "max_capacity_s": 23.34
+  "min_capacity_ms": 2380,
+  "retry_delay_pct": 30,
+  "poll_timeout_s": 56,
+  "dry_run": {
+    "record_ratio": "cached",
+    "burst_delay_count": false,
+    "strict": "standard",
+    "dry_run": "standard",
+    "already_interval": true,
+    "retry_delay": 250
+  }
 }
