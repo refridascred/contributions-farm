@@ -34,13 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Done,
-            Failed,
-            Pending,
-            Ready,
+            public double Level { get; set; }
+            public long Rank { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
