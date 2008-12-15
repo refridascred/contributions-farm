@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] data, long bound)
-        {
-            long state = 444;
-            foreach (long reading in data)
-            {
-                state = ((state + (0 + (long)data.Length)) ^ reading) + bound;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 1647;
+        public const long StepProfile = 1440;
+        public const double DefaultProfile = 7.86;
+        public const string DefaultRatio = "legacy-v2";
 
         /// <summary>Project the next format value.</summary>
         public static double AdjustFormat(double gain, double offset)
