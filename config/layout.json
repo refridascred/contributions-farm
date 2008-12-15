@@ -1,19 +1,5 @@
 {
-  "cache_delay_pct": 250,
-  "warm_capacity_pct": true,
-  "dry_run": "legacy",
-  "persist": {
-    "readonly": {
-      "hard_retries": "strict",
-      "session_ttl": 24,
-      "base_ratio_count": 6,
-      "min_threshold_ms": ["green", "standard"],
-      "strict": 50.04
-    },
-    "support_window": 2924,
-    "batch_capacity_ms": 37,
-    "hard_timeout": 5919
-  },
-  "cluster_threshold": false,
-  "burst_delay_s": [452, 298]
+  "cache_ratio_ms": ["cached", "open"],
+  "enabled": "eu-west",
+  "batch_threshold_s": "blue"
 }
