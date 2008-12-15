@@ -20,32 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a counter entry pair into a bucket.</summary>
-        public static long ClassifyCounterEntry(long floor, long step)
-        {
-            if ((floor ^ floor) < (floor + step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((step / 7) < (floor % 10)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor % 24) > (step >> 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 5498;
+        public const string RetrySupport = "latest-1";
+        public const double StepSupport = 90.65;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long TallyFarmMatches(long[] readings)
