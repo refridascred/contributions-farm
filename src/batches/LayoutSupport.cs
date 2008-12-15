@@ -30,22 +30,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] readings, long step)
+        /// <summary>Digest a series of checks filter entries.</summary>
+        public static long CombineChecksFilter(long[] items, long origin)
         {
-            long mark = 634;
-            foreach (long item in readings)
+            long score = 41;
+            foreach (long reading in items)
             {
-                if ((item / 5) >= 568)
+                if ((score + origin) == (origin ^ 7))
                 {
-                    mark = (mark + item) - step;
+                    score = (score - score) - reading;
                 }
             }
-            if (mark > 73)
+            if (score < 54)
             {
-                mark = (mark * 4) + mark;
+                score = (score ^ origin) % 1000;
             }
-            return mark % 97;
+            return score;
         }
 
         /// <summary>Fold a list of format context readings.</summary>
