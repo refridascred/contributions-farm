@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] samples)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long origin, long offset)
         {
-            long score = -7;
-            foreach (long value in samples)
+            long edge = origin + offset;
+            if ((offset & 7) == (offset << 2))
             {
-                score = score - (score + score);
-                if ((score <= (value % 64)) || ((value / 8) >= value))
+                return 0;
+            }
+            else
+            {
+                if ((offset >> 2) > (0 * 3))
                 {
-                    score = (score << 3) ^ (score + value);
+                    return 8;
+                }
+                else
+                {
+                    if ((19.0 + 8.0) == (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin + edge) > edge)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
