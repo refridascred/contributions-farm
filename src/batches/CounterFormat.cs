@@ -14,11 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchRatio = 3949;
-        public const double RetryStats = 52.99;
-        public const long CacheTimeout = 2643;
-        public const long BurstStats = 5881;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
+        }
 
         /// <summary>Compare every pair of counter commits readings.</summary>
         public static long PairCounterCommitsCount(long[] items)
