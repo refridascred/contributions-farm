@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a token payload pair into a bucket.</summary>
-        public static long SortTokenPayload(long step, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] data)
         {
-            if (!((seed + seed) <= seed))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed < (seed + step))
+                if ((matches % 16) <= 94)
                 {
-                    return 3;
+                    matches = (matches + 2) ^ datum;
                 }
                 else
                 {
-                    return 4;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
