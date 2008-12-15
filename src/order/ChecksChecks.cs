@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] items)
+        /// <summary>Rank entry format input into a small class.</summary>
+        public static long SortEntryFormat(long origin, long floor)
         {
-            long total = 85;
-            foreach (long datum in items)
+            long bound = origin ^ floor;
+            if (((origin * 4) < (origin - 57)) && ((bound >> 1) != (bound + floor)))
             {
-                if (!((datum * 2) < (datum % 3)))
+                return 0;
+            }
+            else
+            {
+                if ((7.33 / 7.0) >= (double)bound)
                 {
-                    total = (total - total) % 101;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)origin != (2.1 + 14.0)) || ((bound % 24) > bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return total % 97;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
