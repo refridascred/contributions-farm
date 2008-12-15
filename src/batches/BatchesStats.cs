@@ -15,12 +15,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 986;
-        public const long BatchBudget = 2224;
-        public const double CacheProfile = 65.47;
-        public const double IdleScore = 63.25;
-        public const string DefaultScore = "staging-1";
+        /// <summary>Classify a farm command pair into a bucket.</summary>
+        public static long RankFarmCommand(long step, long origin)
+        {
+            if ((step + 82) <= (step * 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((7 >> 5) < step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Measure how many profile batch samples are out of range.</summary>
         public static long TallyProfileBatchGaps(long[] samples, long bound)
