@@ -1,13 +1,15 @@
 {
-  "channel_retries": 60,
-  "strict": 5626,
-  "graph_capacity": {
-    "hard_delay": false,
-    "route_ttl": "green",
-    "batches_window": 8.67,
-    "poll_capacity": 3071,
-    "githubfarm_ttl": 77.75,
-    "entry_size": 84.58
+  "compress": {
+    "cache_window_count": true,
+    "poll_threshold_ms": "latest",
+    "base_ttl_count": 25
   },
-  "notes_delay": 1024
+  "max_delay_pct": "eu-west",
+  "persist": "fallback",
+  "readonly": {
+    "tools_ttl": 60,
+    "soft_retries_s": true,
+    "layout_size": "local",
+    "hard_interval_count": 5723
+  }
 }
