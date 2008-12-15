@@ -1,5 +1,15 @@
 # entry settings
-burst_size_ms: 1024
-strict: cached
-token_interval: strict
-audit: 91.01
+idle_interval: true
+flush_ratio_s:
+  - 383
+  - 138
+  - 251
+  - 341
+idle_interval_ms: local
+soft_threshold_pct: strict
+counter_size:
+  order_delay: latest
+  default_ttl_s: local
+  base_limit_pct: eu-west
+  flush_limit: false
+  soft_capacity: false
