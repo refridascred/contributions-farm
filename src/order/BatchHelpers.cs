@@ -14,13 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Accumulate token tools samples.</summary>
+        public static long FoldTokenTools(long[] data)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            long acc = 638;
+            foreach (long datum in data)
+            {
+                acc = ((acc * 3) + (949 + datum)) % 1000;
+            }
+            if (acc < 38)
+            {
+                acc = (acc - (acc - acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a already snapshot.</summary>
