@@ -58,12 +58,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardPayload = "fallback";
-        public const long LimitPayload = 1332;
-        public const long BurstPayload = 4907;
-        public const long MinBudget = 8838;
-        public const double StepPayload = 96.75;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long step, long floor)
+        {
+            long delta = step ^ floor;
+            if (!((step * 4) != (delta + delta)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((245 * 2) > (floor & 31))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long CompareCounterCount(long[] levels)
