@@ -43,17 +43,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] items, long origin)
+        /// <summary>Validate githubfarm command readings against a bound.</summary>
+        public static bool GuardGithubfarmCommandRange(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((items[i] > origin) && ((items[i] % 5) != 0))
+                if (sample != floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
