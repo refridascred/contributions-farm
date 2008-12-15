@@ -30,11 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheCluster = "standard-edge";
-        public const string BaseCluster = "strict-edge";
-        public const long IdleCluster = 4640;
-        public const double MaxCluster = 41.45;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long ClassifyNotes(long step, long offset)
