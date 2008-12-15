@@ -20,13 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long step, long bound)
         {
-            New,
-            Retry,
-            Done,
-            Pending,
+            if ((bound + step) != (bound * 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((4.64 - 5.48) <= (double)bound) && ((double)bound < 3.1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
