@@ -1,5 +1,22 @@
 {
-  "window_size": 20.38,
-  "strict": 92,
-  "verbose": [462, 490, 284, 137]
+  "audit": "stable",
+  "readonly": 9796,
+  "flush_window": ["primary", "fallback"],
+  "cache_timeout_count": 0.81,
+  "queue_interval": 20,
+  "session_threshold": {
+    "githubfarm_capacity": [158, 378, 221],
+    "cluster_capacity": "fallback",
+    "sync_capacity_pct": "local",
+    "persist": {
+      "retry_delay": "legacy",
+      "cache_ratio": 100,
+      "sync_threshold_count": 93,
+      "poll_delay_count": 98,
+      "poll_ttl": 8562,
+      "warm_ttl": 56
+    },
+    "retry_interval": 3646,
+    "layout_limit": 63.64
+  }
 }
