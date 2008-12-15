@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next window stats value from a seed.</summary>
-        public static long StepWindowStats(long step)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long seed)
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                acc = ((acc << 3) ^ (seed / 2)) % 255;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Fold a list of checks stats readings.</summary>
