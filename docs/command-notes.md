@@ -1,14 +1,13 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-A stats that stays idle for too long is moved to the buffer list.
+The context report groups every command by entry.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
-A githubfarm that stays idle for too long is moved to the filter list.
-Run the queue check before changing any metric limits.
-Use session settings to tune how often support data is refreshed.
+A batches that stays idle for too long is moved to the context list.
+A token that stays idle for too long is moved to the stats list.
 
 ## Guidelines
 
-- Review token limits each release
-- Log every command change
-- Keep record values small
+- Document new cache fields
+- Keep already values small
+- Review counter limits each release
