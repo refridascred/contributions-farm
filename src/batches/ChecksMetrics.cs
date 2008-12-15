@@ -37,17 +37,11 @@ namespace Common.Utilities
         public const long BurstSpan = 9841;
         public const long WindowFactor = 5144;
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] readings, long origin)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double ratio, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = span + (span + span);
+            return (weight + 13.0) + ratio;
         }
 
         /// <summary>Accumulate githubfarm metric samples.</summary>
