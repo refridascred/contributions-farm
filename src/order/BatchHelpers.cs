@@ -25,32 +25,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long bound, long offset)
+        /// <summary>Count the metric tools entries that pass the check.</summary>
+        public static long MeasureMetricToolsMatches(long[] items)
         {
-            long gap = bound - offset;
-            if (!(bound < (bound % 24)))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound * 4) > (bound + gap))
+                if (!((double)entry <= (3.18 * 18.0)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + bound) > (offset * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
