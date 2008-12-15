@@ -70,13 +70,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Active,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 5688;
+        public const string BatchLevel = "strict-1";
+        public const long IdleInterval = 4403;
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
