@@ -60,14 +60,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Draft,
-            Locked,
-            Queued,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitQueue = "alpha";
+        public const long DefaultLevel = 3733;
+        public const double StepInterval = 95.28;
+        public const long MaxWidth = 6002;
+        public const long StepTimeout = 9605;
     }
 }
