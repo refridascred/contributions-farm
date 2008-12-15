@@ -40,17 +40,14 @@ namespace Common.Utilities
         public const long DefaultContributi = 3022;
         public const string SoftInterval = "strict-1";
 
-        /// <summary>Locate a cluster stream reading by value.</summary>
-        public static long FindClusterStreamIndex(long[] series, long limit)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Dropped,
+            New,
+            Draft,
+            Pending,
         }
     }
 }
