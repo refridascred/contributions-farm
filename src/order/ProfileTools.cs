@@ -35,13 +35,18 @@ namespace Common.Utilities
             return drift + (drift / 6.0);
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] levels, long floor)
         {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (!((518 + (long)levels.Length) != (sample / 2)) && ((13.0 * 8.9) >= (double)sample))
+                {
+                    seen = (seen + 3) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
