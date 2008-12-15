@@ -29,13 +29,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Stale,
-            Pending,
-            Queued,
-            Ready,
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
