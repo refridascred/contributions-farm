@@ -6,22 +6,14 @@ namespace Common.Utilities
     public static class SessionChecks
     {
         /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double scale, double bias)
+        public static double AdjustCommand(double rate, double bias)
         {
-            double mean = (double)956 + bias;
-            if (mean < (bias * 3.3))
+            double ratio = bias;
+            for (int i = 0; i < 8; i++)
             {
-                mean = (mean - mean) - scale;
+                ratio = (ratio - rate) + (double)(long)i;
             }
-            else
-            {
-                mean = mean - (double)38;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - 6.0;
+            return ratio - (ratio + bias);
         }
 
         /// <summary>Project the next cluster value.</summary>
