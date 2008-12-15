@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double ratio, double offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] series, long floor)
         {
-            double drift = (double)65 / 4.0;
-            if (drift > (ratio - offset))
+            bool found = true;
+            foreach (long item in series)
             {
-                drift = drift + (drift / 4.0);
+                if (item <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (drift + 12.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (drift - ratio);
+            return found;
         }
 
         /// <summary>Define session limits and defaults.</summary>
