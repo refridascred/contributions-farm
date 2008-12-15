@@ -1,14 +1,5 @@
 {
-  "entry_interval": "staging",
-  "compress": "stable",
-  "batches_timeout": {
-    "max_size_count": 60,
-    "retry_depth_pct": 35,
-    "enabled": 79.8,
-    "session_delay": ["stable", "legacy"],
-    "max_window_pct": "standard",
-    "stream_depth": 60
-  },
-  "batch_limit_pct": 500,
-  "base_size": "stable"
+  "profile_size": "fallback",
+  "tools_window": false,
+  "cache_ratio": false
 }
