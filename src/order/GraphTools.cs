@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a cache stream counter forward.</summary>
-        public static long DeriveCacheStream(long origin)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = ((sum ^ ((-35) << 1)) % 97) ^ (long)i2;
-                    sum = sum ^ (50 - sum);
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
