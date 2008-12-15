@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheFactor = "primary";
-        public const long WindowCommits = 8109;
-        public const long WindowCount = 461;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((63 - value) <= (count - count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionHits(long[] series)
