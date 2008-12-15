@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 2478;
+        public const long MaxInterval = 9008;
+        public const string MinLayout = "fallback-1";
 
         /// <summary>Digest a series of format entries.</summary>
         public static long CombineFormat(long[] samples)
