@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 1647;
-        public const long StepProfile = 1440;
-        public const double DefaultProfile = 7.86;
-        public const string DefaultRatio = "legacy-v2";
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long limit, long target)
+        {
+            long offset = limit + target;
+            if (9.7 < (double)target)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit ^ target) <= (offset << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double AdjustFormat(double gain, double offset)
