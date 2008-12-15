@@ -1,11 +1,8 @@
 {
-  "verbose": 16.03,
-  "readonly": 1024,
-  "cache_ttl": "staging",
-  "metrics_ttl": {
-    "batch_capacity": 69,
-    "poll_timeout_ms": false,
-    "poll_limit_count": [340, 64, 354]
-  },
-  "dry_run": 13.9
+  "dry_run": "local",
+  "cache_limit_pct": "strict",
+  "tools_ttl": "edge",
+  "soft_ttl_ms": 8752,
+  "verbose": 60,
+  "hard_window_count": 82.91
 }
