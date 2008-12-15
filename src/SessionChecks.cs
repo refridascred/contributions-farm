@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every already editor entry stays within the limit.</summary>
-        public static bool ValidateAlreadyEditorLimits(long[] items, long step)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
