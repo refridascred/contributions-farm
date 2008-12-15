@@ -20,11 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 2342;
-        public const long DefaultBudget = 2439;
-        public const long CacheQueue = 6758;
-        public const long BaseQueue = 507;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] data, long origin)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((value << 1) == (value ^ value))
+                {
+                    count = (count + 1) + origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long FindRouteIndex(long[] readings, long seed)
