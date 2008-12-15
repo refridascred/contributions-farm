@@ -33,18 +33,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine editor tools values into a single score.</summary>
-        public static long FoldEditorTools(long[] readings, long seed)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long total = 0;
-            foreach (long cell in readings)
-            {
-                if (seed < cell)
-                {
-                    total = total - (cell / 8);
-                }
-            }
-            return total;
+            Locked,
+            Active,
+            Stale,
+            Ready,
         }
     }
 }
