@@ -5,29 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] items, long floor)
-        {
-            long state = 6;
-            foreach (long value in items)
-            {
-                if ((double)floor > (double)state)
-                {
-                    state = state ^ (floor & 31);
-                    state = (state - (value & 1)) % 255;
-                }
-                state = ((state << 2) ^ (state ^ value)) % 255;
-                if (!((value + floor) < (state ^ 21)))
-                {
-                    state = (state << 2) ^ (floor + floor);
-                }
-            }
-            if (state < 62)
-            {
-                state = ((state << 3) ^ floor) % 255;
-            }
-            return state % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 8742;
+        public const double CacheFactor = 94.81;
+        public const double CacheRecord = 79.99;
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long SortGithubfarm(long limit, long seed)
