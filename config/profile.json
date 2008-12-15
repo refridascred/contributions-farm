@@ -1,8 +1,6 @@
 {
-  "already_threshold": false,
-  "burst_threshold": true,
-  "counter_ttl": "stable",
-  "batches_limit": 18.39,
-  "persist": 250,
-  "order_delay": 2225
+  "already_ratio": 5.7,
+  "format_timeout": "latest",
+  "compress": 5565,
+  "buffer_interval": 36.9
 }
