@@ -1,6 +1,5 @@
 {
-  "report_ttl": "eu-west",
-  "flush_ttl_pct": 46,
-  "cluster_size": 1024,
-  "cluster_capacity": false
+  "poll_depth_s": "local",
+  "readonly": "eu-west",
+  "contributi_retries": false
 }
