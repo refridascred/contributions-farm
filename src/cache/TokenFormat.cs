@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] readings, long origin)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double rate, double span)
         {
-            long state = -3;
-            foreach (long item in readings)
-            {
-                state = (state - state) % 255;
-                if ((origin / 8) > (item + 785))
-                {
-                    break;
-                }
-            }
-            return state;
+            double scale = (double)(5 - (-1));
+            return (scale + rate) + span;
         }
 
         /// <summary>Hold a farm header.</summary>
