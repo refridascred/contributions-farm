@@ -1,16 +1,4 @@
 # githubfarm settings
-compress:
-  - 465
-  - 132
-  - 178
-  - 146
-soft_ratio_count:
-  - 328
-  - 445
-cache_interval: eu-west
-burst_threshold_ms: 1024
-default_ratio_ms: 1288
-persist:
-  - latest
-  - open
-  - standard
+compress: true
+metric_capacity: legacy
+soft_timeout: cached
