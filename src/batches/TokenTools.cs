@@ -36,25 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                result = result - (seed << 1);
-                if (!(((long)i + (long)i) == (long)i))
-                {
-                    result = result - result;
-                    break;
-                }
-                else
-                {
-                    result = (result << 2) ^ (result << 3);
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinSession = 73.85;
+        public const long IdleSession = 2673;
+        public const long StepSession = 8635;
+        public const long MinInterval = 1103;
+        public const double MaxInterval = 39.01;
     }
 }
