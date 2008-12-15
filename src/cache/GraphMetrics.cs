@@ -59,13 +59,11 @@ namespace Common.Utilities
             return bias - (double)9;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchWidth = 8465;
+        public const string SoftFactor = "fallback";
+        public const string MinDepth = "legacy";
+        public const long WindowWidth = 5907;
+        public const double LimitWidth = 2.68;
     }
 }
