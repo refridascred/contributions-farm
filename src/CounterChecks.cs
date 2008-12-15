@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxDepth = 79.21;
-        public const long BatchBudget = 7635;
-        public const string BurstSpan = "latest-edge";
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Pending,
+            Done,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Fold a list of report cluster readings.</summary>
         public static long FoldReportCluster(long[] items)
