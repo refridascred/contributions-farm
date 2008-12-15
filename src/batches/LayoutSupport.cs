@@ -55,19 +55,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] series, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (value <= bound)
+                if ((item * 2) > 0)
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
