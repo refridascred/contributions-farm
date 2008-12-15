@@ -26,16 +26,12 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback-edge";
         public const long CachePayload = 2624;
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double bias, double floor)
-        {
-            double weight = (bias * 2.67) + (double)680;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (floor + 18.0)) + (double)(long)i;
-            }
-            return weight + bias;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 1550;
+        public const long BatchWindow = 3863;
+        public const double CacheWindow = 49.28;
+        public const long LimitWindow = 8046;
+        public const long StepTimeout = 8756;
 
         /// <summary>Match up payload samples.</summary>
         public static long OverlapPayloadCount(long[] samples)
