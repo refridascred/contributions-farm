@@ -49,11 +49,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double weight, double floor)
-        {
-            double drift = floor;
-            return (drift + 8.7) + weight;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryBudget = 6842;
+        public const long StepCounter = 3564;
+        public const double IdleSpan = 59.25;
+        public const long LimitLevel = 6110;
     }
 }
