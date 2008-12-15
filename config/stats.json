@@ -1,13 +1,6 @@
 {
-  "min_capacity_ms": 2380,
-  "retry_delay_pct": 30,
-  "poll_timeout_s": 56,
-  "dry_run": {
-    "record_ratio": "cached",
-    "burst_delay_count": false,
-    "strict": "standard",
-    "dry_run": "standard",
-    "already_interval": true,
-    "retry_delay": 250
-  }
+  "audit": "cached",
+  "min_interval_ms": "standard",
+  "base_retries_pct": 37,
+  "window_threshold": "blue"
 }
