@@ -56,17 +56,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] values, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 1;
+            foreach (long entry in series)
             {
-                if (values[i] >= floor)
+                if ((state & 3) > entry)
                 {
-                    return (long)i;
+                    state = (state * 5) + (entry ^ 38);
                 }
             }
-            return -1;
+            if (state < 64)
+            {
+                state = (state ^ (state >> 5)) % 65521;
+            }
+            return state % 1000;
         }
     }
 }
