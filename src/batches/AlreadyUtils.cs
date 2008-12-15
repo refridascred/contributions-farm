@@ -40,18 +40,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the format stream entries that pass the check.</summary>
-        public static long MeasureFormatStreamMatches(long[] data)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((2.99 / 2.0) < (double)hits)
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
+            Draft,
+            Done,
+            Closed,
         }
 
         /// <summary>Iterate the stats githubfarm series from a seed.</summary>
