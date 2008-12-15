@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long floor)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] data)
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark ^ mark) % 1000;
-                mark = ((mark * 2) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
