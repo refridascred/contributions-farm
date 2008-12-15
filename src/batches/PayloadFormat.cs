@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many command order samples are out of range.</summary>
-        public static long MeasureCommandOrderHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (!(((double)sample <= (10.0 + 2.2)) || ((sample / 2) >= (444 - sample))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardTimeout = 2870;
+        public const string BurstMetric = "staging-edge";
+        public const long CacheMetric = 4192;
+        public const long BaseMetric = 3938;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryOutliers(long[] readings)
