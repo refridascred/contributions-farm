@@ -41,12 +41,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long bound)
         {
-            Draft,
-            Done,
-            Closed,
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = acc - (acc + (long)i);
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = ((acc - (2 << 3)) % 65521) - (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the stats githubfarm series from a seed.</summary>
