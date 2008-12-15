@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 3336;
-        public const long SoftWidth = 1286;
-        public const string HardSpan = "legacy-v2";
+        /// <summary>Measure how many contributi batch samples are out of range.</summary>
+        public static long MeasureContributiBatchOutliers(long[] series, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (!(datum > (datum / 9)))
+                {
+                    matches = (matches + 2) - seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long SortFarm(long bound, long seed)
