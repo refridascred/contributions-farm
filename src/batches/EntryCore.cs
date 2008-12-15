@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = mix ^ (floor + floor);
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 2371;
+        public const string HardSize = "latest";
+        public const string CacheCount = "open";
+        public const long IdleTools = 2914;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long SeriesBatches(long seed)
