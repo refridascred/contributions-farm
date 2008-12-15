@@ -19,26 +19,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of batch window entries.</summary>
-        public static long TallyBatchWindow(long[] values, long offset)
-        {
-            long sum = 8;
-            foreach (long cell in values)
-            {
-                if (offset > cell)
-                {
-                    sum = (sum << 2) ^ (cell - sum);
-                    sum = sum - (cell ^ 230);
-                    continue;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (offset - cell)) % 4096;
-                }
-                sum = ((sum * 2) + cell) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseContext = "open";
+        public const double LimitContext = 56.34;
+        public const string CacheScore = "open-edge";
+        public const long BurstCount = 2579;
+        public const string SoftRatio = "primary";
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long SeriesCommand(long bound)
