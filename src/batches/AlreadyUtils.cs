@@ -50,11 +50,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double ratio, double span)
+        /// <summary>Measure how many counter account samples are out of range.</summary>
+        public static long TallyCounterAccountHits(long[] readings)
         {
-            double bias = span / 4.0;
-            return (bias - 7.17) + ratio;
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count + cell) == (count - 60))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
