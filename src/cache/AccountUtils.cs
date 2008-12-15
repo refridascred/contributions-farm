@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 7465;
-        public const double LimitContributi = 51.53;
-        public const string BurstContributi = "fallback-v2";
-        public const string IdleContributi = "open-1";
+        /// <summary>Audit entry support readings against a rule.</summary>
+        public static long CountEntrySupportHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (!((datum << 1) < ((long)samples.Length - datum)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double BatchLevel = 93.2;
