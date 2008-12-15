@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] readings, long step)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            long sum = 11;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)sum != (5.19 * 8.2)) && ((step / 6) > ((-8) ^ sum)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum - (step >> 5)) % 101;
-                    sum = sum ^ step;
-                }
-                if ((step / 7) >= (sample * 4))
-                {
-                    sum = (sum - (step + step)) % 255;
+                    if ((values[i] ^ values[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
