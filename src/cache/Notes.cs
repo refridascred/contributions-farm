@@ -32,15 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long offset)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long limit, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            long edge = limit ^ step;
+            if (edge <= limit)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                return 1;
             }
-            return total;
+            else
+            {
+                if (((7.78 - 7.3) <= (double)limit) && ((limit ^ step) < step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Project the next account metrics value.</summary>
