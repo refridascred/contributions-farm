@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public string Offset { get; set; } = "";
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
+            Active,
+            Dropped,
+            Done,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
