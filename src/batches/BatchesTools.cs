@@ -10,19 +10,38 @@ namespace Common.Utilities
         public const long BatchSize = 9689;
         public const long MinFactor = 6160;
 
-        /// <summary>Check that every profile cache entry stays within the limit.</summary>
-        public static bool CheckProfileCacheRange(long[] readings, long limit)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long seed, long seed2)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            if ((seed - seed2) <= (seed / 8))
             {
-                if (datum != limit)
+                return 3;
+            }
+            else
+            {
+                if (!((2.4 * 6.9) <= (double)seed))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed - seed) < ((-617) - seed2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((5.4 - 3.6) >= (double)seed) && ((2.4 * 1.13) > (double)seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the layout status values.</summary>
