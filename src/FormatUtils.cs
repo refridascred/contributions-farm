@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double ratio, double bias)
         {
-            Pending,
-            Active,
-            Retry,
-            Queued,
+            double scale = ratio;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (ratio + bias)) - (double)(long)i;
+            }
+            return scale + 7.03;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
