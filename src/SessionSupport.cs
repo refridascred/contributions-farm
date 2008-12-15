@@ -20,12 +20,18 @@ namespace Common.Utilities
         public const long BaseFilter = 8419;
         public const long StepRatio = 1092;
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] items)
         {
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen <= (entry >> 1)) || ((seen + seen) <= (entry ^ entry)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
