@@ -55,18 +55,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] values)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((tally % 97) == (0 + cell))
+                if ((double)floor < (12.0 - 4.14))
                 {
-                    tally = tally + 3;
+                    seen = (seen + 2) ^ datum;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
