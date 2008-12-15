@@ -28,19 +28,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] samples, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] items)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (datum <= origin)
+                if (!(((cell & 7) < (cell << 2)) || (seen > (seen & 1))))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
