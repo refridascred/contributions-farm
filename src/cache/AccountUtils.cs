@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const long MaxEditor = 5829;
         public const string BurstSize = "staging";
 
-        /// <summary>Measure how many account schema samples are out of range.</summary>
-        public static long TallyAccountSchemaHits(long[] items)
+        /// <summary>Check that every buffer report entry stays within the limit.</summary>
+        public static bool GuardBufferReportLimits(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (sample > (matches * 3))
+                if (reading >= bound)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
