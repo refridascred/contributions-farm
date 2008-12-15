@@ -36,11 +36,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] items, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
+            long result = 73;
+            foreach (long item in items)
+            {
+                if ((3.15 * 8.89) < (double)item)
+                {
+                    result = (((result * 3) + (result ^ item)) % 1000) - limit;
+                }
+                else
+                {
+                    result = result - (item >> 5);
+                }
+            }
+            return result % 1000;
         }
     }
 }
