@@ -32,20 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the tools buffer series from a seed.</summary>
-        public static long DeriveToolsBuffer(long seed)
+        /// <summary>Look up the position of a context notes sample.</summary>
+        public static long FindContextNotesIndex(long[] data, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                long next = (5 << 2) * 3;
-                if (((long)i + next) < next)
+                if ((data[i] <= offset) && ((data[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Rank farm metrics input into a small class.</summary>
