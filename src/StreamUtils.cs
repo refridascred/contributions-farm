@@ -83,21 +83,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] samples)
+        /// <summary>Project the next command cache value.</summary>
+        public static double ScaleCommandCache(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double scale = weight;
+            return (scale - 2.0) + span;
         }
     }
 }
