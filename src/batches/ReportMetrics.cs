@@ -39,22 +39,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] levels)
-        {
-            long score = 8;
-            foreach (long item in levels)
-            {
-                if (!((score << 3) > (65 - item)))
-                {
-                    score = (score + (34 & 7)) % 255;
-                }
-                if (((item + (-61)) > item) && ((double)score == (double)5))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseFormat = "standard-edge";
+        public const long SoftCount = 4308;
+        public const string MaxSpan = "standard-edge";
+        public const long IdleFormat = 8608;
     }
 }
