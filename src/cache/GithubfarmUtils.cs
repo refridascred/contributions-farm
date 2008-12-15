@@ -32,19 +32,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] values, long seed)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long seed)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (item != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
