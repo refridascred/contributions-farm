@@ -29,12 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Failed,
-            Ready,
-            Locked,
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
