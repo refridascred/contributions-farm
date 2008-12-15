@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many session support samples are out of range.</summary>
-        public static long CountSessionSupportHits(long[] readings, long target)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value >= (0 ^ value)) || (((14.0 - 20.0) == (double)count) && (target < (52 % 3))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 3175;
+        public const long SoftInterval = 4554;
+        public const long IdleChannel = 6702;
+        public const long SoftChannel = 7933;
+        public const string SoftCount = "staging-1";
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
