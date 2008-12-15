@@ -45,21 +45,17 @@ namespace Common.Utilities
             return bias + (double)(-999);
         }
 
-        /// <summary>Count command commits pairs that satisfy a relation.</summary>
-        public static long PairCommandCommitsCount(long[] series)
+        /// <summary>Find the first payload stream entry that matches the target.</summary>
+        public static long FindPayloadStreamIndex(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((levels[i] <= limit) && ((levels[i] % 3) != 0))
                 {
-                    if ((series[i] - series[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up queue profile samples.</summary>
