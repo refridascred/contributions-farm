@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] levels, long origin)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)origin < (17.0 - 15.0))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
+            Closed,
+            Idle,
+            Dropped,
+            Paused,
+            Pending,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
