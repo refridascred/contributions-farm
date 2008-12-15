@@ -1,13 +1,10 @@
 {
-  "format_timeout": [126, 235, 36],
-  "retry_threshold_s": false,
-  "default_depth_ms": {
-    "strict": 42.05,
-    "format_threshold": [484, 124, 319],
-    "min_ttl": 87,
-    "max_window": ["latest", "staging", "latest", "cached"],
-    "verbose": false,
-    "contributi_limit": 72
+  "cache_depth": "eu-west",
+  "burst_capacity_pct": {
+    "dry_run": 65.91,
+    "burst_limit_pct": "stable",
+    "strict": 30
   },
-  "audit": false
+  "window_capacity": 46.43,
+  "burst_delay_count": true
 }
