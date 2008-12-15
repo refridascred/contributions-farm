@@ -48,25 +48,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Rank command notes input into a small class.</summary>
-        public static long GradeCommandNotes(long seed, long limit)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] items)
         {
-            long lane = seed ^ limit;
-            if ((limit - 0) > (seed + lane))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit * 2) == (seed + limit))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    if ((items[i] ^ items[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
