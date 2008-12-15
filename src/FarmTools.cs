@@ -37,13 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Measure how many profile support samples are out of range.</summary>
+        public static long CountProfileSupportGaps(long[] series, long step)
         {
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((917 % 16) == (tally + step))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
     }
 }
