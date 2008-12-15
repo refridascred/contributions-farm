@@ -20,15 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long result = 4;
-            foreach (long item in levels)
-            {
-                result = ((result * 4) + item) % 4096;
-            }
-            return result;
+            public bool Level { get; set; }
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Project the next context window value.</summary>
