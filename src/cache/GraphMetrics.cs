@@ -37,39 +37,15 @@ namespace Common.Utilities
             return gain + (double)6;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long limit, long bound)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double gain, double floor)
         {
-            long step = limit - bound;
-            if ((bound ^ limit) > (bound & 31))
+            double gain2 = gain / 8.0;
+            for (int i = 0; i < 2; i++)
             {
-                return 7;
+                gain2 = ((gain2 + (double)877) + (double)(long)i) + floor;
             }
-            else
-            {
-                if ((323 < limit) && ((5.0 + 9.8) > (double)bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((6 << 2) < limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step >> 2) <= (947 % 60))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return gain2 + (0.64 / 9.0);
         }
 
         /// <summary>Project the next account value.</summary>
