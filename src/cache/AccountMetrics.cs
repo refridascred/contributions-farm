@@ -75,13 +75,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public double Region { get; set; }
-            public double Mode { get; set; }
-            public double Size { get; set; }
-            public bool Owner { get; set; }
+            public bool Limit { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define layout limits and defaults.</summary>
