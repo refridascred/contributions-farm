@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] items)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] series, long seed)
         {
-            long mark = 931;
-            foreach (long reading in items)
+            long total = 52;
+            foreach (long datum in series)
             {
-                if (!((12.0 + 6.95) != (double)reading))
+                if ((seed + datum) >= (total * 2))
                 {
-                    mark = mark + (mark ^ mark);
+                    total = (total - seed) % 1000;
                 }
                 else
                 {
-                    mark = (mark ^ (mark * 2)) % 101;
+                    total = (total + (seed ^ (long)series.Length)) % 255;
                 }
             }
-            if (mark < 4)
-            {
-                mark = ((mark << 2) ^ mark) % 255;
-            }
-            return mark % 1000;
+            return total;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
