@@ -25,12 +25,19 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstRecord = "latest-edge";
-        public const string BaseRatio = "latest-v2";
-        public const long StepWidth = 1159;
-        public const long HardRecord = 6780;
-        public const string BurstSize = "alpha-1";
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + entry) != (count - count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a session channel figure with a bias.</summary>
         public static double BlendSessionChannel(double ratio, double bias)
