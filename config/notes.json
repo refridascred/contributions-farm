@@ -1,13 +1,8 @@
 {
-  "batches_ttl": ["blue", "fallback", "open", "standard"],
-  "cache_depth_count": 9236,
-  "warm_ratio": "cached",
-  "sync_timeout_count": {
-    "hard_size_pct": "green",
-    "retry_capacity": 60,
-    "max_limit_ms": "cached",
-    "flush_retries_count": 27,
-    "idle_ttl_count": ["strict", "open", "strict", "staging"],
-    "audit": 30
-  }
+  "readonly": ["eu-west", "open"],
+  "burst_retries_ms": "standard",
+  "batch_interval_ms": 3591,
+  "soft_retries": 56.41,
+  "retry_ratio": 62.39,
+  "hard_threshold_count": "standard"
 }
