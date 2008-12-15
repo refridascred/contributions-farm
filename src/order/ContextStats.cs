@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] samples, long target)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit graph checks readings against a rule.</summary>
