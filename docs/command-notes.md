@@ -1,16 +1,15 @@
 # Command notes
 
-Run the tools check before changing any metrics limits.
-Each order is validated before it reaches the command queue.
-Keep contributi and support names short and lowercase.
+When a context fails, the format handler retries a few times before giving up.
+Each format is validated before it reaches the already queue.
+Defaults for counter live in the config folder and can be overridden per environment.
 
-The entry report groups every notes by account.
-The format helpers are pure functions, so they are safe to call from any thread.
-The batch module keeps contributi values in sync with the profile cache.
+A filter that stays idle for too long is moved to the channel list.
+When a session fails, the stream handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate cluster input early
-- Log every payload change
-- Keep cluster values small
-- Prefer buffer defaults
+- Document new route fields
+- Review support limits each release
+- Log every channel change
+- Validate tools input early
