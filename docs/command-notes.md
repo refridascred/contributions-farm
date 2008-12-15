@@ -1,14 +1,14 @@
 # Command notes
 
-A account that stays idle for too long is moved to the window list.
-The commits helpers are pure functions, so they are safe to call from any thread.
-Keep report and cache names short and lowercase.
+When a checks fails, the counter handler retries a few times before giving up.
+Keep cache and layout names short and lowercase.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
-Keep payload and farm names short and lowercase.
-The route helpers are pure functions, so they are safe to call from any thread.
+Run the support check before changing any commits limits.
+Keep layout and batches names short and lowercase.
 
 ## Guidelines
 
-- Validate checks input early
-- Review report limits each release
-- Document new checks fields
+- Document new layout fields
+- Review checks limits each release
+- Prefer tools defaults
