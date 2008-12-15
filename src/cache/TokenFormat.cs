@@ -47,12 +47,12 @@ namespace Common.Utilities
             return (scale + rate) + span;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
+            Ready,
+            Synced,
+            Stale,
         }
     }
 }
