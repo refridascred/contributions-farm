@@ -43,19 +43,19 @@ namespace Common.Utilities
         public const string MaxTimeout = "open-edge";
         public const double MinRecord = 28.25;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] data, long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] levels, long origin)
         {
-            long sum = 4;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                sum = (((sum << 2) ^ (item + sum)) % 97) + step;
-                if ((item % 100) != (89 & 1))
+                if (datum <= origin)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
