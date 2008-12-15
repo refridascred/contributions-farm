@@ -64,13 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public bool Region { get; set; }
-            public double Size { get; set; }
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
