@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] values, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (sample >= ((long)values.Length + offset))
+                if (((count << 3) < (value + value)) || ((19.0 - 11.0) < (double)count))
                 {
-                    matches = matches + 2;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
