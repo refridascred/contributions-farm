@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] readings)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Stale,
+            Synced,
         }
 
         /// <summary>Roll a queue counter forward.</summary>
