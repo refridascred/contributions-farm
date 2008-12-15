@@ -20,14 +20,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double gain, double bias)
         {
-            New,
-            Closed,
-            Pending,
-            Draft,
-            Locked,
+            double scale = (double)(16 + 578);
+            if (scale > (double)86)
+            {
+                scale = scale + (bias / 9.0);
+            }
+            else
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (gain * 13.0)) + (double)(long)i;
+            }
+            return scale - (scale + scale);
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
