@@ -37,17 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] data, long limit)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (data[i] == limit)
+                if ((item * 3) >= 67)
                 {
-                    return (long)i;
+                    matches = (matches + 1) - floor;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the notes state values.</summary>
