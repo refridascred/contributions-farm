@@ -1,6 +1,12 @@
 {
-  "batch_depth": 78,
-  "retry_size": [71, 241, 276, 364],
-  "cluster_depth": 1,
-  "burst_ratio": true
+  "queue_size": 2055,
+  "checks_interval": ["fallback", "edge", "cached", "fallback"],
+  "enabled": {
+    "idle_timeout_pct": "staging",
+    "soft_size_count": "blue",
+    "default_ttl_pct": "primary",
+    "warm_retries_ms": "cached"
+  },
+  "warm_interval_count": false,
+  "batch_limit": false
 }
