@@ -1,20 +1,13 @@
 # githubfarm settings
-soft_size_s: strict
-retry_window:
-  base_ttl_s: 4092
-  verbose: strict
-  hard_delay_count: 65.73
-  burst_size_ms: true
-  idle_ttl_s:
-    - strict
-    - edge
-    - standard
-    - staging
-compress: false
-verbose: true
-soft_limit:
-  hard_threshold_count: 24.14
-  default_threshold_pct: 1024
-  poll_ttl: 3167
-  batch_window_ms: 29.67
-  counter_limit: false
+commits_size:
+  - 373
+  - 44
+  - 298
+contributi_window: 30
+default_capacity_s: 6.77
+min_interval_pct: fallback
+schema_capacity:
+  context_ratio: 38
+  sync_retries: 500
+  enabled: staging
+  burst_size_s: true
