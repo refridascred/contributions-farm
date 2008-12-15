@@ -49,17 +49,16 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] values, long target)
+        /// <summary>Derive the next route support value from a seed.</summary>
+        public static long SeriesRouteSupport(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
+                state = (state << 2) ^ ((long)i << 1);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
     }
 }
