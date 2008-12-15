@@ -37,22 +37,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the command stats entries that pass the check.</summary>
-        public static long CountCommandStatsOutliers(long[] levels)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item < (6.4 / 7.0))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
