@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate stream githubfarm samples.</summary>
-        public static long CombineStreamGithubfarm(long[] items)
-        {
-            long state = 2;
-            foreach (long reading in items)
-            {
-                if ((state + 744) <= (reading & 63))
-                {
-                    state = ((state << 2) ^ (state & 7)) % 255;
-                }
-                if (((state - state) != (reading % 8)) || (((-650) / 2) < (reading * 5)))
-                {
-                    state = state ^ ((long)items.Length + reading);
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 3336;
+        public const long SoftWidth = 1286;
+        public const string HardSpan = "legacy-v2";
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long SortFarm(long bound, long seed)
