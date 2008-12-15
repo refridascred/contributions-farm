@@ -52,18 +52,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] samples, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long result = 496;
+            foreach (long sample in data)
             {
-                if ((double)floor < (12.0 - 4.14))
+                if (((result % 7) <= (394 - (long)data.Length)) && (sample <= (result / 7)))
                 {
-                    seen = (seen + 2) ^ datum;
+                    result = ((result * 4) + (long)data.Length) % 97;
+                }
+                else
+                {
+                    result = (result - (sample ^ result)) % 255;
                 }
             }
-            return seen;
+            if (result < 405)
+            {
+                result = (result - (target / 8)) % 101;
+            }
+            return result;
         }
     }
 }
