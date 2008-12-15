@@ -82,11 +82,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleEditor = "stable-v2";
-        public const long BurstEditor = 7884;
-        public const string LimitCount = "staging";
-        public const long IdleRatio = 2366;
-        public const long MinInterval = 5514;
+        /// <summary>Validate githubfarm schema readings against a bound.</summary>
+        public static bool VerifyGithubfarmSchemaRange(long[] values, long target)
+        {
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
