@@ -61,22 +61,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] items)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long step)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long state = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(((-696) % 5) > hits))
-                {
-                    hits = (hits + 3) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = (state << 2) ^ (long)i;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
     }
 }
