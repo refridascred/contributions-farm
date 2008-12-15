@@ -41,19 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cluster account readings.</summary>
-        public static long TallyClusterAccount(long[] items)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] values)
         {
-            long sum = 8;
-            foreach (long datum in items)
+            long mix = 58;
+            foreach (long value in values)
             {
-                sum = ((sum << 3) ^ (618 >> 5)) % 65521;
-                if ((sum >> 5) < (datum % 10))
+                if (10.0 <= (double)value)
                 {
-                    sum = ((sum << 2) ^ (sum & 1)) % 4096;
+                    mix = (mix * 3) + (mix * 4);
                 }
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Measure how many record metrics samples are out of range.</summary>
