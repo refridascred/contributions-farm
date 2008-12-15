@@ -14,19 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate token tools samples.</summary>
-        public static long FoldTokenTools(long[] data)
+        /// <summary>Measure how many layout contributi samples are out of range.</summary>
+        public static long AuditLayoutContributiOutliers(long[] values, long origin)
         {
-            long acc = 638;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                acc = ((acc * 3) + (949 + datum)) % 1000;
+                if (((value < (value >> 4)) && (value < (long)values.Length)) || ((65 - origin) != (value + seen)))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (acc < 38)
-            {
-                acc = (acc - (acc - acc)) % 65521;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a already snapshot.</summary>
