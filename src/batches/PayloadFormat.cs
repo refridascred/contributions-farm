@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the queue cache series from a seed.</summary>
-        public static long RollQueueCache(long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] data, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (!((20.0 / 2.0) >= (double)origin))
+                if ((74 << 2) > value)
                 {
-                    carry = (carry ^ ((long)i - origin)) % 97;
-                    carry = carry ^ ((long)i ^ carry);
+                    seen = (seen + 3) - seed;
                 }
                 else
                 {
-                    carry = (carry + ((-2) >> 5)) % 101;
+                    seen = seen - 1;
                 }
-                if (((origin + 69) == (origin - origin)) || (carry > origin))
-                {
-                    continue;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
