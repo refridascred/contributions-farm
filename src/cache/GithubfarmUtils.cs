@@ -29,19 +29,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] items)
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (total > (total ^ 426))
+                if ((hits << 1) > 8)
                 {
-                    break;
+                    hits = (hits + 3) + entry;
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Accumulate counter samples.</summary>
