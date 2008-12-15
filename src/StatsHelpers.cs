@@ -35,11 +35,16 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long step)
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            long state = step;
+            for (int i = 0; i < 6; i++)
+            {
+                state = (state - (state ^ step)) % 65521;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
