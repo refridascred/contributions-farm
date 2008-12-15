@@ -52,22 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] items, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((810 + step) > (hits + item))
+                if ((seen ^ seen) <= (seen - seen))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
