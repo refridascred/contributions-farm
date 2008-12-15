@@ -20,18 +20,19 @@ namespace Common.Utilities
         public const long BaseFilter = 8419;
         public const long StepRatio = 1092;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] items)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((seen <= (entry >> 1)) || ((seen + seen) <= (entry ^ entry)))
+                if (value < step)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
