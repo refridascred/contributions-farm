@@ -1,8 +1,26 @@
 {
-  "payload_window": "legacy",
-  "base_limit_pct": "edge",
-  "batch_size_count": "edge",
-  "audit": ["standard", "open"],
-  "readonly": [472, 206, 365, 27],
-  "base_threshold_count": [65, 197, 84, 271]
+  "idle_ratio_s": false,
+  "compress": 47,
+  "retry_capacity_pct": [170, 292, 320],
+  "audit": "staging",
+  "filter_window": 92,
+  "sync_timeout_s": {
+    "batch_size": "strict",
+    "readonly": {
+      "default_depth_pct": 250,
+      "hard_ratio": 7491,
+      "compress": 7,
+      "default_limit_pct": 22.96,
+      "payload_threshold": 14
+    },
+    "route_limit": {
+      "batch_ratio_s": 91.85,
+      "stats_interval": "blue",
+      "cache_timeout_ms": 75.84,
+      "dry_run": 788,
+      "default_delay": 5618,
+      "sync_size_count": [282, 266, 496, 134]
+    },
+    "burst_retries_ms": 2275
+  }
 }
