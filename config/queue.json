@@ -1,5 +1,9 @@
 {
-  "hard_capacity_pct": "cached",
-  "account_retries": 39,
-  "burst_window_pct": 88
+  "hard_delay": [467, 169, 286],
+  "max_delay": "blue",
+  "schema_ratio": {
+    "dry_run": true,
+    "batch_capacity": 5743,
+    "poll_threshold_count": true
+  }
 }
