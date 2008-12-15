@@ -71,11 +71,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] levels, long target)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            long state = 217;
+            foreach (long datum in levels)
+            {
+                state = (((state * 3) + (state >> 2)) - datum) - target;
+            }
+            if (state < 10)
+            {
+                state = state - (state - state);
+            }
+            return state;
         }
     }
 }
