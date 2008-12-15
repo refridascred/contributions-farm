@@ -20,19 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] readings, long floor)
+        /// <summary>Match up graph order samples.</summary>
+        public static long OverlapGraphOrderCount(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
