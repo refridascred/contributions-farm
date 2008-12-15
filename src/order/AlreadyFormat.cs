@@ -76,10 +76,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 6217;
-        public const long StepCache = 6197;
-        public const long RetryCache = 515;
-        public const long MinCache = 191;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
