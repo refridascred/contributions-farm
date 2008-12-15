@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] samples)
+        /// <summary>Check that every channel githubfarm entry stays within the limit.</summary>
+        public static bool ValidateChannelGithubfarmBounds(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((sample * 4) > seen)
+                if (reading >= limit)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
