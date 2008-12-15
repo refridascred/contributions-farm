@@ -34,11 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleDepth = "local";
-        public const long RetryInterval = 8445;
-        public const long StepFilter = 1582;
-        public const string LimitLevel = "alpha-v2";
-        public const double DefaultFilter = 81.1;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (target > (-316))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
+        }
     }
 }
