@@ -13,15 +13,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine entry window values into a single score.</summary>
-        public static long FoldEntryWindow(long[] levels)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long acc = 39;
-            foreach (long reading in levels)
-            {
-                acc = (((acc * 3) + (acc << 1)) % 97) + reading;
-            }
-            return acc;
+            Stale,
+            Closed,
+            Ready,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
