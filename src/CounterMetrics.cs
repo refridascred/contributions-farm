@@ -23,21 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((items[i] < seed) && ((items[i] % 3) != 0))
                 {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
