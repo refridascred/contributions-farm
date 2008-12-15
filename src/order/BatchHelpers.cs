@@ -36,24 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long step, long floor)
+        /// <summary>Count the already contributi entries that pass the check.</summary>
+        public static long AuditAlreadyContributiHits(long[] data, long target)
         {
-            if (step < (floor - floor))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor >> 1) == (1 + 97))
+                if ((double)target >= 4.22)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    matches = (matches + 1) - cell;
                 }
             }
+            return matches;
         }
     }
 }
