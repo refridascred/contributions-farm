@@ -38,12 +38,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Measure how many cache schema samples are out of range.</summary>
+        public static long TallyCacheSchemaOutliers(long[] levels, long step)
         {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading + reading) <= ((-531) - hits))
+                {
+                    hits = (hits + 2) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
