@@ -26,12 +26,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 5791;
-        public const long MinStream = 1510;
-        public const string LimitWidth = "latest";
-        public const long MaxStream = 6756;
-        public const long BaseStream = 455;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Closed,
+            Failed,
+            Paused,
+            Done,
+            Synced,
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
