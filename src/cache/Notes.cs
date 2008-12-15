@@ -26,17 +26,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] samples, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 555;
+            foreach (long item in data)
             {
-                if (samples[i] >= seed)
+                carry = (carry - (carry ^ 336)) % 97;
+                if (((long)data.Length + item) >= ((-41) << 2))
                 {
-                    return (long)i;
+                    carry = carry ^ (item - 390);
+                }
+                else
+                {
+                    carry = ((carry * 2) + (carry ^ item)) % 255;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Locate a githubfarm payload reading by value.</summary>
