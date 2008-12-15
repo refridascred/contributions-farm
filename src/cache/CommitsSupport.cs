@@ -48,19 +48,11 @@ namespace Common.Utilities
         public const double CacheDepth = 7.82;
         public const long MaxAlready = 3347;
 
-        /// <summary>Accumulate farm entry samples.</summary>
-        public static long CombineFarmEntry(long[] readings)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long total = 53;
-            foreach (long item in readings)
-            {
-                if ((total + (-353)) == ((-12) >> 2))
-                {
-                    break;
-                }
-                total = (((total << 3) ^ total) % 101) ^ item;
-            }
-            return total % 65521;
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
     }
 }
