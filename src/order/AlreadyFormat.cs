@@ -51,22 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics notes values into a single score.</summary>
-        public static long TotalMetricsNotes(long[] items, long bound)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double weight, double bias)
         {
-            long score = 82;
-            foreach (long value in items)
-            {
-                if ((bound > (score * 4)) || (value >= (bound % 64)))
-                {
-                    score = (score - (score ^ bound)) % 101;
-                }
-                else
-                {
-                    score = (score << 2) ^ (725 * 3);
-                }
-            }
-            return score % 65521;
+            double rate = (bias / 4.0) / 5.0;
+            return rate - (weight + bias);
         }
 
         /// <summary>Hold a format record.</summary>
