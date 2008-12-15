@@ -32,17 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a context notes sample.</summary>
-        public static long FindContextNotesIndex(long[] data, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] data, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 257;
+            foreach (long reading in data)
             {
-                if ((data[i] <= offset) && ((data[i] % 5) == 0))
+                if ((0.3 - 9.04) < (double)state)
                 {
-                    return (long)i;
+                    state = (state + (reading + step)) % 97;
                 }
             }
-            return -1;
+            if (state > 9)
+            {
+                state = state ^ 0;
+            }
+            return state;
         }
 
         /// <summary>Hold a notes record.</summary>
