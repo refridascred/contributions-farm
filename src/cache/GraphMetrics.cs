@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Classify a profile tools pair into a bucket.</summary>
+        public static long BucketProfileTools(long offset, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)target > (2.0 + 8.0))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((offset >> 2) < (target >> 5))
                 {
-                    if ((items[i] - items[j]) == 3)
+                    return 4;
+                }
+                else
+                {
+                    if (offset > (1 ^ target))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((747 + target) >= (target + target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
