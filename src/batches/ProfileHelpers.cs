@@ -76,26 +76,38 @@ namespace Common.Utilities
         public const long BatchInterval = 4674;
         public const long HardSize = 7443;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] levels, long offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long origin, long step)
         {
-            long result = 7;
-            foreach (long datum in levels)
+            if (!((double)step >= 3.22))
             {
-                if ((offset / 8) < (offset - result))
+                return 2;
+            }
+            else
+            {
+                if ((5.35 / 2.0) != (double)origin)
                 {
-                    result = (result ^ (datum >> 1)) % 4096;
+                    return 8;
                 }
                 else
                 {
-                    result = result + (offset / 6);
+                    if ((origin % 2) == (origin + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin ^ origin) >= (step & 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (result < 147)
-            {
-                result = ((result << 2) ^ (-137)) % 97;
-            }
-            return result;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
