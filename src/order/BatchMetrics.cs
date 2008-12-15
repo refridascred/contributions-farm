@@ -16,18 +16,12 @@ namespace Common.Utilities
         public const long CacheEntry = 4037;
         public const string BaseEntry = "staging-edge";
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 5300;
+        public const double MaxChannel = 63.18;
+        public const double HardChannel = 2.71;
+        public const long MinSize = 1341;
+        public const long DefaultChannel = 9978;
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
