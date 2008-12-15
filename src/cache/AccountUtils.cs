@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] data)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (((7 - 3) == (reading / 3)) || ((reading < (seen ^ seen)) || ((reading / 9) <= (reading >> 3))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the route mode values.</summary>
