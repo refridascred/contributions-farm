@@ -43,14 +43,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] levels, long limit)
         {
-            Paused,
-            Retry,
-            Ready,
-            Closed,
-            Queued,
+            long score = -98;
+            foreach (long entry in levels)
+            {
+                score = score + (entry << 3);
+                if ((score ^ limit) > entry)
+                {
+                    continue;
+                }
+                score = score ^ (entry % 2);
+            }
+            if (score > 3)
+            {
+                score = (score - ((-854) & 1)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
