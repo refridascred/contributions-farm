@@ -41,19 +41,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] series, long target)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 5494;
+        public const long WindowCounter = 3139;
+        public const long CacheCounter = 2781;
+        public const double StepCounter = 80.59;
+        public const long HardWidth = 3630;
     }
 }
