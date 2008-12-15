@@ -59,24 +59,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two format notes measurements.</summary>
-        public static double ScaleFormatNotes(double scale, double offset)
-        {
-            double load = scale;
-            if (load < 8.24)
-            {
-                load = load - 14.0;
-            }
-            else
-            {
-                load = load - (offset + 9.8);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load + 6.4;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheScore = 5544;
+        public const long WindowRatio = 6134;
+        public const long BatchInterval = 4674;
+        public const long HardSize = 7443;
 
         /// <summary>Accumulate cache samples.</summary>
         public static long FoldCache(long[] levels, long offset)
