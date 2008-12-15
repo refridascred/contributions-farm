@@ -37,18 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] values)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] values)
         {
-            long tally = 0;
+            long count = 0;
             foreach (long entry in values)
             {
-                if ((5.3 - 15.0) == (double)tally)
+                if (((entry + 32) >= (entry % 5)) && ((count + count) > entry))
                 {
-                    tally = (tally + 1) ^ entry;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
