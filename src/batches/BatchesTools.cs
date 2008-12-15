@@ -24,24 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] data)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long score = 96;
-            foreach (long reading in data)
-            {
-                long delta = score;
-                if (!((delta + delta) == (delta << 1)))
-                {
-                    score = (score - (reading ^ score)) % 97;
-                }
-                score = ((score * 2) + (reading * 2)) % 1000;
-            }
-            if (score < 374)
-            {
-                score = (score << 3) ^ 227;
-            }
-            return score;
+            public double Count { get; set; }
+            public string Mode { get; set; } = "";
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
