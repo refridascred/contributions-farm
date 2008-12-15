@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] levels)
+        /// <summary>Audit metric cache readings against a rule.</summary>
+        public static long TallyMetricCacheHits(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (((870 - count) == (count ^ entry)) && (((4.8 / 8.0) < 14.0) || ((count - (-940)) < (entry + entry))))
+                if (tally < (tally + tally))
                 {
-                    count = count + 3;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of checks stats readings.</summary>
