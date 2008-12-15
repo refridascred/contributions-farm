@@ -44,23 +44,22 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double gain, double bias)
+        /// <summary>Measure how many entry notes samples are out of range.</summary>
+        public static long AuditEntryNotesGaps(long[] data, long target)
         {
-            double rate = gain;
-            if (rate < rate)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                rate = rate - 12.0;
+                if (hits > (target - target))
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                rate = rate + (bias - rate);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - gain) + (double)(long)i;
-            }
-            return rate + (double)9;
+            return hits;
         }
     }
 }
