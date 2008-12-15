@@ -22,18 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] items, long step)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (((double)entry <= (5.36 + 5.63)) && ((matches >> 4) < (matches & 3)))
-                {
-                    matches = (matches + 2) - step;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
