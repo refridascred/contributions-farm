@@ -28,18 +28,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] data)
+        /// <summary>Iterate the editor window series from a seed.</summary>
+        public static long DeriveEditorWindow(long limit)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((sample + hits) >= (1 % 24))
+                if ((60 << 2) < ((long)i >> 1))
                 {
-                    hits = hits + 1;
+                    state = (state ^ (44 % 7)) % 101;
+                    state = (state + (limit / 8)) % 97;
+                    break;
                 }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
