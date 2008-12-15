@@ -82,13 +82,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] samples, long bound)
         {
-            Dropped,
-            Pending,
-            Retry,
-            Active,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
