@@ -1,12 +1,5 @@
 {
-  "cache_ratio_s": [432, 490, 478, 433],
-  "compress": 6682,
-  "persist": [369, 404],
-  "readonly": {
-    "token_retries": 5331,
-    "strict": "eu-west",
-    "batches_size": "cached"
-  },
-  "batches_retries": "green",
-  "base_interval": ["strict", "edge", "latest"]
+  "batch_capacity_count": 29,
+  "route_window": 69,
+  "idle_threshold_s": "green"
 }
