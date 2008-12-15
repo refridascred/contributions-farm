@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinScore = "latest-edge";
-        public const long WindowEntry = 5109;
-        public const long RetryEntry = 3205;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitSpan = 94.54;
+        public const string MaxInterval = "primary-edge";
+        public const long MaxEditor = 5829;
+        public const string BurstSize = "staging";
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryRange(long[] samples, long target)
