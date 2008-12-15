@@ -57,25 +57,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long step, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] levels, long target)
         {
-            long delta = step ^ floor;
-            if (!((step * 4) != (delta + delta)))
+            long score = 1;
+            foreach (long cell in levels)
             {
-                return 1;
+                score = ((score - ((long)levels.Length / 9)) + cell) + target;
+                score = (score ^ 8) % 65521;
             }
-            else
-            {
-                if ((245 * 2) > (floor & 31))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return score;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
