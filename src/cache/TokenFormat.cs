@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double rate, double span)
-        {
-            double scale = (double)(5 - (-1));
-            return (scale + rate) + span;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleScore = 8323;
+        public const double BaseTools = 30.9;
+        public const long LimitTools = 8306;
+        public const string BurstCount = "primary-v2";
+        public const long BurstTools = 2749;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenOutliers(long[] levels, long floor)
