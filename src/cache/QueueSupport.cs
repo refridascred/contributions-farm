@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] samples, long target)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)target < 0.79)
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Adjust a cache metrics reading.</summary>
