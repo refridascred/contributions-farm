@@ -1,9 +1,9 @@
 # entry settings
-idle_size: false
-sync_limit: 4336
-default_capacity_s:
-  soft_interval_s: 2
-  commits_limit: cached
-  burst_limit: 100
-  cache_ratio: cached
-max_limit_pct: 1024
+min_depth_pct: 78.55
+min_ttl_count: local
+strict: false
+record_ttl:
+  burst_ratio_s: local
+  retry_limit_ms: latest
+  cache_threshold_ms: 79
+  strict: true
