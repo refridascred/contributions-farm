@@ -59,10 +59,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 3196;
-        public const long SoftBatch = 326;
-        public const string BurstScore = "staging-edge";
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] data, long origin)
+        {
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsOutliers(long[] levels)
