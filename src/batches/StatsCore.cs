@@ -65,20 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double bias, double floor)
-        {
-            double scale = (double)(2 - 9);
-            if (scale <= scale)
-            {
-                scale = (scale + (floor / 8.0)) + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (scale + floor)) - (double)(long)i;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double WindowQueue = 13.91;
+        public const string BaseQueue = "primary";
+        public const long BatchQueue = 8808;
+        public const double MinLevel = 35.77;
+        public const long SoftQueue = 2764;
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double SmoothCluster(double scale, double floor)
