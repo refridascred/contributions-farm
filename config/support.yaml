@@ -1,11 +1,6 @@
 # support settings
-warm_depth_pct:
-  - eu-west
-  - green
-  - edge
-  - edge
-format_ratio:
-  - eu-west
-  - latest
-  - staging
-flush_ratio_ms: 500
+cache_size_s: true
+idle_interval_s: false
+token_timeout: true
+readonly: false
+session_retries: standard
