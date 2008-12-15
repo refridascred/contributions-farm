@@ -61,15 +61,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate command cluster samples.</summary>
-        public static long ScoreCommandCluster(long[] series, long step)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long mark = 53;
-            foreach (long sample in series)
-            {
-                mark = ((mark ^ sample) % 255) + step;
-            }
-            return mark;
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
