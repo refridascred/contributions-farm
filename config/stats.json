@@ -1,8 +1,12 @@
 {
-  "sync_ttl": "standard",
-  "min_limit_pct": "stable",
-  "poll_retries": 51.17,
-  "verbose": "local",
-  "already_depth": ["fallback", "local"],
-  "hard_ratio_count": "stable"
+  "idle_ratio": ["latest", "eu-west", "blue", "primary"],
+  "compress": [227, 181],
+  "warm_retries": 91,
+  "flush_delay": {
+    "flush_ratio_ms": false,
+    "notes_limit": 40,
+    "poll_window_s": false,
+    "queue_retries": 39,
+    "batch_threshold": ["open", "blue"]
+  }
 }
