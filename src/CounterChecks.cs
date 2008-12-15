@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long BatchBudget = 7635;
         public const string BurstSpan = "latest-edge";
 
-        /// <summary>Locate a buffer counter reading by value.</summary>
-        public static long SeekBufferCounterIndex(long[] items, long limit)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((items[i] == limit) && ((items[i] % 2) == 0))
+                if (entry <= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
