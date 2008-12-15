@@ -67,25 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel order pair into a bucket.</summary>
-        public static long ClassifyChannelOrder(long offset, long floor)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double weight, double offset)
         {
-            long diff = offset + floor;
-            if ((diff + offset) > (diff % 12))
+            double rate = (double)((-747) & 15);
+            if (rate >= (offset - 3.0))
             {
-                return 0;
+                rate = rate - 9.5;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((floor + offset) >= 298)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
+                rate = rate + (double)(long)i;
             }
+            return rate + (weight + weight);
         }
 
         /// <summary>Accumulate route samples.</summary>
