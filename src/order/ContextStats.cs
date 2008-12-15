@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double gain, double offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] levels, long step)
         {
-            double ratio = offset / 9.0;
-            return (ratio - offset) + gain;
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((12 + step) == (step ^ count))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a checks stats.</summary>
