@@ -1,6 +1,29 @@
 # support settings
-compress: false
-metrics_ttl: 500
-warm_delay_count: 591
-format_capacity: 67
-flush_timeout_ms: 3372
+counter_timeout: true
+warm_ratio:
+  max_interval_s: 92.13
+  dry_run: true
+  soft_retries_s: local
+  batch_delay: false
+  default_threshold:
+    - fallback
+    - stable
+soft_timeout_ms: 75
+max_capacity_pct: 20.86
+strict:
+  poll_depth: 82.74
+  base_ttl:
+    flush_interval:
+      - 60
+      - 96
+      - 193
+      - 108
+    readonly: fallback
+    verbose: 1974
+  max_delay_ms: local
+  window_delay:
+    - 396
+    - 173
+  farm_threshold: 50
+  poll_ttl_pct: eu-west
+soft_ttl_s: cached
