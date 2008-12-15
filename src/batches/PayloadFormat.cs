@@ -63,17 +63,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] items, long origin)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] < origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
