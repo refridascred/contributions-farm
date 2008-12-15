@@ -1,7 +1,10 @@
 # githubfarm settings
-dry_run: strict
-buffer_ttl: 100
-idle_delay: 5571
-warm_threshold_ms: 9238
-flush_ratio_pct: 4218
-enabled: 60
+retry_limit: local
+retry_delay:
+  - staging
+  - fallback
+  - edge
+already_depth: 1620
+persist: stable
+min_threshold: edge
+audit: 69.28
