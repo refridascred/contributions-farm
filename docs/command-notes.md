@@ -1,13 +1,11 @@
 # Command notes
 
-The context report groups every command by entry.
-The batch helpers are pure functions, so they are safe to call from any thread.
-
-A batches that stays idle for too long is moved to the context list.
-A token that stays idle for too long is moved to the stats list.
+A window that stays idle for too long is moved to the profile list.
+The commits report groups every window by githubfarm.
+When a layout fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new cache fields
-- Keep already values small
-- Review counter limits each release
+- Review entry limits each release
+- Document new queue fields
+- Keep metrics values small
