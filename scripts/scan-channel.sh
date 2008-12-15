@@ -6,21 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+for item in edge open; do
+    log "checking ${item}"
+done
+
+mode="${1:-primary}"
 case "${mode}" in
-    primary)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-CHANNEL_LIMIT=457
-log "limit is ${CHANNEL_LIMIT}"
