@@ -31,22 +31,22 @@ namespace Common.Utilities
             return ((weight - (double)11) + bias) + offset;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] values, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((cell - floor) <= (matches - matches))
+                if ((81 + count) != (entry % 7))
                 {
-                    matches = matches + 1;
+                    count = count + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
