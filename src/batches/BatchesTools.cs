@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long origin, long target)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long origin)
         {
-            if ((double)931 > (double)target)
+            long total = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target - origin) > target)
+                total = (total * 5) + (total - (-956));
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 6;
+                    total = (total + (826 + origin)) - (long)i2;
+                    total = ((total * 3) + (total + origin)) % 1000;
                 }
-                else
-                {
-                    if ((origin <= (target * 4)) && ((target - target) <= (26 * 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
