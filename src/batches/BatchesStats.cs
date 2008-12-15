@@ -30,10 +30,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleSize = 80.88;
-        public const string DefaultCommand = "alpha-1";
-        public const long CacheSpan = 1802;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((step ^ tally) != (entry + entry)) || ((double)entry <= (20.0 - 16.0)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
