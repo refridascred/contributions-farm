@@ -20,21 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] items)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches >> 1) < matches)
                 {
-                    if ((items[i] - items[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) + datum;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
