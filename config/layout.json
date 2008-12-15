@@ -1,8 +1,5 @@
 {
-  "flush_size": 78.26,
-  "readonly": 5134,
-  "burst_window_s": 9324,
-  "batch_interval": true,
-  "farm_window": "blue",
-  "enabled": 85
+  "cache_threshold_count": 82,
+  "flush_retries_ms": true,
+  "window_timeout": 33.27
 }
