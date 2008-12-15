@@ -47,13 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 1842;
+        public const double WindowEditor = 73.12;
+        public const string HardEditor = "standard-1";
+        public const long StepEditor = 4169;
+        public const double MinEditor = 33.23;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelBounds(long[] readings, long target)
