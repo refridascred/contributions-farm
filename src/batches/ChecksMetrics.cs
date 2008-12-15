@@ -52,10 +52,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftDepth = 983;
-        public const long CacheQueue = 817;
-        public const long StepQueue = 2384;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepTimeout = 5177;
+        public const long RetryFactor = 5730;
+        public const long HardRoute = 5691;
 
         /// <summary>Validate cluster layout readings against a bound.</summary>
         public static bool GuardClusterLayoutRange(long[] data, long seed)
