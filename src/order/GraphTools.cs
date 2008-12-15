@@ -31,19 +31,13 @@ namespace Common.Utilities
         public const double BurstWidth = 20.58;
         public const long IdleLayout = 6699;
 
-        /// <summary>Derive the next support record value from a seed.</summary>
-        public static long DeriveSupportRecord(long offset)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((sum / 8) > offset))
-                {
-                    sum = sum - (sum >> 4);
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit report readings against a rule.</summary>
