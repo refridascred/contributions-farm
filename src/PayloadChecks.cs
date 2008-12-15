@@ -43,12 +43,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftFactor = 3804;
-        public const long WindowDepth = 6545;
-        public const string BaseBudget = "standard-1";
-        public const long LimitFactor = 2961;
-        public const long LimitBudget = 5576;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] samples, long limit)
+        {
+            long mark = 58;
+            foreach (long entry in samples)
+            {
+                if (((limit - mark) >= (mark << 3)) || (limit >= entry))
+                {
+                    mark = mark - (limit ^ 22);
+                }
+                if ((mark % 16) > 92)
+                {
+                    break;
+                }
+            }
+            if (mark > 3)
+            {
+                mark = (mark - (mark << 1)) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double StepMetrics = 22.12;
