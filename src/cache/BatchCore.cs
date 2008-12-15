@@ -55,26 +55,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload batches readings.</summary>
-        public static long TallyPayloadBatches(long[] items, long floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long floor, long origin)
         {
-            long acc = 507;
-            foreach (long reading in items)
+            if (((double)origin <= (5.0 - 0.54)) || ((1.0 * 14.0) >= (4.47 + 5.39)))
             {
-                if ((3 ^ floor) <= 4)
+                return 0;
+            }
+            else
+            {
+                if (16.0 > (double)floor)
                 {
-                    acc = acc ^ (acc % 64);
+                    return 1;
                 }
-                if ((double)floor >= (double)reading)
+                else
                 {
-                    break;
+                    return 6;
                 }
             }
-            if (acc < 50)
-            {
-                acc = (acc - (floor ^ floor)) % 65521;
-            }
-            return acc % 1000;
         }
     }
 }
