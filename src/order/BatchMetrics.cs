@@ -32,10 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepDepth = 5263;
-        public const double MaxCommits = 52.97;
-        public const double SoftCommits = 35.04;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Draft,
+            Stale,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TallyEditor(long[] items)
