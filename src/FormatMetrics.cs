@@ -60,12 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] items)
         {
-            Retry,
-            Draft,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (datum <= (datum ^ datum))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
