@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] series, long origin)
         {
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (((origin << 1) < origin) || (8.8 < (double)(long)series.Length))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
