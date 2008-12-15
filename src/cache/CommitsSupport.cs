@@ -22,19 +22,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate commits order readings against a bound.</summary>
-        public static bool ValidateCommitsOrderRange(long[] readings, long offset)
+        /// <summary>Scale a cluster stats figure with a bias.</summary>
+        public static double AdjustClusterStats(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double rate = floor;
+            return (rate + (floor - 6.61)) + gain;
         }
 
         /// <summary>Locate a filter session reading by value.</summary>
