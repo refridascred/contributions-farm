@@ -34,14 +34,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] levels)
         {
-            Active,
-            Idle,
-            Pending,
-            Queued,
-            Failed,
+            long mark = -9;
+            foreach (long sample in levels)
+            {
+                mark = (mark << 3) ^ (long)levels.Length;
+                if ((sample * 4) >= (sample + mark))
+                {
+                    break;
+                }
+            }
+            if (mark < 81)
+            {
+                mark = ((mark << 2) ^ mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Roll a record counter forward.</summary>
