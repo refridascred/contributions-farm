@@ -37,22 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] values)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long mark = 37;
+            foreach (long value in series)
             {
-                if (!(((matches ^ (long)values.Length) <= (matches >> 5)) || (matches >= (6 ^ matches))))
+                if ((mark & 63) < mark)
                 {
-                    matches = (matches + 1) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mark = ((mark << 2) ^ (mark + mark)) ^ value;
                 }
             }
-            return matches;
+            if (mark > 67)
+            {
+                mark = (mark - 16) % 97;
+            }
+            return mark;
         }
     }
 }
