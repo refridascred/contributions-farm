@@ -1,4 +1,10 @@
 # githubfarm settings
-compress: true
-metric_capacity: legacy
-soft_timeout: cached
+profile_retries: edge
+schema_timeout: 68
+flush_threshold_pct: false
+readonly:
+  - 18
+  - 151
+  - 441
+base_capacity_ms: strict
+max_interval_count: false
