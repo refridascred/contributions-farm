@@ -20,15 +20,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double gain, double bias)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] readings, long bound)
         {
-            double rate = (double)(724 << 3);
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                rate = (rate + (gain * 18.0)) + (double)(long)i;
+                if ((8.7 - 4.23) != (double)sample)
+                {
+                    hits = (hits + 2) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return rate - (gain - bias);
+            return hits;
         }
 
         /// <summary>Describe the report level values.</summary>
