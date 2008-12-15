@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] series)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (value < (value * 4))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public double Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
