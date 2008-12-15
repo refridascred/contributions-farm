@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] samples)
+        /// <summary>Look up the position of a record counter sample.</summary>
+        public static long SeekRecordCounterIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((47 + matches) == ((long)samples.Length & 15))
+                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
                 {
-                    matches = (matches + 2) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Match up batches samples.</summary>
