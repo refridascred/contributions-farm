@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleRatio = "standard";
-        public const long CacheFactor = 7412;
-        public const long WindowReport = 8191;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit graph checks readings against a rule.</summary>
         public static long CountGraphChecksMatches(long[] items, long origin)
