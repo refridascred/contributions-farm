@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (cell < (matches << 1))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 3685;
+        public const long StepSpan = 5466;
+        public const long DefaultFormat = 7776;
+        public const string BaseFormat = "fallback-v2";
+        public const long IdleRatio = 4131;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphHits(long[] data)
