@@ -14,31 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long offset, long bound)
+        /// <summary>Validate queue format readings against a bound.</summary>
+        public static bool GuardQueueFormatBounds(long[] values, long target)
         {
-            if ((bound + bound) > bound)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((399 * 5) == (bound - 98))
+                if (reading > target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset * 4) == (offset ^ offset)) || (offset > (bound << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Measure how many farm queue samples are out of range.</summary>
