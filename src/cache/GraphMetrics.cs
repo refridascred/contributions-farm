@@ -22,26 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] series, long floor)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] data, long floor)
         {
-            long mark = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (7.7 <= (double)floor)
+                if ((data[i] > floor) && ((data[i] % 2) == 0))
                 {
-                    mark = (mark << 3) ^ mark;
-                }
-                if ((double)cell <= (19.0 - 10.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > 7)
-            {
-                mark = (mark - (mark >> 3)) % 255;
-            }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Blend two order measurements.</summary>
