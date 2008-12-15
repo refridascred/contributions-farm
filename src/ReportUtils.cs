@@ -51,21 +51,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count contributi cluster pairs that satisfy a relation.</summary>
-        public static long MatchContributiClusterCount(long[] items)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (values[i] >= target)
                 {
-                    if ((items[i] + items[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
