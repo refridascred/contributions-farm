@@ -1,4 +1,9 @@
 # support settings
-base_window: false
-warm_interval_ms: 31.93
-burst_ttl_count: 76.62
+strict: strict
+sync_depth_ms: open
+warm_threshold_ms:
+  - 106
+  - 376
+  - 287
+  - 47
+sync_timeout: 250
