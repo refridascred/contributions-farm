@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 2371;
-        public const string HardSize = "latest";
-        public const string CacheCount = "open";
-        public const long IdleTools = 2914;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] values)
+        {
+            long state = -446;
+            foreach (long cell in values)
+            {
+                if (!(8 < (cell ^ cell)))
+                {
+                    state = (state << 2) ^ (cell % 64);
+                }
+                else
+                {
+                    state = state - state;
+                }
+            }
+            if (state > (-8))
+            {
+                state = state ^ (state * 3);
+            }
+            return state % 1000;
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double BlendCommits(double rate, double offset)
