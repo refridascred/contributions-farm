@@ -29,11 +29,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardTimeout = 2870;
-        public const string BurstMetric = "staging-edge";
-        public const long CacheMetric = 4192;
-        public const long BaseMetric = 3938;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepDepth = 4795;
+        public const double CacheSupport = 65.71;
+        public const long CacheTimeout = 1971;
+        public const long IdleInterval = 5257;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long BucketTools(long offset, long floor)
