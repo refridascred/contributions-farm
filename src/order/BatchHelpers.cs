@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine tools cluster values into a single score.</summary>
-        public static long WeighToolsCluster(long[] readings)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            long total = 97;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((total << 3) != (605 >> 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total + total) ^ sample;
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Measure how many layout contributi samples are out of range.</summary>
