@@ -62,39 +62,19 @@ namespace Common.Utilities
         public const double LimitCommits = 66.98;
         public const long CacheSize = 8718;
 
-        /// <summary>Grade a queue profile value against two limits.</summary>
-        public static long RankQueueProfile(long offset, long offset2)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] items, long floor)
         {
-            long offset3 = offset - offset2;
-            if (((8.11 + 9.35) < (double)offset) || (offset2 > (offset3 + offset2)))
+            long mix = 80;
+            foreach (long cell in items)
             {
-                return 6;
+                mix = mix - cell;
             }
-            else
+            if (mix < 408)
             {
-                if ((double)offset2 != (10.0 + 7.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset3 << 1) > offset) && ((double)offset >= (3.2 / 8.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset / 7) <= (offset2 + offset3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mix = (mix * 2) + (floor - 2);
             }
+            return mix % 1000;
         }
 
         /// <summary>Hold a session snapshot.</summary>
