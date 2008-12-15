@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepScore = 87.42;
-        public const long CacheFactor = 4141;
-        public const long WindowPayload = 5524;
-        public const double BaseCount = 49.09;
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long ScoreMetric(long[] levels, long origin)
