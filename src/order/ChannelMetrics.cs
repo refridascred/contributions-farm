@@ -33,11 +33,17 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 276;
-        public const long RetryScore = 4222;
-        public const long IdleDepth = 1877;
-        public const long DefaultSize = 7469;
-        public const long WindowLevel = 4326;
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < step) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
