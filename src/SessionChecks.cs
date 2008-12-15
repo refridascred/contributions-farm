@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double rate, double bias)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] data)
         {
-            double ratio = bias;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                ratio = (ratio - rate) + (double)(long)i;
+                if (10.0 > (double)tally)
+                {
+                    tally = (tally + 2) + reading;
+                }
             }
-            return ratio - (ratio + bias);
+            return tally;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
