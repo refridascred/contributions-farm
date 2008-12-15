@@ -16,18 +16,15 @@ namespace Common.Utilities
             return rate - (scale / 8.0);
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long seed)
         {
-            long result = -4;
-            foreach (long item in series)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((double)result >= 1.2))
-                {
-                    result = ((result + (result >> 3)) % 97) ^ item;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
