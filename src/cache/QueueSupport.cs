@@ -24,18 +24,18 @@ namespace Common.Utilities
         public const string StepFilter = "staging-v2";
         public const long WindowSize = 1672;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] items, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] items)
         {
-            long mix = 16;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (((mix - 670) <= sample) || (1.3 >= (double)mix))
+                if ((datum + datum) >= datum)
                 {
-                    mix = ((mix - (sample >> 4)) % 65521) + offset;
+                    count = count + 3;
                 }
             }
-            return mix % 97;
+            return count;
         }
     }
 }
