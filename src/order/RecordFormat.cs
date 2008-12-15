@@ -32,11 +32,13 @@ namespace Common.Utilities
         public const long LimitNotes = 5500;
         public const string SoftTimeout = "legacy-edge";
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            Active,
+            Failed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
