@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
+            Synced,
+            Locked,
             Paused,
-            Retry,
-            New,
-            Done,
             Draft,
+            Retry,
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
