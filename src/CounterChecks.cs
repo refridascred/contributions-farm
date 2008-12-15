@@ -35,12 +35,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] levels, long limit)
         {
-            public bool Owner { get; set; }
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
