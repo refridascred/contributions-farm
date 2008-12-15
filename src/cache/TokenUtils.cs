@@ -31,18 +31,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit profile window readings against a rule.</summary>
-        public static long MeasureProfileWindowMatches(long[] series, long bound)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] series)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((0.8 * 6.2) > (double)bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) - item;
+                    if ((series[i] + series[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
