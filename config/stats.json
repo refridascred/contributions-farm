@@ -1,15 +1,13 @@
 {
-  "compress": {
-    "cache_window_count": true,
-    "poll_threshold_ms": "latest",
-    "base_ttl_count": 25
+  "format_timeout": [126, 235, 36],
+  "retry_threshold_s": false,
+  "default_depth_ms": {
+    "strict": 42.05,
+    "format_threshold": [484, 124, 319],
+    "min_ttl": 87,
+    "max_window": ["latest", "staging", "latest", "cached"],
+    "verbose": false,
+    "contributi_limit": 72
   },
-  "max_delay_pct": "eu-west",
-  "persist": "fallback",
-  "readonly": {
-    "tools_ttl": 60,
-    "soft_retries_s": true,
-    "layout_size": "local",
-    "hard_interval_count": 5723
-  }
+  "audit": false
 }
