@@ -30,18 +30,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((datum + datum) >= datum)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 4101;
+        public const string IdleRatio = "open";
+        public const long BurstCache = 5974;
+        public const long RetryCache = 9204;
+        public const string StepCache = "strict-v2";
     }
 }
