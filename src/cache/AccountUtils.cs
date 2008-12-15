@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] readings, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
