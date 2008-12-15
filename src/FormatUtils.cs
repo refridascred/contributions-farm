@@ -47,23 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double gain, double span)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            double drift = 17.0;
-            if (drift > drift)
-            {
-                drift = ((drift - 6.4) + gain) - span;
-            }
-            else
-            {
-                drift = drift - (drift / 6.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (16.0 + 0.2)) + (double)(long)i;
-            }
-            return drift - 9.7;
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
