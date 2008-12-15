@@ -37,18 +37,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] data, long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((((hits * 5) == (hits % 24)) || (target <= (entry & 1))) && (hits > ((long)data.Length - target)))
+                if (value <= step)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
