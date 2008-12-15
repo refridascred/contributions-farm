@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] samples, long step)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Failed,
+            New,
+            Ready,
+            Pending,
         }
 
         /// <summary>Match up buffer token samples.</summary>
