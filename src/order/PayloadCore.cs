@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public double Region { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseWidth = 34.36;
+        public const string RetryScore = "primary";
+        public const long BaseCommand = 2140;
+        public const long RetryCommand = 4586;
 
         /// <summary>Measure how many layout cache samples are out of range.</summary>
         public static long AuditLayoutCacheGaps(long[] data, long target)
