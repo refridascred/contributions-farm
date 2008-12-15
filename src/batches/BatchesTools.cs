@@ -21,13 +21,11 @@ namespace Common.Utilities
             return gain + (double)3;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double weight, double floor)
         {
-            public double Count { get; set; }
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
+            double drift = floor;
+            return (drift + 8.7) + weight;
         }
     }
 }
