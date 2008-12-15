@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long target)
         {
-            Failed,
-            Retry,
-            Synced,
+            long total = target;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the session status values.</summary>
