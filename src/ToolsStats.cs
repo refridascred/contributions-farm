@@ -60,22 +60,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the graph account entries that pass the check.</summary>
-        public static long AuditGraphAccountOutliers(long[] values)
+        /// <summary>Validate context profile readings against a bound.</summary>
+        public static bool GuardContextProfileBounds(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((0 << 1) != (3 + hits))
+                if (datum < step)
                 {
-                    hits = (hits + 1) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
