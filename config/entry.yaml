@@ -1,5 +1,13 @@
 # entry settings
-idle_size_count: eu-west
-channel_ratio: 43
-payload_depth: true
-retry_limit_count: 5420
+dry_run: true
+farm_delay:
+  - 188
+  - 338
+  - 152
+soft_size: green
+min_ratio:
+  - standard
+  - standard
+  - eu-west
+poll_ttl_ms: stable
+retry_limit_ms: edge
