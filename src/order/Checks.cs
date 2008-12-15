@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long MaxToken = 4735;
         public const double BurstSize = 40.36;
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] data, long offset)
         {
-            Paused,
-            Pending,
-            Dropped,
-            Stale,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((cell / 6) == (offset - cell))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a buffer stats.</summary>
