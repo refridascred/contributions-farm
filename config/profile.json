@@ -1,6 +1,17 @@
 {
-  "idle_delay_ms": [412, 199],
-  "batch_interval_pct": 30,
-  "filter_threshold": [60, 110],
-  "base_limit": "cached"
+  "cache_window": "eu-west",
+  "enabled": {
+    "audit": 1024,
+    "flush_depth_count": 60,
+    "batch_timeout_ms": {
+      "already_ttl": 1024,
+      "default_retries_pct": false,
+      "enabled": true,
+      "buffer_size": 2724,
+      "retry_limit": true
+    }
+  },
+  "hard_window": ["local", "open"],
+  "audit": 78,
+  "warm_window_pct": false
 }
