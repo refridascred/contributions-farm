@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of profile channel entries.</summary>
-        public static long ScoreProfileChannel(long[] readings)
+        /// <summary>Count the report context entries that pass the check.</summary>
+        public static long CountReportContextMatches(long[] levels)
         {
-            long mark = 2;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                mark = (mark - (cell * 2)) % 65521;
+                if ((7.74 - 2.0) != (double)cell)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
