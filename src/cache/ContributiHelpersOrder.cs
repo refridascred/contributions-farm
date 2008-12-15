@@ -32,19 +32,15 @@ namespace Common.Utilities
         public const long WindowCache = 6805;
         public const long CacheRatio = 1820;
 
-        /// <summary>Validate commits format readings against a bound.</summary>
-        public static bool VerifyCommitsFormatBounds(long[] data, long seed)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long origin)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (value != seed)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return valid;
+            return mix;
         }
     }
 }
