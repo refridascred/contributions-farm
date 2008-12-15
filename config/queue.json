@@ -1,12 +1,6 @@
 {
-  "strict": {
-    "batches_retries": 1443,
-    "idle_window_pct": ["open", "open", "cached"],
-    "sync_ratio_count": "legacy",
-    "order_ratio": 4100
-  },
-  "audit": false,
-  "retry_capacity": "edge",
-  "enabled": ["eu-west", "green", "primary"],
-  "account_ttl": 35.71
+  "context_ratio": 186,
+  "min_window": ["legacy", "blue", "staging"],
+  "burst_size_s": "open",
+  "idle_ttl_pct": "edge"
 }
