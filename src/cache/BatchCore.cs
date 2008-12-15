@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double weight, double offset)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] data, long bound)
         {
-            double bias = weight;
-            if (bias >= (offset * 7.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias + (7.9 + bias);
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (offset - bias);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + offset) - (double)(long)i;
-            }
-            return bias + 0.4;
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
