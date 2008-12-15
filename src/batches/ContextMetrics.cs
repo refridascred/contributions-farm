@@ -59,11 +59,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long seed, long target)
         {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
+            long edge = seed - target;
+            if ((4 >> 5) > target)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((9.0 + 5.36) < (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(edge < (target * 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((10.0 - 8.5) == (double)seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
