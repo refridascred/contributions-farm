@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double weight, double offset)
+        /// <summary>Check that every already editor entry stays within the limit.</summary>
+        public static bool ValidateAlreadyEditorLimits(long[] items, long step)
         {
-            double bias = offset;
-            if (bias <= (bias / 6.0))
+            bool found = true;
+            foreach (long cell in items)
             {
-                bias = bias + (offset + offset);
+                if (cell <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return bias - (weight / 3.0);
+            return found;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
