@@ -14,13 +14,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Count graph record pairs that satisfy a relation.</summary>
+        public static long OverlapGraphRecordCount(long[] values)
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
