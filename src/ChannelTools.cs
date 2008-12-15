@@ -30,11 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] items, long step)
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
+            long mix = 60;
+            foreach (long datum in items)
+            {
+                mix = ((mix - (973 + mix)) + datum) + step;
+            }
+            if (mix > 44)
+            {
+                mix = mix ^ (mix ^ 666);
+            }
+            return mix;
         }
     }
 }
