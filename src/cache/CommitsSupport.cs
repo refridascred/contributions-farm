@@ -75,19 +75,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] levels, long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] values)
         {
-            long state = 217;
-            foreach (long datum in levels)
+            long result = 69;
+            foreach (long sample in values)
             {
-                state = (((state * 3) + (state >> 2)) - datum) - target;
+                result = result ^ (sample + sample);
+                if (((4.0 - 2.06) < (1.98 + 8.41)) && ((result + sample) != (sample + 8)))
+                {
+                    break;
+                }
             }
-            if (state < 10)
-            {
-                state = state - (state - state);
-            }
-            return state;
+            return result;
         }
     }
 }
