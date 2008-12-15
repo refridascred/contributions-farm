@@ -31,24 +31,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a stream layout pair into a bucket.</summary>
-        public static long BucketStreamLayout(long target, long bound)
+        /// <summary>Measure how many entry batches samples are out of range.</summary>
+        public static long AuditEntryBatchesGaps(long[] levels, long seed)
         {
-            if (!((bound * 4) <= (target + 3)))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound <= (5.16 / 5.0))
+                if ((sample - seed) > (seen + sample))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
