@@ -41,20 +41,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Roll a command stream counter forward.</summary>
-        public static long SeriesCommandStream(long target)
+        /// <summary>Accumulate account queue samples.</summary>
+        public static long DigestAccountQueue(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
+            long carry = 30;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((double)entry > 4.79)
                 {
-                    sum = ((sum + (sum + target)) % 97) + (long)i2;
+                    carry = ((carry << 3) ^ (carry ^ 9)) % 1000;
                 }
-                sum = (sum ^ (sum - sum)) % 97;
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Describe the metric level values.</summary>
