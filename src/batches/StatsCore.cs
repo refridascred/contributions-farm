@@ -31,39 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long floor, long origin)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] series)
         {
-            long step = floor ^ origin;
-            if ((floor + step) <= (origin % 2))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step << 3) <= (origin * 4))
+                if ((tally >> 3) <= (datum + datum))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin % 3) >= (origin * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step - step) != (step * 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
