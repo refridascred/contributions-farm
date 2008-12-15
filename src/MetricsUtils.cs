@@ -61,21 +61,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] items)
+        /// <summary>Classify a support channel pair into a bucket.</summary>
+        public static long SortSupportChannel(long target, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long slot = target ^ step;
+            if (step <= slot)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((step - step) > (20 + target))
                 {
-                    if ((items[i] + items[j]) == 16)
+                    return 2;
+                }
+                else
+                {
+                    if (((3.44 - 4.6) > (double)target) || (((-98) + 1) == (step - step)))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
     }
 }
