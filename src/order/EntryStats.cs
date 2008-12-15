@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchTimeout = "staging-1";
-        public const long CacheSpan = 905;
-        public const long MinChannel = 4607;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] values, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Look up the position of a queue profile sample.</summary>
         public static long LocateQueueProfileIndex(long[] samples, long bound)
