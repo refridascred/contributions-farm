@@ -33,13 +33,39 @@ namespace Common.Utilities
             return scale - 12.0;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Classify a session farm pair into a bucket.</summary>
+        public static long ClassifySessionFarm(long origin, long offset)
         {
-            Stale,
-            Idle,
-            Retry,
-            Synced,
+            long offset2 = origin ^ offset;
+            if (((5.0 - 20.0) == (double)offset2) || (offset < (offset + offset2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((4.2 > (double)offset2) && ((offset ^ origin) <= offset2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((8.95 / 9.0) <= (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin + offset) <= (364 + origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
