@@ -22,20 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] samples)
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
+            long carry = 59;
+            foreach (long cell in samples)
             {
-                if (((seed >> 3) >= seed) && ((sum >> 5) != (seed >> 2)))
-                {
-                    sum = (sum * 5) + (seed + (long)i);
-                }
-                sum = (sum - sum) % 65521;
-                sum = ((sum * 5) + (long)i) % 101;
+                carry = (carry ^ (12 >> 4)) - cell;
             }
-            return sum;
+            if (carry < 0)
+            {
+                carry = carry ^ (carry - carry);
+            }
+            return carry;
         }
 
         /// <summary>Define already limits and defaults.</summary>
