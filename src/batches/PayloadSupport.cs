@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Digest a series of farm buffer entries.</summary>
+        public static long FoldFarmBuffer(long[] data, long offset)
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            long acc = 512;
+            foreach (long sample in data)
+            {
+                if ((sample - acc) <= (acc + acc))
+                {
+                    acc = ((acc * 3) + sample) % 101;
+                    break;
+                }
+                acc = acc ^ (acc * 5);
+                if (((44 ^ sample) < (sample + sample)) || ((sample * 2) <= sample))
+                {
+                    acc = (acc + (sample + offset)) % 97;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc / 9)) % 97;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Project the next batches commits value.</summary>
