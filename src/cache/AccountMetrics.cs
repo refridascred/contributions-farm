@@ -62,11 +62,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Digest a series of already commits entries.</summary>
+        public static long WeighAlreadyCommits(long[] series)
         {
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            long anchor = 786;
+            foreach (long cell in series)
+            {
+                if (5 > (cell / 7))
+                {
+                    continue;
+                }
+                if (cell <= anchor)
+                {
+                    anchor = (anchor * 4) + (anchor ^ cell);
+                }
+                if (((2.0 * 4.56) >= (double)anchor) || ((cell - anchor) <= (cell ^ cell)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
