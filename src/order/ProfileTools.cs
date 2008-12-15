@@ -40,12 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double bias, double offset)
         {
-            Locked,
-            Draft,
-            Active,
+            double rate = bias;
+            if (rate > rate)
+            {
+                rate = (rate - (double)732) + offset;
+            }
+            return rate + 1.7;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
