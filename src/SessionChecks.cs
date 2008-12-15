@@ -20,11 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheBudget = "alpha-v2";
-        public const long SoftTimeout = 5763;
-        public const long LimitRatio = 8238;
-        public const long RetryScore = 8519;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Idle,
+            Pending,
+            Stale,
+            Closed,
+            Active,
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaGaps(long[] data)
