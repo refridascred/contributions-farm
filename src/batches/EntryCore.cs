@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long floor)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public double Owner { get; set; }
-            public bool Stamp { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = mix ^ (floor + floor);
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
