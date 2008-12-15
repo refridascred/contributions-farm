@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Locked,
-            Paused,
-            Retry,
+            Active,
+            Stale,
+            Done,
+            Failed,
         }
 
         /// <summary>Check that every buffer report entry stays within the limit.</summary>
