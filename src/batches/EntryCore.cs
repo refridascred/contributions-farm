@@ -38,22 +38,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] values)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((double)count >= 0.2)
+                if (datum < floor)
                 {
-                    count = (count + 1) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Fold a list of account readings.</summary>
