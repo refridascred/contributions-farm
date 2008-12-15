@@ -56,32 +56,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long seed, long origin)
-        {
-            if (((seed ^ seed) > origin) || ((41 + seed) <= origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((862 << 3) != (seed << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin >= (5.9 / 2.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 3555;
+        public const long BatchRatio = 2952;
+        public const long BaseStream = 1995;
+        public const long WindowInterval = 2711;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long FoldCommand(long[] data, long offset)
