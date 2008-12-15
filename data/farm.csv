@@ -1,11 +1,6 @@
-id,rank,state,region,weight
-1,865,edge,66.42,89.07
-2,latest,882,634,49.35
-3,419,218,133,63.9
-4,762,999,718,881
-5,452,staging,legacy,279
-6,26.82,strict,local,cached
-7,fallback,190,666,818
-8,63.24,blue,417,local
-9,primary,195,11.8,eu-west
-10,328,634,955,435
+id,owner
+1,latest
+2,green
+3,7.47
+4,351
+5,233
