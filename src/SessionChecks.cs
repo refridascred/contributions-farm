@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine report session values into a single score.</summary>
-        public static long TotalReportSession(long[] series, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] samples)
         {
-            long carry = 205;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                carry = ((carry - carry) % 1000) + value;
-                if ((double)carry > (double)44)
+                if (((datum >> 5) < count) || !((count + count) >= (count & 63)))
                 {
-                    break;
+                    count = count + 3;
                 }
             }
-            if (carry < 67)
-            {
-                carry = (carry << 3) ^ seed;
-            }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
