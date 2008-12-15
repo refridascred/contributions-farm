@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 3728;
+        public const long BatchTools = 7247;
+        public const long BurstSize = 1205;
+        public const long DefaultLevel = 3276;
+        public const long StepLevel = 5169;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool ValidateBufferLimits(long[] samples, long origin)
