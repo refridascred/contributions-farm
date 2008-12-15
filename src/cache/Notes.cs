@@ -44,11 +44,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double bias, double span)
         {
-            public bool Owner { get; set; }
-            public long Size { get; set; }
+            double gain = bias;
+            if (gain >= span)
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain - (gain * 4.74);
         }
 
         /// <summary>Measure how many cache schema samples are out of range.</summary>
