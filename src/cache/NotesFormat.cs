@@ -29,21 +29,26 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] samples)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 8;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((2.0 - 8.7) < (double)carry))
                 {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry + reading) % 4096;
+                }
+                if ((double)reading <= 9.8)
+                {
+                    carry = (carry - (reading & 1)) % 97;
+                }
+                else
+                {
+                    carry = (carry - (carry & 127)) % 97;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
