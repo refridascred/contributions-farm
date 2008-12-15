@@ -22,17 +22,22 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] items, long bound)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 1;
+            foreach (long item in samples)
             {
-                if (items[i] > bound)
+                if ((5.0 / 5.0) < (double)item)
                 {
-                    return (long)i;
+                    mix = mix + (item & 31);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ mix) % 1000;
                 }
             }
-            return -1;
+            return mix % 4096;
         }
     }
 }
