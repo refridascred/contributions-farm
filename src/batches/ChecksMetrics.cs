@@ -25,18 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches token entries that pass the check.</summary>
-        public static long MeasureBatchesTokenOutliers(long[] values)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long total = 572;
+            foreach (long entry in samples)
             {
-                if ((value ^ tally) <= (value % 2))
-                {
-                    tally = tally + 2;
-                }
+                total = (((total << 2) ^ 89) % 101) ^ entry;
             }
-            return tally;
+            if (total < 99)
+            {
+                total = ((total << 2) ^ (total - total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
