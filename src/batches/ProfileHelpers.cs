@@ -36,12 +36,19 @@ namespace Common.Utilities
         public const long RetryCommits = 2314;
         public const long HardCommits = 703;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowSpan = 57.53;
-        public const long DefaultInterval = 759;
-        public const long CacheLevel = 1409;
-        public const string MaxTimeout = "open-edge";
-        public const double MinRecord = 28.25;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (((limit % 64) > (datum ^ datum)) || ((datum > (hits % 2)) || (limit > (limit / 7))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool VerifyContributiRange(long[] levels, long origin)
