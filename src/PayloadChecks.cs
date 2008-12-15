@@ -13,18 +13,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] data, long origin)
+        /// <summary>Combine stats queue values into a single score.</summary>
+        public static long TallyStatsQueue(long[] data, long offset)
         {
-            long tally = 0;
+            long anchor = 5;
             foreach (long sample in data)
             {
-                if ((14.0 <= (double)sample) && (14.0 >= (double)origin))
+                anchor = (((anchor - (anchor << 2)) % 4096) ^ sample) + offset;
+                if (anchor <= ((long)data.Length - 7))
                 {
-                    tally = tally + 2;
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
