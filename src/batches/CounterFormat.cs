@@ -20,19 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every githubfarm contributi entry stays within the limit.</summary>
-        public static bool GuardGithubfarmContributiRange(long[] readings, long seed)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long origin)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
