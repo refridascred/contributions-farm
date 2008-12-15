@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] data)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long origin)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (42 >= (matches & 31))
-                {
-                    matches = (matches + 1) ^ value;
-                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
