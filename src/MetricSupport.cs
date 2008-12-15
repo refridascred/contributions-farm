@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the report schema entries that pass the check.</summary>
-        public static long CountReportSchemaGaps(long[] series)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((reading + reading) > (tally / 8))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Fold a list of graph readings.</summary>
