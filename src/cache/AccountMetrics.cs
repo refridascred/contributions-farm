@@ -72,9 +72,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinWidth = 6842;
-        public const long BurstTools = 109;
-        public const long RetryInterval = 1800;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = (mix ^ (long)i) % 1000;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
