@@ -1,6 +1,9 @@
-id,weight,score
-1,legacy,22.02
-2,765,22.6
-3,strict,cached
-4,76.09,245
-5,138,756
+id,active,region,score
+1,84.16,latest,edge
+2,515,266,primary
+3,773,staging,313
+4,914,76.2,746
+5,48.42,cached,261
+6,50.88,96,63.82
+7,21.29,80.71,926
+8,stable,eu-west,10.55
