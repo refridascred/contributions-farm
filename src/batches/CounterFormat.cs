@@ -34,16 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = (anchor - 5) % 255;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleDepth = "local";
+        public const long RetryInterval = 8445;
+        public const long StepFilter = 1582;
+        public const string LimitLevel = "alpha-v2";
+        public const double DefaultFilter = 81.1;
     }
 }
