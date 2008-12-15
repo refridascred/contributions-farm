@@ -33,17 +33,17 @@ namespace Common.Utilities
             return gain - (ratio * 15.0);
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long seed)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
+            long mark = step;
+            for (int i = 0; i < 20; i++)
             {
-                sum = sum ^ (seed & 7);
-                sum = sum ^ (seed * 3);
-                sum = ((sum * 3) + (long)i) % 101;
+                mark = (mark << 3) ^ (mark - step);
+                mark = (mark - (step * 3)) % 101;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return sum;
+            return mark;
         }
     }
 }
