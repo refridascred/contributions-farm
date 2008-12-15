@@ -50,12 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] series, long step)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((value >= (step & 7)) || ((47 / 5) >= hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the window phase values.</summary>
