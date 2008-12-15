@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Iterate the account queue series from a seed.</summary>
+        public static long IterateAccountQueue(long limit)
         {
-            Dropped,
-            Stale,
-            Active,
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((long)i % 100) != (limit << 1))
+                {
+                    anchor = anchor ^ (9 + 940);
+                    continue;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
