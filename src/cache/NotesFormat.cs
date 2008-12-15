@@ -31,15 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Measure how many account stats samples are out of range.</summary>
+        public static long TallyAccountStatsHits(long[] items)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if ((8.4 / 8.0) <= (double)seen)
+                {
+                    seen = (seen + 2) + cell;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
