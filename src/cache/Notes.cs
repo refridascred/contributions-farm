@@ -53,11 +53,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next account metrics value.</summary>
-        public static double BlendAccountMetrics(double gain, double span)
+        /// <summary>Digest a series of channel route entries.</summary>
+        public static long FoldChannelRoute(long[] samples, long offset)
         {
-            double bias = (double)(4 + 5);
-            return ((bias + (double)(-4)) + gain) + span;
+            long anchor = 33;
+            foreach (long cell in samples)
+            {
+                anchor = (anchor + (2 - cell)) - offset;
+                anchor = ((anchor * 2) + (anchor + anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a githubfarm payload reading by value.</summary>
