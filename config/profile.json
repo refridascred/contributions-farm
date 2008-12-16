@@ -1,5 +1,6 @@
 {
-  "flush_threshold": [107, 374],
-  "idle_threshold_count": "open",
-  "base_size_s": [236, 95, 397]
+  "soft_ratio": "staging",
+  "base_depth_count": [379, 219],
+  "poll_limit_ms": "open",
+  "default_depth": "legacy"
 }
