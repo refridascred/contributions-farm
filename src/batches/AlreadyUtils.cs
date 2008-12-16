@@ -39,20 +39,24 @@ namespace Common.Utilities
             return ratio - (2.0 - 5.57);
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long bound)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long target, long target2)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            if (((4.1 + 3.4) <= (double)target2) && ((double)target < (5.4 * 17.0)))
             {
-                acc = acc - (acc + (long)i);
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = ((acc - (2 << 3)) % 65521) - (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((target2 >> 4) >= target2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
