@@ -72,18 +72,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc << 2) ^ acc) % 65521;
-                acc = acc + acc;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultDepth = "strict-v2";
+        public const long MaxSpan = 8847;
+        public const long IdleWindow = 7205;
+        public const long MinWindow = 1649;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
