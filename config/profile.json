@@ -1,6 +1,9 @@
 {
-  "idle_timeout_s": false,
-  "route_interval": "legacy",
-  "max_retries_s": "stable",
-  "channel_delay": 62.15
+  "min_capacity": "strict",
+  "max_window_count": "stable",
+  "enabled": {
+    "base_timeout_count": 30,
+    "persist": "standard",
+    "max_delay": 47
+  }
 }
