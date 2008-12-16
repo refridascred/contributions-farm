@@ -1,9 +1,4 @@
 # githubfarm settings
-window_retries: true
-cache_interval_count: 100
-warm_window_s: edge
-readonly:
-  - open
-  - fallback
-  - green
-command_ttl: 36
+retry_threshold: 60
+burst_interval: 1024
+route_retries: 59
