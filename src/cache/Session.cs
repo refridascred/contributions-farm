@@ -36,11 +36,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 5841;
-        public const long HardLayout = 7657;
-        public const double MinLayout = 98.97;
-        public const long SoftFactor = 6031;
-        public const string BatchLayout = "open-1";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] samples, long offset)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!((offset + offset) == (offset - tally)))
+                {
+                    tally = (tally + 2) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
