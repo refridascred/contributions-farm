@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseSpan = 7690;
-        public const long BatchSize = 9689;
-        public const long MinFactor = 6160;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 1056;
+        public const long DefaultDepth = 100;
+        public const long MaxBuffer = 3713;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string LimitSupport = "local-v2";
