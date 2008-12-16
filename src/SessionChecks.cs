@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long offset, long target)
         {
-            public long Token { get; set; }
-            public bool Rank { get; set; }
+            if (((target ^ 347) > (target - offset)) || ((offset - offset) <= (offset * 5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((6 - target) != (offset + 529))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((target >> 2) > 606) || (offset > (offset >> 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target >> 4) <= (target + target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks level values.</summary>
