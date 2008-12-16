@@ -1,14 +1,16 @@
 # Command notes
 
-Keep report and checks names short and lowercase.
-The filter helpers are pure functions, so they are safe to call from any thread.
+Use token settings to tune how often report data is refreshed.
+Each command is validated before it reaches the profile queue.
+When a metrics fails, the checks handler retries a few times before giving up.
 
-Each stats is validated before it reaches the batch queue.
-Run the report check before changing any stats limits.
-Defaults for notes live in the config folder and can be overridden per environment.
+Keep tools and counter names short and lowercase.
+The tools module keeps batches values in sync with the metric cache.
+Run the contributi check before changing any cluster limits.
 
 ## Guidelines
 
-- Keep session values small
-- Review context limits each release
-- Document new notes fields
+- Document new command fields
+- Review notes limits each release
+- Prefer batch defaults
+- Log every schema change
