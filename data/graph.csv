@@ -1,7 +1,6 @@
-id,active,ratio,owner,score
-1,eu-west,673,580,695
-2,local,5.07,52.48,stable
-3,942,13.23,826,585
-4,stable,legacy,eu-west,9.18
-5,cached,local,50.21,fallback
-6,standard,93.88,82.04,66.72
+id,rank,ratio
+1,local,primary
+2,blue,59.22
+3,green,blue
+4,cached,712
+5,323,96.18
