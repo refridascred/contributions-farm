@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] series, long bound)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
-            long result = 58;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item % 5) >= (item / 8))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result * 5) + bound;
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Hold a window record.</summary>
