@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine githubfarm checks values into a single score.</summary>
-        public static long WeighGithubfarmChecks(long[] samples, long target)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long state = 51;
-            foreach (long value in samples)
-            {
-                state = (state * 4) + (value - target);
-            }
-            return state;
+            Queued,
+            Synced,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a context record.</summary>
