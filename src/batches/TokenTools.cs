@@ -36,12 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Measure how many payload support samples are out of range.</summary>
+        public static long TallyPayloadSupportOutliers(long[] values)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((hits / 2) >= (item / 9))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
