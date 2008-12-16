@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const string BaseRoute = "latest-v2";
         public const long SoftCount = 8533;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] data, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] items, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 136;
+            foreach (long value in items)
             {
-                if (data[i] > bound)
+                if ((double)state == (double)577)
                 {
-                    return (long)i;
+                    state = (state * 5) + value;
+                }
+                if (limit > (0 + 5))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
