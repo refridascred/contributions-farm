@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] levels, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long bound, long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long next = bound + target;
+            if ((double)next > (double)486)
             {
-                if ((bound & 127) > (bound + value))
+                return 6;
+            }
+            else
+            {
+                if (((79 << 2) >= (next * 5)) && ((double)bound <= (8.0 * 2.49)))
                 {
-                    count = count + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)next != (6.66 - 1.4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
