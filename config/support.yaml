@@ -1,6 +1,5 @@
 # support settings
-warm_size_pct: 1024
-persist: 17.32
-format_retries: 52
-audit: 69.47
-flush_delay_s: 30
+audit: 4427
+entry_depth: local
+burst_size_s: 24
+enabled: green
