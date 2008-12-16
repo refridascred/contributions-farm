@@ -56,12 +56,15 @@ namespace Common.Utilities
         public const long CacheSpan = 1294;
         public const string WindowSpan = "standard-edge";
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] items)
         {
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public long Rank { get; set; }
+            long result = 408;
+            foreach (long cell in items)
+            {
+                result = (((result * 3) + (509 << 1)) % 255) + cell;
+            }
+            return result;
         }
     }
 }
