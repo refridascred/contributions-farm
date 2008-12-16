@@ -20,25 +20,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((long)i / 6) != (mix % 16))
-                {
-                    mix = ((mix * 3) + (floor - floor)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix + mix)) % 4096;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxChannel = 90.52;
+        public const long BurstChannel = 5929;
+        public const long SoftChannel = 7186;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long ClassifyPayload(long seed, long floor)
