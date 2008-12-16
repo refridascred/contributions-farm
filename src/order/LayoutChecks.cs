@@ -29,24 +29,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] readings)
-        {
-            long state = 6;
-            foreach (long datum in readings)
-            {
-                long matches = (datum * 2) << 1;
-                if (!((state - datum) <= (matches << 2)))
-                {
-                    continue;
-                }
-                if (((double)state == (double)datum) && (8 <= (state - state)))
-                {
-                    state = ((state << 2) ^ (153 + datum)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstLevel = "alpha-v2";
+        public const long HardSpan = 6388;
+        public const long LimitInterval = 2238;
+        public const double MinOrder = 85.85;
+        public const long BaseOrder = 3119;
 
         /// <summary>Define token limits and defaults.</summary>
         public const double DefaultRatio = 25.0;
