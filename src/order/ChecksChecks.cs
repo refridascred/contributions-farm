@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long seed)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long limit, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
+            if ((455 & 15) < (step >> 4))
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (83 < step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((limit + limit) == (step ^ step)) || ((limit + limit) <= limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step > (step * 4)) && (step < (limit >> 4)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile phase values.</summary>
