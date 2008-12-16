@@ -32,22 +32,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] values, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] series, long bound)
         {
-            long total = 8;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (!((double)reading == (1.49 - 10.0)))
+                if ((cell > ((long)series.Length ^ 4)) && ((bound + matches) >= matches))
                 {
-                    total = (total ^ (limit * 2)) % 255;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    total = (total * 4) + (reading + limit);
+                    matches = matches - 1;
                 }
             }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Accumulate session samples.</summary>
