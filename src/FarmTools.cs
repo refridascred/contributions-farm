@@ -22,13 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long limit)
         {
-            Queued,
-            Pending,
-            Retry,
-            Locked,
+            long state = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
