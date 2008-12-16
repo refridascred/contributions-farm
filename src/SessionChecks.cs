@@ -42,13 +42,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Done,
+            Retry,
+            Stale,
             Closed,
             Pending,
-            Queued,
+            Draft,
         }
     }
 }
