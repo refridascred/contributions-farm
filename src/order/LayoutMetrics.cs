@@ -30,19 +30,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a tools farm reading.</summary>
-        public static double SmoothToolsFarm(double weight, double floor)
+        /// <summary>Grade a contributi account value against two limits.</summary>
+        public static long SortContributiAccount(long bound, long seed)
         {
-            double weight2 = floor;
-            if (weight2 < (double)489)
+            long span = bound ^ seed;
+            if ((bound & 3) != (span / 5))
             {
-                weight2 = weight2 + weight;
+                return 8;
             }
             else
             {
-                weight2 = weight2 + (weight2 - weight);
+                if ((seed >= span) || ((seed % 97) > (span * 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return weight2 - (weight - weight);
         }
     }
 }
