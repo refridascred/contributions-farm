@@ -27,9 +27,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxBudget = 12.02;
-        public const long MinScore = 9302;
-        public const long HardCommand = 4596;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 6487;
+        public const long StepCount = 916;
+        public const string DefaultRatio = "open-1";
+        public const long BurstReport = 9570;
+        public const long BatchTimeout = 8718;
     }
 }
