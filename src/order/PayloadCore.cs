@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long seed)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                sum = (sum - ((-473) ^ sum)) % 101;
-                sum = ((sum * 5) + (long)i) % 1000;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Fold a list of schema batches readings.</summary>
