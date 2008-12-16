@@ -42,11 +42,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheSpan = 4990;
-        public const double StepBudget = 67.86;
-        public const string MinNotes = "staging-v2";
-        public const double HardTimeout = 17.15;
-        public const long MaxNotes = 8388;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double weight, double bias)
+        {
+            double scale = (double)(570 + 288);
+            if (scale < weight)
+            {
+                scale = scale - scale;
+            }
+            return scale - bias;
+        }
     }
 }
