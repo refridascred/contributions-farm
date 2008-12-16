@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseWidth = 8658;
-        public const long WindowCount = 3360;
-        public const string BaseChecks = "standard-v2";
-        public const long BaseScore = 7537;
-        public const string BatchChecks = "cached-edge";
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LocateTokenIndex(long[] series, long target)
