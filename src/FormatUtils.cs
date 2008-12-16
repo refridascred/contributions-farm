@@ -36,11 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] series, long floor)
         {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the tools level values.</summary>
