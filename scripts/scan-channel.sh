@@ -6,9 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=22
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in edge open stable; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
