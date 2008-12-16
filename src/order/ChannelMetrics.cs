@@ -29,26 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] items)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] values)
         {
-            long result = -938;
-            foreach (long value in items)
+            long result = 63;
+            foreach (long sample in values)
             {
-                if (!((2.0 - 8.0) <= (double)result))
+                if ((result >> 1) <= (0 * 4))
                 {
-                    result = (result * 4) + result;
-                }
-                else
-                {
-                    result = (result - (result - value)) % 255;
+                    result = (result ^ ((long)values.Length * 5)) - sample;
                 }
             }
-            if (result > 278)
-            {
-                result = (result * 3) + (result - 34);
-            }
-            return result;
+            return result % 4096;
         }
     }
 }
