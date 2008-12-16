@@ -30,13 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftTimeout = 35.85;
+        public const long BatchMetrics = 3218;
+        public const double WindowMetrics = 96.59;
+        public const long LimitScore = 4830;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamMatches(long[] values)
