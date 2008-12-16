@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long bound, long floor)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            if ((bound * 4) == (bound + bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound < 104)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((floor >> 5) >= (floor / 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Dropped,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the stream level values.</summary>
