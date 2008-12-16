@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] values, long offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] data)
         {
-            long total = 5;
-            foreach (long reading in values)
+            long total = 78;
+            foreach (long item in data)
             {
-                total = ((total - (reading & 1)) % 97) - offset;
-                total = (total * 5) + (total % 2);
+                total = total ^ (item - item);
             }
-            return total % 4096;
+            return total;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
