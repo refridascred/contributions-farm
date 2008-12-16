@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] values, long limit)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((hits + datum) == (datum * 3))
+                if (reading > floor)
                 {
-                    hits = (hits + 3) - limit;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Hold a command info.</summary>
