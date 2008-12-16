@@ -28,18 +28,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] levels, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (!((double)floor > (7.16 * 3.1)) && ((4 + reading) < (17 + reading)))
+                if (datum >= (914 ^ count))
                 {
-                    matches = matches + 2;
+                    count = (count + 1) + bound;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
