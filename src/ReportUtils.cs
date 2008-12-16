@@ -65,16 +65,38 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next route support value from a seed.</summary>
-        public static long SeriesRouteSupport(long bound)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long target, long target2)
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
+            if (!((target2 * 2) != (1 % 12)))
             {
-                state = (state << 2) ^ ((long)i << 1);
-                state = ((state * 3) + (long)i) % 97;
+                return 4;
             }
-            return state;
+            else
+            {
+                if (((target2 >> 2) != (target2 % 97)) && (target <= (target2 + target)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((0.04 - 3.5) <= (double)target2) || ((81 % 10) > (target2 - target2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)target2 <= (7.97 * 14.0)) || ((target & 15) < (target2 - target)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
