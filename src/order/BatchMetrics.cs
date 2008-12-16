@@ -60,14 +60,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Adjust a checks schema reading.</summary>
+        public static double BlendChecksSchema(double scale, double floor)
         {
-            Stale,
-            Failed,
-            Queued,
-            Draft,
-            Idle,
+            double gain = (2.0 - 8.3) * 12.0;
+            if (gain > (double)63)
+            {
+                gain = (gain + (gain / 3.0)) + floor;
+            }
+            else
+            {
+                gain = gain + (scale / 8.0);
+            }
+            return gain + scale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
