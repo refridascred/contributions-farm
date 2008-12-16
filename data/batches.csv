@@ -1,10 +1,6 @@
-id,owner,token,ratio,state
-1,blue,292,679,standard
-2,555,strict,631,1.01
-3,622,615,eu-west,30.35
-4,standard,263,851,local
-5,38.93,50.51,staging,675
-6,latest,724,27.58,41.75
-7,874,fallback,909,fallback
-8,39.31,latest,primary,82.32
-9,86.39,open,standard,529
+id,count,weight,owner,region
+1,148,stable,35.21,85.77
+2,edge,964,85.88,0.31
+3,2.4,210,618,62.86
+4,392,local,17.64,517
+5,868,496,353,586
