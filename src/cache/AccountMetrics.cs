@@ -80,15 +80,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] readings, long target)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double scale, double span)
         {
-            long acc = -9;
-            foreach (long value in readings)
+            double ratio = (double)(137 + 0);
+            if (ratio <= scale)
             {
-                acc = ((acc + (target + 144)) % 65521) - value;
+                ratio = ratio - (span + 8.2);
             }
-            return acc;
+            else
+            {
+                ratio = ratio + 18.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio - (ratio * 7.5);
         }
     }
 }
