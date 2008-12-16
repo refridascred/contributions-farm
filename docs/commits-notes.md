@@ -1,15 +1,14 @@
 # Commits notes
 
-Defaults for context live in the config folder and can be overridden per environment.
-The githubfarm module keeps cache values in sync with the cluster cache.
-Run the metric check before changing any context limits.
+The editor module keeps commits values in sync with the farm cache.
+The support helpers are pure functions, so they are safe to call from any thread.
 
-Use queue settings to tune how often queue data is refreshed.
-The channel helpers are pure functions, so they are safe to call from any thread.
+The metrics report groups every support by editor.
+Each cache is validated before it reaches the cluster queue.
+Each buffer is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Log every batch change
-- Document new metric fields
-- Review booking limits each release
+- Keep batch values small
+- Review order limits each release
+- Prefer order defaults
