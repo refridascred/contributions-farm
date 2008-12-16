@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] levels)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)tally <= (9.0 + 8.0))
                 {
-                    if ((levels[i] - levels[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 2) + datum) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
