@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Retry,
-            Dropped,
-            Queued,
-            Draft,
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the filter mode values.</summary>
