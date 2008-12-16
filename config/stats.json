@@ -1,18 +1,8 @@
 {
-  "base_interval_pct": {
-    "min_threshold_count": ["strict", "open", "blue", "fallback"],
-    "dry_run": 46,
-    "audit": {
-      "batch_size": 500,
-      "cache_threshold": 46.05,
-      "flush_threshold_pct": ["standard", "primary"],
-      "max_retries_ms": 436
-    },
-    "min_window_s": "strict",
-    "min_capacity": 60,
-    "max_threshold_s": "latest"
-  },
-  "audit": true,
-  "batch_capacity": false,
-  "min_delay_s": 31.86
+  "min_ratio_pct": 88.43,
+  "counter_depth": 60,
+  "support_capacity": false,
+  "verbose": true,
+  "audit": 46,
+  "max_delay_count": [272, 137]
 }
