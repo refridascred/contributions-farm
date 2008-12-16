@@ -1,4 +1,5 @@
 # support settings
-base_limit_s: false
-retry_retries_s: fallback
-burst_capacity_count: 87.61
+retry_ttl: false
+readonly: 250
+cluster_window: 33
+format_limit: 5391
