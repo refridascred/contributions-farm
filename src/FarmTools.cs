@@ -12,11 +12,21 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 4641;
         public const long LimitScore = 7777;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 3524;
-        public const string BurstWidth = "fallback";
-        public const string BaseSession = "staging-edge";
-        public const long StepTimeout = 5045;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((double)score > (0.9 / 4.0))
+                {
+                    score = (score - score) % 4096;
+                    score = score + score;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string LimitCluster = "primary";
