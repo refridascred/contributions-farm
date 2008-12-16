@@ -50,19 +50,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] samples, long target)
+        /// <summary>Count the contributi route entries that pass the check.</summary>
+        public static long TallyContributiRouteGaps(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (item <= target)
+                if ((count * 5) == (count + datum))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) - limit;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
