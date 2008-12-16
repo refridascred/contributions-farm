@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up already support samples.</summary>
-        public static long PairAlreadySupportCount(long[] values)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) == 11)
+                    if ((readings[i] ^ readings[j]) > 5)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
