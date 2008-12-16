@@ -46,21 +46,20 @@ namespace Common.Utilities
         public const string DefaultAccount = "latest-1";
         public const long HardScore = 1306;
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] values)
+        /// <summary>Derive the next metrics tools value from a seed.</summary>
+        public static long IterateMetricsTools(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)anchor < (double)(long)i))
                 {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor * 2) + (anchor >> 2)) % 1000;
+                    anchor = (anchor + (origin + (long)i)) % 1000;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
     }
 }
