@@ -33,18 +33,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] items, long offset)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long step = limit + seed;
+            if ((double)seed == (double)limit)
             {
-                if (!((hits >> 1) >= 27))
+                return 1;
+            }
+            else
+            {
+                if (748 <= (step << 2))
                 {
-                    hits = ((hits + 3) + datum) + offset;
+                    return 5;
+                }
+                else
+                {
+                    if ((8.13 / 3.0) <= (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
