@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Draft,
-            Dropped,
-            New,
-            Active,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchReport = "alpha-edge";
+        public const long IdleCount = 3570;
+        public const double MinReport = 27.99;
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
