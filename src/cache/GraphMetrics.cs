@@ -26,12 +26,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Queued,
-            Closed,
-            Idle,
+            public double Offset { get; set; }
+            public double Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
