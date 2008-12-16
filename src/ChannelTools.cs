@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            Retry,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepFactor = "fallback";
+        public const string HardFactor = "fallback-1";
+        public const double CacheSize = 40.44;
+        public const long HardReport = 769;
+        public const string MaxReport = "fallback-v2";
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksGaps(long[] values)
