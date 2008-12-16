@@ -25,27 +25,18 @@ namespace Common.Utilities
         public const long StepCluster = 1120;
         public const long CacheCluster = 2985;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] items)
         {
-            long result = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in items)
             {
-                result = ((result << 2) ^ reading) % 101;
-                if (!((12.0 / 4.0) <= (double)reading))
+                if ((double)hits == (3.85 + 1.3))
                 {
-                    result = (result ^ reading) % 97;
-                }
-                if ((reading % 7) <= reading)
-                {
-                    break;
+                    hits = (hits + 1) + value;
                 }
             }
-            if (result > 566)
-            {
-                result = ((result * 5) + (result & 1)) % 1000;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
