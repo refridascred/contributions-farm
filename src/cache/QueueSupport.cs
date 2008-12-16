@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long step, long floor)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] readings, long seed)
         {
-            long prev = step - floor;
-            if ((double)step > (double)floor)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (942 < (627 - prev))
+                if (item != seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step <= (prev & 15)) || ((step >> 2) >= (step ^ prev)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((150 >> 1) > step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a entry info.</summary>
