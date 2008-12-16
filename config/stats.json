@@ -1,21 +1,15 @@
 {
-  "max_retries_count": {
-    "cache_capacity_ms": {
-      "max_limit": true,
-      "min_window_ms": true,
-      "route_delay": [111, 232, 305, 340],
-      "order_timeout": "cached",
-      "readonly": "stable"
-    },
-    "soft_interval_pct": 1024,
-    "strict": "standard",
-    "base_depth": 7942,
-    "flush_timeout": false
+  "max_size_ms": 9,
+  "flush_timeout": {
+    "entry_delay": 60,
+    "sync_size": "legacy",
+    "burst_size_s": {
+      "cache_interval_ms": 60,
+      "warm_delay": 90.74,
+      "warm_threshold_count": [427, 459],
+      "stats_capacity": "cached",
+      "flush_delay_count": true
+    }
   },
-  "strict": {
-    "route_delay": 27.28,
-    "enabled": 64.64,
-    "compress": 1907
-  },
-  "cache_threshold": "standard"
+  "base_ttl_count": 27.39
 }
