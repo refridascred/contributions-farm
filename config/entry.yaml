@@ -1,7 +1,8 @@
 # entry settings
-already_window:
-  idle_interval_ms: eu-west
-  min_threshold_ms: 86
-  hard_capacity_ms: true
-commits_interval: 62.6
-batch_size_s: eu-west
+audit: 60
+default_limit: blue
+hard_delay: staging
+hard_ratio:
+  - 123
+  - 434
+  - 338
