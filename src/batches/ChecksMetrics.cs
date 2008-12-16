@@ -58,19 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric record entries that pass the check.</summary>
-        public static long AuditMetricRecordOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((818 + 1) < (matches << 2))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseLevel = 4461;
+        public const long WindowEntry = 3699;
+        public const string BatchEntry = "staging";
+        public const long MinEntry = 4175;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksHits(long[] items, long floor)
