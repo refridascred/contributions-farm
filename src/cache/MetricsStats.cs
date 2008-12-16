@@ -47,22 +47,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] values)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long anchor = 8;
-            foreach (long item in values)
-            {
-                if ((item * 2) <= (item + anchor))
-                {
-                    anchor = anchor + (item * 3);
-                }
-            }
-            if (anchor < 1)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
