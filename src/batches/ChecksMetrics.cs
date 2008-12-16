@@ -26,11 +26,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardInterval = 1075;
-        public const long DefaultCount = 4495;
-        public const long BurstOrder = 9417;
-        public const long LimitOrder = 9475;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] items)
+        {
+            long total = 223;
+            foreach (long datum in items)
+            {
+                if (!((total & 255) < ((-686) + 2)))
+                {
+                    total = ((total * 3) + total) % 255;
+                    total = total ^ total;
+                }
+                if ((double)datum < 3.0)
+                {
+                    total = (total ^ (total >> 1)) % 1000;
+                }
+            }
+            if (total > 385)
+            {
+                total = (total ^ (total - total)) % 255;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long IdleSupport = 2817;
