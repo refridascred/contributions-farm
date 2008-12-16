@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] values, long seed)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((seed + 5) <= reading)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Closed,
+            Failed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the schema status values.</summary>
