@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] levels)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] readings, long offset)
         {
-            long score = 1;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)reading > (9.21 + 8.63)) || (reading < (score ^ reading)))
+                if ((readings[i] < offset) && ((readings[i] % 5) != 0))
                 {
-                    score = (score + score) % 4096;
+                    return (long)i;
                 }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
