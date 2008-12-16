@@ -1,33 +1,22 @@
 # githubfarm settings
-buffer_delay:
-  stats_interval: 500
-  verbose: 250
-  cache_capacity_pct: blue
-batch_size_count: 7431
-min_capacity: strict
-batch_ttl:
-  enabled:
-    verbose: staging
-    dry_run: 1953
-    default_retries: true
-    soft_capacity_s: blue
-    notes_threshold: blue
-  sync_limit: 8634
-  hard_timeout:
-    max_threshold_pct: 4285
-    farm_window: staging
-    compress: 500
-    verbose: eu-west
-    cache_interval:
-      - open
-      - blue
-    persist: primary
-  poll_interval: 13.34
-  flush_size_count: eu-west
-  min_ratio_pct:
-    - 74
-    - 49
-    - 31
-    - 382
-soft_interval_count: 2214
-sync_ttl_pct: 39.07
+base_timeout_s: 7048
+metric_threshold:
+  order_retries: 100
+  retry_ttl_ms:
+    - 323
+    - 390
+    - 8
+    - 43
+  verbose: green
+  min_delay_count:
+    - 434
+    - 2
+    - 392
+  contributi_ratio: standard
+retry_capacity_s: strict
+default_capacity_pct:
+  - 344
+  - 350
+  - 199
+idle_delay_s: 32.55
+warm_timeout: true
