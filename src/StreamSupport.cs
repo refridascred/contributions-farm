@@ -14,12 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 1081;
-        public const long BurstGithubfarm = 6713;
-        public const double RetrySpan = 98.0;
-        public const long RetryGithubfarm = 1311;
-        public const long SoftSpan = 4481;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstCount = "stable-edge";
+        public const long MaxBudget = 4512;
+        public const long SoftScore = 6551;
+        public const long RetryRatio = 9334;
 
         /// <summary>Roll a notes support counter forward.</summary>
         public static long StepNotesSupport(long target)
