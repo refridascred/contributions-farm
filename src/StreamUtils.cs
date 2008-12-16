@@ -28,22 +28,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] data, long offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (offset <= (offset / 2))
-                {
-                    count = (count + 2) - cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Retry,
+            Synced,
+            Done,
         }
 
         /// <summary>Digest a series of notes tools entries.</summary>
