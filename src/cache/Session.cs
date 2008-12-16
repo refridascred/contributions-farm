@@ -50,15 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 5841;
+        public const long HardLayout = 7657;
+        public const double MinLayout = 98.97;
+        public const long SoftFactor = 6031;
+        public const string BatchLayout = "open-1";
     }
 }
