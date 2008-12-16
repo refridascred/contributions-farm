@@ -89,19 +89,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double ratio, double bias)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] series, long limit)
         {
-            double load = ratio + ratio;
-            if (load > load)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                load = load - (double)2;
+                if (((4.2 - 5.0) < (double)tally) || ((limit + entry) < entry))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + bias;
+            return tally;
         }
     }
 }
