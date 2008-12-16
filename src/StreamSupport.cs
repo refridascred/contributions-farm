@@ -22,23 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] levels, long target)
-        {
-            long state = 9;
-            foreach (long item in levels)
-            {
-                if (((state + item) > 28) || ((target - item) > ((-607) - 21)))
-                {
-                    state = ((state * 4) + (target ^ state)) % 4096;
-                }
-                if ((double)target != (0.3 - 4.0))
-                {
-                    state = ((state * 3) + item) % 101;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 1081;
+        public const long BurstGithubfarm = 6713;
+        public const double RetrySpan = 98.0;
+        public const long RetryGithubfarm = 1311;
+        public const long SoftSpan = 4481;
 
         /// <summary>Roll a notes support counter forward.</summary>
         public static long StepNotesSupport(long target)
