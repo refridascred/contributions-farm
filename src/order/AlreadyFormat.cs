@@ -21,10 +21,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 5687;
-        public const long LimitTimeout = 4413;
-        public const long DefaultCache = 3322;
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many entry context samples are out of range.</summary>
         public static long MeasureEntryContextMatches(long[] readings)
