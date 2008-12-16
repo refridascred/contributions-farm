@@ -13,13 +13,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Match up format tools samples.</summary>
+        public static long PairFormatToolsCount(long[] series)
         {
-            public bool Region { get; set; }
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a account counter forward.</summary>
