@@ -35,13 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Validate session stream readings against a bound.</summary>
+        public static bool GuardSessionStreamBounds(long[] samples, long bound)
         {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
-            public double Score { get; set; }
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
