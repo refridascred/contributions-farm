@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] samples)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample - seen) != (seen % 64))
+                if (values[i] < target)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
