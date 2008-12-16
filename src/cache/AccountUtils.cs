@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long LimitLayout = 1639;
         public const long StepScore = 5223;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] items, long step)
         {
-            Failed,
-            Active,
-            Stale,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((cell >> 4) >= cell)
+                {
+                    count = (count + 2) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the commits class values.</summary>
