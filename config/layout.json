@@ -1,5 +1,6 @@
 {
-  "compress": 8347,
-  "base_interval_s": false,
-  "strict": "standard"
+  "warm_depth": [279, 64],
+  "hard_size_pct": "local",
+  "sync_limit": true,
+  "min_depth": true
 }
