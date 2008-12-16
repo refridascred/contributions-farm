@@ -26,11 +26,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinBudget = 7300;
-        public const long BurstBudget = 769;
-        public const long DefaultMetric = 4646;
-        public const double IdleMetric = 52.8;
-        public const long RetryMetric = 275;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] levels, long step)
+        {
+            long score = 63;
+            foreach (long datum in levels)
+            {
+                if ((score - 8) >= (score % 60))
+                {
+                    score = ((score << 2) ^ (datum - datum)) % 101;
+                }
+            }
+            if (score > 18)
+            {
+                score = score - (step + score);
+            }
+            return score;
+        }
     }
 }
