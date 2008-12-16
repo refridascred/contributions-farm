@@ -65,11 +65,14 @@ namespace Common.Utilities
         public const long DefaultFactor = 1757;
         public const double IdleSize = 18.82;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryScore = 4906;
-        public const long WindowStats = 1413;
-        public const long MaxStats = 874;
-        public const long MinStats = 5005;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public bool Total { get; set; }
+            public double Label { get; set; }
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Count batches order pairs that satisfy a relation.</summary>
         public static long PairBatchesOrderCount(long[] readings)
