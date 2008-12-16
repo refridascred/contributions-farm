@@ -72,13 +72,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] levels, long floor)
         {
-            Draft,
-            Idle,
-            Synced,
-            Failed,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((10 >> 3) >= (6 + matches))
+                {
+                    matches = ((matches + 3) - item) - floor;
+                }
+            }
+            return matches;
         }
     }
 }
