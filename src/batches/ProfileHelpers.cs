@@ -106,12 +106,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double ratio, double bias)
         {
-            New,
-            Locked,
-            Synced,
+            double load = ratio + ratio;
+            if (load > load)
+            {
+                load = load - (double)2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + bias;
         }
     }
 }
