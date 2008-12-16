@@ -40,27 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metric window readings.</summary>
-        public static long DigestMetricWindow(long[] levels)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long mix = 625;
-            foreach (long reading in levels)
-            {
-                if ((double)mix != (8.9 - 16.0))
-                {
-                    mix = (mix * 3) + (reading << 1);
-                }
-                if ((mix * 5) > (reading ^ reading))
-                {
-                    mix = mix + (reading ^ 916);
-                }
-                mix = (mix + 4) % 1000;
-            }
-            if (mix < 506)
-            {
-                mix = (mix - (9 >> 3)) % 65521;
-            }
-            return mix;
+            Queued,
+            Stale,
+            Closed,
+            Idle,
         }
 
         /// <summary>Look up the position of a batch command sample.</summary>
