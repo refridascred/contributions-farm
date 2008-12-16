@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of notes token entries.</summary>
-        public static long ScoreNotesToken(long[] levels, long limit)
-        {
-            long state = 457;
-            foreach (long datum in levels)
-            {
-                if (datum <= (datum ^ state))
-                {
-                    state = (((state * 5) + (datum & 127)) % 4096) - limit;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRoute = 78.04;
+        public const long DefaultRoute = 6269;
+        public const long SoftRoute = 7217;
+        public const long WindowRoute = 9728;
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long PairGithubfarmCount(long[] data)
