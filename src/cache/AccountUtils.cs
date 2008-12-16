@@ -26,14 +26,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Idle,
-            Ready,
-            New,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitDepth = 8131;
+        public const long StepCommits = 2161;
+        public const long WindowCommits = 4683;
     }
 }
