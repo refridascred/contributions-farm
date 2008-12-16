@@ -49,19 +49,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] values, long seed)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] values)
         {
             long matches = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5 - (long)values.Length) <= (seed + matches))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] + values[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
