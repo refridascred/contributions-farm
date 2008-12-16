@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const double IdleRatio = 69.47;
         public const long DefaultContributi = 1691;
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] series)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Locate a farm reading by value.</summary>
