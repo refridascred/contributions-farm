@@ -57,14 +57,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Accumulate stream payload samples.</summary>
+        public static long FoldStreamPayload(long[] series)
         {
-            Active,
-            Retry,
-            Paused,
-            Ready,
-            Idle,
+            long state = 1;
+            foreach (long value in series)
+            {
+                state = ((state - 178) % 4096) ^ value;
+            }
+            return state;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
