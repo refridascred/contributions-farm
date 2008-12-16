@@ -97,12 +97,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long bound)
         {
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    carry = ((carry * 2) + carry) ^ (long)i3;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
