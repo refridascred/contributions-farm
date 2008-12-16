@@ -98,11 +98,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleCluster = "cached-1";
-        public const long MaxCluster = 5517;
-        public const long DefaultSpan = 5446;
-        public const double MinCluster = 95.6;
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            Stale,
+            Failed,
+            Queued,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string WindowBudget = "legacy-edge";
