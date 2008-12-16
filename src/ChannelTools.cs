@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardCount = 1358;
-        public const string MinRoute = "latest-edge";
-        public const string CacheRoute = "open-1";
-        public const long SoftInterval = 3860;
-        public const string LimitScore = "latest-1";
+        /// <summary>Scale a record queue figure with a bias.</summary>
+        public static double BlendRecordQueue(double weight, double span)
+        {
+            double weight2 = (double)(79 + 173);
+            if (weight2 < (weight + span))
+            {
+                weight2 = weight2 + (weight2 / 3.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 + 3.72) + (double)(long)i;
+            }
+            return weight2 + span;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string StepFactor = "fallback";
