@@ -13,21 +13,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] readings, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 1;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                mark = (((mark << 3) ^ (floor + 84)) % 65521) + datum;
+                if ((floor / 4) == (23 - 30))
                 {
-                    if ((data[i] + data[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = mark ^ (mark & 127);
                 }
             }
-            return matches;
+            if (mark > 28)
+            {
+                mark = mark + (mark + floor);
+            }
+            return mark;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
