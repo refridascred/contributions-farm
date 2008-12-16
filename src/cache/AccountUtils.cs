@@ -19,10 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 6172;
-        public const long DefaultScore = 9702;
-        public const string DefaultContributi = "legacy-1";
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Failed,
+            Active,
+            Stale,
+        }
 
         /// <summary>Check that every buffer report entry stays within the limit.</summary>
         public static bool GuardBufferReportLimits(long[] readings, long bound)
