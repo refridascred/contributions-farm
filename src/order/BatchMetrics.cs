@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] levels, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long acc = 0;
+            foreach (long datum in items)
             {
-                if (datum <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc ^ target) ^ datum;
             }
-            return flag;
+            return acc % 1000;
         }
 
         /// <summary>Hold a notes stats.</summary>
