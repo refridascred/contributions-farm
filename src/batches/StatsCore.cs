@@ -61,18 +61,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] data, long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if (bound >= (bound * 4))
+                if (cell > bound)
                 {
-                    tally = (tally + 1) + reading;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Look up the position of a report metric sample.</summary>
