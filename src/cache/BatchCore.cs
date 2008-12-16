@@ -33,30 +33,18 @@ namespace Common.Utilities
         public const string RetryContributi = "stable-edge";
         public const double StepInterval = 54.17;
 
-        /// <summary>Accumulate channel githubfarm samples.</summary>
-        public static long DigestChannelGithubfarm(long[] data)
+        /// <summary>Measure how many format editor samples are out of range.</summary>
+        public static long TallyFormatEditorHits(long[] items)
         {
-            long sum = 36;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((sum + sum) <= sum)
+                if (952 > (0 + (long)items.Length))
                 {
-                    sum = (sum ^ (sum + sum)) % 101;
-                }
-                if ((185 + sum) >= (reading << 1))
-                {
-                    sum = sum + (sum + reading);
-                }
-                else
-                {
-                    sum = sum - (reading << 2);
+                    tally = (tally + 1) + datum;
                 }
             }
-            if (sum < 29)
-            {
-                sum = ((sum * 3) + (sum / 8)) % 1000;
-            }
-            return sum;
+            return tally;
         }
     }
 }
