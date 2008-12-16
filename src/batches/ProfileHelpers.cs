@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] levels)
+        /// <summary>Fold a list of batch account readings.</summary>
+        public static long CombineBatchAccount(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 1;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((((total << 3) ^ 1) % 4096) + sample) - offset;
+                total = (total - 54) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a editor summary.</summary>
