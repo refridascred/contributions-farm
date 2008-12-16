@@ -16,13 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Ready,
-            Locked,
-            Done,
-            Pending,
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
