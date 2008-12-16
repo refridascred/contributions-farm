@@ -78,19 +78,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] samples, long offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (cell >= offset)
+                if (entry < step)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
     }
 }
