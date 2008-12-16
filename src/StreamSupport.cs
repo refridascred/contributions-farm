@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a token record value against two limits.</summary>
-        public static long GradeTokenRecord(long bound, long offset)
+        /// <summary>Accumulate cache schema samples.</summary>
+        public static long DigestCacheSchema(long[] samples, long offset)
         {
-            if (!((95 - bound) < (bound / 2)))
+            long score = 385;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)bound == (6.74 - 5.1)) && ((double)bound > (20.0 / 3.0)))
+                if (offset >= (offset >> 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound % 2) < (bound << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)offset >= 2.78))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    score = score - (item % 7);
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Blend two stream githubfarm measurements.</summary>
