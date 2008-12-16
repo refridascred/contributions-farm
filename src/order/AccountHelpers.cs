@@ -47,21 +47,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long floor)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((double)floor > 19.0))
-                {
-                    score = (score * 4) + (0 % 97);
-                }
-                score = (score - (long)i) % 4096;
-                score = score ^ floor;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
