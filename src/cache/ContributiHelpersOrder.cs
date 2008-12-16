@@ -26,9 +26,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 9605;
-        public const long SoftInterval = 7795;
-        public const long HardInterval = 9660;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
