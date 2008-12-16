@@ -20,23 +20,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] levels, long floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] data, long step)
         {
-            long acc = 28;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 9; i++)
+                if (cell > step)
                 {
-                    acc = (acc + ((long)i ^ 350)) % 97;
-                }
-                acc = acc + (reading - reading);
-                if (((double)acc >= (1.86 + 9.0)) || ((acc << 1) != (floor - floor)))
-                {
-                    acc = (acc - (acc - (-1))) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return acc;
+            return valid;
         }
     }
 }
