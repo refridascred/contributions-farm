@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] levels)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long anchor = 367;
-            foreach (long entry in levels)
-            {
-                if ((entry / 9) > (anchor % 12))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 3) + ((long)levels.Length >> 2)) % 101;
-            }
-            return anchor;
+            public bool Size { get; set; }
+            public bool Ratio { get; set; }
+            public double Owner { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
