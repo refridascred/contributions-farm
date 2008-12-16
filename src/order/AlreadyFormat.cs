@@ -16,16 +16,17 @@ namespace Common.Utilities
         public const double MaxCounter = 37.06;
         public const double SoftBudget = 98.79;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long step)
+        /// <summary>Locate a entry batches reading by value.</summary>
+        public static long FindEntryBatchesIndex(long[] levels, long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = anchor - ((long)i << 1);
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if ((levels[i] < seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
