@@ -14,16 +14,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Adjust a contributi support reading.</summary>
-        public static double BlendContributiSupport(double rate, double offset)
-        {
-            double scale = offset;
-            if (scale <= (scale + scale))
-            {
-                scale = (scale + scale) - rate;
-            }
-            return scale + (scale - 1.54);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetrySpan = 6740;
+        public const long SoftCluster = 6407;
+        public const string DefaultTimeout = "latest-1";
+        public const long StepCluster = 1120;
+        public const long CacheCluster = 2985;
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
