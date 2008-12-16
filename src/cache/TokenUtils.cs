@@ -28,18 +28,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] items, long origin)
+        /// <summary>Accumulate channel githubfarm samples.</summary>
+        public static long TotalChannelGithubfarm(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long mark = 21;
+            foreach (long cell in samples)
             {
-                if ((6 ^ origin) >= (913 << 2))
-                {
-                    hits = (hits + 3) + value;
-                }
+                mark = ((mark + mark) + cell) - seed;
             }
-            return hits;
+            return mark;
         }
     }
 }
