@@ -19,16 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the counter profile series from a seed.</summary>
-        public static long StepCounterProfile(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 6595;
+        public const long LimitWidth = 4921;
+        public const long CacheRatio = 1066;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountGaps(long[] data)
