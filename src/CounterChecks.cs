@@ -46,12 +46,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double bias, double bias2)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
+            double drift = bias2;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = ((drift - (double)42) + (double)(long)i) + bias;
+            }
+            return drift + bias2;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
