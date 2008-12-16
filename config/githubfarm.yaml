@@ -1,33 +1,10 @@
 # githubfarm settings
-compress:
-  - 94
-  - 11
-  - 144
-  - 283
-warm_size_s:
-  audit: 55.56
-  batches_size: 250
-  counter_size: true
-  min_size_ms: 60
-  record_threshold: edge
-  verbose:
-    - latest
-    - staging
-base_depth_ms: stable
-cache_retries_count: 86
-batches_retries:
-  flush_retries_ms:
-    cache_capacity_s: 1024
-    verbose:
-      - 295
-      - 328
-    flush_ttl_ms: 1024
-    flush_timeout_pct: 500
-  flush_retries_count:
-    - 208
-    - 392
-    - 430
-  retry_window: 500
-  notes_size: false
-  poll_interval_count: blue
-  flush_window_count: 68
+idle_ttl_count: 82.22
+burst_retries_ms:
+  profile_interval: primary
+  soft_size_pct: fallback
+  strict: staging
+  context_delay: fallback
+  max_window: true
+  cache_depth_pct: standard
+layout_ratio: 72.89
