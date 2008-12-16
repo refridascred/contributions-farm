@@ -29,22 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] items, long limit)
+        /// <summary>Project the next batches notes value.</summary>
+        public static double BlendBatchesNotes(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double bias3 = bias;
+            if (bias3 >= (bias3 / 2.0))
             {
-                if ((-183) < (datum / 6))
-                {
-                    tally = (tally + 1) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias3 = bias3 - (double)90;
             }
-            return tally;
+            return bias3 - (bias3 - bias2);
         }
     }
 }
