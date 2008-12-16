@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double weight, double floor)
         {
-            Active,
-            Draft,
-            Synced,
-            Stale,
-            Ready,
+            double scale = floor;
+            if (scale > floor)
+            {
+                scale = scale + (weight / 3.0);
+            }
+            else
+            {
+                scale = scale - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (scale * 18.0)) + (double)(long)i;
+            }
+            return scale - floor;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
