@@ -23,10 +23,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowWidth = 7949;
-        public const string CacheNotes = "open-edge";
-        public const long RetryWidth = 555;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long floor, long offset)
+        {
+            if (!((offset & 7) < (8 * 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (6.1 < (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor >> 2) >= (offset - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
