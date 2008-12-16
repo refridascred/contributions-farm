@@ -34,12 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public double Label { get; set; }
-            public string Total { get; set; } = "";
-            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
