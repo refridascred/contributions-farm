@@ -1,5 +1,19 @@
 # entry settings
-batch_interval: true
-readonly: strict
-poll_delay_count: true
-account_size: 1686
+dry_run: false
+default_size_pct:
+  compress: latest
+  poll_limit_count:
+    - 339
+    - 307
+  cache_depth_count:
+    - 188
+    - 95
+compress: true
+enabled:
+  dry_run:
+    - standard
+    - open
+    - strict
+  command_depth: 15
+  warm_capacity_ms: 100
+soft_ratio_pct: true
