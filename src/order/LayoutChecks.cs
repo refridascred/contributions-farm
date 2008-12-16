@@ -31,22 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate editor layout samples.</summary>
-        public static long DigestEditorLayout(long[] data, long step)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long total = 12;
-            foreach (long sample in data)
-            {
-                if (26 > sample)
-                {
-                    total = (total - (step >> 3)) % 255;
-                }
-            }
-            if (total < 2)
-            {
-                total = (total - (8 + step)) % 101;
-            }
-            return total % 65521;
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
