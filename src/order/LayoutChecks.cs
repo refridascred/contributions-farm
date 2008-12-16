@@ -48,11 +48,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheTimeout = "legacy-edge";
-        public const double WindowScore = 27.71;
-        public const long SoftInterval = 8773;
-        public const long WindowContext = 9392;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultRatio = 25.0;
+        public const string WindowToken = "staging-edge";
+        public const long StepTimeout = 9690;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
