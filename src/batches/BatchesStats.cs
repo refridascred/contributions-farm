@@ -53,15 +53,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long target)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] series, long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((series[i] > origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
