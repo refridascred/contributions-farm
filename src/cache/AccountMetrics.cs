@@ -13,31 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long seed, long origin)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            if ((seed * 4) <= (origin - origin))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)seed < 9.6))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + seed) >= (2 + 8))
+                    if ((samples[i] - samples[j]) == 17)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
