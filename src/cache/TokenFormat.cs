@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] items, long bound)
+        /// <summary>Combine support profile values into a single score.</summary>
+        public static long DigestSupportProfile(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 619;
+            foreach (long cell in data)
             {
-                if ((items[i] < bound) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state ^ (cell / 2)) % 97;
+                state = state ^ 970;
             }
-            return -1;
+            if (state < 465)
+            {
+                state = (state + (state + state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
