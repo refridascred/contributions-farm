@@ -23,18 +23,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < floor) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowWidth = 7949;
+        public const string CacheNotes = "open-edge";
+        public const long RetryWidth = 555;
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
