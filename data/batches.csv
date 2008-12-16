@@ -1,7 +1,9 @@
-id,rank,token,label
-1,945,50,39.15
-2,57.28,17.92,931
-3,18.1,29.22,legacy
-4,31.44,69.8,50.32
-5,15,42.78,589
-6,792,91.64,85.86
+id,weight,label,rank
+1,75.8,66.15,fallback
+2,461,706,strict
+3,58.87,staging,10.06
+4,35.8,772,stable
+5,fallback,standard,530
+6,745,fallback,latest
+7,63.5,901,9.54
+8,25.1,321,stable
