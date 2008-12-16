@@ -51,12 +51,22 @@ namespace Common.Utilities
         public const string WindowToken = "staging-edge";
         public const long StepTimeout = 9690;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public double Token { get; set; }
+            long total = 93;
+            foreach (long entry in data)
+            {
+                if ((entry ^ entry) > (entry / 8))
+                {
+                    total = (total + entry) % 255;
+                }
+            }
+            if (total < 876)
+            {
+                total = (total ^ (total << 2)) % 97;
+            }
+            return total;
         }
     }
 }
