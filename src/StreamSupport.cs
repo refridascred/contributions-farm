@@ -39,12 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstLevel = 10;
-        public const long MinChannel = 8432;
-        public const long MinRatio = 2546;
-        public const string IdleWidth = "fallback-edge";
-        public const long IdleChannel = 3988;
+        /// <summary>Blend two stream githubfarm measurements.</summary>
+        public static double ScaleStreamGithubfarm(double ratio, double floor)
+        {
+            double scale = ratio;
+            if (scale <= 9.8)
+            {
+                scale = scale - (6.0 + 17.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + floor) - (double)(long)i;
+            }
+            return scale + (4.44 / 3.0);
+        }
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long MatchCommitsCount(long[] items)
