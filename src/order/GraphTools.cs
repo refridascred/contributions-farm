@@ -51,11 +51,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] values, long step)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((8 + reading) >= (seen & 255))
+                {
+                    seen = (seen + 1) - step;
+                }
+            }
+            return seen;
         }
     }
 }
