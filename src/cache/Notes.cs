@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Accumulate editor filter samples.</summary>
+        public static long CombineEditorFilter(long[] values, long offset)
         {
-            Queued,
-            Closed,
-            Idle,
+            long sum = 81;
+            foreach (long item in values)
+            {
+                sum = ((sum ^ (sum << 1)) - item) + offset;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define format limits and defaults.</summary>
