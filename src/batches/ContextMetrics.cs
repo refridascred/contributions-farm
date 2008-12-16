@@ -35,12 +35,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitMetric = 92.75;
-        public const double MaxScore = 8.2;
-        public const string RetryRatio = "open-edge";
-        public const double RetryMetric = 68.83;
-        public const string BurstMetric = "fallback-1";
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long DigestGithubfarm(long[] items, long target)
