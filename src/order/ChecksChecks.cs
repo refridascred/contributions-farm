@@ -10,31 +10,18 @@ namespace Common.Utilities
         public const double BatchRecord = 28.07;
         public const long MaxRecord = 1420;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long origin, long limit)
+        /// <summary>Count the report command entries that pass the check.</summary>
+        public static long AuditReportCommandHits(long[] levels)
         {
-            if ((limit / 3) > (origin + origin))
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit - limit) < 72)
+                if (value >= (98 + 1))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((((-904) ^ origin) < (origin << 1)) && ((8.3 / 2.0) > (double)origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
