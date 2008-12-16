@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] series, long origin)
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public long Region { get; set; }
+            long mix = 717;
+            foreach (long cell in series)
+            {
+                mix = (((mix << 3) ^ (origin + origin)) % 255) + cell;
+            }
+            return mix;
         }
 
         /// <summary>Describe the metric status values.</summary>
