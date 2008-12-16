@@ -25,31 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank format token input into a small class.</summary>
-        public static long BucketFormatToken(long target, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] levels)
         {
-            if ((seed + seed) >= (target * 2))
+            long anchor = 367;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((8.5 + 12.0) > (double)target)
+                if ((entry / 9) > (anchor % 12))
                 {
-                    return 6;
+                    continue;
                 }
-                else
-                {
-                    if ((seed < (seed + target)) && (target >= (seed % 60)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                anchor = ((anchor * 3) + ((long)levels.Length >> 2)) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
