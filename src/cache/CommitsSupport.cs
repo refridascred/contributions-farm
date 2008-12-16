@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstCount = 4157;
-        public const string HardScore = "cached-1";
-        public const double RetryLayout = 20.66;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((((value ^ value) > value) && ((double)tally != (double)value)) || (((value % 97) < (value << 2)) && ((value + tally) <= (value / 2))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderMatches(long[] samples)
