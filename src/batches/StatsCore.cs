@@ -64,12 +64,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double WindowQueue = 13.91;
-        public const string BaseQueue = "primary";
-        public const long BatchQueue = 8808;
-        public const double MinLevel = 35.77;
-        public const long SoftQueue = 2764;
+        /// <summary>Project the next notes report value.</summary>
+        public static double ProjectNotesReport(double rate, double floor)
+        {
+            double gain = (double)(18 % 8);
+            if (gain >= (floor * 4.0))
+            {
+                gain = gain - (rate / 7.0);
+            }
+            return gain + (floor / 7.0);
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long OverlapCounterCount(long[] levels)
