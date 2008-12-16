@@ -43,13 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] values, long limit)
         {
-            Queued,
-            Stale,
-            Closed,
-            Idle,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (!!(seen < (limit & 7)))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a batch command sample.</summary>
