@@ -1,13 +1,9 @@
 # support settings
-verbose: 500
-compress: open
-min_delay: 16.91
-channel_ratio: edge
-readonly:
-  - standard
-  - legacy
-persist:
-  - 26
-  - 467
-  - 136
-  - 275
+min_threshold: local
+notes_window: 93.92
+idle_interval_s: 60
+verbose: 173
+idle_depth_ms:
+  - 408
+  - 99
+  - 400
