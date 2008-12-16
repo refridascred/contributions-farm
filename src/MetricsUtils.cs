@@ -21,14 +21,25 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long seed, long seed2)
         {
-            Retry,
-            Draft,
-            Idle,
-            New,
-            Pending,
+            long gap = seed ^ seed2;
+            if ((seed2 >> 5) <= seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)gap == (2.0 + 6.4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
