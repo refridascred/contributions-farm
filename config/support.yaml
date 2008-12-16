@@ -1,11 +1,13 @@
 # support settings
-soft_threshold_count: false
-verbose: open
-report_window: false
-sync_ratio_pct: fallback
-min_limit_pct: strict
-account_interval:
-  - green
-  - stable
-  - strict
-  - standard
+command_capacity: 3.37
+base_ratio_ms: cached
+audit:
+  soft_retries_s: 91.81
+  sync_window_count: true
+  retry_ttl_pct: 87.77
+  sync_delay_ms: false
+retry_retries_count:
+  - 427
+  - 475
+retry_window: false
+soft_ttl_count: 55.82
