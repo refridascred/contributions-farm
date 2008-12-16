@@ -37,18 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] series, long step)
+        /// <summary>Adjust a checks context reading.</summary>
+        public static double AdjustChecksContext(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long value in series)
+            double rate = bias;
+            if (rate >= (bias + bias2))
             {
-                if ((value >= (step & 7)) || ((47 / 5) >= hits))
-                {
-                    hits = hits + 3;
-                }
+                rate = rate + bias2;
             }
-            return hits;
+            else
+            {
+                rate = rate + (double)76;
+            }
+            return rate - (5.7 / 2.0);
         }
 
         /// <summary>Describe the window phase values.</summary>
