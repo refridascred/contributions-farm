@@ -23,18 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] samples, long limit)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long acc = 24;
-            foreach (long item in samples)
-            {
-                if ((8.6 - 0.85) > (double)acc)
-                {
-                    acc = ((acc + ((long)samples.Length - item)) % 4096) + limit;
-                }
-            }
-            return acc;
+            Done,
+            Closed,
+            Draft,
         }
     }
 }
