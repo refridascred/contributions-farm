@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinDepth = 61.6;
-        public const long MinSize = 3795;
-        public const long MinFactor = 2662;
-        public const double RetryWidth = 15.63;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Idle,
+            Dropped,
+            Closed,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long DigestContributi(long[] values, long floor)
