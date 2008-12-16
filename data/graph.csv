@@ -1,8 +1,7 @@
-id,active,score,level
-1,38.44,20.47,fallback
-2,85.05,38.35,88.42
-3,970,eu-west,91.68
-4,628,238,64.12
-5,green,stable,edge
-6,91.86,493,cached
-7,eu-west,10.12,512
+id,active,ratio,owner,score
+1,eu-west,673,580,695
+2,local,5.07,52.48,stable
+3,942,13.23,826,585
+4,stable,legacy,eu-west,9.18
+5,cached,local,50.21,fallback
+6,standard,93.88,82.04,66.72
