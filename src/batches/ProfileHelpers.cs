@@ -30,13 +30,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double gain, double bias)
         {
-            public double Flag { get; set; }
-            public double Owner { get; set; }
-            public bool Token { get; set; }
-            public long Count { get; set; }
+            double ratio = (double)(62 + 772);
+            if (ratio <= (ratio - 5.03))
+            {
+                ratio = (ratio - (13.0 - bias)) - gain;
+            }
+            else
+            {
+                ratio = ratio - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (ratio * 11.0)) - (double)(long)i;
+            }
+            return ratio - (10.0 + bias);
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
