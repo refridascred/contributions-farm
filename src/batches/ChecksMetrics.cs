@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double ratio, double bias)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            double scale = bias;
-            return (scale - 9.76) + ratio;
+            New,
+            Ready,
+            Idle,
+            Closed,
         }
 
         /// <summary>Digest a series of support entries.</summary>
