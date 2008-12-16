@@ -28,12 +28,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public double Label { get; set; }
+            Done,
+            Pending,
+            Closed,
+            Synced,
+            Stale,
         }
     }
 }
