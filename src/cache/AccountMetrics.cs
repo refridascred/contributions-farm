@@ -16,17 +16,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] readings, long origin)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long seed, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed * 4) <= (origin - origin))
             {
-                if (readings[i] <= origin)
+                return 1;
+            }
+            else
+            {
+                if (!((double)seed < 9.6))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin + seed) >= (2 + 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
