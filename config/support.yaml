@@ -1,9 +1,17 @@
 # support settings
-strict: strict
-sync_depth_ms: open
-warm_threshold_ms:
-  - 106
-  - 376
-  - 287
-  - 47
-sync_timeout: 250
+retry_capacity_s: blue
+record_threshold:
+  - 114
+  - 57
+  - 455
+  - 184
+min_depth:
+  - 410
+  - 208
+  - 203
+  - 492
+max_timeout_ms: green
+retry_retries_count:
+  - 124
+  - 302
+  - 62
