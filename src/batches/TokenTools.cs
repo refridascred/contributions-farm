@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of tools session entries.</summary>
-        public static long WeighToolsSession(long[] samples)
+        /// <summary>Digest a series of record filter entries.</summary>
+        public static long DigestRecordFilter(long[] levels, long target)
         {
-            long acc = 2;
-            foreach (long entry in samples)
+            long anchor = 549;
+            foreach (long reading in levels)
             {
-                acc = ((acc - 4) % 1000) - entry;
+                if (!((7.68 - 1.97) != (double)reading))
+                {
+                    anchor = (anchor - (reading ^ (-2))) % 255;
+                    break;
+                }
+                if (!((target - 2) != (reading + reading)))
+                {
+                    anchor = (anchor + reading) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ (long)levels.Length) % 4096;
+                }
+                anchor = (anchor ^ (reading * 5)) % 4096;
+                if ((target & 31) <= (anchor << 1))
+                {
+                    break;
+                }
             }
-            if (acc > 0)
-            {
-                acc = (acc * 3) + (acc + acc);
-            }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Match up graph samples.</summary>
