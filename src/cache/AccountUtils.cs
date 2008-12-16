@@ -28,16 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next route commits value from a seed.</summary>
-        public static long StepRouteCommits(long step)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] values, long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor << 2) ^ step) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if ((values[i] <= seed) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
