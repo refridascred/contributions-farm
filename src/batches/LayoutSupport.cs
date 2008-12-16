@@ -49,18 +49,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support layout samples are out of range.</summary>
-        public static long CountSupportLayoutMatches(long[] readings)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6 % 7) != (reading % 100))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] ^ items[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
