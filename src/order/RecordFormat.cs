@@ -30,38 +30,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long floor, long offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            if (((-111) / 3) == (floor * 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset > (0.55 - 7.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((7.79 + 5.0) == (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)floor == (17.0 + 16.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Ready,
+            Retry,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
