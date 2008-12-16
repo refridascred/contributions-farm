@@ -25,17 +25,22 @@ namespace Common.Utilities
         public const long LimitWidth = 4921;
         public const long CacheRatio = 1066;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] series, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (series[i] < floor)
+                if ((194 & 63) >= (item << 2))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
