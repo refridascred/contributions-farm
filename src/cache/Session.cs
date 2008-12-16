@@ -28,18 +28,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] samples, long bound)
+        /// <summary>Combine route graph values into a single score.</summary>
+        public static long FoldRouteGraph(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long mix = 6;
+            foreach (long value in items)
             {
-                if (datum >= (914 ^ count))
+                for (int i = 0; i < 5; i++)
                 {
-                    count = (count + 1) + bound;
+                    mix = ((mix << 3) ^ (mix ^ seed)) ^ (long)i;
+                }
+                if ((((long)items.Length & 127) >= (value ^ mix)) && (mix > (value + value)))
+                {
+                    mix = (mix + mix) % 4096;
+                }
+                if ((844 - seed) == (value * 5))
+                {
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
