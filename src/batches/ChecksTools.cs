@@ -21,18 +21,16 @@ namespace Common.Utilities
         public const long WindowSpan = 9569;
         public const long HardNotes = 2390;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] readings)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long origin)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((datum % 5) >= 4)
-                {
-                    count = count + 3;
-                }
+                mix = mix ^ (origin & 1);
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
