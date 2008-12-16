@@ -30,25 +30,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a contributi account value against two limits.</summary>
-        public static long SortContributiAccount(long bound, long seed)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long span = bound ^ seed;
-            if ((bound & 3) != (span / 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed >= span) || ((seed % 97) > (span * 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Offset { get; set; }
+            public double Total { get; set; }
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
