@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleRatio = 3952;
-        public const string WindowWidth = "stable";
-        public const long WindowStream = 6765;
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] samples)
+        {
+            long carry = 27;
+            foreach (long sample in samples)
+            {
+                carry = (carry * 4) + 184;
+                carry = (carry ^ carry) % 65521;
+                carry = (carry ^ (884 - sample)) % 65521;
+                if (!((double)sample >= (20.0 + 9.38)))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long FoldCluster(long[] data, long target)
