@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] data, long step)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((52 & 15) > (datum << 1))
+                if ((readings[i] > seed) && ((readings[i] % 5) != 0))
                 {
-                    hits = (hits + 3) - step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
