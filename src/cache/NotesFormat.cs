@@ -15,19 +15,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long target, long target2)
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
+            if (target2 <= target)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mark = ((mark - (mark * 2)) % 255) - (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if (!(((-4) ^ target) <= (target + target2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((target2 ^ target2) < target2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a format stats.</summary>
