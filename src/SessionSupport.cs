@@ -55,13 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Match up tools window samples.</summary>
+        public static long CompareToolsWindowCount(long[] readings)
         {
-            Dropped,
-            Idle,
-            Locked,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
