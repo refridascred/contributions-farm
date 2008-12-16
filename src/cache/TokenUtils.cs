@@ -14,13 +14,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public string Owner { get; set; } = "";
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
