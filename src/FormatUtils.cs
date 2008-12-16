@@ -71,25 +71,21 @@ namespace Common.Utilities
         public const long MaxStats = 874;
         public const long MinStats = 5005;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long floor, long floor2)
+        /// <summary>Count batches order pairs that satisfy a relation.</summary>
+        public static long PairBatchesOrderCount(long[] readings)
         {
-            long prev = floor + floor2;
-            if (!((floor - floor2) >= (floor2 + floor)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((prev - 19) != (prev + floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((readings[i] - readings[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
