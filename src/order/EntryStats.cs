@@ -22,16 +22,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long limit)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = (mix << 3) ^ (mix - (long)i);
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a schema header.</summary>
