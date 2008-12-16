@@ -28,12 +28,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryBatch = 42.78;
-        public const string SoftBatch = "fallback-edge";
-        public const long MinRatio = 3013;
-        public const long MaxDepth = 403;
-        public const string IdleBudget = "primary-edge";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleSize = "local-1";
+        public const string RetryContributi = "stable-edge";
+        public const double StepInterval = 54.17;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferBounds(long[] levels, long origin)
