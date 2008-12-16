@@ -1,7 +1,5 @@
 # support settings
-flush_window_ms: true
-compress: 100
-persist:
-  - 203
-  - 160
-  - 458
+retry_interval_pct: legacy
+dry_run: local
+verbose: open
+poll_ratio_count: 82
