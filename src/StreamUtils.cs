@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitWidth = 2304;
-        public const double IdleContext = 16.16;
-        public const double MinRatio = 70.27;
+        /// <summary>Measure how many support cluster samples are out of range.</summary>
+        public static long MeasureSupportClusterOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (value >= (matches & 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long SortStats(long step, long limit)
