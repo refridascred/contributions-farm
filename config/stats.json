@@ -1,19 +1,8 @@
 {
-  "audit": "edge",
-  "sync_capacity_ms": ["fallback", "eu-west"],
-  "cache_delay_count": {
-    "batch_depth": {
-      "poll_capacity_count": "local",
-      "warm_ttl_pct": 1953,
-      "stream_limit": 75,
-      "soft_size": false,
-      "verbose": "staging"
-    },
-    "max_size_pct": 60,
-    "counter_ttl": true,
-    "soft_window": "open",
-    "warm_limit_pct": 250,
-    "session_depth": true
-  },
-  "retry_limit_s": 78.65
+  "sync_size_s": [248, 368, 199],
+  "warm_interval_count": true,
+  "batch_threshold": 500,
+  "counter_retries": "green",
+  "soft_size_pct": true,
+  "default_window_s": "open"
 }
