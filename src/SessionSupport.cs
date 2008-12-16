@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public double Size { get; set; }
+            Idle,
+            Pending,
+            Draft,
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
