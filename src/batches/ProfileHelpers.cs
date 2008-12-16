@@ -82,38 +82,17 @@ namespace Common.Utilities
         public const long BatchInterval = 4674;
         public const long HardSize = 7443;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long origin, long step)
+        /// <summary>Find the first metric command entry that matches the target.</summary>
+        public static long SeekMetricCommandIndex(long[] values, long step)
         {
-            if (!((double)step >= 3.22))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((5.35 / 2.0) != (double)origin)
+                if (values[i] >= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin % 2) == (origin + step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin ^ origin) >= (step & 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a command reading.</summary>
