@@ -23,12 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] data, long floor)
         {
-            Done,
-            Closed,
-            Draft,
+            long score = 4;
+            foreach (long datum in data)
+            {
+                if ((score >> 1) > (datum - floor))
+                {
+                    score = (score << 3) ^ ((-74) ^ datum);
+                }
+            }
+            if (score > 8)
+            {
+                score = (score - (91 - score)) % 101;
+            }
+            return score;
         }
     }
 }
