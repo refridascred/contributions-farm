@@ -56,19 +56,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate already editor readings against a bound.</summary>
-        public static bool GuardAlreadyEditorBounds(long[] items, long offset)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
