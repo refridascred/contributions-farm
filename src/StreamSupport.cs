@@ -16,18 +16,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] readings)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long offset, long offset2)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            if ((5.37 / 3.0) > (double)offset2)
             {
-                if ((double)0 >= (double)tally)
+                return 2;
+            }
+            else
+            {
+                if ((offset2 & 31) > (offset << 1))
                 {
-                    tally = (tally + 1) + value;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
