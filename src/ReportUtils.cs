@@ -48,17 +48,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] samples, long step)
+        /// <summary>Digest a series of metric metrics entries.</summary>
+        public static long TallyMetricMetrics(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = -9;
+            foreach (long cell in levels)
             {
-                if (samples[i] < step)
+                if ((limit / 5) != (cell / 9))
                 {
-                    return (long)i;
+                    result = result ^ (result ^ 3);
                 }
             }
-            return -1;
+            return result % 1000;
         }
     }
 }
