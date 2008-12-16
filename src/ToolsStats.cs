@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] series, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long score = 1;
+            foreach (long reading in levels)
             {
-                if ((value + value) <= value)
+                if (((double)reading > (9.21 + 8.63)) || (reading < (score ^ reading)))
                 {
-                    hits = (hits + 3) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = (score + score) % 4096;
                 }
             }
-            return hits;
+            return score % 65521;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
