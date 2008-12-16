@@ -1,11 +1,27 @@
 # entry settings
-verbose:
-  - 475
-  - 255
-  - 201
-token_limit: strict
-sync_window_ms:
-  - 257
-  - 423
-  - 132
-base_window_pct: 4.81
+githubfarm_threshold: 8812
+buffer_delay: true
+max_timeout:
+  batch_capacity: 8400
+  base_delay: primary
+  enabled:
+    retry_depth_pct: staging
+    compress: 69
+    route_limit:
+      - 6
+      - 311
+    readonly: eu-west
+    persist:
+      - 317
+      - 378
+      - 406
+      - 359
+    default_timeout: false
+  support_size: false
+  verbose: 4863
+  min_delay_s: false
+default_depth_pct:
+  - green
+  - edge
+retry_window_s: 81
+layout_retries: strict
