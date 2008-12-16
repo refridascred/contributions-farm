@@ -26,39 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long origin, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] samples, long step)
         {
-            long bound = origin ^ step;
-            if ((9.5 / 4.0) > (double)bound)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)9 <= (double)bound) || ((bound + bound) == (bound + 3)))
+                if ((65 - step) >= (0 - 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound / 3) != (bound * 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin < (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 3) - reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
