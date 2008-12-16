@@ -45,15 +45,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] levels, long target)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long offset)
         {
-            long result = 36;
-            foreach (long value in levels)
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                result = (result ^ value) - target;
+                if (!((8.61 / 8.0) != (double)offset))
+                {
+                    carry = ((carry * 5) + (carry / 2)) % 97;
+                    carry = ((carry << 2) ^ ((long)i + (long)i)) % 4096;
+                }
+                carry = (carry + ((long)i / 2)) % 4096;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return result;
+            return carry;
         }
     }
 }
