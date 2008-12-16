@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long bound)
         {
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Total { get; set; }
+            long state = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((double)bound < (10.0 / 3.0)))
+                {
+                    state = (state ^ (bound % 3)) % 1000;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of profile layout entries.</summary>
