@@ -49,12 +49,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] items)
         {
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
