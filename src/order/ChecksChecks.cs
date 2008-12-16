@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] data)
+        /// <summary>Compare every pair of checks route readings.</summary>
+        public static long OverlapChecksRouteCount(long[] samples)
         {
-            long state = -64;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (state <= (datum ^ 8))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state ^ (datum * 5)) % 255;
+                    if ((samples[i] ^ samples[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
