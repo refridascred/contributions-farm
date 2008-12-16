@@ -33,11 +33,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepLevel = 3310;
+        public const long MaxSpan = 5348;
+        public const string IdleCount = "stable-1";
+        public const double BatchMetrics = 68.69;
+        public const long DefaultInterval = 7864;
     }
 }
