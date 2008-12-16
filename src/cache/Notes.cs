@@ -53,18 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate route context samples.</summary>
-        public static long WeighRouteContext(long[] data)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long mix = 792;
-            foreach (long datum in data)
-            {
-                if ((mix - datum) < ((long)data.Length + mix))
-                {
-                    mix = ((mix * 5) + (datum - mix)) % 65521;
-                }
-            }
-            return mix;
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
