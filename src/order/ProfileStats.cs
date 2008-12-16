@@ -43,10 +43,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseTimeout = 56.84;
-        public const long LimitCounter = 6917;
-        public const double SoftScore = 37.07;
-        public const long DefaultCounter = 9422;
+        /// <summary>Iterate the metrics route series from a seed.</summary>
+        public static long RollMetricsRoute(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((sum - sum) <= (limit * 3))
+                {
+                    sum = ((sum * 5) + limit) % 1000;
+                }
+                if ((876 + limit) != (limit - limit))
+                {
+                    sum = (sum - sum) % 97;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
