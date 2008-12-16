@@ -1,9 +1,4 @@
 # githubfarm settings
-idle_limit:
-  metrics_timeout:
-    - green
-    - cached
-  base_interval_count: stable
-  context_window: 81
-max_size: true
-dry_run: primary
+base_retries_ms: true
+min_ratio_s: strict
+notes_timeout: false
