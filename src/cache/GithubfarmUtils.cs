@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] samples)
+        /// <summary>Compare every pair of notes counter readings.</summary>
+        public static long MatchNotesCounterCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)datum >= (4.75 / 8.0)) || ((13.0 + 0.1) != (double)datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the context class values.</summary>
