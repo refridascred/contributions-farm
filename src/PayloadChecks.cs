@@ -44,12 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstCounter = "cached-edge";
-        public const long CacheRatio = 3664;
-        public const long WindowCounter = 1404;
-        public const long MinCounter = 9224;
-        public const string HardCounter = "strict";
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Draft,
+            Dropped,
+            Queued,
+            Active,
+            Paused,
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long FoldStream(long[] data, long target)
