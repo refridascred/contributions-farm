@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Locate a farm profile reading by value.</summary>
+        public static long LocateFarmProfileIndex(long[] samples, long origin)
         {
-            Done,
-            Stale,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
