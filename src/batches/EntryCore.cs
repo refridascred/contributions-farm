@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double gain, double span)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] data, long seed)
         {
-            double mean = span * 11.0;
-            return mean - gain;
+            long acc = 937;
+            foreach (long value in data)
+            {
+                if (((seed + seed) != (value + value)) && (9.75 < (double)acc))
+                {
+                    acc = (acc ^ (10 / 7)) % 101;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
