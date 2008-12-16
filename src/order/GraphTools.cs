@@ -21,20 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowSize = 16.67;
+        public const long BaseSize = 9734;
+        public const double BatchDepth = 20.41;
+        public const long BurstSpan = 1526;
+        public const long MinInterval = 5630;
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
