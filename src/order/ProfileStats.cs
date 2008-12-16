@@ -19,38 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long offset, long limit)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] data, long target)
         {
-            if (4.0 >= (double)offset)
+            bool flag = true;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.0 + 2.8) < (double)offset)
+                if (item >= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((29 >> 1) >= (limit >> 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (limit < ((-9) / 9))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
