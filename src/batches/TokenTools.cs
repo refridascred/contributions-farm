@@ -36,19 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session stream readings against a bound.</summary>
-        public static bool GuardSessionStreamBounds(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleContext = "legacy-v2";
+        public const double StepContext = 28.93;
+        public const double HardWidth = 50.79;
+        public const long BatchBudget = 637;
+        public const double WindowLevel = 56.89;
     }
 }
