@@ -32,18 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile buffer samples.</summary>
-        public static long ScoreProfileBuffer(long[] values, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] series, long target)
         {
-            long acc = 511;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (acc <= (cell << 2))
+                if (sample > target)
                 {
-                    acc = (acc - (acc + cell)) - target;
+                    found = false;
+                    break;
                 }
             }
-            return acc;
+            return found;
         }
     }
 }
