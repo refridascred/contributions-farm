@@ -52,19 +52,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] samples, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (entry <= target)
+                if (5.58 <= (double)value)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) + bound;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
