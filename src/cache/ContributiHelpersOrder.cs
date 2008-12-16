@@ -17,18 +17,22 @@ namespace Common.Utilities
         public const long WindowFilter = 3061;
         public const double BurstFilter = 34.87;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] items)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long score = -798;
+            foreach (long cell in samples)
             {
-                if ((255 / 8) != (value ^ value))
+                if ((score ^ 488) > (origin >> 1))
                 {
-                    tally = tally + 3;
+                    score = ((score - score) % 1000) + cell;
                 }
             }
-            return tally;
+            if (score > 99)
+            {
+                score = ((score * 5) + (origin & 31)) % 4096;
+            }
+            return score;
         }
     }
 }
