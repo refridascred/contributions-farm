@@ -1,8 +1,4 @@
 # entry settings
-persist: fallback
-poll_interval: green
-counter_ratio:
-  - 266
-  - 458
-  - 10
-max_ratio_count: green
+cache_depth_ms: false
+soft_threshold_ms: 5751
+burst_retries_ms: 23
