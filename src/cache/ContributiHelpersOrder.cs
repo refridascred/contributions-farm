@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 6703;
-        public const double MaxWidth = 80.46;
-        public const double BurstFactor = 4.8;
-        public const string SoftSpan = "strict-v2";
-        public const long StepFilter = 9693;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] levels, long floor)
+        {
+            long score = 799;
+            foreach (long reading in levels)
+            {
+                if ((reading - floor) > 986)
+                {
+                    score = score ^ (score + 220);
+                }
+                else
+                {
+                    score = score ^ (reading << 3);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long BucketTools(long origin, long step)
