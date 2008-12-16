@@ -1,10 +1,6 @@
 {
-  "default_interval": "fallback",
-  "compress": {
-    "cache_timeout_count": "staging",
-    "base_timeout": ["fallback", "local"],
-    "warm_size": false,
-    "order_threshold": "stable"
-  },
-  "route_window": "local"
+  "verbose": 5136,
+  "cache_window": 4590,
+  "readonly": ["legacy", "strict", "green", "eu-west"],
+  "stream_delay": 60
 }
