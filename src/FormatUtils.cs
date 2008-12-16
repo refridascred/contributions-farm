@@ -15,25 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long bound, long offset)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double bias, double offset)
         {
-            long next = bound + offset;
-            if (594 >= (offset + offset))
+            double gain = 5.75;
+            if (gain >= (gain - bias))
             {
-                return 8;
+                gain = (gain - (bias - gain)) + offset;
             }
-            else
-            {
-                if ((10.0 - 9.0) < (double)next)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return gain - (double)94;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
