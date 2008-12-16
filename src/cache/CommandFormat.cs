@@ -13,11 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a graph record.</summary>
