@@ -36,12 +36,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstTimeout = 15.92;
-        public const string CacheInterval = "alpha-edge";
-        public const string BatchMetrics = "staging-v2";
-        public const double LimitInterval = 52.26;
-        public const long StepInterval = 3704;
+        /// <summary>Digest a series of schema format entries.</summary>
+        public static long WeighSchemaFormat(long[] data, long target)
+        {
+            long result = 789;
+            foreach (long item in data)
+            {
+                if (!((target >> 2) < (target * 3)))
+                {
+                    result = (result ^ (target << 1)) % 255;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (item + 953)) % 101;
+                }
+            }
+            if (result > 83)
+            {
+                result = ((result << 2) ^ (result - result)) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
