@@ -1,12 +1,42 @@
 # githubfarm settings
-base_capacity_ms: cached
-poll_interval_s: standard
-already_capacity: 100
-compress: false
-cache_limit_count:
-  order_interval: 5.2
-  soft_limit: stable
-  farm_threshold: eu-west
-  batch_ratio: 250
-  base_limit: false
-hard_timeout_pct: true
+readonly: 8
+payload_timeout: 6815
+filter_interval:
+  min_retries: strict
+  profile_capacity: 250
+  default_interval:
+    - 272
+    - 238
+    - 139
+  cache_timeout: true
+  burst_depth_ms:
+    flush_limit: eu-west
+    sync_interval_ms: legacy
+    poll_window: false
+    warm_limit: staging
+    warm_interval_count:
+      - 390
+      - 379
+      - 287
+    batch_window: 23
+verbose:
+  compress: open
+  farm_limit: 250
+  support_timeout:
+    - legacy
+    - edge
+    - primary
+  editor_depth:
+    verbose: 92.9
+    graph_ratio:
+      - open
+      - cached
+      - stable
+    warm_interval: eu-west
+    tools_interval: fallback
+    flush_timeout_s: 1024
+  soft_window_count:
+    - fallback
+    - fallback
+    - edge
+  checks_ratio: 30.32
