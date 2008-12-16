@@ -37,18 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] levels, long bound)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            double scale = (span - ratio) * 3.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (!(bound <= (matches >> 4)))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
+                scale = (scale - (double)31) + (double)(long)i;
             }
-            return matches;
+            return scale - span;
         }
 
         /// <summary>Describe the window status values.</summary>
