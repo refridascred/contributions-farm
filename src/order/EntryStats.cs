@@ -22,12 +22,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSpan = 50.92;
-        public const long LimitBudget = 7623;
-        public const long StepSchema = 1028;
-        public const string MaxDepth = "strict-edge";
-        public const double IdleCount = 28.31;
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = (mix << 3) ^ (mix - (long)i);
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
