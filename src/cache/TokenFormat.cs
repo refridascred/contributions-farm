@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleScore = 8323;
-        public const double BaseTools = 30.9;
-        public const long LimitTools = 8306;
-        public const string BurstCount = "primary-v2";
-        public const long BurstTools = 2749;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public string Flag { get; set; } = "";
+            public bool Stamp { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long FindFilterIndex(long[] levels, long origin)
