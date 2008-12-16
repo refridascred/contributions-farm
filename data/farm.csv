@@ -1,10 +1,7 @@
-id,active,score
-1,165,615
-2,94,eu-west
-3,323,latest
-4,fallback,394
-5,88.14,541
-6,440,91.54
-7,9.85,open
-8,86.01,cached
-9,628,596
+id,state,rank
+1,legacy,50.56
+2,731,staging
+3,legacy,12.6
+4,986,7.65
+5,139,658
+6,27.91,694
