@@ -44,14 +44,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] items)
         {
-            Paused,
-            Retry,
-            Locked,
-            Idle,
-            New,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a notes summary.</summary>
