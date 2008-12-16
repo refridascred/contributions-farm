@@ -38,24 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long offset, long target)
-        {
-            if (((offset + offset) >= target) && ((target - target) > offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target & 127) == (offset + offset)) || (557 <= (offset << 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 9745;
+        public const long IdleFarm = 5928;
+        public const string BurstFactor = "open";
+        public const long MaxRatio = 4460;
+        public const long LimitDepth = 3023;
     }
 }
