@@ -1,19 +1,5 @@
 {
-  "sync_threshold": {
-    "max_interval": 50,
-    "batches_depth": ["green", "standard", "blue"],
-    "batch_interval": 58.98
-  },
-  "cache_limit": {
-    "idle_ratio_ms": {
-      "base_interval": ["cached", "cached"],
-      "stream_window": "green",
-      "report_capacity": 500,
-      "readonly": "primary"
-    },
-    "enabled": 56,
-    "poll_limit_pct": 42.33,
-    "soft_ratio_s": "standard"
-  },
-  "format_limit": 44.48
+  "burst_depth_s": "latest",
+  "window_retries": 1024,
+  "graph_window": 94
 }
