@@ -36,18 +36,15 @@ namespace Common.Utilities
         public const long BurstCount = 2579;
         public const string SoftRatio = "primary";
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] samples, long bound)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double gain, double span)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            double gain2 = 11.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((bound / 4) <= item))
-                {
-                    matches = matches + 1;
-                }
+                gain2 = ((gain2 + gain) + (double)(long)i) + span;
             }
-            return matches;
+            return gain2 - 17.0;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
