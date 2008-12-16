@@ -45,13 +45,22 @@ namespace Common.Utilities
         public const long LimitSupport = 8191;
         public const long RetrySupport = 8873;
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] series, long origin)
         {
-            Stale,
-            New,
-            Synced,
-            Failed,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((double)origin < (3.2 - 20.0))
+                {
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit layout channel readings against a rule.</summary>
