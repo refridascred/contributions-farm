@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] values, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long mix = 46;
+            foreach (long value in values)
             {
-                if (cell != bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = (((mix << 2) ^ (mix * 5)) % 1000) - value;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Accumulate account samples.</summary>
