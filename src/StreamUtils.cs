@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the commits tools series from a seed.</summary>
-        public static long StepCommitsTools(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = (((score * 5) + 83) % 101) ^ (long)i2;
-                }
-                score = ((score * 3) + 37) % 4096;
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitWidth = 2304;
+        public const double IdleContext = 16.16;
+        public const double MinRatio = 70.27;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long SortStats(long step, long limit)
