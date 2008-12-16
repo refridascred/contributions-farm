@@ -1,4 +1,7 @@
 # githubfarm settings
-base_retries_ms: true
-min_ratio_s: strict
-notes_timeout: false
+default_limit_count: false
+stream_limit: 73.02
+filter_timeout: 59
+tools_retries: false
+sync_depth_pct: 83.96
+hard_ttl_ms: true
