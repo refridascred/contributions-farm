@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] values, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                total = (total - (total + bound)) % 97;
-                total = total ^ total;
-                total = ((total * 3) + (long)i) % 4093;
+                if (cell != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Accumulate account samples.</summary>
