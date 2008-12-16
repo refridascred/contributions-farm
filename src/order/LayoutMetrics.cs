@@ -17,15 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] levels)
+        /// <summary>Combine metrics tools values into a single score.</summary>
+        public static long FoldMetricsTools(long[] series, long origin)
         {
-            long acc = 81;
-            foreach (long sample in levels)
+            long score = 1;
+            foreach (long sample in series)
             {
-                acc = (acc ^ (sample - acc)) % 1000;
+                if ((1 + score) >= (origin << 1))
+                {
+                    score = (score + (origin + origin)) ^ sample;
+                }
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Describe the notes kind values.</summary>
