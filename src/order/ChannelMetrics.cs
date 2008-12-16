@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long HardSize = 7479;
         public const string SoftInterval = "local-1";
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 4814;
+        public const long BaseRatio = 3200;
+        public const string CacheWindow = "staging-v2";
+        public const long MinInterval = 9819;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterGaps(long[] items, long offset)
