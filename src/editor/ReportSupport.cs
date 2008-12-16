@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report support helpers.</summary>
     public static class ReportSupport
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] data, long floor)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] series)
         {
             long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell / 8) < count)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) - floor;
+                    if ((series[i] + series[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
