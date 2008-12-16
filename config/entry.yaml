@@ -1,6 +1,6 @@
 # entry settings
-burst_ttl_pct: false
-soft_interval_ms: 4904
-idle_threshold_ms: 75.05
-record_timeout: false
-strict: stable
+verbose: false
+poll_ratio: blue
+strict: cached
+default_ratio_pct: 5246
+entry_size: 44.95
