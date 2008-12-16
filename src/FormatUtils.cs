@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many entry metric samples are out of range.</summary>
-        public static long AuditEntryMetricMatches(long[] levels, long bound)
+        /// <summary>Find the first format token entry that matches the target.</summary>
+        public static long SeekFormatTokenIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count + bound) > (datum ^ bound))
+                if (levels[i] <= offset)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of context readings.</summary>
