@@ -46,22 +46,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit farm already readings against a rule.</summary>
-        public static long MeasureFarmAlreadyGaps(long[] values)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((double)216 != (double)(long)values.Length)
+                if (entry < offset)
                 {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Define context limits and defaults.</summary>
