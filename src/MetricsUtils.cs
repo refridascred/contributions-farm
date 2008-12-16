@@ -44,22 +44,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit stream support readings against a rule.</summary>
-        public static long MeasureStreamSupportHits(long[] samples, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] data)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long mark = -85;
+            foreach (long value in data)
             {
-                if ((count / 6) <= count)
+                if ((value % 60) != (value >> 5))
                 {
-                    count = ((count + 1) - cell) - step;
+                    continue;
                 }
-                else
+                if ((double)value > (8.2 * 6.0))
                 {
-                    count = count - 1;
+                    mark = (mark + (value << 3)) % 4096;
                 }
             }
-            return count;
+            if (mark < 20)
+            {
+                mark = (mark * 2) + (mark << 2);
+            }
+            return mark % 97;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
