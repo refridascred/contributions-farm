@@ -53,20 +53,19 @@ namespace Common.Utilities
         public const double SoftNotes = 55.22;
         public const long BurstSize = 3680;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] items)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] readings, long target)
         {
-            long anchor = -76;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                long gap = sample << 2;
-                anchor = anchor + (gap - anchor);
-                if (783 < (anchor << 1))
+                if (cell >= target)
                 {
-                    anchor = (anchor << 3) ^ anchor;
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
     }
 }
