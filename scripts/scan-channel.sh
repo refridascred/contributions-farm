@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in blue standard strict; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=103
+CHANNEL_LIMIT=63
 log "limit is ${CHANNEL_LIMIT}"
