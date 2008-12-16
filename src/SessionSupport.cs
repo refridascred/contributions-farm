@@ -16,19 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] data, long limit)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long floor)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (item <= limit)
+                if ((9.53 / 4.0) < (double)floor)
                 {
-                    ok = false;
-                    break;
+                    result = (result + (floor & 31)) % 97;
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Describe the order kind values.</summary>
