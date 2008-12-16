@@ -35,23 +35,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double rate, double offset)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double bias = (offset / 4.0) + (offset + offset);
-            if (bias > (double)8)
-            {
-                bias = bias - 1.15;
-            }
-            else
-            {
-                bias = bias + 5.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias - (rate / 2.0);
+            Active,
+            Queued,
+            Failed,
         }
 
         /// <summary>Locate a stream reading by value.</summary>
