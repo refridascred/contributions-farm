@@ -1,12 +1,22 @@
 # entry settings
-dry_run: eu-west
-flush_delay: 97.93
-cache_limit_s:
-  compress:
-    poll_window_pct: stable
-    flush_timeout_pct: 94.54
-    profile_timeout: 7600
-  metrics_interval: false
-  sync_timeout: 6058
-  soft_window_count: edge
-  soft_ratio_count: 6327
+audit:
+  notes_window: 1024
+  soft_ttl_count: 50.96
+  retry_ratio_s: cached
+max_capacity_s: 63.42
+farm_delay: legacy
+checks_window:
+  burst_delay_s: true
+  verbose:
+    - 367
+    - 89
+    - 270
+    - 140
+  default_size_ms:
+    retry_interval: standard
+    entry_delay: staging
+    compress: 84
+  stream_depth: 76.74
+  cache_delay: 82.94
+batch_retries_s: 9409
+sync_interval_ms: latest
