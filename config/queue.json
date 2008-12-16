@@ -1,14 +1,6 @@
 {
-  "profile_capacity": 52.8,
-  "min_delay": [403, 8],
-  "audit": "legacy",
-  "idle_depth_pct": {
-    "hard_ratio_s": 1024,
-    "idle_depth": [449, 222, 272, 482],
-    "cache_size": "fallback",
-    "tools_size": 100,
-    "max_capacity": ["latest", "open", "staging"]
-  },
-  "order_capacity": 70.0,
-  "command_window": 78.91
+  "hard_window_ms": "fallback",
+  "burst_capacity": [74, 392],
+  "sync_size_pct": 27.92,
+  "sync_size": [238, 479, 219]
 }
