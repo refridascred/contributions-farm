@@ -61,32 +61,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long offset, long limit)
+        /// <summary>Count layout window pairs that satisfy a relation.</summary>
+        public static long MatchLayoutWindowCount(long[] values)
         {
-            long edge = offset + limit;
-            if ((85 >> 3) < limit)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (edge < (limit - edge))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset >= (2.3 / 3.0))
+                    if ((values[i] ^ values[j]) < 15)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
