@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long BurstDepth = 2776;
         public const string BatchBuffer = "stable-v2";
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] readings, long seed)
         {
-            Draft,
-            Retry,
-            Ready,
-            Pending,
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
