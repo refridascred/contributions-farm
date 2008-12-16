@@ -70,11 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] series, long bound)
         {
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (!((double)bound <= (4.1 - 6.84)))
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
         }
     }
 }
