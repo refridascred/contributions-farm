@@ -41,24 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank farm format input into a small class.</summary>
-        public static long RankFarmFormat(long step, long offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] items, long bound)
         {
-            if (!(0 <= (offset - offset)))
+            bool ok = true;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step - step) >= (step / 4)) || ((0.1 + 8.96) < (double)offset))
+                if (sample > bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
