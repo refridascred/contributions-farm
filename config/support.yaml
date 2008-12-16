@@ -1,5 +1,13 @@
 # support settings
-audit: 4427
-entry_depth: local
-burst_size_s: 24
-enabled: green
+verbose: 500
+compress: open
+min_delay: 16.91
+channel_ratio: edge
+readonly:
+  - standard
+  - legacy
+persist:
+  - 26
+  - 467
+  - 136
+  - 275
