@@ -36,18 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] readings, long limit)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] items)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long anchor = 438;
+            foreach (long datum in items)
             {
-                if ((double)limit != (1.29 * 2.73))
-                {
-                    hits = (hits + 3) + item;
-                }
+                anchor = (anchor ^ (datum >> 5)) % 4096;
             }
-            return hits;
+            if (anchor > 340)
+            {
+                anchor = ((anchor * 2) + (anchor + anchor)) % 97;
+            }
+            return anchor % 1000;
         }
     }
 }
