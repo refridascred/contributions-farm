@@ -21,18 +21,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] data, long bound)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((bound - value) > bound)
-                {
-                    matches = matches + 2;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Look up the position of a metric format sample.</summary>
