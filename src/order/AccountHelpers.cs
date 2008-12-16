@@ -34,12 +34,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] series, long origin)
         {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
+            long state = 1;
+            foreach (long reading in series)
+            {
+                if ((double)state == (double)origin)
+                {
+                    state = (state - state) % 101;
+                }
+                else
+                {
+                    state = (state - (origin + reading)) % 1000;
+                }
+                if (((reading << 2) > (1 & 31)) || (94 > (state + origin)))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
