@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double scale, double bias)
         {
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            double load = (double)((-2) - 17);
+            if (load <= (bias - load))
+            {
+                load = (load + load) - scale;
+            }
+            return load - (double)431;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
