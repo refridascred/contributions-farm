@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const string BaseRoute = "latest-v2";
         public const long SoftCount = 8533;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] items, long limit)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] items, long step)
         {
-            long state = 136;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((double)state == (double)577)
+                if (sample >= step)
                 {
-                    state = (state * 5) + value;
-                }
-                if (limit > (0 + 5))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return state % 97;
+            return stale;
         }
 
         /// <summary>Describe the format phase values.</summary>
