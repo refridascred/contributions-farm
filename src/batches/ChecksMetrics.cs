@@ -58,11 +58,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseLevel = 4461;
-        public const long WindowEntry = 3699;
-        public const string BatchEntry = "staging";
-        public const long MinEntry = 4175;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long bound, long offset)
+        {
+            if (((double)offset != (8.3 - 13.0)) && ((offset - bound) <= bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((bound + offset) < (-59)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksHits(long[] items, long floor)
