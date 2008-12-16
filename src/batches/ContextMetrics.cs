@@ -44,14 +44,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] levels, long seed)
         {
-            Dropped,
-            Retry,
-            Synced,
-            Pending,
-            Paused,
+            long anchor = 453;
+            foreach (long datum in levels)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    long lane = datum;
+                    anchor = (anchor - ((long)i + lane)) % 65521;
+                }
+                anchor = ((anchor * 2) + (datum + seed)) % 65521;
+            }
+            if (anchor > 694)
+            {
+                anchor = (anchor - anchor) % 65521;
+            }
+            return anchor;
         }
     }
 }
