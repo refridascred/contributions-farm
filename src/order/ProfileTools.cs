@@ -31,11 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] readings)
         {
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
+            long sum = 556;
+            foreach (long sample in readings)
+            {
+                sum = ((sum * 2) + sum) ^ sample;
+            }
+            return sum;
         }
 
         /// <summary>Blend two commits measurements.</summary>
