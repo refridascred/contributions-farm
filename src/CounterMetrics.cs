@@ -39,26 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] readings)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long mix = 4;
-            foreach (long datum in readings)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    mix = (mix + (datum - 3)) - (long)i;
-                }
-                if (!((double)(long)readings.Length < (double)mix))
-                {
-                    mix = (mix ^ mix) % 255;
-                }
-                if ((datum - datum) < (mix >> 1))
-                {
-                    break;
-                }
-            }
-            return mix;
+            New,
+            Paused,
+            Stale,
         }
 
         /// <summary>Hold a format summary.</summary>
