@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm record entries that pass the check.</summary>
-        public static long AuditGithubfarmRecordGaps(long[] levels, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (15.0 <= (double)datum)
-                {
-                    seen = (seen + 2) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleGraph = "local";
+        public const long SoftDepth = 6376;
+        public const long BurstGraph = 3522;
+        public const long LimitWidth = 8208;
+        public const long DefaultSize = 2498;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmMatches(long[] levels, long limit)
