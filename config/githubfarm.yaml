@@ -1,10 +1,4 @@
 # githubfarm settings
-max_window_ms: true
-dry_run: 100
-min_threshold_count:
-  - 125
-  - 87
-  - 76
-default_ratio: stable
-strict: true
-cache_ratio_ms: staging
+retry_depth_ms: staging
+hard_ratio: standard
+route_delay: true
