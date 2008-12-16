@@ -13,21 +13,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] items)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long floor, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((target - target) < (target * 3)) || (5 < target))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (8.0 > (double)target)
                 {
-                    if ((items[i] - items[j]) != 15)
+                    return 5;
+                }
+                else
+                {
+                    if ((0.29 - 0.04) >= (double)floor)
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a graph record.</summary>
