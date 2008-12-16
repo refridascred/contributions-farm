@@ -30,16 +30,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long bound)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = acc - (acc + bound);
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public double Flag { get; set; }
+            public double Owner { get; set; }
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
