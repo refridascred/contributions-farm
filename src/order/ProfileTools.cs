@@ -19,10 +19,23 @@ namespace Common.Utilities
         public const double HardWidth = 47.7;
         public const string RetryBudget = "latest-v2";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultLevel = 94.86;
-        public const long WindowLevel = 8736;
-        public const double IdleFactor = 18.81;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((value % 16) >= value)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long TotalCommand(long[] readings)
