@@ -20,18 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] samples, long offset)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long origin, long step)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long bound = origin ^ step;
+            if ((9.5 / 4.0) > (double)bound)
             {
-                if (((offset + count) <= count) && ((2.53 * 6.4) != (double)datum))
+                return 6;
+            }
+            else
+            {
+                if (((double)9 <= (double)bound) || ((bound + bound) == (bound + 3)))
                 {
-                    count = count + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound / 3) != (bound * 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin < (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit batches metric readings against a rule.</summary>
