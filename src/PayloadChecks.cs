@@ -68,19 +68,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] items, long floor)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] items, long step)
         {
-            long mix = 80;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = mix - cell;
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 408)
-            {
-                mix = (mix * 2) + (floor - 2);
-            }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Hold a session snapshot.</summary>
