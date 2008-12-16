@@ -32,10 +32,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitTimeout = 19.53;
-        public const double BatchStats = 90.08;
-        public const double MinBudget = 73.67;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long floor, long offset)
+        {
+            if (((-111) / 3) == (floor * 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset > (0.55 - 7.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((7.79 + 5.0) == (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)floor == (17.0 + 16.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool VerifyContributiBounds(long[] values, long offset)
