@@ -35,22 +35,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry context samples are out of range.</summary>
-        public static long MeasureEntryContextMatches(long[] readings)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long bound, long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            if ((seed >= (seed + seed)) || ((7 - bound) < seed))
             {
-                if (!(hits <= (entry & 255)))
+                return 7;
+            }
+            else
+            {
+                if ((seed + 1) > (11 - 97))
                 {
-                    hits = hits + 3;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!((bound & 7) > seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
