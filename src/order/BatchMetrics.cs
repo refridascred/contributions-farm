@@ -70,19 +70,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long step)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (0.43 >= (2.83 - 3.34))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry * 4) + step;
+                    if ((series[i] - series[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return seen;
         }
     }
 }
