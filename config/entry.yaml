@@ -1,10 +1,8 @@
 # entry settings
-retry_timeout_count: edge
-max_window_count:
-  - 266
-  - 400
-  - 90
-  - 359
-burst_threshold_count: 39
-strict: eu-west
-idle_size: 60
+compress:
+  - 85
+  - 51
+  - 171
+  - 393
+min_capacity: fallback
+soft_depth_count: 3
