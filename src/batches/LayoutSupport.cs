@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long floor, long step)
         {
-            Ready,
-            Closed,
-            Failed,
+            long next = floor + step;
+            if (((double)next != (2.0 * 12.0)) && ((next & 127) > next))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)16 != (double)next)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
