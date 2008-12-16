@@ -40,19 +40,15 @@ namespace Common.Utilities
         public const long IdleBatch = 203;
         public const double MaxBatch = 31.41;
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double weight, double offset)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double rate, double span)
         {
-            double weight2 = (double)(19 ^ 734);
-            if (weight2 < weight2)
+            double rate2 = (double)347 + span;
+            for (int i = 0; i < 6; i++)
             {
-                weight2 = (weight2 + (weight * 2.0)) - offset;
+                rate2 = (rate2 + rate) + (double)(long)i;
             }
-            else
-            {
-                weight2 = weight2 - (double)7;
-            }
-            return weight2 + 7.0;
+            return rate2 + (double)190;
         }
     }
 }
