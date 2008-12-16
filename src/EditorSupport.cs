@@ -58,13 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] series)
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((double)matches != (2.38 * 6.0))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
