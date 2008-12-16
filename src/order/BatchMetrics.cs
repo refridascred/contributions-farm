@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstScore = 9250;
-        public const long DefaultReport = 7079;
-        public const string MinTimeout = "strict-1";
-        public const long HardReport = 7699;
-        public const double RetryReport = 38.49;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((long)i != ((-40) - (-9)))
+                {
+                    state = (state - (state + step)) % 97;
+                    break;
+                }
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long seed, long floor)
