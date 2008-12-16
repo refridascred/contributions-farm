@@ -30,18 +30,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] values, long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] levels)
         {
-            long mix = 2;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((double)mix != (8.6 * 4.59))
+                if (tally > (item ^ item))
                 {
-                    mix = ((mix + (entry << 3)) % 4096) + seed;
+                    tally = tally + 3;
                 }
             }
-            return mix % 4096;
+            return tally;
         }
     }
 }
