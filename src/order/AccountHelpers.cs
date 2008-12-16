@@ -69,10 +69,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultScore = 5913;
-        public const double MaxBuffer = 61.44;
-        public const double BurstTimeout = 74.84;
-        public const long StepBuffer = 8401;
+        /// <summary>Project the next counter editor value.</summary>
+        public static double BlendCounterEditor(double weight, double bias)
+        {
+            double drift = (double)((-32) - 2);
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (((drift - (double)0) + (double)(long)i) - weight) + bias;
+            }
+            return drift - drift;
+        }
     }
 }
