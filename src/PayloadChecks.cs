@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const long BurstCount = 2579;
         public const string SoftRatio = "primary";
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] samples, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (!((bound / 4) <= item))
                 {
-                    mark = (mark + (bound & 63)) ^ (long)i2;
+                    matches = matches + 1;
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Grade a account buffer value against two limits.</summary>
