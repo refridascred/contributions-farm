@@ -1,12 +1,15 @@
 # Command notes
 
-The payload helpers are pure functions, so they are safe to call from any thread.
-Run the counter check before changing any record limits.
-Run the metrics check before changing any token limits.
+The batches module keeps stats values in sync with the report cache.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+A route that stays idle for too long is moved to the profile list.
+
+Keep metrics and queue names short and lowercase.
+Run the window check before changing any farm limits.
+The tools report groups every githubfarm by buffer.
 
 ## Guidelines
 
+- Review queue limits each release
+- Prefer payload defaults
 - Log every profile change
-- Validate commits input early
-- Keep already values small
-- Prefer queue defaults
