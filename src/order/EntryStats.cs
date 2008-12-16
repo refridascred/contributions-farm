@@ -14,21 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long target)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((20.0 + 8.8) <= (double)target)
-                {
-                    acc = (acc + (long)i) % 1000;
-                    break;
-                }
-                acc = ((acc << 3) ^ ((long)i + 6)) % 65521;
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            Locked,
+            Active,
+            Stale,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
