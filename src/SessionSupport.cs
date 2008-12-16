@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor notes entries that pass the check.</summary>
-        public static long MeasureEditorNotesMatches(long[] items, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long mix = 87;
+            foreach (long entry in readings)
             {
-                if ((hits - floor) != (floor - floor))
-                {
-                    hits = (hits + 1) - item;
-                }
+                mix = (((mix * 4) + 241) % 65521) ^ entry;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
