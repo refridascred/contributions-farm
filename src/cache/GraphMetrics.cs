@@ -63,12 +63,10 @@ namespace Common.Utilities
         public const long IdleBatch = 203;
         public const double MaxBatch = 31.41;
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryEditor = 47.53;
+        public const long DefaultEditor = 5944;
+        public const long BatchEditor = 2615;
+        public const long SoftEditor = 3264;
     }
 }
