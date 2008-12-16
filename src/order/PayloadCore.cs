@@ -40,19 +40,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long origin)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((68 % 97) <= (sum + origin))
-                {
-                    sum = (sum + ((long)i - (long)i)) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Idle,
+            Failed,
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
