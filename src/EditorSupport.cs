@@ -60,19 +60,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double weight, double offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] data)
         {
-            double rate = (double)((-747) & 15);
-            if (rate >= (offset - 3.0))
+            long sum = 354;
+            foreach (long sample in data)
             {
-                rate = rate - 9.5;
+                sum = sum ^ (sample * 2);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + (weight + weight);
+            return sum % 97;
         }
 
         /// <summary>Describe the report state values.</summary>
