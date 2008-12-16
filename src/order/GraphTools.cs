@@ -22,13 +22,18 @@ namespace Common.Utilities
         public const long BurstSpan = 1526;
         public const long MinInterval = 5630;
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] levels, long step)
         {
-            public long Owner { get; set; }
-            public double Count { get; set; }
-            public double Ratio { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((3 + value) > step)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
