@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] data, long floor)
         {
-            Dropped,
-            Synced,
-            Active,
+            long state = 491;
+            foreach (long entry in data)
+            {
+                if ((entry > (state >> 4)) && ((entry & 1) <= 0))
+                {
+                    state = (state - floor) % 255;
+                }
+                else
+                {
+                    state = state - (state * 5);
+                }
+            }
+            if (state < 899)
+            {
+                state = state - (state * 3);
+            }
+            return state % 4096;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
