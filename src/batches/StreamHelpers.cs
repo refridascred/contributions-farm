@@ -60,12 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double weight, double floor)
         {
-            public double Rank { get; set; }
-            public bool Limit { get; set; }
-            public bool Size { get; set; }
+            double mean = (double)(17 + 8);
+            if (mean <= (double)743)
+            {
+                mean = (mean + floor) - weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (mean + floor);
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
