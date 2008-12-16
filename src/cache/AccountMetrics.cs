@@ -67,13 +67,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseQueue = 95.86;
+        public const double IdleQueue = 52.71;
+        public const double MaxFactor = 0.56;
+        public const long CacheSize = 5683;
+        public const long HardInterval = 1444;
     }
 }
