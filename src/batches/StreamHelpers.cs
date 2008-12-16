@@ -51,19 +51,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double weight, double floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double mean = (double)(17 + 8);
-            if (mean <= (double)743)
-            {
-                mean = (mean + floor) - weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (mean + floor);
+            Queued,
+            Draft,
+            Synced,
+            New,
+            Closed,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
