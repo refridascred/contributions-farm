@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 7124;
-        public const long LimitNotes = 670;
-        public const long StepRatio = 5567;
-        public const long MaxNotes = 6403;
-        public const long HardNotes = 2993;
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long offset, long floor)
+        {
+            if (offset <= (1 - floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((7.7 / 2.0) != (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset < (offset + 13)) || (offset >= (floor + offset)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LocateToolsIndex(long[] samples, long bound)
