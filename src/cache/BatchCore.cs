@@ -28,10 +28,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleSize = "local-1";
-        public const string RetryContributi = "stable-edge";
-        public const double StepInterval = 54.17;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            New,
+            Retry,
+            Active,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Measure how many format editor samples are out of range.</summary>
         public static long TallyFormatEditorHits(long[] items)
