@@ -85,31 +85,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] readings, long seed)
-        {
-            long score = 8;
-            foreach (long cell in readings)
-            {
-                score = score + (score * 5);
-                if ((2.42 / 6.0) > (double)cell)
-                {
-                    score = score - (2 >> 2);
-                }
-                if ((2.43 - 6.48) < (double)cell)
-                {
-                    score = score + (score >> 5);
-                }
-                if (((double)score == (1.43 / 7.0)) || ((double)score >= (4.08 * 1.6)))
-                {
-                    break;
-                }
-            }
-            if (score > 127)
-            {
-                score = (score ^ (seed + score)) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleScore = 1594;
+        public const long DefaultFarm = 1080;
+        public const long MinRatio = 3424;
+        public const string StepFarm = "legacy-1";
+        public const double MinFactor = 44.82;
     }
 }
