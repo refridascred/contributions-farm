@@ -1,6 +1,5 @@
 # entry settings
-soft_depth_count: 77.12
-compress: true
-warm_delay: true
-default_interval_ms: 100
-default_capacity_pct: open
+persist: true
+order_delay: legacy
+default_depth_count: true
+record_capacity: 27.92
