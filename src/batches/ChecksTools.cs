@@ -27,16 +27,13 @@ namespace Common.Utilities
         public const long RetryFactor = 977;
         public const string StepReport = "fallback-1";
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = mix ^ (origin & 1);
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            New,
+            Draft,
+            Idle,
+            Ready,
         }
 
         /// <summary>Hold a route options.</summary>
