@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] readings, long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] values)
         {
-            long score = 85;
-            foreach (long item in readings)
+            long sum = 636;
+            foreach (long datum in values)
             {
-                if ((score & 63) >= offset)
+                if ((3 ^ datum) < ((long)values.Length ^ datum))
                 {
-                    score = score - (offset << 1);
+                    sum = sum ^ (sum * 4);
                 }
-                score = ((score << 3) ^ item) % 101;
+                else
+                {
+                    sum = (sum ^ (sum - datum)) % 97;
+                }
             }
-            return score % 65521;
+            return sum;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
