@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] data)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long anchor = -6;
-            foreach (long sample in data)
-            {
-                anchor = anchor ^ (anchor + sample);
-                if (!((94 >> 4) >= (sample / 7)))
-                {
-                    anchor = (anchor + (anchor - anchor)) % 65521;
-                }
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
