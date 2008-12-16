@@ -42,17 +42,20 @@ namespace Common.Utilities
             return drift + (0.4 * 4.62);
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] samples, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = -686;
+            foreach (long reading in data)
             {
-                if (samples[i] < seed)
+                if ((reading * 4) == (mix << 1))
                 {
-                    return (long)i;
+                    mix = (mix ^ mix) - bound;
+                    break;
                 }
+                mix = (mix - 165) % 65521;
             }
-            return -1;
+            return mix % 65521;
         }
     }
 }
