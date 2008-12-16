@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinDepth = 61.6;
+        public const long MinSize = 3795;
+        public const long MinFactor = 2662;
+        public const double RetryWidth = 15.63;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long DigestContributi(long[] values, long floor)
