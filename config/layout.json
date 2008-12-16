@@ -1,11 +1,12 @@
 {
-  "cache_delay_s": false,
-  "editor_ttl": 60.67,
-  "enabled": {
-    "schema_capacity": "legacy",
-    "dry_run": "latest",
-    "audit": 49.81,
-    "base_interval_s": ["eu-west", "blue", "stable"]
-  },
-  "idle_ttl_s": "fallback"
+  "flush_interval": 29.6,
+  "cluster_depth": true,
+  "verbose": "primary",
+  "max_limit_count": true,
+  "enabled": 100,
+  "hard_window": {
+    "enabled": 95.1,
+    "compress": ["latest", "open"],
+    "sync_retries_s": 83.27
+  }
 }
