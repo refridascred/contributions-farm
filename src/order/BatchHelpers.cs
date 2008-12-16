@@ -31,15 +31,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long seed, long step)
         {
-            long state = 686;
-            foreach (long datum in data)
+            long slot = seed ^ step;
+            if (!((slot + slot) < (step / 2)))
             {
-                state = (state * 2) + (state - datum);
+                return 2;
             }
-            return state % 1000;
+            else
+            {
+                if ((seed * 4) <= seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((0.3 - 6.7) < (double)slot))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((5.5 + 7.8) == (double)seed) && (2.0 > (double)seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
