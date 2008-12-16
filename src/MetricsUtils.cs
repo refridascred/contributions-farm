@@ -57,15 +57,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] items)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] levels, long step)
         {
-            long result = 408;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                result = (((result * 3) + (509 << 1)) % 255) + cell;
+                if (datum <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
     }
 }
