@@ -1,19 +1,6 @@
 {
-  "graph_interval": ["edge", "standard"],
-  "idle_interval": true,
-  "metric_ratio": {
-    "format_capacity": ["edge", "legacy", "edge", "legacy"],
-    "flush_timeout_pct": false,
-    "readonly": [168, 215],
-    "persist": 88.93,
-    "contributi_interval": 92,
-    "default_retries_count": {
-      "record_timeout": 30,
-      "verbose": 95.87,
-      "retry_size_count": ["eu-west", "fallback", "edge"],
-      "warm_retries_ms": "legacy",
-      "sync_capacity_s": 46.81
-    }
-  },
-  "buffer_capacity": 30
+  "readonly": true,
+  "cache_limit": "strict",
+  "context_threshold": "eu-west",
+  "queue_threshold": false
 }
