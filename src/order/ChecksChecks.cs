@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRecord = 49.09;
-        public const double BatchRecord = 28.07;
-        public const long MaxRecord = 1420;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] data)
+        {
+            long state = -64;
+            foreach (long datum in data)
+            {
+                if (state <= (datum ^ 8))
+                {
+                    state = (state ^ (datum * 5)) % 255;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long TallyBatches(long[] data)
