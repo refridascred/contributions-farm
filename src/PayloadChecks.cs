@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            Queued,
+            Done,
+            Synced,
         }
 
         /// <summary>Describe the already class values.</summary>
