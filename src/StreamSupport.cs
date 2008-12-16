@@ -24,25 +24,12 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long offset, long offset2)
-        {
-            if ((5.37 / 3.0) > (double)offset2)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset2 & 31) > (offset << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstLevel = 10;
+        public const long MinChannel = 8432;
+        public const long MinRatio = 2546;
+        public const string IdleWidth = "fallback-edge";
+        public const long IdleChannel = 3988;
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long SeriesContext(long origin)
