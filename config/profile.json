@@ -1,8 +1,5 @@
 {
-  "default_ratio_pct": false,
-  "poll_retries_s": true,
-  "sync_ttl_s": true,
-  "burst_capacity_ms": 500,
-  "default_window_count": 9130,
-  "readonly": 7785
+  "flush_threshold": [107, 374],
+  "idle_threshold_count": "open",
+  "base_size_s": [236, 95, 397]
 }
