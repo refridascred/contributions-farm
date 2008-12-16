@@ -30,11 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 1161;
-        public const long StepMetrics = 8669;
-        public const long MinInterval = 7346;
-        public const long BurstSpan = 8674;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((sample ^ sample) > (hits + hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
