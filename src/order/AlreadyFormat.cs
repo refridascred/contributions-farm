@@ -63,19 +63,16 @@ namespace Common.Utilities
         public const string WindowSize = "cached-edge";
         public const long MinRatio = 2688;
 
-        /// <summary>Fold a list of notes context readings.</summary>
-        public static long TotalNotesContext(long[] readings, long target)
+        /// <summary>Roll a channel command counter forward.</summary>
+        public static long IterateChannelCommand(long offset)
         {
-            long result = 9;
-            foreach (long cell in readings)
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
             {
-                result = ((((result * 2) + 0) % 255) + cell) - target;
+                carry = (carry ^ carry) % 65521;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            if (result < 215)
-            {
-                result = result + (5 - result);
-            }
-            return result;
+            return carry;
         }
     }
 }
