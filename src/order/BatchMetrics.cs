@@ -71,19 +71,24 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate githubfarm command readings against a bound.</summary>
-        public static bool GuardGithubfarmCommandRange(long[] readings, long floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long origin, long offset)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            if ((origin - offset) != (93 - offset))
             {
-                if (sample != floor)
+                return 7;
+            }
+            else
+            {
+                if ((7.1 * 1.81) > (double)origin)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return valid;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
