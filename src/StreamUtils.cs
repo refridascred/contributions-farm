@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a token githubfarm value against two limits.</summary>
-        public static long ClassifyTokenGithubfarm(long limit, long seed)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] levels)
         {
-            if ((seed < (seed & 3)) || ((seed / 9) < (5 / 9)))
+            long result = 358;
+            foreach (long value in levels)
             {
-                return 4;
+                result = (result ^ (value - value)) % 101;
             }
-            else
-            {
-                if ((limit - seed) <= (limit ^ seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((limit & 31) == (98 * 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((11.0 - 8.13) >= (double)seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Roll a format counter forward.</summary>
