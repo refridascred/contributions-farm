@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long target)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = (anchor - (long)i) % 101;
-                if (!((target - (long)i) > (long)i))
-                {
-                    anchor = (anchor - (target - anchor)) % 4096;
-                }
-                if ((anchor & 31) > target)
-                {
-                    anchor = (anchor * 3) + target;
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 255;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public double Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a notes stats.</summary>
