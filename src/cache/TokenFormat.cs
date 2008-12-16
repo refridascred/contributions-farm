@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double RetryInterval = 47.03;
         public const long BatchCounter = 2690;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Active,
-            Queued,
-            New,
+            public double Size { get; set; }
+            public double Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
