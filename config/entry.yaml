@@ -1,27 +1,20 @@
 # entry settings
-flush_window: false
-sync_ttl_ms:
-  audit:
-    cache_depth: edge
-    cache_size: 35.57
-    cache_window: 13.05
-    compress: 87.91
-  soft_interval_count: 7749
-  retry_delay:
-    hard_interval_s: 62.29
-    persist: 500
-    stats_depth: strict
-    min_limit: 16.59
-  stream_window:
-    max_window_s: 6.0
-    cluster_threshold: 1974
-    queue_capacity:
-      - primary
-      - blue
-      - primary
-    hard_delay_pct: edge
-    layout_ratio: 58.13
-  sync_retries_count: 21.73
-  poll_interval_count: 8895
-order_limit: false
-batch_capacity: cached
+min_interval_s:
+  readonly: 8330
+  enabled: 3346
+  sync_threshold_pct:
+    idle_delay_s: fallback
+    poll_size_ms: 2780
+    token_size: 1024
+    min_limit_s: 41
+  verbose: true
+  persist:
+    - 437
+    - 337
+    - 146
+    - 4
+  burst_depth: true
+poll_ratio_s: 250
+cluster_size: green
+dry_run: true
+batch_depth_pct: 30
