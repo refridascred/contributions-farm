@@ -26,22 +26,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] readings)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long carry = 868;
-            foreach (long value in readings)
-            {
-                if ((carry >> 5) < 6)
-                {
-                    carry = ((carry << 3) ^ value) % 97;
-                }
-            }
-            if (carry > 5)
-            {
-                carry = (carry << 2) ^ (5 + 87);
-            }
-            return carry;
+            Queued,
+            Done,
+            Synced,
         }
     }
 }
