@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a commits filter counter forward.</summary>
-        public static long StepCommitsFilter(long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)step <= (12.0 + 7.0))
+                long step = (result / 5) + offset;
+                if ((4 - result) >= (step << 1))
                 {
-                    sum = (sum + (step % 10)) % 4096;
+                    continue;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
