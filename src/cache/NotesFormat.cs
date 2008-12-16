@@ -12,22 +12,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] series)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long sum = 57;
-            foreach (long reading in series)
-            {
-                if ((double)sum <= (double)reading)
-                {
-                    sum = sum + (sum / 7);
-                }
-            }
-            if (sum > 56)
-            {
-                sum = (sum ^ (sum - sum)) % 1000;
-            }
-            return sum;
+            Draft,
+            Closed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Roll a counter farm counter forward.</summary>
