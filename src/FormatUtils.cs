@@ -15,39 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a counter checks pair into a bucket.</summary>
-        public static long BucketCounterChecks(long limit, long floor)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double ratio, double offset)
         {
-            long offset = limit - floor;
-            if ((double)655 != (double)floor)
+            double load = offset / 6.0;
+            if (load > (double)80)
             {
-                return 2;
+                load = (load - (offset - offset)) + ratio;
             }
             else
             {
-                if (((offset - floor) > floor) && ((offset % 12) == (limit - 27)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(399 < (offset - limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)floor > (0.9 * 3.0)) || ((limit - offset) == (limit & 255)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                load = load + (double)98;
             }
+            return load + load;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
