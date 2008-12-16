@@ -56,13 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Stale,
+            Idle,
+            Ready,
             Done,
-            Locked,
-            Draft,
             Paused,
         }
 
