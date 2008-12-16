@@ -15,17 +15,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first entry cache entry that matches the target.</summary>
-        public static long LookupEntryCacheIndex(long[] samples, long step)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 80;
+            foreach (long datum in values)
             {
-                if ((samples[i] < step) && ((samples[i] % 2) != 0))
+                if (!((state % 97) > (datum ^ (long)values.Length)))
                 {
-                    return (long)i;
+                    state = state ^ datum;
+                }
+                if (!((datum ^ state) == (datum * 3)))
+                {
+                    state = ((state << 3) ^ (datum / 4)) % 97;
+                }
+                else
+                {
+                    state = ((state * 2) + (state >> 5)) % 97;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
