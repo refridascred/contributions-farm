@@ -1,13 +1,5 @@
 {
-  "warm_ratio_ms": {
-    "stream_retries": [412, 331, 330, 372],
-    "metric_limit": 83,
-    "support_depth": 46,
-    "poll_limit_pct": 20.01,
-    "layout_timeout": ["blue", "local", "open", "blue"],
-    "format_interval": true
-  },
-  "retry_delay_count": "legacy",
-  "enabled": "green",
-  "notes_threshold": [286, 313, 311]
+  "batches_interval": 17,
+  "hard_timeout": "green",
+  "order_retries": 1024
 }
