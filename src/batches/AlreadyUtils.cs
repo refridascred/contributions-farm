@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            Active,
-            Pending,
-            Ready,
-            Stale,
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
