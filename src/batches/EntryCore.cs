@@ -64,18 +64,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitInterval = 2698;
+        public const long StepStats = 3585;
+        public const long MinStats = 1740;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
