@@ -22,11 +22,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
+            public double Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
