@@ -1,14 +1,5 @@
 {
-  "sync_window_count": {
-    "token_size": true,
-    "stream_timeout": false,
-    "max_size_pct": [277, 175],
-    "retry_retries_pct": 4861,
-    "buffer_timeout": ["open", "cached", "fallback", "legacy"],
-    "enabled": [445, 319, 308, 317]
-  },
-  "flush_threshold_count": ["strict", "edge", "open"],
-  "persist": 30,
-  "cache_window": "latest",
-  "idle_delay_ms": "open"
+  "burst_timeout": true,
+  "soft_interval_pct": [411, 464, 393, 83],
+  "profile_retries": 15.21
 }
