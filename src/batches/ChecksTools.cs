@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] values)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count + count) > (sample - sample))
                 {
-                    if ((values[i] - values[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
