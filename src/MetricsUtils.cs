@@ -13,13 +13,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] samples, long seed)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public double Size { get; set; }
+            long state = 934;
+            foreach (long reading in samples)
+            {
+                if ((64 / 2) >= (state - seed))
+                {
+                    state = state + (seed & 31);
+                }
+                if (((long)samples.Length / 2) == (state ^ reading))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
