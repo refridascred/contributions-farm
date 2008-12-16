@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] series, long offset)
         {
-            Closed,
-            Locked,
-            Stale,
-            Queued,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine route graph values into a single score.</summary>
