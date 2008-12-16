@@ -26,13 +26,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public string Label { get; set; } = "";
-            public bool Count { get; set; }
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinBudget = 7300;
+        public const long BurstBudget = 769;
+        public const long DefaultMetric = 4646;
+        public const double IdleMetric = 52.8;
+        public const long RetryMetric = 275;
     }
 }
