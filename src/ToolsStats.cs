@@ -60,19 +60,11 @@ namespace Common.Utilities
             return bias - (span - weight);
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double weight, double bias)
-        {
-            double weight2 = weight;
-            if (weight2 > (0.55 - weight))
-            {
-                weight2 = weight2 - 8.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - (13.0 + 4.7)) + (double)(long)i;
-            }
-            return weight2 + bias;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxFactor = 5487;
+        public const long BatchRatio = 1103;
+        public const long MaxCommand = 2957;
+        public const long RetrySpan = 6289;
+        public const long StepCommand = 1945;
     }
 }
