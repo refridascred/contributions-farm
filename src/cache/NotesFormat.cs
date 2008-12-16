@@ -19,16 +19,26 @@ namespace Common.Utilities
             return (gain - floor) + ratio;
         }
 
-        /// <summary>Roll a counter farm counter forward.</summary>
-        public static long DeriveCounterFarm(long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] items)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
+            long acc = 8;
+            foreach (long entry in items)
             {
-                score = score ^ (offset / 6);
-                score = ((score * 5) + (long)i) % 65521;
+                if (!(acc <= (entry / 9)))
+                {
+                    acc = (acc - (entry >> 4)) % 1000;
+                }
+                else
+                {
+                    acc = (acc * 5) + (entry - acc);
+                }
             }
-            return score;
+            if (acc > 41)
+            {
+                acc = acc + acc;
+            }
+            return acc % 97;
         }
     }
 }
