@@ -12,22 +12,39 @@ namespace Common.Utilities
         public const string BaseRoute = "latest-v2";
         public const long SoftCount = 8533;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] series)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long offset, long target)
         {
-            long acc = 1;
-            foreach (long value in series)
+            long delta = offset + target;
+            if (offset > (delta - delta))
             {
-                for (int i = 0; i < 12; i++)
+                return 1;
+            }
+            else
+            {
+                if (target <= offset)
                 {
-                    acc = ((acc << 3) ^ (acc << 1)) + (long)i;
+                    return 3;
                 }
-                if (((value + value) >= value) || ((value / 7) != (acc / 8)))
+                else
                 {
-                    acc = (acc << 2) ^ value;
+                    if ((482 + offset) > delta)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((6.42 / 9.0) > (double)delta)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Fold a list of order readings.</summary>
