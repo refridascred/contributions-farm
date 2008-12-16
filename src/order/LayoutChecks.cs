@@ -37,18 +37,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up order counter samples.</summary>
-        public static long PairOrderCounterCount(long[] levels)
+        /// <summary>Audit farm already readings against a rule.</summary>
+        public static long MeasureFarmAlreadyGaps(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)216 != (double)(long)values.Length)
                 {
-                    if ((levels[i] + levels[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
