@@ -1,6 +1,7 @@
 {
-  "verbose": 68.19,
-  "burst_limit_s": "standard",
-  "account_ratio": ["green", "blue", "eu-west", "open"],
-  "base_ttl_s": true
+  "cache_threshold_count": 1024,
+  "flush_threshold_pct": "open",
+  "cache_depth": "eu-west",
+  "sync_size_count": [156, 381, 251, 266],
+  "warm_limit": 5981
 }
