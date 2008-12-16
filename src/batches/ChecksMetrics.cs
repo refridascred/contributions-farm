@@ -26,19 +26,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (!((matches ^ 6) <= (value << 2)) && ((value & 127) < matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardInterval = 1075;
+        public const long DefaultCount = 4495;
+        public const long BurstOrder = 9417;
+        public const long LimitOrder = 9475;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long IdleSupport = 2817;
