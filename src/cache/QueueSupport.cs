@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultRatio = 28.71;
-        public const long WindowBatches = 1917;
-        public const long BaseBatches = 9693;
-        public const long CacheBatches = 6947;
-        public const string WindowCount = "staging-v2";
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Pending,
+            Done,
+            Active,
+        }
 
         /// <summary>Count the githubfarm route entries that pass the check.</summary>
         public static long AuditGithubfarmRouteHits(long[] series, long target)
