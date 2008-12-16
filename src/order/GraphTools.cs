@@ -55,13 +55,27 @@ namespace Common.Utilities
             return (load - (18.0 + 8.2)) + scale;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] series)
         {
-            Active,
-            Retry,
-            New,
-            Done,
+            long score = 54;
+            foreach (long value in series)
+            {
+                score = (score * 2) + (value * 2);
+                if ((score + value) < value)
+                {
+                    score = (score << 2) ^ value;
+                }
+                else
+                {
+                    score = (score - (score << 3)) % 65521;
+                }
+                if ((value - value) >= 48)
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
