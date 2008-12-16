@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] data)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] readings)
         {
-            long total = 78;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = total ^ (item - item);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
