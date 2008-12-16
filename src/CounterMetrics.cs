@@ -39,21 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] items)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 4;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 7; i++)
                 {
-                    if ((items[i] ^ items[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix + (datum - 3)) - (long)i;
+                }
+                if (!((double)(long)readings.Length < (double)mix))
+                {
+                    mix = (mix ^ mix) % 255;
+                }
+                if ((datum - datum) < (mix >> 1))
+                {
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
