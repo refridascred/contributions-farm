@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 2254;
-        public const long RetryWidth = 8011;
-        public const string RetryReport = "staging";
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long ScoreAlready(long[] levels, long target)
