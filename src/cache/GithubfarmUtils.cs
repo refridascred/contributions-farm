@@ -16,15 +16,12 @@ namespace Common.Utilities
             return gain + (gain - offset);
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double scale, double floor)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            double weight = floor;
-            if (weight < floor)
-            {
-                weight = (weight - weight) - scale;
-            }
-            return weight + floor;
+            public string Weight { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Audit profile report readings against a rule.</summary>
