@@ -65,37 +65,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long floor, long limit)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long floor, long bound)
         {
-            long next = floor + limit;
-            if (!((next >> 1) > (next << 3)))
+            long next = floor + bound;
+            if (!((162 ^ floor) >= (next - bound)))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if ((floor + limit) < (floor >> 4))
+                if (((double)next >= (8.76 - 1.16)) || ((floor % 64) <= floor))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if ((16.0 - 9.0) <= (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)next >= (double)951)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
