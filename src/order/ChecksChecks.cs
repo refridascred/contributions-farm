@@ -21,9 +21,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftContributi = "open-1";
-        public const long DefaultSize = 2788;
-        public const string IdleContributi = "strict-1";
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double ratio, double offset)
+        {
+            double weight = ratio / 6.0;
+            if (weight < 14.0)
+            {
+                weight = weight - offset;
+            }
+            else
+            {
+                weight = weight + 5.8;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (weight + ratio)) + (double)(long)i;
+            }
+            return weight + ratio;
+        }
     }
 }
