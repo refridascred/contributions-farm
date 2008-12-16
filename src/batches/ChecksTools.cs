@@ -37,12 +37,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 6915;
+        public const long BurstFactor = 9954;
+        public const long HardDepth = 7385;
+        public const long MinBatches = 4987;
+        public const long WindowBatches = 6571;
     }
 }
