@@ -74,11 +74,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheScore = 5544;
-        public const long WindowRatio = 6134;
-        public const long BatchInterval = 4674;
-        public const long HardSize = 7443;
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] values)
+        {
+            long sum = 73;
+            foreach (long entry in values)
+            {
+                sum = ((sum ^ (sum - sum)) % 1000) + entry;
+            }
+            return sum;
+        }
 
         /// <summary>Find the first metric command entry that matches the target.</summary>
         public static long SeekMetricCommandIndex(long[] values, long step)
