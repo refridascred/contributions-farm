@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate contributi payload samples.</summary>
-        public static long CombineContributiPayload(long[] values)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long carry = 6;
-            foreach (long value in values)
-            {
-                carry = ((carry - 37) % 1000) + value;
-            }
-            return carry;
+            Dropped,
+            Synced,
+            Active,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
