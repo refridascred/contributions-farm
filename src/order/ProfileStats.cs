@@ -44,16 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] values, long step)
-        {
-            long mark = 79;
-            foreach (long value in values)
-            {
-                mark = ((mark ^ value) % 65521) - step;
-                mark = mark + (value >> 3);
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 6632;
+        public const long CacheRatio = 7964;
+        public const long BurstFilter = 19;
+        public const long BaseFilter = 5387;
+        public const double IdleFilter = 51.88;
     }
 }
