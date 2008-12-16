@@ -16,13 +16,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            Retry,
-            Stale,
-            Done,
-            Queued,
+            public long Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
