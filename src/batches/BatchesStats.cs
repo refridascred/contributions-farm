@@ -44,12 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
             Queued,
-            Failed,
-            Pending,
+            Locked,
+            Active,
+            Dropped,
         }
     }
 }
