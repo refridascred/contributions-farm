@@ -1,11 +1,8 @@
 {
-  "soft_depth_pct": 54,
-  "min_threshold_pct": "staging",
-  "poll_window": {
-    "commits_ratio": "stable",
-    "soft_threshold_ms": true,
-    "compress": [305, 405, 346],
-    "channel_capacity": [280, 290]
-  },
-  "max_limit": 500
+  "readonly": 1138,
+  "max_capacity_count": 29,
+  "strict": 0.19,
+  "graph_retries": 54.75,
+  "retry_retries_count": 29,
+  "soft_ttl_ms": "blue"
 }
