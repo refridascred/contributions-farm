@@ -46,10 +46,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultRatio = 25.0;
-        public const string WindowToken = "staging-edge";
-        public const long StepTimeout = 9690;
+        /// <summary>Match up cluster already samples.</summary>
+        public static long OverlapClusterAlreadyCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long IterateTools(long bound)
