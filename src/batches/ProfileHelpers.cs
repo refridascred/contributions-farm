@@ -68,16 +68,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a buffer batch counter forward.</summary>
-        public static long RollBufferBatch(long offset)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = (mark ^ mark) % 1000;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public double Level { get; set; }
+            public double Weight { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
