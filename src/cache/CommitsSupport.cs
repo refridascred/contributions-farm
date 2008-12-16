@@ -49,18 +49,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 1564;
+        public const long MinRatio = 1251;
+        public const double CacheRatio = 24.25;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long DigestCommand(long[] values)
