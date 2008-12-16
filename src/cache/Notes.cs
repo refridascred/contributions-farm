@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowWidth = 2744;
-        public const long StepCommits = 204;
-        public const long DefaultCommits = 156;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Done,
+            Stale,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long FoldFormat(long[] data, long target)
