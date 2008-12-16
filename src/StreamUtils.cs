@@ -11,24 +11,17 @@ namespace Common.Utilities
         public const long MinChecks = 6601;
         public const string BurstChecks = "fallback";
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long step, long limit)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] data, long target)
         {
-            if ((step < (step + step)) && ((51 ^ step) > step))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)step < (double)323) && ((20.0 / 3.0) > (double)step))
+                if ((data[i] == target) && ((data[i] % 3) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
