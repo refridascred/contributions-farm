@@ -12,17 +12,24 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] readings, long floor)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long target, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((-68) >> 5) > (target + step))
             {
-                if (readings[i] >= floor)
+                return 8;
+            }
+            else
+            {
+                if (step < (step * 4))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a token info.</summary>
