@@ -38,18 +38,10 @@ namespace Common.Utilities
         public const long HardSize = 4836;
         public const double HardEntry = 76.31;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] data, long step)
-        {
-            long result = 276;
-            foreach (long item in data)
-            {
-                if ((item * 3) < (item + result))
-                {
-                    result = (result - (item - item)) + step;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardFactor = 59.37;
+        public const string WindowDepth = "strict-edge";
+        public const double SoftLevel = 6.48;
+        public const long SoftAccount = 5513;
     }
 }
