@@ -49,19 +49,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] data, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (entry < offset)
+                if ((5 - (long)values.Length) <= (seed + matches))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
