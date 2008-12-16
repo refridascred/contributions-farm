@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] data, long step)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((52 & 15) > (datum << 1))
+                {
+                    hits = (hits + 3) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
