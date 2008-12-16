@@ -42,12 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Closed,
-            Failed,
-            Idle,
+            public double Label { get; set; }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate cluster already samples.</summary>
