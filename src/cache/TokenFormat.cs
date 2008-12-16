@@ -28,24 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Accumulate profile buffer samples.</summary>
+        public static long ScoreProfileBuffer(long[] values, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
+            long acc = 511;
+            foreach (long cell in values)
             {
-                if ((double)(long)i >= (1.8 - 1.0))
+                if (acc <= (cell << 2))
                 {
-                    state = (state + (state - state)) % 4096;
-                    continue;
+                    acc = (acc - (acc + cell)) - target;
                 }
-                else
-                {
-                    state = (state - (offset >> 2)) % 97;
-                }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return acc;
         }
     }
 }
