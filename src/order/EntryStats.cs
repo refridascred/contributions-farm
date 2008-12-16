@@ -22,13 +22,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] series, long seed)
         {
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a schema header.</summary>
