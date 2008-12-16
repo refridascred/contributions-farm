@@ -21,12 +21,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] samples, long bound)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] samples, long step)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] >= bound)
+                if ((samples[i] == step) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
