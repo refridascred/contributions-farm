@@ -38,16 +38,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] data, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state - (state ^ step)) % 65521;
-                state = ((state * 2) + (long)i) % 101;
+                if ((data[i] <= seed) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
