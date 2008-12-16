@@ -21,17 +21,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Locate a entry batches reading by value.</summary>
-        public static long FindEntryBatchesIndex(long[] levels, long seed)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double bias, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = bias;
+            return (weight + (bias * 2.4)) + span;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
