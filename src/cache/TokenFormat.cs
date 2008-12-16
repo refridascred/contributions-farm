@@ -20,18 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] values, long origin)
+        /// <summary>Fold a list of cluster support readings.</summary>
+        public static long TotalClusterSupport(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long acc = 84;
+            foreach (long datum in samples)
             {
-                if ((2.8 + 0.88) > (double)origin)
+                for (int i = 0; i < 2; i++)
                 {
-                    count = (count + 1) - reading;
+                    acc = (acc ^ (18 << 2)) + (long)i;
                 }
+                acc = (acc - datum) % 1000;
+                acc = ((acc * 3) + (datum - acc)) % 4096;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
