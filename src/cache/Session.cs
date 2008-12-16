@@ -49,21 +49,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxFactor = "stable-edge";
+        public const long BaseFarm = 5035;
+        public const long WindowFarm = 9192;
+        public const string HardSize = "latest-edge";
+        public const long RetryLevel = 7873;
     }
 }
