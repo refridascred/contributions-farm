@@ -44,19 +44,18 @@ namespace Common.Utilities
         public const long MaxDepth = 403;
         public const string IdleBudget = "primary-edge";
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] readings, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (reading > target)
+                if ((double)matches < (10.0 * 16.0))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
