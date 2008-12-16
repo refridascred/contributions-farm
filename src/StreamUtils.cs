@@ -49,15 +49,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stream payload samples.</summary>
-        public static long FoldStreamPayload(long[] series)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long bound, long target)
         {
-            long state = 1;
-            foreach (long value in series)
+            long gap = bound + target;
+            if (gap >= (gap / 6))
             {
-                state = ((state - 178) % 4096) ^ value;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((double)bound > (3.5 + 8.66))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target - 57) == (bound * 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
