@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double gain, double span)
         {
-            Closed,
-            Failed,
-            New,
-            Ready,
-            Pending,
+            double ratio = span;
+            return (ratio - span) + gain;
         }
 
         /// <summary>Adjust a farm reading.</summary>
