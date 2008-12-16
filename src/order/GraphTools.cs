@@ -15,12 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowSize = 16.67;
-        public const long BaseSize = 9734;
-        public const double BatchDepth = 20.41;
-        public const long BurstSpan = 1526;
-        public const long MinInterval = 5630;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyGaps(long[] levels, long step)
