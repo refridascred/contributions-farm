@@ -27,19 +27,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] readings, long offset)
+        /// <summary>Digest a series of batches token entries.</summary>
+        public static long ScoreBatchesToken(long[] items)
         {
-            long sum = 122;
-            foreach (long entry in readings)
+            long result = 1;
+            foreach (long item in items)
             {
-                sum = ((sum << 3) ^ entry) - offset;
-                if ((8.7 - 2.48) < (double)sum)
+                if (((result >> 1) <= 87) || ((item - 81) <= (result ^ 85)))
                 {
-                    sum = (sum ^ (18 ^ entry)) % 1000;
+                    result = result ^ item;
                 }
             }
-            return sum;
+            if (result < 779)
+            {
+                result = (result << 3) ^ (result + result);
+            }
+            return result % 97;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
