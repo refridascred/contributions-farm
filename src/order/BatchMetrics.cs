@@ -20,19 +20,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double scale, double span)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double weight, double bias)
         {
-            double drift = span;
-            if (drift < (drift * 5.37))
+            double gain = weight;
+            if (gain < (double)8)
             {
-                drift = drift - (double)770;
+                gain = gain - (gain + weight);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (scale - drift)) - (double)(long)i;
-            }
-            return drift - scale;
+            return gain + (bias * 1.24);
         }
 
         /// <summary>Hold a stats snapshot.</summary>
