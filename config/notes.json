@@ -1,7 +1,7 @@
 {
-  "flush_limit_pct": 22,
-  "audit": 140,
-  "record_size": 64.3,
-  "token_limit": 5142,
-  "max_ttl_count": ["stable", "strict", "fallback"]
+  "persist": "open",
+  "command_window": "strict",
+  "cache_window_s": false,
+  "retry_interval_count": 250,
+  "retry_ttl_count": "local"
 }
