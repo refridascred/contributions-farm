@@ -27,14 +27,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 794;
+        public const double LimitWidth = 55.62;
+        public const long SoftMetrics = 4374;
 
         /// <summary>Accumulate session samples.</summary>
         public static long ScoreSession(long[] levels, long seed)
