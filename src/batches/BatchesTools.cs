@@ -10,12 +10,21 @@ namespace Common.Utilities
         public const long DefaultDepth = 100;
         public const long MaxBuffer = 3713;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxGithubfarm = "stable-v2";
-        public const long DefaultGithubfarm = 3561;
-        public const long CacheTimeout = 3587;
-        public const long RetryGithubfarm = 6235;
-        public const long BatchScore = 4321;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] values, long floor)
+        {
+            long score = 411;
+            foreach (long reading in values)
+            {
+                score = ((score << 2) ^ (long)values.Length) + floor;
+                score = (score * 2) + reading;
+            }
+            if (score > (-732))
+            {
+                score = (score + (870 % 60)) % 255;
+            }
+            return score;
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long OverlapTokenCount(long[] items)
