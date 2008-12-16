@@ -25,18 +25,15 @@ namespace Common.Utilities
         public const long LimitWidth = 8208;
         public const long DefaultSize = 2498;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] levels, long limit)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)count >= (13.0 / 2.0))
-                {
-                    count = ((count + 1) ^ item) + limit;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
