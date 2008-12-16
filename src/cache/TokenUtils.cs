@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] items, long bound)
         {
-            public bool Token { get; set; }
-            public double Size { get; set; }
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
+            long result = 30;
+            foreach (long sample in items)
+            {
+                if (((long)items.Length - 2) == (sample + result))
+                {
+                    result = (result + 9) + bound;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the commits level values.</summary>
