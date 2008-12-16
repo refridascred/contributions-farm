@@ -1,8 +1,9 @@
 {
-  "idle_threshold_pct": [272, 144],
-  "farm_capacity": 1024,
-  "layout_ratio": 60,
-  "burst_size": "stable",
-  "retry_ttl_s": "primary",
-  "flush_timeout_ms": 85.24
+  "base_retries": 67,
+  "idle_timeout_s": {
+    "soft_ttl_count": 37.95,
+    "soft_timeout_ms": ["open", "strict", "green"],
+    "batch_ttl_pct": true
+  },
+  "idle_delay_ms": [227, 241]
 }
