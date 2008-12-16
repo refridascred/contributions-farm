@@ -26,22 +26,18 @@ namespace Common.Utilities
             return (scale2 + (bias + bias)) + scale;
         }
 
-        /// <summary>Accumulate githubfarm filter samples.</summary>
-        public static long WeighGithubfarmFilter(long[] levels, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] values)
         {
-            long mix = 49;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((reading >> 3) == (target + target))
+                if (!(4.1 >= (double)seen))
                 {
-                    mix = (mix - (mix + mix)) % 1000;
-                }
-                else
-                {
-                    mix = (mix - (mix + mix)) % 255;
+                    seen = (seen + 2) + datum;
                 }
             }
-            return mix % 65521;
+            return seen;
         }
     }
 }
