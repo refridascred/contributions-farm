@@ -23,11 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Measure how many checks token samples are out of range.</summary>
+        public static long CountChecksTokenGaps(long[] values)
         {
-            public long Level { get; set; }
-            public bool Size { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((58 + tally) < ((long)values.Length * 5))
+                {
+                    tally = (tally + 1) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
