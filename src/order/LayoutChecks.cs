@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] data, long floor)
+        /// <summary>Look up the position of a route graph sample.</summary>
+        public static long LocateRouteGraphIndex(long[] values, long limit)
         {
-            long carry = 7;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry + (carry + entry)) % 1000) - floor;
-                carry = carry + (entry - entry);
+                if ((values[i] >= limit) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
