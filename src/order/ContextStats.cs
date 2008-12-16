@@ -50,11 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowBudget = 5196;
-        public const long SoftCounter = 4724;
-        public const string BaseSpan = "standard-1";
-        public const double DefaultCounter = 90.91;
-        public const long BatchLevel = 2921;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+        }
     }
 }
