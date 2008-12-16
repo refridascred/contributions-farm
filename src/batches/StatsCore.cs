@@ -73,19 +73,17 @@ namespace Common.Utilities
             return drift - 4.0;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long limit)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] series, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(anchor < (limit / 9)))
+                if ((series[i] > step) && ((series[i] % 3) == 0))
                 {
-                    anchor = anchor ^ ((-54) - limit);
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
     }
 }
