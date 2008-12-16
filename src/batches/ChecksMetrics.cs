@@ -92,16 +92,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long target)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] series)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = acc ^ (long)i;
-                acc = ((acc * 3) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
