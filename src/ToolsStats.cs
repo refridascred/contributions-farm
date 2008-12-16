@@ -32,14 +32,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Measure how many farm format samples are out of range.</summary>
+        public static long CountFarmFormatOutliers(long[] samples, long seed)
         {
-            Draft,
-            Idle,
-            Paused,
-            Synced,
-            Active,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading > 4.0)
+                {
+                    tally = (tally + 1) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
