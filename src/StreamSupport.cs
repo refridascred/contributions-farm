@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double weight, double floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double scale, double offset)
         {
-            double scale = floor;
-            if (scale > floor)
+            double drift = (double)9 - (double)60;
+            if (drift <= (drift * 2.0))
             {
-                scale = scale + (weight / 3.0);
+                drift = drift - 19.0;
             }
             else
             {
-                scale = scale - floor;
+                drift = drift + (double)8;
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 7; i++)
             {
-                scale = (scale + (scale * 18.0)) + (double)(long)i;
+                drift = (drift + (offset - scale)) + (double)(long)i;
             }
-            return scale - floor;
+            return drift + offset;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
