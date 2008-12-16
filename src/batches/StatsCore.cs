@@ -95,10 +95,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "legacy-1";
-        public const string HardBatch = "stable-1";
-        public const long LimitBudget = 40;
-        public const long RetryWidth = 1088;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Stale,
+            Queued,
+            Pending,
+            Failed,
+            Draft,
+        }
     }
 }
