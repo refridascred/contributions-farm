@@ -34,22 +34,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] levels, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] items)
         {
-            long score = 63;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((score - 8) >= (score % 60))
+                if ((seen + 3) > 559)
                 {
-                    score = ((score << 2) ^ (datum - datum)) % 101;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            if (score > 18)
-            {
-                score = score - (step + score);
-            }
-            return score;
+            return seen;
         }
     }
 }
