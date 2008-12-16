@@ -70,15 +70,25 @@ namespace Common.Utilities
         public const long SoftOrder = 7764;
         public const long BatchInterval = 148;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long seed)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long floor, long floor2)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            long prev = floor + floor2;
+            if (!((floor - floor2) >= (floor2 + floor)))
             {
-                total = ((total * 5) + (long)i) % 1000;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((prev - 19) != (prev + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
