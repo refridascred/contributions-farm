@@ -1,11 +1,30 @@
 # githubfarm settings
-min_limit_s: standard
-poll_depth_count:
-  - 328
-  - 484
-  - 38
-  - 149
-retry_depth_s: 8134
-dry_run: true
-cache_retries_pct: local
-idle_timeout_ms: primary
+warm_interval: open
+warm_timeout_s: 4.64
+buffer_interval: 4666
+batch_size:
+  warm_ttl: 80.97
+  buffer_window:
+    - staging
+    - stable
+  tools_threshold:
+    entry_interval: false
+    poll_threshold_pct: 38.87
+    base_threshold: 5
+    warm_retries: 39.1
+    default_retries_count: true
+  retry_threshold_s: 7969
+  default_window_s: 13.05
+  schema_threshold: 2318
+compress: 95
+audit:
+  cache_timeout_pct: 10
+  base_size_ms: local
+  counter_limit: true
+  soft_delay_pct: 7445
+  stream_timeout: 9482
+  soft_capacity:
+    - fallback
+    - primary
+    - stable
+    - cached
