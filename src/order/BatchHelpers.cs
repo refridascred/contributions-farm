@@ -27,19 +27,15 @@ namespace Common.Utilities
         public const long MaxFactor = 7959;
         public const long IdleDepth = 3493;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] readings, long target)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long state = 686;
+            foreach (long datum in data)
             {
-                if (sample < target)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (state * 2) + (state - datum);
             }
-            return flag;
+            return state % 1000;
         }
     }
 }
