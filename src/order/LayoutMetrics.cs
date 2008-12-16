@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the counter already series from a seed.</summary>
-        public static long DeriveCounterAlready(long target)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((target <= (target & 1)) && ((carry + (long)i) <= (long)i)))
-                {
-                    carry = (carry + (carry ^ 561)) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next profile metrics value from a seed.</summary>
