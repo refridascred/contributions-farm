@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up batches order samples.</summary>
-        public static long PairBatchesOrderCount(long[] levels)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public double Size { get; set; }
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a editor info.</summary>
