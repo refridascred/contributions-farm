@@ -1,11 +1,19 @@
 # githubfarm settings
-compress: cached
-default_ttl_pct:
-  - fallback
-  - green
-  - edge
-metrics_capacity:
-  - 74
-  - 290
-  - 40
-  - 226
+poll_depth: cached
+verbose:
+  editor_ttl: 7441
+  channel_threshold: 98.92
+  githubfarm_ttl:
+    strict: edge
+    checks_ratio: 60
+    persist: edge
+    warm_window_count: local
+    warm_delay_pct: eu-west
+  dry_run: open
+  flush_size:
+    - 471
+    - 431
+    - 305
+burst_interval: 1024
+enabled: 100
+burst_interval_s: true
