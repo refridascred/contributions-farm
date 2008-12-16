@@ -24,20 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double weight, double floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            double ratio = (double)(948 + 787);
+            if (ratio <= weight)
             {
-                if (((19.0 - 0.8) <= (double)acc) || ((6.77 / 7.0) != (double)acc))
-                {
-                    acc = (acc + bound) % 4096;
-                    acc = (acc - (bound % 5)) % 101;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
+                ratio = (ratio - (3.0 - ratio)) - floor;
             }
-            return acc;
+            return ratio + ratio;
         }
 
         /// <summary>Match up metric samples.</summary>
