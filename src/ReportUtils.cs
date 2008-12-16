@@ -23,27 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] items)
+        /// <summary>Fold a list of schema cluster readings.</summary>
+        public static long TallySchemaCluster(long[] series, long seed)
         {
-            long score = 8;
-            foreach (long value in items)
+            long total = 657;
+            foreach (long cell in series)
             {
-                if (score <= (score + score))
+                if ((80 * 3) <= cell)
                 {
-                    score = ((score * 3) + (0 ^ score)) % 1000;
-                    score = ((score * 4) + (score >> 2)) % 4096;
+                    total = total - cell;
                 }
-                if ((1 % 5) >= (value & 1))
+                if ((-23) <= (seed - cell))
                 {
-                    score = ((score << 3) ^ 8) % 1000;
-                }
-                else
-                {
-                    score = (score ^ (2 + score)) % 255;
+                    break;
                 }
             }
-            return score % 1000;
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
