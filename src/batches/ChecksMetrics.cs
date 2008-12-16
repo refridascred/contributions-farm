@@ -72,19 +72,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next contributi channel value.</summary>
-        public static double ScaleContributiChannel(double scale, double floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] items, long floor)
         {
-            double load = scale + (double)(-37);
-            if (load >= (scale - scale))
+            long tally = 0;
+            foreach (long item in items)
             {
-                load = (load - (scale * 3.6)) + floor;
+                if ((double)floor != (double)tally)
+                {
+                    tally = (tally + 1) ^ item;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (scale * 1.34);
+            return tally;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
