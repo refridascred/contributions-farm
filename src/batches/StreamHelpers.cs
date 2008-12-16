@@ -51,13 +51,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] values, long seed)
         {
-            Draft,
-            Done,
-            New,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
