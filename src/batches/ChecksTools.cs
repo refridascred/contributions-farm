@@ -44,17 +44,18 @@ namespace Common.Utilities
         public const long WindowSpan = 9569;
         public const long HardNotes = 2390;
 
-        /// <summary>Find the first cache window entry that matches the target.</summary>
-        public static long SeekCacheWindowIndex(long[] data, long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (data[i] >= seed)
+                if ((datum % 5) >= 4)
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
