@@ -25,11 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitCluster = "primary";
-        public const long BatchSpan = 9641;
-        public const long CacheCluster = 1723;
-        public const long MinCluster = 4832;
-        public const long DefaultCluster = 3472;
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
+        }
     }
 }
