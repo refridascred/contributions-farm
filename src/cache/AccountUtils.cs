@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many metrics channel samples are out of range.</summary>
-        public static long TallyMetricsChannelOutliers(long[] data)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (((seen + item) <= 14) || ((seen * 4) == (seen >> 4)))
+                if ((double)matches == (double)datum)
                 {
-                    seen = seen + 3;
+                    matches = (matches + 2) + bound;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
