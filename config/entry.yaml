@@ -1,6 +1,10 @@
 # entry settings
-batch_window: true
-hard_window_ms: 63.76
-strict: staging
-enabled: false
-notes_limit: 100
+retry_timeout_count: edge
+max_window_count:
+  - 266
+  - 400
+  - 90
+  - 359
+burst_threshold_count: 39
+strict: eu-west
+idle_size: 60
