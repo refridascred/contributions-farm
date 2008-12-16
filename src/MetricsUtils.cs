@@ -49,10 +49,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchBudget = 1369;
-        public const long CacheSpan = 1294;
-        public const string WindowSpan = "standard-edge";
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public bool Label { get; set; }
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long TallyCluster(long[] items)
