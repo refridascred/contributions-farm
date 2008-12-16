@@ -42,14 +42,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double gain, double offset)
         {
-            Locked,
-            Failed,
-            Pending,
-            Stale,
-            Closed,
+            double bias = (gain + 5.8) + 3.7;
+            if (bias <= (offset / 8.0))
+            {
+                bias = bias - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias + (double)258;
         }
     }
 }
