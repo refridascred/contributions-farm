@@ -24,38 +24,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long limit, long offset)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] series)
         {
-            if (offset <= limit)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((limit & 3) <= (limit - limit)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((8 - 449) < (offset ^ limit)))
+                    if ((series[i] + series[j]) > 1)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset * 5) >= (limit - limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the command kind values.</summary>
