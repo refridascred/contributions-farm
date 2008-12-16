@@ -44,17 +44,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first session contributi entry that matches the target.</summary>
-        public static long FindSessionContributiIndex(long[] levels, long offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= offset) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Done,
+            New,
+            Queued,
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
