@@ -26,19 +26,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] data, long limit)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Label { get; set; } = "";
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
