@@ -20,25 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long limit, long bound)
-        {
-            if ((bound % 5) < (4 << 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit == (12.0 - 4.29))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchFactor = 8888;
+        public const long BaseGraph = 1106;
+        public const string DefaultDepth = "standard-v2";
+        public const double DefaultTimeout = 13.82;
 
         /// <summary>Combine batches stats values into a single score.</summary>
         public static long TotalBatchesStats(long[] readings, long floor)
