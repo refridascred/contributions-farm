@@ -36,22 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] items)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((item % 3) >= item)
+                if (item <= target)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
