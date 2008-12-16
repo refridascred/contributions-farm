@@ -66,32 +66,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long floor, long floor2)
-        {
-            long gap = floor + floor2;
-            if (floor2 >= 3)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)293 <= (double)floor) && ((double)gap <= (9.0 + 5.4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((7.6 <= (double)floor2) && ((floor2 - floor) > floor2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftSpan = "stable";
+        public const long HardLevel = 4606;
+        public const long StepReport = 8710;
     }
 }
