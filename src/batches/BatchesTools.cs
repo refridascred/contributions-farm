@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next context buffer value.</summary>
-        public static double ScaleContextBuffer(double rate, double bias)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            double weight = (double)((-3) - 19);
-            return ((weight - (11.0 + 3.45)) + rate) + bias;
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
