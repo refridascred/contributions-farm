@@ -14,22 +14,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] series)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long sum = 976;
-            foreach (long entry in series)
-            {
-                if ((entry << 1) < (entry & 255))
-                {
-                    sum = ((sum * 2) + (716 * 4)) % 101;
-                }
-                if ((sum >> 1) < sum)
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            Stale,
+            Done,
+            Retry,
+            Dropped,
+            Active,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
