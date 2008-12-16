@@ -72,18 +72,19 @@ namespace Common.Utilities
         public const long RetryChannel = 3205;
         public const long MinDepth = 6152;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] samples)
+        /// <summary>Check that every metrics context entry stays within the limit.</summary>
+        public static bool GuardMetricsContextBounds(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((sample ^ seen) > (seen >> 1))
+                if (cell <= target)
                 {
-                    seen = seen + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
