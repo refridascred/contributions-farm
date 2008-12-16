@@ -1,14 +1,15 @@
 # entry settings
-default_window: 60
-channel_interval: 500
-report_depth:
-  flush_interval_pct:
-    compress: blue
-    sync_capacity: eu-west
-    min_delay_s: strict
-    max_window_count: 80
-  cache_interval_count: 77
-  cache_interval_s: open
-  idle_ratio_pct: true
-  max_capacity: staging
-profile_ttl: 80.81
+soft_depth_ms: 3506
+farm_threshold: true
+poll_threshold_s:
+  - 451
+  - 325
+  - 182
+  - 21
+soft_retries_ms: legacy
+max_window_s:
+  - cached
+  - standard
+  - local
+  - green
+schema_ratio: 100
