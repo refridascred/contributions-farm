@@ -40,18 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] items)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (!((9 - entry) == (hits << 2)) && ((hits - (long)items.Length) == (entry - hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
