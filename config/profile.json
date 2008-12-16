@@ -1,5 +1,7 @@
 {
-  "profile_size": "fallback",
-  "tools_window": false,
-  "cache_ratio": false
+  "hard_timeout_count": [74, 117],
+  "burst_timeout": "legacy",
+  "enabled": "edge",
+  "verbose": "standard",
+  "retry_window_s": "local"
 }
