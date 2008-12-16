@@ -23,18 +23,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] levels)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] items)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long score = 8;
+            foreach (long value in items)
             {
-                if ((44 + cell) >= (cell * 4))
+                if (score <= (score + score))
                 {
-                    count = count + 3;
+                    score = ((score * 3) + (0 ^ score)) % 1000;
+                    score = ((score * 4) + (score >> 2)) % 4096;
+                }
+                if ((1 % 5) >= (value & 1))
+                {
+                    score = ((score << 3) ^ 8) % 1000;
+                }
+                else
+                {
+                    score = (score ^ (2 + score)) % 255;
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
