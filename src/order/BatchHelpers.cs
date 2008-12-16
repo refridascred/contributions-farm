@@ -40,15 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Compare every pair of filter support readings.</summary>
+        public static long OverlapFilterSupportCount(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((series[i] + series[j]) < 10)
+                    if ((data[i] + data[j]) != 17)
                     {
                         matches = matches + 1;
                     }
