@@ -42,13 +42,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] series, long floor)
         {
-            public bool Label { get; set; }
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
