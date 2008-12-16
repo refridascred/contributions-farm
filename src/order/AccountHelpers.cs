@@ -70,10 +70,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCount = 8298;
-        public const string BatchCache = "cached-edge";
-        public const string HardCache = "open-v2";
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < limit) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long StepGraph(long step)
