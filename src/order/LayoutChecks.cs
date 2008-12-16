@@ -46,13 +46,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Draft,
-            New,
-            Closed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheTimeout = "legacy-edge";
+        public const double WindowScore = 27.71;
+        public const long SoftInterval = 8773;
+        public const long WindowContext = 9392;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long TallyRoute(long[] readings, long offset)
