@@ -14,13 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] items, long step)
         {
-            Done,
-            Pending,
-            New,
-            Closed,
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a counter options.</summary>
