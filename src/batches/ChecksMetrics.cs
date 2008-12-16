@@ -71,18 +71,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout channel readings against a rule.</summary>
-        public static long TallyLayoutChannelGaps(long[] series, long floor)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor / 2) >= tally)
+                if (data[i] < target)
                 {
-                    tally = (tally + 1) - sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
