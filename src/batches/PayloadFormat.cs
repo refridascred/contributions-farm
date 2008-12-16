@@ -30,19 +30,25 @@ namespace Common.Utilities
             return drift + 9.21;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double rate, double bias)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long floor, long step)
         {
-            double gain = bias - (rate + rate);
-            if (gain > (double)560)
+            long prev = floor - step;
+            if ((double)prev < (double)step)
             {
-                gain = gain + gain;
+                return 0;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                gain = (gain + rate) + (double)(long)i;
+                if ((step >= prev) || ((prev + floor) > 9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return gain + (rate + rate);
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
