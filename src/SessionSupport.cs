@@ -13,19 +13,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] samples)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long score = 9;
-            foreach (long datum in samples)
-            {
-                score = (score + (-4)) - datum;
-            }
-            if (score > 78)
-            {
-                score = ((score << 2) ^ (score - score)) % 1000;
-            }
-            return score;
+            Done,
+            Synced,
+            Ready,
+            Idle,
+            Locked,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
