@@ -14,18 +14,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] items, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((948 >> 5) == (entry + 1))
+                if (8 >= hits)
                 {
-                    matches = (matches + 1) - floor;
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
