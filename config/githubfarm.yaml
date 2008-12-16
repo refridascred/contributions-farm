@@ -1,5 +1,11 @@
 # githubfarm settings
-stats_window: blue
-support_depth: 30
-batch_depth_s: 250
-layout_threshold: 3691
+compress: cached
+default_ttl_pct:
+  - fallback
+  - green
+  - edge
+metrics_capacity:
+  - 74
+  - 290
+  - 40
+  - 226
