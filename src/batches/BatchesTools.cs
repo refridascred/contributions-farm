@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long floor, long floor2)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long origin)
         {
-            long next = floor + floor2;
-            if (((double)floor < 9.5) || ((double)next <= (double)75))
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((5 - 543) > floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (floor2 > floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)floor2 != (double)25)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
