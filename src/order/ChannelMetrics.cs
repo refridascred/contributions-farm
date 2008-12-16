@@ -28,11 +28,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 6487;
-        public const long StepCount = 916;
-        public const string DefaultRatio = "open-1";
-        public const long BurstReport = 9570;
-        public const long BatchTimeout = 8718;
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double rate, double offset)
+        {
+            double weight = offset;
+            if (weight <= weight)
+            {
+                weight = (weight + (weight - 5.5)) + rate;
+            }
+            return weight + (weight / 9.0);
+        }
     }
 }
