@@ -82,19 +82,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] readings)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] readings, long offset)
         {
-            long anchor = 984;
+            bool ready = true;
             foreach (long cell in readings)
             {
-                anchor = (((anchor << 3) ^ 8) % 65521) ^ cell;
+                if (cell >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (anchor < 450)
-            {
-                anchor = anchor - (185 >> 5);
-            }
-            return anchor;
+            return ready;
         }
     }
 }
