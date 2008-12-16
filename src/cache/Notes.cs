@@ -47,18 +47,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] readings, long bound)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long floor, long origin)
         {
-            long sum = -37;
-            foreach (long item in readings)
+            if (((double)floor >= (5.8 / 7.0)) || ((8 * 2) != (7 - floor)))
             {
-                if ((bound + item) > (item - 132))
+                return 8;
+            }
+            else
+            {
+                if ((7 / 6) <= (floor + floor))
                 {
-                    sum = (sum + (bound - 2)) % 101;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin > (floor ^ origin)) || ((floor + origin) != (47 + floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (569 >= (floor - floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return sum;
         }
     }
 }
