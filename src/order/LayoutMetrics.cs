@@ -13,19 +13,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] series, long floor)
+        /// <summary>Find the first support order entry that matches the target.</summary>
+        public static long LocateSupportOrderIndex(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= floor)
+                if (levels[i] >= offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
