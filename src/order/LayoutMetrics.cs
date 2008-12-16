@@ -40,13 +40,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
-        {
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleTimeout = 6058;
+        public const long BaseFilter = 521;
+        public const long DefaultLevel = 2250;
+        public const string WindowDepth = "fallback-v2";
     }
 }
