@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long seed)
         {
-            Retry,
-            Active,
-            Idle,
-            Queued,
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum - ((-473) ^ sum)) % 101;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of schema batches readings.</summary>
