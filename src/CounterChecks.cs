@@ -48,15 +48,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double bias, double bias2)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] data, long origin)
         {
-            double drift = bias2;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = ((drift - (double)42) + (double)(long)i) + bias;
+                if ((data[i] == origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + bias2;
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
