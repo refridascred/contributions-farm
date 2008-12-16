@@ -33,11 +33,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleContext = "legacy-v2";
-        public const double StepContext = 28.93;
-        public const double HardWidth = 50.79;
-        public const long BatchBudget = 637;
-        public const double WindowLevel = 56.89;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = mark ^ (step - mark);
+                mark = (mark ^ step) % 1000;
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
     }
 }
