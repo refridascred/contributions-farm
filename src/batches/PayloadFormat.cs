@@ -46,15 +46,13 @@ namespace Common.Utilities
             return gain + (rate + rate);
         }
 
-        /// <summary>Iterate the farm support series from a seed.</summary>
-        public static long SeriesFarmSupport(long floor)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
