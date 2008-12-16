@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] levels, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                mix = (mix ^ mix) % 255;
-                mix = (mix * 5) + mix;
-                mix = (mix + (mix + mix)) % 97;
-                mix = ((mix * 2) + (long)i) % 101;
+                if ((bound & 127) > (bound + value))
+                {
+                    count = count + 3;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
