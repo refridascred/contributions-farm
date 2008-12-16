@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] samples)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] samples)
         {
-            long carry = 27;
-            foreach (long sample in samples)
+            long score = 925;
+            foreach (long value in samples)
             {
-                carry = (carry * 4) + 184;
-                carry = (carry ^ carry) % 65521;
-                carry = (carry ^ (884 - sample)) % 65521;
-                if (!((double)sample >= (20.0 + 9.38)))
+                if ((value - 512) == (score >> 4))
                 {
-                    break;
+                    score = (score + (value - value)) % 255;
                 }
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
