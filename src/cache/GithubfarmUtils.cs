@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] samples)
         {
-            Failed,
-            Active,
-            Locked,
-            Queued,
-            Ready,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (((double)datum >= (4.75 / 8.0)) || ((13.0 + 0.1) != (double)datum))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the context class values.</summary>
