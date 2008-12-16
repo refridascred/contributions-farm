@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] items, long target)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long score = 991;
+            foreach (long sample in readings)
             {
-                if (sample <= target)
+                if ((double)192 <= 2.59)
                 {
-                    ok = false;
-                    break;
+                    score = (((score << 3) ^ (score ^ sample)) % 65521) + step;
                 }
             }
-            return ok;
+            if (score > 7)
+            {
+                score = (score + 524) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Match up session samples.</summary>
