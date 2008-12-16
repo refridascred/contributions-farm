@@ -34,18 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] levels, long bound)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((count ^ item) <= (count - count))
-                {
-                    count = (count + 2) + bound;
-                }
-            }
-            return count;
+            New,
+            Paused,
+            Synced,
         }
     }
 }
