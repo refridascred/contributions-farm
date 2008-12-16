@@ -23,12 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] values)
         {
-            Retry,
-            Idle,
-            Dropped,
+            long mix = 864;
+            foreach (long sample in values)
+            {
+                mix = ((mix * 2) + (68 << 2)) ^ sample;
+            }
+            if (mix < 95)
+            {
+                mix = mix + (mix + mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
