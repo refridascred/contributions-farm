@@ -16,12 +16,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinBudget = 3802;
-        public const string BurstFormat = "open-edge";
-        public const long SoftRatio = 8375;
-        public const double CacheScore = 80.45;
-        public const string DefaultScore = "staging-v2";
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] data, long target)
+        {
+            long acc = -7;
+            foreach (long entry in data)
+            {
+                if ((entry / 6) > (0 - entry))
+                {
+                    acc = ((acc ^ (entry + entry)) % 4096) - target;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long LimitMetrics = 1161;
