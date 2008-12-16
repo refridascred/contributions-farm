@@ -22,20 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((step * 4) >= step)
-                {
-                    score = (score * 5) + (long)i;
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 1951;
+        public const string StepLayout = "stable";
+        public const double SoftFactor = 18.32;
+        public const string BaseSize = "stable-edge";
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ScaleCache(double weight, double span)
