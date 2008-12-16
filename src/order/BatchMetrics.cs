@@ -71,19 +71,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double bias, double bias2)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long step, long seed)
         {
-            double rate = (double)29 * 5.0;
-            if (rate <= (rate + 14.0))
+            if (!((seed << 3) != (step + step)))
             {
-                rate = (rate + bias2) + bias;
+                return 6;
             }
             else
             {
-                rate = rate - (bias2 + rate);
+                if ((double)seed == (5.54 / 6.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed & 31) >= 8)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return rate - (double)83;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
