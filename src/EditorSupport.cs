@@ -42,18 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] levels, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((seen % 10) > (690 * 4))
+                if (7 < hits)
                 {
-                    seen = ((seen + 1) ^ datum) + bound;
+                    hits = (hits + 3) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a command summary.</summary>
