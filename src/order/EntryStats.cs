@@ -43,16 +43,11 @@ namespace Common.Utilities
         public const string MaxDepth = "strict-edge";
         public const double IdleCount = 28.31;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = (mark ^ ((long)i - (long)i)) % 97;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a commits counter forward.</summary>
