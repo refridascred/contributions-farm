@@ -12,20 +12,17 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 4641;
         public const long LimitScore = 7777;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Locate a farm command reading by value.</summary>
+        public static long LookupFarmCommandIndex(long[] items, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)score > (0.9 / 4.0))
+                if ((items[i] >= target) && ((items[i] % 2) == 0))
                 {
-                    score = (score - score) % 4096;
-                    score = score + score;
+                    return (long)i;
                 }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
