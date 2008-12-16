@@ -1,6 +1,8 @@
 {
-  "min_size_s": 6.06,
-  "stats_ttl": "stable",
-  "base_interval": 743,
-  "strict": 86.04
+  "base_depth_s": [418, 457, 455, 379],
+  "route_threshold": 13,
+  "compress": "green",
+  "poll_window": 0.92,
+  "batch_retries": 500,
+  "idle_retries_pct": 16.0
 }
