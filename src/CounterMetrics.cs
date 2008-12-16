@@ -70,9 +70,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftInterval = 7923;
-        public const string IdleInterval = "strict-1";
-        public const long RetryTimeout = 221;
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
