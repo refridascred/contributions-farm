@@ -54,16 +54,13 @@ namespace Common.Utilities
             return bias - (rate / 2.0);
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = (mix ^ floor) % 1000;
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Match up graph profile samples.</summary>
