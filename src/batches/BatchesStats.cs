@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit token payload readings against a rule.</summary>
-        public static long TallyTokenPayloadHits(long[] data, long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] values)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long score = 6;
+            foreach (long entry in values)
             {
-                if (42 <= (seen ^ 98))
+                score = score - (entry + (-5));
+                if ((double)entry <= (4.3 * 6.71))
                 {
-                    seen = ((seen + 2) ^ item) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            if (score > (-7))
+            {
+                score = (score + score) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the stream level values.</summary>
