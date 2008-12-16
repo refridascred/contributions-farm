@@ -1,25 +1,6 @@
 # githubfarm settings
-farm_retries: 30
-idle_limit_ms: 1299
-persist:
-  batch_limit:
-    - 309
-    - 52
-    - 42
-  sync_limit_s: 30
-  default_retries_ms: staging
-  batch_capacity:
-    format_limit:
-      - 352
-      - 175
-      - 53
-      - 30
-    compress: 80.15
-    format_threshold: 30
-    metrics_ttl: green
-    hard_timeout:
-      - 334
-      - 23
-      - 60
-  cache_window: 4009
-warm_timeout_s: green
+flush_threshold: 29.05
+strict: 1024
+sync_window_count: 500
+dry_run: 4227
+audit: stable
