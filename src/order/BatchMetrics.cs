@@ -82,22 +82,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] data, long seed)
-        {
-            long carry = 9;
-            foreach (long sample in data)
-            {
-                if (!(((seed + seed) >= seed) && ((double)sample > (double)carry)))
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-                if ((double)sample <= 2.66)
-                {
-                    carry = ((carry << 3) ^ (3 / 9)) % 255;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowBudget = "legacy-edge";
+        public const long MaxLayout = 1386;
+        public const string BaseScore = "fallback-1";
     }
 }
