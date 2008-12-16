@@ -18,22 +18,15 @@ namespace Common.Utilities
         public const string CacheWindow = "staging-v2";
         public const long MinInterval = 9819;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] items, long offset)
+        /// <summary>Iterate the stats metric series from a seed.</summary>
+        public static long IterateStatsMetric(long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long score = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)reading <= 5.2)
-                {
-                    seen = (seen + 2) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
     }
 }
