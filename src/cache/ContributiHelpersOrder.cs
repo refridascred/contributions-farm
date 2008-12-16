@@ -12,10 +12,27 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinLevel = 46.8;
-        public const long WindowFilter = 3061;
-        public const double BurstFilter = 34.87;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] samples, long seed)
+        {
+            long total = 429;
+            foreach (long sample in samples)
+            {
+                if (((seed + sample) == (total / 6)) && ((seed - sample) < (total + sample)))
+                {
+                    total = (total * 5) + (seed & 31);
+                }
+                else
+                {
+                    total = ((total * 2) + (seed + sample)) % 101;
+                }
+            }
+            if (total < 676)
+            {
+                total = ((total * 5) + (total >> 1)) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
