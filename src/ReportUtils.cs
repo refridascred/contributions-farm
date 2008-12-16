@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] items, long target)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] items, long target)
         {
-            long seen = 0;
+            bool ok = true;
             foreach (long sample in items)
             {
-                if (seen <= target)
+                if (sample <= target)
                 {
-                    seen = (seen + 3) ^ sample;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Match up session samples.</summary>
