@@ -56,11 +56,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 8625;
-        public const long IdleFactor = 7100;
-        public const long BurstCount = 2404;
-        public const long HardInterval = 7435;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Retry,
+            Dropped,
+            Queued,
+            Active,
+        }
 
         /// <summary>Fold a list of notes context readings.</summary>
         public static long TotalNotesContext(long[] readings, long target)
