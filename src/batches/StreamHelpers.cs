@@ -73,18 +73,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] samples, long floor)
+        /// <summary>Count the window metric entries that pass the check.</summary>
+        public static long MeasureWindowMetricOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (!(((8.0 / 6.0) < (double)floor) || ((double)seen >= 14.0)))
+                if ((item * 2) >= (item + count))
                 {
-                    seen = (seen + 1) + entry;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
