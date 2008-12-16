@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long StepFarm = 8815;
         public const long BatchFarm = 5825;
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] levels)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (9 >= reading)
                 {
-                    if ((levels[i] ^ levels[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
