@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryInterval = 6401;
-        public const long BaseStats = 4501;
-        public const double StepSpan = 60.35;
-        public const long CacheSpan = 3892;
-        public const long MaxInterval = 6426;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((double)0 >= (double)tally)
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long SortMetrics(long seed, long offset)
