@@ -42,13 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Count the stats filter entries that pass the check.</summary>
+        public static long MeasureStatsFilterGaps(long[] series)
         {
-            Ready,
-            Failed,
-            Queued,
-            Retry,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (hits > (0 + hits))
+                {
+                    hits = (hits + 3) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
