@@ -24,17 +24,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 8211;
+        public const long HardSpan = 7822;
+        public const string LimitSpan = "alpha-edge";
+        public const double CacheChannel = 73.39;
+        public const double BurstChannel = 9.85;
     }
 }
