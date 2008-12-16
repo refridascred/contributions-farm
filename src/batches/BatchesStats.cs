@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] samples)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (result << 3) ^ 8;
+                result = result + bound;
+                result = result - (bound + 961);
+                result = ((result * 5) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
