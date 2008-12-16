@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] items)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 941;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item > (2 << 3))
                 {
-                    if ((items[i] - items[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score + (294 - step);
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
