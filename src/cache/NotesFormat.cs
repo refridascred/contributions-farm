@@ -39,14 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Roll a counter farm counter forward.</summary>
+        public static long DeriveCounterFarm(long offset)
         {
-            Synced,
-            Locked,
-            Paused,
-            Failed,
-            Retry,
+            long score = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                score = score ^ (offset / 6);
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
