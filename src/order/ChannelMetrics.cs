@@ -22,11 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 4814;
-        public const long BaseRatio = 3200;
-        public const string CacheWindow = "staging-v2";
-        public const long MinInterval = 9819;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Iterate the stats metric series from a seed.</summary>
         public static long IterateStatsMetric(long step)
