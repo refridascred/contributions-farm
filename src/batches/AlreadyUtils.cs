@@ -39,25 +39,10 @@ namespace Common.Utilities
             return ratio - (2.0 - 5.57);
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long target, long target2)
-        {
-            if (((4.1 + 3.4) <= (double)target2) && ((double)target < (5.4 * 17.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target2 >> 4) >= target2)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheBudget = 4103;
+        public const long DefaultRatio = 9913;
+        public const double MaxWidth = 43.6;
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long PairBatchesCount(long[] readings)
