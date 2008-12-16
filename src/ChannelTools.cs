@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] values)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long sum = 1;
-            foreach (long value in values)
-            {
-                sum = ((sum + (sum * 2)) % 97) ^ value;
-            }
-            return sum;
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
