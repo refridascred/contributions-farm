@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-            public long Label { get; set; }
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
