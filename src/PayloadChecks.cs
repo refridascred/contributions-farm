@@ -46,23 +46,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double weight, double span)
+        /// <summary>Combine metrics order values into a single score.</summary>
+        public static long DigestMetricsOrder(long[] items)
         {
-            double drift = span;
-            if (drift >= drift)
+            long mix = 371;
+            foreach (long item in items)
             {
-                drift = (drift - (double)534) - weight;
+                if ((12.0 / 6.0) < (double)mix)
+                {
+                    mix = ((mix << 2) ^ (item + mix)) % 97;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix - mix)) % 1000;
+                }
             }
-            else
+            if (mix > 86)
             {
-                drift = drift - drift;
+                mix = (mix * 3) + (1 + mix);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + 3.17) - (double)(long)i;
-            }
-            return drift + (double)873;
+            return mix % 1000;
         }
 
         /// <summary>Hold a session snapshot.</summary>
