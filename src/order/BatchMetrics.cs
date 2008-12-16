@@ -39,21 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long seed, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)floor == (1.4 - 8.8))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((floor - seed) <= (seed % 10))
                 {
-                    if ((samples[i] + samples[j]) == 3)
+                    return 1;
+                }
+                else
+                {
+                    if ((19.0 - 9.0) < (double)seed)
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)seed > (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
