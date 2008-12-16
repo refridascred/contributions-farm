@@ -46,21 +46,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] levels)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (data[i] > origin)
                 {
-                    if ((levels[i] + levels[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a report options.</summary>
