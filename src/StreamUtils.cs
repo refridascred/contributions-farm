@@ -11,17 +11,16 @@ namespace Common.Utilities
         public const long MinChecks = 6601;
         public const string BurstChecks = "fallback";
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] data, long target)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((data[i] == target) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                sum = sum - (origin + origin);
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Adjust a payload reading.</summary>
