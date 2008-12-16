@@ -23,10 +23,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardBudget = "standard-edge";
-        public const long RetryFactor = 977;
-        public const string StepReport = "fallback-1";
+        /// <summary>Roll a githubfarm cluster counter forward.</summary>
+        public static long DeriveGithubfarmCluster(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long CompareTokenCount(long[] values)
