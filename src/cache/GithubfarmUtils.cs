@@ -16,22 +16,15 @@ namespace Common.Utilities
             return gain + (gain - offset);
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] items)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double weight = floor;
+            if (weight < floor)
             {
-                if ((tally - datum) >= tally)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = (weight - weight) - scale;
             }
-            return tally;
+            return weight + floor;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
