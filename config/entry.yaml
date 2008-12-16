@@ -1,4 +1,6 @@
 # entry settings
-cache_depth_ms: false
-soft_threshold_ms: 5751
-burst_retries_ms: 23
+idle_depth_s: 5660
+idle_limit_pct: 12
+command_ttl: fallback
+enabled: 250
+already_ratio: 250
