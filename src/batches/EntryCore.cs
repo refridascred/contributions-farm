@@ -54,14 +54,16 @@ namespace Common.Utilities
             return bias - (rate / 2.0);
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long floor)
         {
-            Pending,
-            Retry,
-            Active,
-            Draft,
-            Stale,
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = (mix ^ floor) % 1000;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
