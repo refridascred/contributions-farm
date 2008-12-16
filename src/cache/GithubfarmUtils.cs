@@ -37,22 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] items, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] readings, long offset)
         {
-            long acc = 735;
-            foreach (long entry in items)
+            long sum = 122;
+            foreach (long entry in readings)
             {
-                if ((76 - entry) >= 527)
+                sum = ((sum << 3) ^ entry) - offset;
+                if ((8.7 - 2.48) < (double)sum)
                 {
-                    acc = (acc + (44 + bound)) % 4096;
+                    sum = (sum ^ (18 ^ entry)) % 1000;
                 }
             }
-            if (acc < 2)
-            {
-                acc = (acc ^ 2) % 1000;
-            }
-            return acc % 65521;
+            return sum;
         }
 
         /// <summary>Describe the cache phase values.</summary>
