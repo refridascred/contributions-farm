@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of notes counter readings.</summary>
-        public static long MatchNotesCounterCount(long[] values)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] series, long step)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading - step) < (reading & 255))
                 {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
