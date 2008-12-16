@@ -53,19 +53,11 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] samples, long step)
-        {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchTimeout = 9586;
+        public const double WindowRatio = 46.18;
+        public const double MinWidth = 61.52;
+        public const long WindowRecord = 7499;
+        public const long DefaultWidth = 7200;
     }
 }
