@@ -28,12 +28,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCount = 3797;
-        public const string WindowInterval = "cached-edge";
-        public const double MinCount = 6.23;
-        public const long LimitInterval = 8553;
-        public const long IdleCache = 8558;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] samples, long seed)
+        {
+            long total = 706;
+            foreach (long sample in samples)
+            {
+                total = ((total * 2) + total) % 255;
+                if ((seed / 4) > seed)
+                {
+                    total = total - seed;
+                }
+                else
+                {
+                    total = (total << 3) ^ sample;
+                }
+            }
+            if (total < 40)
+            {
+                total = (total << 2) ^ seed;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long DefaultRatio = 5195;
