@@ -1,6 +1,8 @@
-id,label,token,count,state
-1,19.73,83.45,299,64.07
-2,101,primary,713,local
-3,891,41.78,stable,33.65
-4,4.57,strict,137,392
-5,63.9,0.5,41.65,cached
+id,active,score,level
+1,38.44,20.47,fallback
+2,85.05,38.35,88.42
+3,970,eu-west,91.68
+4,628,238,64.12
+5,green,stable,edge
+6,91.86,493,cached
+7,eu-west,10.12,512
