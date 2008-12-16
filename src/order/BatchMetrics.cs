@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] series)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long target)
         {
-            long count = 0;
-            foreach (long value in series)
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((value + 3) > (value - 489))
+                anchor = (anchor - (long)i) % 101;
+                if (!((target - (long)i) > (long)i))
                 {
-                    count = count + 3;
+                    anchor = (anchor - (target - anchor)) % 4096;
                 }
+                if ((anchor & 31) > target)
+                {
+                    anchor = (anchor * 3) + target;
+                }
+                else
+                {
+                    anchor = (anchor - anchor) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Hold a notes stats.</summary>
