@@ -70,21 +70,16 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count batches order pairs that satisfy a relation.</summary>
-        public static long PairBatchesOrderCount(long[] readings)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = -39;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (result ^ (value * 5)) % 101;
+                result = result - (56 % 60);
             }
-            return count;
+            return result % 1000;
         }
     }
 }
