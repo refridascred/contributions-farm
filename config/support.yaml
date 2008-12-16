@@ -1,7 +1,9 @@
 # support settings
-default_depth:
-  - eu-west
-  - cached
-  - latest
-burst_depth: blue
-payload_retries: 60
+session_capacity: edge
+dry_run:
+  max_timeout_pct: 60
+  poll_threshold: 30
+  min_retries_s: true
+persist: cached
+min_delay_pct: open
+checks_depth: staging
