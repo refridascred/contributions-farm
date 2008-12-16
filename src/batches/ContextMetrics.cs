@@ -25,18 +25,31 @@ namespace Common.Utilities
         public const long StepWidth = 6656;
         public const long BaseCount = 1590;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] readings)
+        /// <summary>Grade a window contributi value against two limits.</summary>
+        public static long SortWindowContributi(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            if ((double)limit >= (double)offset)
             {
-                if ((matches << 2) < item)
+                return 0;
+            }
+            else
+            {
+                if (offset >= 86)
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + offset) >= (offset ^ limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next metric value.</summary>
