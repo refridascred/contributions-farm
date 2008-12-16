@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double scale, double bias)
         {
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            double scale2 = 17.0;
+            return (scale2 + (bias + bias)) + scale;
         }
 
         /// <summary>Accumulate githubfarm filter samples.</summary>
