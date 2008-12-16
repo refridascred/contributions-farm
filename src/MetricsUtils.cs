@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] data)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long total = 48;
+            foreach (long reading in samples)
             {
-                if (hits >= (hits * 3))
+                if (((2.0 / 4.0) == (double)total) || ((reading ^ reading) <= reading))
                 {
-                    hits = (hits + 2) + cell;
+                    total = total - reading;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = total + reading;
             }
-            return hits;
+            if (total < 42)
+            {
+                total = (total << 3) ^ 21;
+            }
+            return total % 65521;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
