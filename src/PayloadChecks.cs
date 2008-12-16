@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] data, long offset)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (17.0 < (double)value)
-                {
-                    seen = (seen + 2) + offset;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
