@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] samples)
+        /// <summary>Match up batches order samples.</summary>
+        public static long PairBatchesOrderCount(long[] levels)
         {
-            long result = 40;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((9.7 - 3.6) <= (double)result))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result * 4) + (item / 3)) % 1000;
+                    if ((levels[i] ^ levels[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a editor info.</summary>
