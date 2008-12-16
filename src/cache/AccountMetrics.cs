@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] series, long seed)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long total = 52;
-            foreach (long datum in series)
-            {
-                if ((seed + datum) >= (total * 2))
-                {
-                    total = (total - seed) % 1000;
-                }
-                else
-                {
-                    total = (total + (seed ^ (long)series.Length)) % 255;
-                }
-            }
-            return total;
+            Active,
+            Failed,
+            Queued,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
