@@ -39,17 +39,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] items, long floor)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
