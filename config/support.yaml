@@ -1,15 +1,5 @@
 # support settings
-retry_threshold:
-  - 13
-  - 398
-schema_limit: 5.15
-report_window:
-  - 110
-  - 52
-  - 260
-  - 440
-enabled: 500
-max_interval_pct: 4938
-default_size_ms:
-  - primary
-  - green
+max_depth_pct: 60
+batch_retries: legacy
+tools_depth: green
+githubfarm_ttl: true
