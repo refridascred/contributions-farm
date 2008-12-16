@@ -1,21 +1,5 @@
 {
-  "poll_threshold": 74.82,
-  "max_ratio": 1024,
-  "poll_limit_s": {
-    "sync_delay": 6510,
-    "already_limit": 60,
-    "hard_ratio_s": {
-      "idle_capacity": "open",
-      "cache_depth": 66,
-      "checks_delay": 500,
-      "hard_ratio_pct": "open",
-      "verbose": 3399
-    },
-    "strict": false,
-    "compress": 60,
-    "sync_size": [243, 89, 476]
-  },
-  "burst_timeout_pct": true,
-  "compress": 448,
-  "min_ttl": "green"
+  "commits_retries": [98, 157],
+  "compress": 30,
+  "max_ttl_count": 83
 }
