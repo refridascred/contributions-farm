@@ -28,17 +28,18 @@ namespace Common.Utilities
         public const long StepWidth = 6656;
         public const long BaseCount = 1590;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] data, long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (data[i] > target)
+                if ((matches << 2) < item)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the order mode values.</summary>
