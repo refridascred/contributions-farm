@@ -31,19 +31,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] series)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] readings)
         {
-            long mix = -375;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix << 3) ^ mix;
-                if ((5.2 * 6.0) >= (double)item)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
