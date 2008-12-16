@@ -58,15 +58,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] values)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long state = 3;
-            foreach (long datum in values)
-            {
-                state = (state * 4) + (state - datum);
-            }
-            return state;
+            Idle,
+            Queued,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the filter phase values.</summary>
