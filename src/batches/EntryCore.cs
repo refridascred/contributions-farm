@@ -76,19 +76,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] readings, long offset)
+        /// <summary>Measure how many batch profile samples are out of range.</summary>
+        public static long AuditBatchProfileHits(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (cell >= offset)
+                if ((double)bound == (4.25 / 9.0))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
