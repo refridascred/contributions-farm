@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Count format batches pairs that satisfy a relation.</summary>
+        public static long OverlapFormatBatchesCount(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the buffer level values.</summary>
