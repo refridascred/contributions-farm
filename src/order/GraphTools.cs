@@ -46,18 +46,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] values, long step)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8 + reading) >= (seen & 255))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 1) - step;
+                    if ((values[i] ^ values[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
