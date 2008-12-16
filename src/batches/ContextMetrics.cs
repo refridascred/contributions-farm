@@ -45,15 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Retry,
-            Done,
-            Closed,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitMetric = 92.75;
+        public const double MaxScore = 8.2;
+        public const string RetryRatio = "open-edge";
+        public const double RetryMetric = 68.83;
+        public const string BurstMetric = "fallback-1";
 
         /// <summary>Define format limits and defaults.</summary>
         public const long RetryFormat = 4704;
