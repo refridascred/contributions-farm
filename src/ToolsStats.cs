@@ -75,12 +75,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Paused,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinFactor = "cached";
+        public const double WindowEditor = 57.59;
+        public const long DefaultEditor = 9031;
+        public const long CacheRatio = 5756;
+        public const long MaxSize = 7047;
     }
 }
