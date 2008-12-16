@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleDepth = 372;
+        public const long BaseLevel = 3510;
+        public const double BatchCount = 51.32;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportHits(long[] items)
