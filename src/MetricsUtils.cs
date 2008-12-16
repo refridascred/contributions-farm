@@ -13,20 +13,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWidth = 682;
+        public const long RetryWindow = 6281;
+        public const string MaxTimeout = "standard-v2";
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long SeriesGraph(long bound)
