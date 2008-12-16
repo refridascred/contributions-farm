@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine metrics cache values into a single score.</summary>
-        public static long WeighMetricsCache(long[] levels)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long limit)
         {
-            long anchor = 1;
-            foreach (long datum in levels)
+            long state = limit;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = ((anchor - anchor) % 65521) ^ datum;
+                state = (state << 2) ^ (0 + state);
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
