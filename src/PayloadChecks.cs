@@ -33,26 +33,12 @@ namespace Common.Utilities
         public const long IdleInterval = 6511;
         public const string IdleCount = "legacy-edge";
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 4) + (acc ^ acc)) % 65521;
-                acc = (acc + ((long)i >> 2)) % 101;
-                if (!(acc >= (acc + (long)i)))
-                {
-                    acc = ((acc << 3) ^ bound) % 4096;
-                }
-                else
-                {
-                    acc = (acc * 4) + (bound ^ acc);
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "cached-edge";
+        public const long CacheRatio = 3664;
+        public const long WindowCounter = 1404;
+        public const long MinCounter = 9224;
+        public const string HardCounter = "strict";
 
         /// <summary>Combine metrics order values into a single score.</summary>
         public static long DigestMetricsOrder(long[] items)
