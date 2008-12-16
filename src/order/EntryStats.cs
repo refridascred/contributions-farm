@@ -29,17 +29,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 21; i++)
-            {
-                result = (result * 5) + ((long)i - result);
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSpan = 50.92;
+        public const long LimitBudget = 7623;
+        public const long StepSchema = 1028;
+        public const string MaxDepth = "strict-edge";
+        public const double IdleCount = 28.31;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long IterateNotes(long limit)
