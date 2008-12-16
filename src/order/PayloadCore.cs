@@ -67,10 +67,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultRatio = 5195;
-        public const long CacheWindow = 2270;
-        public const long HardWidth = 2698;
-        public const long BaseWindow = 2753;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public double Score { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
