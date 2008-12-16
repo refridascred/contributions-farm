@@ -13,16 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] data)
-        {
-            long state = 0;
-            foreach (long value in data)
-            {
-                state = (((state << 2) ^ state) % 4096) + value;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 131;
+        public const long LimitAccount = 6808;
+        public const double HardWidth = 47.7;
+        public const string RetryBudget = "latest-v2";
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long RollStream(long step)
