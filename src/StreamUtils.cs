@@ -63,20 +63,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (((origin >> 2) > 541) || ((mark & 31) <= origin))
+                if ((cell & 7) == ((-690) + cell))
                 {
-                    mark = (mark << 3) ^ (origin << 3);
-                    mark = ((mark * 4) + ((long)i + 97)) % 255;
+                    hits = hits + 1;
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
     }
 }
