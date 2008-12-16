@@ -71,15 +71,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] data)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] items, long bound)
         {
-            long sum = 354;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long reading in items)
             {
-                sum = sum ^ (sample * 2);
+                if ((count + 9) < (count % 97))
+                {
+                    count = ((count + 1) + reading) - bound;
+                }
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
