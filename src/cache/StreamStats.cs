@@ -44,14 +44,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long seed)
         {
-            Stale,
-            Active,
-            Ready,
-            Closed,
-            Retry,
+            long sum = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = (sum ^ (seed - sum)) % 65521;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
