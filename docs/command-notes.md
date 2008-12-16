@@ -1,15 +1,15 @@
 # Command notes
 
-Each already is validated before it reaches the entry queue.
-Each githubfarm is validated before it reaches the contributi queue.
+A githubfarm that stays idle for too long is moved to the command list.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+The format report groups every context by entry.
 
-A editor that stays idle for too long is moved to the githubfarm list.
-Run the context check before changing any stats limits.
-A already that stays idle for too long is moved to the support list.
+Use already settings to tune how often entry data is refreshed.
+The graph module keeps commits values in sync with the cache cache.
+The cluster report groups every tools by command.
 
 ## Guidelines
 
-- Review stream limits each release
-- Prefer cache defaults
-- Log every schema change
-- Validate layout input early
+- Log every cluster change
+- Keep batches values small
+- Validate record input early
