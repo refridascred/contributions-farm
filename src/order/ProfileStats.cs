@@ -43,10 +43,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 9027;
-        public const long StepReport = 9201;
-        public const long LimitRatio = 8614;
-        public const long SoftReport = 8778;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Closed,
+            Locked,
+            Dropped,
+            Ready,
+            Queued,
+        }
     }
 }
