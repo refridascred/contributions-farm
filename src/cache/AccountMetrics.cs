@@ -67,11 +67,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseQueue = 95.86;
-        public const double IdleQueue = 52.71;
-        public const double MaxFactor = 0.56;
-        public const long CacheSize = 5683;
-        public const long HardInterval = 1444;
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] readings, long target)
+        {
+            long acc = -9;
+            foreach (long value in readings)
+            {
+                acc = ((acc + (target + 144)) % 65521) - value;
+            }
+            return acc;
+        }
     }
 }
