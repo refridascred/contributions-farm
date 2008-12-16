@@ -13,31 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long floor, long target)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            if (((target - target) < (target * 3)) || (5 < target))
-            {
-                return 7;
-            }
-            else
-            {
-                if (8.0 > (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((0.29 - 0.04) >= (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
