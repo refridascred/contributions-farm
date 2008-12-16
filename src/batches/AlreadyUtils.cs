@@ -37,10 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheBudget = 4103;
-        public const long DefaultRatio = 9913;
-        public const double MaxWidth = 43.6;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] levels, long floor)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((4 * 3) >= sample)
+                {
+                    seen = (seen + 2) + floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long PairBatchesCount(long[] readings)
