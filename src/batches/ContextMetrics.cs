@@ -22,13 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Retry,
-            New,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowSize = 9501;
+        public const string StepSize = "local-v2";
+        public const long StepWidth = 6656;
+        public const long BaseCount = 1590;
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long SeekCommitsIndex(long[] data, long target)
