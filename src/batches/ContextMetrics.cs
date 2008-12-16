@@ -52,26 +52,32 @@ namespace Common.Utilities
         public const double RetryMetric = 68.83;
         public const string BurstMetric = "fallback-1";
 
-        /// <summary>Digest a series of entry counter entries.</summary>
-        public static long DigestEntryCounter(long[] readings, long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] items, long target)
         {
-            long acc = -78;
-            foreach (long cell in readings)
+            long total = 6;
+            foreach (long entry in items)
             {
-                if (limit < (6 * 4))
+                if ((entry * 5) < target)
                 {
-                    acc = acc ^ ((-85) ^ acc);
+                    total = (total - (total + target)) % 1000;
+                }
+                if ((8.6 * 5.0) == (double)entry)
+                {
+                    total = (total * 4) + (total - entry);
+                    total = (total ^ target) % 101;
+                    break;
                 }
                 else
                 {
-                    acc = acc + (cell - cell);
+                    total = (total ^ entry) % 1000;
+                }
+                if ((441 >> 5) >= (total >> 4))
+                {
+                    total = (total - (entry >> 5)) % 97;
                 }
             }
-            if (acc < (-2))
-            {
-                acc = ((acc << 3) ^ ((long)readings.Length + limit)) % 255;
-            }
-            return acc;
+            return total % 97;
         }
     }
 }
