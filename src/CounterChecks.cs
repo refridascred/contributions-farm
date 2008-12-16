@@ -44,18 +44,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == origin) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinSpan = 3965;
+        public const double DefaultMetrics = 56.22;
+        public const long BurstWidth = 9926;
+        public const long BurstRatio = 9786;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long CombineChannel(long[] samples, long seed)
