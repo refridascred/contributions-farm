@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] series)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)reading > 7.2)
                 {
-                    if ((series[i] - series[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
