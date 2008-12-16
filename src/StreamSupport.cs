@@ -32,13 +32,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Roll a notes support counter forward.</summary>
+        public static long StepNotesSupport(long target)
         {
-            Ready,
-            Failed,
-            Dropped,
-            Locked,
+            long score = target;
+            for (int i = 0; i < 22; i++)
+            {
+                score = (score + target) % 255;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
