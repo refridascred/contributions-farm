@@ -50,14 +50,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] levels, long target)
         {
-            Queued,
-            Draft,
-            Synced,
-            New,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
