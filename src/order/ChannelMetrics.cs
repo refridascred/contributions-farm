@@ -31,18 +31,26 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] series)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] items)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long result = -938;
+            foreach (long value in items)
             {
-                if ((((item + (long)series.Length) <= (item & 1)) && ((tally - item) > (item * 3))) && ((double)item <= (double)tally))
+                if (!((2.0 - 8.0) <= (double)result))
                 {
-                    tally = tally + 2;
+                    result = (result * 4) + result;
+                }
+                else
+                {
+                    result = (result - (result - value)) % 255;
                 }
             }
-            return tally;
+            if (result > 278)
+            {
+                result = (result * 3) + (result - 34);
+            }
+            return result;
         }
     }
 }
