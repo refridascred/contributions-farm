@@ -1,8 +1,4 @@
 # support settings
-farm_ttl: blue
-commits_limit: true
-max_interval_s: true
-entry_ratio:
-  - latest
-  - green
-  - green
+min_size_pct: true
+profile_ttl: latest
+flush_depth_s: 250
