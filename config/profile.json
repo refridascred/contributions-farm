@@ -1,12 +1,5 @@
 {
-  "cache_interval": "green",
-  "burst_size": {
-    "hard_capacity": 60.19,
-    "tools_size": 93,
-    "hard_ratio_pct": 34,
-    "poll_capacity_pct": ["stable", "local"],
-    "warm_ratio": true
-  },
-  "route_ratio": "latest",
-  "base_delay_count": 1024
+  "batch_window": true,
+  "strict": "edge",
+  "idle_window_ms": "legacy"
 }
