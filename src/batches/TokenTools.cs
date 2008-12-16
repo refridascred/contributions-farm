@@ -20,13 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] data, long offset)
         {
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Limit { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading & 127) != (offset - reading))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
