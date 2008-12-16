@@ -1,8 +1,8 @@
 {
-  "cache_delay_count": 632,
-  "schema_ratio": "blue",
-  "burst_window": 60,
-  "warm_timeout": "strict",
-  "channel_threshold": false,
-  "verbose": 83
+  "batch_window_count": 81.73,
+  "batch_interval": 5877,
+  "cluster_delay": "strict",
+  "default_capacity_ms": false,
+  "batch_threshold": ["stable", "standard", "strict", "staging"],
+  "poll_capacity_ms": 91.76
 }
