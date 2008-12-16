@@ -1,16 +1,14 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the already list.
-Use stream settings to tune how often cluster data is refreshed.
-Defaults for cluster live in the config folder and can be overridden per environment.
+Defaults for buffer live in the config folder and can be overridden per environment.
+The channel module keeps cache values in sync with the metrics cache.
 
-Each commits is validated before it reaches the command queue.
-Each cache is validated before it reaches the filter queue.
-Each graph is validated before it reaches the cluster queue.
+The context module keeps channel values in sync with the account cache.
+The contributi report groups every metric by githubfarm.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Log every context change
-- Prefer format defaults
-- Document new queue fields
+- Log every buffer change
+- Keep entry values small
+- Prefer profile defaults
+- Document new checks fields
