@@ -67,18 +67,11 @@ namespace Common.Utilities
         public const long CacheDepth = 5385;
         public const double MinStats = 67.7;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell <= (double)(-650))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 7394;
+        public const string IdleFactor = "cached";
+        public const double SoftRatio = 78.85;
+        public const long MinSpan = 2382;
+        public const string StepSpan = "local-v2";
     }
 }
