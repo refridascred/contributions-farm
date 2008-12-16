@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "local-edge";
-        public const long CacheBuffer = 1590;
-        public const long BurstDepth = 2776;
-        public const string BatchBuffer = "stable-v2";
+        /// <summary>Rank cluster queue input into a small class.</summary>
+        public static long BucketClusterQueue(long origin, long bound)
+        {
+            if ((origin & 1) >= 829)
+            {
+                return 0;
+            }
+            else
+            {
+                if (0 >= (origin % 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)bound != (3.17 + 9.89)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((origin - origin) != (bound / 4)) || ((719 - bound) < (bound * 5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long PairGithubfarmCount(long[] items)
