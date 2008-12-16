@@ -47,16 +47,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine counter stats values into a single score.</summary>
-        public static long DigestCounterStats(long[] data)
-        {
-            long mark = 60;
-            foreach (long item in data)
-            {
-                mark = (mark + item) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepContext = 59.17;
+        public const long DefaultFactor = 1757;
+        public const double IdleSize = 18.82;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long IdleBudget = 6390;
