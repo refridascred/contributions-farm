@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftSupport = 58.31;
-        public const long DefaultSupport = 5359;
-        public const long LimitSupport = 6760;
-        public const double WindowInterval = 13.66;
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= offset) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long FindReportIndex(long[] data, long target)
