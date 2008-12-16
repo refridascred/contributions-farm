@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine order command values into a single score.</summary>
-        public static long WeighOrderCommand(long[] values)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] values)
         {
-            long total = 784;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (total > (value << 1))
+                if (((matches / 7) <= reading) || (matches >= (reading & 15)))
                 {
-                    total = ((total << 3) ^ value) % 101;
-                }
-                if (!(((long)values.Length * 5) <= value))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
