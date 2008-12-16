@@ -1,6 +1,8 @@
 {
-  "verbose": 5136,
-  "cache_window": 4590,
-  "readonly": ["legacy", "strict", "green", "eu-west"],
-  "stream_delay": 60
+  "verbose": "primary",
+  "audit": [14, 296, 95, 322],
+  "dry_run": 89.36,
+  "enabled": 8109,
+  "warm_delay_count": false,
+  "schema_retries": "open"
 }
