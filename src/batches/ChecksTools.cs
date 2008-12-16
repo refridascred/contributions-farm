@@ -39,12 +39,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] samples, long limit)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] <= limit)
+                if (readings[i] >= target)
                 {
                     return (long)i;
                 }
