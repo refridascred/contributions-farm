@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (((matches / 7) <= reading) || (matches >= (reading & 15)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCount = 6538;
+        public const long BatchRatio = 8577;
+        public const long HardLevel = 8817;
+        public const long BatchCommand = 2444;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
