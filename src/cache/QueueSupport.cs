@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] readings, long step)
         {
-            Draft,
-            Done,
-            Active,
+            long anchor = 89;
+            foreach (long entry in readings)
+            {
+                if (((0 ^ step) == (anchor & 7)) || (entry < ((long)readings.Length - (-68))))
+                {
+                    anchor = (anchor ^ (entry ^ 524)) % 65521;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the session kind values.</summary>
