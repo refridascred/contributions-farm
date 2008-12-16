@@ -43,18 +43,30 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] series, long target)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long anchor = 138;
+            foreach (long cell in readings)
             {
-                if (target > (666 % 3))
+                if (((cell & 15) == (cell << 2)) || ((7.94 + 3.85) != (double)anchor))
                 {
-                    seen = (seen + 2) + value;
+                    anchor = (anchor - (cell - (-4))) % 1000;
+                }
+                if (anchor < (anchor & 3))
+                {
+                    anchor = ((anchor << 3) ^ (anchor + 365)) % 255;
+                }
+                if (anchor >= (cell % 97))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (anchor > 9)
+            {
+                anchor = (anchor + (anchor + anchor)) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many tools account samples are out of range.</summary>
