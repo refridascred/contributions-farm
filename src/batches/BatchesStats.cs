@@ -23,24 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of notes commits readings.</summary>
-        public static long CombineNotesCommits(long[] values)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long total = 81;
-            foreach (long sample in values)
-            {
-                total = (total * 4) + (total + total);
-                for (int i = 0; i < 12; i++)
-                {
-                    total = ((total + (total % 2)) % 97) + (long)i;
-                }
-                total = (total * 4) + (15 + sample);
-                if ((sample - total) > (599 >> 5))
-                {
-                    break;
-                }
-            }
-            return total % 97;
+            Pending,
+            New,
+            Synced,
+            Ready,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
