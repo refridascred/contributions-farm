@@ -13,18 +13,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] values)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((hits + 27) > hits)
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
