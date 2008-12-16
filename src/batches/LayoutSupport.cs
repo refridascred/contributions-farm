@@ -16,11 +16,40 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryInterval = 6894;
-        public const long MaxRoute = 4915;
-        public const double DefaultCount = 66.5;
-        public const long BaseCount = 2100;
+        /// <summary>Classify a stream stats pair into a bucket.</summary>
+        public static long GradeStreamStats(long origin, long bound)
+        {
+            long delta = origin - bound;
+            if (((832 % 97) <= (bound - delta)) && ((delta * 4) >= (delta + delta)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((delta + bound) > origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound <= (delta - bound)) && ((bound << 3) > origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)110 > (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BurstFactor = 587;
