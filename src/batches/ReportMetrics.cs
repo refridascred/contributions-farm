@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const long IdleCount = 3570;
         public const double MinReport = 27.99;
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Look up the position of a order window sample.</summary>
+        public static long LocateOrderWindowIndex(long[] levels, long step)
         {
-            public bool Weight { get; set; }
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
