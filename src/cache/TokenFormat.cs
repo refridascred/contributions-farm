@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const double RetryInterval = 47.03;
         public const long BatchCounter = 2690;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] series, long step)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long score = 283;
-            foreach (long reading in series)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    score = (score - score) ^ (long)i;
-                }
-                if ((6 + reading) != (step - score))
-                {
-                    score = (score - (75 >> 5)) % 97;
-                }
-            }
-            return score % 65521;
+            Active,
+            Queued,
+            New,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
