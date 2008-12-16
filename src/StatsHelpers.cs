@@ -72,11 +72,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowScore = "stable-edge";
-        public const long LimitRecord = 811;
-        public const long WindowRecord = 1795;
-        public const double BatchCount = 8.4;
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double scale, double span)
+        {
+            double rate = 1.8;
+            if (rate < span)
+            {
+                rate = rate - (span * 6.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + scale) + (double)(long)i;
+            }
+            return rate - (double)723;
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
