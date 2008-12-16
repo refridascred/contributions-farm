@@ -1,7 +1,14 @@
 {
-  "soft_ttl_s": "standard",
-  "payload_capacity": ["blue", "cached"],
-  "max_limit_pct": [107, 113],
-  "verbose": false,
-  "window_threshold": "cached"
+  "dry_run": 47.76,
+  "retry_delay": true,
+  "report_depth": true,
+  "entry_limit": "edge",
+  "hard_retries_ms": {
+    "batch_threshold_count": true,
+    "metric_capacity": "standard",
+    "burst_interval": [62, 257, 113],
+    "idle_limit_ms": "cached",
+    "poll_timeout": ["primary", "cached", "latest"]
+  },
+  "cache_window_s": false
 }
