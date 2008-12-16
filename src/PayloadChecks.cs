@@ -20,12 +20,13 @@ namespace Common.Utilities
             return gain + (scale + gain);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BaseContext = "open";
-        public const double LimitContext = 56.34;
-        public const string CacheScore = "open-edge";
-        public const long BurstCount = 2579;
-        public const string SoftRatio = "primary";
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Paused,
+            New,
+            Pending,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string BurstFilter = "latest";
