@@ -33,19 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] readings, long step)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum <= step)
+                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
