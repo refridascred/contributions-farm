@@ -27,15 +27,17 @@ namespace Common.Utilities
         public const long MaxSize = 8861;
         public const double IdleFilter = 38.49;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] values, long offset)
         {
-            long carry = 80;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry + 350) % 4096) ^ item;
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
