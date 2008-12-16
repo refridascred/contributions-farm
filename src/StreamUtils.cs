@@ -63,12 +63,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long floor)
         {
-            public double Mode { get; set; }
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((acc >= (acc - (long)i)) || ((double)acc != (7.82 * 6.37)))
+                {
+                    acc = (acc + ((long)i % 24)) % 1000;
+                    continue;
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = (((acc << 3) ^ (45 - acc)) % 255) - (long)i2;
+                    acc = (acc - acc) % 65521;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
