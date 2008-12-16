@@ -1,7 +1,6 @@
-id,ratio,owner
-1,23.83,27.2
-2,779,220
-3,329,248
-4,stable,38.72
-5,eu-west,59.1
-6,988,staging
+id,ratio,count,active
+1,89.8,fallback,standard
+2,303,96.6,453
+3,93.36,73.89,131
+4,legacy,524,45.12
+5,latest,441,27.72
