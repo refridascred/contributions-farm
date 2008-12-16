@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] levels, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (levels[i] > bound)
+                if (!(((157 % 97) >= (matches + matches)) && (matches <= (matches * 3))))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the stream status values.</summary>
