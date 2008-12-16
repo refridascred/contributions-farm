@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] series, long origin)
+        /// <summary>Derive the next token command value from a seed.</summary>
+        public static long DeriveTokenCommand(long limit)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = (mark ^ (mark + mark)) % 1000;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
