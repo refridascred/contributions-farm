@@ -49,38 +49,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long origin, long offset)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            if ((8.44 + 20.0) < (double)offset)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin & 7) > (origin - offset))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((4 * 5) > offset)
+                    if ((values[i] - values[j]) < 10)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((offset - offset) != (origin / 4)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
