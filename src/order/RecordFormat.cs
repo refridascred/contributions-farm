@@ -30,12 +30,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] samples)
         {
-            Dropped,
-            Ready,
-            Retry,
+            long acc = 916;
+            foreach (long item in samples)
+            {
+                acc = (acc ^ (acc + item)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
