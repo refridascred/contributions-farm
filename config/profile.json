@@ -1,11 +1,5 @@
 {
-  "burst_timeout_s": {
-    "flush_threshold": "fallback",
-    "batch_capacity_ms": "legacy",
-    "verbose": 86.73,
-    "metrics_interval": ["cached", "latest", "open", "legacy"],
-    "context_timeout": [199, 64, 429, 66]
-  },
-  "readonly": 86.04,
-  "context_interval": 24.41
+  "min_depth": 81.1,
+  "strict": true,
+  "base_depth": "blue"
 }
