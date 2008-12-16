@@ -19,12 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 5810;
-        public const long CacheSize = 1898;
-        public const string LimitDepth = "fallback-1";
-        public const long SoftContributi = 926;
-        public const string MaxContributi = "cached-1";
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Done,
+            Active,
+            Ready,
+            New,
+            Locked,
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long LookupProfileIndex(long[] items, long floor)
