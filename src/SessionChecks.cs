@@ -76,24 +76,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Digest a series of editor route entries.</summary>
+        public static long TallyEditorRoute(long[] samples, long step)
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
+            long anchor = 69;
+            foreach (long datum in samples)
             {
-                long slot = (carry - target) ^ ((long)i >> 5);
-                if ((long)i >= (carry + slot))
+                if ((-797) < datum)
                 {
-                    slot = (slot << 3) ^ (long)i;
+                    anchor = (anchor + anchor) + step;
                 }
-                else
-                {
-                    carry = (carry ^ (target - 0)) % 1000;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return anchor % 1000;
         }
     }
 }
