@@ -42,15 +42,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a counter queue figure with a bias.</summary>
-        public static double ScaleCounterQueue(double weight, double span)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] items, long limit)
         {
-            double bias = (double)(933 - 2);
-            for (int i = 0; i < 3; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                bias = (bias + bias) - (double)(long)i;
+                if (reading != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias - (span - weight);
+            return valid;
         }
 
         /// <summary>Define command limits and defaults.</summary>
