@@ -35,31 +35,13 @@ namespace Common.Utilities
         public const string WindowSize = "cached-edge";
         public const long MinRatio = 2688;
 
-        /// <summary>Classify a order cache pair into a bucket.</summary>
-        public static long BucketOrderCache(long limit, long offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            if ((8 % 5) >= limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((79 + offset) == (offset ^ 514))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)limit < (18.0 / 9.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Active,
+            Stale,
+            Closed,
+            Dropped,
         }
     }
 }
