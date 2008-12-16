@@ -21,32 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long seed, long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] data, long bound)
         {
-            long span = seed + limit;
-            if ((418 >> 1) < (limit + span))
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit & 255) == (limit % 3))
+                if ((bound - value) > bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed * 5) < seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the payload mode values.</summary>
