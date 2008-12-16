@@ -43,17 +43,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] samples, long origin)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Active,
+            Draft,
+            Ready,
         }
     }
 }
