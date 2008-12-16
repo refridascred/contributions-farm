@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] readings)
         {
-            Failed,
-            Dropped,
-            Pending,
+            long sum = 90;
+            foreach (long value in readings)
+            {
+                sum = ((sum << 2) ^ (sum - value)) % 97;
+            }
+            if (sum > (-2))
+            {
+                sum = (sum * 2) + (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
