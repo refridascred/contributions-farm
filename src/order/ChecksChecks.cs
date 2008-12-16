@@ -19,15 +19,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] data)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] readings)
         {
-            long acc = 167;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                acc = ((acc * 2) + (acc ^ (-20))) + reading;
+                if (!((seen ^ entry) == ((long)readings.Length + entry)) && (entry <= (seen - 305)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
