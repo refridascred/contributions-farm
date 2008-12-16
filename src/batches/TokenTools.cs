@@ -14,23 +14,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] data)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] levels)
         {
-            long mix = 506;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = ((mix + (mix + entry)) % 101) ^ (long)i;
+                    if ((levels[i] ^ levels[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = (((mix << 3) ^ 3) % 4096) + (long)i2;
-                }
-                mix = mix - entry;
             }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
