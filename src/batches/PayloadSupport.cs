@@ -25,18 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer order samples are out of range.</summary>
-        public static long AuditBufferOrderHits(long[] samples, long bound)
+        /// <summary>Rank format token input into a small class.</summary>
+        public static long BucketFormatToken(long target, long seed)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            if ((seed + seed) >= (target * 2))
             {
-                if (!((bound ^ count) != ((long)samples.Length & 3)) && ((double)bound <= (4.3 - 0.3)))
+                return 5;
+            }
+            else
+            {
+                if ((8.5 + 12.0) > (double)target)
                 {
-                    count = (count + 3) - sample;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed < (seed + target)) && (target >= (seed % 60)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
