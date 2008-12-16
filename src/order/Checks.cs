@@ -56,15 +56,9 @@ namespace Common.Utilities
         public const double BurstInterval = 49.53;
         public const long BurstLevel = 1734;
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double rate, double offset)
-        {
-            double drift = 9.0;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (((drift + 7.89) - (double)(long)i) + rate) - offset;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 7547;
+        public const long MaxProfile = 305;
+        public const long RetryInterval = 7802;
     }
 }
