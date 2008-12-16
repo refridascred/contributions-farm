@@ -1,10 +1,9 @@
 # githubfarm settings
-readonly:
-  - cached
-  - fallback
-  - legacy
-  - staging
-poll_delay: false
-dry_run: open
-batch_capacity_pct: true
-verbose: false
+cache_interval_ms: legacy
+sync_ttl_count: 8128
+already_retries: 85.89
+persist:
+  - 151
+  - 189
+  - 494
+soft_delay: 85.98
