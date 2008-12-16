@@ -1,5 +1,7 @@
 # support settings
-max_depth_pct: 60
-batch_retries: legacy
-tools_depth: green
-githubfarm_ttl: true
+verbose: 28.01
+burst_depth: 6.65
+default_ttl_count: true
+hard_timeout: false
+idle_timeout: 94.8
+base_size_ms: primary
