@@ -49,17 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] items, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (items[i] == bound)
+                if (((seen & 127) > (item + (-98))) || ((18.0 / 9.0) < (double)item))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
