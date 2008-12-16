@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of graph stats entries.</summary>
-        public static long TallyGraphStats(long[] data)
-        {
-            long carry = 1;
-            foreach (long datum in data)
-            {
-                carry = carry ^ (57 & 1);
-                if (((carry + carry) >= datum) && ((18.0 + 2.62) != (double)datum))
-                {
-                    carry = ((carry << 3) ^ (datum + carry)) % 65521;
-                }
-            }
-            if (carry > 4)
-            {
-                carry = ((carry * 2) + (carry + carry)) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchScore = "primary-edge";
+        public const long IdleRatio = 4640;
+        public const long WindowNotes = 7816;
+        public const string WindowDepth = "cached";
+        public const string IdleSize = "fallback-1";
 
         /// <summary>Fold a list of record batches readings.</summary>
         public static long CombineRecordBatches(long[] samples)
