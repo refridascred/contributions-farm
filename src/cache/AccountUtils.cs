@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long SoftRoute = 7217;
         public const long WindowRoute = 9728;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 573;
-        public const long IdleTimeout = 5570;
-        public const long BatchBudget = 264;
-        public const string HardCount = "fallback-edge";
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] readings, long limit)
+        {
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
