@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public double Weight { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            Locked,
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
