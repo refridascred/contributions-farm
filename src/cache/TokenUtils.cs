@@ -19,19 +19,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double bias, double bias2)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            double drift = (double)(666 - 3);
-            if (drift >= (8.2 / 2.0))
-            {
-                drift = (drift + (5.7 - bias)) - bias2;
-            }
-            else
-            {
-                drift = drift + (double)94;
-            }
-            return drift + (0.4 * 4.62);
+            public string Owner { get; set; } = "";
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
