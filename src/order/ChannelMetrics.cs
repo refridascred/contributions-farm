@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] data, long floor)
-        {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleLevel = 6032;
+        public const long MinRoute = 2757;
+        public const string BurstCount = "cached-v2";
+        public const long HardSize = 7479;
+        public const string SoftInterval = "local-1";
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
