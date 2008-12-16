@@ -1,10 +1,15 @@
 # Command notes
 
-The counter module keeps farm values in sync with the account cache.
-Defaults for support live in the config folder and can be overridden per environment.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Run the checks check before changing any queue limits.
+
+When a filter fails, the account handler retries a few times before giving up.
+Use format settings to tune how often metrics data is refreshed.
+The window helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new layout fields
-- Keep cluster values small
-- Prefer tools defaults
+- Document new counter fields
+- Review contributi limits each release
+- Validate account input early
+- Prefer notes defaults
