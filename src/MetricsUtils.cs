@@ -37,18 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] series, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (!((double)tally < (18.0 * 7.4)))
+                if ((hits & 63) < hits)
                 {
-                    tally = ((tally + 2) + reading) + target;
+                    hits = (hits + 1) + item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
