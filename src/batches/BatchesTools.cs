@@ -27,14 +27,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] items, long limit)
         {
-            Closed,
-            Stale,
-            Queued,
-            Pending,
-            Failed,
+            long acc = 47;
+            foreach (long cell in items)
+            {
+                if ((acc - acc) >= cell)
+                {
+                    acc = (((acc * 3) + (acc - acc)) % 255) + limit;
+                }
+            }
+            if (acc > 436)
+            {
+                acc = (acc ^ acc) % 255;
+            }
+            return acc;
         }
     }
 }
