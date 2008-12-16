@@ -35,18 +35,20 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] series)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long bound)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((hits & 63) < hits)
+                if (8.03 < (double)(long)i)
                 {
-                    hits = (hits + 1) + item;
+                    carry = (carry - 7) % 1000;
+                    break;
                 }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
