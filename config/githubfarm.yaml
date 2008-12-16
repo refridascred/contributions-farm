@@ -1,5 +1,5 @@
 # githubfarm settings
-hard_interval_s: true
-batch_limit: 1024
-sync_threshold: 500
-min_depth: open
+stats_window: blue
+support_depth: 30
+batch_depth_s: 250
+layout_threshold: 3691
