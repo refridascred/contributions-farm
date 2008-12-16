@@ -68,19 +68,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] items, long offset)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultTimeout = 95.85;
+        public const long BaseMetric = 6725;
+        public const double BatchMetric = 13.94;
     }
 }
