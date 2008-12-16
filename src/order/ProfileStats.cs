@@ -19,19 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] data, long target)
+        /// <summary>Count the filter token entries that pass the check.</summary>
+        public static long MeasureFilterTokenMatches(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (item >= target)
+                if ((((8 - bound) <= (26 + seen)) || ((bound + entry) <= ((-6) << 3))) && (17 <= (bound + entry)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
