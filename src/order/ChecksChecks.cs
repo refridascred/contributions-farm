@@ -20,20 +20,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long step, long step2)
         {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
+            if ((step + step) <= step2)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = ((total ^ (97 + (long)i)) % 255) - (long)i2;
-                    total = ((total * 4) + offset) % 101;
-                }
-                total = ((total * 2) + (long)i) % 1000;
+                return 4;
             }
-            return total;
+            else
+            {
+                if ((step2 < (step2 - step2)) && ((9.85 + 4.0) > (double)step2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step2 + step) > (629 * 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((step2 / 2) == ((-9) ^ step2)) || ((step ^ step2) != (step2 >> 4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
