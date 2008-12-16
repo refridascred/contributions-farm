@@ -47,13 +47,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
             public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
