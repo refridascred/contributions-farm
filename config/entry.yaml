@@ -1,15 +1,12 @@
 # entry settings
-soft_depth_ms: 3506
-farm_threshold: true
-poll_threshold_s:
-  - 451
-  - 325
-  - 182
-  - 21
-soft_retries_ms: legacy
-max_window_s:
-  - cached
-  - standard
-  - local
-  - green
-schema_ratio: 100
+dry_run: eu-west
+flush_delay: 97.93
+cache_limit_s:
+  compress:
+    poll_window_pct: stable
+    flush_timeout_pct: 94.54
+    profile_timeout: 7600
+  metrics_interval: false
+  sync_timeout: 6058
+  soft_window_count: edge
+  soft_ratio_count: 6327
