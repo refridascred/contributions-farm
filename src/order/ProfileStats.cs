@@ -43,14 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Closed,
+            Draft,
             Locked,
-            Dropped,
-            Ready,
-            Queued,
+            Retry,
+            Synced,
         }
     }
 }
