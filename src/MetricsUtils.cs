@@ -37,13 +37,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            Done,
-            Stale,
-            Active,
-            Pending,
+            long sum = 5;
+            foreach (long datum in items)
+            {
+                if (!(((double)sum != (8.22 + 4.5)) && ((sum / 5) < (long)items.Length)))
+                {
+                    sum = (sum - 0) ^ datum;
+                }
+                sum = (sum + sum) % 97;
+            }
+            if (sum > 58)
+            {
+                sum = ((sum << 2) ^ (sum & 255)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Validate already editor readings against a bound.</summary>
