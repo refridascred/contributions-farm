@@ -36,27 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] readings, long limit)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long carry = -222;
-            foreach (long sample in readings)
-            {
-                if (((limit >> 1) > (298 << 3)) || ((978 - carry) == (carry + carry)))
-                {
-                    carry = (carry + (carry + (-202))) % 65521;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (sample % 10)) % 97;
-                    carry = (carry + (carry - sample)) % 97;
-                }
-                if (((limit << 1) < limit) || (limit > (sample % 97)))
-                {
-                    carry = ((carry << 2) ^ (long)readings.Length) % 1000;
-                }
-            }
-            return carry;
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
