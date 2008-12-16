@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long StepFarm = 8815;
         public const long BatchFarm = 5825;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] readings)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long offset)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (9 >= reading)
-                {
-                    count = count + 2;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
