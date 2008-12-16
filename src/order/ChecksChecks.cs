@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long limit, long step)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] series, long origin)
         {
-            if ((455 & 15) < (step >> 4))
+            bool stale = true;
+            foreach (long entry in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (83 < step)
+                if (entry > origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit + limit) == (step ^ step)) || ((limit + limit) <= limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step > (step * 4)) && (step < (limit >> 4)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
