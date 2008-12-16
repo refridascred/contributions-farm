@@ -1,11 +1,10 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-The graph module keeps context values in sync with the order cache.
+The already report groups every support by session.
+Use buffer settings to tune how often filter data is refreshed.
 
 ## Guidelines
 
-- Log every report change
-- Document new session fields
-- Review buffer limits each release
-- Validate stream input early
+- Validate filter input early
+- Prefer format defaults
+- Review stats limits each release
