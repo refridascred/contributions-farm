@@ -13,14 +13,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long offset)
         {
-            Pending,
-            Retry,
-            New,
-            Idle,
-            Done,
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mark = ((mark - (mark * 2)) % 255) - (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
