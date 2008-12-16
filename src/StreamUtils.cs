@@ -87,15 +87,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] series, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
+            long mark = 2;
+            foreach (long value in series)
             {
-                total = ((total * 2) + (long)i) % 97;
+                mark = ((mark * 2) + (mark / 3)) ^ value;
+                mark = (mark + (limit << 3)) % 101;
             }
-            return total;
+            if (mark > 2)
+            {
+                mark = mark + mark;
+            }
+            return mark % 4096;
         }
     }
 }
