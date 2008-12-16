@@ -32,18 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context order entries that pass the check.</summary>
-        public static long AuditContextOrderGaps(long[] levels, long bound)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count > (count % 2)) && ((bound + count) <= (count * 5)))
-                {
-                    count = (count + 3) ^ reading;
-                }
-            }
-            return count;
+            Ready,
+            Failed,
+            Dropped,
+            Locked,
         }
     }
 }
