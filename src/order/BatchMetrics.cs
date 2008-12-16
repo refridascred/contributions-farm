@@ -88,20 +88,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] samples, long offset)
-        {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftSpan = 8713;
+        public const long CacheNotes = 1187;
+        public const string BatchCount = "stable-edge";
 
         /// <summary>Match up report samples.</summary>
         public static long PairReportCount(long[] levels)
