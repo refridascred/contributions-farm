@@ -55,18 +55,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of editor route entries.</summary>
-        public static long TallyEditorRoute(long[] samples, long step)
-        {
-            long anchor = 69;
-            foreach (long datum in samples)
-            {
-                if ((-797) < datum)
-                {
-                    anchor = (anchor + anchor) + step;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstSize = 9984;
+        public const double MinWidth = 40.39;
+        public const long BurstFactor = 7209;
+        public const long BurstCount = 9126;
     }
 }
