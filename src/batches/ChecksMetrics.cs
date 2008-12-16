@@ -27,27 +27,38 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] items)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long seed, long seed2)
         {
-            long total = 223;
-            foreach (long datum in items)
+            if ((seed2 / 7) <= seed2)
             {
-                if (!((total & 255) < ((-686) + 2)))
+                return 0;
+            }
+            else
+            {
+                if ((seed2 >> 1) < (seed / 7))
                 {
-                    total = ((total * 3) + total) % 255;
-                    total = total ^ total;
+                    return 3;
                 }
-                if ((double)datum < 3.0)
+                else
                 {
-                    total = (total ^ (total >> 1)) % 1000;
+                    if (5 <= (seed2 << 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((2 / 4) > seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (total > 385)
-            {
-                total = (total ^ (total - total)) % 255;
-            }
-            return total % 4096;
         }
 
         /// <summary>Define support limits and defaults.</summary>
