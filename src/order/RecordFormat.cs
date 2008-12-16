@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 2946;
-        public const double DefaultCommits = 13.26;
-        public const long RetryFactor = 2207;
-        public const string LimitCommits = "local";
-        public const long MaxTimeout = 5560;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Done,
+            Closed,
+            Pending,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long RankTools(long offset, long target)
