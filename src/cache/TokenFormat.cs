@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long target, long seed)
         {
-            Queued,
-            Synced,
-            Idle,
-            Failed,
+            if ((double)seed > (12.0 - 7.41))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)seed >= 1.1) || ((double)seed > (double)target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((297 >> 2) > (target - seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (seed < target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context record.</summary>
