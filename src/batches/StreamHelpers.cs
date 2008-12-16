@@ -51,17 +51,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] values, long seed)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Retry,
+            Locked,
+            Idle,
+            New,
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
