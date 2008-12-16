@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] series)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double gain, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double gain2 = bias;
+            return gain2 + (gain - gain);
         }
 
         /// <summary>Describe the checks level values.</summary>
