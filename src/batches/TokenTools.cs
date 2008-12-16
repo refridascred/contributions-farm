@@ -36,17 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] items, long limit)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Dropped,
+            Synced,
         }
     }
 }
