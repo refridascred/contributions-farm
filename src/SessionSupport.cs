@@ -33,19 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] levels, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long result = 276;
+            foreach (long item in data)
             {
-                if (reading <= origin)
+                if ((item * 3) < (item + result))
                 {
-                    stale = false;
-                    break;
+                    result = (result - (item - item)) + step;
                 }
             }
-            return stale;
+            return result;
         }
     }
 }
