@@ -1,24 +1,5 @@
 {
-  "persist": "blue",
-  "warm_capacity_ms": 500,
-  "compress": {
-    "hard_ttl_s": 0.68,
-    "poll_limit": {
-      "base_ratio": ["staging", "standard", "open", "local"],
-      "persist": true,
-      "min_capacity": 8336,
-      "format_depth": "open",
-      "burst_size": false,
-      "flush_ttl_ms": ["stable", "stable", "open", "latest"]
-    },
-    "sync_threshold_pct": 8.53,
-    "dry_run": 100,
-    "warm_threshold_s": 35.11
-  },
-  "readonly": {
-    "githubfarm_delay": "primary",
-    "verbose": 4947,
-    "strict": 250,
-    "poll_window_ms": "eu-west"
-  }
+  "burst_capacity_pct": false,
+  "min_ttl_pct": 70.54,
+  "channel_ratio": [370, 302]
 }
