@@ -14,22 +14,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] data, long target)
+        /// <summary>Adjust a buffer batch reading.</summary>
+        public static double AdjustBufferBatch(double ratio, double span)
         {
-            long state = 2;
-            foreach (long value in data)
+            double weight = span;
+            if (weight >= (weight / 5.0))
             {
-                if ((state - state) != (target * 5))
-                {
-                    state = (state ^ (value << 2)) % 97;
-                }
+                weight = weight + ratio;
             }
-            if (state > 11)
+            else
             {
-                state = (state * 3) + (9 % 100);
+                weight = weight + (ratio + weight);
             }
-            return state % 65521;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - 4.0;
         }
 
         /// <summary>Roll a support counter forward.</summary>
