@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] values, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long acc = 81;
+            foreach (long sample in levels)
             {
-                if (cell <= target)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc ^ (sample - acc)) % 1000;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Adjust a tools farm reading.</summary>
