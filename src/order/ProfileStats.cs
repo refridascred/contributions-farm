@@ -34,21 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long offset)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((10 & 7) >= (3 ^ offset))
-                {
-                    acc = (acc ^ (861 >> 1)) % 65521;
-                    acc = (acc ^ (0 - acc)) % 255;
-                }
-                acc = acc + (acc - acc);
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a command snapshot.</summary>
