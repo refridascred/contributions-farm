@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const string MaxWidth = "alpha-v2";
         public const long IdleGraph = 1637;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] readings, long floor)
+        /// <summary>Count queue record pairs that satisfy a relation.</summary>
+        public static long OverlapQueueRecordCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample <= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
