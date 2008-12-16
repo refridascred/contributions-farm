@@ -1,11 +1,6 @@
-id,level,state,active
-1,latest,fallback,edge
-2,38.82,112,648
-3,green,fallback,960
-4,932,94.68,4.08
-5,508,867,green
-6,461,296,22.75
-7,84.35,803,standard
-8,stable,17.7,155
-9,726,370,709
-10,primary,primary,74.71
+id,label,token,count,state
+1,19.73,83.45,299,64.07
+2,101,primary,713,local
+3,891,41.78,stable,33.65
+4,4.57,strict,137,392
+5,63.9,0.5,41.65,cached
