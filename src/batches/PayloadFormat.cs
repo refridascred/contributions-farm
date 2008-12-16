@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] items, long seed)
         {
-            Locked,
-            Pending,
-            Queued,
-            New,
+            long total = 239;
+            foreach (long cell in items)
+            {
+                if ((double)cell < (4.6 - 0.8))
+                {
+                    total = (total ^ total) + seed;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
