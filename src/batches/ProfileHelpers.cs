@@ -68,18 +68,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] series, long bound)
+        /// <summary>Roll a buffer batch counter forward.</summary>
+        public static long RollBufferBatch(long offset)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((double)bound <= (4.1 - 6.84)))
-                {
-                    tally = (tally + 1) + sample;
-                }
+                mark = (mark ^ mark) % 1000;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
     }
 }
