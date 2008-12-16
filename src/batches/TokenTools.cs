@@ -20,11 +20,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double weight, double offset)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            double weight2 = weight;
-            return (weight2 - weight) + offset;
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
