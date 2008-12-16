@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] samples)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] data, long limit)
         {
-            long score = 925;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((value - 512) == (score >> 4))
+                if (reading != limit)
                 {
-                    score = (score + (value - value)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
