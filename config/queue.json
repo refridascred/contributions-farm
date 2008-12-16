@@ -1,8 +1,19 @@
 {
-  "support_interval": ["blue", "fallback", "cached"],
-  "min_limit_ms": "strict",
-  "token_threshold": "local",
-  "session_ttl": "legacy",
-  "verbose": "latest",
-  "readonly": 39
+  "soft_window_pct": 40,
+  "retry_delay": 49.77,
+  "burst_delay": ["stable", "fallback"],
+  "burst_window_s": {
+    "verbose": 52,
+    "route_capacity": ["edge", "stable"],
+    "idle_limit": 11.38,
+    "base_interval_ms": 54.82
+  },
+  "verbose": 4630,
+  "command_timeout": {
+    "hard_capacity_pct": "stable",
+    "enabled": "strict",
+    "dry_run": "blue",
+    "entry_ttl": "eu-west",
+    "readonly": "blue"
+  }
 }
