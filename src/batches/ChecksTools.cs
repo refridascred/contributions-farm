@@ -16,10 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 5853;
-        public const long WindowSpan = 9569;
-        public const long HardNotes = 2390;
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            Ready,
+            Active,
+            Queued,
+        }
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long IterateSession(long origin)
