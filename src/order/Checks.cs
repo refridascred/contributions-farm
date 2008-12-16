@@ -46,14 +46,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] samples, long step)
         {
-            Ready,
-            Stale,
-            Paused,
-            Queued,
-            Failed,
+            long state = 1;
+            foreach (long reading in samples)
+            {
+                if ((reading + state) > (state + state))
+                {
+                    state = ((state << 2) ^ (reading - state)) % 4096;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (state - 781)) % 1000;
+                }
+            }
+            if (state < 4)
+            {
+                state = (state ^ step) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
