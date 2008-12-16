@@ -13,25 +13,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long floor, long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] readings, long target)
         {
-            long diff = floor + offset;
-            if (!((floor + floor) == (floor + 14)))
+            bool ready = true;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset < (diff % 2))
+                if (item != target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
