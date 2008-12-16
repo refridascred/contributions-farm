@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] samples)
-        {
-            long mix = 9;
-            foreach (long value in samples)
-            {
-                if (((mix - mix) < (long)samples.Length) && ((value * 5) < (-411)))
-                {
-                    mix = ((mix << 2) ^ (799 + 37)) % 97;
-                    break;
-                }
-                mix = ((mix * 5) + (426 - value)) % 4096;
-                if ((mix >= (value + mix)) || ((value / 7) >= (76 * 4)))
-                {
-                    mix = (mix - (mix >> 3)) % 255;
-                }
-                if ((mix + value) <= (value - value))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double HardCounter = 27.43;
+        public const double MinCounter = 9.23;
+        public const string BurstBudget = "cached";
+        public const long SoftScore = 7049;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string BaseContext = "open";
