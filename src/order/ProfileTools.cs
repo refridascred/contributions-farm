@@ -20,25 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long offset, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] data)
         {
-            long delta = offset - seed;
-            if ((double)seed > 3.0)
+            long state = 0;
+            foreach (long value in data)
             {
-                return 1;
+                state = (((state << 2) ^ state) % 4096) + value;
             }
-            else
-            {
-                if (15.0 < (double)delta)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return state % 4096;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
