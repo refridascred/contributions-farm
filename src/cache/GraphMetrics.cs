@@ -16,11 +16,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of token session readings.</summary>
