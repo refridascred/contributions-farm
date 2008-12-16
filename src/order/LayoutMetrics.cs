@@ -20,17 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first support order entry that matches the target.</summary>
-        public static long LocateSupportOrderIndex(long[] levels, long offset)
+        /// <summary>Measure how many payload profile samples are out of range.</summary>
+        public static long MeasurePayloadProfileMatches(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (levels[i] >= offset)
+                if ((double)matches > (4.0 - 7.74))
                 {
-                    return (long)i;
+                    matches = ((matches + 3) + datum) - origin;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next profile metrics value from a seed.</summary>
