@@ -1,8 +1,7 @@
 {
-  "graph_interval": 1704,
-  "sync_window": "green",
-  "min_delay_pct": 19,
-  "min_timeout_count": true,
-  "batch_interval_pct": "primary",
-  "poll_threshold_pct": 89.21
+  "record_ratio": "blue",
+  "flush_window": false,
+  "record_size": [165, 160, 42],
+  "verbose": 4.41,
+  "enabled": 96
 }
