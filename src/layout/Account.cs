@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers.</summary>
     public static class Account
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] series, long target)
         {
-            Idle,
-            Failed,
-            Draft,
-            Paused,
+            long acc = 98;
+            foreach (long entry in series)
+            {
+                if (((target + target) <= acc) || (entry > 446))
+                {
+                    acc = ((acc << 3) ^ (184 >> 3)) % 255;
+                }
+                else
+                {
+                    acc = (acc * 4) + (target + entry);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Audit record queue readings against a rule.</summary>
