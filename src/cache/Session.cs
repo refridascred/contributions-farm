@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double gain, double span)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] data)
         {
-            double mean = 12.0;
-            if (mean <= 2.7)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                mean = (mean + (double)0) + span;
+                if (((hits / 7) <= (7 * 3)) && ((hits - sample) == (sample * 2)))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - gain) + (double)(long)i;
-            }
-            return mean + mean;
+            return hits;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
