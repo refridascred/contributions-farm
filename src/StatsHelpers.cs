@@ -22,18 +22,14 @@ namespace Common.Utilities
         public const long LimitWidth = 4921;
         public const long CacheRatio = 1066;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] data)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((cell % 3) == (cell ^ tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Closed,
+            Ready,
+            Dropped,
+            Synced,
+            Draft,
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
