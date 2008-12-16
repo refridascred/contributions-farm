@@ -73,19 +73,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] readings, long bound)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] series, long offset)
         {
-            long carry = -4;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long datum in series)
             {
-                carry = ((carry * 3) + (bound - bound)) - datum;
+                if (datum >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (carry < (-4))
-            {
-                carry = (carry * 4) + (434 / 7);
-            }
-            return carry;
+            return found;
         }
     }
 }
