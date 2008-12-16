@@ -54,20 +54,14 @@ namespace Common.Utilities
             return bias - (rate / 2.0);
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((total - (long)i) == (step >> 1))
-                {
-                    total = (total - (step / 9)) % 4096;
-                }
-                total = total ^ (0 + total);
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Pending,
+            Retry,
+            Active,
+            Draft,
+            Stale,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
