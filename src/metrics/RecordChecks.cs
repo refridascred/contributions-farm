@@ -19,16 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] data)
-        {
-            long carry = -143;
-            foreach (long item in data)
-            {
-                carry = (carry - ((-503) ^ carry)) ^ item;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxDepth = 1533;
+        public const string BaseProfile = "fallback";
+        public const long RetryProfile = 4444;
+        public const long StepTimeout = 4098;
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long SeekReportIndex(long[] series, long bound)
