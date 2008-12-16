@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] data, long target)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Stale,
+            Ready,
         }
 
         /// <summary>Accumulate metric samples.</summary>
