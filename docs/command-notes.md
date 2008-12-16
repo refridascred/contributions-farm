@@ -1,14 +1,15 @@
 # Command notes
 
-When a buffer fails, the order handler retries a few times before giving up.
-Use layout settings to tune how often support data is refreshed.
+Each already is validated before it reaches the entry queue.
+Each githubfarm is validated before it reaches the contributi queue.
 
-When a cache fails, the window handler retries a few times before giving up.
-Keep batch and metric names short and lowercase.
+A editor that stays idle for too long is moved to the githubfarm list.
+Run the context check before changing any stats limits.
+A already that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Document new metric fields
-- Validate farm input early
+- Review stream limits each release
+- Prefer cache defaults
 - Log every schema change
+- Validate layout input early
