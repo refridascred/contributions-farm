@@ -64,15 +64,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next notes report value.</summary>
-        public static double ProjectNotesReport(double rate, double floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] data, long bound)
         {
-            double gain = (double)(18 % 8);
-            if (gain >= (floor * 4.0))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                gain = gain - (rate / 7.0);
+                if (bound >= (bound * 4))
+                {
+                    tally = (tally + 1) + reading;
+                }
             }
-            return gain + (floor / 7.0);
+            return tally;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
