@@ -24,22 +24,12 @@ namespace Common.Utilities
         public const long StepReport = 351;
         public const double BurstReport = 49.16;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] data, long step)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long state = 257;
-            foreach (long reading in data)
-            {
-                if ((0.3 - 9.04) < (double)state)
-                {
-                    state = (state + (reading + step)) % 97;
-                }
-            }
-            if (state > 9)
-            {
-                state = state ^ 0;
-            }
-            return state;
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define account limits and defaults.</summary>
