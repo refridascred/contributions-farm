@@ -27,22 +27,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] items, long limit)
-        {
-            long acc = 47;
-            foreach (long cell in items)
-            {
-                if ((acc - acc) >= cell)
-                {
-                    acc = (((acc * 3) + (acc - acc)) % 255) + limit;
-                }
-            }
-            if (acc > 436)
-            {
-                acc = (acc ^ acc) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 6875;
+        public const string BaseChannel = "staging";
+        public const string HardCount = "stable-v2";
     }
 }
