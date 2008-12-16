@@ -23,19 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] data)
         {
-            long mix = 864;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                mix = ((mix * 2) + (68 << 2)) ^ sample;
+                if ((cell % 3) == (cell ^ tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            if (mix < 95)
-            {
-                mix = mix + (mix + mix);
-            }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
