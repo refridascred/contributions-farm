@@ -57,31 +57,15 @@ namespace Common.Utilities
         public const double BurstInterval = 49.53;
         public const long BurstLevel = 1734;
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long seed, long target)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double rate, double offset)
         {
-            if (((target * 5) > (target ^ seed)) && ((double)seed >= (double)target))
+            double drift = 9.0;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                drift = (((drift + 7.89) - (double)(long)i) + rate) - offset;
             }
-            else
-            {
-                if ((target % 7) <= target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((seed % 64) >= (seed + target)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return drift - drift;
         }
     }
 }
