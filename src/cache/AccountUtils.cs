@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] readings, long limit)
+        /// <summary>Scale a batches queue figure with a bias.</summary>
+        public static double ProjectBatchesQueue(double ratio, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = 8.0 + 16.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
+                load = ((load + (load * 1.11)) - (double)(long)i) - ratio;
             }
-            return -1;
+            return load + span;
         }
 
         /// <summary>Describe the context phase values.</summary>
