@@ -1,6 +1,11 @@
 {
-  "burst_ttl_pct": 73.43,
-  "flush_window_s": 29,
-  "warm_timeout_count": [347, 298, 321, 439],
-  "warm_limit_s": 88.14
+  "soft_depth_pct": 54,
+  "min_threshold_pct": "staging",
+  "poll_window": {
+    "commits_ratio": "stable",
+    "soft_threshold_ms": true,
+    "compress": [305, 405, 346],
+    "channel_capacity": [280, 290]
+  },
+  "max_limit": 500
 }
