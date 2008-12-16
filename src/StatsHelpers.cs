@@ -50,19 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardDepth = 3896;
+        public const long MinContributi = 1149;
+        public const string IdleContributi = "stable-v2";
+        public const string WindowContributi = "latest";
+        public const long HardBudget = 888;
     }
 }
