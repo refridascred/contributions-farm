@@ -13,39 +13,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long step, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] series, long bound)
         {
-            long gap = step - bound;
-            if (!(((-478) - step) < bound))
+            bool stale = true;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((gap - step) <= (step % 12))
+                if (datum <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((step << 3) != (1 + step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((gap % 3) != (gap / 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
