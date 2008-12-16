@@ -10,39 +10,12 @@ namespace Common.Utilities
         public const long BatchSize = 9689;
         public const long MinFactor = 6160;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long seed, long seed2)
-        {
-            if ((seed - seed2) <= (seed / 8))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((2.4 * 6.9) <= (double)seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed - seed) < ((-617) - seed2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((5.4 - 3.6) >= (double)seed) && ((2.4 * 1.13) > (double)seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "local-v2";
+        public const long DefaultSupport = 2517;
+        public const long LimitLevel = 7304;
+        public const double WindowSupport = 11.37;
+        public const long HardSupport = 8651;
 
         /// <summary>Match up stats samples.</summary>
         public static long MatchStatsCount(long[] levels)
