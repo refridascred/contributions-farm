@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] readings)
         {
-            Active,
-            Failed,
-            Queued,
+            long result = 113;
+            foreach (long datum in readings)
+            {
+                result = ((result + (result & 1)) % 97) + datum;
+            }
+            return result;
         }
 
         /// <summary>Audit order checks readings against a rule.</summary>
