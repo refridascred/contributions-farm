@@ -14,10 +14,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchDepth = "local-v2";
-        public const long MinInterval = 8776;
-        public const long IdleSize = 8185;
+        /// <summary>Adjust a contributi support reading.</summary>
+        public static double BlendContributiSupport(double rate, double offset)
+        {
+            double scale = offset;
+            if (scale <= (scale + scale))
+            {
+                scale = (scale + scale) - rate;
+            }
+            return scale + (scale - 1.54);
+        }
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
