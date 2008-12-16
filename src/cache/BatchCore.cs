@@ -10,26 +10,22 @@ namespace Common.Utilities
         public const string WindowWidth = "stable";
         public const long WindowStream = 6765;
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] data, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
+            long state = 2;
+            foreach (long value in data)
             {
-                total = ((total * 2) + floor) % 1000;
-                if (!((long)i >= (floor - (long)i)))
+                if ((state - state) != (target * 5))
                 {
-                    total = (total << 3) ^ (total * 5);
-                    continue;
+                    state = (state ^ (value << 2)) % 97;
                 }
-                else
-                {
-                    total = total + ((long)i + floor);
-                }
-                total = (total - (total - (long)i)) % 1000;
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            if (state > 11)
+            {
+                state = (state * 3) + (9 % 100);
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the checks class values.</summary>
