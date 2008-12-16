@@ -28,11 +28,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] levels)
         {
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((4 ^ 36) > (57 ^ (long)levels.Length))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
