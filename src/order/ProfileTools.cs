@@ -52,13 +52,19 @@ namespace Common.Utilities
             return rate - (5.7 / 2.0);
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            Queued,
-            Pending,
-            Draft,
-            Synced,
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((1.24 >= (double)sum) && ((double)(long)i > 10.0))
+                {
+                    sum = (sum - seed) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
