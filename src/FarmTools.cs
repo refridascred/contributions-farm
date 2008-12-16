@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Blend two window queue measurements.</summary>
+        public static double SmoothWindowQueue(double weight, double span)
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
+            double drift = weight;
+            if (drift >= (1.0 - 8.09))
             {
-                score = ((score * 3) + (long)i) % 4093;
+                drift = (drift + (weight / 3.0)) + span;
             }
-            return score;
+            else
+            {
+                drift = drift - (double)64;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + weight) + (double)(long)i;
+            }
+            return drift + weight;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
