@@ -1,12 +1,11 @@
 # githubfarm settings
-base_capacity_s: stable
-retry_ratio: primary
-sync_ttl_pct:
-  queue_ttl: 1024
-  batches_depth: edge
-  max_window_ms: 1761
-  strict:
-    - 471
-    - 438
-    - 188
-retry_interval_s: 17.87
+min_limit_s: standard
+poll_depth_count:
+  - 328
+  - 484
+  - 38
+  - 149
+retry_depth_s: 8134
+dry_run: true
+cache_retries_pct: local
+idle_timeout_ms: primary
