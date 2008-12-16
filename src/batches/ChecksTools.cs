@@ -28,13 +28,21 @@ namespace Common.Utilities
         public const long RetryFactor = 977;
         public const string StepReport = "fallback-1";
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] values)
         {
-            New,
-            Draft,
-            Idle,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
