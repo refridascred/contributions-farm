@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public long Region { get; set; }
+            public double Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a editor header.</summary>
