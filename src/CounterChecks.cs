@@ -71,18 +71,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] levels, long floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((10 >> 3) >= (6 + matches))
+                if ((9.0 * 0.1) > (double)tally)
                 {
-                    matches = ((matches + 3) - item) - floor;
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
