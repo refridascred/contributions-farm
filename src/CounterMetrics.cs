@@ -41,10 +41,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitInterval = 6422;
-        public const long BatchToken = 5618;
-        public const long BurstSize = 613;
-        public const string MaxToken = "open-1";
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double rate, double bias)
+        {
+            double bias2 = (double)(715 - 55);
+            return (bias2 + (rate - rate)) + bias;
+        }
     }
 }
