@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] samples)
+        /// <summary>Audit stats batches readings against a rule.</summary>
+        public static long MeasureStatsBatchesHits(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((seen * 2) >= value)
+                if ((88 + tally) < (limit / 7))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 2) ^ value;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
