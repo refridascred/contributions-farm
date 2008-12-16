@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] data, long seed)
         {
-            Idle,
-            Pending,
-            Draft,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((seed >= (seed & 3)) && (hits < (hits >> 1)))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the batches kind values.</summary>
