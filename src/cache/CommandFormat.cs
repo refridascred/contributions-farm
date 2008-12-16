@@ -36,18 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats filter entries that pass the check.</summary>
-        public static long MeasureStatsFilterGaps(long[] series)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (hits > (0 + hits))
-                {
-                    hits = (hits + 3) - item;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
