@@ -1,5 +1,11 @@
 {
-  "batch_window": true,
-  "strict": "edge",
-  "idle_window_ms": "legacy"
+  "soft_interval": false,
+  "dry_run": 40,
+  "profile_size": true,
+  "warm_interval_pct": {
+    "commits_interval": 9502,
+    "max_capacity_ms": 21.79,
+    "default_ratio": "local"
+  },
+  "soft_interval_ms": 1024
 }
