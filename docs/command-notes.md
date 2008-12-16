@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-Keep metrics and layout names short and lowercase.
-Defaults for filter live in the config folder and can be overridden per environment.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Keep schema and metrics names short and lowercase.
+Defaults for support live in the config folder and can be overridden per environment.
 
-Use support settings to tune how often buffer data is refreshed.
-Use already settings to tune how often schema data is refreshed.
+Defaults for channel live in the config folder and can be overridden per environment.
+Run the payload check before changing any stats limits.
+Each entry is validated before it reaches the format queue.
 
 ## Guidelines
 
-- Review report limits each release
-- Log every filter change
-- Document new batch fields
-- Prefer schema defaults
+- Prefer metric defaults
+- Validate stats input early
+- Keep metric values small
