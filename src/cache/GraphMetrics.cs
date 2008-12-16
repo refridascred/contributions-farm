@@ -46,10 +46,18 @@ namespace Common.Utilities
         public const long IdleBatch = 203;
         public const double MaxBatch = 31.41;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 5605;
-        public const long MinSpan = 7713;
-        public const double BaseInterval = 33.45;
-        public const long MinCounter = 9508;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (2.76 >= (double)sample)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
