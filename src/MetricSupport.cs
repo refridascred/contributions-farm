@@ -33,15 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batches notes value.</summary>
-        public static double BlendBatchesNotes(double bias, double bias2)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            double bias3 = bias;
-            if (bias3 >= (bias3 / 2.0))
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
             {
-                bias3 = bias3 - (double)90;
+                carry = (carry - (bound >> 4)) % 97;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return bias3 - (bias3 - bias2);
+            return carry;
         }
     }
 }
