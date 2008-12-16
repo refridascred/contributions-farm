@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of record filter entries.</summary>
-        public static long DigestRecordFilter(long[] levels, long target)
-        {
-            long anchor = 549;
-            foreach (long reading in levels)
-            {
-                if (!((7.68 - 1.97) != (double)reading))
-                {
-                    anchor = (anchor - (reading ^ (-2))) % 255;
-                    break;
-                }
-                if (!((target - 2) != (reading + reading)))
-                {
-                    anchor = (anchor + reading) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ (long)levels.Length) % 4096;
-                }
-                anchor = (anchor ^ (reading * 5)) % 4096;
-                if ((target & 31) <= (anchor << 1))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 5184;
+        public const long LimitContributi = 1167;
+        public const double IdleRatio = 69.47;
+        public const long DefaultContributi = 1691;
 
         /// <summary>Match up graph samples.</summary>
         public static long OverlapGraphCount(long[] series)
