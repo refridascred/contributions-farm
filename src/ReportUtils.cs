@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Combine metrics cache values into a single score.</summary>
+        public static long WeighMetricsCache(long[] levels)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            long anchor = 1;
+            foreach (long datum in levels)
             {
-                result = ((result * 4) + (long)i) % 97;
+                anchor = ((anchor - anchor) % 65521) ^ datum;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
