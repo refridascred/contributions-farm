@@ -53,38 +53,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long floor, long origin)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            if (((double)floor >= (5.8 / 7.0)) || ((8 * 2) != (7 - floor)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((7 / 6) <= (floor + floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin > (floor ^ origin)) || ((floor + origin) != (47 + floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (569 >= (floor - floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Done,
+            Closed,
+            Dropped,
+            Locked,
         }
     }
 }
