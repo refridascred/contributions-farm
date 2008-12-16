@@ -1,7 +1,5 @@
 {
-  "retry_timeout": [335, 165],
-  "retry_window_count": [431, 22, 342, 390],
-  "hard_threshold": 500,
-  "cluster_timeout": true,
-  "warm_limit_count": [188, 214]
+  "flush_timeout_count": false,
+  "sync_size_pct": "strict",
+  "default_window_ms": 1024
 }
