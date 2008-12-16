@@ -15,17 +15,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] samples, long step)
+        /// <summary>Count metric command pairs that satisfy a relation.</summary>
+        public static long MatchMetricCommandCount(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] == step) && ((samples[i] % 5) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate profile buffer samples.</summary>
