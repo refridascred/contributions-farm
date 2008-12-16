@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double bias, double bias2)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] series, long offset)
         {
-            double gain = 6.6;
-            if (gain >= gain)
+            long total = 3;
+            foreach (long datum in series)
             {
-                gain = (gain + (double)(-667)) + bias;
+                total = (total - 86) % 1000;
+                total = (total ^ (datum ^ offset)) % 4096;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + bias2) + (double)(long)i;
-            }
-            return gain + (double)632;
+            return total % 97;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
