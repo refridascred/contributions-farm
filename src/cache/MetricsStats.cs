@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] values, long offset)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public bool Region { get; set; }
+            long total = 5;
+            foreach (long reading in values)
+            {
+                total = ((total - (reading & 1)) % 97) - offset;
+                total = (total * 5) + (total % 2);
+            }
+            return total % 4096;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
