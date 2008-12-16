@@ -13,21 +13,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] levels)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 51;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry * 5) + (carry << 2);
+                carry = carry - (cell + step);
             }
-            return seen;
+            return carry % 65521;
         }
 
         /// <summary>Hold a token info.</summary>
