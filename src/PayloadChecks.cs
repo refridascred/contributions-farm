@@ -62,13 +62,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            New,
-            Paused,
-            Dropped,
-            Idle,
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
