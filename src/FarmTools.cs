@@ -16,21 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry + (origin - carry)) % 1000;
+                carry = ((carry << 2) ^ (262 ^ carry)) % 255;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Scale a editor format figure with a bias.</summary>
