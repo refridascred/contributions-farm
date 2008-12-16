@@ -1,8 +1,17 @@
 {
-  "batch_window_count": 81.73,
-  "batch_interval": 5877,
-  "cluster_delay": "strict",
-  "default_capacity_ms": false,
-  "batch_threshold": ["stable", "standard", "strict", "staging"],
-  "poll_capacity_ms": 91.76
+  "compress": ["open", "open", "green"],
+  "metric_depth": {
+    "retry_depth_pct": {
+      "sync_size_ms": 43.99,
+      "min_delay": 34,
+      "strict": 60,
+      "route_retries": "open",
+      "idle_limit_ms": 30
+    },
+    "warm_ratio_s": false,
+    "min_depth_ms": false,
+    "profile_ratio": [44, 402]
+  },
+  "cache_capacity_s": true,
+  "sync_window": 100
 }
