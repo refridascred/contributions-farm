@@ -26,22 +26,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (!(((cell & 7) < (cell << 2)) || (seen > (seen & 1))))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitDepth = 6918;
+        public const double BurstFilter = 75.81;
+        public const long SoftFilter = 2523;
     }
 }
