@@ -19,39 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a stream stats pair into a bucket.</summary>
-        public static long GradeStreamStats(long origin, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] readings)
         {
-            long delta = origin - bound;
-            if (((832 % 97) <= (bound - delta)) && ((delta * 4) >= (delta + delta)))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((delta + bound) > origin)
+                if (sample >= (sample >> 4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound <= (delta - bound)) && ((bound << 3) > origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)110 > (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
