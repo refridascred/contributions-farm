@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] samples)
         {
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((9 >> 3) > (value - value))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
