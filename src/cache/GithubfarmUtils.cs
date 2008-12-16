@@ -33,18 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] values)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((sample + sample) > count)
+                if (3.45 < (double)value)
                 {
-                    count = count + 2;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the queue level values.</summary>
