@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            New,
-            Ready,
-            Idle,
+            Failed,
+            Synced,
             Closed,
+            Active,
         }
 
         /// <summary>Describe the schema phase values.</summary>
