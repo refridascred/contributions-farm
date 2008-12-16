@@ -28,32 +28,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long limit, long seed)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long origin)
         {
-            long step = limit + seed;
-            if ((double)seed == (double)limit)
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (748 <= (step << 2))
+                long step = origin + (carry ^ carry);
+                if ((step <= ((-4) & 7)) && ((carry + origin) >= (carry % 12)))
                 {
-                    return 5;
+                    carry = (carry ^ (step - carry)) % 65521;
                 }
-                else
-                {
-                    if ((8.13 / 3.0) <= (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
