@@ -46,39 +46,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long origin, long origin2)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long bound = origin - origin2;
-            if ((3.28 + 9.1) > (double)origin2)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound ^ bound) >= (origin * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin2 >> 5) < 828)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound & 7) > origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Draft,
+            New,
+            Closed,
         }
 
         /// <summary>Digest a series of route entries.</summary>
