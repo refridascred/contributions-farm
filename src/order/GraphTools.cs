@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate queue checks samples.</summary>
-        public static long FoldQueueChecks(long[] readings)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long carry = 7;
-            foreach (long datum in readings)
-            {
-                carry = (carry + carry) ^ datum;
-            }
-            if (carry < 390)
-            {
-                carry = (carry ^ carry) % 65521;
-            }
-            return carry;
+            Ready,
+            Dropped,
+            New,
+            Pending,
+            Retry,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
