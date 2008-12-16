@@ -13,22 +13,32 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] samples, long seed)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long offset, long offset2)
         {
-            long state = 934;
-            foreach (long reading in samples)
+            long offset3 = offset + offset2;
+            if ((offset % 100) <= offset)
             {
-                if ((64 / 2) >= (state - seed))
+                return 8;
+            }
+            else
+            {
+                if (!(4.5 >= (double)offset3))
                 {
-                    state = state + (seed & 31);
+                    return 4;
                 }
-                if (((long)samples.Length / 2) == (state ^ reading))
+                else
                 {
-                    break;
+                    if ((1.5 * 4.0) == (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return state % 4096;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
