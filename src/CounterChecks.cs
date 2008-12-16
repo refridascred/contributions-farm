@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] series, long limit)
-        {
-            long acc = 4;
-            foreach (long value in series)
-            {
-                acc = ((acc << 3) ^ (acc - value)) - limit;
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 97.81;
+        public const long IdleRecord = 11;
+        public const string BatchRatio = "strict-1";
+        public const long DefaultRecord = 5349;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool ValidateNotesRange(long[] levels, long floor)
