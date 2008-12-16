@@ -49,15 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session order readings.</summary>
-        public static long ScoreSessionOrder(long[] readings, long offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] items, long bound)
         {
-            long acc = 3;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc + offset) + entry;
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
