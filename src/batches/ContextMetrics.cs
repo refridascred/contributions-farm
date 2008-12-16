@@ -34,24 +34,15 @@ namespace Common.Utilities
         public const double LimitWidth = 55.62;
         public const long SoftMetrics = 4374;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] levels, long seed)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double bias, double bias2)
         {
-            long anchor = 453;
-            foreach (long datum in levels)
+            double drift = (double)((-306) << 3);
+            if (drift <= (bias2 * 5.53))
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    long lane = datum;
-                    anchor = (anchor - ((long)i + lane)) % 65521;
-                }
-                anchor = ((anchor * 2) + (datum + seed)) % 65521;
+                drift = (drift + (0.51 - 11.0)) - bias;
             }
-            if (anchor > 694)
-            {
-                anchor = (anchor - anchor) % 65521;
-            }
-            return anchor;
+            return drift - bias2;
         }
     }
 }
