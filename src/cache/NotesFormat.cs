@@ -33,26 +33,19 @@ namespace Common.Utilities
             return drift - (span * 4.77);
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] levels)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double rate, double floor)
         {
-            long carry = 8;
-            foreach (long reading in levels)
+            double scale = (double)(604 - 69);
+            if (scale < (double)70)
             {
-                if (!((2.0 - 8.7) < (double)carry))
-                {
-                    carry = (carry + reading) % 4096;
-                }
-                if ((double)reading <= 9.8)
-                {
-                    carry = (carry - (reading & 1)) % 97;
-                }
-                else
-                {
-                    carry = (carry - (carry & 127)) % 97;
-                }
+                scale = (scale - (double)367) - floor;
             }
-            return carry;
+            else
+            {
+                scale = scale - (rate + rate);
+            }
+            return scale + (double)42;
         }
     }
 }
