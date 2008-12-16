@@ -1,9 +1,19 @@
 {
-  "dry_run": 1024,
-  "entry_timeout": {
-    "retry_delay_s": true,
-    "default_delay_pct": "cached",
-    "hard_ttl_pct": 1.57
+  "flush_depth_ms": {
+    "farm_delay": "local",
+    "format_size": 1024,
+    "max_ttl_s": "open",
+    "compress": 2864,
+    "entry_capacity": {
+      "compress": true,
+      "cache_threshold": false,
+      "dry_run": "primary",
+      "format_limit": false
+    },
+    "sync_window_pct": 73.59
   },
-  "stream_window": false
+  "counter_limit": "fallback",
+  "hard_depth_ms": true,
+  "persist": "standard",
+  "hard_retries": [1, 275, 62, 211]
 }
