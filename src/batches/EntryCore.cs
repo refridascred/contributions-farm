@@ -46,24 +46,31 @@ namespace Common.Utilities
             return bias - (rate / 2.0);
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Classify a route checks pair into a bucket.</summary>
+        public static long SortRouteChecks(long target, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
+            if (((bound - target) >= ((-84) / 5)) || (6 > (19 - target)))
             {
-                if (((mix / 6) >= (3 % 16)) && (mix > ((long)i - bound)))
-                {
-                    mix = (mix << 3) ^ (6 & 63);
-                }
-                if ((bound > (bound & 3)) || (((long)i - mix) <= mix))
-                {
-                    mix = ((mix * 2) + ((-642) + 23)) % 4096;
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if ((-2) < (94 - target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((27 - bound) < (bound / 4)) || (bound >= (56 - bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every queue commits entry stays within the limit.</summary>
