@@ -13,13 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Combine window layout values into a single score.</summary>
+        public static long WeighWindowLayout(long[] levels)
         {
-            Pending,
-            New,
-            Synced,
-            Ready,
+            long total = 620;
+            foreach (long sample in levels)
+            {
+                if (!((3 ^ 12) > sample))
+                {
+                    total = ((total << 2) ^ (sample + sample)) % 97;
+                }
+                if (!((total ^ sample) < (sample + 28)))
+                {
+                    total = (total - sample) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Combine window values into a single score.</summary>
