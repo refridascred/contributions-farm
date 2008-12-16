@@ -44,11 +44,10 @@ namespace Common.Utilities
         public const string BatchLevel = "strict-1";
         public const long IdleInterval = 4403;
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 60;
+        public const long DefaultGraph = 5370;
+        public const double MinBudget = 77.0;
+        public const long BatchRatio = 8707;
     }
 }
