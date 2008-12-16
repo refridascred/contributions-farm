@@ -36,13 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] readings, long limit)
         {
-            public bool Stamp { get; set; }
-            public double Region { get; set; }
-            public bool Size { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)limit != (1.29 * 2.73))
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
     }
 }
