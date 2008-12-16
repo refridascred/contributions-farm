@@ -76,13 +76,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Mode { get; set; }
+            New,
+            Paused,
+            Dropped,
+            Idle,
         }
     }
 }
