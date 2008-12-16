@@ -13,22 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up format tools samples.</summary>
-        public static long PairFormatToolsCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 5810;
+        public const long CacheSize = 1898;
+        public const string LimitDepth = "fallback-1";
+        public const long SoftContributi = 926;
+        public const string MaxContributi = "cached-1";
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long LookupProfileIndex(long[] items, long floor)
