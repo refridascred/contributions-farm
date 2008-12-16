@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many payload profile samples are out of range.</summary>
-        public static long MeasurePayloadProfileMatches(long[] samples, long origin)
+        /// <summary>Iterate the counter already series from a seed.</summary>
+        public static long DeriveCounterAlready(long target)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)matches > (4.0 - 7.74))
+                if (!((target <= (target & 1)) && ((carry + (long)i) <= (long)i)))
                 {
-                    matches = ((matches + 3) + datum) - origin;
+                    carry = (carry + (carry ^ 561)) % 65521;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Derive the next profile metrics value from a seed.</summary>
