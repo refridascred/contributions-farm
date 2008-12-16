@@ -31,13 +31,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Pending,
-            Done,
-            Queued,
-            Active,
+            Dropped,
+            Idle,
+            Locked,
+            Failed,
         }
     }
 }
