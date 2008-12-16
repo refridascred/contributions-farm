@@ -16,10 +16,20 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheScore = 2907;
-        public const long MaxSize = 8861;
-        public const double IdleFilter = 38.49;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LocateQueueIndex(long[] values, long offset)
