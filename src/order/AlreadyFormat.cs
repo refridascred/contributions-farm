@@ -62,21 +62,19 @@ namespace Common.Utilities
         public const long BurstCount = 2404;
         public const long HardInterval = 7435;
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] levels)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample != limit)
                 {
-                    if ((levels[i] - levels[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
