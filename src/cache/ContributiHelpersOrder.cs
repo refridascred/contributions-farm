@@ -11,26 +11,14 @@ namespace Common.Utilities
         public const long StepTimeout = 6694;
         public const string HardTools = "strict-v2";
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] values)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long state = 80;
-            foreach (long datum in values)
-            {
-                if (!((state % 97) > (datum ^ (long)values.Length)))
-                {
-                    state = state ^ datum;
-                }
-                if (!((datum ^ state) == (datum * 3)))
-                {
-                    state = ((state << 3) ^ (datum / 4)) % 97;
-                }
-                else
-                {
-                    state = ((state * 2) + (state >> 5)) % 97;
-                }
-            }
-            return state % 65521;
+            Dropped,
+            Done,
+            New,
+            Locked,
+            Queued,
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
