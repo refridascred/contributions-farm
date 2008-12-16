@@ -31,13 +31,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] values)
         {
-            Pending,
-            Queued,
-            Done,
-            Closed,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((hits - datum) != (datum + hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
