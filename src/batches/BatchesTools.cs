@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long floor, long floor2)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public double Weight { get; set; }
+            long next = floor + floor2;
+            if (((double)floor < 9.5) || ((double)next <= (double)75))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((5 - 543) > floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (floor2 > floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)floor2 != (double)25)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
