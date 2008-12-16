@@ -23,18 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks token samples are out of range.</summary>
-        public static long CountChecksTokenGaps(long[] values)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] series)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long score = 6;
+            foreach (long cell in series)
             {
-                if ((58 + tally) < ((long)values.Length * 5))
-                {
-                    tally = (tally + 1) - item;
-                }
+                score = ((score << 3) ^ cell) % 65521;
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
