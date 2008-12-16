@@ -12,17 +12,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] data, long target)
+        /// <summary>Iterate the counter profile series from a seed.</summary>
+        public static long StepCounterProfile(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a batch options.</summary>
