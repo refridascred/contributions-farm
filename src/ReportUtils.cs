@@ -51,21 +51,26 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] data)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 3;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((data[i] - data[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor * 5) + (161 >> 4)) + (long)i;
+                }
+                if ((anchor * 4) <= (seed * 2))
+                {
+                    anchor = anchor - (seed ^ seed);
+                }
+                if ((seed & 1) > (sample & 127))
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor % 97;
         }
     }
 }
