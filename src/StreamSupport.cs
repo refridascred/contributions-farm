@@ -19,17 +19,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Locate a layout stats reading by value.</summary>
-        public static long FindLayoutStatsIndex(long[] values, long origin)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 9;
+            foreach (long item in levels)
             {
-                if ((values[i] == origin) && ((values[i] % 3) != 0))
+                if (((state + item) > 28) || ((target - item) > ((-607) - 21)))
                 {
-                    return (long)i;
+                    state = ((state * 4) + (target ^ state)) % 4096;
+                }
+                if ((double)target != (0.3 - 4.0))
+                {
+                    state = ((state * 3) + item) % 101;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the route mode values.</summary>
