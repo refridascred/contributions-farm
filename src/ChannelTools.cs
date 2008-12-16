@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a record queue figure with a bias.</summary>
-        public static double BlendRecordQueue(double weight, double span)
+        /// <summary>Accumulate contributi payload samples.</summary>
+        public static long CombineContributiPayload(long[] values)
         {
-            double weight2 = (double)(79 + 173);
-            if (weight2 < (weight + span))
+            long carry = 6;
+            foreach (long value in values)
             {
-                weight2 = weight2 + (weight2 / 3.0);
+                carry = ((carry - 37) % 1000) + value;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 + 3.72) + (double)(long)i;
-            }
-            return weight2 + span;
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
