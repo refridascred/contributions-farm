@@ -14,15 +14,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Active,
-            Paused,
-            Pending,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftRatio = 8921;
+        public const string BaseSize = "open-edge";
+        public const long CacheReport = 829;
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long seed, long seed2)
