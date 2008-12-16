@@ -42,17 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] items, long limit)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Locked,
+            Paused,
+            Failed,
+            Retry,
         }
     }
 }
