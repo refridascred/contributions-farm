@@ -28,18 +28,39 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] levels)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long seed, long offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long lane = seed - offset;
+            if ((seed ^ offset) >= (seed - lane))
             {
-                if ((4 ^ 36) > (57 ^ (long)levels.Length))
+                return 0;
+            }
+            else
+            {
+                if (offset < (lane >> 2))
                 {
-                    tally = (tally + 3) + reading;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)lane < (9.0 + 8.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((offset - seed) < (offset << 3)) || ((double)lane != (3.7 + 17.0)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
