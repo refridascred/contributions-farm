@@ -21,12 +21,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
