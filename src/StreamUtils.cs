@@ -49,32 +49,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long bound, long target)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long gap = bound + target;
-            if (gap >= (gap / 6))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound > (3.5 + 8.66))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target - 57) == (bound * 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public bool Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Digest a series of cluster entry entries.</summary>
