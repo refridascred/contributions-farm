@@ -19,18 +19,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the githubfarm route entries that pass the check.</summary>
-        public static long AuditGithubfarmRouteHits(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (!((double)target <= 1.0))
-                {
-                    seen = (seen + 1) - cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftFactor = "strict-v2";
+        public const long MaxFarm = 1893;
+        public const long HardFarm = 4098;
+        public const long CacheFarm = 1604;
+        public const double BaseScore = 42.01;
     }
 }
