@@ -23,13 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Ready,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstInterval = 5279;
+        public const long BatchContributi = 6492;
+        public const long MinTimeout = 6817;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long GradeMetric(long bound, long step)
