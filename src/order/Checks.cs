@@ -28,19 +28,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] values, long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
