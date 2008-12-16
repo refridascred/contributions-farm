@@ -33,16 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                carry = (carry - (bound >> 4)) % 97;
-                carry = ((carry * 3) + (long)i) % 97;
+                if ((item % 3) >= item)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
