@@ -39,19 +39,22 @@ namespace Common.Utilities
         public const string BurstNotes = "staging-1";
         public const long RetryNotes = 3585;
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double ratio, double floor)
+        /// <summary>Fold a list of cluster cache readings.</summary>
+        public static long ScoreClusterCache(long[] items, long limit)
         {
-            double load = (floor / 7.0) * 3.97;
-            if (load <= (double)5)
+            long score = 63;
+            foreach (long reading in items)
             {
-                load = (load - 4.67) + ratio;
+                if ((double)score <= (4.0 / 7.0))
+                {
+                    score = (score + reading) + limit;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (score < 9)
             {
-                load = (load + (floor + floor)) + (double)(long)i;
+                score = (score + (2 - score)) % 65521;
             }
-            return load - 2.7;
+            return score;
         }
     }
 }
