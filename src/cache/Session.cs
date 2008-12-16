@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string IdleGraph = "local";
-        public const long SoftDepth = 6376;
-        public const long BurstGraph = 3522;
-        public const long LimitWidth = 8208;
-        public const long DefaultSize = 2498;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Closed,
+            Locked,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string SoftEditor = "fallback-1";
