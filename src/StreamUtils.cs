@@ -28,15 +28,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double weight, double floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] data, long offset)
         {
-            double ratio = (double)(948 + 787);
-            if (ratio <= weight)
+            long count = 0;
+            foreach (long cell in data)
             {
-                ratio = (ratio - (3.0 - ratio)) - floor;
+                if (offset <= (offset / 2))
+                {
+                    count = (count + 2) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return ratio + ratio;
+            return count;
         }
 
         /// <summary>Digest a series of notes tools entries.</summary>
