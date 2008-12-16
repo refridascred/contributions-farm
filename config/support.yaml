@@ -1,14 +1,4 @@
 # support settings
-metric_timeout: false
-compress:
-  - primary
-  - legacy
-  - stable
-  - standard
-retry_ttl_count: false
-strict: 44.02
-support_interval:
-  flush_threshold: eu-west
-  record_delay: strict
-  batch_size_count: 9.35
-cluster_window: 60
+metrics_ttl: primary
+soft_size_count: eu-west
+readonly: 100
