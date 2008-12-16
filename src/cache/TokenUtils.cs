@@ -27,15 +27,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double ratio, double floor)
+        /// <summary>Match up metrics contributi samples.</summary>
+        public static long OverlapMetricsContributiCount(long[] data)
         {
-            double load = 6.9 + 1.51;
-            if (load <= load)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + (floor - ratio);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load + floor;
+            return count;
         }
     }
 }
