@@ -79,10 +79,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleSize = 4955;
-        public const long IdleAlready = 5014;
-        public const long LimitAlready = 1895;
-        public const double MaxBudget = 5.4;
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
