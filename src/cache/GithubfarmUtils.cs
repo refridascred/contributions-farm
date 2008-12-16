@@ -38,26 +38,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] levels)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] levels)
         {
-            long total = 434;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((total - entry) >= total))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total + (total - entry)) % 255;
-                }
-                else
-                {
-                    total = (total * 4) + (457 ^ entry);
+                    if ((levels[i] - levels[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total > 701)
-            {
-                total = (total ^ total) % 97;
-            }
-            return total;
+            return hits;
         }
     }
 }
