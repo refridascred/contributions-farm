@@ -19,14 +19,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Audit batch order readings against a rule.</summary>
+        public static long MeasureBatchOrderOutliers(long[] items, long limit)
         {
-            Pending,
-            New,
-            Stale,
-            Synced,
-            Failed,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((limit - matches) >= (limit + cell))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
