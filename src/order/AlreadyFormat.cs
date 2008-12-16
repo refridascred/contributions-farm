@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 8742;
-        public const double CacheFactor = 94.81;
-        public const double CacheRecord = 79.99;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] series, long limit)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long FoldStats(long[] series)
