@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine format notes values into a single score.</summary>
-        public static long ScoreFormatNotes(long[] readings, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] samples, long step)
         {
-            long state = 32;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                state = (((state * 4) + step) % 101) + sample;
+                if ((count + count) <= (step >> 2))
+                {
+                    count = (count + 1) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (state < 4)
-            {
-                state = (state - (step % 8)) % 65521;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Adjust a checks reading.</summary>
