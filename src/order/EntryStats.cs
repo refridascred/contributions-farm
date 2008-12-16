@@ -36,15 +36,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] samples, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (entry <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
     }
 }
