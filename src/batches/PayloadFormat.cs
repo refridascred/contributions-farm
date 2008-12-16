@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double bias, double floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] data, long target)
         {
-            double drift = bias;
-            if (drift >= bias)
+            bool found = true;
+            foreach (long item in data)
             {
-                drift = drift + (drift - floor);
+                if (item != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift + 9.21;
+            return found;
         }
 
         /// <summary>Accumulate token samples.</summary>
