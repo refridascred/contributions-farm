@@ -1,6 +1,7 @@
 {
-  "hard_window_ms": "fallback",
-  "burst_capacity": [74, 392],
-  "sync_size_pct": 27.92,
-  "sync_size": [238, 479, 219]
+  "persist": 3251,
+  "soft_depth_count": 17,
+  "warm_ttl_count": 52,
+  "base_interval_ms": true,
+  "min_depth_ms": 709
 }
