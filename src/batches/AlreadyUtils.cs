@@ -26,22 +26,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] values)
+        /// <summary>Scale a filter entry figure with a bias.</summary>
+        public static double ProjectFilterEntry(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            double ratio = (double)(4 & 15);
+            if (ratio <= (double)7)
             {
-                if (((-5) < (hits - (-86))) && (954 > (hits + hits)))
-                {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = (ratio - ratio) + offset;
             }
-            return hits;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio - (2.0 - 5.57);
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
