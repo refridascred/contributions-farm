@@ -42,11 +42,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double weight, double floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] series, long step)
         {
-            double load = weight;
-            return (load + weight) + floor;
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((step - reading) >= (hits - reading))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
