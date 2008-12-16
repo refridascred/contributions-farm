@@ -61,22 +61,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] levels)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long result = 86;
+            foreach (long cell in samples)
             {
-                if ((item >= (92 / 6)) && ((9.1 * 7.5) == (double)item))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = (((result ^ (4 * 4)) % 97) ^ cell) + seed;
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Describe the channel level values.</summary>
