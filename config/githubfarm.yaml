@@ -1,10 +1,12 @@
 # githubfarm settings
-base_window_ms: 45.12
-flush_threshold_ms: blue
-channel_timeout: standard
-dry_run: 89.21
-cache_interval:
-  - 37
-  - 422
-  - 221
-  - 325
+order_timeout: strict
+cache_limit_count:
+  retry_ratio_s: 94.65
+  persist:
+    - local
+    - blue
+  sync_interval_s: true
+  max_threshold: open
+strict: 500
+metric_size: 46.67
+base_timeout_count: true
