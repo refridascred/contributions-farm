@@ -86,17 +86,19 @@ namespace Common.Utilities
             return drift - 4.0;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] data, long limit)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (data[i] == limit)
+                if (!(anchor < (limit / 9)))
                 {
-                    return (long)i;
+                    anchor = anchor ^ ((-54) - limit);
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
     }
 }
