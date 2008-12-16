@@ -84,26 +84,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Count commits token pairs that satisfy a relation.</summary>
+        public static long PairCommitsTokenCount(long[] readings)
         {
-            long carry = 6;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum * 5) <= datum)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry ^ (datum + carry)) % 101;
-                }
-                if ((carry + 1) == (carry % 16))
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry > 22)
-            {
-                carry = ((carry * 4) + (carry + carry)) % 101;
-            }
-            return carry;
+            return tally;
         }
     }
 }
