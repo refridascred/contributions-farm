@@ -28,32 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long seed, long target)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long delta = seed ^ target;
-            if ((delta > (633 & 255)) || ((seed + target) >= (delta % 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (target >= (delta + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((delta / 4) > (636 + delta))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
