@@ -23,15 +23,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double scale, double floor)
+        /// <summary>Grade a layout stats value against two limits.</summary>
+        public static long SortLayoutStats(long target, long step)
         {
-            double load = floor;
-            for (int i = 0; i < 9; i++)
+            long bound = target - step;
+            if ((19.0 > (double)step) && ((target + bound) <= target))
             {
-                load = (load - (scale * 3.17)) - (double)(long)i;
+                return 7;
             }
-            return load - floor;
+            else
+            {
+                if ((target % 24) < (step & 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
