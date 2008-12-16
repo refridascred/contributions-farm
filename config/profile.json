@@ -1,5 +1,7 @@
 {
-  "min_depth": 81.1,
-  "strict": true,
-  "base_depth": "blue"
+  "soft_ttl_s": "standard",
+  "payload_capacity": ["blue", "cached"],
+  "max_limit_pct": [107, 113],
+  "verbose": false,
+  "window_threshold": "cached"
 }
