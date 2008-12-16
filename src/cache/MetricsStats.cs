@@ -28,16 +28,12 @@ namespace Common.Utilities
         public const double SoftFactor = 18.32;
         public const string BaseSize = "stable-edge";
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double weight, double span)
-        {
-            double bias = (double)0;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = ((bias - (bias - span)) + (double)(long)i) + weight;
-            }
-            return bias + (double)76;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseScore = 3344;
+        public const string MinCommits = "primary-v2";
+        public const long MaxCommits = 9335;
+        public const long CacheCommits = 5674;
+        public const long StepCommits = 480;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BurstBudget = 907;
