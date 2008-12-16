@@ -75,17 +75,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] data, long target)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
+                acc = acc ^ (long)i;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
