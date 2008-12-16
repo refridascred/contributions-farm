@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long floor, long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] series, long origin)
         {
-            if (seed <= floor)
+            bool ready = true;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((floor + 95) != (floor ^ seed)) || ((seed - seed) < floor))
+                if (value > origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Accumulate batch samples.</summary>
