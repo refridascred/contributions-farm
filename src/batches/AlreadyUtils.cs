@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a channel stats counter forward.</summary>
-        public static long IterateChannelStats(long limit)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((limit * 5) <= total)
-                {
-                    continue;
-                }
-                else
-                {
-                    total = total ^ limit;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
