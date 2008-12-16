@@ -1,7 +1,8 @@
 {
-  "channel_depth": false,
-  "stream_threshold": ["local", "eu-west", "open"],
-  "counter_delay": ["cached", "green"],
-  "enabled": 76.83,
-  "max_capacity_ms": true
+  "persist": true,
+  "stats_timeout": "local",
+  "base_limit_pct": true,
+  "strict": true,
+  "burst_window_s": "stable",
+  "hard_capacity": 19.58
 }
