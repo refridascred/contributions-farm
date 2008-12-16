@@ -35,19 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double gain, double offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] series)
         {
-            double bias = (gain + 5.8) + 3.7;
-            if (bias <= (offset / 8.0))
+            long tally = 0;
+            foreach (long item in series)
             {
-                bias = bias - gain;
+                if ((((item + (long)series.Length) <= (item & 1)) && ((tally - item) > (item * 3))) && ((double)item <= (double)tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias + (double)258;
+            return tally;
         }
     }
 }
