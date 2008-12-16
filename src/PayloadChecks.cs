@@ -48,11 +48,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchFilter = 66.81;
-        public const string SoftFilter = "local-v2";
-        public const double RetryFactor = 43.46;
-        public const long IdleFilter = 5264;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
