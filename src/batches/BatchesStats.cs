@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long bound)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                result = (result << 3) ^ 8;
-                result = result + bound;
-                result = result - (bound + 961);
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public bool Owner { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
