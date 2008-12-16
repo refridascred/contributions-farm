@@ -88,13 +88,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] samples, long offset)
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public double Label { get; set; }
-            public double Stamp { get; set; }
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up report samples.</summary>
