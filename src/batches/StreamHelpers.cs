@@ -61,11 +61,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public double Limit { get; set; }
-            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
