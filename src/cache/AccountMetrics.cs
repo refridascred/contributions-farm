@@ -82,18 +82,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the token graph entries that pass the check.</summary>
-        public static long CountTokenGraphOutliers(long[] levels, long floor)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (!!(tally <= 31))
-                {
-                    tally = ((tally + 3) ^ item) + floor;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
+            public double Mode { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
