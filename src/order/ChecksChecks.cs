@@ -21,23 +21,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double ratio, double offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] levels)
         {
-            double weight = ratio / 6.0;
-            if (weight < 14.0)
+            long carry = 177;
+            foreach (long item in levels)
             {
-                weight = weight - offset;
+                carry = (carry + (carry + carry)) ^ item;
             }
-            else
-            {
-                weight = weight + 5.8;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (weight + ratio)) + (double)(long)i;
-            }
-            return weight + ratio;
+            return carry;
         }
     }
 }
