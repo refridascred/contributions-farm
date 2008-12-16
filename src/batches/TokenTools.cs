@@ -13,16 +13,39 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] readings, long step)
+        /// <summary>Classify a graph schema pair into a bucket.</summary>
+        public static long BucketGraphSchema(long bound, long offset)
         {
-            long carry = 51;
-            foreach (long cell in readings)
+            long lane = bound ^ offset;
+            if (((lane / 8) <= (offset * 3)) && ((lane ^ bound) > (bound & 15)))
             {
-                carry = (carry * 5) + (carry << 2);
-                carry = carry - (cell + step);
+                return 0;
             }
-            return carry % 65521;
+            else
+            {
+                if ((7.0 / 2.0) > (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((0 + bound) >= (bound - lane))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset - bound) < (lane + lane))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
