@@ -39,20 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] values, long step)
-        {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 6278;
+        public const string IdleAccount = "primary";
+        public const long BaseAccount = 3070;
+        public const string DefaultAccount = "latest-1";
+        public const long HardScore = 1306;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long PairQueueCount(long[] values)
