@@ -23,21 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count metric command pairs that satisfy a relation.</summary>
-        public static long MatchMetricCommandCount(long[] series)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((2.8 + 0.88) > (double)origin)
                 {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) - reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
