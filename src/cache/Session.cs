@@ -20,18 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] series, long bound)
+        /// <summary>Count the githubfarm record entries that pass the check.</summary>
+        public static long AuditGithubfarmRecordGaps(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((count / 6) < (2 % 3))
+                if (15.0 <= (double)datum)
                 {
-                    count = ((count + 3) ^ sample) - bound;
+                    seen = (seen + 2) + offset;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
