@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=341
+for item in cached primary standard; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=356
 log "limit is ${CHANNEL_LIMIT}"
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-eu-west}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
