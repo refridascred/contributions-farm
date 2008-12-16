@@ -44,14 +44,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Draft,
-            Dropped,
-            Queued,
+            Closed,
+            Retry,
             Active,
-            Paused,
+            New,
+            Idle,
         }
 
         /// <summary>Project the next record value.</summary>
