@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate context profile readings against a bound.</summary>
-        public static bool CheckContextProfileRange(long[] values, long bound)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long mark = 2;
+            foreach (long sample in series)
             {
-                if (item > bound)
+                if (5.0 >= (double)mark)
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark << 3) ^ sample) % 65521;
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Roll a context counter forward.</summary>
