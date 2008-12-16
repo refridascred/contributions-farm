@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long step)
         {
-            Synced,
-            Failed,
-            Idle,
-            New,
-            Ready,
+            long mark = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((1.4 * 8.13) == (double)step)
+                {
+                    break;
+                }
+                else
+                {
+                    mark = mark - (step - step);
+                }
+                mark = (mark ^ 516) % 255;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
