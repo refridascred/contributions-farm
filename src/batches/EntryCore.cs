@@ -59,21 +59,17 @@ namespace Common.Utilities
         public const double HardProfile = 11.87;
         public const long HardRatio = 5433;
 
-        /// <summary>Match up tools counter samples.</summary>
-        public static long PairToolsCounterCount(long[] levels)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((series[i] > limit) && ((series[i] % 3) == 0))
                 {
-                    if ((levels[i] ^ levels[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many batch profile samples are out of range.</summary>
