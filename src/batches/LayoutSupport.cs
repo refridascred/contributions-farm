@@ -48,18 +48,12 @@ namespace Common.Utilities
         public const long MaxBuffer = 8227;
         public const string SoftBuffer = "staging-1";
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 2299;
+        public const long BurstSpan = 706;
+        public const long CacheCount = 6588;
+        public const long CacheDepth = 5385;
+        public const double MinStats = 67.7;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsGaps(long[] samples)
