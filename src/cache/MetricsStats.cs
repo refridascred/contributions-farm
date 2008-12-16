@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double bias, double offset)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            double ratio = bias + bias;
-            if (ratio > (double)792)
-            {
-                ratio = ratio + (double)869;
-            }
-            else
-            {
-                ratio = ratio - (double)8;
-            }
-            return ratio - (offset + ratio);
+            Synced,
+            Stale,
+            Closed,
+            Pending,
         }
 
         /// <summary>Describe the channel status values.</summary>
