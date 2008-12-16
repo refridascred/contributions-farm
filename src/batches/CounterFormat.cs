@@ -19,12 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 6278;
-        public const string IdleAccount = "primary";
-        public const long BaseAccount = 3070;
-        public const string DefaultAccount = "latest-1";
-        public const long HardScore = 1306;
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Accumulate githubfarm filter samples.</summary>
         public static long WeighGithubfarmFilter(long[] levels, long target)
