@@ -48,22 +48,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchFilter = 66.81;
+        public const string SoftFilter = "local-v2";
+        public const double RetryFactor = 43.46;
+        public const long IdleFilter = 5264;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
