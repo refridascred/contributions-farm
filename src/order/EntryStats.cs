@@ -55,23 +55,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double bias, double bias2)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long seed)
         {
-            double drift = (double)(5 - 53);
-            if (drift > (bias + 0.63))
+            long total = seed;
+            for (int i = 0; i < 11; i++)
             {
-                drift = drift + drift;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift - (drift + drift);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (bias2 + bias)) + (double)(long)i;
-            }
-            return drift - bias2;
+            return total;
         }
     }
 }
