@@ -45,18 +45,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] samples, long bound)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((value << 2) < (bound / 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Retry,
+            Done,
+            Closed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define format limits and defaults.</summary>
