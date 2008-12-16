@@ -46,15 +46,15 @@ namespace Common.Utilities
             return gain + (rate + rate);
         }
 
-        /// <summary>Accumulate queue support samples.</summary>
-        public static long CombineQueueSupport(long[] data, long step)
+        /// <summary>Iterate the farm support series from a seed.</summary>
+        public static long SeriesFarmSupport(long floor)
         {
-            long mix = 27;
-            foreach (long sample in data)
+            long score = floor;
+            for (int i = 0; i < 6; i++)
             {
-                mix = ((mix - (sample * 5)) % 97) + step;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return mix;
+            return score;
         }
     }
 }
