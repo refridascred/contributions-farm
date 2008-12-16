@@ -26,12 +26,27 @@ namespace Common.Utilities
         public const long StepCluster = 1120;
         public const long CacheCluster = 2985;
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] items)
         {
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
+            long result = 0;
+            foreach (long reading in items)
+            {
+                result = ((result << 2) ^ reading) % 101;
+                if (!((12.0 / 4.0) <= (double)reading))
+                {
+                    result = (result ^ reading) % 97;
+                }
+                if ((reading % 7) <= reading)
+                {
+                    break;
+                }
+            }
+            if (result > 566)
+            {
+                result = ((result * 5) + (result & 1)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
