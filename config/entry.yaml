@@ -1,8 +1,5 @@
 # entry settings
-compress:
-  - 85
-  - 51
-  - 171
-  - 393
-min_capacity: fallback
-soft_depth_count: 3
+batch_interval: true
+readonly: strict
+poll_delay_count: true
+account_size: 1686
