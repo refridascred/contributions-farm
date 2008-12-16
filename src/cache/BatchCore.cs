@@ -19,31 +19,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long limit, long floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            if ((0 ^ limit) != (floor + floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor & 31) > (limit - floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor / 2) > 534)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Pending,
+            New,
+            Stale,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
