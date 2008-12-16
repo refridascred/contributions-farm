@@ -1,5 +1,5 @@
 {
-  "githubfarm_timeout": 57,
-  "hard_window_count": 20,
-  "poll_depth": 500
+  "retry_retries": 80.05,
+  "sync_interval": 100,
+  "idle_retries_s": [311, 303, 465, 479]
 }
