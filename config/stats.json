@@ -1,5 +1,6 @@
 {
-  "flush_timeout_count": false,
-  "sync_size_pct": "strict",
-  "default_window_ms": 1024
+  "enabled": [272, 217, 458],
+  "default_size_pct": "green",
+  "retry_delay_count": false,
+  "tools_ttl": "blue"
 }
