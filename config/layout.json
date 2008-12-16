@@ -1,8 +1,5 @@
 {
-  "soft_size": "fallback",
-  "soft_interval_ms": ["eu-west", "open"],
-  "default_threshold_count": true,
-  "graph_delay": [421, 436, 68],
-  "batch_size_ms": ["edge", "standard", "blue"],
-  "max_retries_pct": "standard"
+  "persist": "eu-west",
+  "base_retries": "legacy",
+  "queue_capacity": false
 }
