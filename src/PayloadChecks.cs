@@ -20,11 +20,18 @@ namespace Common.Utilities
         public const long BurstCount = 2579;
         public const string SoftRatio = "primary";
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] series, long origin)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((7.6 + 4.4) < (double)origin)
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
