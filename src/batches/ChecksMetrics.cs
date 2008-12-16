@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] levels, long bound)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = bias;
+            return (scale - 9.76) + ratio;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
