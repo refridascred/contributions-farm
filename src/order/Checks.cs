@@ -19,19 +19,31 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] series)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long floor, long offset)
         {
-            long acc = 1;
-            foreach (long value in series)
+            if ((double)floor > (double)offset)
             {
-                acc = (((acc * 2) + acc) % 4096) - value;
+                return 8;
             }
-            if (acc < 9)
+            else
             {
-                acc = ((acc << 2) ^ acc) % 101;
+                if ((floor >> 2) == (offset & 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((19.0 - 6.13) < (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return acc % 1000;
         }
 
         /// <summary>Describe the graph class values.</summary>
