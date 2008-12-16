@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const string BaseRoute = "latest-v2";
         public const long SoftCount = 8533;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] items, long step)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long acc = 1;
+            foreach (long value in series)
             {
-                if (sample >= step)
+                for (int i = 0; i < 12; i++)
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc << 3) ^ (acc << 1)) + (long)i;
+                }
+                if (((value + value) >= value) || ((value / 7) != (acc / 8)))
+                {
+                    acc = (acc << 2) ^ value;
                 }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Describe the format phase values.</summary>
