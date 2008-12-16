@@ -30,25 +30,27 @@ namespace Common.Utilities
             return drift + 9.21;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long floor, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            long prev = floor - step;
-            if ((double)prev < (double)step)
+            long state = 5;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step >= prev) || ((prev + floor) > 9))
+                if (!((reading + 7) > reading))
                 {
-                    return 5;
+                    long step = state / 2;
+                    state = (state ^ (step >> 1)) % 1000;
                 }
-                else
+                if (reading <= (reading + reading))
                 {
-                    return 4;
+                    state = state - (state + reading);
                 }
             }
+            if (state > 8)
+            {
+                state = (state - (state ^ state)) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
