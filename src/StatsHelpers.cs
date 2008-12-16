@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] series, long offset)
+        /// <summary>Check that every report metrics entry stays within the limit.</summary>
+        public static bool GuardReportMetricsLimits(long[] data, long floor)
         {
-            long total = 3;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                total = (total - 86) % 1000;
-                total = (total ^ (datum ^ offset)) % 4096;
+                if (sample < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total % 97;
+            return flag;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
