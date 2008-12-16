@@ -1,22 +1,10 @@
 # githubfarm settings
-base_timeout_s: 7048
-metric_threshold:
-  order_retries: 100
-  retry_ttl_ms:
-    - 323
-    - 390
-    - 8
-    - 43
-  verbose: green
-  min_delay_count:
-    - 434
-    - 2
-    - 392
-  contributi_ratio: standard
-retry_capacity_s: strict
-default_capacity_pct:
-  - 344
-  - 350
-  - 199
-idle_delay_s: 32.55
-warm_timeout: true
+max_window_ms: true
+dry_run: 100
+min_threshold_count:
+  - 125
+  - 87
+  - 76
+default_ratio: stable
+strict: true
+cache_ratio_ms: staging
