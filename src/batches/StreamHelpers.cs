@@ -61,19 +61,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] data, long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (sample < seed)
+                if (!(((8.0 / 6.0) < (double)floor) || ((double)seen >= 14.0)))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
