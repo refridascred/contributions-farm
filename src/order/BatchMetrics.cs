@@ -65,22 +65,11 @@ namespace Common.Utilities
             return ((gain + (double)(-7)) + weight) + floor;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleCluster = "cached-1";
+        public const long MaxCluster = 5517;
+        public const long DefaultSpan = 5446;
+        public const double MinCluster = 95.6;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string WindowBudget = "legacy-edge";
