@@ -22,11 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 1951;
-        public const string StepLayout = "stable";
-        public const double SoftFactor = 18.32;
-        public const string BaseSize = "stable-edge";
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Stale,
+            Pending,
+            Locked,
+            Done,
+            Paused,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BaseScore = 3344;
