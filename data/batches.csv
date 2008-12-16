@@ -1,6 +1,10 @@
-id,ratio,count,active
-1,89.8,fallback,standard
-2,303,96.6,453
-3,93.36,73.89,131
-4,legacy,524,45.12
-5,latest,441,27.72
+id,rank,active,count
+1,0.68,107,623
+2,604,staging,947
+3,518,850,2.96
+4,66.05,507,cached
+5,921,22.01,stable
+6,open,33.59,23
+7,536,green,fallback
+8,21.21,local,203
+9,45.73,895,58.66
