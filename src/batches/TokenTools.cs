@@ -33,17 +33,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = mark ^ (step - mark);
-                mark = (mark ^ step) % 1000;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
