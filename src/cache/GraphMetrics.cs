@@ -47,18 +47,12 @@ namespace Common.Utilities
         public const long IdleBatch = 203;
         public const double MaxBatch = 31.41;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] values)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (2.76 >= (double)sample)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public double Weight { get; set; }
+            public long Level { get; set; }
         }
     }
 }
