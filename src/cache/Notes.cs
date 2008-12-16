@@ -32,13 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] values, long step)
         {
-            Done,
-            Synced,
-            Idle,
-            Failed,
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
