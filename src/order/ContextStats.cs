@@ -22,22 +22,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] data, long seed)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] readings, long offset)
         {
-            long anchor = 599;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((item % 24) <= (-407))
+                if (reading > offset)
                 {
-                    anchor = (anchor - anchor) - seed;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (50 / 3)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Define order limits and defaults.</summary>
