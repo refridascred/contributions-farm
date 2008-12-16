@@ -27,18 +27,38 @@ namespace Common.Utilities
         public const long CacheSpan = 3892;
         public const long MaxInterval = 6426;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] readings)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            if (!((3.0 * 5.06) > (double)offset))
             {
-                if ((156 * 4) != (hits * 3))
+                return 7;
+            }
+            else
+            {
+                if (seed > 1)
                 {
-                    hits = (hits + 3) ^ reading;
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)seed == (double)offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((5.4 + 0.9) > (double)seed) && ((542 >> 2) != (offset + offset)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
