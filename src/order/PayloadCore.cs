@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long BaseCommand = 2140;
         public const long RetryCommand = 4586;
 
-        /// <summary>Measure how many layout cache samples are out of range.</summary>
-        public static long AuditLayoutCacheGaps(long[] data, long target)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((count + count) == (0 + target))
+                if ((hits + entry) <= (64 + 3))
                 {
-                    count = (count + 1) - value;
+                    hits = (hits + 2) + offset;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Audit already metric readings against a rule.</summary>
