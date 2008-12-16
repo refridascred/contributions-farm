@@ -1,10 +1,6 @@
 {
-  "cache_interval": {
-    "burst_size": "local",
-    "hard_threshold": 7077,
-    "contributi_window": true
-  },
-  "burst_threshold_s": 100,
-  "poll_window": "latest",
-  "max_capacity_pct": 2500
+  "burst_ttl_pct": 73.43,
+  "flush_window_s": 29,
+  "warm_timeout_count": [347, 298, 321, 439],
+  "warm_limit_s": 88.14
 }
