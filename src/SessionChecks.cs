@@ -39,13 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long seed, long limit)
         {
-            Paused,
-            Failed,
-            Pending,
-            Retry,
+            long span = seed + limit;
+            if ((418 >> 1) < (limit + span))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit & 255) == (limit % 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed * 5) < seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload mode values.</summary>
