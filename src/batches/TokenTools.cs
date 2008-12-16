@@ -20,19 +20,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double weight, double bias)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            double ratio = (double)(-397) * 2.88;
-            if (ratio > (weight + bias))
-            {
-                ratio = ratio - bias;
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - weight;
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
