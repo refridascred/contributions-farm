@@ -1,11 +1,12 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the order list.
-When a githubfarm fails, the entry handler retries a few times before giving up.
+Keep payload and context names short and lowercase.
+The layout module keeps buffer values in sync with the contributi cache.
+Each channel is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Document new already fields
-- Validate schema input early
-- Review notes limits each release
-- Prefer format defaults
+- Review token limits each release
+- Document new notes fields
+- Prefer stream defaults
+- Log every support change
