@@ -24,22 +24,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] samples, long floor)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((floor / 9) >= item)
+                if (item <= target)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Iterate the metrics route series from a seed.</summary>
