@@ -89,10 +89,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleScore = 16.95;
-        public const long BurstSize = 3076;
-        public const long SoftFactor = 7015;
-        public const long LimitWindow = 8545;
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
