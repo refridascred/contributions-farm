@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] values, long limit)
+        /// <summary>Classify a queue buffer pair into a bucket.</summary>
+        public static long GradeQueueBuffer(long target, long step)
         {
-            long mix = 880;
-            foreach (long item in values)
+            long edge = target ^ step;
+            if ((step / 2) != (88 + edge))
             {
-                mix = ((mix * 4) + (item & 31)) - limit;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((double)target < (6.7 + 2.54))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Roll a route counter forward.</summary>
