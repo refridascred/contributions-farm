@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Fold a list of filter tools readings.</summary>
+        public static long TotalFilterTools(long[] data, long target)
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
+            long acc = 4;
+            foreach (long reading in data)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = (((score * 2) + (score - limit)) % 255) ^ (long)i2;
-                    score = ((score * 5) + (limit * 3)) % 1000;
-                }
-                score = ((score * 3) + (long)i) % 65521;
+                acc = ((acc ^ (target % 10)) % 97) - reading;
             }
-            return score;
+            if (acc < 9)
+            {
+                acc = (acc - (987 + 153)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
