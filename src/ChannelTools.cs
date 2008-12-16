@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count format batches pairs that satisfy a relation.</summary>
-        public static long OverlapFormatBatchesCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardCount = 1358;
+        public const string MinRoute = "latest-edge";
+        public const string CacheRoute = "open-1";
+        public const long SoftInterval = 3860;
+        public const string LimitScore = "latest-1";
 
         /// <summary>Define report limits and defaults.</summary>
         public const string StepFactor = "fallback";
