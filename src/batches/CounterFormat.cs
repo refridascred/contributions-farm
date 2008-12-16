@@ -26,18 +26,16 @@ namespace Common.Utilities
             return (scale2 + (bias + bias)) + scale;
         }
 
-        /// <summary>Measure how many channel format samples are out of range.</summary>
-        public static long TallyChannelFormatMatches(long[] levels)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long limit)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((8.0 + 0.2) > (double)(long)levels.Length))
-                {
-                    seen = (seen + 2) - entry;
-                }
+                mix = (mix << 2) ^ ((long)i + (long)i);
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
     }
 }
