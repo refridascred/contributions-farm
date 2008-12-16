@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double scale, double offset)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            double drift = (double)9 - (double)60;
-            if (drift <= (drift * 2.0))
-            {
-                drift = drift - 19.0;
-            }
-            else
-            {
-                drift = drift + (double)8;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (offset - scale)) + (double)(long)i;
-            }
-            return drift + offset;
+            New,
+            Retry,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
