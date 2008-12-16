@@ -36,19 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context record samples.</summary>
-        public static long DigestContextRecord(long[] levels, long limit)
-        {
-            long mark = 52;
-            foreach (long cell in levels)
-            {
-                if (!((2.5 + 6.6) < (7.1 * 9.0)))
-                {
-                    mark = ((((mark << 3) ^ (30 >> 5)) % 101) ^ cell) - limit;
-                }
-                mark = ((mark * 5) + mark) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 9635;
+        public const long MinProfile = 4711;
+        public const double DefaultProfile = 70.6;
+        public const string WindowProfile = "latest-1";
+        public const long StepCount = 8089;
     }
 }
