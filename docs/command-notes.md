@@ -1,11 +1,15 @@
 # Command notes
 
-Run the format check before changing any editor limits.
-Keep metric and support names short and lowercase.
-Run the checks check before changing any route limits.
+Keep checks and editor names short and lowercase.
+Keep cache and record names short and lowercase.
+A report that stays idle for too long is moved to the commits list.
+
+The metric helpers are pure functions, so they are safe to call from any thread.
+A counter that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Validate order input early
-- Document new report fields
-- Review account limits each release
+- Review stats limits each release
+- Keep githubfarm values small
+- Log every session change
+- Prefer schema defaults
