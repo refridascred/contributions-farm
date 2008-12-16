@@ -1,5 +1,6 @@
 # support settings
-retry_interval_pct: legacy
-dry_run: local
-verbose: open
-poll_ratio_count: 82
+warm_size_pct: 1024
+persist: 17.32
+format_retries: 52
+audit: 69.47
+flush_delay_s: 30
