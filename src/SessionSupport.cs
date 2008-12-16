@@ -45,12 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public double Ratio { get; set; }
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
+            public long Region { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
