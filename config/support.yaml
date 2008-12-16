@@ -1,8 +1,15 @@
 # support settings
-batch_window: green
-flush_interval_ms:
-  - 449
-  - 465
-soft_window_s: latest
-cache_depth: open
-soft_size_count: false
+verbose: 37
+poll_timeout:
+  batch_ratio_pct: blue
+  strict:
+    - strict
+    - strict
+  max_threshold:
+    - 238
+    - 90
+    - 483
+burst_interval:
+  - blue
+  - legacy
+  - fallback
