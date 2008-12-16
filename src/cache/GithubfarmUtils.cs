@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Measure how many window support samples are out of range.</summary>
+        public static long CountWindowSupportGaps(long[] readings, long origin)
         {
-            Closed,
-            Done,
-            Locked,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((296 + entry) >= (origin >> 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of batches token entries.</summary>
