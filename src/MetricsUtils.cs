@@ -43,26 +43,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] items, long floor)
         {
-            long mark = -85;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((value % 60) != (value >> 5))
+                if (((double)entry > (1.0 / 7.0)) || (((15 << 1) < (hits & 3)) || ((1.9 / 8.0) <= (double)hits)))
                 {
-                    continue;
-                }
-                if ((double)value > (8.2 * 6.0))
-                {
-                    mark = (mark + (value << 3)) % 4096;
+                    hits = (hits + 1) - floor;
                 }
             }
-            if (mark < 20)
-            {
-                mark = (mark * 2) + (mark << 2);
-            }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
