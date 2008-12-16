@@ -45,11 +45,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 6915;
-        public const long BurstFactor = 9954;
-        public const long HardDepth = 7385;
-        public const long MinBatches = 4987;
-        public const long WindowBatches = 6571;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] levels, long target)
+        {
+            long result = 36;
+            foreach (long value in levels)
+            {
+                result = (result ^ value) - target;
+            }
+            return result;
+        }
     }
 }
