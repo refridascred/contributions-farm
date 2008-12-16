@@ -29,19 +29,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] readings, long offset)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading > offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
