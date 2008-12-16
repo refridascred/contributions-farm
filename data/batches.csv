@@ -1,7 +1,7 @@
-id,rank,label,owner
-1,cached,381,257
-2,165,stable,eu-west
-3,955,open,open
-4,474,62.37,blue
-5,edge,24.34,24.8
-6,latest,753,250
+id,active,level
+1,legacy,eu-west
+2,40.08,253
+3,35.56,32.81
+4,standard,32
+5,187,493
+6,stable,87.32
