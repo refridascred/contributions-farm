@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] series)
         {
-            long anchor = offset;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
