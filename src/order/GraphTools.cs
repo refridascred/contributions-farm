@@ -49,21 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Fold a list of session order readings.</summary>
+        public static long ScoreSessionOrder(long[] readings, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
+            long acc = 3;
+            foreach (long entry in readings)
             {
-                long hits = (long)i;
-                hits = (hits ^ (origin >> 1)) % 65521;
-                if (((double)origin <= (1.03 / 4.0)) || ((hits >> 5) < (origin & 63)))
-                {
-                    mix = (mix - 669) % 97;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
+                acc = (acc + offset) + entry;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
