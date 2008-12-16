@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] series, long limit)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] < limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine window layout values into a single score.</summary>
