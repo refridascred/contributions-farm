@@ -1,13 +1,15 @@
 # support settings
-batch_depth_ms: false
-channel_delay: 2621
-warm_window: 8837
-notes_retries:
-  - 477
-  - 59
-  - 402
-format_ratio: local
-burst_size_ms:
-  - edge
+retry_threshold:
+  - 13
+  - 398
+schema_limit: 5.15
+report_window:
+  - 110
+  - 52
+  - 260
+  - 440
+enabled: 500
+max_interval_pct: 4938
+default_size_ms:
+  - primary
   - green
-  - standard
