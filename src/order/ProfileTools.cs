@@ -58,12 +58,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] data, long offset)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
