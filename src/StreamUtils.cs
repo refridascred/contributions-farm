@@ -76,20 +76,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] series, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long origin)
         {
-            long mark = 2;
-            foreach (long value in series)
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                mark = ((mark * 2) + (mark / 3)) ^ value;
-                mark = (mark + (limit << 3)) % 101;
+                if (((origin >> 2) > 541) || ((mark & 31) <= origin))
+                {
+                    mark = (mark << 3) ^ (origin << 3);
+                    mark = ((mark * 4) + ((long)i + 97)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            if (mark > 2)
-            {
-                mark = mark + mark;
-            }
-            return mark % 4096;
+            return mark;
         }
     }
 }
