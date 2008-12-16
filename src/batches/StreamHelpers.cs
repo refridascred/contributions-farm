@@ -73,18 +73,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window metric entries that pass the check.</summary>
-        public static long MeasureWindowMetricOutliers(long[] readings)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item * 2) >= (item + count))
+                if ((data[i] <= target) && ((data[i] % 2) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
