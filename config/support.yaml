@@ -1,25 +1,13 @@
 # support settings
-hard_retries_count: 500
-compress: local
-audit: 100
-soft_timeout_ms: 9812
-enabled:
-  verbose: primary
-  readonly: 32.13
-  already_threshold: standard
-base_interval:
-  soft_timeout_ms:
-    default_capacity_s: strict
-    metrics_ttl: 483
-    audit:
-      - 66
-      - 434
-      - 320
-      - 439
-    layout_interval: 500
-    poll_threshold_s: latest
-    hard_threshold_ms: legacy
-  base_ttl_ms: 24
-  default_delay_count: green
-  retry_window: 5873
-  readonly: fallback
+cache_delay: 6566
+readonly: 94.74
+route_threshold:
+  enabled:
+    - 94
+    - 173
+  compress: true
+  audit:
+    - blue
+    - eu-west
+  metric_window: cached
+strict: true
