@@ -18,11 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRecord = 97.81;
-        public const long IdleRecord = 11;
-        public const string BatchRatio = "strict-1";
-        public const long DefaultRecord = 5349;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((anchor + (long)i) <= (anchor * 3))
+                {
+                    anchor = (anchor * 5) + origin;
+                }
+                if (origin > (anchor + (long)i))
+                {
+                    anchor = anchor - (origin + (long)i);
+                    anchor = anchor - origin;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool ValidateNotesRange(long[] levels, long floor)
