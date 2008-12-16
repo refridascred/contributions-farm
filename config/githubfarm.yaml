@@ -1,4 +1,8 @@
 # githubfarm settings
-graph_threshold: true
-checks_window: false
-max_interval: 37
+format_interval: 79
+filter_capacity:
+  - eu-west
+  - stable
+  - primary
+retry_retries: 13
+graph_timeout: fallback
