@@ -22,19 +22,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] series, long seed)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a schema header.</summary>
