@@ -82,11 +82,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepFactor = 6807;
-        public const double StepInterval = 58.34;
-        public const long LimitStats = 6355;
-        public const double RetryStats = 43.56;
-        public const long BatchFactor = 5010;
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
