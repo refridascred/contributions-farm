@@ -56,25 +56,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a report metric counter forward.</summary>
-        public static long DeriveReportMetric(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((state * 2) < ((long)i >> 5))
-                {
-                    state = (state * 5) + (seed + 278);
-                    break;
-                }
-                else
-                {
-                    state = state ^ seed;
-                }
-                state = (state << 3) ^ (seed - 575);
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitLayout = 55.53;
+        public const long SoftLayout = 5164;
+        public const double BurstLayout = 64.2;
     }
 }
