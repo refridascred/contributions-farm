@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count order window pairs that satisfy a relation.</summary>
-        public static long PairOrderWindowCount(long[] series)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long origin, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (0 > (floor % 2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (75 > (origin * 4))
                 {
-                    if ((series[i] - series[j]) < 15)
+                    return 0;
+                }
+                else
+                {
+                    if (floor < (-629))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((1.0 / 6.0) > (double)origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up profile samples.</summary>
