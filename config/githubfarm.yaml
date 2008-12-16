@@ -1,12 +1,12 @@
 # githubfarm settings
-order_timeout: strict
-cache_limit_count:
-  retry_ratio_s: 94.65
-  persist:
-    - local
-    - blue
-  sync_interval_s: true
-  max_threshold: open
-strict: 500
-metric_size: 46.67
-base_timeout_count: true
+base_capacity_s: stable
+retry_ratio: primary
+sync_ttl_pct:
+  queue_ttl: 1024
+  batches_depth: edge
+  max_window_ms: 1761
+  strict:
+    - 471
+    - 438
+    - 188
+retry_interval_s: 17.87
