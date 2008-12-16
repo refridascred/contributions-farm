@@ -1,12 +1,19 @@
 # entry settings
-warm_interval_pct:
-  - 489
-  - 177
-  - 287
-audit:
-  - fallback
-  - open
-githubfarm_ratio:
-  - fallback
-  - eu-west
-poll_ttl: false
+session_timeout:
+  enabled: false
+  burst_timeout_pct: true
+  batch_ttl_count:
+    flush_interval: fallback
+    batch_capacity_pct:
+      - cached
+      - strict
+      - open
+      - stable
+    route_window: stable
+  compress: 8.65
+compress:
+  - 94
+  - 338
+  - 97
+editor_ratio: stable
+base_timeout_ms: true
