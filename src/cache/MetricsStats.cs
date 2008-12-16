@@ -39,12 +39,10 @@ namespace Common.Utilities
             return bias + (double)76;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstBudget = 907;
+        public const double MaxTimeout = 56.79;
+        public const long CacheGraph = 5774;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long MatchFormatCount(long[] items)
