@@ -26,11 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] items)
         {
-            public bool Weight { get; set; }
-            public string Total { get; set; } = "";
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((255 / 8) != (value ^ value))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
