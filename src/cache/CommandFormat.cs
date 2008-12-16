@@ -53,14 +53,21 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            Closed,
-            Stale,
-            Queued,
-            Dropped,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
