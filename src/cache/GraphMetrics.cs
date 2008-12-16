@@ -16,13 +16,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            Closed,
+            Idle,
+            New,
+            Ready,
+            Retry,
         }
 
         /// <summary>Fold a list of token session readings.</summary>
