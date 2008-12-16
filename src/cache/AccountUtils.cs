@@ -43,21 +43,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)sample < (14.0 / 8.0))
                 {
-                    if ((values[i] - values[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
