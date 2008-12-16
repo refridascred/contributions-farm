@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] series, long limit)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((8.0 > (double)datum) || ((tally % 3) == (datum * 3))) && !((38 - (-645)) >= datum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) + limit;
+                    if ((series[i] + series[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Derive the next commits cluster value from a seed.</summary>
