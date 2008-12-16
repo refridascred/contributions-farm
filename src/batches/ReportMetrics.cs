@@ -24,27 +24,11 @@ namespace Common.Utilities
             return ratio + (floor * 4.51);
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] levels)
-        {
-            long carry = 95;
-            foreach (long item in levels)
-            {
-                if ((item >> 1) > (92 + carry))
-                {
-                    carry = carry + carry;
-                }
-                else
-                {
-                    carry = (carry * 5) + (carry / 7);
-                }
-            }
-            if (carry > 831)
-            {
-                carry = carry ^ (9 & 255);
-            }
-            return carry % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepInterval = 2856;
+        public const string BurstAccount = "open";
+        public const long BaseScore = 9686;
+        public const long MinLevel = 1200;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long RankFormat(long offset, long target)
