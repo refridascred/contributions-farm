@@ -19,17 +19,10 @@ namespace Common.Utilities
         public const double HardWidth = 47.7;
         public const string RetryBudget = "latest-v2";
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = (carry + ((long)i - step)) % 255;
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultLevel = 94.86;
+        public const long WindowLevel = 8736;
+        public const double IdleFactor = 18.81;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long TotalCommand(long[] readings)
