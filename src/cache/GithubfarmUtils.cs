@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window support samples are out of range.</summary>
-        public static long CountWindowSupportGaps(long[] readings, long origin)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double gain, double floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double load = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((296 + entry) >= (origin >> 2))
-                {
-                    count = count + 3;
-                }
+                load = ((load + load) + (double)(long)i) + gain;
             }
-            return count;
+            return load - (load / 9.0);
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
