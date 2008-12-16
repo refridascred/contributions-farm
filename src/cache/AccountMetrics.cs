@@ -13,31 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long floor, long offset)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            if (!((offset & 7) < (8 * 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (6.1 < (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor >> 2) >= (offset - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a filter info.</summary>
