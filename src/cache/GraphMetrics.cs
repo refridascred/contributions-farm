@@ -43,18 +43,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] levels)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (value >= (count + 142))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
