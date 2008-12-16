@@ -1,15 +1,8 @@
 # support settings
-verbose: 37
-poll_timeout:
-  batch_ratio_pct: blue
-  strict:
-    - strict
-    - strict
-  max_threshold:
-    - 238
-    - 90
-    - 483
-burst_interval:
-  - blue
-  - legacy
-  - fallback
+session_window:
+  - primary
+  - staging
+burst_delay_s: 7555
+batches_limit: 60
+retry_timeout: staging
+hard_size: 1024
