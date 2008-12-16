@@ -37,38 +37,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long step, long step2)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double scale, double span)
         {
-            if (19.0 >= (double)step)
+            double drift = span;
+            if (drift < (drift * 5.37))
             {
-                return 0;
+                drift = drift - (double)770;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((32 * 3) < (step + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step > (step % 100)) && ((step2 + step2) == (step2 - step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step2 <= step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                drift = (drift - (scale - drift)) - (double)(long)i;
             }
+            return drift - scale;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
