@@ -19,14 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Count the editor notes entries that pass the check.</summary>
+        public static long MeasureEditorNotesMatches(long[] items, long floor)
         {
-            Done,
-            Synced,
-            Ready,
-            Idle,
-            Locked,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits - floor) != (floor - floor))
+                {
+                    hits = (hits + 1) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
