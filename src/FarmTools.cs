@@ -25,12 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double scale, double offset)
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
+            double ratio = (scale - offset) * 2.5;
+            if (ratio >= (1.79 * 1.0))
+            {
+                ratio = ratio + (ratio - 5.79);
+            }
+            return ratio + (ratio + offset);
         }
     }
 }
