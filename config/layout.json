@@ -1,13 +1,7 @@
 {
-  "retry_timeout_count": true,
-  "burst_interval_ms": 250,
-  "burst_interval": 1024,
-  "sync_delay_s": 54.55,
-  "retry_ratio_s": {
-    "githubfarm_depth": "stable",
-    "audit": "strict",
-    "batch_size_ms": [422, 486, 332, 243],
-    "hard_window_s": false
-  },
-  "persist": "primary"
+  "filter_ttl": 250,
+  "cache_ttl_pct": "local",
+  "already_interval": true,
+  "retry_capacity_pct": true,
+  "batch_ttl_s": "local"
 }
