@@ -78,19 +78,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] levels, long step)
-        {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftInterval = 7923;
+        public const string IdleInterval = "strict-1";
+        public const long RetryTimeout = 221;
     }
 }
