@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double HardCounter = 27.43;
-        public const double MinCounter = 9.23;
-        public const string BurstBudget = "cached";
-        public const long SoftScore = 7049;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Failed,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string BaseContext = "open";
