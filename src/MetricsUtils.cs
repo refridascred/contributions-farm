@@ -13,10 +13,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWidth = 682;
-        public const long RetryWindow = 6281;
-        public const string MaxTimeout = "standard-v2";
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits + 27) > hits)
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long SeriesGraph(long bound)
