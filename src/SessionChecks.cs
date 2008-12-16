@@ -13,12 +13,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public double Region { get; set; }
+            Idle,
+            Pending,
+            Dropped,
+            New,
         }
 
         /// <summary>Rank tools batch input into a small class.</summary>
