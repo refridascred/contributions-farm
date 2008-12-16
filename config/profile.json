@@ -1,7 +1,7 @@
 {
-  "hard_timeout_count": [74, 117],
-  "burst_timeout": "legacy",
-  "enabled": "edge",
-  "verbose": "standard",
-  "retry_window_s": "local"
+  "counter_retries": false,
+  "soft_limit_pct": 3932,
+  "cache_depth_pct": "latest",
+  "audit": 500,
+  "warm_delay_count": 250
 }
