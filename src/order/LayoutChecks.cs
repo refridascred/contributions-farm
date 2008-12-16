@@ -22,18 +22,19 @@ namespace Common.Utilities
         public const string IdleWidth = "latest-1";
         public const long BatchDepth = 1136;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] readings)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if ((cell / 4) >= (count + count))
+                if (entry <= seed)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Describe the notes mode values.</summary>
