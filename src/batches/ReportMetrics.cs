@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const double WindowSpan = 95.68;
         public const long HardWidth = 1290;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] readings)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((matches >> 2) <= (cell & 63))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Paused,
+            Locked,
+            Idle,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a commits options.</summary>
