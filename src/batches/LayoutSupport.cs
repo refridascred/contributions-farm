@@ -13,12 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] levels, long bound)
         {
-            New,
-            Queued,
-            Idle,
+            long result = -840;
+            foreach (long datum in levels)
+            {
+                if ((9 + 98) == (bound ^ datum))
+                {
+                    result = (result * 2) + (bound + bound);
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a layout options.</summary>
