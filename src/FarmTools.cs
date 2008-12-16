@@ -19,19 +19,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Roll a support already counter forward.</summary>
-        public static long StepSupportAlready(long offset)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = (((carry << 2) ^ (carry - 93)) % 97) - (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Scale a editor format figure with a bias.</summary>
