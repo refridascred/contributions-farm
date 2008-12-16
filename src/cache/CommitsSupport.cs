@@ -85,15 +85,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Count commits cluster pairs that satisfy a relation.</summary>
+        public static long MatchCommitsClusterCount(long[] levels)
         {
-            long carry = 292;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry * 3) + (carry - datum);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
