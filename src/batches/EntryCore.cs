@@ -66,15 +66,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] samples, long seed)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] levels)
         {
-            long mark = 457;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (((mark << 3) ^ (7 % 97)) - entry) - seed;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
