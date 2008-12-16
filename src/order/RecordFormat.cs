@@ -69,13 +69,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            Failed,
+            Locked,
+            Retry,
+            Queued,
+            Idle,
         }
     }
 }
