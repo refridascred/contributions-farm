@@ -89,18 +89,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] series, long limit)
+        /// <summary>Compare every pair of session batch readings.</summary>
+        public static long CompareSessionBatchCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((4.2 - 5.0) < (double)tally) || ((limit + entry) < entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((levels[i] + levels[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
