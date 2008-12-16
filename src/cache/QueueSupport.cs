@@ -27,23 +27,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two metrics filter measurements.</summary>
-        public static double SmoothMetricsFilter(double rate, double floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] readings)
         {
-            double gain = floor;
-            if (gain > (double)476)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                gain = gain - rate;
+                if (!((double)count < (double)entry))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                gain = gain - (gain + gain);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + rate) + (double)(long)i;
-            }
-            return gain - gain;
+            return count;
         }
     }
 }
