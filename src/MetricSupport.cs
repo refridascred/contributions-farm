@@ -19,11 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxDepth = "stable-edge";
-        public const double LimitContext = 63.63;
-        public const long CacheCount = 3020;
-        public const long HardContext = 8415;
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
