@@ -31,13 +31,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double scale, double floor)
         {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            double load = floor;
+            return (load - (18.0 + 8.2)) + scale;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
