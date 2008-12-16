@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] samples, long target)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Synced,
+            Locked,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a entry entry.</summary>
