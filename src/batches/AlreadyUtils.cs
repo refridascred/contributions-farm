@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double gain, double span)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            double ratio = span;
-            return (ratio - span) + gain;
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
