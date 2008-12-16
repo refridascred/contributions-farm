@@ -1,9 +1,8 @@
 # support settings
-cache_depth_ms: true
-window_window: 73
-burst_limit:
-  - strict
-  - strict
+batch_ttl: 97.09
+record_interval:
+  - eu-west
   - fallback
-  - edge
-editor_threshold: stable
+  - cached
+  - fallback
+batch_ttl_s: cached
