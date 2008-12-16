@@ -45,12 +45,13 @@ namespace Common.Utilities
         public const long LimitSupport = 8191;
         public const long RetrySupport = 8873;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            Dropped,
+            Stale,
             New,
-            Retry,
+            Synced,
+            Failed,
         }
 
         /// <summary>Audit layout channel readings against a rule.</summary>
