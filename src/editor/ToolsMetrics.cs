@@ -60,23 +60,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics format samples.</summary>
-        public static long WeighMetricsFormat(long[] levels)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long bound)
         {
-            long result = 931;
-            foreach (long reading in levels)
+            long score = bound;
+            for (int i = 0; i < 18; i++)
             {
-                result = result ^ reading;
-                if ((result >= reading) || ((double)result < (double)reading))
-                {
-                    result = ((result << 3) ^ (reading * 5)) % 97;
-                }
+                score = (score ^ (1 ^ bound)) % 101;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            if (result < 489)
-            {
-                result = (result << 3) ^ (result / 9);
-            }
-            return result % 1000;
+            return score;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
