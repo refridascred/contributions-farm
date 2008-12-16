@@ -16,16 +16,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long origin)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long limit, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
+            if (13.0 >= (double)target)
             {
-                sum = sum - (origin + origin);
-                sum = ((sum * 3) + (long)i) % 65521;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((target & 127) <= limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit % 12) >= (limit + 53))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
