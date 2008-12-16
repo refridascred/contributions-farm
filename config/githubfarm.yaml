@@ -1,6 +1,9 @@
 # githubfarm settings
-flush_threshold: 29.05
-strict: 1024
-sync_window_count: 500
-dry_run: 4227
-audit: stable
+idle_limit:
+  metrics_timeout:
+    - green
+    - cached
+  base_interval_count: stable
+  context_window: 81
+max_size: true
+dry_run: primary
