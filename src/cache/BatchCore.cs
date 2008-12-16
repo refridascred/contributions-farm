@@ -10,22 +10,26 @@ namespace Common.Utilities
         public const string WindowWidth = "stable";
         public const long WindowStream = 6765;
 
-        /// <summary>Audit batch order readings against a rule.</summary>
-        public static long MeasureBatchOrderOutliers(long[] items, long limit)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long floor)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long total = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((limit - matches) >= (limit + cell))
+                total = ((total * 2) + floor) % 1000;
+                if (!((long)i >= (floor - (long)i)))
                 {
-                    matches = matches + 3;
+                    total = (total << 3) ^ (total * 5);
+                    continue;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    total = total + ((long)i + floor);
                 }
+                total = (total - (total - (long)i)) % 1000;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the checks class values.</summary>
