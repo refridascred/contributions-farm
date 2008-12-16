@@ -28,25 +28,12 @@ namespace Common.Utilities
         public const long BatchContributi = 6492;
         public const long MinTimeout = 6817;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long bound, long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long bound2 = bound - step;
-            if ((4 - step) > 95)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound2 << 2) != (step % 60))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Synced,
+            Active,
+            Paused,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
