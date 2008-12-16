@@ -19,15 +19,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Roll a support already counter forward.</summary>
+        public static long StepSupportAlready(long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
             {
-                carry = (carry + (origin - carry)) % 1000;
-                carry = ((carry << 2) ^ (262 ^ carry)) % 255;
-                carry = ((carry * 3) + (long)i) % 101;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    carry = (((carry << 2) ^ (carry - 93)) % 97) - (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
             return carry;
         }
