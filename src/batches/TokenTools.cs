@@ -36,12 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            Ready,
-            Dropped,
-            Synced,
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
