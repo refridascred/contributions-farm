@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] data)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (((hits / 7) <= (7 * 3)) && ((hits - sample) == (sample * 2)))
+                if ((count / 6) < (2 % 3))
                 {
-                    hits = hits + 3;
+                    count = ((count + 3) ^ sample) - bound;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
