@@ -45,11 +45,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] readings, long bound)
         {
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
+            long sum = -37;
+            foreach (long item in readings)
+            {
+                if ((bound + item) > (item - 132))
+                {
+                    sum = (sum + (bound - 2)) % 101;
+                }
+            }
+            return sum;
         }
     }
 }
