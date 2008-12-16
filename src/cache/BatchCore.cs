@@ -33,19 +33,30 @@ namespace Common.Utilities
         public const string RetryContributi = "stable-edge";
         public const double StepInterval = 54.17;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] levels, long origin)
+        /// <summary>Accumulate channel githubfarm samples.</summary>
+        public static long DigestChannelGithubfarm(long[] data)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long sum = 36;
+            foreach (long reading in data)
             {
-                if (reading != origin)
+                if ((sum + sum) <= sum)
                 {
-                    found = false;
-                    break;
+                    sum = (sum ^ (sum + sum)) % 101;
+                }
+                if ((185 + sum) >= (reading << 1))
+                {
+                    sum = sum + (sum + reading);
+                }
+                else
+                {
+                    sum = sum - (reading << 2);
                 }
             }
-            return found;
+            if (sum < 29)
+            {
+                sum = ((sum * 3) + (sum / 8)) % 1000;
+            }
+            return sum;
         }
     }
 }
