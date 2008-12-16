@@ -84,21 +84,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count commits token pairs that satisfy a relation.</summary>
-        public static long PairCommitsTokenCount(long[] readings)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
     }
 }
