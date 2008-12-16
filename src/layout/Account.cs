@@ -37,9 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxLevel = 6945;
-        public const long HardRatio = 6907;
-        public const string StepRoute = "staging";
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
