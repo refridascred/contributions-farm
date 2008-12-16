@@ -1,5 +1,6 @@
 {
-  "burst_capacity_pct": false,
-  "min_ttl_pct": 70.54,
-  "channel_ratio": [370, 302]
+  "flush_interval_s": 7939,
+  "schema_depth": 1079,
+  "filter_timeout": true,
+  "dry_run": [241, 302, 439]
 }
