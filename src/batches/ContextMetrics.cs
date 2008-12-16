@@ -45,15 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double weight, double offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] samples, long bound)
         {
-            double ratio = (weight + offset) + (weight * 19.0);
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                ratio = ratio - (double)(long)i;
+                if ((value << 2) < (bound / 2))
+                {
+                    count = count + 2;
+                }
             }
-            return ratio + (double)0;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
