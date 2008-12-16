@@ -42,24 +42,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long seed, long seed2)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            if ((seed2 % 7) >= (seed2 << 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed > (seed - seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Label { get; set; }
+            public double Count { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
