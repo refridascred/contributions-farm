@@ -23,11 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Blend two contributi cluster measurements.</summary>
+        public static double SmoothContributiCluster(double rate, double span)
         {
-            public bool Weight { get; set; }
-            public double Label { get; set; }
+            double scale = 18.0 - (8.58 / 5.0);
+            if (scale <= scale)
+            {
+                scale = (scale - (rate * 5.7)) + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - 4.0) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Hold a layout stats.</summary>
