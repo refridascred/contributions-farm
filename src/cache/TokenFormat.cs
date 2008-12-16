@@ -20,18 +20,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((origin * 4) >= item)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 2127;
+        public const long MinFactor = 1831;
+        public const double LimitChecks = 31.66;
     }
 }
