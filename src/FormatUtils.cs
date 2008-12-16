@@ -64,19 +64,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine format filter values into a single score.</summary>
-        public static long FoldFormatFilter(long[] readings)
-        {
-            long score = 73;
-            foreach (long entry in readings)
-            {
-                if (((4.4 / 4.0) > (double)entry) && ((score + entry) > (score + score)))
-                {
-                    score = (score + (7 % 24)) % 4096;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 5909;
+        public const long DefaultSchema = 7072;
+        public const long IdleInterval = 8607;
+        public const long MaxFactor = 2813;
+        public const double SoftSchema = 39.49;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatOutliers(long[] readings, long bound)
