@@ -1,15 +1,11 @@
 # Command notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-Run the checks check before changing any queue limits.
-
-When a filter fails, the account handler retries a few times before giving up.
-Use format settings to tune how often metrics data is refreshed.
-The window helpers are pure functions, so they are safe to call from any thread.
+Run the format check before changing any editor limits.
+Keep metric and support names short and lowercase.
+Run the checks check before changing any route limits.
 
 ## Guidelines
 
-- Document new counter fields
-- Review contributi limits each release
-- Validate account input early
-- Prefer notes defaults
+- Validate order input early
+- Document new report fields
+- Review account limits each release
