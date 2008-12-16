@@ -27,12 +27,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "fallback-1";
-        public const long DefaultEditor = 4236;
-        public const string LimitFactor = "standard-1";
-        public const long CacheEditor = 1317;
-        public const long WindowTimeout = 7419;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Retry,
+            New,
+            Synced,
+            Queued,
+            Active,
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long MatchRouteCount(long[] data)
