@@ -23,19 +23,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every support metrics entry stays within the limit.</summary>
-        public static bool ValidateSupportMetricsRange(long[] items, long limit)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Flag { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
