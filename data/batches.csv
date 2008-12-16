@@ -1,6 +1,11 @@
-id,ratio,token,score
-1,standard,open,632
-2,local,standard,808
-3,454,fallback,cached
-4,848,green,eu-west
-5,5.07,506,60.56
+id,owner,label,active
+1,staging,360,staging
+2,984,primary,75.85
+3,265,48.02,47.19
+4,75.77,local,30.67
+5,0,20.47,59.14
+6,45.28,blue,legacy
+7,833,51.12,424
+8,17.82,21.14,cached
+9,82.56,open,949
+10,899,499,23.93
