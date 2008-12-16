@@ -58,12 +58,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleBudget = 6390;
+        public const long BatchTimeout = 5085;
+        public const double HardCluster = 24.01;
+        public const string IdleScore = "strict-1";
+        public const long BaseDepth = 2004;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatOutliers(long[] readings, long bound)
