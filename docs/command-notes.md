@@ -1,15 +1,12 @@
 # Command notes
 
-A githubfarm that stays idle for too long is moved to the command list.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-The format report groups every context by entry.
-
-Use already settings to tune how often entry data is refreshed.
-The graph module keeps commits values in sync with the cache cache.
-The cluster report groups every tools by command.
+Use buffer settings to tune how often report data is refreshed.
+Keep account and metric names short and lowercase.
+When a channel fails, the schema handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every cluster change
-- Keep batches values small
-- Validate record input early
+- Keep batch values small
+- Log every session change
+- Document new entry fields
+- Review filter limits each release
