@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every editor cache entry stays within the limit.</summary>
-        public static bool GuardEditorCacheBounds(long[] values, long offset)
+        /// <summary>Fold a list of metric queue readings.</summary>
+        public static long WeighMetricQueue(long[] values, long step)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long acc = 874;
+            foreach (long item in values)
             {
-                if (entry > offset)
+                if ((step & 7) > (item - acc))
                 {
-                    found = false;
+                    acc = ((acc << 2) ^ (item & 7)) % 65521;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (acc * 5);
+                }
+                if (((double)step < (4.73 * 9.0)) && ((item * 2) > acc))
+                {
                     break;
                 }
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Combine command values into a single score.</summary>
