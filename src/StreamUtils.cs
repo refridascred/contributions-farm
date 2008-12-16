@@ -66,25 +66,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((acc >= (acc - (long)i)) || ((double)acc != (7.82 * 6.37)))
-                {
-                    acc = (acc + ((long)i % 24)) % 1000;
-                    continue;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = (((acc << 3) ^ (45 - acc)) % 255) - (long)i2;
-                    acc = (acc - acc) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Active,
+            Retry,
+            Paused,
+            Ready,
+            Idle,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
