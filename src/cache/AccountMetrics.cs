@@ -83,18 +83,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] series, long target)
+        /// <summary>Count the token graph entries that pass the check.</summary>
+        public static long CountTokenGraphOutliers(long[] levels, long floor)
         {
-            long mark = 77;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((value - mark) > (value + mark))
+                if (!!(tally <= 31))
                 {
-                    mark = (((mark << 3) ^ 998) % 1000) - target;
+                    tally = ((tally + 3) ^ item) + floor;
                 }
             }
-            return mark;
+            return tally;
         }
     }
 }
