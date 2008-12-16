@@ -1,8 +1,5 @@
 {
-  "persist": true,
-  "stats_timeout": "local",
-  "base_limit_pct": true,
-  "strict": true,
-  "burst_window_s": "stable",
-  "hard_capacity": 19.58
+  "metrics_timeout": [121, 441],
+  "audit": true,
+  "warm_window_ms": [386, 320, 301, 245]
 }
