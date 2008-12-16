@@ -40,22 +40,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of commits support readings.</summary>
-        public static long ScoreCommitsSupport(long[] readings)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] items)
         {
-            long anchor = 591;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((anchor - 882) < (anchor * 2))
+                if (!((9 - entry) == (hits << 2)) && ((hits - (long)items.Length) == (entry - hits)))
                 {
-                    anchor = (((anchor << 3) ^ (30 / 9)) % 255) + value;
+                    hits = hits + 1;
                 }
             }
-            if (anchor < 563)
-            {
-                anchor = (anchor - (anchor + anchor)) % 255;
-            }
-            return anchor % 1000;
+            return hits;
         }
     }
 }
