@@ -26,19 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] data, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (datum >= origin)
+                if (((-5) < (hits - (-86))) && (954 > (hits + hits)))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
