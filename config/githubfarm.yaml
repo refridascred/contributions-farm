@@ -1,37 +1,10 @@
 # githubfarm settings
-githubfarm_ttl:
-  - 45
-  - 71
-  - 366
-  - 18
-flush_timeout: blue
-soft_interval:
-  cache_limit_s:
-    - 45
-    - 490
-    - 297
-    - 143
-  dry_run:
-    graph_delay: 3353
-    stats_depth:
-      - 444
-      - 163
-    batches_depth: edge
-    route_limit: false
-  tools_ttl: 5701
-  flush_ratio_s: 82.89
-  min_limit_s: primary
-  graph_delay: 77
-poll_delay_count: standard
-cluster_size: local
-base_window_pct:
-  soft_limit: 3572
-  cache_interval: true
-  base_size_count: 500
-  batch_ttl_s: latest
-  window_timeout:
-    warm_retries_s: true
-    session_depth: true
-    poll_ttl: 22.21
-    enabled: green
-    layout_size: green
+base_window_ms: 45.12
+flush_threshold_ms: blue
+channel_timeout: standard
+dry_run: 89.21
+cache_interval:
+  - 37
+  - 422
+  - 221
+  - 325
