@@ -28,13 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Dropped,
-            Done,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheSpan = 4990;
+        public const double StepBudget = 67.86;
+        public const string MinNotes = "staging-v2";
+        public const double HardTimeout = 17.15;
+        public const long MaxNotes = 8388;
     }
 }
