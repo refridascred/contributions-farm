@@ -1,7 +1,9 @@
 {
-  "stats_depth": "stable",
-  "farm_limit": 72.77,
-  "stream_delay": "staging",
-  "idle_retries_ms": false,
-  "flush_retries": ["stable", "local", "primary", "stable"]
+  "dry_run": 1024,
+  "entry_timeout": {
+    "retry_delay_s": true,
+    "default_delay_pct": "cached",
+    "hard_ttl_pct": 1.57
+  },
+  "stream_window": false
 }
