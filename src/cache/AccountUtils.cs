@@ -27,19 +27,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every buffer report entry stays within the limit.</summary>
-        public static bool GuardBufferReportLimits(long[] readings, long bound)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long origin, long seed)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long edge = origin - seed;
+            if (((seed + origin) < (edge % 12)) || ((origin >> 1) <= (seed >> 3)))
             {
-                if (reading >= bound)
+                return 7;
+            }
+            else
+            {
+                if (((double)seed <= (double)origin) && ((double)seed == (6.0 - 5.4)))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!(origin < (origin >> 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((edge ^ edge) >= (seed + origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
