@@ -16,17 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] data, long target)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] series, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (data[i] >= target)
+                if (datum < bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the checks level values.</summary>
