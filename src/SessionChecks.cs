@@ -13,13 +13,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Rank tools batch input into a small class.</summary>
