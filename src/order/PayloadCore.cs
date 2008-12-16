@@ -24,24 +24,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long target, long seed)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long origin)
         {
-            if ((double)target >= (7.97 * 3.0))
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(target <= (seed - target)))
+                if ((68 % 97) <= (sum + origin))
                 {
-                    return 1;
+                    sum = (sum + ((long)i - (long)i)) % 4096;
                 }
-                else
-                {
-                    return 7;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
