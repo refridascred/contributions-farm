@@ -40,19 +40,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] readings, long target)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Closed,
+            Pending,
+            Queued,
         }
     }
 }
