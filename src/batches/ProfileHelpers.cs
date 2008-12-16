@@ -78,21 +78,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of session batch readings.</summary>
-        public static long CompareSessionBatchCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleLevel = "primary-edge";
+        public const string WindowCommits = "primary-v2";
+        public const long LimitCommits = 4793;
+        public const long RetryCommits = 6802;
     }
 }
