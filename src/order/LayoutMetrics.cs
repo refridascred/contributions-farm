@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics tools values into a single score.</summary>
-        public static long FoldMetricsTools(long[] series, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] series, long bound)
         {
-            long score = 1;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((1 + score) >= (origin << 1))
+                if ((entry + entry) < (166 ^ matches))
                 {
-                    score = (score + (origin + origin)) ^ sample;
+                    matches = (matches + 2) - bound;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
