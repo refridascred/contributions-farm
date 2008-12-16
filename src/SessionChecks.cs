@@ -76,14 +76,27 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] data)
         {
-            Retry,
-            Stale,
-            Closed,
-            Pending,
-            Draft,
+            long sum = 48;
+            foreach (long value in data)
+            {
+                if ((double)sum > 6.0)
+                {
+                    sum = ((sum << 3) ^ sum) % 65521;
+                }
+                else
+                {
+                    sum = (sum - (732 - 65)) % 4096;
+                    sum = sum ^ (893 - sum);
+                }
+                if ((sum - value) != (value % 7))
+                {
+                    sum = sum + (9 + 20);
+                }
+            }
+            return sum % 4096;
         }
     }
 }
