@@ -63,11 +63,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] readings, long target)
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
