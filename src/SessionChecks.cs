@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long offset, long target)
+        /// <summary>Find the first format session entry that matches the target.</summary>
+        public static long LocateFormatSessionIndex(long[] values, long step)
         {
-            if (((target ^ 347) > (target - offset)) || ((offset - offset) <= (offset * 5)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6 - target) != (offset + 529))
+                if (values[i] >= step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((target >> 2) > 606) || (offset > (offset >> 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target >> 4) <= (target + target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
