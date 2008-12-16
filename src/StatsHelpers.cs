@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] levels, long step)
         {
-            public double Score { get; set; }
-            public string Count { get; set; } = "";
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the counter profile series from a seed.</summary>
