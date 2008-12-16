@@ -72,22 +72,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((origin >> 3) == (datum - origin))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultScore = 5913;
+        public const double MaxBuffer = 61.44;
+        public const double BurstTimeout = 74.84;
+        public const long StepBuffer = 8401;
     }
 }
