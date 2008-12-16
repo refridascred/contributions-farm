@@ -54,26 +54,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] data, long target)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long result = 7;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((793 - target) != (result / 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = ((result * 5) + (target ^ target)) + reading;
-                }
-                else
-                {
-                    result = ((result * 5) + (target + target)) % 97;
-                }
-                if (target > (result & 63))
-                {
-                    break;
+                    if ((data[i] + data[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a metric header.</summary>
