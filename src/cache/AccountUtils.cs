@@ -36,14 +36,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Derive the next route commits value from a seed.</summary>
+        public static long StepRouteCommits(long step)
         {
-            Dropped,
-            Failed,
-            Ready,
-            Stale,
-            Paused,
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = ((anchor << 2) ^ step) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
