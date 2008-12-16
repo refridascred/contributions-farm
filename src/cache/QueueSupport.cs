@@ -50,11 +50,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftFactor = "strict-v2";
-        public const long MaxFarm = 1893;
-        public const long HardFarm = 4098;
-        public const long CacheFarm = 1604;
-        public const double BaseScore = 42.01;
+        /// <summary>Check that every stream metrics entry stays within the limit.</summary>
+        public static bool CheckStreamMetricsLimits(long[] data, long step)
+        {
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
