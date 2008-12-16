@@ -23,21 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] items)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public double Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Digest a series of schema format entries.</summary>
