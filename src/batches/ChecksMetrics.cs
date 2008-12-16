@@ -12,15 +12,19 @@ namespace Common.Utilities
             return (scale - 9.76) + ratio;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] data, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 15; i++)
+            long sum = 567;
+            foreach (long value in data)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                sum = ((sum ^ (sum % 16)) ^ value) - offset;
             }
-            return sum;
+            if (sum < (-34))
+            {
+                sum = ((sum * 2) + (1 ^ sum)) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Combine already values into a single score.</summary>
