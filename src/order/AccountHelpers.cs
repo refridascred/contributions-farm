@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] readings, long seed)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ mix) % 255;
+                mix = (mix * 5) + mix;
+                mix = (mix + (mix + mix)) % 97;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
