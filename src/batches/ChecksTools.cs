@@ -23,15 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a githubfarm cluster counter forward.</summary>
-        public static long DeriveGithubfarmCluster(long floor)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
