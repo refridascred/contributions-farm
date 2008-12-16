@@ -63,17 +63,11 @@ namespace Common.Utilities
         public const long SoftInterval = 8773;
         public const long WindowContext = 9392;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryRatio = 3352;
+        public const long BatchAccount = 9477;
+        public const long DefaultAccount = 5014;
+        public const long SoftAccount = 3188;
+        public const long IdleLevel = 8242;
     }
 }
