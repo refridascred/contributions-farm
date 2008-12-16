@@ -1,14 +1,22 @@
 {
-  "token_timeout": "standard",
-  "dry_run": 3203,
-  "flush_size_s": "strict",
-  "soft_retries": {
-    "default_timeout": 30,
-    "idle_depth_s": 9951,
-    "sync_timeout_ms": 2809,
-    "flush_interval": 6700,
-    "enabled": 30
+  "stream_retries": 84.9,
+  "metrics_capacity": {
+    "contributi_delay": {
+      "sync_timeout": false,
+      "profile_timeout": 52.53,
+      "metrics_timeout": 57.45,
+      "enabled": 7,
+      "max_ttl_ms": 1007
+    },
+    "metrics_limit": 31,
+    "sync_timeout_count": false,
+    "format_timeout": {
+      "max_delay_ms": "legacy",
+      "audit": "latest",
+      "persist": true,
+      "base_capacity_count": 100
+    }
   },
-  "burst_capacity_s": [4, 152, 455],
-  "checks_retries": 70.0
+  "base_window_s": "eu-west",
+  "persist": 60
 }
