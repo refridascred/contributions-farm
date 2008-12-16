@@ -18,31 +18,21 @@ namespace Common.Utilities
         public const long StepWidth = 6656;
         public const long BaseCount = 1590;
 
-        /// <summary>Grade a window contributi value against two limits.</summary>
-        public static long SortWindowContributi(long limit, long offset)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            if ((double)limit >= (double)offset)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset >= 86)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + offset) >= (offset ^ limit))
+                    if ((values[i] + values[j]) < 9)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
