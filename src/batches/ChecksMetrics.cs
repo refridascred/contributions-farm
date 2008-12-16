@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] data)
         {
-            Failed,
-            Synced,
-            Closed,
-            Active,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (((5 + (long)data.Length) <= (cell << 3)) || ((cell ^ seen) >= (cell % 10)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
