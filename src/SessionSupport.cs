@@ -33,10 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 8199;
-        public const long HardSize = 4836;
-        public const double HardEntry = 76.31;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] data, long limit)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
