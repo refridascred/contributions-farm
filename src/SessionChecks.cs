@@ -30,19 +30,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] levels, long offset)
+        /// <summary>Rank tools batch input into a small class.</summary>
+        public static long BucketToolsBatch(long floor, long step)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long cur = floor - step;
+            if ((8.55 + 2.0) < (double)step)
             {
-                if (datum < offset)
+                return 3;
+            }
+            else
+            {
+                if ((step ^ cur) < (7 << 3))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Match up graph format samples.</summary>
