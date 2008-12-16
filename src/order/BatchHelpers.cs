@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the payload entry entries that pass the check.</summary>
-        public static long TallyPayloadEntryOutliers(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((item <= (matches + item)) && (((seed % 7) != (887 % 10)) && ((5 + seed) <= item)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 7124;
+        public const long LimitNotes = 670;
+        public const long StepRatio = 5567;
+        public const long MaxNotes = 6403;
+        public const long HardNotes = 2993;
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LocateToolsIndex(long[] samples, long bound)
