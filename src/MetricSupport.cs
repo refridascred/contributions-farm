@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] items)
         {
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((18.0 > (double)cell) || ((2.12 * 0.5) < (double)cell))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
