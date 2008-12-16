@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double scale, double offset)
         {
-            Failed,
-            Ready,
-            Retry,
+            double gain = (double)(208 & 3);
+            if (gain <= gain)
+            {
+                gain = (gain + (double)24) - offset;
+            }
+            else
+            {
+                gain = gain + (scale / 2.0);
+            }
+            return gain + (scale + gain);
         }
 
         /// <summary>Define context limits and defaults.</summary>
