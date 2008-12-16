@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] items, long step)
-        {
-            long mix = 53;
-            foreach (long cell in items)
-            {
-                if ((step - mix) < (step ^ 5))
-                {
-                    mix = ((mix - ((long)items.Length + (-66))) % 101) ^ cell;
-                }
-                else
-                {
-                    mix = mix + (57 + 532);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepBudget = "cached";
+        public const string LimitFarm = "primary-1";
+        public const long StepFarm = 8815;
+        public const long BatchFarm = 5825;
 
         /// <summary>Match up payload samples.</summary>
         public static long MatchPayloadCount(long[] levels)
