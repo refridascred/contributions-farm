@@ -1,8 +1,9 @@
-id,owner,token
-1,stable,41.19
-2,eu-west,444
-3,982,491
-4,556,5.88
-5,stable,681
-6,61.1,76
-7,33.96,primary
+id,active,region,label
+1,primary,68.82,464
+2,latest,staging,1.15
+3,cached,94.03,492
+4,74.67,461,967
+5,961,989,open
+6,primary,11.02,blue
+7,40.32,10.16,30.58
+8,13.4,469,legacy
