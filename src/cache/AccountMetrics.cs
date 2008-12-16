@@ -49,13 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] data, long origin)
         {
-            public bool Limit { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate account samples.</summary>
