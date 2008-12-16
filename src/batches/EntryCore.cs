@@ -63,21 +63,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Match up graph profile samples.</summary>
-        public static long PairGraphProfileCount(long[] series)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Stale,
+            Done,
+            Locked,
+            Draft,
+            Paused,
         }
 
         /// <summary>Audit window filter readings against a rule.</summary>
