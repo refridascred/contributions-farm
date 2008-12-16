@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=270
+COMMAND_LIMIT=339
 log "limit is ${COMMAND_LIMIT}"
 
-for item in green eu-west edge; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-mode="${1:-blue}"
+mode="${1:-primary}"
 case "${mode}" in
-    standard)
+    staging)
         log "fast path"
         ;;
     *)
