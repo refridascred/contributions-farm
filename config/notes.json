@@ -1,8 +1,6 @@
 {
-  "verbose": 1024,
-  "base_interval_count": 2256,
-  "soft_retries_ms": 500,
-  "soft_window_count": 3.98,
-  "queue_timeout": [273, 454],
-  "warm_delay_pct": 8316
+  "cache_interval": 1024,
+  "flush_timeout": true,
+  "token_capacity": false,
+  "readonly": [499, 433, 28]
 }
