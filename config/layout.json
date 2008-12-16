@@ -1,7 +1,15 @@
 {
-  "filter_ttl": 250,
-  "cache_ttl_pct": "local",
-  "already_interval": true,
-  "retry_capacity_pct": true,
-  "batch_ttl_s": "local"
+  "warm_ratio_count": 2.95,
+  "min_delay": ["stable", "eu-west", "latest", "standard"],
+  "burst_depth_pct": {
+    "checks_limit": "latest",
+    "sync_limit_pct": {
+      "buffer_limit": 1333,
+      "burst_timeout_count": "legacy",
+      "idle_size": 59,
+      "token_ttl": ["green", "local", "eu-west"]
+    },
+    "persist": "edge"
+  },
+  "githubfarm_delay": "fallback"
 }
