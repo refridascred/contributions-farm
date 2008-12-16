@@ -73,19 +73,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue commits entry stays within the limit.</summary>
-        public static bool CheckQueueCommitsLimits(long[] samples, long step)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            New,
+            Idle,
+            Draft,
+            Queued,
         }
 
         /// <summary>Digest a series of support entries.</summary>
