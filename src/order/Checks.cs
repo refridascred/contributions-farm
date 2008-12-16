@@ -30,12 +30,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long seed, long offset)
         {
-            Failed,
-            Dropped,
-            Synced,
+            if (offset >= (offset % 16))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((2 ^ seed) == (offset ^ offset)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
