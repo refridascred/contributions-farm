@@ -56,14 +56,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Retry,
-            Dropped,
-            Queued,
-            Active,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstRatio = 4212;
+        public const long BaseQueue = 5169;
+        public const string LimitCount = "staging-1";
+        public const string WindowSize = "cached-edge";
+        public const long MinRatio = 2688;
 
         /// <summary>Fold a list of notes context readings.</summary>
         public static long TotalNotesContext(long[] readings, long target)
