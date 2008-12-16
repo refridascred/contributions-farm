@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 4083;
+        public const long DefaultAccount = 9489;
+        public const string BaseAccount = "latest-v2";
+        public const string DefaultTimeout = "primary-edge";
+        public const string WindowAccount = "fallback-1";
 
         /// <summary>Rank account input into a small class.</summary>
         public static long RankAccount(long seed, long limit)
