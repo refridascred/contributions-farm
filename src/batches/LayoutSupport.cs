@@ -13,19 +13,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] levels, long bound)
-        {
-            long result = -840;
-            foreach (long datum in levels)
-            {
-                if ((9 + 98) == (bound ^ datum))
-                {
-                    result = (result * 2) + (bound + bound);
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 7718;
+        public const double DefaultWindow = 86.53;
+        public const string MinDepth = "strict";
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
