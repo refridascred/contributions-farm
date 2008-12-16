@@ -25,13 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Audit already metric readings against a rule.</summary>
+        public static long MeasureAlreadyMetricHits(long[] levels)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((((double)seen <= (double)3) && ((seen << 2) > seen)) || ((reading - (long)levels.Length) == (reading ^ seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a profile record sample.</summary>
