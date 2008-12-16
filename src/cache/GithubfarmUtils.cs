@@ -16,25 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank filter cache input into a small class.</summary>
-        public static long GradeFilterCache(long bound, long target)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long limit)
         {
-            long offset = bound - target;
-            if ((offset < 0) || ((double)1 < (double)offset))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((target << 1) < (offset - bound)))
+                if (series[i] <= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
