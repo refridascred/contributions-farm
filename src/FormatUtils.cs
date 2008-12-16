@@ -65,12 +65,10 @@ namespace Common.Utilities
         public const long DefaultFactor = 1757;
         public const double IdleSize = 18.82;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleBudget = 6390;
-        public const long BatchTimeout = 5085;
-        public const double HardCluster = 24.01;
-        public const string IdleScore = "strict-1";
-        public const long BaseDepth = 2004;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseTimeout = 3662;
+        public const long SoftOrder = 7764;
+        public const long BatchInterval = 148;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string WindowInterval = "open-v2";
