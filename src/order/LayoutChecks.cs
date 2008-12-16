@@ -61,16 +61,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = anchor + (bound + anchor);
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheWidth = 1345;
+        public const long HardOrder = 6126;
+        public const double MinOrder = 13.79;
+        public const long LimitLevel = 8077;
+        public const double SoftOrder = 94.15;
     }
 }
