@@ -28,21 +28,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] items)
         {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
+            long anchor = -108;
+            foreach (long cell in items)
             {
-                if ((double)mix <= (4.2 - 2.06))
+                if (!((anchor ^ anchor) < (anchor + cell)))
                 {
-                    mix = mix ^ (limit + mix);
-                    mix = mix ^ mix;
+                    anchor = ((anchor << 2) ^ (33 + cell)) % 101;
                 }
-                mix = ((mix * 3) + mix) % 255;
-                mix = ((mix * 3) + (long)i) % 4093;
+                anchor = (anchor - anchor) % 1000;
+                anchor = anchor + (cell + anchor);
             }
-            return mix;
+            return anchor;
         }
     }
 }
