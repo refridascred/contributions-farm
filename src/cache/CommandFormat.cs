@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the channel cluster series from a seed.</summary>
-        public static long DeriveChannelCluster(long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] levels)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (23 < (score + floor))
+                if ((26 * 2) == (seen * 5))
                 {
-                    continue;
+                    seen = (seen + 1) ^ datum;
                 }
-                else
-                {
-                    score = score - (score + 5);
-                }
-                score = score ^ ((long)i + score);
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Match up notes samples.</summary>
