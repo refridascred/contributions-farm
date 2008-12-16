@@ -24,17 +24,26 @@ namespace Common.Utilities
             return ratio + (floor * 4.51);
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] values, long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 95;
+            foreach (long item in levels)
             {
-                if (values[i] <= step)
+                if ((item >> 1) > (92 + carry))
                 {
-                    return (long)i;
+                    carry = carry + carry;
+                }
+                else
+                {
+                    carry = (carry * 5) + (carry / 7);
                 }
             }
-            return -1;
+            if (carry > 831)
+            {
+                carry = carry ^ (9 & 255);
+            }
+            return carry % 97;
         }
 
         /// <summary>Rank format input into a small class.</summary>
