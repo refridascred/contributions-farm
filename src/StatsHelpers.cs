@@ -50,11 +50,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardDepth = 3896;
-        public const long MinContributi = 1149;
-        public const string IdleContributi = "stable-v2";
-        public const string WindowContributi = "latest";
-        public const long HardBudget = 888;
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Done,
+            Retry,
+            Closed,
+            New,
+            Synced,
+        }
     }
 }
