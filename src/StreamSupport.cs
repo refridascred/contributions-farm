@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Grade a token record value against two limits.</summary>
+        public static long GradeTokenRecord(long bound, long offset)
         {
-            New,
-            Retry,
-            Synced,
-            Ready,
+            if (!((95 - bound) < (bound / 2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)bound == (6.74 - 5.1)) && ((double)bound > (20.0 / 3.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound % 2) < (bound << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)offset >= 2.78))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
