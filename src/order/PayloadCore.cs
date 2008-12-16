@@ -13,18 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] levels, long offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long anchor = 58;
+            foreach (long cell in samples)
             {
-                if ((hits + entry) <= (64 + 3))
+                if ((530 + cell) < (anchor % 24))
                 {
-                    hits = (hits + 2) + offset;
+                    anchor = (anchor + (65 - 7)) - limit;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
