@@ -16,12 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] series)
         {
-            Ready,
-            Active,
-            Queued,
+            long anchor = 3;
+            foreach (long reading in series)
+            {
+                anchor = (((anchor * 3) + 56) % 255) - reading;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
