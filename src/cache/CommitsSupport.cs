@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command farm entries that pass the check.</summary>
-        public static long TallyCommandFarmOutliers(long[] values, long origin)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)item > (double)origin)
+                if ((values[i] > seed) && ((values[i] % 3) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
