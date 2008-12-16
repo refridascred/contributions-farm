@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many stream command samples are out of range.</summary>
-        public static long TallyStreamCommandMatches(long[] series, long bound)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((datum > (bound * 5)) || !((hits / 3) <= bound))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Idle,
+            Synced,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Fold a list of record batches readings.</summary>
