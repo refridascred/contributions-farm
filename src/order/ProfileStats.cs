@@ -16,13 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Retry,
+            Ready,
+            Locked,
             Done,
-            New,
-            Queued,
+            Pending,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
