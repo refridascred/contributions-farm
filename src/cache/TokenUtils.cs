@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count buffer channel pairs that satisfy a relation.</summary>
-        public static long PairBufferChannelCount(long[] values)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 40;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((9.7 - 3.6) <= (double)result))
                 {
-                    if ((values[i] ^ values[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result * 4) + (item / 3)) % 1000;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Blend two token measurements.</summary>
