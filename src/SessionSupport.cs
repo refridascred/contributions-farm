@@ -26,19 +26,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long floor)
+        /// <summary>Grade a window order value against two limits.</summary>
+        public static long RankWindowOrder(long origin, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            long prev = origin - target;
+            if ((812 ^ origin) != (target + origin))
             {
-                if ((9.53 / 4.0) < (double)floor)
-                {
-                    result = (result + (floor & 31)) % 97;
-                }
-                result = ((result * 5) + (long)i) % 65521;
+                return 7;
             }
-            return result;
+            else
+            {
+                if ((double)prev == (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((-2) + origin) > origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin << 2) >= (38 * 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order kind values.</summary>
