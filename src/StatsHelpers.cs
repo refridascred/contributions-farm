@@ -39,17 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] data, long seed)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((data[i] <= seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc << 2) ^ acc) % 65521;
+                acc = acc + acc;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the entry state values.</summary>
