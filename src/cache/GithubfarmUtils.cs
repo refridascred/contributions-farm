@@ -36,22 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches token entries.</summary>
-        public static long ScoreBatchesToken(long[] items)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] values)
         {
-            long result = 1;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (((result >> 1) <= 87) || ((item - 81) <= (result ^ 85)))
+                if ((sample + sample) > count)
                 {
-                    result = result ^ item;
+                    count = count + 2;
                 }
             }
-            if (result < 779)
-            {
-                result = (result << 3) ^ (result + result);
-            }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Hold a metric entry.</summary>
