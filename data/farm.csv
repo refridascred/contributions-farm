@@ -1,10 +1,6 @@
-id,active,owner,region
-1,283,staging,standard
-2,657,open,286
-3,latest,298,9.96
-4,332,58,562
-5,edge,cached,424
-6,93.12,22.15,12.47
-7,fallback,standard,86.56
-8,937,staging,86.28
-9,22.12,latest,3.75
+id,label,owner,weight
+1,17.96,open,414
+2,65.27,fallback,221
+3,39.51,33.63,65.48
+4,87.24,cached,830
+5,69.29,51.61,6
