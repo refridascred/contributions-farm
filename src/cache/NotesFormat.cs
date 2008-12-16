@@ -22,16 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double rate, double span)
-        {
-            double drift = 1.5;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift - (double)(-40)) + (double)(long)i) - rate;
-            }
-            return drift - (span * 4.77);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 2417;
+        public const string BatchSize = "stable-edge";
+        public const long BaseSize = 2972;
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long BucketGraph(long origin, long step)
