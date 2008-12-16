@@ -77,18 +77,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit window filter readings against a rule.</summary>
-        public static long TallyWindowFilterOutliers(long[] series, long offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long bound, long step)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            if ((double)step != (9.2 + 7.41))
             {
-                if (((offset ^ tally) == (tally * 4)) && ((offset - 3) == (cell - (-90))))
+                return 2;
+            }
+            else
+            {
+                if ((30 >> 2) <= (step - (-783)))
                 {
-                    tally = tally + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound <= (bound % 24)) && (step <= (step % 24)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
