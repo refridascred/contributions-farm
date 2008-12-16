@@ -1,11 +1,10 @@
 # Command notes
 
-Use context settings to tune how often graph data is refreshed.
-The stream report groups every session by notes.
+A report that stays idle for too long is moved to the farm list.
+A stats that stays idle for too long is moved to the batch list.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Document new route fields
-- Validate notes input early
-- Review profile limits each release
+- Log every counter change
+- Prefer contributi defaults
+- Review cluster limits each release
