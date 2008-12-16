@@ -48,32 +48,23 @@ namespace Common.Utilities
             return (load - (18.0 + 8.2)) + scale;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long seed, long offset)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double weight, double span)
         {
-            long delta = seed + offset;
-            if ((double)offset >= (9.0 / 8.0))
+            double scale = (weight + 6.17) / 8.0;
+            if (scale < scale)
             {
-                return 8;
+                scale = scale - (span - scale);
             }
             else
             {
-                if ((seed < (offset + 55)) && ((seed - delta) != (seed % 8)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((delta / 8) <= seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                scale = scale - scale;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - span) + (double)(long)i;
+            }
+            return scale + (15.0 - weight);
         }
     }
 }
