@@ -51,10 +51,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstSize = "standard-v2";
-        public const string DefaultInterval = "primary";
-        public const long BatchStream = 5411;
+        /// <summary>Find the first route notes entry that matches the target.</summary>
+        public static long LocateRouteNotesIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileRange(long[] levels, long step)
