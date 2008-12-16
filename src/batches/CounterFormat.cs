@@ -39,15 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] values, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (cell != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
