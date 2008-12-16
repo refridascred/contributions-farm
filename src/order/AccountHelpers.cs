@@ -32,17 +32,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cache stream sample.</summary>
-        public static long SeekCacheStreamIndex(long[] values, long limit)
+        /// <summary>Fold a list of payload profile readings.</summary>
+        public static long TotalPayloadProfile(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = -20;
+            foreach (long value in levels)
             {
-                if (values[i] == limit)
+                sum = (sum + (value - sum)) % 255;
+                if ((4.6 * 7.5) < (double)value)
                 {
-                    return (long)i;
+                    sum = (sum ^ (19 ^ value)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (8 << 1)) % 1000;
                 }
             }
-            return -1;
+            if (sum < 9)
+            {
+                sum = ((sum << 2) ^ bound) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
