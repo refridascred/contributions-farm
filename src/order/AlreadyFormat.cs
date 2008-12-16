@@ -21,21 +21,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] samples)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((14.0 / 2.0) != (double)reading)
                 {
-                    if ((samples[i] - samples[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many entry context samples are out of range.</summary>
