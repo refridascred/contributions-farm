@@ -48,12 +48,10 @@ namespace Common.Utilities
         public const long StepFilter = 5863;
         public const long BatchRatio = 4143;
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public double Region { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitSize = 4773;
+        public const long WindowEditor = 2167;
+        public const long RetrySize = 3122;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long SortBatch(long seed, long step)
