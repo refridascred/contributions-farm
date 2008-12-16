@@ -39,21 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count window metric pairs that satisfy a relation.</summary>
-        public static long CompareWindowMetricCount(long[] samples)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] samples, long limit)
         {
-            long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (samples[i] <= limit)
                 {
-                    if ((samples[i] ^ samples[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the route state values.</summary>
