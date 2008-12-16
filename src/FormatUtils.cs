@@ -70,9 +70,19 @@ namespace Common.Utilities
         public const long SoftOrder = 7764;
         public const long BatchInterval = 148;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowInterval = "open-v2";
-        public const long WindowFactor = 2622;
-        public const long BaseRoute = 7073;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] readings)
+        {
+            long state = 73;
+            foreach (long datum in readings)
+            {
+                state = state + (datum & 255);
+            }
+            if (state < 774)
+            {
+                state = (state + state) % 255;
+            }
+            return state % 97;
+        }
     }
 }
