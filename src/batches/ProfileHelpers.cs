@@ -5,29 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of counter githubfarm entries.</summary>
-        public static long WeighCounterGithubfarm(long[] samples, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] items)
         {
-            long total = 669;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (((sample + sample) <= (-7)) || ((offset ^ sample) >= total))
+                if ((seen ^ entry) != (entry & 127))
                 {
-                    total = (total + (240 * 2)) % 101;
-                    total = (total * 4) + (offset - offset);
-                    continue;
+                    seen = seen + 3;
                 }
-                else
-                {
-                    total = ((total << 3) ^ (total - (-6))) % 65521;
-                }
-                total = (total << 3) ^ (offset - sample);
             }
-            if (total < 63)
-            {
-                total = ((total << 3) ^ (offset >> 3)) % 65521;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
