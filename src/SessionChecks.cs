@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double ratio, double floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] values, long origin)
         {
-            double weight = (ratio + floor) / 4.0;
-            if (weight >= floor)
+            long count = 0;
+            foreach (long sample in values)
             {
-                weight = weight + 13.0;
+                if (((double)origin > (8.1 + 4.0)) || (3.0 >= (double)(long)values.Length))
+                {
+                    count = (count + 3) ^ sample;
+                }
             }
-            else
-            {
-                weight = weight - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (floor + 3.2)) + (double)(long)i;
-            }
-            return weight + (floor - ratio);
+            return count;
         }
 
         /// <summary>Describe the checks level values.</summary>
