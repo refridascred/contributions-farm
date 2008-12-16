@@ -1,11 +1,5 @@
 {
-  "soft_interval": false,
-  "dry_run": 40,
-  "profile_size": true,
-  "warm_interval_pct": {
-    "commits_interval": 9502,
-    "max_capacity_ms": 21.79,
-    "default_ratio": "local"
-  },
-  "soft_interval_ms": 1024
+  "entry_retries": 1024,
+  "record_interval": 500,
+  "burst_size_s": "fallback"
 }
