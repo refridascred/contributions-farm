@@ -29,21 +29,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] readings)
+        /// <summary>Count window metric pairs that satisfy a relation.</summary>
+        public static long CompareWindowMetricCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) == 19)
+                    if ((samples[i] ^ samples[j]) > 3)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
