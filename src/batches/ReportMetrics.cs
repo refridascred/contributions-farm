@@ -25,11 +25,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 9745;
-        public const long IdleFarm = 5928;
-        public const string BurstFactor = "open";
-        public const long MaxRatio = 4460;
-        public const long LimitDepth = 3023;
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
