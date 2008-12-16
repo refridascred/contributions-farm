@@ -66,25 +66,23 @@ namespace Common.Utilities
         public const long BurstChannel = 5929;
         public const long SoftChannel = 7186;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long seed, long floor)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double bias, double bias2)
         {
-            long lane = seed ^ floor;
-            if ((double)seed < (0.46 * 2.4))
+            double drift = (bias2 - bias2) * 20.0;
+            if (drift >= 8.1)
             {
-                return 4;
+                drift = drift - drift;
             }
             else
             {
-                if ((lane + seed) == (43 - floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
+                drift = drift - (double)(-8);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - (bias * 9.0);
         }
     }
 }
