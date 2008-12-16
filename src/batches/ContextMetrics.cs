@@ -42,17 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] readings, long step)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Paused,
+            Queued,
         }
     }
 }
