@@ -1,6 +1,9 @@
-id,ratio,score,label,count
-1,70,open,legacy,14.39
-2,465,241,41.66,663
-3,62.27,347,156,11.15
-4,175,70.91,90.65,589
-5,latest,166,875,72.56
+id,token,weight,level
+1,10.9,43.63,latest
+2,13.21,378,371
+3,edge,staging,37.31
+4,stable,764,994
+5,standard,133,70
+6,eu-west,659,100
+7,56.54,104,staging
+8,75.83,open,legacy
