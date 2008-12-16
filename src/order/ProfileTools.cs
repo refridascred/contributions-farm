@@ -36,19 +36,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long limit, long limit2)
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
+            if ((3.4 + 7.9) < (double)limit)
             {
-                if ((1.24 >= (double)sum) && ((double)(long)i > 10.0))
-                {
-                    sum = (sum - seed) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (!((limit2 >> 2) >= (limit / 7)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((9.4 + 6.0) <= (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((0 >> 1) == (limit * 3)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
