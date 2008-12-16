@@ -14,22 +14,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] values)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long offset, long bound)
         {
-            long mix = 13;
-            foreach (long item in values)
+            if (((double)offset > (6.9 * 3.93)) && (bound > (79 - offset)))
             {
-                if ((item + item) <= item)
+                return 7;
+            }
+            else
+            {
+                if ((36 % 3) <= offset)
                 {
-                    mix = (mix ^ (682 % 2)) % 65521;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset >= (11.0 + 4.6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)offset > (double)96) || ((3.64 / 2.0) < (4.73 / 4.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (mix > 550)
-            {
-                mix = ((mix * 5) + (100 + mix)) % 97;
-            }
-            return mix;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
