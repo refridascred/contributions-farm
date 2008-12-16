@@ -44,11 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 6632;
-        public const long CacheRatio = 7964;
-        public const long BurstFilter = 19;
-        public const long BaseFilter = 5387;
-        public const double IdleFilter = 51.88;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] items, long bound)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
