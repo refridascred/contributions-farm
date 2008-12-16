@@ -33,18 +33,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] series, long bound)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)matches >= 2.7) || ((double)bound == (6.3 - 6.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 3) + value;
+                    if ((series[i] ^ series[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Adjust a already reading.</summary>
