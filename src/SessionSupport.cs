@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] values, long origin)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = (ratio * 5.5) / 6.0;
+            if (gain <= (gain / 9.0))
             {
-                if ((values[i] <= origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain + (5.24 / 3.0)) + bias;
             }
-            return -1;
+            else
+            {
+                gain = gain - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + ratio;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
