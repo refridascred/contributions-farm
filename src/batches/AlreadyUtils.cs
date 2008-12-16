@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double scale, double offset)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            double scale2 = 7.0 / 4.0;
-            if (scale2 <= 8.95)
-            {
-                scale2 = scale2 + (double)23;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 - (offset - scale)) - (double)(long)i;
-            }
-            return scale2 - (scale + scale2);
+            Active,
+            Pending,
+            Ready,
+            Stale,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
