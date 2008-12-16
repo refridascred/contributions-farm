@@ -1,23 +1,8 @@
 {
-  "command_limit": ["edge", "latest"],
-  "layout_limit": "legacy",
-  "base_interval_ms": "primary",
-  "dry_run": {
-    "audit": "cached",
-    "min_ratio_count": {
-      "burst_threshold_count": 100,
-      "warm_threshold": 19.83,
-      "contributi_ratio": "fallback"
-    },
-    "max_limit_count": {
-      "buffer_delay": "latest",
-      "cache_interval_ms": 30,
-      "batch_limit_s": false,
-      "idle_ttl": 83.79,
-      "compress": 41.93,
-      "warm_capacity_ms": "blue"
-    },
-    "warm_size_pct": ["eu-west", "edge"],
-    "tools_delay": "local"
-  }
+  "cache_delay_count": 632,
+  "schema_ratio": "blue",
+  "burst_window": 60,
+  "warm_timeout": "strict",
+  "channel_threshold": false,
+  "verbose": 83
 }
