@@ -53,11 +53,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinSpan = 3965;
-        public const double DefaultMetrics = 56.22;
-        public const long BurstWidth = 9926;
-        public const long BurstRatio = 9786;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] series)
+        {
+            long sum = 3;
+            foreach (long datum in series)
+            {
+                sum = (sum - datum) % 101;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long CombineChannel(long[] samples, long seed)
