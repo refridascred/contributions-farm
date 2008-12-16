@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 7625;
-        public const double MinSpan = 64.35;
-        public const double HardScore = 19.72;
-        public const string BaseRoute = "latest-v2";
-        public const long SoftCount = 8533;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 2946;
+        public const double DefaultCommits = 13.26;
+        public const long RetryFactor = 2207;
+        public const string LimitCommits = "local";
+        public const long MaxTimeout = 5560;
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long RankTools(long offset, long target)
