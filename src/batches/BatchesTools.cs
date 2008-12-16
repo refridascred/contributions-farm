@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long origin)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long acc = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Total { get; set; }
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
