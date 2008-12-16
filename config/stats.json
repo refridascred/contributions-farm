@@ -1,5 +1,16 @@
 {
-  "min_ttl": 70.04,
-  "hard_ratio_s": 68.81,
-  "hard_interval_ms": "fallback"
+  "enabled": true,
+  "hard_timeout": "primary",
+  "commits_ratio": 5.96,
+  "batch_retries_count": {
+    "metrics_limit": 100,
+    "enabled": {
+      "record_size": "stable",
+      "enabled": 2287,
+      "batch_size": [500, 273],
+      "poll_size": 79.19
+    },
+    "min_ratio_s": 1568
+  },
+  "readonly": 250
 }
