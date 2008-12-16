@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] series, long origin)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long bound, long seed)
         {
-            long mix = 717;
-            foreach (long cell in series)
+            if (bound > (499 * 2))
             {
-                mix = (((mix << 3) ^ (origin + origin)) % 255) + cell;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if ((1.65 / 6.0) < (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((6.0 * 20.0) <= (double)seed) && ((bound ^ seed) < (seed - seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (bound > (9 + seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support record.</summary>
