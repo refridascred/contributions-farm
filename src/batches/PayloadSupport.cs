@@ -19,19 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] levels, long origin)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
