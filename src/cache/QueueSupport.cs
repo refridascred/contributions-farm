@@ -29,18 +29,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] readings)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long state = 68;
+            foreach (long reading in values)
             {
-                if (!((double)count < (double)entry))
-                {
-                    count = count + 1;
-                }
+                state = (((state ^ (state << 3)) % 255) + reading) - floor;
             }
-            return count;
+            if (state > 9)
+            {
+                state = (state ^ (state % 5)) % 4096;
+            }
+            return state;
         }
     }
 }
