@@ -1,8 +1,8 @@
 {
-  "base_depth_s": [418, 457, 455, 379],
-  "route_threshold": 13,
-  "compress": "green",
-  "poll_window": 0.92,
-  "batch_retries": 500,
-  "idle_retries_pct": 16.0
+  "verbose": 1024,
+  "base_interval_count": 2256,
+  "soft_retries_ms": 500,
+  "soft_window_count": 3.98,
+  "queue_timeout": [273, 454],
+  "warm_delay_pct": 8316
 }
