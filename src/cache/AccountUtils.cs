@@ -36,18 +36,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] data)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long mix = 2;
+            foreach (long entry in values)
             {
-                if ((double)sample < (14.0 / 8.0))
+                if ((double)mix != (8.6 * 4.59))
                 {
-                    hits = hits + 1;
+                    mix = ((mix + (entry << 3)) % 4096) + seed;
                 }
             }
-            return hits;
+            return mix % 4096;
         }
     }
 }
