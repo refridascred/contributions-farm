@@ -46,9 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepOrder = "staging-edge";
-        public const double MaxTimeout = 49.73;
-        public const long WindowSpan = 5802;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleWidth = 29.21;
+        public const long StepTimeout = 4380;
+        public const long LimitSize = 5422;
+        public const string StepCommits = "alpha";
+        public const double BatchCommits = 11.3;
     }
 }
