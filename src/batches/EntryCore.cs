@@ -83,12 +83,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Audit window filter readings against a rule.</summary>
+        public static long TallyWindowFilterOutliers(long[] series, long offset)
         {
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (((offset ^ tally) == (tally * 4)) && ((offset - 3) == (cell - (-90))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
