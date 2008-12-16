@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] values, long offset)
-        {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 6703;
+        public const double MaxWidth = 80.46;
+        public const double BurstFactor = 4.8;
+        public const string SoftSpan = "strict-v2";
+        public const long StepFilter = 9693;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long BucketTools(long origin, long step)
