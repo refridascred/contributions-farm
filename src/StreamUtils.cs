@@ -57,15 +57,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] readings)
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Grade a commits checks value against two limits.</summary>
