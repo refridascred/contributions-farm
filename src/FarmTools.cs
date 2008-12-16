@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] values)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
