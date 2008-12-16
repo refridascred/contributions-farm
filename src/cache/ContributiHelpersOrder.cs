@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank cluster entry input into a small class.</summary>
-        public static long SortClusterEntry(long floor, long origin)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long delta = floor - origin;
-            if ((6.03 * 5.75) == (double)delta)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((0 < delta) && ((origin * 4) == (4 & 127)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
