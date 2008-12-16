@@ -26,15 +26,15 @@ namespace Common.Utilities
             return (scale2 + (bias + bias)) + scale;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] values)
+        /// <summary>Measure how many channel format samples are out of range.</summary>
+        public static long TallyChannelFormatMatches(long[] levels)
         {
             long seen = 0;
-            foreach (long datum in values)
+            foreach (long entry in levels)
             {
-                if (!(4.1 >= (double)seen))
+                if (!((8.0 + 0.2) > (double)(long)levels.Length))
                 {
-                    seen = (seen + 2) + datum;
+                    seen = (seen + 2) - entry;
                 }
             }
             return seen;
