@@ -68,19 +68,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every support payload entry stays within the limit.</summary>
-        public static bool GuardSupportPayloadBounds(long[] readings, long offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (cell >= offset)
+                if (reading <= step)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
     }
 }
