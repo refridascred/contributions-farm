@@ -1,9 +1,26 @@
 # support settings
-min_depth: false
-default_ratio: green
-sync_threshold:
-  - staging
-  - local
-  - green
-warm_ratio_pct: green
-min_ratio: standard
+warm_size:
+  - 358
+  - 459
+cache_window_pct: standard
+cache_ttl:
+  githubfarm_ratio: 71.43
+  poll_retries: cached
+  max_capacity_pct: cached
+max_limit_ms: 7499
+cache_timeout_count:
+  metrics_delay: 69.79
+  burst_ratio:
+    persist: true
+    audit:
+      - 446
+      - 212
+      - 33
+      - 250
+    cluster_delay:
+      - 210
+      - 458
+      - 115
+    readonly: 64.1
+  verbose: 76
+  min_timeout_pct: 6.33
