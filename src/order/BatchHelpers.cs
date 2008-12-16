@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] readings, long offset)
+        /// <summary>Measure how many report buffer samples are out of range.</summary>
+        public static long CountReportBufferHits(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((readings[i] == offset) && ((readings[i] % 2) != 0))
+                if ((705 << 1) <= (tally + tally))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
