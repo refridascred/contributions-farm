@@ -22,19 +22,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] levels, long bound)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Draft,
+            Idle,
+            New,
+            Pending,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
