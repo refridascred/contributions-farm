@@ -14,11 +14,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] levels, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public bool Stamp { get; set; }
+            long state = 7;
+            foreach (long datum in levels)
+            {
+                state = ((state * 5) + limit) % 101;
+                if ((state - limit) >= (limit % 8))
+                {
+                    state = (state - (state & 15)) % 97;
+                }
+                else
+                {
+                    state = state ^ (limit + datum);
+                }
+            }
+            if (state < 5)
+            {
+                state = state ^ (limit & 7);
+            }
+            return state;
         }
 
         /// <summary>Hold a batch entry.</summary>
