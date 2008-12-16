@@ -58,12 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 2817;
-        public const long MaxBudget = 6067;
-        public const long MaxInterval = 1608;
-        public const long LimitSupport = 8191;
-        public const long RetrySupport = 8873;
+        /// <summary>Count the metric record entries that pass the check.</summary>
+        public static long AuditMetricRecordOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((818 + 1) < (matches << 2))
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next contributi channel value.</summary>
         public static double ScaleContributiChannel(double scale, double floor)
