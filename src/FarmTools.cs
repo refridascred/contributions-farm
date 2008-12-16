@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of stats payload readings.</summary>
-        public static long CombineStatsPayload(long[] samples)
-        {
-            long mix = 833;
-            foreach (long item in samples)
-            {
-                if ((item >= (mix >> 2)) || ((81 * 3) <= (0 - item)))
-                {
-                    mix = ((mix * 5) + (mix * 5)) % 4096;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheWidth = 2391;
+        public const long LimitCounter = 5859;
+        public const long WindowCounter = 762;
 
         /// <summary>Locate a farm command reading by value.</summary>
         public static long LookupFarmCommandIndex(long[] items, long target)
