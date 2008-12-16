@@ -1,9 +1,9 @@
 # support settings
-min_threshold: local
-notes_window: 93.92
-idle_interval_s: 60
-verbose: 173
-idle_depth_ms:
-  - 408
-  - 99
-  - 400
+cache_depth_ms: true
+window_window: 73
+burst_limit:
+  - strict
+  - strict
+  - fallback
+  - edge
+editor_threshold: stable
