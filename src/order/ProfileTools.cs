@@ -19,22 +19,12 @@ namespace Common.Utilities
         public const double HardWidth = 47.7;
         public const string RetryBudget = "latest-v2";
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] series)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((value % 16) >= value)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Retry,
+            Draft,
+            Pending,
         }
 
         /// <summary>Combine command values into a single score.</summary>
