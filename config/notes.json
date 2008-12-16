@@ -1,7 +1,5 @@
 {
-  "persist": "open",
-  "command_window": "strict",
-  "cache_window_s": false,
-  "retry_interval_count": 250,
-  "retry_ttl_count": "local"
+  "filter_interval": "local",
+  "githubfarm_timeout": "primary",
+  "compress": false
 }
