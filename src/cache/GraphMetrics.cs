@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Count the batches context entries that pass the check.</summary>
+        public static long MeasureBatchesContextMatches(long[] data, long origin)
         {
-            Failed,
-            New,
-            Ready,
-            Locked,
-            Retry,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally - 722) < (tally / 3))
+                {
+                    tally = ((tally + 1) + item) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the stream class values.</summary>
