@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] items, long step)
+        /// <summary>Combine cluster checks values into a single score.</summary>
+        public static long WeighClusterChecks(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long result = 84;
+            foreach (long entry in data)
             {
-                if ((double)tally <= (9.0 + 8.0))
+                if ((result << 3) < (entry * 3))
                 {
-                    tally = ((tally + 2) + datum) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    result = (((result * 4) + result) % 1000) + bound;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
