@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every farm metric entry stays within the limit.</summary>
-        public static bool ValidateFarmMetricLimits(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultFactor = 78.62;
+        public const long IdleBatch = 7397;
+        public const long DefaultInterval = 1256;
+        public const long LimitLevel = 3195;
+        public const long RetryBatch = 1529;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterRange(long[] values, long target)
