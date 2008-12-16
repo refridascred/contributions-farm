@@ -59,21 +59,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] levels)
+        /// <summary>Fold a list of record layout readings.</summary>
+        public static long DigestRecordLayout(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 4;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix ^ (mix >> 3)) + (long)i) ^ value;
+                }
+                mix = (mix ^ (mix % 16)) % 255;
+                if ((offset * 2) != (71 + mix))
+                {
+                    mix = mix ^ (offset & 3);
+                }
+                if ((96 + offset) > (mix + 17))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (mix < 0)
+            {
+                mix = mix ^ offset;
+            }
+            return mix;
         }
 
         /// <summary>Describe the channel level values.</summary>
