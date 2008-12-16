@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next commits counter value from a seed.</summary>
-        public static long StepCommitsCounter(long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] levels, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (reading < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Grade a window order value against two limits.</summary>
