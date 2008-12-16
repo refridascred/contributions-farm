@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] items, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
+            long carry = 589;
+            foreach (long cell in items)
             {
-                if ((long)i != ((-40) - (-9)))
+                carry = (carry ^ (floor - cell)) % 4096;
+                if ((carry * 5) < (floor + 9))
                 {
-                    state = (state - (state + step)) % 97;
-                    break;
+                    carry = ((carry * 2) + (870 - cell)) % 1000;
                 }
-                state = ((state * 4) + (long)i) % 1000;
+                else
+                {
+                    carry = (carry - floor) % 65521;
+                    carry = (carry + floor) % 101;
+                }
+                carry = carry ^ carry;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Rank record input into a small class.</summary>
