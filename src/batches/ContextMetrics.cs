@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] samples)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seen * 2) >= value)
                 {
-                    if ((samples[i] ^ samples[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
