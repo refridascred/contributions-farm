@@ -77,22 +77,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch profile samples are out of range.</summary>
-        public static long AuditBatchProfileHits(long[] samples, long bound)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)bound == (4.25 / 9.0))
-                {
-                    count = (count + 1) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
