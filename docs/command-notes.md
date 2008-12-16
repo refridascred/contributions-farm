@@ -1,15 +1,12 @@
 # Command notes
 
-The batches module keeps stats values in sync with the report cache.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-A route that stays idle for too long is moved to the profile list.
-
-Keep metrics and queue names short and lowercase.
-Run the window check before changing any farm limits.
-The tools report groups every githubfarm by buffer.
+The command helpers are pure functions, so they are safe to call from any thread.
+Run the profile check before changing any editor limits.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review queue limits each release
-- Prefer payload defaults
-- Log every profile change
+- Log every filter change
+- Review metrics limits each release
+- Keep format values small
+- Document new schema fields
