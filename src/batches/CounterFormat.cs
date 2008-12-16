@@ -29,17 +29,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] items, long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (items[i] >= floor)
+                if (!((7 << 2) != (matches - cell)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + step;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
