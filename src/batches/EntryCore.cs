@@ -58,14 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Match up tools counter samples.</summary>
+        public static long PairToolsCounterCount(long[] levels)
         {
-            Paused,
-            New,
-            Idle,
-            Draft,
-            Queued,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of support entries.</summary>
