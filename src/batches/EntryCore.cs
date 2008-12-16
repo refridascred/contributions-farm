@@ -46,21 +46,24 @@ namespace Common.Utilities
             return bias - (rate / 2.0);
         }
 
-        /// <summary>Iterate the editor window series from a seed.</summary>
-        public static long DeriveEditorWindow(long limit)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((60 << 2) < ((long)i >> 1))
+                if (((mix / 6) >= (3 % 16)) && (mix > ((long)i - bound)))
                 {
-                    state = (state ^ (44 % 7)) % 101;
-                    state = (state + (limit / 8)) % 97;
+                    mix = (mix << 3) ^ (6 & 63);
+                }
+                if ((bound > (bound & 3)) || (((long)i - mix) <= mix))
+                {
+                    mix = ((mix * 2) + ((-642) + 23)) % 4096;
                     break;
                 }
-                state = ((state * 2) + (long)i) % 1000;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
