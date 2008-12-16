@@ -56,22 +56,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] values, long step)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long result = 79;
-            foreach (long datum in values)
-            {
-                if ((step + 51) < 812)
-                {
-                    result = ((result - (989 & 7)) % 1000) ^ datum;
-                }
-            }
-            if (result < 785)
-            {
-                result = (result - (step << 2)) % 97;
-            }
-            return result % 4096;
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
