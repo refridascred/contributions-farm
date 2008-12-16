@@ -14,14 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] items, long floor)
         {
-            Stale,
-            Done,
-            Retry,
-            Dropped,
-            Active,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((948 >> 5) == (entry + 1))
+                {
+                    matches = (matches + 1) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
