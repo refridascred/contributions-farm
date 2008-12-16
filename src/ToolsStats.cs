@@ -26,13 +26,19 @@ namespace Common.Utilities
         public const long SoftTimeout = 7801;
         public const long BaseBuffer = 4890;
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Check that every notes channel entry stays within the limit.</summary>
+        public static bool CheckNotesChannelRange(long[] items, long floor)
         {
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Region { get; set; }
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of metric window readings.</summary>
