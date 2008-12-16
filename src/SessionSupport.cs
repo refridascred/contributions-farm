@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long offset)
         {
-            Failed,
-            Draft,
-            Dropped,
-            Retry,
-            Locked,
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum ^ (sum * 2)) % 65521;
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
