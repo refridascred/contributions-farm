@@ -19,22 +19,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] data, long step)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] data)
         {
-            long carry = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((31 << 3) >= (entry - step))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry ^ entry;
-                }
-                else
-                {
-                    carry = (carry ^ (carry * 2)) % 4096;
+                    if ((data[i] ^ data[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the record class values.</summary>
