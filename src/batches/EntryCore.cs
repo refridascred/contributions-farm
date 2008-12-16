@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] data, long seed)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long acc = 937;
-            foreach (long value in data)
-            {
-                if (((seed + seed) != (value + value)) && (9.75 < (double)acc))
-                {
-                    acc = (acc ^ (10 / 7)) % 101;
-                }
-            }
-            return acc % 97;
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
