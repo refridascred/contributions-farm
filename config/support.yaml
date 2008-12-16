@@ -1,18 +1,4 @@
 # support settings
-dry_run:
-  dry_run: 81
-  batch_window_ms: false
-  batch_ratio: fallback
-  already_retries:
-    - 274
-    - 240
-    - 81
-  layout_threshold: 1024
-burst_capacity: false
-commits_capacity: 81.36
-hard_interval:
-  dry_run: 39
-  retry_interval_count: green
-  route_delay: stable
-warm_depth_s: fallback
-session_capacity: 5694
+base_limit_s: false
+retry_retries_s: fallback
+burst_capacity_count: 87.61
