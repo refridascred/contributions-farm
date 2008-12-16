@@ -1,13 +1,4 @@
 # support settings
-tools_threshold: false
-base_threshold:
-  - staging
-  - local
-  - local
-  - staging
-min_delay:
-  max_delay_pct: green
-  hard_interval_s: 72.62
-  compress: standard
-  strict: 36.01
-flush_size_count: true
+retry_ttl: 2086
+flush_interval: 500
+farm_delay: 26.79
