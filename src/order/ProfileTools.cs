@@ -58,12 +58,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
