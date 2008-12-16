@@ -64,19 +64,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] values, long offset)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long bound, long origin)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long next = bound - origin;
+            if (origin > 371)
             {
-                if (cell != offset)
+                return 8;
+            }
+            else
+            {
+                if (((38 + origin) == (origin + next)) && (bound < (next / 4)))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((4.8 / 9.0) > (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Match up farm samples.</summary>
