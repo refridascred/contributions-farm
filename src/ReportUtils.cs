@@ -23,12 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public double Label { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((44 + cell) >= (cell * 4))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of schema format entries.</summary>
