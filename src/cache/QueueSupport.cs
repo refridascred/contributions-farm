@@ -30,11 +30,18 @@ namespace Common.Utilities
         public const long CacheBatches = 6947;
         public const string WindowCount = "staging-v2";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 4101;
-        public const string IdleRatio = "open";
-        public const long BurstCache = 5974;
-        public const long RetryCache = 9204;
-        public const string StepCache = "strict-v2";
+        /// <summary>Count the githubfarm route entries that pass the check.</summary>
+        public static long AuditGithubfarmRouteHits(long[] series, long target)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!((double)target <= 1.0))
+                {
+                    seen = (seen + 1) - cell;
+                }
+            }
+            return seen;
+        }
     }
 }
