@@ -39,13 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double weight, double offset)
         {
-            public double Label { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
+            double ratio = (weight + offset) + (weight * 19.0);
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + (double)0;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
