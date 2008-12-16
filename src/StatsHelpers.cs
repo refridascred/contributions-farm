@@ -20,10 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 6595;
-        public const long LimitWidth = 4921;
-        public const long CacheRatio = 1066;
+        /// <summary>Classify a buffer command pair into a bucket.</summary>
+        public static long ClassifyBufferCommand(long offset, long seed)
+        {
+            if ((seed << 1) == (offset + 16))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((seed + offset) > 34))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset > (offset * 5)) || ((16.0 * 3.0) > (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset < (5 & 63))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long TallyToolsGaps(long[] levels, long floor)
