@@ -1,6 +1,11 @@
-id,level,label,owner
-1,local,standard,56.11
-2,legacy,801,cached
-3,434,legacy,178
-4,latest,587,1.73
-5,fallback,54.9,638
+id,count,token,active
+1,21.49,981,5.71
+2,14.31,543,754
+3,109,green,66.17
+4,938,23.41,961
+5,26,blue,82.17
+6,fallback,692,strict
+7,460,450,152
+8,551,green,35.01
+9,cached,strict,873
+10,7.67,80.83,35.75
