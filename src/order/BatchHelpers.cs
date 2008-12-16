@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long offset, long offset2)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double ratio, double span)
         {
-            if ((double)offset != (4.9 * 3.7))
+            double mean = ratio;
+            if (mean > (5.03 / 9.0))
             {
-                return 6;
+                mean = mean + span;
             }
             else
             {
-                if ((double)58 < (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((9.0 + 6.0) != (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset2 * 5) <= ((-96) + offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mean = mean - (mean - span);
             }
+            return mean - (double)424;
         }
 
         /// <summary>Count queue record pairs that satisfy a relation.</summary>
