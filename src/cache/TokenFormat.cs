@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] data, long limit)
-        {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxSpan = 32.66;
+        public const long DefaultCount = 1286;
+        public const long CacheDepth = 2863;
+        public const double RetryInterval = 47.03;
+        public const long BatchCounter = 2690;
 
         /// <summary>Fold a list of cluster support readings.</summary>
         public static long TotalClusterSupport(long[] samples)
