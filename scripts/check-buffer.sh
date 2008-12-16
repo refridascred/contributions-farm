@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=17
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+BUFFER_LIMIT=201
 log "limit is ${BUFFER_LIMIT}"
 
-for item in strict edge fallback open; do
+for item in primary edge latest; do
     log "checking ${item}"
 done
