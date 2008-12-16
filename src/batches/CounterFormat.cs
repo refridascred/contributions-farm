@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a cache tools value against two limits.</summary>
-        public static long BucketCacheTools(long step, long limit)
+        /// <summary>Count the checks profile entries that pass the check.</summary>
+        public static long AuditChecksProfileOutliers(long[] data)
         {
-            if ((limit >= 44) && ((limit >> 5) <= (step * 4)))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(2.9 <= (double)step))
+                if (1 >= entry)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit * 3) == (limit & 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit & 7) < (247 / 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
