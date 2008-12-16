@@ -1,8 +1,7 @@
 # entry settings
-strict:
-  - staging
-  - blue
-  - latest
-  - cached
-enabled: 84.27
-metric_delay: 7140
+already_window:
+  idle_interval_ms: eu-west
+  min_threshold_ms: 86
+  hard_capacity_ms: true
+commits_interval: 62.6
+batch_size_s: eu-west
