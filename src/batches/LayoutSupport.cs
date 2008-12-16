@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long floor, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] values, long origin)
         {
-            long next = floor + step;
-            if (((double)next != (2.0 * 12.0)) && ((next & 127) > next))
+            long total = 1;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)16 != (double)next)
+                if (((6.38 - 15.0) > (double)origin) || ((double)origin <= (13.0 - 9.4)))
                 {
-                    return 7;
+                    total = (total + (9 >> 5)) + entry;
                 }
                 else
                 {
-                    return 3;
+                    total = ((total * 3) + (359 >> 3)) % 4096;
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Define window limits and defaults.</summary>
