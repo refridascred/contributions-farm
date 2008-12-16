@@ -1,10 +1,10 @@
 # Command notes
 
-The already report groups every support by session.
-Use buffer settings to tune how often filter data is refreshed.
+Use graph settings to tune how often contributi data is refreshed.
+Run the profile check before changing any commits limits.
 
 ## Guidelines
 
-- Validate filter input early
-- Prefer format defaults
-- Review stats limits each release
+- Document new graph fields
+- Validate channel input early
+- Review already limits each release
