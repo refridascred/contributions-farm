@@ -22,14 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            New,
-            Active,
-            Stale,
-            Queued,
-            Synced,
+            Paused,
+            Failed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Describe the payload mode values.</summary>
