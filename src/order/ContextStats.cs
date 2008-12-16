@@ -44,18 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] readings)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] items, long offset)
         {
-            long acc = 185;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if ((21 + 51) != (8 ^ acc))
+                if (cell <= offset)
                 {
-                    acc = (acc + (74 + acc)) ^ value;
+                    stale = false;
+                    break;
                 }
             }
-            return acc;
+            return stale;
         }
     }
 }
