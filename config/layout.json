@@ -1,15 +1,7 @@
 {
-  "warm_ratio_count": 2.95,
-  "min_delay": ["stable", "eu-west", "latest", "standard"],
-  "burst_depth_pct": {
-    "checks_limit": "latest",
-    "sync_limit_pct": {
-      "buffer_limit": 1333,
-      "burst_timeout_count": "legacy",
-      "idle_size": 59,
-      "token_ttl": ["green", "local", "eu-west"]
-    },
-    "persist": "edge"
-  },
-  "githubfarm_delay": "fallback"
+  "stats_depth": "stable",
+  "farm_limit": 72.77,
+  "stream_delay": "staging",
+  "idle_retries_ms": false,
+  "flush_retries": ["stable", "local", "primary", "stable"]
 }
