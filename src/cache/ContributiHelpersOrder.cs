@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] levels, long floor)
+        /// <summary>Rank cluster entry input into a small class.</summary>
+        public static long SortClusterEntry(long floor, long origin)
         {
-            long score = 799;
-            foreach (long reading in levels)
+            long delta = floor - origin;
+            if ((6.03 * 5.75) == (double)delta)
             {
-                if ((reading - floor) > 986)
+                return 4;
+            }
+            else
+            {
+                if ((0 < delta) && ((origin * 4) == (4 & 127)))
                 {
-                    score = score ^ (score + 220);
+                    return 2;
                 }
                 else
                 {
-                    score = score ^ (reading << 3);
+                    return 7;
                 }
             }
-            return score;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
