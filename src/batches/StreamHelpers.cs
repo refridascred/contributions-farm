@@ -30,21 +30,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] values)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = target;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Describe the entry state values.</summary>
