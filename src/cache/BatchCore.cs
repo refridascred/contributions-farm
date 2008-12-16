@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Derive the next metric editor value from a seed.</summary>
+        public static long IterateMetricEditor(long seed)
         {
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix * 2) + ((long)i >> 2);
+                mix = ((mix << 2) ^ ((long)i + mix)) % 97;
+                mix = (mix ^ (seed * 2)) % 65521;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
