@@ -1,11 +1,7 @@
 # support settings
-compress: 100
-filter_size:
-  - 194
-  - 212
-  - 461
-  - 136
-min_ttl_ms: 87.48
-cluster_capacity: 49.15
-already_depth: 88.07
-channel_timeout: staging
+default_depth:
+  - eu-west
+  - cached
+  - latest
+burst_depth: blue
+payload_retries: 60
