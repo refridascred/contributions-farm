@@ -1,12 +1,12 @@
 # Command notes
 
-Keep payload and context names short and lowercase.
-The layout module keeps buffer values in sync with the contributi cache.
-Each channel is validated before it reaches the cluster queue.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Run the counter check before changing any record limits.
+Run the metrics check before changing any token limits.
 
 ## Guidelines
 
-- Review token limits each release
-- Document new notes fields
-- Prefer stream defaults
-- Log every support change
+- Log every profile change
+- Validate commits input early
+- Keep already values small
+- Prefer queue defaults
