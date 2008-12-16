@@ -31,26 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route graph values into a single score.</summary>
-        public static long FoldRouteGraph(long[] items, long seed)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long seed)
         {
-            long mix = 6;
-            foreach (long value in items)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = ((mix << 3) ^ (mix ^ seed)) ^ (long)i;
-                }
-                if ((((long)items.Length & 127) >= (value ^ mix)) && (mix > (value + value)))
-                {
-                    mix = (mix + mix) % 4096;
-                }
-                if ((844 - seed) == (value * 5))
-                {
-                    break;
-                }
+                mark = (mark ^ (seed + seed)) % 1000;
+                long diff = (142 ^ mark) % 64;
+                mark = (mark * 3) + (mark + diff);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Describe the window mode values.</summary>
