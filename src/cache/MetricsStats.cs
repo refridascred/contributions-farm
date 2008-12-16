@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double bias, double offset)
         {
-            Failed,
-            Queued,
-            Draft,
-            Idle,
+            double ratio = bias + bias;
+            if (ratio > (double)792)
+            {
+                ratio = ratio + (double)869;
+            }
+            else
+            {
+                ratio = ratio - (double)8;
+            }
+            return ratio - (offset + ratio);
         }
 
         /// <summary>Describe the channel status values.</summary>
