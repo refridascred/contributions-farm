@@ -22,25 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] series, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] levels)
         {
-            long mix = 4;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (mix <= (581 + mix))
+                if ((reading * 2) <= (matches * 3))
                 {
-                    mix = (mix << 2) ^ seed;
+                    matches = matches + 3;
                 }
-                else
-                {
-                    long matches = (seed & 15) + (33 >> 5);
-                    mix = ((mix << 2) ^ (value - matches)) % 1000;
-                }
-                mix = (mix ^ (seed + value)) % 255;
-                mix = ((mix << 3) ^ (mix + value)) % 4096;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
