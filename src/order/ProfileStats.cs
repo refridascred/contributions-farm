@@ -47,20 +47,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] readings, long target)
-        {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstNotes = "staging-v2";
+        public const double HardSpan = 60.38;
+        public const double SoftNotes = 55.22;
+        public const long BurstSize = 3680;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long DigestNotes(long[] items)
