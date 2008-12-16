@@ -1,11 +1,6 @@
-id,label,region,active
-1,blue,65.67,90.53
-2,staging,900,851
-3,250,standard,standard
-4,217,94.87,stable
-5,118,6.14,25.38
-6,713,151,505
-7,95.02,57.31,599
-8,green,709,83.75
-9,stable,97.32,46.19
-10,standard,839,438
+id,weight,region,token
+1,primary,81.27,277
+2,816,65.45,58.12
+3,primary,88,412
+4,primary,21.71,845
+5,316,159,stable
