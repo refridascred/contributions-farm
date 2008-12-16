@@ -20,12 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] series, long floor)
         {
-            public double Limit { get; set; }
-            public double Count { get; set; }
-            public double Level { get; set; }
+            long mark = 77;
+            foreach (long entry in series)
+            {
+                if (!((floor ^ mark) <= (floor * 3)))
+                {
+                    mark = mark + (entry & 7);
+                }
+                else
+                {
+                    mark = mark - entry;
+                }
+            }
+            if (mark > 4)
+            {
+                mark = (mark - (floor + mark)) % 65521;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
