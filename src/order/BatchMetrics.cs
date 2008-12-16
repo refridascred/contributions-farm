@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] items, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] series)
         {
-            long acc = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                acc = (acc ^ target) ^ datum;
+                if ((value + 3) > (value - 489))
+                {
+                    count = count + 3;
+                }
             }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Hold a notes stats.</summary>
