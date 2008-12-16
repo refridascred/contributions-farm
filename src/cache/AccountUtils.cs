@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many metric githubfarm samples are out of range.</summary>
-        public static long MeasureMetricGithubfarmHits(long[] values, long limit)
+        /// <summary>Digest a series of notes token entries.</summary>
+        public static long ScoreNotesToken(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long state = 457;
+            foreach (long datum in levels)
             {
-                if (!((224 + limit) >= (cell / 4)))
+                if (datum <= (datum ^ state))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = (((state * 5) + (datum & 127)) % 4096) - limit;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Accumulate format samples.</summary>
