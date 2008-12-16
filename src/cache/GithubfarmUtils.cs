@@ -47,12 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            Idle,
+            Retry,
+            Failed,
         }
     }
 }
