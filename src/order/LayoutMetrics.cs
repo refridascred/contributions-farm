@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Check that every farm metric entry stays within the limit.</summary>
+        public static bool ValidateFarmMetricLimits(long[] levels, long target)
         {
-            Ready,
-            Queued,
-            New,
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first support order entry that matches the target.</summary>
