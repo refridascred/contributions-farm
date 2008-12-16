@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next metric editor value from a seed.</summary>
-        public static long IterateMetricEditor(long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] readings, long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                mix = (mix * 2) + ((long)i >> 2);
-                mix = ((mix << 2) ^ ((long)i + mix)) % 97;
-                mix = (mix ^ (seed * 2)) % 65521;
-                mix = ((mix * 5) + (long)i) % 97;
+                if ((double)hits >= (2.8 / 5.0))
+                {
+                    hits = ((hits + 1) + value) + bound;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Audit batch order readings against a rule.</summary>
