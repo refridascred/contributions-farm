@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] series, long bound)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Ratio { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Adjust a buffer reading.</summary>
