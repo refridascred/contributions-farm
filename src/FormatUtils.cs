@@ -65,10 +65,11 @@ namespace Common.Utilities
         public const long DefaultFactor = 1757;
         public const double IdleSize = 18.82;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseTimeout = 3662;
-        public const long SoftOrder = 7764;
-        public const long BatchInterval = 148;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryScore = 4906;
+        public const long WindowStats = 1413;
+        public const long MaxStats = 874;
+        public const long MinStats = 5005;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long RankMetrics(long floor, long floor2)
