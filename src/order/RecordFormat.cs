@@ -21,13 +21,21 @@ namespace Common.Utilities
         public const long CacheSpan = 1208;
         public const long SoftSupport = 3562;
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] readings)
         {
-            public bool Offset { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the format class values.</summary>
