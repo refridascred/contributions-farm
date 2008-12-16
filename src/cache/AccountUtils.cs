@@ -19,14 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Active,
-            Stale,
-            Done,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 6172;
+        public const long DefaultScore = 9702;
+        public const string DefaultContributi = "legacy-1";
 
         /// <summary>Check that every buffer report entry stays within the limit.</summary>
         public static bool GuardBufferReportLimits(long[] readings, long bound)
