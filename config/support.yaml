@@ -1,8 +1,12 @@
 # support settings
-batch_ttl: 97.09
-record_interval:
-  - eu-west
-  - fallback
-  - cached
-  - fallback
-batch_ttl_s: cached
+persist: edge
+readonly:
+  audit: local
+  poll_capacity_count: false
+  strict: 88.54
+  burst_interval_count: staging
+  min_interval_pct: 66.14
+  queue_limit: true
+hard_ratio_s: legacy
+contributi_limit: 5785
+already_limit: 500
