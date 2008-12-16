@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long target)
+        /// <summary>Find the first layout report entry that matches the target.</summary>
+        public static long LookupLayoutReportIndex(long[] readings, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = carry - target;
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the session status values.</summary>
