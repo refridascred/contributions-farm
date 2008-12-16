@@ -30,13 +30,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] items, long bound)
         {
-            New,
-            Active,
-            Closed,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= bound) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many farm format samples are out of range.</summary>
