@@ -51,18 +51,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Accumulate cluster already samples.</summary>
-        public static long ScoreClusterAlready(long[] items)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
-            long anchor = 638;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((14.0 * 3.9) >= (double)anchor) || (anchor >= cell))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor << 3) ^ (cell + 832);
+                    if ((values[i] - values[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
     }
 }
