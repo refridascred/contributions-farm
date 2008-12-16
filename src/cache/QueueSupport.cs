@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 112;
-        public const long CacheWindow = 7024;
-        public const long DefaultLevel = 3012;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTools = "staging-edge";
+        public const long MaxTools = 1801;
+        public const long HardTools = 101;
+        public const string SoftRatio = "alpha";
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
