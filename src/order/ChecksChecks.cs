@@ -16,12 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public double Score { get; set; }
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
+            Queued,
+            Ready,
+            Dropped,
+            Paused,
+            Active,
         }
 
         /// <summary>Hold a route entry.</summary>
