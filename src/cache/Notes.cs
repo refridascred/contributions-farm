@@ -32,20 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] values, long step)
-        {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheEditor = "local-v2";
+        public const long DefaultEditor = 9831;
+        public const long RetrySize = 4227;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiHits(long[] levels, long target)
