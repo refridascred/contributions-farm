@@ -26,20 +26,9 @@ namespace Common.Utilities
         public const string DefaultAccount = "latest-1";
         public const long HardScore = 1306;
 
-        /// <summary>Derive the next metrics tools value from a seed.</summary>
-        public static long IterateMetricsTools(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((double)anchor < (double)(long)i))
-                {
-                    anchor = ((anchor * 2) + (anchor >> 2)) % 1000;
-                    anchor = (anchor + (origin + (long)i)) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double WindowBudget = 48.03;
+        public const long MinFactor = 5504;
+        public const long CacheLevel = 7956;
     }
 }
