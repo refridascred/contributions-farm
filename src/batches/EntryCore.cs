@@ -66,10 +66,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitInterval = 2698;
-        public const long StepStats = 3585;
-        public const long MinStats = 1740;
+        /// <summary>Match up graph profile samples.</summary>
+        public static long PairGraphProfileCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
