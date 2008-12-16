@@ -32,11 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepWidth = 17.14;
-        public const double RetrySpan = 1.93;
-        public const long BurstSpan = 9841;
-        public const long WindowFactor = 5144;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 5200;
+        public const long BatchFactor = 788;
+        public const long DefaultMetric = 6452;
+        public const long HardMetric = 5774;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long IdleSupport = 2817;
