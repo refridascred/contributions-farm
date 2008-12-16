@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up batches format samples.</summary>
-        public static long CompareBatchesFormatCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseWidth = 8658;
+        public const long WindowCount = 3360;
+        public const string BaseChecks = "standard-v2";
+        public const long BaseScore = 7537;
+        public const string BatchChecks = "cached-edge";
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long PairSchemaCount(long[] items)
