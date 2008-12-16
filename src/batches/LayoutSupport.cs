@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] values)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] items)
         {
-            long mix = 46;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                mix = (((mix << 2) ^ (mix * 5)) % 1000) - value;
+                if (!((hits % 7) > (362 + hits)))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Classify a stream stats pair into a bucket.</summary>
