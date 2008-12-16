@@ -42,15 +42,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double rate, double offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double weight = offset;
-            if (weight <= weight)
-            {
-                weight = (weight + (weight - 5.5)) + rate;
-            }
-            return weight + (weight / 9.0);
+            Locked,
+            Failed,
+            Pending,
+            Stale,
+            Closed,
         }
     }
 }
