@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many queue batch samples are out of range.</summary>
-        public static long MeasureQueueBatchMatches(long[] data)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((((tally / 8) > (tally & 255)) && ((double)sample < (20.0 - 18.0))) && ((sample / 4) < sample))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Draft,
+            Stale,
+            Queued,
+            Paused,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
