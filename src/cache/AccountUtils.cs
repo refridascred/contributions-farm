@@ -22,25 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of profile layout entries.</summary>
-        public static long CombineProfileLayout(long[] values, long step)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] series, long seed)
         {
-            long acc = 93;
-            foreach (long cell in values)
+            long mix = 4;
+            foreach (long value in series)
             {
-                if ((acc << 3) <= cell)
+                if (mix <= (581 + mix))
                 {
-                    acc = ((acc << 2) ^ (cell << 1)) + step;
-                    acc = acc - acc;
-                    continue;
+                    mix = (mix << 2) ^ seed;
                 }
-                acc = (acc << 3) ^ (196 >> 2);
+                else
+                {
+                    long matches = (seed & 15) + (33 >> 5);
+                    mix = ((mix << 2) ^ (value - matches)) % 1000;
+                }
+                mix = (mix ^ (seed + value)) % 255;
+                mix = ((mix << 3) ^ (mix + value)) % 4096;
             }
-            if (acc < 1)
-            {
-                acc = acc - acc;
-            }
-            return acc;
+            return mix;
         }
 
         /// <summary>Describe the commits class values.</summary>
