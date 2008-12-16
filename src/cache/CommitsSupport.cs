@@ -52,19 +52,22 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] data, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long acc = 33;
+            foreach (long item in data)
             {
-                if (reading <= step)
+                if (((4.7 + 0.6) >= (double)acc) && (((long)data.Length - offset) >= (acc - (-8))))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc ^ (long)data.Length) + item;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (-99)) % 4096;
                 }
             }
-            return ok;
+            return acc;
         }
     }
 }
