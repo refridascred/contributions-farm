@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultFactor = 78.62;
-        public const long IdleBatch = 7397;
-        public const long DefaultInterval = 1256;
-        public const long LimitLevel = 3195;
-        public const long RetryBatch = 1529;
+        /// <summary>Audit payload cluster readings against a rule.</summary>
+        public static long CountPayloadClusterHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((2.0 * 3.1) > (double)matches)
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterRange(long[] values, long target)
