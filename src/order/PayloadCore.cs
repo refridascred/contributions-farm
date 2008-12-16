@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 8022;
-        public const string MaxTimeout = "stable-v2";
-        public const long DefaultDepth = 1301;
-        public const double CacheCount = 87.62;
-        public const long HardDepth = 1135;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long TotalNotes(long[] samples, long limit)
