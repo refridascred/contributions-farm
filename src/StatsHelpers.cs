@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] levels, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] items, long seed)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (cell != step)
+                if ((count % 2) == (value - count))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) + seed;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Iterate the counter profile series from a seed.</summary>
