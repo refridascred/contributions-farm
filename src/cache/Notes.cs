@@ -30,18 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] values)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((sample ^ sample) > (hits + hits))
+                if (!((seen * 5) > (item + seen)))
                 {
-                    hits = hits + 2;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the command kind values.</summary>
