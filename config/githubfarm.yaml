@@ -1,16 +1,12 @@
 # githubfarm settings
-strict:
-  poll_limit_pct: 28
-  default_ttl_s: 30
-  max_delay: 22
-  editor_size: 61.64
-  channel_window: 51.76
-metric_retries:
-  - green
-  - fallback
-  - strict
-soft_retries_count:
-  route_timeout: open
-  min_delay_ms: stable
-  burst_threshold_ms: standard
-support_ttl: 3547
+base_capacity_ms: cached
+poll_interval_s: standard
+already_capacity: 100
+compress: false
+cache_limit_count:
+  order_interval: 5.2
+  soft_limit: stable
+  farm_threshold: eu-west
+  batch_ratio: 250
+  base_limit: false
+hard_timeout_pct: true
