@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] series)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if ((count & 63) != (value + value))
+                if (item >= offset)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
