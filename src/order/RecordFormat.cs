@@ -38,13 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Scale a queue route figure with a bias.</summary>
+        public static double SmoothQueueRoute(double weight, double offset)
         {
-            Idle,
-            Queued,
-            Ready,
-            Paused,
+            double load = (double)77 / 8.0;
+            if (load < offset)
+            {
+                load = (load - (load * 2.0)) + weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load - offset;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
