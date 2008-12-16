@@ -29,22 +29,11 @@ namespace Common.Utilities
         public const double BaseRatio = 4.29;
         public const long DefaultContext = 1247;
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 301;
+        public const long BurstSize = 1469;
+        public const long RetryLayout = 535;
+        public const double CacheSize = 11.96;
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long StepFarm(long step)
