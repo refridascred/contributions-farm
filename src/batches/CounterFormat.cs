@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] values)
         {
-            Active,
-            New,
-            Ready,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((sample + hits) < (hits + sample))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
