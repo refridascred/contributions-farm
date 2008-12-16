@@ -1,6 +1,20 @@
 # support settings
-batch_capacity: 8
-burst_size_pct: 19.84
-commits_ttl:
-  - 484
-  - 166
+strict: false
+warm_window_ms: 84
+persist:
+  batch_threshold_count: true
+  idle_ratio: true
+  default_delay_pct:
+    warm_threshold_ms: 73.41
+    persist: eu-west
+    batch_ttl: 9077
+    counter_interval: 4895
+    channel_window: fallback
+  format_limit: 93.54
+  token_timeout: 1.44
+  poll_size_s:
+    batch_threshold_ms: strict
+    max_capacity_s: 63.22
+    soft_ratio_ms: 9181
+    dry_run: cached
+dry_run: 90
