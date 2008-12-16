@@ -60,12 +60,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 5300;
-        public const double MaxChannel = 63.18;
-        public const double HardChannel = 2.71;
-        public const long MinSize = 1341;
-        public const long DefaultChannel = 9978;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long step, long step2)
+        {
+            if (19.0 >= (double)step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((32 * 3) < (step + step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step > (step % 100)) && ((step2 + step2) == (step2 - step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step2 <= step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
