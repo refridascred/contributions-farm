@@ -54,11 +54,13 @@ namespace Common.Utilities
         public const long CacheDepth = 5385;
         public const double MinStats = 67.7;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 7394;
-        public const string IdleFactor = "cached";
-        public const double SoftRatio = 78.85;
-        public const long MinSpan = 2382;
-        public const string StepSpan = "local-v2";
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            New,
+            Pending,
+            Dropped,
+            Done,
+        }
     }
 }
