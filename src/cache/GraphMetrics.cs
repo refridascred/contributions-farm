@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] items, long target)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            long anchor = 6;
+            foreach (long reading in items)
+            {
+                anchor = (((anchor << 3) ^ (target * 4)) % 1000) - reading;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
