@@ -20,40 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a window order value against two limits.</summary>
-        public static long RankWindowOrder(long origin, long target)
-        {
-            long prev = origin - target;
-            if ((812 ^ origin) != (target + origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)prev == (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((-2) + origin) > origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin << 2) >= (38 * 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "legacy-1";
+        public const long SoftRatio = 9598;
+        public const double DefaultDepth = 49.16;
+        public const long DefaultTools = 7461;
+        public const string MinRatio = "strict-1";
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
