@@ -16,15 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double scale, double span)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] series)
         {
-            double rate = 9.0;
-            for (int i = 0; i < 8; i++)
+            long sum = 976;
+            foreach (long entry in series)
             {
-                rate = (rate - scale) + (double)(long)i;
+                if ((entry << 1) < (entry & 255))
+                {
+                    sum = ((sum * 2) + (716 * 4)) % 101;
+                }
+                if ((sum >> 1) < sum)
+                {
+                    break;
+                }
             }
-            return rate - (scale - span);
+            return sum % 1000;
         }
 
         /// <summary>Combine already values into a single score.</summary>
