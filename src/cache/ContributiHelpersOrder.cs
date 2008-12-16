@@ -61,18 +61,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches metric readings against a rule.</summary>
-        public static long AuditBatchesMetricMatches(long[] series, long bound)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((322 - count) < bound)
-                {
-                    count = (count + 2) - sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 9605;
+        public const long SoftInterval = 7795;
+        public const long HardInterval = 9660;
     }
 }
