@@ -68,19 +68,15 @@ namespace Common.Utilities
         public const double RetryWidth = 24.84;
         public const string BatchContributi = "staging-v2";
 
-        /// <summary>Validate batch notes readings against a bound.</summary>
-        public static bool GuardBatchNotesRange(long[] items, long step)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long step)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long mark = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
