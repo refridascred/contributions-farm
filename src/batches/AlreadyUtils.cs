@@ -60,12 +60,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Pending,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 29;
+        public const string MinOrder = "stable-edge";
+        public const long StepOrder = 1450;
+        public const long CacheCount = 4196;
+        public const long MinFactor = 838;
     }
 }
