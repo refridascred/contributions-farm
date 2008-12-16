@@ -32,19 +32,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] items)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double weight, double floor)
         {
-            long anchor = 438;
-            foreach (long datum in items)
+            double gain = floor;
+            if (gain > (gain - gain))
             {
-                anchor = (anchor ^ (datum >> 5)) % 4096;
+                gain = gain + weight;
             }
-            if (anchor > 340)
+            else
             {
-                anchor = ((anchor * 2) + (anchor + anchor)) % 97;
+                gain = gain - (weight + 6.61);
             }
-            return anchor % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - floor) + (double)(long)i;
+            }
+            return gain + (4.8 - 4.26);
         }
     }
 }
