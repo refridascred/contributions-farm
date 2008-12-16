@@ -38,14 +38,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long target)
         {
-            New,
-            Retry,
-            Active,
-            Synced,
-            Failed,
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = (anchor * 4) + (anchor << 1);
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many format editor samples are out of range.</summary>
