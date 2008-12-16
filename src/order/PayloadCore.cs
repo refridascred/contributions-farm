@@ -50,19 +50,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] series, long step)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            double load = (floor / 7.0) * 3.97;
+            if (load <= (double)5)
             {
-                if (datum >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load - 4.67) + ratio;
             }
-            return flag;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (floor + floor)) + (double)(long)i;
+            }
+            return load - 2.7;
         }
     }
 }
