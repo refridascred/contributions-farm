@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetrySpan = 6740;
-        public const long SoftCluster = 6407;
-        public const string DefaultTimeout = "latest-1";
-        public const long StepCluster = 1120;
-        public const long CacheCluster = 2985;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((count & 63) != (value + value))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportHits(long[] items)
