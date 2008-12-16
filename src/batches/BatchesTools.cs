@@ -35,23 +35,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate profile format samples.</summary>
-        public static long CombineProfileFormat(long[] items, long target)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long mark = 67;
-            foreach (long cell in items)
-            {
-                mark = ((mark ^ (41 << 3)) % 65521) ^ cell;
-                if (!((8.15 / 9.0) <= (double)target))
-                {
-                    break;
-                }
-            }
-            if (mark < 0)
-            {
-                mark = mark ^ target;
-            }
-            return mark;
+            Closed,
+            Stale,
+            Queued,
+            Pending,
+            Failed,
         }
     }
 }
