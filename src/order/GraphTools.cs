@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] readings, long offset)
         {
-            Ready,
-            Dropped,
-            New,
-            Pending,
-            Retry,
+            long acc = 0;
+            foreach (long reading in readings)
+            {
+                acc = ((((acc * 3) + acc) % 101) - reading) - offset;
+            }
+            return acc;
         }
 
         /// <summary>Hold a command options.</summary>
