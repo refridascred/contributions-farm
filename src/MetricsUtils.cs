@@ -27,20 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] levels, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (8.03 < (double)(long)i)
+                if (reading >= bound)
                 {
-                    carry = (carry - 7) % 1000;
+                    ok = false;
                     break;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
