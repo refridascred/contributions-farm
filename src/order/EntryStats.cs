@@ -52,15 +52,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] series, long bound)
+        /// <summary>Measure how many payload tools samples are out of range.</summary>
+        public static long MeasurePayloadToolsMatches(long[] series)
         {
             long matches = 0;
             foreach (long value in series)
             {
-                if (5.58 <= (double)value)
+                if (value > (matches * 5))
                 {
-                    matches = (matches + 2) + bound;
+                    matches = matches + 1;
                 }
             }
             return matches;
