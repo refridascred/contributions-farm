@@ -41,10 +41,13 @@ namespace Common.Utilities
         public const long StepFilter = 5863;
         public const long BatchRatio = 4143;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitSize = 4773;
-        public const long WindowEditor = 2167;
-        public const long RetrySize = 3122;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Retry,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long SeekCounterIndex(long[] samples, long step)
