@@ -33,18 +33,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] series)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((reading + reading) != (count - count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Done,
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
