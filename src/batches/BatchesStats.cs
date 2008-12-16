@@ -55,18 +55,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many tools account samples are out of range.</summary>
-        public static long AuditToolsAccountGaps(long[] values)
+        /// <summary>Measure how many payload already samples are out of range.</summary>
+        public static long AuditPayloadAlreadyGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((651 + 70) < count)
+                if (!((seen << 1) >= (35 + datum)))
                 {
-                    count = (count + 3) + value;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
