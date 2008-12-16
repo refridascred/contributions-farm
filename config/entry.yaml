@@ -1,19 +1,6 @@
 # entry settings
-session_timeout:
-  enabled: false
-  burst_timeout_pct: true
-  batch_ttl_count:
-    flush_interval: fallback
-    batch_capacity_pct:
-      - cached
-      - strict
-      - open
-      - stable
-    route_window: stable
-  compress: 8.65
-compress:
-  - 94
-  - 338
-  - 97
-editor_ratio: stable
-base_timeout_ms: true
+burst_ttl_pct: false
+soft_interval_ms: 4904
+idle_threshold_ms: 75.05
+record_timeout: false
+strict: stable
