@@ -54,18 +54,38 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many payload tools samples are out of range.</summary>
-        public static long MeasurePayloadToolsMatches(long[] series)
+        /// <summary>Grade a tools stream value against two limits.</summary>
+        public static long ClassifyToolsStream(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            if ((limit >= (floor % 16)) && ((floor >> 5) > limit))
             {
-                if (value > (matches * 5))
+                return 3;
+            }
+            else
+            {
+                if (((double)limit > (6.3 * 3.15)) && ((130 >> 4) > floor))
                 {
-                    matches = matches + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor * 5) > (limit ^ 998))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor + floor) >= 91)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
