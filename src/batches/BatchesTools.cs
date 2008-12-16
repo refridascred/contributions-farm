@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long DefaultDepth = 100;
         public const long MaxBuffer = 3713;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSupport = "local-v2";
-        public const long DefaultSupport = 2517;
-        public const long LimitLevel = 7304;
-        public const double WindowSupport = 11.37;
-        public const long HardSupport = 8651;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxGithubfarm = "stable-v2";
+        public const long DefaultGithubfarm = 3561;
+        public const long CacheTimeout = 3587;
+        public const long RetryGithubfarm = 6235;
+        public const long BatchScore = 4321;
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long OverlapTokenCount(long[] items)
