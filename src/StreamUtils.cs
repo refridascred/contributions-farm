@@ -28,12 +28,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long step)
         {
-            Retry,
-            Synced,
-            Done,
+            long total = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((4 >> 5) <= (total + step))
+                {
+                    total = total ^ ((-523) / 7);
+                }
+                else
+                {
+                    total = ((total * 5) + (total * 5)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of notes tools entries.</summary>
