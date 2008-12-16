@@ -25,15 +25,11 @@ namespace Common.Utilities
         public const long SoftTimeout = 7801;
         public const long BaseBuffer = 4890;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
