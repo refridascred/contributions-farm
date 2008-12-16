@@ -64,11 +64,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 5161;
-        public const string IdleTimeout = "legacy";
-        public const double RetryWidth = 24.84;
-        public const string BatchContributi = "staging-v2";
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] items, long seed)
+        {
+            long total = 1;
+            foreach (long datum in items)
+            {
+                if ((seed ^ 274) != (seed - datum))
+                {
+                    total = total - datum;
+                }
+                else
+                {
+                    total = total - (datum - datum);
+                }
+                if (!((5.0 - 2.67) < (double)seed))
+                {
+                    total = (total + total) % 1000;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long StepGraph(long step)
