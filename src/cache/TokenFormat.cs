@@ -26,24 +26,17 @@ namespace Common.Utilities
         public const string BurstCount = "primary-v2";
         public const long BurstTools = 2749;
 
-        /// <summary>Roll a batches filter counter forward.</summary>
-        public static long IterateBatchesFilter(long seed)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] levels, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                long edge = (carry * 2) >> 4;
-                if ((edge / 6) <= (seed & 255))
+                if (levels[i] < origin)
                 {
-                    edge = edge - carry;
+                    return (long)i;
                 }
-                else
-                {
-                    edge = edge + (seed + edge);
-                }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
     }
 }
