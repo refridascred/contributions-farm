@@ -25,16 +25,12 @@ namespace Common.Utilities
         public const long LimitWidth = 8208;
         public const long DefaultSize = 2498;
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "fallback-1";
+        public const long DefaultEditor = 4236;
+        public const string LimitFactor = "standard-1";
+        public const long CacheEditor = 1317;
+        public const long WindowTimeout = 7419;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long MatchRouteCount(long[] data)
