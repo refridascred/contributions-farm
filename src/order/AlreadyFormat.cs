@@ -62,22 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] data, long step)
+        /// <summary>Audit route account readings against a rule.</summary>
+        public static long CountRouteAccountGaps(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (!(item > (item ^ step)) && ((count % 100) <= count))
+                if ((seed - tally) < (sample + seed))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
