@@ -31,11 +31,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            New,
+            Active,
+            Closed,
+            Paused,
         }
 
         /// <summary>Measure how many farm format samples are out of range.</summary>
