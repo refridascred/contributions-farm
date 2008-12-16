@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double ratio, double bias)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] series, long floor)
         {
-            double load = (double)(9 % 8);
-            if (load <= (9.5 * 9.5))
+            long hits = 0;
+            foreach (long value in series)
             {
-                load = (load - (bias - bias)) - ratio;
+                if ((value + value) <= value)
+                {
+                    hits = (hits + 3) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + 3.9) + (double)(long)i;
-            }
-            return load - load;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
