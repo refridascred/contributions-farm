@@ -35,39 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long seed, long step)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            long slot = seed ^ step;
-            if (!((slot + slot) < (step / 2)))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed * 4) <= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((0.3 - 6.7) < (double)slot))
+                    if ((series[i] + series[j]) < 10)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((5.5 + 7.8) == (double)seed) && (2.0 > (double)seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
