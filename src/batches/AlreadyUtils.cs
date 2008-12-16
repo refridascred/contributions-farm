@@ -30,15 +30,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] items, long step)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long sum = 787;
-            foreach (long reading in items)
-            {
-                sum = (((sum - (96 - sum)) % 4096) ^ reading) + step;
-            }
-            return sum;
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
