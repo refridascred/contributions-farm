@@ -1,13 +1,19 @@
 {
-  "schema_capacity": false,
-  "contributi_depth": false,
-  "poll_ttl": false,
-  "batch_interval_count": {
-    "min_ratio": 6.32,
-    "poll_ttl": [354, 446, 80, 344],
-    "batch_threshold": 500,
-    "strict": "edge",
-    "default_capacity_count": "fallback"
+  "profile_size": false,
+  "readonly": {
+    "route_interval": false,
+    "retry_retries": [406, 89],
+    "soft_depth_s": 58.57,
+    "max_capacity_pct": false,
+    "default_depth_ms": 14.98,
+    "stream_threshold": [295, 252]
   },
-  "poll_ratio_count": "stable"
+  "idle_size": true,
+  "hard_delay_count": {
+    "cache_delay_count": true,
+    "cluster_delay": 500,
+    "retry_limit_pct": "latest"
+  },
+  "retry_window_pct": 500,
+  "strict": [174, 303, 300]
 }
