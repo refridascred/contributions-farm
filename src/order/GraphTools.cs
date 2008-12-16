@@ -55,27 +55,21 @@ namespace Common.Utilities
             return (load - (18.0 + 8.2)) + scale;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] series)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] items)
         {
-            long score = 54;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score * 2) + (value * 2);
-                if ((score + value) < value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score << 2) ^ value;
-                }
-                else
-                {
-                    score = (score - (score << 3)) % 65521;
-                }
-                if ((value - value) >= 48)
-                {
-                    break;
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
