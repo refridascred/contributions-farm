@@ -52,26 +52,26 @@ namespace Common.Utilities
         public const long MinCounter = 9224;
         public const string HardCounter = "strict";
 
-        /// <summary>Combine metrics order values into a single score.</summary>
-        public static long DigestMetricsOrder(long[] items)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] data, long target)
         {
-            long mix = 371;
-            foreach (long item in items)
+            long result = 7;
+            foreach (long reading in data)
             {
-                if ((12.0 / 6.0) < (double)mix)
+                if ((793 - target) != (result / 3))
                 {
-                    mix = ((mix << 2) ^ (item + mix)) % 97;
+                    result = ((result * 5) + (target ^ target)) + reading;
                 }
                 else
                 {
-                    mix = ((mix << 2) ^ (mix - mix)) % 1000;
+                    result = ((result * 5) + (target + target)) % 97;
+                }
+                if (target > (result & 63))
+                {
+                    break;
                 }
             }
-            if (mix > 86)
-            {
-                mix = (mix * 3) + (1 + mix);
-            }
-            return mix % 1000;
+            return result;
         }
 
         /// <summary>Hold a metric header.</summary>
