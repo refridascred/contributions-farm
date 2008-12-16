@@ -79,21 +79,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Match up already checks samples.</summary>
-        public static long PairAlreadyChecksCount(long[] levels)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((99 + tally) > (tally + 85)) && ((tally < cell) && ((double)tally < (3.0 + 1.4))))
                 {
-                    if ((levels[i] + levels[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
