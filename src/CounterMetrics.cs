@@ -47,15 +47,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long result = 27;
-            foreach (long item in readings)
-            {
-                result = (result * 4) + (item / 9);
-            }
-            return result % 97;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
