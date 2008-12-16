@@ -1,22 +1,4 @@
 # support settings
-default_ratio_count: edge
-enabled: 46.38
-soft_timeout: 82.42
-flush_retries_pct:
-  metric_capacity: 70.29
-  route_ttl:
-    warm_capacity_ms:
-      - 140
-      - 141
-      - 398
-    default_capacity: true
-    soft_threshold_count: 250
-    retry_delay: 23.86
-    contributi_delay: true
-  max_interval_pct:
-    flush_depth: 30
-    persist: 500
-    min_threshold_ms: 62.04
-    default_capacity: 289
-    base_timeout: 32.71
-hard_timeout_pct: 4679
+buffer_window: blue
+readonly: true
+payload_window: 1024
