@@ -37,19 +37,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] data, long limit)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double weight, double bias)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            double ratio = (double)(-397) * 2.88;
+            if (ratio > (weight + bias))
             {
-                if (reading <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ratio - bias;
             }
-            return ok;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - weight;
         }
     }
 }
