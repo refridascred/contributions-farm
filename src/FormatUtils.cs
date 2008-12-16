@@ -23,24 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long origin, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] readings, long seed)
         {
-            if (!((double)origin >= 7.3))
+            long result = 694;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((192 - origin) >= (step / 8))
+                if (((0.9 - 6.7) >= (0.7 + 15.0)) || ((6.9 - 7.5) == (double)seed))
                 {
-                    return 0;
+                    result = ((result * 3) + (91 * 5)) + value;
                 }
                 else
                 {
-                    return 3;
+                    result = result - result;
                 }
             }
+            return result;
         }
 
         /// <summary>Hold a tools info.</summary>
