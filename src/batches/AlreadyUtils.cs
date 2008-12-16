@@ -30,21 +30,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] values)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 787;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (((sum - (96 - sum)) % 4096) ^ reading) + step;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
