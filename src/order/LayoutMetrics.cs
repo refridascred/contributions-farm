@@ -22,10 +22,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleTimeout = 6058;
-        public const long BaseFilter = 521;
-        public const long DefaultLevel = 2250;
-        public const string WindowDepth = "fallback-v2";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetrySize = 1356;
+        public const long WindowBudget = 7995;
+        public const string IdleCount = "local";
     }
 }
