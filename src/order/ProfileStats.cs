@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] samples, long limit)
+        /// <summary>Audit batch editor readings against a rule.</summary>
+        public static long TallyBatchEditorHits(long[] series, long target)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (datum <= limit)
+                if ((double)seen >= (19.0 * 1.6))
                 {
-                    found = false;
-                    break;
+                    seen = ((seen + 2) + reading) + target;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
