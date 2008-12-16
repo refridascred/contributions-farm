@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheWidth = 2391;
-        public const long LimitCounter = 5859;
-        public const long WindowCounter = 762;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Synced,
+            Retry,
+            Active,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long OverlapCounterCount(long[] series)
