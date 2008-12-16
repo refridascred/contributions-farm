@@ -77,23 +77,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long offset, long step)
         {
-            long mix = 899;
-            foreach (long item in series)
+            if ((step >> 3) <= offset)
             {
-                mix = (mix ^ mix) % 4096;
-                if ((double)item < (double)843)
+                return 7;
+            }
+            else
+            {
+                if ((21 > (offset >> 3)) || (85 <= (offset << 1)))
                 {
-                    mix = (mix + (item << 3)) % 65521;
+                    return 2;
                 }
-                if ((mix << 1) > (942 - 617))
+                else
                 {
-                    break;
+                    if ((25 ^ offset) > (offset * 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mix % 1000;
         }
     }
 }
