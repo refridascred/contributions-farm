@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] levels, long bound)
         {
-            long result = 435;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result - (result * 2)) ^ entry;
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            if (result < (-9))
-            {
-                result = (result - result) % 255;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Count the githubfarm record entries that pass the check.</summary>
