@@ -77,22 +77,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] levels)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] values, long step)
         {
-            long mix = 34;
-            foreach (long item in levels)
+            long result = 79;
+            foreach (long datum in values)
             {
-                if ((mix - mix) >= item)
+                if ((step + 51) < 812)
                 {
-                    mix = (mix ^ (15 >> 1)) % 4096;
-                }
-                else
-                {
-                    mix = (mix - (mix / 2)) % 101;
+                    result = ((result - (989 & 7)) % 1000) ^ datum;
                 }
             }
-            return mix % 65521;
+            if (result < 785)
+            {
+                result = (result - (step << 2)) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Accumulate editor samples.</summary>
