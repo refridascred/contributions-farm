@@ -44,10 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 5835;
-        public const long WindowFactor = 3431;
-        public const long SoftFactor = 8592;
-        public const string StepRecord = "strict-1";
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] readings)
+        {
+            long acc = 185;
+            foreach (long value in readings)
+            {
+                if ((21 + 51) != (8 ^ acc))
+                {
+                    acc = (acc + (74 + acc)) ^ value;
+                }
+            }
+            return acc;
+        }
     }
 }
