@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] items)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (sample > hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Paused,
+            Queued,
+            Draft,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
