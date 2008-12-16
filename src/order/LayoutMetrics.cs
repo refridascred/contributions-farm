@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many context filter samples are out of range.</summary>
-        public static long AuditContextFilterGaps(long[] samples)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (576 > ((long)samples.Length / 5))
+                if ((12.0 - 4.0) <= (double)offset)
                 {
-                    matches = (matches + 1) - value;
+                    carry = carry ^ carry;
                 }
+                carry = (carry * 2) + (1 >> 5);
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
