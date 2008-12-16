@@ -1,5 +1,5 @@
 {
-  "cache_delay_s": ["green", "strict"],
-  "max_interval_ms": "blue",
-  "retry_depth_pct": 35.44
+  "githubfarm_timeout": 57,
+  "hard_window_count": 20,
+  "poll_depth": 500
 }
