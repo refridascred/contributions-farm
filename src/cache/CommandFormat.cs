@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] levels)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((26 * 2) == (seen * 5))
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-            }
-            return seen;
+            Done,
+            Paused,
+            Ready,
         }
 
         /// <summary>Match up notes samples.</summary>
