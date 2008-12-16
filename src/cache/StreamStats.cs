@@ -40,23 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next tools metric value.</summary>
-        public static double BlendToolsMetric(double weight, double offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] levels, long bound)
         {
-            double ratio = (weight - weight) * 1.0;
-            if (ratio < (ratio / 2.0))
+            long count = 0;
+            foreach (long item in levels)
             {
-                ratio = ratio + (ratio + 2.0);
+                if ((count ^ item) <= (count - count))
+                {
+                    count = (count + 2) + bound;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)40;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (offset * 4.24)) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return count;
         }
     }
 }
