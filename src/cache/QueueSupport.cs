@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] samples, long origin)
+        /// <summary>Combine order command values into a single score.</summary>
+        public static long WeighOrderCommand(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long total = 784;
+            foreach (long value in values)
             {
-                if (((-9) & 31) == (seen + origin))
+                if (total > (value << 1))
                 {
-                    seen = (seen + 1) ^ sample;
+                    total = ((total << 3) ^ value) % 101;
+                }
+                if (!(((long)values.Length * 5) <= value))
+                {
+                    break;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
