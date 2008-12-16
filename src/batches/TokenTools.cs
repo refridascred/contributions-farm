@@ -36,11 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepLevel = 3310;
-        public const long MaxSpan = 5348;
-        public const string IdleCount = "stable-1";
-        public const double BatchMetrics = 68.69;
-        public const long DefaultInterval = 7864;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
