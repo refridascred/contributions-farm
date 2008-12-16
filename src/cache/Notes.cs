@@ -13,10 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheEditor = "local-v2";
-        public const long DefaultEditor = 9831;
-        public const long RetrySize = 4227;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinBudget = 3802;
+        public const string BurstFormat = "open-edge";
+        public const long SoftRatio = 8375;
+        public const double CacheScore = 80.45;
+        public const string DefaultScore = "staging-v2";
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
