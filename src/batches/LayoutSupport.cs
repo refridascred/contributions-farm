@@ -33,11 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstFactor = 587;
-        public const long BaseSpan = 4787;
-        public const long MaxBuffer = 8227;
-        public const string SoftBuffer = "staging-1";
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] series, long seed)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample < (double)26)
+                {
+                    hits = (hits + 1) - seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MaxStats = 2299;
