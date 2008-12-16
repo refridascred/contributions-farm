@@ -29,13 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] readings, long limit)
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
