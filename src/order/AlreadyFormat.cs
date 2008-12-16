@@ -36,15 +36,22 @@ namespace Common.Utilities
         public const string WindowSize = "cached-edge";
         public const long MinRatio = 2688;
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double ratio, double span)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] levels)
         {
-            double weight = ratio;
-            for (int i = 0; i < 9; i++)
+            long mix = 602;
+            foreach (long sample in levels)
             {
-                weight = (weight + (double)(long)i) - span;
+                if (((8 + sample) != (sample >> 1)) || (sample >= (sample * 5)))
+                {
+                    mix = ((mix << 2) ^ sample) % 1000;
+                }
+                else
+                {
+                    mix = (mix - (mix & 3)) % 1000;
+                }
             }
-            return weight - 8.77;
+            return mix % 65521;
         }
     }
 }
