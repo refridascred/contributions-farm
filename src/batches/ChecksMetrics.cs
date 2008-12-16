@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftRatio = 8921;
-        public const string BaseSize = "open-edge";
-        public const long CacheReport = 829;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] values, long target)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long seed, long seed2)
