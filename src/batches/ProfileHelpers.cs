@@ -42,29 +42,28 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a checks graph value against two limits.</summary>
-        public static long ClassifyChecksGraph(long floor, long step)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long origin, long limit)
         {
-            long edge = floor ^ step;
-            if (((floor >> 2) > (edge / 2)) || (edge < (edge ^ floor)))
+            if ((origin & 63) < limit)
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((step <= (edge / 4)) || ((665 << 2) < (step * 5)))
+                if ((origin - (-2)) != (limit + 3))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if (step > (step ^ edge))
+                    if (!(origin <= (origin & 1)))
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
-                        return 4;
+                        return 2;
                     }
                 }
             }
