@@ -54,13 +54,17 @@ namespace Common.Utilities
             return bias - (rate / 2.0);
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] values, long bound)
         {
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == bound) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the queue mode values.</summary>
