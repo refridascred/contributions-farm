@@ -42,39 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long seed, long floor)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double ratio, double floor)
         {
-            long span = seed ^ floor;
-            if ((-899) <= (seed + span))
+            double gain = floor;
+            if (gain > floor)
             {
-                return 1;
+                gain = (gain - (8.31 - gain)) - ratio;
             }
-            else
-            {
-                if ((seed >> 1) == (seed << 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed % 100) < seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((7 / 6) >= (span - span))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return gain + gain;
         }
 
         /// <summary>Combine token values into a single score.</summary>
