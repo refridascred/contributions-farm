@@ -20,18 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchDepth = "local-v2";
+        public const long MinInterval = 8776;
+        public const long IdleSize = 8185;
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long LocateStreamIndex(long[] samples, long limit)
