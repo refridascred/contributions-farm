@@ -62,23 +62,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the metrics route series from a seed.</summary>
-        public static long RollMetricsRoute(long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] items)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            long anchor = -76;
+            foreach (long sample in items)
             {
-                if ((sum - sum) <= (limit * 3))
+                long gap = sample << 2;
+                anchor = anchor + (gap - anchor);
+                if (783 < (anchor << 1))
                 {
-                    sum = ((sum * 5) + limit) % 1000;
+                    anchor = (anchor << 3) ^ anchor;
                 }
-                if ((876 + limit) != (limit - limit))
-                {
-                    sum = (sum - sum) % 97;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return anchor;
         }
     }
 }
