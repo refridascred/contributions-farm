@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 645;
-        public const long SoftLevel = 3328;
-        public const string MaxWidth = "alpha-v2";
-        public const long IdleGraph = 1637;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long offset, long offset2)
+        {
+            if ((double)offset != (4.9 * 3.7))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)58 < (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((9.0 + 6.0) != (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset2 * 5) <= ((-96) + offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count queue record pairs that satisfy a relation.</summary>
         public static long OverlapQueueRecordCount(long[] levels)
