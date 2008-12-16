@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long bound, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] items, long step)
         {
-            long offset = bound ^ seed;
-            if (((double)bound >= (double)(-16)) && (seed >= (bound - bound)))
+            long mix = 53;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((0.3 + 7.5) < (double)offset)
+                if ((step - mix) < (step ^ 5))
                 {
-                    return 1;
+                    mix = ((mix - ((long)items.Length + (-66))) % 101) ^ cell;
                 }
                 else
                 {
-                    return 3;
+                    mix = mix + (57 + 532);
                 }
             }
+            return mix;
         }
 
         /// <summary>Match up payload samples.</summary>
