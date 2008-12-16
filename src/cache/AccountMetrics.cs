@@ -59,19 +59,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] values, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] values)
         {
-            bool ok = true;
+            long hits = 0;
             foreach (long cell in values)
             {
-                if (cell > offset)
+                if ((hits / 3) == (cell + hits))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a record snapshot.</summary>
