@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] levels, long floor)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!((double)5 > (double)cell))
-                {
-                    tally = (tally + 3) - floor;
-                }
-            }
-            return tally;
+            Active,
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Hold a entry info.</summary>
