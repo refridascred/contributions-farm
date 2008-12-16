@@ -30,9 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 6875;
-        public const string BaseChannel = "staging";
-        public const string HardCount = "stable-v2";
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally % 100) == (7 ^ datum))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
