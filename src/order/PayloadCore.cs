@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public bool Owner { get; set; }
-            public string Score { get; set; } = "";
-            public double Flag { get; set; }
-            public long Offset { get; set; }
+            Retry,
+            Active,
+            Idle,
+            Queued,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
