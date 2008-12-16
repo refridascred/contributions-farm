@@ -1,12 +1,14 @@
 # Command notes
 
-Keep stream and metric names short and lowercase.
-The account helpers are pure functions, so they are safe to call from any thread.
-A editor that stays idle for too long is moved to the already list.
+Keep report and checks names short and lowercase.
+The filter helpers are pure functions, so they are safe to call from any thread.
+
+Each stats is validated before it reaches the batch queue.
+Run the report check before changing any stats limits.
+Defaults for notes live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review metric limits each release
-- Log every metric change
-- Prefer format defaults
-- Validate cluster input early
+- Keep session values small
+- Review context limits each release
+- Document new notes fields
