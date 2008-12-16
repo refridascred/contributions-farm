@@ -1,15 +1,5 @@
 # support settings
-order_capacity:
-  warm_depth_ms: true
-  strict: 1024
-  session_window: 90.99
-  hard_interval_count: 5.23
-  base_delay_ms:
-    - 43
-    - 20
-    - 1
-    - 386
-  max_retries_ms: open
-base_interval_s: strict
-counter_retries: 41.56
-readonly: edge
+min_timeout: legacy
+idle_timeout: blue
+order_window: 250
+enabled: 35.4
