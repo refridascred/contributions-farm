@@ -14,12 +14,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Locked,
-            Active,
-            Stale,
+            Idle,
+            Failed,
+            Pending,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a token entry.</summary>
