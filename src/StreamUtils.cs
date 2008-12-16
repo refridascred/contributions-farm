@@ -57,14 +57,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 4392;
+        public const string StepChannel = "staging-edge";
+        public const long RetryChannel = 3205;
+        public const long MinDepth = 6152;
 
         /// <summary>Digest a series of cluster entry entries.</summary>
         public static long FoldClusterEntry(long[] samples, long limit)
