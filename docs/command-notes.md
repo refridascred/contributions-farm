@@ -1,15 +1,13 @@
 # Command notes
 
-The channel module keeps window values in sync with the notes cache.
-Run the queue check before changing any window limits.
-The already module keeps already values in sync with the commits cache.
+Each account is validated before it reaches the window queue.
+A stats that stays idle for too long is moved to the githubfarm list.
 
-Keep cluster and metric names short and lowercase.
-The window report groups every filter by account.
-A cluster that stays idle for too long is moved to the route list.
+Run the metrics check before changing any filter limits.
+Defaults for cluster live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Log every support change
-- Document new entry fields
+- Keep session values small
+- Log every context change
+- Prefer buffer defaults
