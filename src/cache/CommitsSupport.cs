@@ -68,22 +68,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] data, long offset)
+        /// <summary>Locate a layout counter reading by value.</summary>
+        public static long LookupLayoutCounterIndex(long[] readings, long bound)
         {
-            long acc = 33;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((4.7 + 0.6) >= (double)acc) && (((long)data.Length - offset) >= (acc - (-8))))
+                if (readings[i] == bound)
                 {
-                    acc = (acc ^ (long)data.Length) + item;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (-99)) % 4096;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
