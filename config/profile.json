@@ -1,5 +1,6 @@
 {
-  "enabled": [497, 335],
-  "cache_interval_pct": "open",
-  "batch_timeout_count": true
+  "verbose": "primary",
+  "flush_capacity_pct": ["latest", "primary"],
+  "burst_ttl_ms": "green",
+  "max_depth_s": true
 }
