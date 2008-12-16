@@ -37,14 +37,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstDepth = 3930;
+        public const long BaseCache = 8760;
+        public const long WindowFactor = 5468;
+        public const double BurstInterval = 49.53;
+        public const long BurstLevel = 1734;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long SortBuffer(long seed, long target)
