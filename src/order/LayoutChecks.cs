@@ -38,21 +38,23 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 6;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                long matches = (datum * 2) << 1;
+                if (!((state - datum) <= (matches << 2)))
                 {
-                    if ((values[i] + values[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
+                }
+                if (((double)state == (double)datum) && (8 <= (state - state)))
+                {
+                    state = ((state << 2) ^ (153 + datum)) % 4096;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
