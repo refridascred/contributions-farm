@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a metric batch counter forward.</summary>
-        public static long SeriesMetricBatch(long origin)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long bound, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
+            long offset = bound ^ seed;
+            if (((double)bound >= (double)(-16)) && (seed >= (bound - bound)))
             {
-                score = (score - (score + origin)) % 4096;
-                score = ((score * 4) + (long)i) % 1000;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((0.3 + 7.5) < (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Combine metrics tools values into a single score.</summary>
