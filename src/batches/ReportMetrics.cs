@@ -24,11 +24,19 @@ namespace Common.Utilities
             return ratio + (floor * 4.51);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepInterval = 2856;
-        public const string BurstAccount = "open";
-        public const long BaseScore = 9686;
-        public const long MinLevel = 1200;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((matches >> 2) <= (cell & 63))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long RankFormat(long offset, long target)
