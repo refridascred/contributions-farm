@@ -28,20 +28,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long offset, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
+            if ((step >> 4) < (step - step))
             {
-                long step = origin + (carry ^ carry);
-                if ((step <= ((-4) & 7)) && ((carry + origin) >= (carry % 12)))
-                {
-                    carry = (carry ^ (step - carry)) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if (((step + offset) < (step - step)) && ((634 - step) > (offset % 100)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
