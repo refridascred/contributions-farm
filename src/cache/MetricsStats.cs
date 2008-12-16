@@ -14,13 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            Locked,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
