@@ -41,20 +41,12 @@ namespace Common.Utilities
         public const long BurstSpan = 9841;
         public const long WindowFactor = 5144;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 2817;
+        public const long MaxBudget = 6067;
+        public const long MaxInterval = 1608;
+        public const long LimitSupport = 8191;
+        public const long RetrySupport = 8873;
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
