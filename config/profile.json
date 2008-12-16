@@ -1,5 +1,8 @@
 {
-  "audit": false,
-  "checks_depth": "cached",
-  "verbose": "open"
+  "default_ratio_pct": false,
+  "poll_retries_s": true,
+  "sync_ttl_s": true,
+  "burst_capacity_ms": 500,
+  "default_window_count": 9130,
+  "readonly": 7785
 }
