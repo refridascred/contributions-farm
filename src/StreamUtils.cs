@@ -39,20 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] levels)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long bound)
         {
-            long acc = 88;
-            foreach (long entry in levels)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                acc = acc - (520 << 3);
-                acc = (acc * 3) + (entry << 3);
+                if (((19.0 - 0.8) <= (double)acc) || ((6.77 / 7.0) != (double)acc))
+                {
+                    acc = (acc + bound) % 4096;
+                    acc = (acc - (bound % 5)) % 101;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            if (acc > 75)
-            {
-                acc = acc - (77 + acc);
-            }
-            return acc % 4096;
+            return acc;
         }
 
         /// <summary>Match up metric samples.</summary>
