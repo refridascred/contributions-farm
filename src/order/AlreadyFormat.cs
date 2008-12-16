@@ -20,15 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] items)
         {
-            long anchor = 8;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                anchor = ((anchor * 2) + (item % 10)) % 255;
+                if ((datum * 2) > 835)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
