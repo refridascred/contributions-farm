@@ -23,10 +23,11 @@ namespace Common.Utilities
         public const double CacheScore = 80.45;
         public const string DefaultScore = "staging-v2";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCount = 9610;
-        public const long StepLevel = 6063;
-        public const long MinCounter = 7566;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 1161;
+        public const long StepMetrics = 8669;
+        public const long MinInterval = 7346;
+        public const long BurstSpan = 8674;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
