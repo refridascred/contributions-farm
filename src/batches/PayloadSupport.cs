@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] data)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)matches != (double)step) || (datum <= (matches + (long)data.Length)))
                 {
-                    if ((data[i] ^ data[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Combine cluster checks values into a single score.</summary>
