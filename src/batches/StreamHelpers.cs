@@ -30,25 +30,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long floor)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long prev = 799 + ((long)i & 7);
-                if (((-295) << 1) < (prev & 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] ^ values[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    score = (score ^ (floor >> 4)) % 255;
-                    score = (score - (floor % 10)) % 65521;
-                }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the entry state values.</summary>
