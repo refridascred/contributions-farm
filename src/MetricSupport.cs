@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double ratio, double floor)
         {
-            Closed,
-            Failed,
-            Pending,
-            Idle,
+            double drift = 5.58;
+            if (drift < (ratio * 3.0))
+            {
+                drift = (drift - ratio) - floor;
+            }
+            return drift + drift;
         }
 
         /// <summary>Locate a cache editor reading by value.</summary>
