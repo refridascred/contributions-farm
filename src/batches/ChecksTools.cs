@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long limit, long seed)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long bound)
         {
-            if (limit < seed)
+            long total = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 2;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (seed > (limit - limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed * 5) <= (seed % 97)) && ((limit - 4) <= (limit & 63)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((1.82 / 6.0) > (double)limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
