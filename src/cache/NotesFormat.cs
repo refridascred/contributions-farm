@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
+            Paused,
+            Retry,
+            Stale,
+            Locked,
+            Closed,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
