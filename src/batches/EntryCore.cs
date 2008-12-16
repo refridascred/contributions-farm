@@ -71,21 +71,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] levels)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Draft,
+            Failed,
+            Paused,
         }
     }
 }
