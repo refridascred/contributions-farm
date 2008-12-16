@@ -23,19 +23,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] samples, long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (value < step)
+                if (reading <= origin)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
     }
 }
