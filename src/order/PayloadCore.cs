@@ -70,13 +70,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] series, long step)
         {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public double Score { get; set; }
-            public double Token { get; set; }
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
