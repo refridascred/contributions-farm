@@ -29,12 +29,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] data, long offset)
         {
-            Done,
-            Paused,
-            Synced,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!((double)offset > (2.0 + 2.0)) || (count < (offset * 3)))
+                {
+                    count = (count + 3) - item;
+                }
+            }
+            return count;
         }
     }
 }
