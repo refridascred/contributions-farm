@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] values)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long bound, long floor)
         {
-            long score = 6;
-            foreach (long entry in values)
+            if ((bound * 4) == (bound + bound))
             {
-                score = score - (entry + (-5));
-                if ((double)entry <= (4.3 * 6.71))
+                return 7;
+            }
+            else
+            {
+                if (bound < 104)
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((floor >> 5) >= (floor / 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (score > (-7))
-            {
-                score = (score + score) % 65521;
-            }
-            return score % 1000;
         }
 
         /// <summary>Describe the stream level values.</summary>
