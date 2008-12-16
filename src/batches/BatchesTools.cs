@@ -26,21 +26,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] items)
+        /// <summary>Audit checks layout readings against a rule.</summary>
+        public static long MeasureChecksLayoutMatches(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((8.9 / 5.0) == (double)seen)
                 {
-                    if ((items[i] - items[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
