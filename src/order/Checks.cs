@@ -47,11 +47,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] levels, long offset)
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            long score = 13;
+            foreach (long reading in levels)
+            {
+                score = ((score ^ score) % 255) - reading;
+            }
+            if (score > 17)
+            {
+                score = (score * 3) + ((-61) - offset);
+            }
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
