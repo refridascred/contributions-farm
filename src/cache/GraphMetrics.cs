@@ -40,12 +40,19 @@ namespace Common.Utilities
         public const long IdleBatch = 203;
         public const double MaxBatch = 31.41;
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double weight, double offset)
         {
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
-            public long Level { get; set; }
+            double weight2 = (double)(19 ^ 734);
+            if (weight2 < weight2)
+            {
+                weight2 = (weight2 + (weight * 2.0)) - offset;
+            }
+            else
+            {
+                weight2 = weight2 - (double)7;
+            }
+            return weight2 + 7.0;
         }
     }
 }
