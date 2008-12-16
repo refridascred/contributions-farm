@@ -37,22 +37,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] readings)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double weight, double span)
         {
-            long mark = 76;
-            foreach (long sample in readings)
+            double bias = (double)0;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(((sample << 3) > 33) && (sample < (mark - sample))))
-                {
-                    mark = (mark << 3) ^ sample;
-                }
-                if (((long)readings.Length % 8) != (mark - mark))
-                {
-                    mark = (mark + (6 + sample)) % 97;
-                }
+                bias = ((bias - (bias - span)) + (double)(long)i) + weight;
             }
-            return mark % 1000;
+            return bias + (double)76;
         }
 
         /// <summary>Hold a session header.</summary>
