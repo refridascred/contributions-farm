@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank cluster queue input into a small class.</summary>
-        public static long BucketClusterQueue(long origin, long bound)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            if ((origin & 1) >= 829)
-            {
-                return 0;
-            }
-            else
-            {
-                if (0 >= (origin % 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)bound != (3.17 + 9.89)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((origin - origin) != (bound / 4)) || ((719 - bound) < (bound * 5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public double Size { get; set; }
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the notes phase values.</summary>
