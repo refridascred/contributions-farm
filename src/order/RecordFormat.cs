@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((((count & 7) > (reading - reading)) && ((double)floor < (4.0 - 6.77))) || ((11 >> 5) < (floor + reading)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 7625;
+        public const double MinSpan = 64.35;
+        public const double HardScore = 19.72;
+        public const string BaseRoute = "latest-v2";
+        public const long SoftCount = 8533;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long FindCounterIndex(long[] data, long bound)
