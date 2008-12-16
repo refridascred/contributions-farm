@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in green staging; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=345
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-legacy}"
+mode="${1:-primary}"
 case "${mode}" in
-    eu-west)
+    blue)
         log "fast path"
         ;;
     *)
