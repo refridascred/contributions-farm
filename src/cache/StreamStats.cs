@@ -16,12 +16,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetrySpan = "fallback-1";
-        public const string BurstCount = "local-edge";
-        public const long HardBudget = 6552;
-        public const long HardRatio = 3408;
-        public const long LimitSize = 696;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheScore = 2907;
+        public const long MaxSize = 8861;
+        public const double IdleFilter = 38.49;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseInterval = 710;
