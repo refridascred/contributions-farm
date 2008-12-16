@@ -66,31 +66,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a token entry value against two limits.</summary>
-        public static long BucketTokenEntry(long target, long floor)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double gain, double offset)
         {
-            if (!((double)target <= 5.0))
+            double rate = (gain / 7.0) + (offset / 2.0);
+            if (rate <= offset)
             {
-                return 3;
+                rate = rate - (double)6;
             }
             else
             {
-                if (!((floor - target) < (floor & 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor == (14.0 - 1.4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                rate = rate + (5.1 + 1.98);
             }
+            return rate + (offset * 8.0);
         }
     }
 }
