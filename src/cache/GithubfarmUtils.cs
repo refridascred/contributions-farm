@@ -16,13 +16,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Rank filter cache input into a small class.</summary>
+        public static long GradeFilterCache(long bound, long target)
         {
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            long offset = bound - target;
+            if ((offset < 0) || ((double)1 < (double)offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((target << 1) < (offset - bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Accumulate commits samples.</summary>
