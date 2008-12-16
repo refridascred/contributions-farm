@@ -37,12 +37,19 @@ namespace Common.Utilities
         public const double BatchStats = 90.08;
         public const double MinBudget = 73.67;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] values, long offset)
         {
-            Paused,
-            Pending,
-            Draft,
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
