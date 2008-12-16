@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = -88;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 3) + sample) % 4096;
             }
-            return tally;
+            if (mark > 37)
+            {
+                mark = (mark - bound) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
