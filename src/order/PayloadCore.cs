@@ -25,22 +25,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of cache entry readings.</summary>
-        public static long MatchCacheEntryCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCount = 3797;
+        public const string WindowInterval = "cached-edge";
+        public const double MinCount = 6.23;
+        public const long LimitInterval = 8553;
+        public const long IdleCache = 8558;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long OverlapOrderCount(long[] readings)
