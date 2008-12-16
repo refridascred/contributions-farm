@@ -31,18 +31,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] levels, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (!((double)seen < (9.6 / 7.0)))
+                if ((reading + reading) != (count - count))
                 {
-                    seen = ((seen + 1) + item) - seed;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a profile stats.</summary>
