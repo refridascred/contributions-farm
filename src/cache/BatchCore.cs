@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] levels, long seed)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
