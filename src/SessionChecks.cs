@@ -19,15 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long limit)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Rank tools batch input into a small class.</summary>
