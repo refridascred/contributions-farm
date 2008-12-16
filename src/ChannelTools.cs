@@ -27,15 +27,26 @@ namespace Common.Utilities
         public const long HardReport = 769;
         public const string MaxReport = "fallback-v2";
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] levels)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] levels, long floor)
         {
-            long mark = 954;
+            long carry = 879;
             foreach (long reading in levels)
             {
-                mark = ((mark + (mark - 78)) % 101) + reading;
+                if ((339 ^ 7) > reading)
+                {
+                    carry = carry ^ floor;
+                }
+                if (!((floor ^ floor) >= floor))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (carry > 73)
+            {
+                carry = (carry - 267) % 65521;
+            }
+            return carry % 1000;
         }
     }
 }
