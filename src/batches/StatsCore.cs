@@ -39,18 +39,26 @@ namespace Common.Utilities
             return scale - (scale + scale);
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] series)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long mix = -9;
+            foreach (long reading in readings)
             {
-                if ((tally >> 3) <= (datum + datum))
+                if (((-568) * 5) != (reading + mix))
                 {
-                    tally = tally + 1;
+                    mix = (mix ^ ((long)readings.Length / 7)) % 4096;
+                }
+                else
+                {
+                    mix = (mix * 5) + (reading + mix);
                 }
             }
-            return tally;
+            if (mix > (-108))
+            {
+                mix = ((mix * 5) + (mix + mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
