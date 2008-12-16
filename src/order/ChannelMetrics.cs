@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleLevel = 6032;
-        public const long MinRoute = 2757;
-        public const string BurstCount = "cached-v2";
-        public const long HardSize = 7479;
-        public const string SoftInterval = "local-1";
+        /// <summary>Count account command pairs that satisfy a relation.</summary>
+        public static long MatchAccountCommandCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftWindow = 4814;
