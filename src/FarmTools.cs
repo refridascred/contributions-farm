@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseLevel = 1116;
-        public const long RetryBudget = 5404;
-        public const long SoftScore = 499;
-        public const double BatchRatio = 1.14;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowGithubfarm = "latest-edge";
+        public const long LimitTimeout = 1633;
+        public const long CacheGithubfarm = 2165;
+        public const long LimitGithubfarm = 4641;
+        public const long LimitScore = 7777;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long IdleSession = 3524;
