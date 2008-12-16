@@ -14,22 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] data)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((cell / 8) <= (cell << 1))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
