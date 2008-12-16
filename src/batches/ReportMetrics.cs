@@ -32,23 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] data, long limit)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double weight, double span)
         {
-            long sum = 369;
-            foreach (long datum in data)
+            double rate = (weight * 20.0) - weight;
+            if (rate >= rate)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    sum = (sum + (218 + limit)) - (long)i;
-                }
-                sum = (sum * 5) + (datum - datum);
+                rate = rate + rate;
             }
-            if (sum > 8)
+            else
             {
-                sum = (sum * 4) + (limit * 2);
+                rate = rate + 7.8;
             }
-            return sum % 65521;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (weight / 8.0)) + (double)(long)i;
+            }
+            return rate + (span + rate);
         }
     }
 }
