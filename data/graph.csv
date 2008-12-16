@@ -1,6 +1,6 @@
-id,count,state
-1,cached,85
-2,67.35,39.58
-3,68.35,green
-4,74.24,833
-5,55.76,primary
+id,owner,ratio,token,score
+1,788,43.14,blue,681
+2,26,strict,4.05,blue
+3,latest,cached,1.69,61.72
+4,cached,eu-west,968,280
+5,3,cached,14.67,63.71
