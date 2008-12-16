@@ -40,22 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] samples)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits - reading) >= reading)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a entry already counter forward.</summary>
