@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] readings)
         {
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            long sum = 9;
+            foreach (long cell in readings)
+            {
+                if ((sum << 3) >= (cell - sum))
+                {
+                    sum = sum + (cell % 10);
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Combine command values into a single score.</summary>
