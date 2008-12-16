@@ -54,32 +54,10 @@ namespace Common.Utilities
             return bias - (rate / 2.0);
         }
 
-        /// <summary>Classify a route checks pair into a bucket.</summary>
-        public static long SortRouteChecks(long target, long bound)
-        {
-            if (((bound - target) >= ((-84) / 5)) || (6 > (19 - target)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((-2) < (94 - target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((27 - bound) < (bound / 4)) || (bound >= (56 - bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultRatio = 4760;
+        public const double HardProfile = 11.87;
+        public const long HardRatio = 5433;
 
         /// <summary>Match up tools counter samples.</summary>
         public static long PairToolsCounterCount(long[] levels)
