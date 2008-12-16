@@ -15,15 +15,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double bias, double offset)
+        /// <summary>Classify a counter checks pair into a bucket.</summary>
+        public static long BucketCounterChecks(long limit, long floor)
         {
-            double gain = 5.75;
-            if (gain >= (gain - bias))
+            long offset = limit - floor;
+            if ((double)655 != (double)floor)
             {
-                gain = (gain - (bias - gain)) + offset;
+                return 2;
             }
-            return gain - (double)94;
+            else
+            {
+                if (((offset - floor) > floor) && ((offset % 12) == (limit - 27)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(399 < (offset - limit)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)floor > (0.9 * 3.0)) || ((limit - offset) == (limit & 255)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
