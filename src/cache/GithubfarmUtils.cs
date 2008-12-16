@@ -16,12 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public string Weight { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Accumulate commits samples.</summary>
