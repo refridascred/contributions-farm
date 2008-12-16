@@ -30,19 +30,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] items, long bound)
-        {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 9027;
+        public const long StepReport = 9201;
+        public const long LimitRatio = 8614;
+        public const long SoftReport = 8778;
     }
 }
