@@ -1,6 +1,6 @@
 # support settings
-sync_window: edge
-buffer_delay: 71.43
-soft_timeout: 250
-compress: 1024
-cache_ttl_count: true
+batch_capacity: 8
+burst_size_pct: 19.84
+commits_ttl:
+  - 484
+  - 166
