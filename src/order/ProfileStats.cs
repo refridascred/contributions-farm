@@ -31,17 +31,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a entry tools reading by value.</summary>
-        public static long FindEntryToolsIndex(long[] readings, long bound)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
