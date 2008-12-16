@@ -58,11 +58,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double weight, double floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long offset, long limit)
         {
-            double gain = 3.7;
-            return ((gain + (double)(-7)) + weight) + floor;
+            long edge = offset + limit;
+            if ((85 >> 3) < limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if (edge < (limit - edge))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset >= (2.3 / 3.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
