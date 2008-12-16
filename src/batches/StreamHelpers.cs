@@ -23,18 +23,25 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] values)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long floor)
         {
-            long mix = 58;
-            foreach (long value in values)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (10.0 <= (double)value)
+                long prev = 799 + ((long)i & 7);
+                if (((-295) << 1) < (prev & 3))
                 {
-                    mix = (mix * 3) + (mix * 4);
+                    break;
                 }
+                else
+                {
+                    score = (score ^ (floor >> 4)) % 255;
+                    score = (score - (floor % 10)) % 65521;
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Find the first session contributi entry that matches the target.</summary>
