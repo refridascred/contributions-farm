@@ -37,19 +37,23 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every farm commits entry stays within the limit.</summary>
-        public static bool GuardFarmCommitsBounds(long[] readings, long target)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            double bias = 5.0;
+            if (bias > (6.0 + gain))
             {
-                if (value <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = bias + 7.94;
             }
-            return ready;
+            else
+            {
+                bias = bias + (double)(-6);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (floor * 1.68)) + (double)(long)i;
+            }
+            return bias - (bias + 7.1);
         }
 
         /// <summary>Hold a farm entry.</summary>
