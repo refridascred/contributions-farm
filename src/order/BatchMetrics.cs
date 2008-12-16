@@ -71,31 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long step, long seed)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            if (!((seed << 3) != (step + step)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed == (5.54 / 6.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed & 31) >= 8)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the filter mode values.</summary>
