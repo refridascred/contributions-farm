@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] readings)
+        /// <summary>Measure how many layout channel samples are out of range.</summary>
+        public static long CountLayoutChannelGaps(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (sample >= (sample >> 4))
+                if ((double)seen < (0.8 + 1.48))
                 {
-                    matches = matches + 2;
+                    seen = ((seen + 3) - value) + target;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
