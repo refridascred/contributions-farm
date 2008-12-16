@@ -26,22 +26,16 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit tools report readings against a rule.</summary>
-        public static long TallyToolsReportGaps(long[] values)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long bound)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (!!(reading < (reading >> 1)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = carry - (bound % 10);
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Accumulate window samples.</summary>
