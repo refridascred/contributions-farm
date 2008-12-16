@@ -14,13 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Blend two metrics filter measurements.</summary>
