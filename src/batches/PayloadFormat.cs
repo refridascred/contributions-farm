@@ -33,31 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank entry metrics input into a small class.</summary>
-        public static long ClassifyEntryMetrics(long bound, long bound2)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] items, long offset)
         {
-            if (!((937 - bound2) <= bound))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((3.5 * 17.0) < (double)bound2)
+                if (!((hits >> 1) >= 27))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound2 / 4) >= (422 - bound2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = ((hits + 3) + datum) + offset;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
