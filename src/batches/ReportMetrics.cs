@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double weight, double floor)
-        {
-            double ratio = floor;
-            if (ratio <= 5.1)
-            {
-                ratio = (ratio - (floor * 6.8)) + weight;
-            }
-            else
-            {
-                ratio = ratio - (ratio + floor);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (ratio - ratio)) + (double)(long)i;
-            }
-            return ratio + (floor * 4.51);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFactor = 8629;
+        public const long CacheFilter = 5542;
+        public const double WindowSpan = 95.68;
+        public const long HardWidth = 1290;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterGaps(long[] readings)
