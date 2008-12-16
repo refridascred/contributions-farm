@@ -1,26 +1,23 @@
 # support settings
-warm_size:
-  - 358
-  - 459
-cache_window_pct: standard
-cache_ttl:
-  githubfarm_ratio: 71.43
-  poll_retries: cached
-  max_capacity_pct: cached
-max_limit_ms: 7499
-cache_timeout_count:
-  metrics_delay: 69.79
-  burst_ratio:
-    persist: true
-    audit:
-      - 446
-      - 212
-      - 33
-      - 250
-    cluster_delay:
-      - 210
-      - 458
-      - 115
-    readonly: 64.1
-  verbose: 76
-  min_timeout_pct: 6.33
+enabled: open
+session_size: 22
+hard_interval_s:
+  githubfarm_depth: 2840
+  command_capacity:
+    - 199
+    - 57
+    - 185
+    - 60
+  default_interval: blue
+  soft_size:
+    sync_retries: 8590
+    base_depth_pct: 5.64
+    hard_timeout_s: 82.26
+  flush_limit_ms: 83
+buffer_retries:
+  cache_delay: 30
+  flush_interval_count: true
+  warm_timeout_s: 98
+  batch_delay: true
+  max_timeout_ms: stable
+  poll_depth_s: 83
