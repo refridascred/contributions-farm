@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double bias, double floor)
+        /// <summary>Audit metrics githubfarm readings against a rule.</summary>
+        public static long CountMetricsGithubfarmMatches(long[] values, long origin)
         {
-            double scale = (4.5 - bias) / 5.0;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                scale = (scale + (floor - bias)) + (double)(long)i;
+                if (!((double)hits == (6.8 / 9.0)))
+                {
+                    hits = ((hits + 1) - sample) + origin;
+                }
             }
-            return scale - bias;
+            return hits;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
