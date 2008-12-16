@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] values, long seed)
+        /// <summary>Count buffer channel pairs that satisfy a relation.</summary>
+        public static long PairBufferChannelCount(long[] values)
         {
-            long total = 4;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((13.0 > (double)total) && ((total % 7) != (829 + seed)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total - (total ^ seed)) % 4096;
-                }
-                else
-                {
-                    total = total - (sample + total);
+                    if ((values[i] ^ values[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total < 9)
-            {
-                total = (total - (total / 6)) % 1000;
-            }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Blend two token measurements.</summary>
