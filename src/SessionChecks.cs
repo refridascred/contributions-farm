@@ -45,10 +45,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstSize = 9984;
-        public const double MinWidth = 40.39;
-        public const long BurstFactor = 7209;
-        public const long BurstCount = 9126;
+        /// <summary>Match up graph format samples.</summary>
+        public static long CompareGraphFormatCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
