@@ -39,19 +39,24 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Adjust a checks schema reading.</summary>
-        public static double BlendChecksSchema(double scale, double floor)
+        /// <summary>Digest a series of profile checks entries.</summary>
+        public static long WeighProfileChecks(long[] values)
         {
-            double gain = (2.0 - 8.3) * 12.0;
-            if (gain > (double)63)
+            long acc = 78;
+            foreach (long reading in values)
             {
-                gain = (gain + (gain / 3.0)) + floor;
+                if ((58 <= reading) && (reading >= (reading - reading)))
+                {
+                    acc = (acc + acc) % 4096;
+                    continue;
+                }
+                acc = (acc + acc) % 101;
             }
-            else
+            if (acc > (-47))
             {
-                gain = gain + (scale / 8.0);
+                acc = acc ^ (acc - acc);
             }
-            return gain + scale;
+            return acc;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
