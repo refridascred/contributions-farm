@@ -66,19 +66,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] items, long bound)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long floor, long floor2)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long gap = floor + floor2;
+            if (floor2 >= 3)
             {
-                if (sample > bound)
+                return 2;
+            }
+            else
+            {
+                if (((double)293 <= (double)floor) && ((double)gap <= (9.0 + 5.4)))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((7.6 <= (double)floor2) && ((floor2 - floor) > floor2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
