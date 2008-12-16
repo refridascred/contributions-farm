@@ -29,20 +29,15 @@ namespace Common.Utilities
         public const long SoftTimeout = 7801;
         public const long BaseBuffer = 4890;
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] samples, long target)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            long anchor = -67;
-            foreach (long reading in samples)
+            long state = limit;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = ((anchor + reading) % 4096) - target;
-                anchor = (anchor - (10 + reading)) % 65521;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            if (anchor > 287)
-            {
-                anchor = anchor ^ (anchor >> 5);
-            }
-            return anchor;
+            return state;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
