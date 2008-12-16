@@ -41,18 +41,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] items)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((seen + 3) > 559)
-                {
-                    seen = (seen + 1) ^ item;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
     }
 }
