@@ -39,12 +39,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] readings, long target)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] >= target)
+                if (items[i] <= floor)
                 {
                     return (long)i;
                 }
