@@ -61,13 +61,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public bool Rank { get; set; }
+            Ready,
+            Idle,
+            Stale,
+            Done,
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
