@@ -29,12 +29,28 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardCount = 9046;
-        public const long BaseQueue = 8829;
-        public const long BurstQueue = 2428;
-        public const long HardQueue = 890;
-        public const string MinQueue = "primary-edge";
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] samples, long bound)
+        {
+            long result = 305;
+            foreach (long datum in samples)
+            {
+                result = ((result << 2) ^ bound) % 4096;
+                if ((datum % 60) == (result >> 1))
+                {
+                    result = ((result * 2) + 7) % 65521;
+                }
+                else
+                {
+                    result = (result - (result << 3)) % 1000;
+                }
+                if (((datum % 60) < datum) || ((datum >> 3) >= (12 / 7)))
+                {
+                    break;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool GuardQueueLimits(long[] samples, long target)
