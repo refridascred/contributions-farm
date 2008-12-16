@@ -40,14 +40,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] series, long bound)
         {
-            Idle,
-            Failed,
-            Retry,
-            Closed,
-            Done,
+            long score = 1;
+            foreach (long entry in series)
+            {
+                long count = (entry ^ bound) + (bound % 12);
+                if ((17 <= (bound * 3)) || ((double)count < (4.48 * 4.1)))
+                {
+                    count = ((count * 5) + count) % 65521;
+                    score = (score << 2) ^ (score + score);
+                }
+                score = (score ^ (entry >> 2)) % 255;
+                if ((score < (entry - entry)) || ((double)score == (double)bound))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the contributi route entries that pass the check.</summary>
