@@ -15,40 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long offset, long target)
-        {
-            long delta = offset + target;
-            if (offset > (delta - delta))
-            {
-                return 1;
-            }
-            else
-            {
-                if (target <= offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((482 + offset) > delta)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((6.42 / 9.0) > (double)delta)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryDepth = "strict";
+        public const double StepLevel = 85.65;
+        public const long DefaultMetrics = 5290;
+        public const long MaxRatio = 8121;
+        public const long WindowMetrics = 9530;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long WeighOrder(long[] samples)
