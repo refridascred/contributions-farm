@@ -27,19 +27,10 @@ namespace Common.Utilities
         public const long BurstCount = 2579;
         public const string SoftRatio = "primary";
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] series, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((7.6 + 4.4) < (double)origin)
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstFilter = "latest";
+        public const long IdleInterval = 6511;
+        public const string IdleCount = "legacy-edge";
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long IterateReport(long bound)
