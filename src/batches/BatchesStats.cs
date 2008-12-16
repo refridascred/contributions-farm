@@ -43,30 +43,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double scale, double span)
         {
-            long anchor = 138;
-            foreach (long cell in readings)
+            double load = (double)(1 + 5);
+            if (load > (0.9 / 8.0))
             {
-                if (((cell & 15) == (cell << 2)) || ((7.94 + 3.85) != (double)anchor))
-                {
-                    anchor = (anchor - (cell - (-4))) % 1000;
-                }
-                if (anchor < (anchor & 3))
-                {
-                    anchor = ((anchor << 3) ^ (anchor + 365)) % 255;
-                }
-                if (anchor >= (cell % 97))
-                {
-                    break;
-                }
+                load = load - (scale - load);
             }
-            if (anchor > 9)
-            {
-                anchor = (anchor + (anchor + anchor)) % 255;
-            }
-            return anchor % 4096;
+            return load + (span * 9.53);
         }
 
         /// <summary>Measure how many tools account samples are out of range.</summary>
