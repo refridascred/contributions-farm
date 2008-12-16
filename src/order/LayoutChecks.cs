@@ -63,26 +63,17 @@ namespace Common.Utilities
         public const long SoftInterval = 8773;
         public const long WindowContext = 9392;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] readings, long offset)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] samples, long origin)
         {
-            long mark = 285;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((value - value) > (7 - offset)) && ((double)value <= (9.0 / 4.0)))
+                if (samples[i] == origin)
                 {
-                    mark = (mark - mark) % 97;
-                }
-                if (((8.39 * 19.0) < (double)value) && ((mark + value) == (mark - value)))
-                {
-                    mark = (mark << 2) ^ (mark & 127);
+                    return (long)i;
                 }
             }
-            if (mark > 135)
-            {
-                mark = mark ^ (long)readings.Length;
-            }
-            return mark;
+            return -1;
         }
     }
 }
