@@ -55,26 +55,38 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] readings, long seed)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long seed, long step)
         {
-            long anchor = 3;
-            foreach (long sample in readings)
+            if ((double)step >= 14.0)
             {
-                for (int i = 0; i < 4; i++)
+                return 4;
+            }
+            else
+            {
+                if ((seed % 97) >= seed)
                 {
-                    anchor = ((anchor * 5) + (161 >> 4)) + (long)i;
+                    return 5;
                 }
-                if ((anchor * 4) <= (seed * 2))
+                else
                 {
-                    anchor = anchor - (seed ^ seed);
-                }
-                if ((seed & 1) > (sample & 127))
-                {
-                    break;
+                    if ((double)seed < (4.21 - 7.41))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)seed >= (9.5 / 2.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return anchor % 97;
         }
     }
 }
