@@ -39,19 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] series, long step)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long score = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell > step)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
