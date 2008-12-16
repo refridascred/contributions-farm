@@ -54,19 +54,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] data, long bound)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
