@@ -1,7 +1,11 @@
 # githubfarm settings
-default_limit_count: false
-stream_limit: 73.02
-filter_timeout: 59
-tools_retries: false
-sync_depth_pct: 83.96
-hard_ttl_ms: true
+graph_size:
+  checks_window: true
+  enabled: false
+  payload_window: edge
+  already_interval: true
+enabled: 500
+sync_ttl_ms: 100
+poll_size_pct: 21.22
+dry_run: strict
+metrics_ttl: cached
