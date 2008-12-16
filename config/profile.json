@@ -1,9 +1,5 @@
 {
-  "min_capacity": "strict",
-  "max_window_count": "stable",
-  "enabled": {
-    "base_timeout_count": 30,
-    "persist": "standard",
-    "max_delay": 47
-  }
+  "enabled": [497, 335],
+  "cache_interval_pct": "open",
+  "batch_timeout_count": true
 }
