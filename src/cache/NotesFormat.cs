@@ -13,31 +13,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long bound, long bound2)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            if (!(bound <= (3 - bound2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound2 & 15) > (bound2 + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.9 >= (double)bound) || ((bound >> 1) > (bound ^ bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Pending,
+            Retry,
+            New,
+            Idle,
+            Done,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
