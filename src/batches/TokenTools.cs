@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] samples)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] samples)
         {
-            long hits = 0;
+            long mark = 3;
             foreach (long reading in samples)
             {
-                if ((reading > (hits >> 3)) && ((5.6 / 9.0) <= (double)hits))
-                {
-                    hits = hits + 2;
-                }
+                mark = (mark ^ mark) - reading;
             }
-            return hits;
+            return mark % 97;
         }
 
         /// <summary>Match up cache samples.</summary>
