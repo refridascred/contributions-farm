@@ -1,7 +1,6 @@
 {
-  "session_window": false,
-  "burst_timeout_pct": 29.17,
-  "idle_retries_s": false,
-  "burst_ratio_s": ["primary", "standard", "cached"],
-  "warm_capacity_count": 800
+  "flush_retries": "stable",
+  "max_capacity_ms": [397, 256],
+  "retry_ttl": ["cached", "stable", "green"],
+  "strict": 9583
 }
