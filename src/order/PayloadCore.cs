@@ -33,21 +33,10 @@ namespace Common.Utilities
         public const long LimitInterval = 8553;
         public const long IdleCache = 8558;
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultRatio = 5195;
+        public const long CacheWindow = 2270;
+        public const long HardWidth = 2698;
+        public const long BaseWindow = 2753;
     }
 }
