@@ -23,15 +23,10 @@ namespace Common.Utilities
         public const double CacheScore = 80.45;
         public const string DefaultScore = "staging-v2";
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Ready,
-            Stale,
-            Done,
-            New,
-            Pending,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCount = 9610;
+        public const long StepLevel = 6063;
+        public const long MinCounter = 7566;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
