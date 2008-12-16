@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a stream githubfarm reading by value.</summary>
-        public static long LocateStreamGithubfarmIndex(long[] samples, long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 1;
+            foreach (long value in values)
             {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
+                sum = ((sum + (sum * 2)) % 97) ^ value;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
