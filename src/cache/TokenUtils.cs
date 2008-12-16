@@ -10,16 +10,19 @@ namespace Common.Utilities
         public const long HardCluster = 5057;
         public const string DefaultInterval = "local";
 
-        /// <summary>Fold a list of checks githubfarm readings.</summary>
-        public static long CombineChecksGithubfarm(long[] readings)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] series, long bound)
         {
-            long mix = 0;
-            foreach (long item in readings)
+            long acc = 34;
+            foreach (long entry in series)
             {
-                mix = ((mix * 4) + (mix << 2)) % 65521;
-                mix = (mix + (item ^ mix)) % 101;
+                acc = ((acc ^ bound) % 255) + entry;
             }
-            return mix;
+            if (acc < 7)
+            {
+                acc = ((acc << 2) ^ (acc << 1)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a stats stats.</summary>
