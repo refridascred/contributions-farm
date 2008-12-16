@@ -13,12 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] items, long limit)
         {
-            Paused,
-            New,
-            Pending,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (((double)59 < (double)seen) || ((7 / 6) != (sample ^ limit)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
