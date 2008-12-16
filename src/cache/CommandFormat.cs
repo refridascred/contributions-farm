@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] data, long origin)
+        /// <summary>Iterate the channel cluster series from a seed.</summary>
+        public static long DeriveChannelCluster(long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long score = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (((seen + seen) <= seen) || (((1.09 - 1.0) <= (double)origin) || (((-50) << 3) <= seen)))
+                if (23 < (score + floor))
                 {
-                    seen = (seen + 3) + datum;
+                    continue;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    score = score - (score + 5);
                 }
+                score = score ^ ((long)i + score);
+                score = ((score * 4) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Match up notes samples.</summary>
