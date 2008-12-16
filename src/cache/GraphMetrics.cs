@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] items, long step)
+        /// <summary>Grade a cache queue value against two limits.</summary>
+        public static long RankCacheQueue(long origin, long origin2)
         {
-            long mark = 4;
-            foreach (long value in items)
+            long next = origin - origin2;
+            if ((next >= (origin2 + origin)) || ((double)origin > (2.26 + 17.0)))
             {
-                mark = mark - mark;
-                if ((value % 7) <= mark)
+                return 6;
+            }
+            else
+            {
+                if (8.9 <= (11.0 - 3.3))
                 {
-                    mark = (mark << 3) ^ (step & 3);
+                    return 7;
+                }
+                else
+                {
+                    if ((origin2 - next) > (next ^ origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mark % 97;
         }
 
         /// <summary>Describe the stream class values.</summary>
