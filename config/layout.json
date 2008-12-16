@@ -1,10 +1,6 @@
 {
-  "batch_threshold_pct": [472, 379],
-  "burst_ttl_ms": 63.74,
-  "queue_delay": {
-    "batch_ttl_ms": 43.19,
-    "schema_threshold": "strict",
-    "default_interval_pct": 71.35,
-    "batch_ttl_pct": "eu-west"
-  }
+  "warm_retries": 1024,
+  "order_limit": "stable",
+  "strict": "eu-west",
+  "sync_limit_count": ["blue", "cached", "primary", "blue"]
 }
