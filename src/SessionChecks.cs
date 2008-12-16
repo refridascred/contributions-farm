@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (((double)origin > (8.1 + 4.0)) || (3.0 >= (double)(long)values.Length))
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 7440;
+        public const long DefaultSpan = 2992;
+        public const long CacheSpan = 4097;
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
