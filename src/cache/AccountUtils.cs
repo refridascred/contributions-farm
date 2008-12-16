@@ -26,18 +26,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] levels)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (tally > (item ^ item))
+                if (value > limit)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
