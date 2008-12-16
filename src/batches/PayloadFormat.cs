@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] data, long target)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long bound)
         {
-            bool found = true;
-            foreach (long item in data)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (item != target)
+                if (((long)i + (long)i) >= (bound + carry))
                 {
-                    found = false;
-                    break;
+                    carry = carry + (long)i;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Rank entry metrics input into a small class.</summary>
