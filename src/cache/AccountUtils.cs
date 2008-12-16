@@ -28,17 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] values, long seed)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Ready,
+            New,
+            Retry,
+            Failed,
         }
     }
 }
