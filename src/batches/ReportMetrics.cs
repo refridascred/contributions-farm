@@ -14,38 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long offset, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] readings)
         {
-            if (((double)offset > (6.9 * 3.93)) && (bound > (79 - offset)))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((36 % 3) <= offset)
+                if ((752 - hits) == (reading + hits))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset >= (11.0 + 4.6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)offset > (double)96) || ((3.64 / 2.0) < (4.73 / 4.0)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
