@@ -61,12 +61,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] readings, long bound)
         {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
+            long carry = -4;
+            foreach (long datum in readings)
+            {
+                carry = ((carry * 3) + (bound - bound)) - datum;
+            }
+            if (carry < (-4))
+            {
+                carry = (carry * 4) + (434 / 7);
+            }
+            return carry;
         }
     }
 }
