@@ -1,23 +1,6 @@
 # support settings
-enabled: open
-session_size: 22
-hard_interval_s:
-  githubfarm_depth: 2840
-  command_capacity:
-    - 199
-    - 57
-    - 185
-    - 60
-  default_interval: blue
-  soft_size:
-    sync_retries: 8590
-    base_depth_pct: 5.64
-    hard_timeout_s: 82.26
-  flush_limit_ms: 83
-buffer_retries:
-  cache_delay: 30
-  flush_interval_count: true
-  warm_timeout_s: 98
-  batch_delay: true
-  max_timeout_ms: stable
-  poll_depth_s: 83
+sync_window: edge
+buffer_delay: 71.43
+soft_timeout: 250
+compress: 1024
+cache_ttl_count: true
