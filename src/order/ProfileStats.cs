@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate notes token samples.</summary>
-        public static long ScoreNotesToken(long[] series)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long result = 428;
-            foreach (long entry in series)
-            {
-                if (entry <= (result / 8))
-                {
-                    result = (result + ((long)series.Length & 7)) % 97;
-                }
-            }
-            return result;
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
