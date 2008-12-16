@@ -1,8 +1,12 @@
 # entry settings
-audit: 60
-default_limit: blue
-hard_delay: staging
-hard_ratio:
-  - 123
-  - 434
-  - 338
+poll_threshold_count: 69.42
+command_depth: edge
+soft_delay_count:
+  retry_threshold_ms: 64.14
+  batch_delay_count: 82.35
+  min_limit_count: false
+  cache_depth_pct: stable
+  warm_interval_ms: true
+  stream_ttl: open
+farm_interval: standard
+soft_ttl_pct: latest
