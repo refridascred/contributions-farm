@@ -73,19 +73,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] readings, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int i3 = 0; i3 < 8; i3++)
+                if ((origin >> 3) == (datum - origin))
                 {
-                    carry = ((carry * 2) + carry) ^ (long)i3;
+                    seen = seen + 1;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
