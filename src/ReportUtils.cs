@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] readings, long step)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
-            long score = 991;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)192 <= 2.59)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (((score << 3) ^ (score ^ sample)) % 65521) + step;
+                    if ((series[i] - series[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score > 7)
-            {
-                score = (score + 524) % 1000;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Fold a list of schema cluster readings.</summary>
