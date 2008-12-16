@@ -72,11 +72,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultDepth = "strict-v2";
-        public const long MaxSpan = 8847;
-        public const long IdleWindow = 7205;
-        public const long MinWindow = 1649;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowScore = "stable-edge";
+        public const long LimitRecord = 811;
+        public const long WindowRecord = 1795;
+        public const double BatchCount = 8.4;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
