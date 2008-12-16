@@ -97,24 +97,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long origin, long offset)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            if ((origin - offset) != (93 - offset))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((7.1 * 1.81) > (double)origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    if ((levels[i] ^ levels[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of window entries.</summary>
