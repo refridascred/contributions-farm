@@ -28,15 +28,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double weight, double span)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] levels, long bound)
         {
-            double drift = span + weight;
-            if (drift < span)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                drift = drift - (drift / 6.0);
+                if (!(bound <= (matches >> 4)))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
             }
-            return drift - (double)10;
+            return matches;
         }
 
         /// <summary>Describe the window status values.</summary>
