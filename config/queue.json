@@ -1,6 +1,7 @@
 {
-  "idle_timeout_pct": "fallback",
-  "hard_delay_ms": 2399,
-  "readonly": 74.45,
-  "dry_run": 4646
+  "hard_size_pct": 19,
+  "audit": "blue",
+  "soft_timeout_pct": "legacy",
+  "compress": "local",
+  "dry_run": ["latest", "eu-west"]
 }
