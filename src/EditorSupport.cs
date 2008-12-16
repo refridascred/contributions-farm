@@ -42,15 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double ratio, double floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] levels, long bound)
         {
-            double gain = floor;
-            if (gain > floor)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                gain = (gain - (8.31 - gain)) - ratio;
+                if ((seen % 10) > (690 * 4))
+                {
+                    seen = ((seen + 1) ^ datum) + bound;
+                }
             }
-            return gain + gain;
+            return seen;
         }
 
         /// <summary>Combine token values into a single score.</summary>
