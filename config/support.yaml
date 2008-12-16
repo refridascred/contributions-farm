@@ -1,13 +1,7 @@
 # support settings
-cache_delay: 6566
-readonly: 94.74
-route_threshold:
-  enabled:
-    - 94
-    - 173
-  compress: true
-  audit:
-    - blue
-    - eu-west
-  metric_window: cached
-strict: true
+flush_window_ms: true
+compress: 100
+persist:
+  - 203
+  - 160
+  - 458
