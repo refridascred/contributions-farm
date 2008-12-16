@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] readings, long step)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double rate, double offset)
         {
-            long state = 3;
-            foreach (long item in readings)
+            double gain = (double)((-33) ^ 7);
+            for (int i = 0; i < 4; i++)
             {
-                if ((step - 734) == (item * 3))
-                {
-                    state = (state + (item - state)) % 97;
-                }
-                else
-                {
-                    state = (state ^ (state - state)) % 4096;
-                }
+                gain = (gain + (double)(long)i) - rate;
             }
-            return state;
+            return gain + (gain - offset);
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
