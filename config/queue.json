@@ -1,19 +1,6 @@
 {
-  "profile_size": false,
-  "readonly": {
-    "route_interval": false,
-    "retry_retries": [406, 89],
-    "soft_depth_s": 58.57,
-    "max_capacity_pct": false,
-    "default_depth_ms": 14.98,
-    "stream_threshold": [295, 252]
-  },
-  "idle_size": true,
-  "hard_delay_count": {
-    "cache_delay_count": true,
-    "cluster_delay": 500,
-    "retry_limit_pct": "latest"
-  },
-  "retry_window_pct": 500,
-  "strict": [174, 303, 300]
+  "soft_interval_s": 250,
+  "burst_size": 9781,
+  "cache_window_count": [118, 151, 397],
+  "flush_limit_ms": 38.64
 }
