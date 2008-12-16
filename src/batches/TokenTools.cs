@@ -13,31 +13,31 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a graph schema pair into a bucket.</summary>
-        public static long BucketGraphSchema(long bound, long offset)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long step, long bound)
         {
-            long lane = bound ^ offset;
-            if (((lane / 8) <= (offset * 3)) && ((lane ^ bound) > (bound & 15)))
+            long gap = step - bound;
+            if (!(((-478) - step) < bound))
             {
                 return 0;
             }
             else
             {
-                if ((7.0 / 2.0) > (double)bound)
+                if ((gap - step) <= (step % 12))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if ((0 + bound) >= (bound - lane))
+                    if (!((step << 3) != (1 + step)))
                     {
-                        return 3;
+                        return 1;
                     }
                     else
                     {
-                        if ((offset - bound) < (lane + lane))
+                        if ((gap % 3) != (gap / 2))
                         {
-                            return 7;
+                            return 3;
                         }
                         else
                         {
