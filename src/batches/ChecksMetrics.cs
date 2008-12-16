@@ -51,19 +51,18 @@ namespace Common.Utilities
         public const long RetryFactor = 5730;
         public const long HardRoute = 5691;
 
-        /// <summary>Validate cluster layout readings against a bound.</summary>
-        public static bool GuardClusterLayoutRange(long[] data, long seed)
+        /// <summary>Audit layout channel readings against a rule.</summary>
+        public static long TallyLayoutChannelGaps(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (cell < seed)
+                if ((floor / 2) >= tally)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) - sample;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
