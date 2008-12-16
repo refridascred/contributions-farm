@@ -19,11 +19,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBuffer = "stable-edge";
-        public const long DefaultBudget = 7910;
-        public const long SoftTimeout = 7801;
-        public const long BaseBuffer = 4890;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = (carry * 4) + (bound + bound);
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
