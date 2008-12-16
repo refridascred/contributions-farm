@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] samples, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (((long)i + (long)i) >= (bound + carry))
+                if ((sample % 8) <= (floor + sample))
                 {
-                    carry = carry + (long)i;
+                    hits = hits + 2;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Rank entry metrics input into a small class.</summary>
