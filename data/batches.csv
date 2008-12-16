@@ -1,10 +1,7 @@
-id,active,weight,state
-1,680,standard,green
-2,43,13.18,stable
-3,32.14,primary,74.45
-4,legacy,75,60.9
-5,cached,primary,6.87
-6,open,strict,477
-7,strict,719,green
-8,cached,883,173
-9,265,6,504
+id,rank,label,owner
+1,cached,381,257
+2,165,stable,eu-west
+3,955,open,open
+4,474,62.37,blue
+5,edge,24.34,24.8
+6,latest,753,250
