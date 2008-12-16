@@ -45,39 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long target, long offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long floor)
         {
-            long bound = target ^ offset;
-            if ((target / 8) <= ((-3) / 3))
+            long score = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((7 & 15) < (offset % 97))
+                if (!((double)floor > 19.0))
                 {
-                    return 6;
+                    score = (score * 4) + (0 % 97);
                 }
-                else
-                {
-                    if ((double)offset == (2.2 * 2.3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound ^ offset) != (target + 9))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                score = (score - (long)i) % 4096;
+                score = score ^ floor;
+                score = ((score * 3) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
