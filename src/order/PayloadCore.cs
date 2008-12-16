@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseWidth = 34.36;
-        public const string RetryScore = "primary";
-        public const long BaseCommand = 2140;
-        public const long RetryCommand = 4586;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Active,
+            New,
+            Closed,
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportOutliers(long[] levels, long offset)
