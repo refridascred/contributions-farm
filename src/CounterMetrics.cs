@@ -41,19 +41,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] series, long seed)
-        {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitInterval = 6422;
+        public const long BatchToken = 5618;
+        public const long BurstSize = 613;
+        public const string MaxToken = "open-1";
     }
 }
