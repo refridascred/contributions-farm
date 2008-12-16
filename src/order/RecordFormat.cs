@@ -22,15 +22,13 @@ namespace Common.Utilities
         public const long MaxRatio = 8121;
         public const long WindowMetrics = 9530;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] samples)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long acc = 916;
-            foreach (long item in samples)
-            {
-                acc = (acc ^ (acc + item)) % 255;
-            }
-            return acc;
+            public bool Offset { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the format class values.</summary>
