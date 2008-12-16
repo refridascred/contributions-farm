@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine support record values into a single score.</summary>
-        public static long TallySupportRecord(long[] samples, long step)
+        /// <summary>Locate a stream githubfarm reading by value.</summary>
+        public static long LocateStreamGithubfarmIndex(long[] samples, long step)
         {
-            long anchor = 1;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor + anchor) % 101;
-                if ((anchor >= datum) || ((step ^ datum) > anchor))
+                if (samples[i] == step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor < 800)
-            {
-                anchor = (anchor * 5) + step;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
