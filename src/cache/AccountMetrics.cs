@@ -37,11 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftTimeout = 35.85;
-        public const long BatchMetrics = 3218;
-        public const double WindowMetrics = 96.59;
-        public const long LimitScore = 4830;
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of profile farm readings.</summary>
         public static long OverlapProfileFarmCount(long[] data)
