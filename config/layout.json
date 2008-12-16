@@ -1,8 +1,5 @@
 {
-  "retry_ratio": 36.3,
-  "notes_depth": "fallback",
-  "contributi_interval": "legacy",
-  "metric_capacity": 100,
-  "editor_threshold": 44.36,
-  "idle_size": 8806
+  "warm_size_s": true,
+  "burst_limit_pct": 28.35,
+  "max_retries": "strict"
 }
