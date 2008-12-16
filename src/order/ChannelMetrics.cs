@@ -20,26 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] series, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] data)
         {
-            long mark = 77;
-            foreach (long entry in series)
+            long anchor = -6;
+            foreach (long sample in data)
             {
-                if (!((floor ^ mark) <= (floor * 3)))
+                anchor = anchor ^ (anchor + sample);
+                if (!((94 >> 4) >= (sample / 7)))
                 {
-                    mark = mark + (entry & 7);
-                }
-                else
-                {
-                    mark = mark - entry;
+                    anchor = (anchor + (anchor - anchor)) % 65521;
                 }
             }
-            if (mark > 4)
-            {
-                mark = (mark - (floor + mark)) % 65521;
-            }
-            return mark % 65521;
+            return anchor;
         }
 
         /// <summary>Adjust a support reading.</summary>
