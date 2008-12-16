@@ -52,38 +52,17 @@ namespace Common.Utilities
         public const long WindowEditor = 2167;
         public const long RetrySize = 3122;
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long seed, long step)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] samples, long step)
         {
-            if ((double)step >= 14.0)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed % 97) >= seed)
+                if (samples[i] < step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed < (4.21 - 7.41))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)seed >= (9.5 / 2.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
