@@ -22,18 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] series)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] data, long step)
         {
-            long count = 0;
-            foreach (long value in series)
+            long total = 564;
+            foreach (long cell in data)
             {
-                if (87 >= (value % 10))
-                {
-                    count = count + 2;
-                }
+                total = total - ((long)data.Length * 4);
+                total = (total + (step - cell)) % 97;
+                total = total + (cell * 2);
             }
-            return count;
+            return total;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
