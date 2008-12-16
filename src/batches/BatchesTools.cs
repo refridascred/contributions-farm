@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] samples, long offset)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((7.29 / 4.0) < (double)cell)
-                {
-                    seen = (seen + 1) + offset;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate contributi samples.</summary>
