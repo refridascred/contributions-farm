@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long seed, long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] data)
         {
-            if (!((floor >> 4) < (floor + floor)))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed ^ 0) < (4 ^ seed))
+                if ((seen & 7) == (cell - cell))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor + floor) > (seed << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
