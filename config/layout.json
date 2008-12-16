@@ -1,8 +1,7 @@
 {
-  "default_size": [55, 143, 23],
-  "base_interval_s": ["strict", "open", "strict", "edge"],
-  "sync_threshold": "legacy",
-  "token_delay": 88,
-  "warm_depth": "open",
-  "poll_retries_pct": 30
+  "channel_depth": false,
+  "stream_threshold": ["local", "eu-west", "open"],
+  "counter_delay": ["cached", "green"],
+  "enabled": 76.83,
+  "max_capacity_ms": true
 }
