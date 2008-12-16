@@ -16,19 +16,18 @@ namespace Common.Utilities
             return load - (double)431;
         }
 
-        /// <summary>Digest a series of batches account entries.</summary>
-        public static long CombineBatchesAccount(long[] series)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] data)
         {
-            long state = 78;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                state = state - (sample << 1);
-                if ((state << 1) > (2 - sample))
+                if ((8.0 + 4.7) > (double)datum)
                 {
-                    state = (state + (885 ^ state)) % 97;
+                    matches = matches + 1;
                 }
             }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
