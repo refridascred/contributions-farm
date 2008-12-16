@@ -56,11 +56,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleWidth = 29.21;
-        public const long StepTimeout = 4380;
-        public const long LimitSize = 5422;
-        public const string StepCommits = "alpha";
-        public const double BatchCommits = 11.3;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Locked,
+            Ready,
+            Retry,
+            Stale,
+        }
     }
 }
