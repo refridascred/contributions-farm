@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long origin, long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] items, long step)
         {
-            if ((bound << 2) >= (581 % 64))
+            long mark = 4;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin <= (origin - origin))
+                mark = mark - mark;
+                if ((value % 7) <= mark)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound & 15) > (origin << 3)) || ((bound << 2) != (origin + origin)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mark = (mark << 3) ^ (step & 3);
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Describe the stream class values.</summary>
