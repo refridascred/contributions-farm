@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] samples, long floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample % 8) <= (floor + sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Locked,
+            Pending,
+            Queued,
+            New,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
