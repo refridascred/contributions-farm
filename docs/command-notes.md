@@ -1,10 +1,12 @@
 # Command notes
 
-A report that stays idle for too long is moved to the farm list.
-A stats that stays idle for too long is moved to the batch list.
+Use session settings to tune how often already data is refreshed.
+The commits module keeps batches values in sync with the commits cache.
+When a window fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every counter change
-- Prefer contributi defaults
-- Review cluster limits each release
+- Validate filter input early
+- Prefer githubfarm defaults
+- Review window limits each release
+- Log every token change
