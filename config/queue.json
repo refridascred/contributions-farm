@@ -1,5 +1,8 @@
 {
-  "burst_depth_s": "latest",
-  "window_retries": 1024,
-  "graph_window": 94
+  "support_interval": ["blue", "fallback", "cached"],
+  "min_limit_ms": "strict",
+  "token_threshold": "local",
+  "session_ttl": "legacy",
+  "verbose": "latest",
+  "readonly": 39
 }
