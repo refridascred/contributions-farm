@@ -34,27 +34,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] levels)
+        /// <summary>Rank entry metrics input into a small class.</summary>
+        public static long ClassifyEntryMetrics(long bound, long bound2)
         {
-            long state = 5;
-            foreach (long reading in levels)
+            if (!((937 - bound2) <= bound))
             {
-                if (!((reading + 7) > reading))
+                return 4;
+            }
+            else
+            {
+                if ((3.5 * 17.0) < (double)bound2)
                 {
-                    long step = state / 2;
-                    state = (state ^ (step >> 1)) % 1000;
+                    return 5;
                 }
-                if (reading <= (reading + reading))
+                else
                 {
-                    state = state - (state + reading);
+                    if ((bound2 / 4) >= (422 - bound2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (state > 8)
-            {
-                state = (state - (state ^ state)) % 65521;
-            }
-            return state % 1000;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
