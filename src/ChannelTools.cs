@@ -14,19 +14,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] series, long bound)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Stale,
+            Idle,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
