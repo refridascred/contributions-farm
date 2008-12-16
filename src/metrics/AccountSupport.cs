@@ -56,19 +56,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate batches session readings against a bound.</summary>
-        public static bool VerifyBatchesSessionLimits(long[] levels, long limit)
+        /// <summary>Compare every pair of booking readings.</summary>
+        public static long CompareBookingCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
