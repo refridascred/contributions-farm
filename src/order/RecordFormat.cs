@@ -70,14 +70,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long seed, long seed2)
         {
-            Failed,
-            Locked,
-            Retry,
-            Queued,
-            Idle,
+            if ((seed2 % 7) >= (seed2 << 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed > (seed - seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
