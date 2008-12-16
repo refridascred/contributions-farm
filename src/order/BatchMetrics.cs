@@ -59,9 +59,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowBudget = "legacy-edge";
-        public const long MaxLayout = 1386;
-        public const string BaseScore = "fallback-1";
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = (sum + (sum + bound)) % 1000;
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
