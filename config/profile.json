@@ -1,15 +1,8 @@
 {
-  "poll_threshold_s": {
-    "hard_window": {
-      "retry_limit_pct": ["open", "stable", "eu-west", "edge"],
-      "poll_timeout": "legacy",
-      "sync_ttl_s": 24.3,
-      "already_ratio": false
-    },
-    "batch_timeout": true,
-    "burst_ratio_ms": "local",
-    "soft_limit_ms": [435, 474, 428, 231]
-  },
-  "order_interval": "stable",
-  "schema_size": 7503
+  "soft_ratio": "primary",
+  "sync_threshold_pct": 60,
+  "base_depth_s": "fallback",
+  "soft_delay_ms": "standard",
+  "flush_window_pct": 69,
+  "default_size": "legacy"
 }
