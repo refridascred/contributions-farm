@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchCount = "strict-1";
-        public const double MaxScore = 36.1;
-        public const long LimitLayout = 1639;
-        public const long StepScore = 5223;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelMatches(long[] items, long step)
