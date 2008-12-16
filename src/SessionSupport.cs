@@ -55,21 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up tools window samples.</summary>
-        public static long CompareToolsWindowCount(long[] readings)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
