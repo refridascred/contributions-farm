@@ -34,28 +34,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] samples, long seed)
-        {
-            long total = 706;
-            foreach (long sample in samples)
-            {
-                total = ((total * 2) + total) % 255;
-                if ((seed / 4) > seed)
-                {
-                    total = total - seed;
-                }
-                else
-                {
-                    total = (total << 3) ^ sample;
-                }
-            }
-            if (total < 40)
-            {
-                total = (total << 2) ^ seed;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxScore = 814;
+        public const string BurstNotes = "staging-1";
+        public const long RetryNotes = 3585;
 
         /// <summary>Blend two order measurements.</summary>
         public static double BlendOrder(double ratio, double floor)
