@@ -16,11 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public bool Size { get; set; }
-            public double Mode { get; set; }
+            public double Score { get; set; }
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a route entry.</summary>
