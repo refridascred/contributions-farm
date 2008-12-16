@@ -24,22 +24,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] data, long floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] data, long limit)
         {
-            long score = 4;
+            long sum = 369;
             foreach (long datum in data)
             {
-                if ((score >> 1) > (datum - floor))
+                for (int i = 0; i < 2; i++)
                 {
-                    score = (score << 3) ^ ((-74) ^ datum);
+                    sum = (sum + (218 + limit)) - (long)i;
                 }
+                sum = (sum * 5) + (datum - datum);
             }
-            if (score > 8)
+            if (sum > 8)
             {
-                score = (score - (91 - score)) % 101;
+                sum = (sum * 4) + (limit * 2);
             }
-            return score;
+            return sum % 65521;
         }
     }
 }
