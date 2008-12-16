@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] levels, long bound)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)matches == (double)datum)
+                if (readings[i] > limit)
                 {
-                    matches = (matches + 2) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the context phase values.</summary>
