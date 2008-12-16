@@ -1,6 +1,10 @@
-id,owner,active,score,label
-1,25.43,standard,65.72,61.56
-2,41.07,54.18,2.15,458
-3,75.68,115,stable,751
-4,eu-west,458,48,primary
-5,primary,latest,57.88,321
+id,active,state,level
+1,917,7.52,237
+2,555,397,91.6
+3,795,720,689
+4,edge,staging,fallback
+5,974,756,legacy
+6,914,96.59,88
+7,75.14,280,438
+8,750,878,919
+9,19.67,45,42.85
