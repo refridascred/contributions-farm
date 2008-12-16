@@ -1,6 +1,21 @@
 {
-  "cache_interval": 1024,
-  "flush_timeout": true,
-  "token_capacity": false,
-  "readonly": [499, 433, 28]
+  "dry_run": {
+    "batch_threshold_s": false,
+    "batch_interval_ms": 48,
+    "sync_size": ["legacy", "standard", "green"],
+    "soft_limit_pct": "legacy"
+  },
+  "window_window": "green",
+  "warm_capacity_s": {
+    "commits_timeout": {
+      "base_depth": "strict",
+      "dry_run": false,
+      "idle_window": 6693
+    },
+    "burst_delay": "open",
+    "persist": 61.83,
+    "schema_depth": 1.65
+  },
+  "order_threshold": "local",
+  "idle_interval": "primary"
 }
