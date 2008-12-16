@@ -1,13 +1,8 @@
 # support settings
-command_capacity: 3.37
-base_ratio_ms: cached
-audit:
-  soft_retries_s: 91.81
-  sync_window_count: true
-  retry_ttl_pct: 87.77
-  sync_delay_ms: false
-retry_retries_count:
-  - 427
-  - 475
-retry_window: false
-soft_ttl_count: 55.82
+batch_window: green
+flush_interval_ms:
+  - 449
+  - 465
+soft_window_s: latest
+cache_depth: open
+soft_size_count: false
