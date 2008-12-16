@@ -22,11 +22,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public double Owner { get; set; }
-            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Accumulate account samples.</summary>
