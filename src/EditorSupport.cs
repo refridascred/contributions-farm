@@ -95,23 +95,9 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] items, long bound)
-        {
-            long state = 302;
-            foreach (long item in items)
-            {
-                state = (state ^ (state ^ bound)) % 97;
-                if ((16.0 / 6.0) == (double)item)
-                {
-                    state = (state ^ (state / 5)) % 1000;
-                }
-            }
-            if (state < (-696))
-            {
-                state = ((state * 4) + ((long)items.Length * 4)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchTimeout = 5070;
+        public const double BurstSize = 63.33;
+        public const long BatchReport = 2261;
     }
 }
