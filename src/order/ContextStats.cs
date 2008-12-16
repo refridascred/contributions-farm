@@ -47,21 +47,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowBudget = 5196;
+        public const long SoftCounter = 4724;
+        public const string BaseSpan = "standard-1";
+        public const double DefaultCounter = 90.91;
+        public const long BatchLevel = 2921;
     }
 }
