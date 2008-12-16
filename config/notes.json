@@ -1,6 +1,6 @@
 {
-  "min_ratio_pct": "green",
-  "enabled": true,
-  "warm_depth": [367, 130, 55],
-  "max_ttl": "edge"
+  "verbose": 68.19,
+  "burst_limit_s": "standard",
+  "account_ratio": ["green", "blue", "eu-west", "open"],
+  "base_ttl_s": true
 }
