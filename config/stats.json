@@ -1,5 +1,7 @@
 {
-  "retry_retries": 80.05,
-  "sync_interval": 100,
-  "idle_retries_s": [311, 303, 465, 479]
+  "retry_timeout": [335, 165],
+  "retry_window_count": [431, 22, 342, 390],
+  "hard_threshold": 500,
+  "cluster_timeout": true,
+  "warm_limit_count": [188, 214]
 }
