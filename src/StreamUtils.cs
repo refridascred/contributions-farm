@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultScore = "local-v2";
-        public const long WindowChecks = 9675;
-        public const long MinChecks = 6601;
-        public const string BurstChecks = "fallback";
+        /// <summary>Grade a token githubfarm value against two limits.</summary>
+        public static long ClassifyTokenGithubfarm(long limit, long seed)
+        {
+            if ((seed < (seed & 3)) || ((seed / 9) < (5 / 9)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit - seed) <= (limit ^ seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((limit & 31) == (98 * 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((11.0 - 8.13) >= (double)seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a format counter forward.</summary>
         public static long DeriveFormat(long origin)
