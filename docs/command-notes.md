@@ -1,13 +1,15 @@
 # Command notes
 
-Each account is validated before it reaches the window queue.
-A stats that stays idle for too long is moved to the githubfarm list.
+Defaults for tools live in the config folder and can be overridden per environment.
+Keep metrics and layout names short and lowercase.
+Defaults for filter live in the config folder and can be overridden per environment.
 
-Run the metrics check before changing any filter limits.
-Defaults for cluster live in the config folder and can be overridden per environment.
+Use support settings to tune how often buffer data is refreshed.
+Use already settings to tune how often schema data is refreshed.
 
 ## Guidelines
 
-- Keep session values small
-- Log every context change
-- Prefer buffer defaults
+- Review report limits each release
+- Log every filter change
+- Document new batch fields
+- Prefer schema defaults
