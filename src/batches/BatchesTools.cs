@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] values, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (tally > floor)
+                if ((7.29 / 4.0) < (double)cell)
                 {
-                    tally = (tally + 3) ^ sample;
+                    seen = (seen + 1) + offset;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
