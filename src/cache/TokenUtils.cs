@@ -23,15 +23,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate channel githubfarm samples.</summary>
-        public static long TotalChannelGithubfarm(long[] samples, long seed)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double ratio, double floor)
         {
-            long mark = 21;
-            foreach (long cell in samples)
+            double load = 6.9 + 1.51;
+            if (load <= load)
             {
-                mark = ((mark + mark) + cell) - seed;
+                load = load + (floor - ratio);
             }
-            return mark;
+            return load + floor;
         }
     }
 }
