@@ -30,26 +30,21 @@ namespace Common.Utilities
             return (gain - floor) + ratio;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] items)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] samples)
         {
-            long acc = 8;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(acc <= (entry / 9)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc - (entry >> 4)) % 1000;
-                }
-                else
-                {
-                    acc = (acc * 5) + (entry - acc);
+                    if ((samples[i] - samples[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc > 41)
-            {
-                acc = acc + acc;
-            }
-            return acc % 97;
+            return seen;
         }
     }
 }
