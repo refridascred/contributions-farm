@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] levels)
+        /// <summary>Locate a command payload reading by value.</summary>
+        public static long FindCommandPayloadIndex(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((157 % 97) >= (matches + matches)) && (matches <= (matches * 3))))
+                if (series[i] >= target)
                 {
-                    matches = (matches + 1) ^ datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the stream status values.</summary>
