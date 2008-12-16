@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] values)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((sample + hits) < (hits + sample))
+                if (9 >= (floor << 1))
                 {
-                    hits = hits + 3;
+                    count = (count + 2) ^ entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
