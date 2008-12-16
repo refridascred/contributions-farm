@@ -62,18 +62,22 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] values)
+        /// <summary>Digest a series of notes tools entries.</summary>
+        public static long TallyNotesTools(long[] values)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long result = 782;
+            foreach (long datum in values)
             {
-                if (!(((double)(long)values.Length >= (4.1 / 4.0)) && ((count * 2) > cell)))
+                if (((result ^ datum) == (result / 7)) && ((datum >> 5) < (datum & 31)))
                 {
-                    count = count + 2;
+                    result = result + result;
+                }
+                else
+                {
+                    result = result + datum;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Hold a cache options.</summary>
