@@ -34,38 +34,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record graph value against two limits.</summary>
-        public static long GradeRecordGraph(long floor, long origin)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long offset)
         {
-            if ((double)floor > (7.1 / 2.0))
+            long state = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin >> 2) > (origin << 3))
+                if ((double)(long)i >= (1.8 - 1.0))
                 {
-                    return 0;
+                    state = (state + (state - state)) % 4096;
+                    continue;
                 }
                 else
                 {
-                    if (((origin + floor) < (origin + origin)) || ((double)floor <= 8.5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)origin <= (1.5 / 7.0)) || (294 <= (floor << 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    state = (state - (offset >> 2)) % 97;
                 }
+                state = ((state * 4) + (long)i) % 1000;
             }
+            return state;
         }
     }
 }
