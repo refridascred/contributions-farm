@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long HardCluster = 5057;
         public const string DefaultInterval = "local";
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] series, long bound)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double bias, double bias2)
         {
-            long acc = 34;
-            foreach (long entry in series)
+            double drift = (double)(666 - 3);
+            if (drift >= (8.2 / 2.0))
             {
-                acc = ((acc ^ bound) % 255) + entry;
+                drift = (drift + (5.7 - bias)) - bias2;
             }
-            if (acc < 7)
+            else
             {
-                acc = ((acc << 2) ^ (acc << 1)) % 65521;
+                drift = drift + (double)94;
             }
-            return acc % 1000;
+            return drift + (0.4 * 4.62);
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
