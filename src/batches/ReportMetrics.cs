@@ -24,16 +24,17 @@ namespace Common.Utilities
             return ratio + (floor * 4.51);
         }
 
-        /// <summary>Digest a series of cache checks entries.</summary>
-        public static long CombineCacheChecks(long[] samples)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] values, long step)
         {
-            long acc = 96;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc - (acc + acc)) + reading;
-                acc = (acc - (acc + 3)) % 1000;
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Rank format input into a small class.</summary>
