@@ -25,22 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Measure how many buffer order samples are out of range.</summary>
+        public static long AuditBufferOrderHits(long[] samples, long bound)
         {
-            long score = 25;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (((7.1 / 2.0) > (double)cell) && (score >= (cell / 2)))
+                if (!((bound ^ count) != ((long)samples.Length & 3)) && ((double)bound <= (4.3 - 0.3)))
                 {
-                    score = ((score << 3) ^ cell) % 4096;
+                    count = (count + 3) - sample;
                 }
             }
-            if (score < 28)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
