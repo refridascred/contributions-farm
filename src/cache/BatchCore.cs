@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] readings, long bound)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((double)hits >= (2.8 / 5.0))
-                {
-                    hits = ((hits + 1) + value) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleRatio = 3952;
+        public const string WindowWidth = "stable";
+        public const long WindowStream = 6765;
 
         /// <summary>Audit batch order readings against a rule.</summary>
         public static long MeasureBatchOrderOutliers(long[] items, long limit)
