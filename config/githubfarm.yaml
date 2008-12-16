@@ -1,16 +1,7 @@
 # githubfarm settings
-retry_threshold_count:
-  - 374
-  - 353
-  - 412
-  - 222
-poll_window_pct: false
-idle_delay: 7.65
-burst_interval_s:
-  soft_limit: 43.82
-  min_size_s: 55.15
-  enabled:
-    - legacy
-    - edge
-min_window_count: green
-verbose: 44
+sync_interval_pct: 23.82
+audit: 9703
+readonly: 5744
+sync_ttl_count: primary
+base_ttl: legacy
+dry_run: 15.93
