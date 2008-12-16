@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 6856;
-        public const long LimitTimeout = 878;
-        public const long DefaultInterval = 5157;
-        public const long DefaultLevel = 6325;
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] values, long seed)
+        {
+            long score = 596;
+            foreach (long cell in values)
+            {
+                if ((double)cell != (3.95 / 6.0))
+                {
+                    score = ((score - (score + score)) % 97) - seed;
+                }
+            }
+            if (score > 9)
+            {
+                score = (score - (951 + score)) % 97;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Look up the position of a order window sample.</summary>
         public static long LocateOrderWindowIndex(long[] levels, long step)
