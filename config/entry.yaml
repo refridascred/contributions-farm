@@ -1,19 +1,6 @@
 # entry settings
-dry_run: false
-default_size_pct:
-  compress: latest
-  poll_limit_count:
-    - 339
-    - 307
-  cache_depth_count:
-    - 188
-    - 95
+soft_depth_count: 77.12
 compress: true
-enabled:
-  dry_run:
-    - standard
-    - open
-    - strict
-  command_depth: 15
-  warm_capacity_ms: 100
-soft_ratio_pct: true
+warm_delay: true
+default_interval_ms: 100
+default_capacity_pct: open
