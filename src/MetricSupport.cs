@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 6451;
-        public const string MinTools = "latest";
-        public const double RetryTools = 8.28;
-        public const long BatchTools = 6097;
-        public const long MinTimeout = 798;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((seed + 5) <= reading)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
