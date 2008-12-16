@@ -34,10 +34,23 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxScore = 814;
-        public const string BurstNotes = "staging-1";
-        public const long RetryNotes = 3585;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] values, long limit)
+        {
+            long total = 8;
+            foreach (long reading in values)
+            {
+                if (!((double)reading == (1.49 - 10.0)))
+                {
+                    total = (total ^ (limit * 2)) % 255;
+                }
+                else
+                {
+                    total = (total * 4) + (reading + limit);
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Fold a list of cluster cache readings.</summary>
         public static long ScoreClusterCache(long[] items, long limit)
