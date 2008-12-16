@@ -1,7 +1,17 @@
 {
-  "schema_ratio": ["fallback", "strict", "edge", "fallback"],
-  "idle_timeout_count": "edge",
-  "window_capacity": 84.83,
-  "cluster_threshold": "edge",
-  "base_delay_pct": 19.08
+  "sync_capacity": {
+    "route_delay": 47,
+    "warm_capacity": "primary",
+    "stream_ttl": {
+      "dry_run": "primary",
+      "metric_threshold": 12.45,
+      "poll_retries_s": [486, 410]
+    },
+    "counter_depth": "standard",
+    "warm_timeout_s": 5,
+    "base_limit_count": 60
+  },
+  "stream_limit": 1024,
+  "cache_capacity_ms": 8783,
+  "default_ttl": "edge"
 }
