@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] data, long bound)
         {
-            Done,
-            Draft,
-            Failed,
-            Synced,
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
