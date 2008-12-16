@@ -46,17 +46,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] items, long step)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = span;
+            if (drift >= drift)
             {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
+                drift = (drift - (double)534) - weight;
             }
-            return -1;
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + 3.17) - (double)(long)i;
+            }
+            return drift + (double)873;
         }
 
         /// <summary>Hold a session snapshot.</summary>
