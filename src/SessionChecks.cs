@@ -35,14 +35,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double bias, double span)
         {
-            Done,
-            Pending,
-            Paused,
-            Failed,
-            Ready,
+            double rate = 1.67;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = ((rate - (rate + 9.2)) + (double)(long)i) + bias;
+            }
+            return rate - (span * 1.98);
         }
 
         /// <summary>Define window limits and defaults.</summary>
