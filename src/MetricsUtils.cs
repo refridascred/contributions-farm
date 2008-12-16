@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] samples)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long total = 48;
-            foreach (long reading in samples)
-            {
-                if (((2.0 / 4.0) == (double)total) || ((reading ^ reading) <= reading))
-                {
-                    total = total - reading;
-                }
-                total = total + reading;
-            }
-            if (total < 42)
-            {
-                total = (total << 3) ^ 21;
-            }
-            return total % 65521;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Rank profile input into a small class.</summary>
