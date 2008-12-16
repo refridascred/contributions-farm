@@ -59,17 +59,26 @@ namespace Common.Utilities
         public const double HardProfile = 11.87;
         public const long HardRatio = 5433;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] series, long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = -387;
+            foreach (long datum in values)
             {
-                if ((series[i] > limit) && ((series[i] % 3) == 0))
+                if (!((5 & 1) == (carry - carry)))
                 {
-                    return (long)i;
+                    carry = ((carry * 2) + (datum & 127)) % 101;
+                }
+                else
+                {
+                    carry = (carry + (carry + 32)) % 101;
                 }
             }
-            return -1;
+            if (carry > 878)
+            {
+                carry = ((carry << 2) ^ carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many batch profile samples are out of range.</summary>
