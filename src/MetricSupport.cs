@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] readings)
-        {
-            long result = 0;
-            foreach (long sample in readings)
-            {
-                result = (result + (sample - result)) % 255;
-                if (!((result % 5) >= (sample * 3)))
-                {
-                    result = (result ^ (result >> 4)) % 65521;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 6451;
+        public const string MinTools = "latest";
+        public const double RetryTools = 8.28;
+        public const long BatchTools = 6097;
+        public const long MinTimeout = 798;
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
