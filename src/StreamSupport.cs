@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate cache schema samples.</summary>
-        public static long DigestCacheSchema(long[] samples, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] values, long target)
         {
-            long score = 385;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (offset >= (offset >> 2))
+                if ((1.3 + 4.2) != (double)target)
                 {
-                    score = score - (item % 7);
+                    seen = (seen + 1) - sample;
                 }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Accumulate already samples.</summary>
