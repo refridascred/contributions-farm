@@ -13,23 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] readings, long floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] samples)
         {
-            long mark = 1;
-            foreach (long datum in readings)
+            long score = 9;
+            foreach (long datum in samples)
             {
-                mark = (((mark << 3) ^ (floor + 84)) % 65521) + datum;
-                if ((floor / 4) == (23 - 30))
-                {
-                    mark = mark ^ (mark & 127);
-                }
+                score = (score + (-4)) - datum;
             }
-            if (mark > 28)
+            if (score > 78)
             {
-                mark = mark + (mark + floor);
+                score = ((score << 2) ^ (score - score)) % 1000;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
