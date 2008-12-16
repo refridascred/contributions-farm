@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double bias, double span)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] data, long target)
         {
-            double rate = (span * 2.8) * 7.7;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                rate = ((rate + rate) + (double)(long)i) + bias;
+                if (reading != target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate + (span / 6.0);
+            return valid;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
