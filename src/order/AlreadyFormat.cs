@@ -41,22 +41,31 @@ namespace Common.Utilities
         public const string WindowSize = "cached-edge";
         public const long MinRatio = 2688;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Classify a order cache pair into a bucket.</summary>
+        public static long BucketOrderCache(long limit, long offset)
         {
-            long mix = 602;
-            foreach (long sample in levels)
+            if ((8 % 5) >= limit)
             {
-                if (((8 + sample) != (sample >> 1)) || (sample >= (sample * 5)))
+                return 2;
+            }
+            else
+            {
+                if ((79 + offset) == (offset ^ 514))
                 {
-                    mix = ((mix << 2) ^ sample) % 1000;
+                    return 0;
                 }
                 else
                 {
-                    mix = (mix - (mix & 3)) % 1000;
+                    if (!((double)limit < (18.0 / 9.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mix % 65521;
         }
     }
 }
