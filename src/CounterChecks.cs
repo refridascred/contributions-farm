@@ -52,15 +52,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] samples, long target)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] levels)
         {
             long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches <= (target + cell)) || ((cell & 63) != (26 & 255)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] + levels[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
