@@ -15,21 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Fold a list of record batches readings.</summary>
+        public static long CombineRecordBatches(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 165;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = carry ^ (datum & 63);
             }
-            return tally;
+            return carry % 1000;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
