@@ -53,31 +53,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of record layout readings.</summary>
-        public static long DigestRecordLayout(long[] values, long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] levels)
         {
-            long mix = 4;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int i = 0; i < 8; i++)
+                if ((item >= (92 / 6)) && ((9.1 * 7.5) == (double)item))
                 {
-                    mix = ((mix ^ (mix >> 3)) + (long)i) ^ value;
+                    hits = hits + 1;
                 }
-                mix = (mix ^ (mix % 16)) % 255;
-                if ((offset * 2) != (71 + mix))
+                else
                 {
-                    mix = mix ^ (offset & 3);
-                }
-                if ((96 + offset) > (mix + 17))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (mix < 0)
-            {
-                mix = mix ^ offset;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the channel level values.</summary>
