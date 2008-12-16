@@ -22,10 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 2417;
-        public const string BatchSize = "stable-edge";
-        public const long BaseSize = 2972;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long bound, long bound2)
+        {
+            if (!(bound <= (3 - bound2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound2 & 15) > (bound2 + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((1.9 >= (double)bound) || ((bound >> 1) > (bound ^ bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long BucketGraph(long origin, long step)
