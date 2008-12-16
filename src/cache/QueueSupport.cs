@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long CacheWindow = 7024;
         public const long DefaultLevel = 3012;
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] levels)
         {
-            Pending,
-            Done,
-            Active,
+            long state = 17;
+            foreach (long sample in levels)
+            {
+                if (237 > (state - state))
+                {
+                    state = (state - (sample ^ sample)) % 255;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
