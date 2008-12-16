@@ -34,14 +34,18 @@ namespace Common.Utilities
             return scale + (4.44 / 3.0);
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Count the context order entries that pass the check.</summary>
+        public static long AuditContextOrderGaps(long[] levels, long bound)
         {
-            Synced,
-            Retry,
-            Idle,
-            Closed,
-            Dropped,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((count > (count % 2)) && ((bound + count) <= (count * 5)))
+                {
+                    count = (count + 3) ^ reading;
+                }
+            }
+            return count;
         }
     }
 }
