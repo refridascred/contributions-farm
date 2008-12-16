@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long limit, long target)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long target)
         {
-            if ((target / 8) >= limit)
+            long sum = target;
+            for (int i = 0; i < 18; i++)
             {
-                return 2;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)limit == (2.16 / 8.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target >= (7.92 + 19.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
