@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long offset, long floor)
-        {
-            if (offset <= (1 - floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((7.7 / 2.0) != (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset < (offset + 13)) || (offset >= (floor + offset)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 645;
+        public const long SoftLevel = 3328;
+        public const string MaxWidth = "alpha-v2";
+        public const long IdleGraph = 1637;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryRange(long[] readings, long floor)
