@@ -1,9 +1,6 @@
-id,weight,label,rank
-1,75.8,66.15,fallback
-2,461,706,strict
-3,58.87,staging,10.06
-4,35.8,772,stable
-5,fallback,standard,530
-6,745,fallback,latest
-7,63.5,901,9.54
-8,25.1,321,stable
+id,ratio,token,score
+1,standard,open,632
+2,local,standard,808
+3,454,fallback,cached
+4,848,green,eu-west
+5,5.07,506,60.56
