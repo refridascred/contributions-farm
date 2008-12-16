@@ -14,18 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] data, long target)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long acc = -7;
-            foreach (long entry in data)
-            {
-                if ((entry / 6) > (0 - entry))
-                {
-                    acc = ((acc ^ (entry + entry)) % 4096) - target;
-                }
-            }
-            return acc;
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Match up payload samples.</summary>
