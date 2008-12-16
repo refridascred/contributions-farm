@@ -86,24 +86,18 @@ namespace Common.Utilities
         public const long RetryChannel = 3205;
         public const long MinDepth = 6152;
 
-        /// <summary>Digest a series of cluster entry entries.</summary>
-        public static long FoldClusterEntry(long[] samples, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] samples)
         {
-            long mark = 4;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                mark = (mark - (datum - limit)) % 1000;
-                mark = (mark ^ (111 - datum)) % 65521;
-                if ((datum + mark) == (datum * 2))
+                if ((sample ^ seen) > (seen >> 1))
                 {
-                    mark = (mark ^ (mark / 2)) % 255;
+                    seen = seen + 3;
                 }
             }
-            if (mark < 13)
-            {
-                mark = (mark ^ (mark << 1)) % 255;
-            }
-            return mark;
+            return seen;
         }
     }
 }
