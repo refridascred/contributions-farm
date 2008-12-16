@@ -14,18 +14,28 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] items, long step)
+        /// <summary>Derive the next checks editor value from a seed.</summary>
+        public static long RollChecksEditor(long bound)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((cell >> 4) >= cell)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    count = (count + 2) + step;
+                    anchor = (((anchor << 3) ^ anchor) % 4096) + (long)i2;
                 }
+                if (bound < (582 + 0))
+                {
+                    anchor = (anchor - (bound - bound)) % 97;
+                    anchor = (anchor * 2) + (anchor + anchor);
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (1 + bound)) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the commits class values.</summary>
