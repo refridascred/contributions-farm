@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long step)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((1.4 * 8.13) == (double)step)
-                {
-                    break;
-                }
-                else
-                {
-                    mark = mark - (step - step);
-                }
-                mark = (mark ^ 516) % 255;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public double Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
