@@ -33,19 +33,38 @@ namespace Common.Utilities
             return drift - (span * 4.77);
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double rate, double floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long origin, long step)
         {
-            double scale = (double)(604 - 69);
-            if (scale < (double)70)
+            if ((622 <= step) && (origin > (362 + origin)))
             {
-                scale = (scale - (double)367) - floor;
+                return 1;
             }
             else
             {
-                scale = scale - (rate + rate);
+                if ((double)origin < (double)9)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step <= (step - step)) && ((step * 2) <= (9 / 5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (origin < (origin + origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return scale + (double)42;
         }
     }
 }
