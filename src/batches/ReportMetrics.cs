@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] values, long seed)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] levels)
         {
-            long score = 596;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((double)cell != (3.95 / 6.0))
+                if ((matches >> 3) >= (matches & 1))
                 {
-                    score = ((score - (score + score)) % 97) - seed;
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            if (score > 9)
-            {
-                score = (score - (951 + score)) % 97;
-            }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Look up the position of a order window sample.</summary>
