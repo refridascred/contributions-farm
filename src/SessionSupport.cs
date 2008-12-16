@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] readings)
+        /// <summary>Derive the next commits counter value from a seed.</summary>
+        public static long StepCommitsCounter(long target)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long acc = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((item - matches) <= (-689))
-                {
-                    matches = matches + 2;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Grade a window order value against two limits.</summary>
