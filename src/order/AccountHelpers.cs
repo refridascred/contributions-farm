@@ -83,32 +83,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long floor, long limit)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long gap = floor - limit;
-            if ((583 > (limit + (-53))) || ((limit >> 4) <= (floor << 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((limit * 3) >= (limit * 5)) || ((868 / 8) <= gap))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit + gap) == (limit >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
