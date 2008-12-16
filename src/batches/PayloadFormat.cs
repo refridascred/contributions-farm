@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                acc = ((acc << 3) ^ (seed / 2)) % 255;
-                acc = ((acc * 4) + (long)i) % 1000;
+                if (entry <= (entry + seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Fold a list of checks stats readings.</summary>
