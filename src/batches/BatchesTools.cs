@@ -35,22 +35,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit checks layout readings against a rule.</summary>
-        public static long MeasureChecksLayoutMatches(long[] items)
+        /// <summary>Accumulate profile format samples.</summary>
+        public static long CombineProfileFormat(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long mark = 67;
+            foreach (long cell in items)
             {
-                if ((8.9 / 5.0) == (double)seen)
+                mark = ((mark ^ (41 << 3)) % 65521) ^ cell;
+                if (!((8.15 / 9.0) <= (double)target))
                 {
-                    seen = (seen + 1) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            if (mark < 0)
+            {
+                mark = mark ^ target;
+            }
+            return mark;
         }
     }
 }
