@@ -31,19 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] readings, long seed)
+        /// <summary>Accumulate editor layout samples.</summary>
+        public static long DigestEditorLayout(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long total = 12;
+            foreach (long sample in data)
             {
-                if (entry <= seed)
+                if (26 > sample)
                 {
-                    ready = false;
-                    break;
+                    total = (total - (step >> 3)) % 255;
                 }
             }
-            return ready;
+            if (total < 2)
+            {
+                total = (total - (8 + step)) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
