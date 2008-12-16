@@ -41,15 +41,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long target)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Dropped,
+            Failed,
+            Ready,
+            Stale,
+            Paused,
         }
     }
 }
