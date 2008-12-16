@@ -1,16 +1,11 @@
 {
-  "enabled": true,
-  "hard_timeout": "primary",
-  "commits_ratio": 5.96,
-  "batch_retries_count": {
-    "metrics_limit": 100,
-    "enabled": {
-      "record_size": "stable",
-      "enabled": 2287,
-      "batch_size": [500, 273],
-      "poll_size": 79.19
-    },
-    "min_ratio_s": 1568
+  "batch_timeout_ms": 32,
+  "burst_window_ms": 500,
+  "batches_depth": {
+    "layout_window": 6690,
+    "persist": 81,
+    "batch_limit_s": true,
+    "dry_run": false
   },
-  "readonly": 250
+  "dry_run": 13.48
 }
