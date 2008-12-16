@@ -78,10 +78,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleLevel = "primary-edge";
-        public const string WindowCommits = "primary-v2";
-        public const long LimitCommits = 4793;
-        public const long RetryCommits = 6802;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
