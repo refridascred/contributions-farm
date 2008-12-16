@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] readings, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] levels)
         {
-            long acc = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long value in levels)
             {
-                acc = ((((acc * 3) + acc) % 101) - reading) - offset;
+                if (value >= (value & 15))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
