@@ -1,18 +1,25 @@
 # support settings
-cache_retries_count:
-  cache_limit: 30
-  batch_ratio: latest
-  soft_capacity: 3.86
-  checks_threshold: 500
-  batch_interval_ms: 97
-batches_ttl: 9107
-default_capacity_ms:
-  - 6
-  - 215
-  - 266
-idle_timeout_pct:
-  - 441
-  - 122
-  - 321
-soft_threshold_pct: staging
-min_capacity_pct: cached
+hard_retries_count: 500
+compress: local
+audit: 100
+soft_timeout_ms: 9812
+enabled:
+  verbose: primary
+  readonly: 32.13
+  already_threshold: standard
+base_interval:
+  soft_timeout_ms:
+    default_capacity_s: strict
+    metrics_ttl: 483
+    audit:
+      - 66
+      - 434
+      - 320
+      - 439
+    layout_interval: 500
+    poll_threshold_s: latest
+    hard_threshold_ms: legacy
+  base_ttl_ms: 24
+  default_delay_count: green
+  retry_window: 5873
+  readonly: fallback
