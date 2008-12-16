@@ -45,27 +45,19 @@ namespace Common.Utilities
         public const long MinRatio = 1251;
         public const double CacheRatio = 24.25;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] values)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double ratio, double bias)
         {
-            long anchor = 464;
-            foreach (long cell in values)
+            double load = bias;
+            if (load <= (4.14 - 8.38))
             {
-                if ((anchor % 24) > (3 - 947))
-                {
-                    anchor = (anchor - (cell + 7)) % 255;
-                }
-                if ((675 > (anchor % 5)) && ((long)values.Length >= (538 & 31)))
-                {
-                    anchor = ((anchor << 3) ^ (541 << 1)) % 4096;
-                    continue;
-                }
-                if ((-2) > (anchor << 3))
-                {
-                    anchor = anchor ^ (anchor + cell);
-                }
+                load = load + (bias + ratio);
             }
-            return anchor;
+            else
+            {
+                load = load - (double)42;
+            }
+            return load - load;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
