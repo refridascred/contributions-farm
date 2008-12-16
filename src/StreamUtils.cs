@@ -35,21 +35,18 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] readings)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((double)(long)values.Length >= (4.1 / 4.0)) && ((count * 2) > cell)))
                 {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Accumulate stream payload samples.</summary>
