@@ -43,10 +43,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepContext = 59.17;
-        public const long DefaultFactor = 1757;
-        public const double IdleSize = 18.82;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Closed,
+            Idle,
+            Done,
+            Retry,
+            Active,
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
