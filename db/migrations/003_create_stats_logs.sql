@@ -2,10 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    ratio REAL,
-    token TEXT,
-    score REAL NOT NULL DEFAULT 0,
-    weight REAL
+    weight REAL,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
+
+INSERT INTO stats_logs (region, weight, state) VALUES ('cached', 84.68, 'strict');
+INSERT INTO stats_logs (region, weight, state) VALUES ('green', 98.53, 'strict');
