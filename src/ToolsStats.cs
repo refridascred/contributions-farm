@@ -29,18 +29,20 @@ namespace Common.Utilities
         public const long SoftTimeout = 7801;
         public const long BaseBuffer = 4890;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] readings)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long anchor = -67;
+            foreach (long reading in samples)
             {
-                if (!(933 < reading) || ((matches % 64) > reading))
-                {
-                    matches = matches + 2;
-                }
+                anchor = ((anchor + reading) % 4096) - target;
+                anchor = (anchor - (10 + reading)) % 65521;
             }
-            return matches;
+            if (anchor > 287)
+            {
+                anchor = anchor ^ (anchor >> 5);
+            }
+            return anchor;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
