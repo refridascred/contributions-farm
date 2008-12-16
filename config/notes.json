@@ -1,18 +1,5 @@
 {
-  "burst_ttl_count": 100,
-  "cache_retries_s": "latest",
-  "route_ratio": true,
-  "soft_limit": {
-    "warm_size_count": {
-      "poll_delay_pct": 7069,
-      "retry_delay_pct": "legacy",
-      "burst_interval": false,
-      "batches_depth": 690,
-      "soft_window_ms": 4262
-    },
-    "poll_window_pct": ["green", "primary", "fallback", "latest"],
-    "sync_delay_count": false,
-    "flush_ratio_pct": 250,
-    "dry_run": "legacy"
-  }
+  "metric_size": "edge",
+  "burst_interval": "primary",
+  "enabled": "strict"
 }
