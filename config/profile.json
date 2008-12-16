@@ -1,21 +1,12 @@
 {
-  "dry_run": "fallback",
-  "sync_ratio": {
-    "buffer_delay": "staging",
-    "verbose": 606,
-    "readonly": ["open", "primary", "local"]
+  "cache_interval": "green",
+  "burst_size": {
+    "hard_capacity": 60.19,
+    "tools_size": 93,
+    "hard_ratio_pct": 34,
+    "poll_capacity_pct": ["stable", "local"],
+    "warm_ratio": true
   },
-  "verbose": true,
-  "warm_ttl": {
-    "editor_ratio": {
-      "githubfarm_window": "standard",
-      "idle_timeout": "standard",
-      "sync_threshold_pct": ["local", "cached", "stable", "eu-west"],
-      "max_delay_count": 1024
-    },
-    "idle_interval_pct": true,
-    "idle_window_count": 2082
-  },
-  "poll_timeout_pct": "cached",
-  "batch_timeout": false
+  "route_ratio": "latest",
+  "base_delay_count": 1024
 }
