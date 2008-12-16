@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = -33;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)item > (double)bound)
                 {
-                    if ((data[i] - data[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score * 3) + (bound ^ item)) % 255;
                 }
             }
-            return matches;
+            if (score < 5)
+            {
+                score = (score + (4 + bound)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Define report limits and defaults.</summary>
