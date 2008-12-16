@@ -33,13 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] values)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (!((double)cell <= (2.5 * 8.3)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
