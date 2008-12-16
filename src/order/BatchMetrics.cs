@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long origin, long floor)
-        {
-            if (0 > (floor % 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (75 > (origin * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (floor < (-629))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((1.0 / 6.0) > (double)origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstScore = 9250;
+        public const long DefaultReport = 7079;
+        public const string MinTimeout = "strict-1";
+        public const long HardReport = 7699;
+        public const double RetryReport = 38.49;
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long seed, long floor)
