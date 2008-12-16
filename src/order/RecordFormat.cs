@@ -30,21 +30,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] readings)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 24;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (total ^ (reading * 3)) + step;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Scale a queue route figure with a bias.</summary>
