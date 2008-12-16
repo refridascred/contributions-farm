@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWidth = 5419;
-        public const double WindowLevel = 8.76;
-        public const long BatchDepth = 7895;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                total = (total - (total + bound)) % 97;
+                total = total ^ total;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long FoldAccount(long[] levels)
