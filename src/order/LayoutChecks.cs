@@ -13,13 +13,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] items, long target)
         {
-            public bool Limit { get; set; }
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (((entry - target) > (769 & 255)) && !((entry ^ 18) <= (long)items.Length))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
