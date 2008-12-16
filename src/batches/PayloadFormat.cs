@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of checks stats readings.</summary>
-        public static long TallyChecksStats(long[] items)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double bias, double floor)
         {
-            long score = 33;
-            foreach (long entry in items)
+            double drift = bias;
+            if (drift >= bias)
             {
-                if (score >= (entry - score))
-                {
-                    score = score - (entry - score);
-                }
+                drift = drift + (drift - floor);
             }
-            return score;
+            return drift + 9.21;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
