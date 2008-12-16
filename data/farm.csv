@@ -1,7 +1,6 @@
-id,state,score,token
-1,green,371,93
-2,stable,local,97.94
-3,77.11,19.37,primary
-4,385,92.22,fallback
-5,80.69,980,390
-6,18.13,716,70
+id,token,count,active
+1,82.66,local,2.8
+2,43.79,194,82.13
+3,69.22,84.53,666
+4,staging,996,26.16
+5,blue,371,6
