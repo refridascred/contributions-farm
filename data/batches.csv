@@ -1,10 +1,7 @@
-id,region,level
-1,465,eu-west
-2,80.19,883
-3,545,legacy
-4,stable,fallback
-5,673,standard
-6,10.03,32.09
-7,4.5,cached
-8,2.62,35.22
-9,95.48,72.55
+id,ratio,owner
+1,23.83,27.2
+2,779,220
+3,329,248
+4,stable,38.72
+5,eu-west,59.1
+6,988,staging
