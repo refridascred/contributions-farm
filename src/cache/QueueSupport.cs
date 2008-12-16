@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the queue support series from a seed.</summary>
-        public static long IterateQueueSupport(long bound)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = (sum + sum) % 65521;
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Draft,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the session kind values.</summary>
