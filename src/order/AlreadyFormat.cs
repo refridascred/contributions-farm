@@ -21,18 +21,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] levels)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((14.0 / 2.0) != (double)reading)
+                if ((9 + target) >= hits)
                 {
-                    seen = seen + 3;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
