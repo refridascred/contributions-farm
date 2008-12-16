@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] series, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            long result = 58;
+            foreach (long item in series)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                if ((item % 5) >= (item / 8))
+                {
+                    result = (result * 5) + bound;
+                }
             }
-            return total;
+            return result % 4096;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
