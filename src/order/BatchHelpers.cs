@@ -22,10 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryWidth = 1670;
-        public const string BaseScore = "strict-v2";
-        public const long DefaultWidth = 8117;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long StepProfile = 9635;
