@@ -1,7 +1,9 @@
-id,active,level
-1,legacy,eu-west
-2,40.08,253
-3,35.56,32.81
-4,standard,32
-5,187,493
-6,stable,87.32
+id,rank,label,active
+1,latest,739,586
+2,704,eu-west,fallback
+3,69.08,85.98,752
+4,397,393,latest
+5,496,42.88,363
+6,724,blue,595
+7,158,901,local
+8,484,green,580
