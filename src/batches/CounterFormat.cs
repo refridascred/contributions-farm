@@ -20,11 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public bool Rank { get; set; }
-            public double Total { get; set; }
+            public bool Region { get; set; }
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Roll a account counter forward.</summary>
