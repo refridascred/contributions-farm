@@ -1,8 +1,15 @@
 {
-  "verbose": "primary",
-  "audit": [14, 296, 95, 322],
-  "dry_run": 89.36,
-  "enabled": 8109,
-  "warm_delay_count": false,
-  "schema_retries": "open"
+  "readonly": {
+    "sync_retries_pct": 96.24,
+    "strict": {
+      "warm_timeout_pct": 500,
+      "batch_limit_s": 5.62,
+      "burst_window_count": false
+    },
+    "profile_size": 250
+  },
+  "verbose": true,
+  "batch_threshold_s": 250,
+  "persist": 9427,
+  "dry_run": "strict"
 }
