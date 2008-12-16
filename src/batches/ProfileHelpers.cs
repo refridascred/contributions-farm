@@ -30,23 +30,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double gain, double bias)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            double ratio = (double)(62 + 772);
-            if (ratio <= (ratio - 5.03))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio - (13.0 - bias)) - gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (ratio * 11.0)) - (double)(long)i;
-            }
-            return ratio - (10.0 + bias);
+            return hits;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
