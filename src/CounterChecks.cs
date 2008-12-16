@@ -42,19 +42,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] levels, long limit)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Pending,
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
