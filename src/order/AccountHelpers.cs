@@ -56,25 +56,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long target, long bound)
-        {
-            if ((bound + bound) < (bound / 6))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((5.4 - 7.0) != (double)target) || ((3.6 + 4.0) > (double)bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCount = 8298;
+        public const string BatchCache = "cached-edge";
+        public const string HardCache = "open-v2";
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long StepGraph(long step)
