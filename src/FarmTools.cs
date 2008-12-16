@@ -14,19 +14,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every batch token entry stays within the limit.</summary>
-        public static bool CheckBatchTokenRange(long[] levels, long origin)
+        /// <summary>Look up the position of a layout session sample.</summary>
+        public static long FindLayoutSessionIndex(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < origin)
+                if (levels[i] < bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a report info.</summary>
