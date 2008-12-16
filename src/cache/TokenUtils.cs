@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] items, long bound)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long result = 30;
-            foreach (long sample in items)
-            {
-                if (((long)items.Length - 2) == (sample + result))
-                {
-                    result = (result + 9) + bound;
-                }
-            }
-            return result;
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the commits level values.</summary>
