@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=313
+COMMAND_LIMIT=22
 log "limit is ${COMMAND_LIMIT}"
 
-for item in blue latest; do
+for item in staging legacy; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
