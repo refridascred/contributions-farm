@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] items)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen ^ entry) != (entry & 127))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((levels[i] ^ levels[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a editor summary.</summary>
