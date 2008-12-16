@@ -44,12 +44,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            New,
-            Paused,
-            Synced,
+            Stale,
+            Active,
+            Ready,
+            Closed,
+            Retry,
         }
     }
 }
