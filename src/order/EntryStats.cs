@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((long)i >> 1) < seed)
-                {
-                    carry = (carry << 3) ^ (carry * 2);
-                    carry = ((carry * 2) + seed) % 4096;
-                }
-                else
-                {
-                    carry = (carry ^ (63 - (long)i)) % 101;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Done,
+            New,
+            Locked,
+            Retry,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
