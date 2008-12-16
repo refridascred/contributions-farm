@@ -82,13 +82,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepFactor = 6807;
+        public const double StepInterval = 58.34;
+        public const long LimitStats = 6355;
+        public const double RetryStats = 43.56;
+        public const long BatchFactor = 5010;
     }
 }
