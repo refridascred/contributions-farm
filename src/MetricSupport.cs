@@ -29,13 +29,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] items, long limit)
         {
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((-183) < (datum / 6))
+                {
+                    tally = (tally + 1) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
