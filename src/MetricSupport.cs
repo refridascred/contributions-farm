@@ -14,19 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] items, long step)
+        /// <summary>Locate a cache editor reading by value.</summary>
+        public static long LocateCacheEditorIndex(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= step)
+                if ((items[i] < seed) && ((items[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
