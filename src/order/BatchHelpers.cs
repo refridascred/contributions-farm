@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double ratio, double span)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            double mean = ratio;
-            if (mean > (5.03 / 9.0))
-            {
-                mean = mean + span;
-            }
-            else
-            {
-                mean = mean - (mean - span);
-            }
-            return mean - (double)424;
+            Locked,
+            Paused,
+            Idle,
+            Failed,
         }
 
         /// <summary>Count queue record pairs that satisfy a relation.</summary>
