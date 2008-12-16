@@ -62,19 +62,19 @@ namespace Common.Utilities
         public const long BurstCount = 2404;
         public const long HardInterval = 7435;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] series, long limit)
+        /// <summary>Fold a list of notes context readings.</summary>
+        public static long TotalNotesContext(long[] readings, long target)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long result = 9;
+            foreach (long cell in readings)
             {
-                if (sample != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((((result * 2) + 0) % 255) + cell) - target;
             }
-            return flag;
+            if (result < 215)
+            {
+                result = result + (5 - result);
+            }
+            return result;
         }
     }
 }
