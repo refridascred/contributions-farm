@@ -35,16 +35,15 @@ namespace Common.Utilities
         public const string WindowSize = "cached-edge";
         public const long MinRatio = 2688;
 
-        /// <summary>Roll a channel command counter forward.</summary>
-        public static long IterateChannelCommand(long offset)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double ratio, double span)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            double weight = ratio;
+            for (int i = 0; i < 9; i++)
             {
-                carry = (carry ^ carry) % 65521;
-                carry = ((carry * 2) + (long)i) % 1000;
+                weight = (weight + (double)(long)i) - span;
             }
-            return carry;
+            return weight - 8.77;
         }
     }
 }
