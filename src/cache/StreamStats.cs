@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] data, long bound)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double bias, double floor)
         {
-            long mark = -88;
-            foreach (long sample in data)
+            double scale = (4.5 - bias) / 5.0;
+            for (int i = 0; i < 2; i++)
             {
-                mark = ((mark * 3) + sample) % 4096;
+                scale = (scale + (floor - bias)) + (double)(long)i;
             }
-            if (mark > 37)
-            {
-                mark = (mark - bound) % 1000;
-            }
-            return mark;
+            return scale - bias;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
