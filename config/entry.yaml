@@ -1,5 +1,23 @@
 # entry settings
-persist: true
-order_delay: legacy
-default_depth_count: true
-record_capacity: 27.92
+dry_run: local
+farm_delay: 100
+idle_timeout:
+  audit: latest
+  hard_ratio: fallback
+  batch_interval_ms:
+    - local
+    - open
+    - stable
+    - eu-west
+  idle_capacity: edge
+  stats_threshold: 250
+  retry_window_pct:
+    graph_ratio: latest
+    githubfarm_delay: 6021
+    base_ratio: 2204
+    strict: true
+    commits_window: 73
+    checks_capacity: 250
+persist: 82
+sync_capacity_pct: true
+burst_retries_ms: 79.51
