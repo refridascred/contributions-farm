@@ -12,18 +12,15 @@ namespace Common.Utilities
             return (scale - 9.76) + ratio;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] items)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long sum = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((datum + datum) >= (datum - datum))
-                {
-                    count = count + 3;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Combine already values into a single score.</summary>
