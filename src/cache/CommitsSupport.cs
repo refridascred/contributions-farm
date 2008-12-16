@@ -62,12 +62,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] values)
         {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
+            long anchor = 464;
+            foreach (long cell in values)
+            {
+                if ((anchor % 24) > (3 - 947))
+                {
+                    anchor = (anchor - (cell + 7)) % 255;
+                }
+                if ((675 > (anchor % 5)) && ((long)values.Length >= (538 & 31)))
+                {
+                    anchor = ((anchor << 3) ^ (541 << 1)) % 4096;
+                    continue;
+                }
+                if ((-2) > (anchor << 3))
+                {
+                    anchor = anchor ^ (anchor + cell);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
