@@ -1,27 +1,14 @@
 # entry settings
-githubfarm_threshold: 8812
-buffer_delay: true
-max_timeout:
-  batch_capacity: 8400
-  base_delay: primary
-  enabled:
-    retry_depth_pct: staging
-    compress: 69
-    route_limit:
-      - 6
-      - 311
-    readonly: eu-west
-    persist:
-      - 317
-      - 378
-      - 406
-      - 359
-    default_timeout: false
-  support_size: false
-  verbose: 4863
-  min_delay_s: false
-default_depth_pct:
-  - green
-  - edge
-retry_window_s: 81
-layout_retries: strict
+default_window: 60
+channel_interval: 500
+report_depth:
+  flush_interval_pct:
+    compress: blue
+    sync_capacity: eu-west
+    min_delay_s: strict
+    max_window_count: 80
+  cache_interval_count: 77
+  cache_interval_s: open
+  idle_ratio_pct: true
+  max_capacity: staging
+profile_ttl: 80.81
