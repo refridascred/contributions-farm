@@ -53,19 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already account readings against a bound.</summary>
-        public static bool VerifyAlreadyAccountBounds(long[] values, long origin)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long offset)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum <= origin)
+                if ((10 & 7) >= (3 ^ offset))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc ^ (861 >> 1)) % 65521;
+                    acc = (acc ^ (0 - acc)) % 255;
                 }
+                acc = acc + (acc - acc);
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Hold a command snapshot.</summary>
