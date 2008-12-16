@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double ratio, double span)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            double rate = (span - ratio) * 13.0;
-            if (rate >= (ratio / 9.0))
-            {
-                rate = rate - 9.83;
-            }
-            else
-            {
-                rate = rate - ratio;
-            }
-            return rate + (ratio + ratio);
+            Locked,
+            Synced,
+            Paused,
+            Ready,
+            Done,
         }
 
         /// <summary>Hold a editor header.</summary>
