@@ -21,12 +21,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double bias, double span)
-        {
-            double weight = bias;
-            return (weight + (bias * 2.4)) + span;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 5687;
+        public const long LimitTimeout = 4413;
+        public const long DefaultCache = 3322;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BurstRatio = 4212;
