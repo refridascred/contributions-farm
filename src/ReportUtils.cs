@@ -16,22 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of schema cluster readings.</summary>
-        public static long TallySchemaCluster(long[] series, long seed)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] items)
         {
-            long total = 657;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((80 * 3) <= cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = total - cell;
-                }
-                if ((-23) <= (seed - cell))
-                {
-                    break;
+                    if ((items[i] ^ items[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
