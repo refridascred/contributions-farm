@@ -1,9 +1,6 @@
-id,token,weight,level
-1,10.9,43.63,latest
-2,13.21,378,371
-3,edge,staging,37.31
-4,stable,764,994
-5,standard,133,70
-6,eu-west,659,100
-7,56.54,104,staging
-8,75.83,open,legacy
+id,owner,active,score,label
+1,25.43,standard,65.72,61.56
+2,41.07,54.18,2.15,458
+3,75.68,115,stable,751
+4,eu-west,458,48,primary
+5,primary,latest,57.88,321
