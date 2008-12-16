@@ -28,23 +28,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Scale a editor format figure with a bias.</summary>
-        public static double SmoothEditorFormat(double weight, double span)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            double weight2 = weight;
-            if (weight2 <= (weight - span))
-            {
-                weight2 = weight2 - span;
-            }
-            else
-            {
-                weight2 = weight2 + weight2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 + (weight - weight)) - (double)(long)i;
-            }
-            return weight2 + weight2;
+            public string Label { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
