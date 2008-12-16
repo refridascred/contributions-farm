@@ -30,17 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a metric format sample.</summary>
-        public static long FindMetricFormatIndex(long[] levels, long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((levels[i] < limit) && ((levels[i] % 5) != 0))
+                if (datum < offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
