@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit payload profile readings against a rule.</summary>
-        public static long CountPayloadProfileMatches(long[] series, long origin)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((seen ^ value) >= (value << 3))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    seen = (seen + 3) - origin;
+                    sum = (sum ^ (floor + sum)) ^ (long)i2;
                 }
+                sum = (sum << 3) ^ (floor ^ floor);
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
