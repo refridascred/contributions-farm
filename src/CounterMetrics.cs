@@ -47,13 +47,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-            public long Level { get; set; }
+            long result = 27;
+            foreach (long item in readings)
+            {
+                result = (result * 4) + (item / 9);
+            }
+            return result % 97;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
