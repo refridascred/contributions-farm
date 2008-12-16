@@ -21,32 +21,9 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a farm checks value against two limits.</summary>
-        public static long GradeFarmChecks(long floor, long target)
-        {
-            long slot = floor ^ target;
-            if ((11.0 / 2.0) <= (double)target)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(floor <= (target % 100)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((slot < target) || ((4.0 + 11.0) == (double)floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftContributi = "open-1";
+        public const long DefaultSize = 2788;
+        public const string IdleContributi = "strict-1";
     }
 }
