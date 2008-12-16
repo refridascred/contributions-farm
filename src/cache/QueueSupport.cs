@@ -40,14 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] samples)
         {
-            Draft,
-            Active,
-            Dropped,
-            Locked,
-            Ready,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits - reading) >= reading)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every stream metrics entry stays within the limit.</summary>
