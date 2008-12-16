@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] levels)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Retry,
+            Queued,
+            New,
         }
 
         /// <summary>Define order limits and defaults.</summary>
