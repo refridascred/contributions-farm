@@ -20,23 +20,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Scale a filter entry figure with a bias.</summary>
-        public static double ProjectFilterEntry(double bias, double offset)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] values)
         {
-            double ratio = (double)(4 & 15);
-            if (ratio <= (double)7)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio - ratio) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + bias) + (double)(long)i;
-            }
-            return ratio - (2.0 - 5.57);
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
