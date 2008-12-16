@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double scale, double offset)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public double Limit { get; set; }
+            double scale2 = 7.0 / 4.0;
+            if (scale2 <= 8.95)
+            {
+                scale2 = scale2 + (double)23;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 - (offset - scale)) - (double)(long)i;
+            }
+            return scale2 - (scale + scale2);
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
