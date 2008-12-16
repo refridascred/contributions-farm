@@ -35,22 +35,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] items)
+        /// <summary>Iterate the batches tools series from a seed.</summary>
+        public static long SeriesBatchesTools(long seed)
         {
-            long total = 743;
-            foreach (long item in items)
+            long state = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((15 & 127) != (total - item)))
+                if (((state & 7) == ((long)i + state)) || ((seed ^ seed) > (seed % 12)))
                 {
-                    total = (total ^ (item & 127)) % 97;
+                    state = ((state << 2) ^ state) % 97;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            if (total > (-1))
-            {
-                total = ((total * 3) + (total - total)) % 65521;
-            }
-            return total % 65521;
+            return state;
         }
     }
 }
