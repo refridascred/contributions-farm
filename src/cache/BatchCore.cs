@@ -14,23 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a buffer batch reading.</summary>
-        public static double AdjustBufferBatch(double ratio, double span)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] samples, long target)
         {
-            double weight = span;
-            if (weight >= (weight / 5.0))
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                weight = weight + ratio;
+                if (cell < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + (ratio + weight);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - 4.0;
+            return ready;
         }
 
         /// <summary>Roll a support counter forward.</summary>
