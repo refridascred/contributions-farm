@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] data, long floor)
         {
-            Synced,
-            Stale,
-            Closed,
-            Pending,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((floor << 1) >= (floor - floor))
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the channel status values.</summary>
