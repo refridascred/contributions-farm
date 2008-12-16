@@ -34,15 +34,13 @@ namespace Common.Utilities
         public const string WindowStats = "primary-1";
         public const string CacheBudget = "stable-edge";
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double gain, double bias)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            double rate = 6.5;
-            if (rate < (rate - gain))
-            {
-                rate = rate - bias;
-            }
-            return rate - (double)27;
+            Paused,
+            Failed,
+            Pending,
+            New,
         }
     }
 }
