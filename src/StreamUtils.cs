@@ -63,24 +63,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a commits checks value against two limits.</summary>
-        public static long GradeCommitsChecks(long limit, long step)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            if ((7.32 + 8.34) != (double)step)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step > (15.0 * 20.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Mode { get; set; }
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
