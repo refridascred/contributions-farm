@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public double Count { get; set; }
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
+            Ready,
+            Synced,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a commits info.</summary>
