@@ -1,6 +1,18 @@
 {
-  "support_threshold": "strict",
-  "support_ratio": "staging",
-  "sync_window_s": "blue",
-  "farm_retries": 4
+  "order_depth": 62.23,
+  "min_limit": {
+    "min_timeout_pct": 30,
+    "flush_depth_ms": 500,
+    "support_depth": "fallback",
+    "min_ratio_pct": "primary"
+  },
+  "queue_timeout": {
+    "batch_limit_pct": 40.1,
+    "readonly": "blue",
+    "base_retries_s": false,
+    "already_capacity": 6044
+  },
+  "graph_size": "local",
+  "base_size": 5570,
+  "max_capacity_count": false
 }
