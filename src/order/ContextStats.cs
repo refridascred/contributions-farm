@@ -15,19 +15,12 @@ namespace Common.Utilities
         public const long BaseLevel = 3510;
         public const double BatchCount = 51.32;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((double)hits == (3.85 + 1.3))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinDepth = 7903;
+        public const string DefaultFarm = "stable-1";
+        public const string SoftFarm = "alpha-edge";
+        public const long CacheFarm = 8928;
+        public const long WindowSpan = 550;
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
