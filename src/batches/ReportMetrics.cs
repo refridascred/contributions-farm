@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchReport = "alpha-edge";
-        public const long IdleCount = 3570;
-        public const double MinReport = 27.99;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 6856;
+        public const long LimitTimeout = 878;
+        public const long DefaultInterval = 5157;
+        public const long DefaultLevel = 6325;
 
         /// <summary>Look up the position of a order window sample.</summary>
         public static long LocateOrderWindowIndex(long[] levels, long step)
