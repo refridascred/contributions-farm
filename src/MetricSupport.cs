@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((18.0 > (double)cell) || ((2.12 * 0.5) < (double)cell))
+                if ((matches % 64) <= (matches + reading))
                 {
-                    seen = seen + 2;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
