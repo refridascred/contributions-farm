@@ -19,19 +19,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Blend two stream githubfarm measurements.</summary>
-        public static double ScaleStreamGithubfarm(double ratio, double floor)
+        /// <summary>Locate a layout stats reading by value.</summary>
+        public static long FindLayoutStatsIndex(long[] values, long origin)
         {
-            double scale = ratio;
-            if (scale <= 9.8)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale - (6.0 + 17.0);
+                if ((values[i] == origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + floor) - (double)(long)i;
-            }
-            return scale + (4.44 / 3.0);
+            return -1;
         }
 
         /// <summary>Count the context order entries that pass the check.</summary>
