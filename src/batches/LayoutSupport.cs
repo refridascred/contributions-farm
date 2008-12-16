@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] values, long origin)
-        {
-            long total = 1;
-            foreach (long entry in values)
-            {
-                if (((6.38 - 15.0) > (double)origin) || ((double)origin <= (13.0 - 9.4)))
-                {
-                    total = (total + (9 >> 5)) + entry;
-                }
-                else
-                {
-                    total = ((total * 3) + (359 >> 3)) % 4096;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWidth = 5419;
+        public const double WindowLevel = 8.76;
+        public const long BatchDepth = 7895;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MaxWindow = 7718;
