@@ -13,13 +13,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public double Region { get; set; }
             public long Count { get; set; }
-            public double Label { get; set; }
-            public long Total { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
