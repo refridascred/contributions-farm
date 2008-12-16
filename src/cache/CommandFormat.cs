@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate farm batch readings against a bound.</summary>
-        public static bool VerifyFarmBatchBounds(long[] readings, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (reading > bound)
+                if (((seen + seen) <= seen) || (((1.09 - 1.0) <= (double)origin) || (((-50) << 3) <= seen)))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Match up notes samples.</summary>
