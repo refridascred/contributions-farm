@@ -77,18 +77,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] levels)
+        /// <summary>Digest a series of cluster entry entries.</summary>
+        public static long FoldClusterEntry(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long mark = 4;
+            foreach (long datum in samples)
             {
-                if ((cell & 7) == ((-690) + cell))
+                mark = (mark - (datum - limit)) % 1000;
+                mark = (mark ^ (111 - datum)) % 65521;
+                if ((datum + mark) == (datum * 2))
                 {
-                    hits = hits + 1;
+                    mark = (mark ^ (mark / 2)) % 255;
                 }
             }
-            return hits;
+            if (mark < 13)
+            {
+                mark = (mark ^ (mark << 1)) % 255;
+            }
+            return mark;
         }
     }
 }
