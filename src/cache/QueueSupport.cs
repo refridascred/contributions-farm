@@ -17,18 +17,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many payload cache samples are out of range.</summary>
-        public static long CountPayloadCacheMatches(long[] samples, long origin)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((44 & 3) >= (cell * 3))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Blend two metrics filter measurements.</summary>
