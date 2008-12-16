@@ -1,9 +1,8 @@
 # entry settings
-payload_ttl: 52
-sync_capacity: 86.64
-poll_threshold_s: primary
-flush_size_pct: 95.17
-poll_capacity_ms:
-  - 198
-  - 203
-  - 35
+strict:
+  - staging
+  - blue
+  - latest
+  - cached
+enabled: 84.27
+metric_delay: 7140
