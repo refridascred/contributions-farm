@@ -64,32 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long bound, long origin)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] readings, long origin)
         {
-            long next = bound - origin;
-            if (origin > 371)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((38 + origin) == (origin + next)) && (bound < (next / 4)))
+                if (readings[i] < origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.8 / 9.0) > (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up farm samples.</summary>
