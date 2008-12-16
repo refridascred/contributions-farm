@@ -23,12 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardWidth = 5911;
+        public const long LimitLevel = 1876;
+        public const string IdleSize = "latest-1";
+        public const double BaseRatio = 4.29;
+        public const long DefaultContext = 1247;
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long CompareTokenCount(long[] values)
