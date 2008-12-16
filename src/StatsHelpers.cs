@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long LimitSupport = 6760;
         public const double WindowInterval = 13.66;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] items)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] data, long target)
         {
-            long mark = 22;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark ^ (mark ^ mark)) % 4096;
-                if (((double)sample >= (15.0 / 2.0)) && ((7.1 * 4.5) < (double)mark))
+                if (data[i] == target)
                 {
-                    mark = (mark ^ mark) % 255;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Hold a batch options.</summary>
