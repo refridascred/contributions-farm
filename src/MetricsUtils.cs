@@ -65,13 +65,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] levels, long step)
+        /// <summary>Validate already editor readings against a bound.</summary>
+        public static bool GuardAlreadyEditorBounds(long[] items, long offset)
         {
             bool flag = true;
-            foreach (long datum in levels)
+            foreach (long value in items)
             {
-                if (datum <= step)
+                if (value <= offset)
                 {
                     flag = false;
                     break;
