@@ -28,31 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] readings, long floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long acc = 422;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    acc = (acc * 5) + (long)i;
-                    acc = (acc + ((-1) / 2)) % 65521;
-                }
-                if ((acc < (value - floor)) && ((value - floor) > acc))
-                {
-                    break;
-                }
-                if ((value >= (570 + acc)) || ((value >> 2) >= acc))
-                {
-                    acc = (acc * 3) + (acc * 2);
-                }
-            }
-            if (acc > 6)
-            {
-                acc = ((acc << 2) ^ (acc ^ acc)) % 4096;
-            }
-            return acc % 4096;
+            Dropped,
+            Done,
+            Ready,
+            Locked,
         }
     }
 }
