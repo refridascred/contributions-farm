@@ -1,17 +1,7 @@
 {
-  "window_capacity": 6766,
-  "cache_size_count": [207, 26, 99, 369],
-  "soft_ratio_pct": {
-    "min_ratio_ms": {
-      "readonly": 99,
-      "verbose": 9.0,
-      "flush_threshold_pct": 3550,
-      "counter_timeout": [27, 275],
-      "batch_capacity_ms": "standard",
-      "batch_ttl": "edge"
-    },
-    "readonly": ["standard", "stable", "standard"],
-    "poll_window_pct": 77.43,
-    "warm_depth_ms": "stable"
-  }
+  "schema_ratio": ["fallback", "strict", "edge", "fallback"],
+  "idle_timeout_count": "edge",
+  "window_capacity": 84.83,
+  "cluster_threshold": "edge",
+  "base_delay_pct": 19.08
 }
