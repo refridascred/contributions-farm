@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((12.0 - 4.0) <= (double)offset)
-                {
-                    carry = carry ^ carry;
-                }
-                carry = (carry * 2) + (1 >> 5);
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            Ready,
+            Queued,
+            New,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
