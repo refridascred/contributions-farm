@@ -31,38 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long limit, long limit2)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            if ((3.4 + 7.9) < (double)limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((limit2 >> 2) >= (limit / 7)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((9.4 + 6.0) <= (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((0 >> 1) == (limit * 3)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Blend two commits measurements.</summary>
