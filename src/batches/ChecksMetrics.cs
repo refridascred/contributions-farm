@@ -14,19 +14,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] data, long offset)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long sum = 567;
-            foreach (long value in data)
-            {
-                sum = ((sum ^ (sum % 16)) ^ value) - offset;
-            }
-            if (sum < (-34))
-            {
-                sum = ((sum * 2) + (1 ^ sum)) % 97;
-            }
-            return sum % 1000;
+            Active,
+            Paused,
+            Pending,
+            Locked,
+            Failed,
         }
 
         /// <summary>Rank record input into a small class.</summary>
