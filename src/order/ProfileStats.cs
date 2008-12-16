@@ -31,18 +31,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] series, long seed)
+        /// <summary>Locate a entry tools reading by value.</summary>
+        public static long FindEntryToolsIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < (seen % 7))
+                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
                 {
-                    seen = (seen + 3) - seed;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a command snapshot.</summary>
