@@ -22,12 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double scale, double offset)
         {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            double gain = offset;
+            if (gain > 5.15)
+            {
+                gain = gain + (gain * 5.64);
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + scale) + (double)(long)i;
+            }
+            return gain - scale;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
