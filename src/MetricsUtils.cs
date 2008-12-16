@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double ratio, double span)
         {
-            public double Owner { get; set; }
-            public long Label { get; set; }
+            double rate = (span - ratio) * 13.0;
+            if (rate >= (ratio / 9.0))
+            {
+                rate = rate - 9.83;
+            }
+            else
+            {
+                rate = rate - ratio;
+            }
+            return rate + (ratio + ratio);
         }
 
         /// <summary>Hold a editor header.</summary>
