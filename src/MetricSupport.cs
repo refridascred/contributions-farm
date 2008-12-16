@@ -19,22 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of profile entry readings.</summary>
-        public static long MatchProfileEntryCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxDepth = "stable-edge";
+        public const double LimitContext = 63.63;
+        public const long CacheCount = 3020;
+        public const long HardContext = 8415;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool GuardClusterRange(long[] levels, long target)
