@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Accumulate queue checks samples.</summary>
+        public static long FoldQueueChecks(long[] readings)
         {
-            long score = 1;
-            foreach (long item in items)
+            long carry = 7;
+            foreach (long datum in readings)
             {
-                score = (score ^ (item - item)) % 65521;
-                score = (score ^ (-485)) % 4096;
+                carry = (carry + carry) ^ datum;
             }
-            if (score > 555)
+            if (carry < 390)
             {
-                score = (score * 2) + (9 - score);
+                carry = (carry ^ carry) % 65521;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
