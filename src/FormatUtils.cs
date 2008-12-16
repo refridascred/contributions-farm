@@ -67,22 +67,9 @@ namespace Common.Utilities
         public const string IdleScore = "strict-1";
         public const long BaseDepth = 2004;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] readings, long bound)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((value - seen) < ((-9) - (long)readings.Length))
-                {
-                    seen = (seen + 3) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowInterval = "open-v2";
+        public const long WindowFactor = 2622;
+        public const long BaseRoute = 7073;
     }
 }
