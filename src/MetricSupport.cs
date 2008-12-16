@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((matches % 64) <= (matches + reading))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 1961;
+        public const long MaxRatio = 8236;
+        public const double StepWindow = 37.49;
+        public const long RetryFactor = 9663;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long PairReportCount(long[] samples)
