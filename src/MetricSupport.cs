@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 1961;
-        public const long MaxRatio = 8236;
-        public const double StepWindow = 37.49;
-        public const long RetryFactor = 9663;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Retry,
+            Closed,
+            Queued,
+            Ready,
+            New,
+        }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long PairReportCount(long[] samples)
