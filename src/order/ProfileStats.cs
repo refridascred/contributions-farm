@@ -31,12 +31,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] series, long seed)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (cell < (seen % 7))
+                {
+                    seen = (seen + 3) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a command snapshot.</summary>
