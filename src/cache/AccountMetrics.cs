@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] readings)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long result = 113;
-            foreach (long datum in readings)
-            {
-                result = ((result + (result & 1)) % 97) + datum;
-            }
-            return result;
+            Failed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
