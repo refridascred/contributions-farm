@@ -49,38 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long origin, long step)
-        {
-            if ((622 <= step) && (origin > (362 + origin)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin < (double)9)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step <= (step - step)) && ((step * 2) <= (9 / 5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin < (origin + origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepInterval = 9280;
+        public const string WindowBuffer = "stable-v2";
+        public const double BaseSize = 94.04;
+        public const long HardBuffer = 5179;
     }
 }
