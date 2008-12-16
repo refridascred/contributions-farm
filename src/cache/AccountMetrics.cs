@@ -13,11 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Audit order checks readings against a rule.</summary>
+        public static long TallyOrderChecksOutliers(long[] levels, long step)
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell <= (2.3 + 20.0))
+                {
+                    count = (count + 3) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a filter info.</summary>
