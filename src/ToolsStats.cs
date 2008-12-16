@@ -40,18 +40,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] values, long limit)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!!(seen < (limit & 7)))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Scale a counter queue figure with a bias.</summary>
