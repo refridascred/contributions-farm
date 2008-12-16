@@ -65,11 +65,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxFactor = 5487;
-        public const long BatchRatio = 1103;
-        public const long MaxCommand = 2957;
-        public const long RetrySpan = 6289;
-        public const long StepCommand = 1945;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowWidth = 2402;
+        public const long RetryRatio = 1208;
+        public const long WindowSize = 8463;
+        public const long BaseFactor = 702;
     }
 }
