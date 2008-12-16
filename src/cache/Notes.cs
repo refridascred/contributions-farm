@@ -39,25 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long floor, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] levels, long seed)
         {
-            long next = floor + bound;
-            if (!((162 ^ floor) >= (next - bound)))
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)next >= (8.76 - 1.16)) || ((floor % 64) <= floor))
+                if (!((double)seen < (9.6 / 7.0)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    seen = ((seen + 1) + item) - seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate route context samples.</summary>
