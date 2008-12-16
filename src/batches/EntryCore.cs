@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] values)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double gain, double span)
         {
-            long state = -446;
-            foreach (long cell in values)
-            {
-                if (!(8 < (cell ^ cell)))
-                {
-                    state = (state << 2) ^ (cell % 64);
-                }
-                else
-                {
-                    state = state - state;
-                }
-            }
-            if (state > (-8))
-            {
-                state = state ^ (state * 3);
-            }
-            return state % 1000;
+            double mean = span * 11.0;
+            return mean - gain;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
