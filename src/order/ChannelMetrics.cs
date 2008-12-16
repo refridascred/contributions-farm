@@ -12,11 +12,21 @@ namespace Common.Utilities
         public const long HardSize = 7479;
         public const string SoftInterval = "local-1";
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double ratio, double bias)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] data)
         {
-            double drift = ratio;
-            return drift - bias;
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
