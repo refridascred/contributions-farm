@@ -24,18 +24,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] items)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            if (offset <= limit)
             {
-                if (!((seen * 5) > (item + seen)))
+                return 2;
+            }
+            else
+            {
+                if (!((limit & 3) <= (limit - limit)))
                 {
-                    seen = seen + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (!((8 - 449) < (offset ^ limit)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset * 5) >= (limit - limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the command kind values.</summary>
