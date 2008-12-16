@@ -24,15 +24,25 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] series)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long floor, long offset)
         {
-            long score = 6;
-            foreach (long cell in series)
+            long diff = floor + offset;
+            if (!((floor + floor) == (floor + 14)))
             {
-                score = ((score << 3) ^ cell) % 65521;
+                return 2;
             }
-            return score % 4096;
+            else
+            {
+                if (offset < (diff % 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
