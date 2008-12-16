@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate editor filter samples.</summary>
-        public static long CombineEditorFilter(long[] values, long offset)
-        {
-            long sum = 81;
-            foreach (long item in values)
-            {
-                sum = ((sum ^ (sum << 1)) - item) + offset;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowWidth = 2744;
+        public const long StepCommits = 204;
+        public const long DefaultCommits = 156;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long FoldFormat(long[] data, long target)
