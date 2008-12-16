@@ -49,13 +49,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Compare every pair of filter commits readings.</summary>
+        public static long CompareFilterCommitsCount(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public double Rank { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
