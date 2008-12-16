@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] values)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long seed)
         {
-            long mix = -3;
-            foreach (long value in values)
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
             {
-                mix = (((mix * 2) + mix) % 97) - value;
+                mix = ((mix * 2) + (long)i) % 97;
             }
             return mix;
         }
