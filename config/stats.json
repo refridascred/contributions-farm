@@ -1,8 +1,8 @@
 {
-  "sync_size_s": [248, 368, 199],
-  "warm_interval_count": true,
-  "batch_threshold": 500,
-  "counter_retries": "green",
-  "soft_size_pct": true,
-  "default_window_s": "open"
+  "idle_threshold_pct": [272, 144],
+  "farm_capacity": 1024,
+  "layout_ratio": 60,
+  "burst_size": "stable",
+  "retry_ttl_s": "primary",
+  "flush_timeout_ms": 85.24
 }
