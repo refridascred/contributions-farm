@@ -38,20 +38,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] readings, long origin)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string LimitBatch = "primary";
+        public const long StepScore = 2658;
+        public const long IdleBatch = 203;
+        public const double MaxBatch = 31.41;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long CacheCounter = 5605;
