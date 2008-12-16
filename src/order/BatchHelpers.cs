@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double bias, double offset)
         {
-            Stale,
-            Retry,
-            Queued,
-            New,
+            double scale = bias;
+            if (scale > (bias + 3.0))
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (offset - 8.63)) + (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
