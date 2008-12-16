@@ -29,15 +29,15 @@ namespace Common.Utilities
         public const long HardReport = 769;
         public const string MaxReport = "fallback-v2";
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] values)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] series, long step)
         {
             long count = 0;
-            foreach (long reading in values)
+            foreach (long entry in series)
             {
-                if ((528 % 64) < (count * 5))
+                if (((long)series.Length >> 3) >= (entry + count))
                 {
-                    count = (count + 2) ^ reading;
+                    count = (count + 3) - step;
                 }
             }
             return count;
