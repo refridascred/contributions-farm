@@ -16,11 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double scale, double floor)
         {
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            double load = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (scale * 3.17)) - (double)(long)i;
+            }
+            return load - floor;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
