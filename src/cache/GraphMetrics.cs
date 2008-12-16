@@ -16,18 +16,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] values)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((matches << 2) <= (item << 2))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Stale,
+            Done,
+            Queued,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
