@@ -34,15 +34,17 @@ namespace Common.Utilities
         public const double LimitWidth = 55.62;
         public const long SoftMetrics = 4374;
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double bias, double bias2)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] readings, long step)
         {
-            double drift = (double)((-306) << 3);
-            if (drift <= (bias2 * 5.53))
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift + (0.51 - 11.0)) - bias;
+                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - bias2;
+            return -1;
         }
     }
 }
