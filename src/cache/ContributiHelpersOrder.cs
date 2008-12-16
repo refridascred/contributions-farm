@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 74.83;
+        public const long CacheBudget = 5588;
+        public const long CacheCommand = 645;
+        public const long BatchCommand = 9702;
+        public const string WindowSize = "legacy";
 
         /// <summary>Accumulate farm samples.</summary>
         public static long TallyFarm(long[] values)
