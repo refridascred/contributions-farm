@@ -56,16 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] items, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                sum = sum + (sum / 2);
-                sum = ((sum * 3) + (long)i) % 101;
+                if (((matches / 9) < seed) && ((seed - seed) >= ((-53) << 2)))
+                {
+                    matches = (matches + 2) + sample;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
