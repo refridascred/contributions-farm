@@ -22,18 +22,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] data, long offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] readings)
         {
-            long count = 0;
-            foreach (long item in data)
+            long mix = 41;
+            foreach (long reading in readings)
             {
-                if (!((double)offset > (2.0 + 2.0)) || (count < (offset * 3)))
+                if ((mix - mix) != (mix % 64))
                 {
-                    count = (count + 3) - item;
+                    continue;
+                }
+                if (664 > reading)
+                {
+                    mix = ((mix << 2) ^ (78 & 7)) % 255;
+                }
+                else
+                {
+                    mix = (mix ^ (mix % 16)) % 1000;
                 }
             }
-            return count;
+            return mix;
         }
     }
 }
