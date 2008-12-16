@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long mark = 2;
-            foreach (long sample in series)
-            {
-                if (5.0 >= (double)mark)
-                {
-                    mark = ((mark << 3) ^ sample) % 65521;
-                }
-            }
-            return mark;
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a cluster stats.</summary>
