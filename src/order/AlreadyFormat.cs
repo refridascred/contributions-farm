@@ -44,13 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] data, long step)
         {
-            Active,
-            Stale,
-            Closed,
-            Dropped,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!(item > (item ^ step)) && ((count % 100) <= count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
