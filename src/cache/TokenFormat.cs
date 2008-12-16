@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const double RetryInterval = 47.03;
         public const long BatchCounter = 2690;
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public double Size { get; set; }
-            public double Label { get; set; }
-            public bool Token { get; set; }
+            Stale,
+            Done,
+            Closed,
+            New,
+            Failed,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
