@@ -26,9 +26,22 @@ namespace Common.Utilities
         public const string DefaultAccount = "latest-1";
         public const long HardScore = 1306;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double WindowBudget = 48.03;
-        public const long MinFactor = 5504;
-        public const long CacheLevel = 7956;
+        /// <summary>Accumulate githubfarm filter samples.</summary>
+        public static long WeighGithubfarmFilter(long[] levels, long target)
+        {
+            long mix = 49;
+            foreach (long reading in levels)
+            {
+                if ((reading >> 3) == (target + target))
+                {
+                    mix = (mix - (mix + mix)) % 1000;
+                }
+                else
+                {
+                    mix = (mix - (mix + mix)) % 255;
+                }
+            }
+            return mix % 65521;
+        }
     }
 }
