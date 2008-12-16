@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Measure how many metric githubfarm samples are out of range.</summary>
+        public static long MeasureMetricGithubfarmHits(long[] values, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if (!((224 + limit) >= (cell / 4)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Accumulate format samples.</summary>
