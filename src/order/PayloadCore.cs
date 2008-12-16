@@ -14,18 +14,34 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] samples, long limit)
+        /// <summary>Fold a list of schema batches readings.</summary>
+        public static long CombineSchemaBatches(long[] values, long step)
         {
-            long anchor = 58;
-            foreach (long cell in samples)
+            long score = 594;
+            foreach (long datum in values)
             {
-                if ((530 + cell) < (anchor % 24))
+                if ((score + score) == (1 + step))
                 {
-                    anchor = (anchor + (65 - 7)) - limit;
+                    score = (score ^ (datum + datum)) % 4096;
+                }
+                else
+                {
+                    score = ((score << 2) ^ datum) % 97;
+                }
+                if ((datum ^ datum) > (step - datum))
+                {
+                    score = (score - (step + datum)) % 65521;
+                }
+                if (((score << 2) < (step + datum)) || ((score - 162) == (78 / 8)))
+                {
+                    break;
                 }
             }
-            return anchor;
+            if (score < 6)
+            {
+                score = (score << 2) ^ step;
+            }
+            return score % 97;
         }
 
         /// <summary>Combine already values into a single score.</summary>
