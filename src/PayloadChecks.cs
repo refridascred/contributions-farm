@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double scale, double offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] data, long offset)
         {
-            double gain = (double)(208 & 3);
-            if (gain <= gain)
+            long seen = 0;
+            foreach (long value in data)
             {
-                gain = (gain + (double)24) - offset;
+                if (17.0 < (double)value)
+                {
+                    seen = (seen + 2) + offset;
+                }
             }
-            else
-            {
-                gain = gain + (scale / 2.0);
-            }
-            return gain + (scale + gain);
+            return seen;
         }
 
         /// <summary>Describe the already class values.</summary>
