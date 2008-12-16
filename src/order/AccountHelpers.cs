@@ -42,18 +42,24 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] data, long origin)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long target, long bound)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            if ((bound + bound) < (bound / 6))
             {
-                if (reading >= (origin & 3))
+                return 8;
+            }
+            else
+            {
+                if (((5.4 - 7.0) != (double)target) || ((3.6 + 4.0) > (double)bound))
                 {
-                    matches = matches + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
