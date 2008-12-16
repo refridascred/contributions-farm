@@ -61,21 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count layout window pairs that satisfy a relation.</summary>
-        public static long MatchLayoutWindowCount(long[] values)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = (double)29 * 5.0;
+            if (rate <= (rate + 14.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = (rate + bias2) + bias;
             }
-            return hits;
+            else
+            {
+                rate = rate - (bias2 + rate);
+            }
+            return rate - (double)83;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
