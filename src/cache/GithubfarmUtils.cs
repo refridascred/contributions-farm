@@ -27,15 +27,24 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 7; i++)
+            long total = seed;
+            for (int i = 0; i < 15; i++)
             {
-                state = ((state * 5) + (long)i) % 101;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = ((total * 5) + (736 & 255)) + (long)i2;
+                }
+                for (int i3 = 0; i3 < 12; i3++)
+                {
+                    total = ((total - total) % 101) - (long)i3;
+                    total = (total + (seed % 24)) % 1000;
+                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Accumulate counter samples.</summary>
