@@ -1,5 +1,7 @@
 {
-  "max_limit_ms": 2235,
-  "compress": ["staging", "edge", "eu-west", "edge"],
-  "cache_limit": "stable"
+  "flush_limit_pct": 22,
+  "audit": 140,
+  "record_size": 64.3,
+  "token_limit": 5142,
+  "max_ttl_count": ["stable", "strict", "fallback"]
 }
