@@ -29,18 +29,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] levels, long step)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (!((7 << 2) != (matches - cell)))
-                {
-                    matches = (matches + 3) + step;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
