@@ -1,6 +1,13 @@
 {
-  "warm_depth": [279, 64],
-  "hard_size_pct": "local",
-  "sync_limit": true,
-  "min_depth": true
+  "context_interval": true,
+  "readonly": 9412,
+  "profile_capacity": {
+    "burst_interval": "open",
+    "counter_ratio": "local",
+    "default_retries_pct": true,
+    "schema_timeout": "latest",
+    "flush_depth": true
+  },
+  "max_timeout_pct": "staging",
+  "hard_timeout_count": [313, 271, 380, 207]
 }
