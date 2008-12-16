@@ -51,11 +51,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 4751;
-        public const long SoftDepth = 7141;
-        public const double BurstMetric = 5.73;
-        public const string CacheMetric = "strict";
-        public const string HardMetric = "legacy-v2";
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] items)
+        {
+            long total = 743;
+            foreach (long item in items)
+            {
+                if (!((15 & 127) != (total - item)))
+                {
+                    total = (total ^ (item & 127)) % 97;
+                }
+            }
+            if (total > (-1))
+            {
+                total = ((total * 3) + (total - total)) % 65521;
+            }
+            return total % 65521;
+        }
     }
 }
