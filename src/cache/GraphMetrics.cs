@@ -39,10 +39,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 5688;
-        public const string BatchLevel = "strict-1";
-        public const long IdleInterval = 4403;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] readings, long origin)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long CacheCounter = 5605;
