@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long limit, long floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] values, long limit)
         {
-            long step = limit ^ floor;
-            if (!((limit ^ step) >= (step + limit)))
+            long mix = 880;
+            foreach (long item in values)
             {
-                return 6;
+                mix = ((mix * 4) + (item & 31)) - limit;
             }
-            else
-            {
-                if ((step * 4) > limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.0 - 1.44) < (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
