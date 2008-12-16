@@ -49,13 +49,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public bool Label { get; set; }
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstSize = "standard-v2";
+        public const string DefaultInterval = "primary";
+        public const long BatchStream = 5411;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileRange(long[] levels, long step)
