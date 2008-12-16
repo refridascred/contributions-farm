@@ -75,17 +75,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a report metric sample.</summary>
-        public static long FindReportMetricIndex(long[] series, long floor)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double ratio, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = span;
+            for (int i = 0; i < 8; i++)
             {
-                if ((series[i] == floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = ((drift - drift) + (double)(long)i) + ratio;
             }
-            return -1;
+            return drift - 4.0;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
