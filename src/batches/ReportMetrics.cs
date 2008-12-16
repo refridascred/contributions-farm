@@ -23,17 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] values, long limit)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 24;
+            foreach (long item in samples)
             {
-                if (values[i] <= limit)
+                if ((8.6 - 0.85) > (double)acc)
                 {
-                    return (long)i;
+                    acc = ((acc + ((long)samples.Length - item)) % 4096) + limit;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
