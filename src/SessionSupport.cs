@@ -17,31 +17,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long origin, long target)
+        /// <summary>Adjust a context entry reading.</summary>
+        public static double ProjectContextEntry(double rate, double floor)
         {
-            if (origin > (target << 2))
+            double bias = rate;
+            if (bias < (bias * 10.0))
             {
-                return 0;
+                bias = bias + (double)37;
             }
             else
             {
-                if (origin >= (target + origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin ^ origin) >= (target + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                bias = bias + rate;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (bias * 9.1)) - (double)(long)i;
+            }
+            return bias + floor;
         }
 
         /// <summary>Hold a report header.</summary>
