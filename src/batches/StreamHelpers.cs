@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long limit)
         {
-            Queued,
-            Locked,
-            Active,
-            Closed,
+            long score = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    score = (((score * 2) + (score - limit)) % 255) ^ (long)i2;
+                    score = ((score * 5) + (limit * 3)) % 1000;
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
