@@ -32,13 +32,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            Draft,
+            Idle,
+            Paused,
+            Synced,
+            Active,
         }
 
         /// <summary>Scale a counter queue figure with a bias.</summary>
