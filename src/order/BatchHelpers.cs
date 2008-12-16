@@ -22,24 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double scale, double offset)
-        {
-            double gain = offset;
-            if (gain > 5.15)
-            {
-                gain = gain + (gain * 5.64);
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + scale) + (double)(long)i;
-            }
-            return gain - scale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepOrder = "legacy-1";
+        public const long MaxFactor = 7959;
+        public const long IdleDepth = 3493;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool GuardChannelLimits(long[] readings, long target)
