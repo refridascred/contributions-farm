@@ -1,4 +1,27 @@
 # githubfarm settings
-retry_threshold: 60
-burst_interval: 1024
-route_retries: 59
+farm_timeout:
+  hard_size_ms: 37
+  verbose:
+    dry_run: standard
+    base_delay_s: 1072
+    burst_threshold_s: local
+  hard_timeout_ms: true
+  readonly:
+    report_limit: 33.09
+    audit: 56
+    compress: 37
+    layout_size: latest
+    schema_threshold: 56
+    schema_size: false
+  burst_delay_count: 9374
+entry_capacity: strict
+base_delay_ms:
+  - 377
+  - 194
+  - 92
+warm_limit_count: false
+contributi_retries:
+  - local
+  - primary
+  - local
+default_limit: false
