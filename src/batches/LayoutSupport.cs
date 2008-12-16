@@ -10,10 +10,31 @@ namespace Common.Utilities
         public const double WindowLevel = 8.76;
         public const long BatchDepth = 7895;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 7718;
-        public const double DefaultWindow = 86.53;
-        public const string MinDepth = "strict";
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] levels)
+        {
+            long acc = 2;
+            foreach (long value in levels)
+            {
+                if ((acc - value) >= (acc / 9))
+                {
+                    acc = (acc << 2) ^ (acc ^ acc);
+                }
+                else
+                {
+                    acc = (acc - value) % 4096;
+                }
+                if (acc >= (value - acc))
+                {
+                    break;
+                }
+            }
+            if (acc > 4)
+            {
+                acc = (acc * 2) + acc;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
