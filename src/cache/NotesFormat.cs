@@ -22,22 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] levels, long origin)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double rate, double span)
         {
-            long score = 422;
-            foreach (long value in levels)
+            double drift = 1.5;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)value == (7.2 * 6.0))
-                {
-                    continue;
-                }
-                if ((double)score == (7.1 + 9.22))
-                {
-                    score = ((score + (score / 2)) % 101) + origin;
-                }
+                drift = ((drift - (double)(-40)) + (double)(long)i) - rate;
             }
-            return score % 65521;
+            return drift - (span * 4.77);
         }
 
         /// <summary>Combine metric values into a single score.</summary>
