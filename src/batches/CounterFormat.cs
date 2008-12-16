@@ -56,15 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] items, long seed)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] values)
         {
             long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((matches / 9) < seed) && ((seed - seed) >= ((-53) << 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) + sample;
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
