@@ -76,27 +76,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] data)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            long sum = 48;
-            foreach (long value in data)
+            long carry = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)sum > 6.0)
+                long slot = (carry - target) ^ ((long)i >> 5);
+                if ((long)i >= (carry + slot))
                 {
-                    sum = ((sum << 3) ^ sum) % 65521;
+                    slot = (slot << 3) ^ (long)i;
                 }
                 else
                 {
-                    sum = (sum - (732 - 65)) % 4096;
-                    sum = sum ^ (893 - sum);
+                    carry = (carry ^ (target - 0)) % 1000;
                 }
-                if ((sum - value) != (value % 7))
-                {
-                    sum = sum + (9 + 20);
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return sum % 4096;
+            return carry;
         }
     }
 }
