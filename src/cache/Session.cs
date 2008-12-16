@@ -27,14 +27,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] levels, long floor)
         {
-            Retry,
-            New,
-            Synced,
-            Queued,
-            Active,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (!((double)floor > (7.16 * 3.1)) && ((4 + reading) < (17 + reading)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
