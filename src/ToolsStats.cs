@@ -54,17 +54,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a batch command sample.</summary>
-        public static long LookupBatchCommandIndex(long[] levels, long offset)
+        /// <summary>Scale a counter queue figure with a bias.</summary>
+        public static double ScaleCounterQueue(double weight, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (double)(933 - 2);
+            for (int i = 0; i < 3; i++)
             {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
+                bias = (bias + bias) - (double)(long)i;
             }
-            return -1;
+            return bias - (span - weight);
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
