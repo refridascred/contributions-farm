@@ -61,12 +61,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
+            long state = 75;
+            foreach (long entry in samples)
+            {
+                if (1.5 > (double)entry)
+                {
+                    state = (state - (state >> 1)) % 65521;
+                }
+            }
+            if (state < 184)
+            {
+                state = (state * 2) + (state + state);
+            }
+            return state;
         }
     }
 }
