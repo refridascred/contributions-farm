@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] series)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((5.67 * 2.6) == (double)seen)
-                {
-                    seen = (seen + 2) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
