@@ -22,13 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Check that every batch token entry stays within the limit.</summary>
+        public static bool CheckBatchTokenRange(long[] levels, long origin)
         {
-            public double Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Size { get; set; }
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a report info.</summary>
