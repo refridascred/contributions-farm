@@ -75,21 +75,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Look up the position of a report metric sample.</summary>
+        public static long FindReportMetricIndex(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((series[i] == floor) && ((series[i] % 3) == 0))
                 {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
