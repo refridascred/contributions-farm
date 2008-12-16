@@ -45,19 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] series, long offset)
+        /// <summary>Fold a list of already format readings.</summary>
+        public static long WeighAlreadyFormat(long[] values)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long result = 8;
+            foreach (long sample in values)
             {
-                if (value >= offset)
+                if ((6.14 * 4.5) <= (double)result)
                 {
-                    flag = false;
-                    break;
+                    result = (((result * 5) + (result & 63)) % 101) - sample;
                 }
             }
-            return flag;
+            return result % 1000;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
