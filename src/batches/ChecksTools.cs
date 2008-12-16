@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a schema already value against two limits.</summary>
-        public static long GradeSchemaAlready(long seed, long limit)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] values)
         {
-            long edge = seed - limit;
-            if (((double)edge <= (16.0 - 0.88)) && ((seed + (-4)) == (seed + seed)))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3.0 - 6.2) < (double)edge)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    if ((values[i] - values[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
