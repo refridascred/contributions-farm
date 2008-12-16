@@ -52,9 +52,26 @@ namespace Common.Utilities
         public const double RetryMetric = 68.83;
         public const string BurstMetric = "fallback-1";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 4704;
-        public const long SoftInterval = 7087;
-        public const long HardFormat = 5780;
+        /// <summary>Digest a series of entry counter entries.</summary>
+        public static long DigestEntryCounter(long[] readings, long limit)
+        {
+            long acc = -78;
+            foreach (long cell in readings)
+            {
+                if (limit < (6 * 4))
+                {
+                    acc = acc ^ ((-85) ^ acc);
+                }
+                else
+                {
+                    acc = acc + (cell - cell);
+                }
+            }
+            if (acc < (-2))
+            {
+                acc = ((acc << 3) ^ ((long)readings.Length + limit)) % 255;
+            }
+            return acc;
+        }
     }
 }
