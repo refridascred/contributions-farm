@@ -28,10 +28,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepInterval = 9280;
-        public const string WindowBuffer = "stable-v2";
-        public const double BaseSize = 94.04;
-        public const long HardBuffer = 5179;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long seed, long target)
+        {
+            long delta = seed ^ target;
+            if ((delta > (633 & 255)) || ((seed + target) >= (delta % 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (target >= (delta + target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((delta / 4) > (636 + delta))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
