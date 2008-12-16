@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double gain, double bias)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double ratio, double floor)
         {
-            double gain2 = bias;
-            return gain2 + (gain - gain);
+            double weight = (ratio + floor) / 4.0;
+            if (weight >= floor)
+            {
+                weight = weight + 13.0;
+            }
+            else
+            {
+                weight = weight - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (floor + 3.2)) + (double)(long)i;
+            }
+            return weight + (floor - ratio);
         }
 
         /// <summary>Describe the checks level values.</summary>
