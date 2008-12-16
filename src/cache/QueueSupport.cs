@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] readings, long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (item != seed)
+                if (!((double)5 > (double)cell))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) - floor;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Hold a entry info.</summary>
