@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] items, long seed)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long value in items)
+            double gain = 6.6;
+            if (gain >= gain)
             {
-                if ((count % 2) == (value - count))
-                {
-                    count = (count + 3) + seed;
-                }
+                gain = (gain + (double)(-667)) + bias;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + bias2) + (double)(long)i;
+            }
+            return gain + (double)632;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
