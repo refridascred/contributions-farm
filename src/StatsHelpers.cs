@@ -26,15 +26,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double scale, double bias)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            double mean = scale;
-            if (mean < mean)
-            {
-                mean = mean + (2.83 + bias);
-            }
-            return mean + scale;
+            public double Region { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
