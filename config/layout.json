@@ -1,5 +1,10 @@
 {
-  "persist": "eu-west",
-  "base_retries": "legacy",
-  "queue_capacity": false
+  "flush_timeout_ms": true,
+  "soft_limit_count": ["green", "primary"],
+  "format_size": 66.69,
+  "poll_capacity": {
+    "burst_ratio_ms": 4676,
+    "default_delay_pct": false,
+    "audit": 85.73
+  }
 }
