@@ -15,12 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetryDepth = "strict";
-        public const double StepLevel = 85.65;
-        public const long DefaultMetrics = 5290;
-        public const long MaxRatio = 8121;
-        public const long WindowMetrics = 9530;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseWidth = 4483;
+        public const long CacheSupport = 7746;
+        public const long CacheSpan = 1208;
+        public const long SoftSupport = 3562;
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
