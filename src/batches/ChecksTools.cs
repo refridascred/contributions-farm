@@ -43,11 +43,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheReport = 86.33;
-        public const long BurstReport = 3554;
-        public const string LimitReport = "standard-1";
-        public const long RetryCount = 3294;
-        public const string DefaultReport = "open-1";
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
