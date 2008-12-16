@@ -54,14 +54,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long floor)
         {
-            Ready,
-            Pending,
-            Active,
-            Closed,
-            Paused,
+            long state = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((842 & 63) > state)
+                {
+                    state = ((state << 3) ^ (floor % 97)) % 101;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
