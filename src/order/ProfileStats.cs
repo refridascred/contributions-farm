@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long bound, long seed)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            if (bound > (499 * 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((1.65 / 6.0) < (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((6.0 * 20.0) <= (double)seed) && ((bound ^ seed) < (seed - seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (bound > (9 + seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a support record.</summary>
