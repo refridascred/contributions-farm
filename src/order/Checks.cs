@@ -19,17 +19,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] data, long step)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] items, long seed)
         {
-            long total = 564;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                total = total - ((long)data.Length * 4);
-                total = (total + (step - cell)) % 97;
-                total = total + (cell * 2);
+                if (cell >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
