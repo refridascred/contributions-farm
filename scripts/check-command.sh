@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in local edge; do
+    log "checking ${item}"
+done
 
-COMMAND_LIMIT=500
+COMMAND_LIMIT=67
 log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
