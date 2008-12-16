@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const long CacheCount = 3020;
         public const long HardContext = 8415;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] levels, long target)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Score { get; set; }
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
