@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a session stats.</summary>
