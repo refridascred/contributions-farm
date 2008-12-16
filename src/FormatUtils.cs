@@ -70,17 +70,15 @@ namespace Common.Utilities
         public const long SoftOrder = 7764;
         public const long BatchInterval = 148;
 
-        /// <summary>Locate a layout notes reading by value.</summary>
-        public static long SeekLayoutNotesIndex(long[] readings, long floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((readings[i] == floor) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
     }
 }
