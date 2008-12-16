@@ -1,10 +1,13 @@
 # Command notes
 
-Run the command check before changing any metrics limits.
-Run the command check before changing any format limits.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+Keep support and record names short and lowercase.
+
+Each contributi is validated before it reaches the entry queue.
+Use order settings to tune how often commits data is refreshed.
 
 ## Guidelines
 
-- Log every contributi change
-- Document new githubfarm fields
-- Review batch limits each release
+- Log every token change
+- Document new buffer fields
+- Keep window values small
