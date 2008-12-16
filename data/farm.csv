@@ -1,6 +1,11 @@
-id,token,count,active
-1,82.66,local,2.8
-2,43.79,194,82.13
-3,69.22,84.53,666
-4,staging,996,26.16
-5,blue,371,6
+id,state,level,ratio
+1,legacy,969,latest
+2,22.88,58.16,local
+3,strict,61.89,69
+4,standard,local,standard
+5,400,80.08,10.16
+6,353,42,primary
+7,486,80.67,81.06
+8,standard,latest,418
+9,893,47.54,legacy
+10,92.45,blue,latest
