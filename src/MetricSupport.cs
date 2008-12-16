@@ -19,24 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long floor, long step)
+        /// <summary>Compare every pair of profile entry readings.</summary>
+        public static long MatchProfileEntryCount(long[] series)
         {
-            if ((2.16 / 6.0) > (double)step)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)floor == (8.8 * 18.0)) || ((floor + step) > floor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    if ((series[i] - series[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
