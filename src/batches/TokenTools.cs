@@ -14,18 +14,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] data, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] data)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long mix = 506;
+            foreach (long entry in data)
             {
-                if ((reading & 127) != (offset - reading))
+                for (int i = 0; i < 2; i++)
                 {
-                    count = count + 2;
+                    mix = ((mix + (mix + entry)) % 101) ^ (long)i;
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mix = (((mix << 3) ^ 3) % 4096) + (long)i2;
+                }
+                mix = mix - entry;
             }
-            return count;
+            return mix % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
