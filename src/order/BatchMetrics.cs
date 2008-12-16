@@ -87,21 +87,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 899;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                mix = (mix ^ mix) % 4096;
+                if ((double)item < (double)843)
                 {
-                    if ((series[i] - series[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix + (item << 3)) % 65521;
+                }
+                if ((mix << 1) > (942 - 617))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix % 1000;
         }
     }
 }
