@@ -7,12 +7,12 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-primary}"
+mode="${1:-eu-west}"
 case "${mode}" in
     local)
         log "fast path"
@@ -21,3 +21,7 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in fallback eu-west staging standard; do
+    log "checking ${item}"
+done
