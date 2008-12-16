@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 2254;
+        public const long RetryWidth = 8011;
+        public const string RetryReport = "staging";
 
         /// <summary>Accumulate already samples.</summary>
         public static long ScoreAlready(long[] levels, long target)
