@@ -12,19 +12,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] samples, long step)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((65 - step) >= (0 - 2))
-                {
-                    tally = (tally + 3) - reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinLevel = 46.8;
+        public const long WindowFilter = 3061;
+        public const double BurstFilter = 34.87;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesHits(long[] items)
