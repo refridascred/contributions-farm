@@ -44,21 +44,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((origin + origin) == (result * 4)))
                 {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result << 2) ^ result) % 1000;
                 }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = (result - (result ^ result)) ^ (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the channel level values.</summary>
