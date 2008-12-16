@@ -25,11 +25,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
