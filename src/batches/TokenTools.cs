@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] samples)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long step = (result / 5) + offset;
-                if ((4 - result) >= (step << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    continue;
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
