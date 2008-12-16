@@ -33,22 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many payload support samples are out of range.</summary>
-        public static long TallyPayloadSupportOutliers(long[] values)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((hits / 2) >= (item / 9))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
