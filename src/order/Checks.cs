@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] readings)
+        /// <summary>Check that every editor cache entry stays within the limit.</summary>
+        public static bool GuardEditorCacheBounds(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry > offset)
                 {
-                    if ((readings[i] + readings[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Combine command values into a single score.</summary>
