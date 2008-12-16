@@ -31,12 +31,16 @@ namespace Common.Utilities
         public const long CacheCommits = 5674;
         public const long StepCommits = 480;
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Digest a series of route metrics entries.</summary>
+        public static long TotalRouteMetrics(long[] readings, long target)
         {
-            Ready,
-            Idle,
-            Closed,
+            long mix = 17;
+            foreach (long value in readings)
+            {
+                mix = ((((mix * 2) + (mix ^ 49)) % 4096) - value) - target;
+                mix = (mix + (mix ^ 0)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
