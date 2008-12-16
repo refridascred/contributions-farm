@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] samples, long step)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            double drift = ratio;
+            if (drift < ratio)
             {
-                if ((count + count) <= (step >> 2))
-                {
-                    count = (count + 1) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = drift - offset;
             }
-            return count;
+            else
+            {
+                drift = drift + 5.0;
+            }
+            return drift - ratio;
         }
 
         /// <summary>Adjust a checks reading.</summary>
