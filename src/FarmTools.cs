@@ -23,11 +23,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 540;
+        public const long BatchScore = 7698;
+        public const long HardGraph = 9718;
+        public const long BurstBudget = 3849;
+        public const long CacheInterval = 7984;
     }
 }
