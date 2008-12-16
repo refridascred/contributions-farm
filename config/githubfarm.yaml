@@ -1,10 +1,16 @@
 # githubfarm settings
-idle_ttl_count: 82.22
-burst_retries_ms:
-  profile_interval: primary
-  soft_size_pct: fallback
-  strict: staging
-  context_delay: fallback
-  max_window: true
-  cache_depth_pct: standard
-layout_ratio: 72.89
+retry_threshold_count:
+  - 374
+  - 353
+  - 412
+  - 222
+poll_window_pct: false
+idle_delay: 7.65
+burst_interval_s:
+  soft_limit: 43.82
+  min_size_s: 55.15
+  enabled:
+    - legacy
+    - edge
+min_window_count: green
+verbose: 44
