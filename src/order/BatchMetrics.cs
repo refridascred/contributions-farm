@@ -20,38 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long seed, long floor)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            if ((double)floor == (1.4 - 8.8))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor - seed) <= (seed % 10))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((19.0 - 9.0) < (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed > (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public bool Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
