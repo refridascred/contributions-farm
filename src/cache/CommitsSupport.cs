@@ -38,19 +38,13 @@ namespace Common.Utilities
         public const long MinRatio = 1251;
         public const double CacheRatio = 24.25;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double ratio, double bias)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            double load = bias;
-            if (load <= (4.14 - 8.38))
-            {
-                load = load + (bias + ratio);
-            }
-            else
-            {
-                load = load - (double)42;
-            }
-            return load - load;
+            public bool Stamp { get; set; }
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate contributi samples.</summary>
