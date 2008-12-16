@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank account input into a small class.</summary>
