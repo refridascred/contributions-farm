@@ -12,25 +12,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long target, long step)
-        {
-            if (((-68) >> 5) > (target + step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (step < (step * 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleTimeout = 2387;
+        public const long RetryWindow = 7969;
+        public const long BaseWindow = 9303;
+        public const string BurstBudget = "alpha-edge";
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
