@@ -36,15 +36,11 @@ namespace Common.Utilities
         public const long BurstCount = 2579;
         public const string SoftRatio = "primary";
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double gain, double span)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double gain2 = 11.0;
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = ((gain2 + gain) + (double)(long)i) + span;
-            }
-            return gain2 - 17.0;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
