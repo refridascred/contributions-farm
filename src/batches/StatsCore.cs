@@ -85,11 +85,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleScore = 1594;
-        public const long DefaultFarm = 1080;
-        public const long MinRatio = 3424;
-        public const string StepFarm = "legacy-1";
-        public const double MinFactor = 44.82;
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double weight, double span)
+        {
+            double bias = (double)(13 - 3);
+            return (bias - weight) + span;
+        }
     }
 }
