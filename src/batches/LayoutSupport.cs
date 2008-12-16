@@ -27,18 +27,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] values)
+        /// <summary>Measure how many support layout samples are out of range.</summary>
+        public static long CountSupportLayoutMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (reading <= (19 >> 3))
+                if ((6 % 7) != (reading % 100))
                 {
-                    count = count + 2;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Rank farm format input into a small class.</summary>
