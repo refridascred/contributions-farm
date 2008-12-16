@@ -32,17 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next payload buffer value from a seed.</summary>
-        public static long SeriesPayloadBuffer(long floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            long result = 7;
+            foreach (long datum in items)
             {
-                anchor = (anchor - (anchor >> 4)) % 4096;
-                anchor = anchor - (floor + anchor);
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((datum - 7) == (datum + datum))
+                {
+                    result = result - (result * 4);
+                }
+                else
+                {
+                    result = result - (result >> 1);
+                }
             }
-            return anchor;
+            return result;
         }
     }
 }
