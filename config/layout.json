@@ -1,14 +1,5 @@
 {
-  "soft_timeout_s": "latest",
-  "retry_window_count": 1024,
-  "warm_ttl_count": 2344,
-  "token_ttl": 9934,
-  "hard_depth": {
-    "editor_limit": 1024,
-    "cache_depth_pct": "eu-west",
-    "checks_timeout": "local",
-    "flush_ratio_count": 88.99,
-    "metric_window": 30
-  },
-  "commits_ratio": [396, 395, 399, 322]
+  "buffer_delay": true,
+  "session_ratio": "primary",
+  "dry_run": 300
 }
