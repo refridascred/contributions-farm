@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 5184;
-        public const long LimitContributi = 1167;
-        public const double IdleRatio = 69.47;
-        public const long DefaultContributi = 1691;
+        /// <summary>Roll a commits filter counter forward.</summary>
+        public static long StepCommitsFilter(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((double)step <= (12.0 + 7.0))
+                {
+                    sum = (sum + (step % 10)) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
