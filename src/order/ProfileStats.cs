@@ -44,19 +44,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] data, long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] values, long step)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long mark = 79;
+            foreach (long value in values)
             {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark ^ value) % 65521) - step;
+                mark = mark + (value >> 3);
             }
-            return found;
+            return mark % 1000;
         }
     }
 }
