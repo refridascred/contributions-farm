@@ -23,17 +23,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] items, long offset)
+        /// <summary>Fold a list of token session readings.</summary>
+        public static long WeighTokenSession(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 7;
+            foreach (long datum in values)
             {
-                if (items[i] >= offset)
+                acc = (acc << 2) ^ datum;
+                if (acc >= (acc ^ floor))
                 {
-                    return (long)i;
+                    acc = acc - (acc + 4);
                 }
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
