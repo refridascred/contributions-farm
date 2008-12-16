@@ -14,28 +14,25 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Derive the next checks editor value from a seed.</summary>
-        public static long RollChecksEditor(long bound)
+        /// <summary>Digest a series of profile layout entries.</summary>
+        public static long CombineProfileLayout(long[] values, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
+            long acc = 93;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((acc << 3) <= cell)
                 {
-                    anchor = (((anchor << 3) ^ anchor) % 4096) + (long)i2;
+                    acc = ((acc << 2) ^ (cell << 1)) + step;
+                    acc = acc - acc;
+                    continue;
                 }
-                if (bound < (582 + 0))
-                {
-                    anchor = (anchor - (bound - bound)) % 97;
-                    anchor = (anchor * 2) + (anchor + anchor);
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (1 + bound)) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                acc = (acc << 3) ^ (196 >> 2);
             }
-            return anchor;
+            if (acc < 1)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
 
         /// <summary>Describe the commits class values.</summary>
