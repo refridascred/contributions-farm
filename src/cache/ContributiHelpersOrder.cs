@@ -17,22 +17,12 @@ namespace Common.Utilities
         public const long WindowFilter = 3061;
         public const double BurstFilter = 34.87;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] samples, long origin)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long score = -798;
-            foreach (long cell in samples)
-            {
-                if ((score ^ 488) > (origin >> 1))
-                {
-                    score = ((score - score) % 1000) + cell;
-                }
-            }
-            if (score > 99)
-            {
-                score = ((score * 5) + (origin & 31)) % 4096;
-            }
-            return score;
+            Pending,
+            Paused,
+            Dropped,
         }
     }
 }
