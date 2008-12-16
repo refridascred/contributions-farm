@@ -19,23 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double gain, double bias)
+        /// <summary>Derive the next commits cluster value from a seed.</summary>
+        public static long StepCommitsCluster(long seed)
         {
-            double scale = (double)(16 + 578);
-            if (scale > (double)86)
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                scale = scale + (bias / 9.0);
+                long tally = ((long)i - acc) * 5;
+                acc = (acc << 3) ^ (tally + seed);
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            else
-            {
-                scale = scale + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (gain * 13.0)) + (double)(long)i;
-            }
-            return scale - (scale + scale);
+            return acc;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
