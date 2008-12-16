@@ -14,21 +14,32 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] data)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long seed, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long step = seed ^ limit;
+            if ((limit * 4) >= (step * 5))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((step << 1) < (seed / 2)))
                 {
-                    if ((data[i] + data[j]) != 18)
+                    return 1;
+                }
+                else
+                {
+                    if ((limit & 127) <= (seed + limit))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
