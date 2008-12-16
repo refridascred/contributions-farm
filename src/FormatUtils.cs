@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Measure how many entry metric samples are out of range.</summary>
+        public static long AuditEntryMetricMatches(long[] levels, long bound)
         {
-            Queued,
-            Failed,
-            Pending,
-            Synced,
-            Paused,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count + bound) > (datum ^ bound))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next record value.</summary>
