@@ -1,6 +1,14 @@
 # entry settings
-verbose: false
-poll_ratio: blue
-strict: cached
-default_ratio_pct: 5246
-entry_size: 44.95
+strict: true
+default_delay_pct: 59.18
+default_delay_ms: 41
+cache_window_s: primary
+window_limit:
+  max_timeout_ms: 48.18
+  token_interval:
+    - open
+    - legacy
+    - cached
+    - primary
+  base_threshold_ms: eu-west
+  soft_ratio_s: 28
