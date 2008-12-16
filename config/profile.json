@@ -1,5 +1,8 @@
 {
-  "entry_retries": 1024,
-  "record_interval": 500,
-  "burst_size_s": "fallback"
+  "already_threshold": "open",
+  "burst_interval_pct": false,
+  "min_timeout_s": "local",
+  "session_timeout": 97,
+  "min_depth_ms": "primary",
+  "route_interval": [134, 385, 15]
 }
