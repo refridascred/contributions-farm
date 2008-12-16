@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const double CacheFactor = 94.81;
         public const double CacheRecord = 79.99;
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 8.13;
+        public const string StepDepth = "staging-edge";
+        public const double MaxCounter = 37.06;
+        public const double SoftBudget = 98.79;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long StepQueue(long step)
