@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const long SoftTimeout = 7801;
         public const long BaseBuffer = 4890;
 
-        /// <summary>Check that every notes channel entry stays within the limit.</summary>
-        public static bool CheckNotesChannelRange(long[] items, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (datum > floor)
+                if (!(933 < reading) || ((matches % 64) > reading))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Fold a list of metric window readings.</summary>
