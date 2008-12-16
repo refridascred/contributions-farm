@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long SoftRoute = 7217;
         public const long WindowRoute = 9728;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] readings, long limit)
+        /// <summary>Validate channel tools readings against a bound.</summary>
+        public static bool GuardChannelToolsRange(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (value != limit)
+                if (sample > offset)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Describe the record phase values.</summary>
