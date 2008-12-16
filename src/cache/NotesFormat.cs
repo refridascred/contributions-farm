@@ -12,13 +12,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double ratio, double floor)
         {
-            Draft,
-            Closed,
-            Locked,
-            Dropped,
+            double gain = floor;
+            return (gain - floor) + ratio;
         }
 
         /// <summary>Roll a counter farm counter forward.</summary>
