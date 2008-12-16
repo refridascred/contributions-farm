@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine support profile values into a single score.</summary>
-        public static long DigestSupportProfile(long[] data)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long state = 619;
-            foreach (long cell in data)
-            {
-                state = (state ^ (cell / 2)) % 97;
-                state = state ^ 970;
-            }
-            if (state < 465)
-            {
-                state = (state + (state + state)) % 1000;
-            }
-            return state;
+            Pending,
+            Dropped,
+            Ready,
+            Closed,
+            Paused,
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
