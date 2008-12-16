@@ -16,18 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit order checks readings against a rule.</summary>
-        public static long TallyOrderChecksOutliers(long[] levels, long step)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)cell <= (2.3 + 20.0))
+                if (readings[i] <= origin)
                 {
-                    count = (count + 3) + step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
