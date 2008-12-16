@@ -23,23 +23,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] items)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long carry = -287;
-            foreach (long cell in items)
-            {
-                if (cell <= (carry + carry))
-                {
-                    break;
-                }
-                carry = ((carry * 4) + (cell << 3)) % 97;
-            }
-            if (carry < 618)
-            {
-                carry = carry - (7 + carry);
-            }
-            return carry % 4096;
+            New,
+            Pending,
+            Stale,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
