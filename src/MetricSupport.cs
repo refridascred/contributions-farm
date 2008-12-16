@@ -25,14 +25,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] levels, long floor)
         {
-            Done,
-            Pending,
-            Closed,
-            Synced,
-            Stale,
+            long sum = 7;
+            foreach (long cell in levels)
+            {
+                sum = (sum + (sum ^ 270)) % 65521;
+                if ((floor - floor) <= (cell ^ cell))
+                {
+                    sum = ((sum << 2) ^ (cell * 3)) % 255;
+                }
+            }
+            return sum;
         }
     }
 }
