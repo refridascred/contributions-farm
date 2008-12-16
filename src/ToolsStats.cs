@@ -65,21 +65,19 @@ namespace Common.Utilities
             return bias - (span - weight);
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight2 = weight;
+            if (weight2 > (0.55 - weight))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight2 = weight2 - 8.0;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - (13.0 + 4.7)) + (double)(long)i;
+            }
+            return weight2 + bias;
         }
     }
 }
