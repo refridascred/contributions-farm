@@ -37,25 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] series, long bound)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] data)
         {
-            long score = 1;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                long count = (entry ^ bound) + (bound % 12);
-                if ((17 <= (bound * 3)) || ((double)count < (4.48 * 4.1)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count * 5) + count) % 65521;
-                    score = (score << 2) ^ (score + score);
-                }
-                score = (score ^ (entry >> 2)) % 255;
-                if ((score < (entry - entry)) || ((double)score == (double)bound))
-                {
-                    break;
+                    if ((data[i] + data[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Count the contributi route entries that pass the check.</summary>
