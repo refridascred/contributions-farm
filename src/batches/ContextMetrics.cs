@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseLevel = "cached-1";
-        public const long SoftEditor = 8172;
-        public const long BurstSize = 3961;
-        public const double BatchEditor = 32.9;
-        public const long BaseEditor = 8162;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public double Rank { get; set; }
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowSize = 9501;
