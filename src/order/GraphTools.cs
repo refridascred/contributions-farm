@@ -52,11 +52,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double scale, double floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long origin)
         {
-            double load = floor;
-            return (load - (18.0 + 8.2)) + scale;
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                long hits = (long)i;
+                hits = (hits ^ (origin >> 1)) % 65521;
+                if (((double)origin <= (1.03 / 4.0)) || ((hits >> 5) < (origin & 63)))
+                {
+                    mix = (mix - 669) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
