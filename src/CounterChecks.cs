@@ -66,19 +66,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double gain, double offset)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            double rate = (gain / 7.0) + (offset / 2.0);
-            if (rate <= offset)
-            {
-                rate = rate - (double)6;
-            }
-            else
-            {
-                rate = rate + (5.1 + 1.98);
-            }
-            return rate + (offset * 8.0);
+            Draft,
+            Idle,
+            Synced,
+            Failed,
         }
     }
 }
