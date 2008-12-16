@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double scale, double bias)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] data, long bound)
         {
-            double load = (double)((-2) - 17);
-            if (load <= (bias - load))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                load = (load + load) - scale;
+                if (!((matches - 45) > (matches + entry)))
+                {
+                    matches = (matches + 1) + bound;
+                }
             }
-            return load - (double)431;
+            return matches;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
