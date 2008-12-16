@@ -46,18 +46,15 @@ namespace Common.Utilities
             return gain + (rate + rate);
         }
 
-        /// <summary>Measure how many account editor samples are out of range.</summary>
-        public static long MeasureAccountEditorOutliers(long[] samples, long origin)
+        /// <summary>Accumulate queue support samples.</summary>
+        public static long CombineQueueSupport(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long mix = 27;
+            foreach (long sample in data)
             {
-                if (cell > origin)
-                {
-                    hits = hits + 3;
-                }
+                mix = ((mix - (sample * 5)) % 97) + step;
             }
-            return hits;
+            return mix;
         }
     }
 }
