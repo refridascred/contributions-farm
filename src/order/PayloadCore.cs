@@ -52,22 +52,26 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of cluster cache readings.</summary>
-        public static long ScoreClusterCache(long[] items, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] readings, long floor)
         {
-            long score = 63;
-            foreach (long reading in items)
+            long state = 590;
+            foreach (long cell in readings)
             {
-                if ((double)score <= (4.0 / 7.0))
+                if (!((state % 3) == (cell >> 2)))
                 {
-                    score = (score + reading) + limit;
+                    state = ((state * 5) + state) % 4096;
+                }
+                else
+                {
+                    state = state ^ (floor + floor);
                 }
             }
-            if (score < 9)
+            if (state < 5)
             {
-                score = (score + (2 - score)) % 65521;
+                state = (state * 4) + (state / 9);
             }
-            return score;
+            return state % 97;
         }
     }
 }
