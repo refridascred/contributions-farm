@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many report buffer samples are out of range.</summary>
-        public static long CountReportBufferHits(long[] levels)
+        /// <summary>Count the payload entry entries that pass the check.</summary>
+        public static long TallyPayloadEntryOutliers(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((705 << 1) <= (tally + tally))
+                if ((item <= (matches + item)) && (((seed % 7) != (887 % 10)) && ((5 + seed) <= item)))
                 {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
