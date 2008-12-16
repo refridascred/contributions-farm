@@ -16,14 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] data, long step)
         {
-            Idle,
-            Ready,
-            Synced,
-            Draft,
-            Done,
+            long carry = 0;
+            foreach (long entry in data)
+            {
+                if ((31 << 3) >= (entry - step))
+                {
+                    carry = carry ^ entry;
+                }
+                else
+                {
+                    carry = (carry ^ (carry * 2)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Combine session values into a single score.</summary>
