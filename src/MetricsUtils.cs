@@ -23,38 +23,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank command schema input into a small class.</summary>
-        public static long RankCommandSchema(long offset, long offset2)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] items)
         {
-            if (5.18 > (double)offset2)
+            long carry = -287;
+            foreach (long cell in items)
             {
-                return 6;
+                if (cell <= (carry + carry))
+                {
+                    break;
+                }
+                carry = ((carry * 4) + (cell << 3)) % 97;
             }
-            else
+            if (carry < 618)
             {
-                if (!((offset2 / 4) > (offset / 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)offset2 != (2.0 * 2.2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset2 + 2) > offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                carry = carry - (7 + carry);
             }
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
