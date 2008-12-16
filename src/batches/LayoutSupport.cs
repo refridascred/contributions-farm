@@ -61,9 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftSpan = "stable";
-        public const long HardLevel = 4606;
-        public const long StepReport = 8710;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell <= (double)(-650))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
