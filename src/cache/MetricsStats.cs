@@ -24,12 +24,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseScore = 3344;
-        public const string MinCommits = "primary-v2";
-        public const long MaxCommits = 9335;
-        public const long CacheCommits = 5674;
-        public const long StepCommits = 480;
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long target, long origin)
+        {
+            if ((73 % 60) < (origin / 4))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin + 80) >= target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Digest a series of route metrics entries.</summary>
         public static long TotalRouteMetrics(long[] readings, long target)
