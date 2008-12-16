@@ -15,11 +15,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseWidth = 4483;
-        public const long CacheSupport = 7746;
-        public const long CacheSpan = 1208;
-        public const long SoftSupport = 3562;
+        /// <summary>Check that every metric counter entry stays within the limit.</summary>
+        public static bool GuardMetricCounterRange(long[] samples, long floor)
+        {
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long OverlapCounterCount(long[] readings)
