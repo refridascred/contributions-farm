@@ -26,12 +26,23 @@ namespace Common.Utilities
         public const long LimitTimeout = 4413;
         public const long DefaultCache = 3322;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstRatio = 4212;
-        public const long BaseQueue = 5169;
-        public const string LimitCount = "staging-1";
-        public const string WindowSize = "cached-edge";
-        public const long MinRatio = 2688;
+        /// <summary>Measure how many entry context samples are out of range.</summary>
+        public static long MeasureEntryContextMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (!(hits <= (entry & 255)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
