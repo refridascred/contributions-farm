@@ -20,21 +20,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] samples)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 28;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 9; i++)
                 {
-                    if ((samples[i] - samples[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc + ((long)i ^ 350)) % 97;
+                }
+                acc = acc + (reading - reading);
+                if (((double)acc >= (1.86 + 9.0)) || ((acc << 1) != (floor - floor)))
+                {
+                    acc = (acc - (acc - (-1))) % 97;
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
