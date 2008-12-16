@@ -1,9 +1,8 @@
-id,active,token,level
-1,stable,327,540
-2,285,94.25,343
-3,fallback,primary,34.22
-4,57.45,206,70.73
-5,green,79.59,160
-6,local,62.52,blue
-7,local,86,58
-8,31.11,946,staging
+id,active,label
+1,726,eu-west
+2,792,blue
+3,59.36,primary
+4,open,primary
+5,local,43.93
+6,588,95.88
+7,266,426
