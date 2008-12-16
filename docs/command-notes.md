@@ -1,14 +1,12 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-The channel module keeps cache values in sync with the metrics cache.
-
-The context module keeps channel values in sync with the account cache.
-The contributi report groups every metric by githubfarm.
+Keep editor and command names short and lowercase.
+The route helpers are pure functions, so they are safe to call from any thread.
+The account helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every buffer change
-- Keep entry values small
-- Prefer profile defaults
-- Document new checks fields
+- Document new queue fields
+- Validate window input early
+- Log every farm change
+- Keep already values small
