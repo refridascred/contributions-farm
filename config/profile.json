@@ -1,8 +1,11 @@
 {
-  "soft_ratio": "primary",
-  "sync_threshold_pct": 60,
-  "base_depth_s": "fallback",
-  "soft_delay_ms": "standard",
-  "flush_window_pct": 69,
-  "default_size": "legacy"
+  "burst_timeout_s": {
+    "flush_threshold": "fallback",
+    "batch_capacity_ms": "legacy",
+    "verbose": 86.73,
+    "metrics_interval": ["cached", "latest", "open", "legacy"],
+    "context_timeout": [199, 64, 429, 66]
+  },
+  "readonly": 86.04,
+  "context_interval": 24.41
 }
