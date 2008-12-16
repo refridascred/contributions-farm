@@ -22,14 +22,17 @@ namespace Common.Utilities
         public const long LimitWidth = 4921;
         public const long CacheRatio = 1066;
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] series, long floor)
         {
-            Closed,
-            Ready,
-            Dropped,
-            Synced,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
