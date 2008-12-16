@@ -34,24 +34,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long seed, long offset)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            if (offset >= (offset % 16))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((2 ^ seed) == (offset ^ offset)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Ready,
+            Stale,
+            Paused,
+            Queued,
+            Failed,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
