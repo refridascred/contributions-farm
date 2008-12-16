@@ -27,18 +27,25 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] levels, long step)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long bound, long step)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long bound2 = bound - step;
+            if ((4 - step) > 95)
             {
-                if ((3 + value) > step)
+                return 7;
+            }
+            else
+            {
+                if ((bound2 << 2) != (step % 60))
                 {
-                    hits = hits + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
