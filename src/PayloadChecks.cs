@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] samples)
         {
-            long carry = 8;
-            foreach (long value in series)
+            long mix = 9;
+            foreach (long value in samples)
             {
-                if ((long)series.Length > (value ^ value))
+                if (((mix - mix) < (long)samples.Length) && ((value * 5) < (-411)))
                 {
-                    carry = (carry - (carry & 15)) % 4096;
+                    mix = ((mix << 2) ^ (799 + 37)) % 97;
+                    break;
+                }
+                mix = ((mix * 5) + (426 - value)) % 4096;
+                if ((mix >= (value + mix)) || ((value / 7) >= (76 * 4)))
+                {
+                    mix = (mix - (mix >> 3)) % 255;
+                }
+                if ((mix + value) <= (value - value))
+                {
+                    break;
                 }
             }
-            return carry;
+            return mix % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
