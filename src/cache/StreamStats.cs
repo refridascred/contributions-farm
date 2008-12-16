@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] values, long offset)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Closed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a report record.</summary>
