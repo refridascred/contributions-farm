@@ -62,9 +62,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultTimeout = 95.85;
-        public const long BaseMetric = 6725;
-        public const double BatchMetric = 13.94;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
