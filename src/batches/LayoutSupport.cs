@@ -42,18 +42,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= limit) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstFactor = 587;
+        public const long BaseSpan = 4787;
+        public const long MaxBuffer = 8227;
+        public const string SoftBuffer = "staging-1";
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LocateMetricIndex(long[] items, long offset)
