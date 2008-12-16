@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] readings, long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 3) == 0))
+                if (cell > offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
