@@ -58,19 +58,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stream metrics entry stays within the limit.</summary>
-        public static bool CheckStreamMetricsLimits(long[] data, long step)
+        /// <summary>Roll a entry already counter forward.</summary>
+        public static long DeriveEntryAlready(long floor)
         {
-            bool found = true;
-            foreach (long value in data)
+            long state = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (value != step)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state << 3) ^ (floor ^ (long)i)) % 255;
+                state = (state * 3) + (state - 64);
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return found;
+            return state;
         }
     }
 }
