@@ -19,13 +19,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Roll a report command counter forward.</summary>
+        public static long SeriesReportCommand(long offset)
         {
-            public double Region { get; set; }
-            public double Count { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the filter status values.</summary>
