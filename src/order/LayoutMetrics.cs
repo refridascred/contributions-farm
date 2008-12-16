@@ -30,13 +30,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public double Offset { get; set; }
-            public double Total { get; set; }
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
+            Pending,
+            Queued,
+            Done,
+            Closed,
         }
     }
 }
