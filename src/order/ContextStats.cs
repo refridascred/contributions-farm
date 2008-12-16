@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] samples, long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (item >= offset)
+                if ((entry & 3) >= 13)
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
