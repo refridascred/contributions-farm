@@ -70,22 +70,19 @@ namespace Common.Utilities
         public const long LimitSupport = 8191;
         public const long RetrySupport = 8873;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] series, long origin)
+        /// <summary>Project the next contributi channel value.</summary>
+        public static double ScaleContributiChannel(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double load = scale + (double)(-37);
+            if (load >= (scale - scale))
             {
-                if ((double)origin < (3.2 - 20.0))
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = (load - (scale * 3.6)) + floor;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (scale * 1.34);
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
