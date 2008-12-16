@@ -23,13 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public double Region { get; set; }
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            Retry,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
