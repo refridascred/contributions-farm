@@ -21,22 +21,14 @@ namespace Common.Utilities
         public const long DefaultEditor = 9831;
         public const long RetrySize = 4227;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] levels, long target)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((7.0 / 4.0) >= (double)cell)
-                {
-                    seen = (seen + 2) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Stale,
+            Done,
+            New,
+            Pending,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
