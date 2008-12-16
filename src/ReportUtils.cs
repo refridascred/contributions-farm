@@ -37,27 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema format entries.</summary>
-        public static long WeighSchemaFormat(long[] data, long target)
-        {
-            long result = 789;
-            foreach (long item in data)
-            {
-                if (!((target >> 2) < (target * 3)))
-                {
-                    result = (result ^ (target << 1)) % 255;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (item + 953)) % 101;
-                }
-            }
-            if (result > 83)
-            {
-                result = ((result << 2) ^ (result - result)) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 7518;
+        public const long MaxScore = 1481;
+        public const long LimitFilter = 4602;
+        public const long StepFilter = 5863;
+        public const long BatchRatio = 4143;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
