@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] items, long target)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long anchor = 6;
-            foreach (long reading in items)
-            {
-                anchor = (((anchor << 3) ^ (target * 4)) % 1000) - reading;
-            }
-            return anchor % 1000;
+            Failed,
+            New,
+            Ready,
+            Locked,
+            Retry,
         }
 
         /// <summary>Describe the stream class values.</summary>
