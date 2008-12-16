@@ -19,18 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] data)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long offset, long limit)
         {
-            long count = 0;
-            foreach (long value in data)
+            if (4.0 >= (double)offset)
             {
-                if (!(count < (value ^ 773)) && ((3.0 + 3.5) <= (double)value))
+                return 3;
+            }
+            else
+            {
+                if ((8.0 + 2.8) < (double)offset)
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((29 >> 1) >= (limit >> 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (limit < ((-9) / 9))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate already account readings against a bound.</summary>
