@@ -23,19 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double ratio, double offset)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long origin, long step)
         {
-            double load = offset / 6.0;
-            if (load > (double)80)
+            if (!((double)origin >= 7.3))
             {
-                load = (load - (offset - offset)) + ratio;
+                return 4;
             }
             else
             {
-                load = load + (double)98;
+                if ((192 - origin) >= (step / 8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return load + load;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
