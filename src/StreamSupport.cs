@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] series, long floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] data, long target)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long total = 50;
+            foreach (long reading in data)
             {
-                if (sample <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                total = (((total + (total & 255)) % 4096) ^ reading) + target;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
