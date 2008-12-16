@@ -32,15 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] levels)
+        /// <summary>Derive the next payload buffer value from a seed.</summary>
+        public static long SeriesPayloadBuffer(long floor)
         {
-            long carry = 177;
-            foreach (long item in levels)
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                carry = (carry + (carry + carry)) ^ item;
+                anchor = (anchor - (anchor >> 4)) % 4096;
+                anchor = anchor - (floor + anchor);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return carry;
+            return anchor;
         }
     }
 }
