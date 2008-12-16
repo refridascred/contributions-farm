@@ -1,6 +1,6 @@
 # entry settings
-idle_depth_s: 5660
-idle_limit_pct: 12
-command_ttl: fallback
-enabled: 250
-already_ratio: 250
+batch_window: true
+hard_window_ms: 63.76
+strict: staging
+enabled: false
+notes_limit: 100
