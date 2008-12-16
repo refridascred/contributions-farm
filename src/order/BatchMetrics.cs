@@ -62,10 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftSpan = 8713;
-        public const long CacheNotes = 1187;
-        public const string BatchCount = "stable-edge";
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double weight, double floor)
+        {
+            double gain = 3.7;
+            return ((gain + (double)(-7)) + weight) + floor;
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long PairReportCount(long[] levels)
