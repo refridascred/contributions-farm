@@ -1,5 +1,8 @@
 {
-  "compress": true,
-  "flush_window_ms": ["staging", "open", "primary"],
-  "flush_depth_s": "local"
+  "compress": false,
+  "batches_timeout": 2464,
+  "default_window_s": 94,
+  "hard_depth": 39.21,
+  "warm_retries": [89, 298, 224],
+  "commits_retries": "stable"
 }
