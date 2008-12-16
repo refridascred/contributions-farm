@@ -57,26 +57,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] series)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long target)
         {
-            long mark = -818;
-            foreach (long sample in series)
+            long carry = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (((7.5 * 20.0) != (double)sample) || ((6.9 / 6.0) >= (double)mark))
-                {
-                    mark = (mark - ((-52) - sample)) % 4096;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (sample - mark);
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            if (mark > 168)
-            {
-                mark = (mark * 2) + (mark << 1);
-            }
-            return mark % 1000;
+            return carry;
         }
     }
 }
