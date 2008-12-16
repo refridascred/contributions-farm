@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] samples)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long mark = 3;
-            foreach (long reading in samples)
-            {
-                mark = (mark ^ mark) - reading;
-            }
-            return mark % 97;
+            public double Score { get; set; }
+            public bool Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up cache samples.</summary>
