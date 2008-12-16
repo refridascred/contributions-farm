@@ -1,8 +1,9 @@
 # support settings
-session_window:
-  - primary
+min_depth: false
+default_ratio: green
+sync_threshold:
   - staging
-burst_delay_s: 7555
-batches_limit: 60
-retry_timeout: staging
-hard_size: 1024
+  - local
+  - green
+warm_ratio_pct: green
+min_ratio: standard
