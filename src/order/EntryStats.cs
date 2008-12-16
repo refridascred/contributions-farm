@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] data)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long total = -12;
-            foreach (long reading in data)
-            {
-                if (!(reading < (reading & 255)))
-                {
-                    total = ((total << 2) ^ reading) % 101;
-                }
-            }
-            return total % 97;
+            Retry,
+            Dropped,
+            Queued,
+            Draft,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
