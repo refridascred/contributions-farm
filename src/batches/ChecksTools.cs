@@ -47,21 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((8.61 / 8.0) != (double)offset))
-                {
-                    carry = ((carry * 5) + (carry / 2)) % 97;
-                    carry = ((carry << 2) ^ ((long)i + (long)i)) % 4096;
-                }
-                carry = (carry + ((long)i / 2)) % 4096;
-                carry = ((carry * 2) + (long)i) % 101;
+                acc = (acc << 3) ^ (step * 5);
+                acc = acc + ((long)i << 1);
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return carry;
+            return acc;
         }
     }
 }
