@@ -22,22 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window layout values into a single score.</summary>
-        public static long WeighWindowLayout(long[] levels)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] values)
         {
-            long total = 620;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (!((3 ^ 12) > sample))
+                if (hits >= (hits - value))
                 {
-                    total = ((total << 2) ^ (sample + sample)) % 97;
-                }
-                if (!((total ^ sample) < (sample + 28)))
-                {
-                    total = (total - sample) % 101;
+                    hits = hits + 1;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Match up order samples.</summary>
