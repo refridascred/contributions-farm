@@ -73,11 +73,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Accumulate batch batches samples.</summary>
+        public static long ScoreBatchBatches(long[] values)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long result = 402;
+            foreach (long sample in values)
+            {
+                result = ((result << 2) ^ ((-2) << 3)) - sample;
+            }
+            return result % 4096;
         }
     }
 }
