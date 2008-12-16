@@ -44,11 +44,32 @@ namespace Common.Utilities
             return (load - (18.0 + 8.2)) + scale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 49.28;
-        public const long IdleSize = 2536;
-        public const string IdleFormat = "legacy-1";
-        public const double LimitFormat = 62.64;
-        public const long DefaultFormat = 4878;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long seed, long offset)
+        {
+            long delta = seed + offset;
+            if ((double)offset >= (9.0 / 8.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed < (offset + 55)) && ((seed - delta) != (seed % 8)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((delta / 8) <= seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
