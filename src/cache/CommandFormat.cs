@@ -46,18 +46,14 @@ namespace Common.Utilities
             return drift - (double)10;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] readings)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((7.6 * 6.03) > (double)count)
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
+            Closed,
+            Stale,
+            Queued,
+            Dropped,
+            Synced,
         }
     }
 }
