@@ -30,15 +30,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the entry state values.</summary>
