@@ -37,18 +37,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many record metrics samples are out of range.</summary>
-        public static long CountRecordMetricsGaps(long[] data)
+        /// <summary>Find the first session contributi entry that matches the target.</summary>
+        public static long FindSessionContributiIndex(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (73 <= sample)
+                if ((levels[i] <= offset) && ((levels[i] % 5) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the editor kind values.</summary>
