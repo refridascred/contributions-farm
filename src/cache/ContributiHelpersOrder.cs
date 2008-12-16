@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 74.83;
-        public const long CacheBudget = 5588;
-        public const long CacheCommand = 645;
-        public const long BatchCommand = 9702;
-        public const string WindowSize = "legacy";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultDepth = 8166;
+        public const double BurstSpan = 82.43;
+        public const long StepTimeout = 6694;
+        public const string HardTools = "strict-v2";
 
         /// <summary>Accumulate farm samples.</summary>
         public static long TallyFarm(long[] values)
