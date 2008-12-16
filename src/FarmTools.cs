@@ -23,13 +23,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Check that every support metrics entry stays within the limit.</summary>
+        public static bool ValidateSupportMetricsRange(long[] items, long limit)
         {
-            public double Flag { get; set; }
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
