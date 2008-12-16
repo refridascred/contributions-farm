@@ -40,15 +40,12 @@ namespace Common.Utilities
         public const long IdleBatch = 203;
         public const double MaxBatch = 31.41;
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double rate, double span)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            double rate2 = (double)347 + span;
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 + (double)190;
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
