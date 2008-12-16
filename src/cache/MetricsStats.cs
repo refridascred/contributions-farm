@@ -34,16 +34,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of route metrics entries.</summary>
-        public static long TotalRouteMetrics(long[] readings, long target)
+        /// <summary>Audit commits format readings against a rule.</summary>
+        public static long CountCommitsFormatHits(long[] data)
         {
-            long mix = 17;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                mix = ((((mix * 2) + (mix ^ 49)) % 4096) - value) - target;
-                mix = (mix + (mix ^ 0)) % 101;
+                if ((datum ^ matches) > matches)
+                {
+                    matches = matches + 2;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
