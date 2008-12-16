@@ -38,17 +38,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] readings, long origin)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long origin, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long slot = origin + floor;
+            if (origin < 645)
             {
-                if ((readings[i] == origin) && ((readings[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if (!(origin < (slot + floor)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
