@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit batch editor readings against a rule.</summary>
-        public static long TallyBatchEditorHits(long[] series, long target)
+        /// <summary>Accumulate notes token samples.</summary>
+        public static long ScoreNotesToken(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long result = 428;
+            foreach (long entry in series)
             {
-                if ((double)seen >= (19.0 * 1.6))
+                if (entry <= (result / 8))
                 {
-                    seen = ((seen + 2) + reading) + target;
+                    result = (result + ((long)series.Length & 7)) % 97;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
