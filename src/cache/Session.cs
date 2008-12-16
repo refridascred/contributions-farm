@@ -49,11 +49,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxFactor = "stable-edge";
-        public const long BaseFarm = 5035;
-        public const long WindowFarm = 9192;
-        public const string HardSize = "latest-edge";
-        public const long RetryLevel = 7873;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Dropped,
+            Paused,
+            Draft,
+            Locked,
+        }
     }
 }
