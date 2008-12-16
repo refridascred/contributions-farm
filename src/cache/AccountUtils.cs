@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] levels)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long floor)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((reading * 2) <= (matches * 3))
-                {
-                    matches = matches + 3;
-                }
+                mix = (mix + (517 + floor)) % 1000;
+                mix = ((mix << 3) ^ (floor & 63)) % 65521;
+                mix = mix + (94 + mix);
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
