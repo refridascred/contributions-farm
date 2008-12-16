@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double ratio, double floor)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            double drift = 5.58;
-            if (drift < (ratio * 3.0))
-            {
-                drift = (drift - ratio) - floor;
-            }
-            return drift + drift;
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a cache editor reading by value.</summary>
