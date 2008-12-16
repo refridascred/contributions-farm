@@ -34,18 +34,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit commits format readings against a rule.</summary>
-        public static long CountCommitsFormatHits(long[] data)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double ratio = 20.0;
+            if (ratio > (8.5 - bias))
             {
-                if ((datum ^ matches) > matches)
-                {
-                    matches = matches + 2;
-                }
+                ratio = ratio - (offset + 9.4);
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (offset * 9.0)) - (double)(long)i;
+            }
+            return ratio - (double)759;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
