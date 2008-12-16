@@ -39,14 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long offset)
         {
-            Queued,
-            Ready,
-            Dropped,
-            Paused,
-            Active,
+            long total = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = ((total ^ (97 + (long)i)) % 255) - (long)i2;
+                    total = ((total * 4) + offset) % 101;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
