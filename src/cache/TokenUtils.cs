@@ -37,20 +37,18 @@ namespace Common.Utilities
             return drift + (0.4 * 4.62);
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] data, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] items, long origin)
         {
-            long mix = -686;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((reading * 4) == (mix << 1))
+                if ((6 ^ origin) >= (913 << 2))
                 {
-                    mix = (mix ^ mix) - bound;
-                    break;
+                    hits = (hits + 3) + value;
                 }
-                mix = (mix - 165) % 65521;
             }
-            return mix % 65521;
+            return hits;
         }
     }
 }
