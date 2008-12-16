@@ -29,11 +29,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] samples, long floor)
         {
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the entry state values.</summary>
