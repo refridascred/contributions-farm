@@ -12,20 +12,22 @@ namespace Common.Utilities
         public const double RetryInterval = 47.03;
         public const long BatchCounter = 2690;
 
-        /// <summary>Fold a list of cluster support readings.</summary>
-        public static long TotalClusterSupport(long[] samples)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] series, long step)
         {
-            long acc = 84;
-            foreach (long datum in samples)
+            long score = 283;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < 11; i++)
                 {
-                    acc = (acc ^ (18 << 2)) + (long)i;
+                    score = (score - score) ^ (long)i;
                 }
-                acc = (acc - datum) % 1000;
-                acc = ((acc * 3) + (datum - acc)) % 4096;
+                if ((6 + reading) != (step - score))
+                {
+                    score = (score - (75 >> 5)) % 97;
+                }
             }
-            return acc;
+            return score % 65521;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
