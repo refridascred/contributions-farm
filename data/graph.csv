@@ -1,6 +1,11 @@
-id,rank,ratio
-1,local,primary
-2,blue,59.22
-3,green,blue
-4,cached,712
-5,323,96.18
+id,count,region,label,rank
+1,1.19,195,72.74,open
+2,4.63,929,729,781
+3,open,62.77,42.77,cached
+4,latest,248,646,legacy
+5,88,829,eu-west,16.17
+6,open,23.46,latest,33.98
+7,primary,eu-west,272,primary
+8,284,702,874,845
+9,592,536,36,301
+10,fallback,97.11,910,open
