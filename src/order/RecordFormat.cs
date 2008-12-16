@@ -15,20 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every metric counter entry stays within the limit.</summary>
-        public static bool GuardMetricCounterRange(long[] samples, long floor)
-        {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultFactor = "legacy-1";
+        public const string WindowNotes = "strict";
+        public const string HardWidth = "alpha-edge";
+        public const double BurstNotes = 72.34;
+        public const long CacheNotes = 568;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long CombineChecks(long[] data, long step)
