@@ -77,31 +77,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long bound, long step)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] samples, long seed)
         {
-            if ((double)step != (9.2 + 7.41))
+            long mark = 457;
+            foreach (long entry in samples)
             {
-                return 2;
+                mark = (((mark << 3) ^ (7 % 97)) - entry) - seed;
             }
-            else
-            {
-                if ((30 >> 2) <= (step - (-783)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound <= (bound % 24)) && (step <= (step % 24)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
