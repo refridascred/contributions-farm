@@ -13,17 +13,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a cache editor reading by value.</summary>
-        public static long LocateCacheEditorIndex(long[] items, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long floor, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((2.16 / 6.0) > (double)step)
             {
-                if ((items[i] < seed) && ((items[i] % 3) == 0))
+                return 4;
+            }
+            else
+            {
+                if (((double)floor == (8.8 * 18.0)) || ((floor + step) > floor))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next batches notes value.</summary>
