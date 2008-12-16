@@ -1,8 +1,6 @@
 {
-  "compress": false,
-  "batches_timeout": 2464,
-  "default_window_s": 94,
-  "hard_depth": 39.21,
-  "warm_retries": [89, 298, 224],
-  "commits_retries": "stable"
+  "idle_timeout_pct": "fallback",
+  "hard_delay_ms": 2399,
+  "readonly": 74.45,
+  "dry_run": 4646
 }
