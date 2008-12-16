@@ -37,16 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next profile metrics value from a seed.</summary>
-        public static long StepProfileMetrics(long origin)
+        /// <summary>Adjust a tools farm reading.</summary>
+        public static double SmoothToolsFarm(double weight, double floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            double weight2 = floor;
+            if (weight2 < (double)489)
             {
-                anchor = ((anchor << 2) ^ anchor) % 97;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                weight2 = weight2 + weight;
             }
-            return anchor;
+            else
+            {
+                weight2 = weight2 + (weight2 - weight);
+            }
+            return weight2 - (weight - weight);
         }
     }
 }
