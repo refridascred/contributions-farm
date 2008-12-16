@@ -22,12 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftFilter = "alpha-1";
-        public const double WindowScore = 21.84;
-        public const double SoftLevel = 59.01;
-        public const double WindowFilter = 52.15;
-        public const double LimitRatio = 89.55;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double gain, double span)
+        {
+            double mean = 12.0;
+            if (mean <= 2.7)
+            {
+                mean = (mean + (double)0) + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - gain) + (double)(long)i;
+            }
+            return mean + mean;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmMatches(long[] levels, long limit)
