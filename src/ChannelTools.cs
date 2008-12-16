@@ -22,26 +22,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] values)
         {
-            long mix = 41;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((mix - mix) != (mix % 64))
+                if ((528 % 64) < (count * 5))
                 {
-                    continue;
-                }
-                if (664 > reading)
-                {
-                    mix = ((mix << 2) ^ (78 & 7)) % 255;
-                }
-                else
-                {
-                    mix = (mix ^ (mix % 16)) % 1000;
+                    count = (count + 2) ^ reading;
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
