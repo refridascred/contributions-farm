@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long target)
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                carry = carry - target;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Describe the session status values.</summary>
