@@ -37,13 +37,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Check that every farm commits entry stays within the limit.</summary>
+        public static bool GuardFarmCommitsBounds(long[] readings, long target)
         {
-            New,
-            Failed,
-            Retry,
-            Dropped,
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up cluster already samples.</summary>
