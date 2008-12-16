@@ -95,11 +95,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double weight, double span)
-        {
-            double bias = (double)(13 - 3);
-            return (bias - weight) + span;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheBatch = "legacy-1";
+        public const string HardBatch = "stable-1";
+        public const long LimitBudget = 40;
+        public const long RetryWidth = 1088;
     }
 }
