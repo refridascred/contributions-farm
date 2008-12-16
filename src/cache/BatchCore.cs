@@ -35,18 +35,19 @@ namespace Common.Utilities
         public const long MaxDepth = 403;
         public const string IdleBudget = "primary-edge";
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] values)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((double)matches < (10.0 * 16.0))
+                if (reading != origin)
                 {
-                    matches = (matches + 2) + entry;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
