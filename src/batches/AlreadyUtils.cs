@@ -62,15 +62,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long seed)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long offset, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            long edge = offset + limit;
+            if (77 < (offset >> 5))
             {
-                result = ((result * 3) + (long)i) % 65521;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((offset / 8) < (limit + limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((offset + 71) >= edge))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (1.85 / 5.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
