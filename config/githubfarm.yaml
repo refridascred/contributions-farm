@@ -1,7 +1,4 @@
 # githubfarm settings
-sync_interval_pct: 23.82
-audit: 9703
-readonly: 5744
-sync_ttl_count: primary
-base_ttl: legacy
-dry_run: 15.93
+graph_threshold: true
+checks_window: false
+max_interval: 37
