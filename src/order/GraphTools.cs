@@ -23,25 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a layout stats value against two limits.</summary>
-        public static long SortLayoutStats(long target, long step)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long bound = target - step;
-            if ((19.0 > (double)step) && ((target + bound) <= target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target % 24) < (step & 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Ready,
+            Stale,
+            Failed,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
