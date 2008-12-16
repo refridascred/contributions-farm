@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long target)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            Queued,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
