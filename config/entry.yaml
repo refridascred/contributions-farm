@@ -1,22 +1,6 @@
 # entry settings
-idle_depth:
-  profile_capacity: 500
-  base_timeout: 84.79
-  warm_threshold: edge
-  min_interval_s: 500
-  batch_timeout: true
-  idle_window_count:
-    cache_window_pct: 9800
-    max_capacity_s: false
-    dry_run: eu-west
-    batch_ratio: true
-    retry_depth_s: 100
-    warm_threshold: 68.13
-idle_size: 64
-base_ttl_count: strict
-audit: true
-poll_capacity_s: strict
-persist:
-  - cached
-  - stable
-  - green
+enabled: primary
+batches_window: 41.56
+order_capacity: stable
+burst_ttl_ms: standard
+flush_capacity_pct: 100
