@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] readings)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits - item) <= (hits ^ hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a payload entry.</summary>
