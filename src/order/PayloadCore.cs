@@ -39,19 +39,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double weight, double floor)
+        /// <summary>Count editor account pairs that satisfy a relation.</summary>
+        public static long CompareEditorAccountCount(long[] values)
         {
-            double bias = (double)(56 ^ 614);
-            if (bias >= (weight / 2.0))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias - (weight - 7.97);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + floor) + (double)(long)i;
-            }
-            return bias - (double)6;
+            return tally;
         }
     }
 }
