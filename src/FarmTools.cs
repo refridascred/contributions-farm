@@ -27,15 +27,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double scale, double offset)
+        /// <summary>Scale a editor format figure with a bias.</summary>
+        public static double SmoothEditorFormat(double weight, double span)
         {
-            double ratio = (scale - offset) * 2.5;
-            if (ratio >= (1.79 * 1.0))
+            double weight2 = weight;
+            if (weight2 <= (weight - span))
             {
-                ratio = ratio + (ratio - 5.79);
+                weight2 = weight2 - span;
             }
-            return ratio + (ratio + offset);
+            else
+            {
+                weight2 = weight2 + weight2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 + (weight - weight)) - (double)(long)i;
+            }
+            return weight2 + weight2;
         }
     }
 }
