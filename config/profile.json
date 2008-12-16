@@ -1,5 +1,21 @@
 {
-  "audit": 54.46,
-  "warm_size": true,
-  "retry_ratio_s": 7913
+  "dry_run": "fallback",
+  "sync_ratio": {
+    "buffer_delay": "staging",
+    "verbose": 606,
+    "readonly": ["open", "primary", "local"]
+  },
+  "verbose": true,
+  "warm_ttl": {
+    "editor_ratio": {
+      "githubfarm_window": "standard",
+      "idle_timeout": "standard",
+      "sync_threshold_pct": ["local", "cached", "stable", "eu-west"],
+      "max_delay_count": 1024
+    },
+    "idle_interval_pct": true,
+    "idle_window_count": 2082
+  },
+  "poll_timeout_pct": "cached",
+  "batch_timeout": false
 }
