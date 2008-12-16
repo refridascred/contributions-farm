@@ -54,17 +54,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] series, long offset)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double gain, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = gain / 5.0;
+            if (weight > gain)
             {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
+                weight = weight - bias;
             }
-            return -1;
+            return weight - bias;
         }
 
         /// <summary>Fold a list of command readings.</summary>
