@@ -70,19 +70,17 @@ namespace Common.Utilities
         public const long SoftOrder = 7764;
         public const long BatchInterval = 148;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Locate a layout notes reading by value.</summary>
+        public static long SeekLayoutNotesIndex(long[] readings, long floor)
         {
-            long state = 73;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = state + (datum & 255);
+                if ((readings[i] == floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state < 774)
-            {
-                state = (state + state) % 255;
-            }
-            return state % 97;
+            return -1;
         }
     }
 }
