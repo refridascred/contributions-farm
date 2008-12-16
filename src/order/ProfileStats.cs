@@ -14,17 +14,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = anchor ^ floor;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowSize = 94.38;
+        public const long LimitRatio = 4655;
+        public const long MaxRatio = 5737;
+        public const long BatchContext = 5527;
+        public const string StepLevel = "primary-v2";
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
