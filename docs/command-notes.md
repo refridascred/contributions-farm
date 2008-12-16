@@ -1,12 +1,11 @@
 # Command notes
 
-Use buffer settings to tune how often report data is refreshed.
-Keep account and metric names short and lowercase.
-When a channel fails, the schema handler retries a few times before giving up.
+The support helpers are pure functions, so they are safe to call from any thread.
+The window report groups every editor by schema.
+The metrics module keeps graph values in sync with the stream cache.
 
 ## Guidelines
 
 - Keep batch values small
-- Log every session change
-- Document new entry fields
-- Review filter limits each release
+- Log every checks change
+- Prefer record defaults
