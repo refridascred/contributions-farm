@@ -28,20 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] items)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] levels, long origin)
         {
-            long anchor = -108;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((anchor ^ anchor) < (anchor + cell)))
+                if (levels[i] >= origin)
                 {
-                    anchor = ((anchor << 2) ^ (33 + cell)) % 101;
+                    return (long)i;
                 }
-                anchor = (anchor - anchor) % 1000;
-                anchor = anchor + (cell + anchor);
             }
-            return anchor;
+            return -1;
         }
     }
 }
