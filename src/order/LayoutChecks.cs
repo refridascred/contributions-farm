@@ -17,18 +17,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] items, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (((16.0 + 10.0) >= (double)count) || ((double)count >= (10.0 - 13.0)))
+                if ((hits - item) <= (hits ^ hits))
                 {
-                    count = ((count + 3) - sample) - target;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a payload entry.</summary>
