@@ -43,22 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm format samples are out of range.</summary>
-        public static long CountFarmFormatOutliers(long[] samples, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((double)reading > 4.0)
+                if (value >= offset)
                 {
-                    tally = (tally + 1) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
