@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Validate context profile readings against a bound.</summary>
+        public static bool CheckContextProfileRange(long[] values, long bound)
         {
-            Active,
-            Ready,
-            Draft,
-            Paused,
-            Queued,
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a context counter forward.</summary>
