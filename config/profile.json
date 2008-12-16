@@ -1,7 +1,8 @@
 {
-  "counter_retries": false,
-  "soft_limit_pct": 3932,
-  "cache_depth_pct": "latest",
-  "audit": 500,
-  "warm_delay_count": 250
+  "poll_ratio_pct": ["standard", "eu-west"],
+  "idle_ratio_ms": true,
+  "order_ttl": "green",
+  "min_ttl_pct": 98.29,
+  "max_window": "cached",
+  "sync_timeout": 500
 }
