@@ -22,19 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout contributi samples are out of range.</summary>
-        public static long AuditLayoutContributiOutliers(long[] values, long origin)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (((value < (value >> 4)) && (value < (long)values.Length)) || ((65 - origin) != (value + seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryWidth = 1670;
+        public const string BaseScore = "strict-v2";
+        public const long DefaultWidth = 8117;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long StepProfile = 9635;
