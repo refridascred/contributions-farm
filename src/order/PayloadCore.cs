@@ -39,17 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a profile record sample.</summary>
-        public static long SeekProfileRecordIndex(long[] data, long origin)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double weight, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = (double)(56 ^ 614);
+            if (bias >= (weight / 2.0))
             {
-                if ((data[i] <= origin) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias - (weight - 7.97);
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + floor) + (double)(long)i;
+            }
+            return bias - (double)6;
         }
     }
 }
