@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Roll a channel stats counter forward.</summary>
+        public static long IterateChannelStats(long limit)
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public bool Offset { get; set; }
+            long total = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((limit * 5) <= total)
+                {
+                    continue;
+                }
+                else
+                {
+                    total = total ^ limit;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
