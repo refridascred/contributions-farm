@@ -25,19 +25,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate buffer profile readings against a bound.</summary>
-        public static bool CheckBufferProfileLimits(long[] values, long target)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long target)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell <= target)
+                if ((20.0 + 8.8) <= (double)target)
                 {
-                    stale = false;
+                    acc = (acc + (long)i) % 1000;
                     break;
                 }
+                acc = ((acc << 3) ^ ((long)i + 6)) % 65521;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
