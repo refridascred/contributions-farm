@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Paused,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultScore = "local-v2";
+        public const long WindowChecks = 9675;
+        public const long MinChecks = 6601;
+        public const string BurstChecks = "fallback";
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long SortStats(long step, long limit)
