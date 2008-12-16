@@ -72,10 +72,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowWidth = 2402;
-        public const long RetryRatio = 1208;
-        public const long WindowSize = 8463;
-        public const long BaseFactor = 702;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Paused,
+            Synced,
+            Pending,
+        }
     }
 }
