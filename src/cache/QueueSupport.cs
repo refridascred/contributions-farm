@@ -49,17 +49,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a entry already counter forward.</summary>
-        public static long DeriveEntryAlready(long floor)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                state = ((state << 3) ^ (floor ^ (long)i)) % 255;
-                state = (state * 3) + (state - 64);
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
