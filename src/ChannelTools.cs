@@ -16,12 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string StepFactor = "fallback";
-        public const string HardFactor = "fallback-1";
-        public const double CacheSize = 40.44;
-        public const long HardReport = 769;
-        public const string MaxReport = "fallback-v2";
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total * 5) + (target >> 5)) % 255;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TallyChecks(long[] levels, long floor)
