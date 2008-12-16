@@ -30,24 +30,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long target, long origin)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            if ((73 % 60) < (origin / 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + 80) >= target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Closed,
+            Dropped,
+            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Digest a series of route metrics entries.</summary>
