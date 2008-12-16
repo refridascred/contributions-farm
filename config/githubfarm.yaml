@@ -1,11 +1,5 @@
 # githubfarm settings
-graph_size:
-  checks_window: true
-  enabled: false
-  payload_window: edge
-  already_interval: true
-enabled: 500
-sync_ttl_ms: 100
-poll_size_pct: 21.22
-dry_run: strict
-metrics_ttl: cached
+hard_interval_s: true
+batch_limit: 1024
+sync_threshold: 500
+min_depth: open
