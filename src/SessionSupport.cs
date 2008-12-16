@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] data, long seed)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long limit, long floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long step = limit ^ floor;
+            if (!((limit ^ step) >= (step + limit)))
             {
-                if ((seed >= (seed & 3)) && (hits < (hits >> 1)))
+                return 6;
+            }
+            else
+            {
+                if ((step * 4) > limit)
                 {
-                    hits = (hits + 2) ^ reading;
+                    return 8;
+                }
+                else
+                {
+                    if ((2.0 - 1.44) < (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
