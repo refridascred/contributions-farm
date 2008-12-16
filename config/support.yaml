@@ -1,12 +1,8 @@
 # support settings
-persist: edge
-readonly:
-  audit: local
-  poll_capacity_count: false
-  strict: 88.54
-  burst_interval_count: staging
-  min_interval_pct: 66.14
-  queue_limit: true
-hard_ratio_s: legacy
-contributi_limit: 5785
-already_limit: 500
+max_size_count: staging
+batch_depth_ms:
+  - eu-west
+  - local
+  - edge
+persist: false
+soft_capacity_pct: true
