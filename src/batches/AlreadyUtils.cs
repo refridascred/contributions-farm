@@ -12,19 +12,21 @@ namespace Common.Utilities
             return (ratio - span) + gain;
         }
 
-        /// <summary>Check that every graph route entry stays within the limit.</summary>
-        public static bool ValidateGraphRouteBounds(long[] data, long offset)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value < offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
