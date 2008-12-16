@@ -71,39 +71,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long offset, long limit)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long edge = offset + limit;
-            if (77 < (offset >> 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset / 8) < (limit + limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((offset + 71) >= edge))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (1.85 / 5.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Locked,
+            Failed,
         }
     }
 }
