@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Grade a schema already value against two limits.</summary>
+        public static long GradeSchemaAlready(long seed, long limit)
         {
-            public bool Mode { get; set; }
-            public double Count { get; set; }
+            long edge = seed - limit;
+            if (((double)edge <= (16.0 - 0.88)) && ((seed + (-4)) == (seed + seed)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((3.0 - 6.2) < (double)edge)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
