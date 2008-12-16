@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double ratio, double offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] data, long seed)
         {
-            double drift = ratio;
-            if (drift < ratio)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                drift = drift - offset;
+                if (entry < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + 5.0;
-            }
-            return drift - ratio;
+            return flag;
         }
 
         /// <summary>Adjust a checks reading.</summary>
