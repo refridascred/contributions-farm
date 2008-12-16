@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout channel samples are out of range.</summary>
-        public static long CountLayoutChannelGaps(long[] data, long target)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)seen < (0.8 + 1.48))
+                if (readings[i] <= target)
                 {
-                    seen = ((seen + 3) - value) + target;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
