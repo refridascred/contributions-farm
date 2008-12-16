@@ -43,22 +43,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many batches graph samples are out of range.</summary>
-        public static long AuditBatchesGraphGaps(long[] readings)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((count & 7) > (34 - count))
+                if ((double)item == (double)37)
                 {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
