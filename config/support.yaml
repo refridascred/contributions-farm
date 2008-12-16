@@ -1,9 +1,18 @@
 # support settings
-session_capacity: edge
-dry_run:
-  max_timeout_pct: 60
-  poll_threshold: 30
-  min_retries_s: true
-persist: cached
-min_delay_pct: open
-checks_depth: staging
+cache_delay_pct: primary
+warm_size: 63.28
+order_capacity: 70
+githubfarm_limit:
+  idle_retries_s: green
+  max_size: 23
+  cache_size_count: stable
+  warm_window_pct:
+    min_interval_s: 28.2
+    hard_ttl_ms: 43.42
+    idle_timeout_pct: 50
+  dry_run: green
+context_window:
+  - stable
+  - cached
+  - latest
+  - legacy
