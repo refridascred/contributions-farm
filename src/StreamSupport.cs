@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] values, long target)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((1.3 + 4.2) != (double)target)
-                {
-                    seen = (seen + 1) - sample;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
