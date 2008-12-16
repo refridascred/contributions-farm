@@ -48,23 +48,13 @@ namespace Common.Utilities
             return (load - (18.0 + 8.2)) + scale;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double weight, double span)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            double scale = (weight + 6.17) / 8.0;
-            if (scale < scale)
-            {
-                scale = scale - (span - scale);
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - span) + (double)(long)i;
-            }
-            return scale + (15.0 - weight);
+            Active,
+            Retry,
+            New,
+            Done,
         }
     }
 }
