@@ -16,18 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long floor)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = (mix + (517 + floor)) % 1000;
-                mix = ((mix << 3) ^ (floor & 63)) % 65521;
-                mix = mix + (94 + mix);
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Idle,
+            Ready,
+            Synced,
+            Draft,
+            Done,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
