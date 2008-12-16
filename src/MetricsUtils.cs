@@ -51,23 +51,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (11.0 > (double)floor)
-                {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchBudget = 1369;
+        public const long CacheSpan = 1294;
+        public const string WindowSpan = "standard-edge";
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
