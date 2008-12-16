@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] data, long limit)
+        /// <summary>Combine githubfarm checks values into a single score.</summary>
+        public static long WeighGithubfarmChecks(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long state = 51;
+            foreach (long value in samples)
             {
-                if ((seen - sample) != (limit * 2))
-                {
-                    seen = seen + 3;
-                }
+                state = (state * 4) + (value - target);
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a context record.</summary>
