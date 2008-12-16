@@ -36,13 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public double Score { get; set; }
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public double Label { get; set; }
         }
     }
 }
