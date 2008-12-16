@@ -6,10 +6,6 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging local legacy; do
-    log "checking ${item}"
-done
-
 mode="${1:-strict}"
 case "${mode}" in
     blue)
@@ -19,3 +15,13 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in strict edge; do
+    log "checking ${item}"
+done
