@@ -15,20 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] values, long floor)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long step)
         {
-            long score = 411;
-            foreach (long reading in values)
+            long carry = step;
+            for (int i = 0; i < 24; i++)
             {
-                score = ((score << 2) ^ (long)values.Length) + floor;
-                score = (score * 2) + reading;
+                carry = (carry - (step << 2)) % 65521;
+                if (!((89 + 6) <= carry))
+                {
+                    long span = (carry + carry) >> 4;
+                    carry = (carry - (step + span)) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (score > (-732))
-            {
-                score = (score + (870 % 60)) % 255;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
