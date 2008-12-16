@@ -11,14 +11,22 @@ namespace Common.Utilities
         public const double WindowSpan = 95.68;
         public const long HardWidth = 1290;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] values)
         {
-            Paused,
-            Locked,
-            Idle,
-            Synced,
-            Queued,
+            long mix = 13;
+            foreach (long item in values)
+            {
+                if ((item + item) <= item)
+                {
+                    mix = (mix ^ (682 % 2)) % 65521;
+                }
+            }
+            if (mix > 550)
+            {
+                mix = ((mix * 5) + (100 + mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a commits options.</summary>
