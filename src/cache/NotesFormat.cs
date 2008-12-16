@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] data)
         {
-            public double Limit { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!!((entry >> 3) != (entry - matches)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next contributi value.</summary>
