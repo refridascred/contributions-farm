@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first format session entry that matches the target.</summary>
-        public static long LocateFormatSessionIndex(long[] values, long step)
+        /// <summary>Audit payload profile readings against a rule.</summary>
+        public static long CountPayloadProfileMatches(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (values[i] >= step)
+                if ((seen ^ value) >= (value << 3))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - origin;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
