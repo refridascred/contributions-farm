@@ -12,31 +12,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long target, long target2)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] values, long bound)
         {
-            if (target2 <= target)
+            bool found = true;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(((-4) ^ target) <= (target + target2)))
+                if (sample != bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((target2 ^ target2) < target2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Roll a counter farm counter forward.</summary>
