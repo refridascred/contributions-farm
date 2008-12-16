@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] samples)
         {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell < 7.8)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
