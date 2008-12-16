@@ -1,18 +1,13 @@
 # support settings
-cache_delay_pct: primary
-warm_size: 63.28
-order_capacity: 70
-githubfarm_limit:
-  idle_retries_s: green
-  max_size: 23
-  cache_size_count: stable
-  warm_window_pct:
-    min_interval_s: 28.2
-    hard_ttl_ms: 43.42
-    idle_timeout_pct: 50
-  dry_run: green
-context_window:
-  - stable
-  - cached
-  - latest
-  - legacy
+tools_threshold: false
+base_threshold:
+  - staging
+  - local
+  - local
+  - staging
+min_delay:
+  max_delay_pct: green
+  hard_interval_s: 72.62
+  compress: standard
+  strict: 36.01
+flush_size_count: true
