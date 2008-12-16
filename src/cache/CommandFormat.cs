@@ -42,15 +42,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double ratio, double span)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            double scale = (span - ratio) * 3.0;
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (double)31) + (double)(long)i;
-            }
-            return scale - span;
+            Ready,
+            Failed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Define record limits and defaults.</summary>
