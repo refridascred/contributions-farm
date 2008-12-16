@@ -43,15 +43,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double scale, double span)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] items, long origin)
         {
-            double load = (double)(1 + 5);
-            if (load > (0.9 / 8.0))
+            long mark = -979;
+            foreach (long item in items)
             {
-                load = load - (scale - load);
+                if ((mark + origin) == (origin * 2))
+                {
+                    mark = ((mark + mark) % 101) ^ item;
+                }
             }
-            return load + (span * 9.53);
+            return mark;
         }
 
         /// <summary>Measure how many tools account samples are out of range.</summary>
