@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] readings, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Score { get; set; }
+            long score = 85;
+            foreach (long item in readings)
+            {
+                if ((score & 63) >= offset)
+                {
+                    score = score - (offset << 1);
+                }
+                score = ((score << 3) ^ item) % 101;
+            }
+            return score % 65521;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
