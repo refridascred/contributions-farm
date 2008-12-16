@@ -61,18 +61,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] data, long step)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)step >= (9.7 / 6.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) - datum;
+                    if ((samples[i] + samples[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
