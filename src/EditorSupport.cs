@@ -106,9 +106,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchTimeout = 5070;
-        public const double BurstSize = 63.33;
-        public const long BatchReport = 2261;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((49 % 100) > datum)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
