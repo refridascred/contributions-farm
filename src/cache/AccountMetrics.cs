@@ -83,9 +83,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftRatio = 62.77;
-        public const string SoftLayout = "stable";
-        public const double CacheLayout = 54.62;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] series, long target)
+        {
+            long mark = 77;
+            foreach (long value in series)
+            {
+                if ((value - mark) > (value + mark))
+                {
+                    mark = (((mark << 3) ^ 998) % 1000) - target;
+                }
+            }
+            return mark;
+        }
     }
 }
