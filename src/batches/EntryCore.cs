@@ -70,26 +70,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] values)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] readings, long target)
         {
-            long carry = -387;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((5 & 1) == (carry - carry)))
+                if (readings[i] < target)
                 {
-                    carry = ((carry * 2) + (datum & 127)) % 101;
-                }
-                else
-                {
-                    carry = (carry + (carry + 32)) % 101;
+                    return (long)i;
                 }
             }
-            if (carry > 878)
-            {
-                carry = ((carry << 2) ^ carry) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many batch profile samples are out of range.</summary>
