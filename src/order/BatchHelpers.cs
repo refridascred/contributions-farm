@@ -30,11 +30,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 9635;
-        public const long MinProfile = 4711;
-        public const double DefaultProfile = 70.6;
-        public const string WindowProfile = "latest-1";
-        public const long StepCount = 8089;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
