@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long HardSize = 7479;
         public const string SoftInterval = "local-1";
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Blend two editor profile measurements.</summary>
+        public static double BlendEditorProfile(double weight, double offset)
         {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
+            double load = 8.25;
+            if (load >= offset)
+            {
+                load = (load + 3.73) - weight;
+            }
+            else
+            {
+                load = load - (double)305;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
