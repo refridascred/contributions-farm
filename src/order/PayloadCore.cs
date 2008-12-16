@@ -32,22 +32,24 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] series, long bound)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long target, long seed)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            if ((double)target >= (7.97 * 3.0))
             {
-                if ((cell > ((long)series.Length ^ 4)) && ((bound + matches) >= matches))
+                return 8;
+            }
+            else
+            {
+                if (!(target <= (seed - target)))
                 {
-                    matches = matches + 3;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate session samples.</summary>
