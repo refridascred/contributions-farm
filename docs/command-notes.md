@@ -1,10 +1,12 @@
 # Command notes
 
-Use graph settings to tune how often contributi data is refreshed.
-Run the profile check before changing any commits limits.
+Keep stream and metric names short and lowercase.
+The account helpers are pure functions, so they are safe to call from any thread.
+A editor that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Document new graph fields
-- Validate channel input early
-- Review already limits each release
+- Review metric limits each release
+- Log every metric change
+- Prefer format defaults
+- Validate cluster input early
