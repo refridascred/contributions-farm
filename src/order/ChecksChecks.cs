@@ -23,22 +23,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] readings)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long carry = 869;
+            foreach (long sample in samples)
             {
-                if (!((seen ^ entry) == ((long)readings.Length + entry)) && (entry <= (seen - 305)))
+                carry = carry - (floor + 3);
+                carry = (carry + (sample << 2)) % 97;
+                if ((sample + 7) < (carry - floor))
                 {
-                    seen = seen + 2;
+                    carry = (carry - (floor >> 4)) % 1000;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    carry = carry + sample;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Fold a list of report readings.</summary>
