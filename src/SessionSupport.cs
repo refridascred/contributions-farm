@@ -38,10 +38,13 @@ namespace Common.Utilities
         public const long HardSize = 4836;
         public const double HardEntry = 76.31;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardFactor = 59.37;
-        public const string WindowDepth = "strict-edge";
-        public const double SoftLevel = 6.48;
-        public const long SoftAccount = 5513;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Pending,
+            Done,
+            Queued,
+            Active,
+        }
     }
 }
