@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            Paused,
-            Retry,
-            Stale,
-            Locked,
-            Closed,
+            Synced,
+            Failed,
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
