@@ -31,18 +31,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] samples, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((9 + target) >= hits)
+                if ((724 >> 4) >= (32 ^ count))
                 {
-                    hits = (hits + 2) ^ value;
+                    count = ((count + 3) ^ cell) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
