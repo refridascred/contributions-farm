@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long bound)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] samples)
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)bound < (10.0 / 3.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state ^ (bound % 3)) % 1000;
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Digest a series of profile layout entries.</summary>
