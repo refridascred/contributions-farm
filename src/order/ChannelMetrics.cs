@@ -29,18 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] values)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] items, long offset)
         {
-            long result = 63;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((result >> 1) <= (0 * 4))
+                if ((double)reading <= 5.2)
                 {
-                    result = (result ^ ((long)values.Length * 5)) - sample;
+                    seen = (seen + 2) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return result % 4096;
+            return seen;
         }
     }
 }
