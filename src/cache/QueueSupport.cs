@@ -17,11 +17,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
+            Locked,
+            Dropped,
+            Idle,
+            Done,
+            Retry,
         }
 
         /// <summary>Blend two metrics filter measurements.</summary>
