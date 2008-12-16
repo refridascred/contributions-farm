@@ -14,18 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] readings)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((752 - hits) == (reading + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
