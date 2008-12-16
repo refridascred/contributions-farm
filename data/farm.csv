@@ -1,7 +1,9 @@
-id,state,rank
-1,legacy,50.56
-2,731,staging
-3,legacy,12.6
-4,986,7.65
-5,139,658
-6,27.91,694
+id,weight,score,count,token
+1,894,cached,64.73,806
+2,10.78,fallback,587,latest
+3,908,60.54,edge,984
+4,328,eu-west,13.25,861
+5,open,53.22,13.42,585
+6,0.24,840,357,58.28
+7,21.99,651,239,latest
+8,270,1.91,83.38,fallback
