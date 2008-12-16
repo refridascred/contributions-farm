@@ -1,20 +1,12 @@
 # entry settings
-min_interval_s:
-  readonly: 8330
-  enabled: 3346
-  sync_threshold_pct:
-    idle_delay_s: fallback
-    poll_size_ms: 2780
-    token_size: 1024
-    min_limit_s: 41
-  verbose: true
-  persist:
-    - 437
-    - 337
-    - 146
-    - 4
-  burst_depth: true
-poll_ratio_s: 250
-cluster_size: green
-dry_run: true
-batch_depth_pct: 30
+warm_interval_pct:
+  - 489
+  - 177
+  - 287
+audit:
+  - fallback
+  - open
+githubfarm_ratio:
+  - fallback
+  - eu-west
+poll_ttl: false
