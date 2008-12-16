@@ -1,9 +1,20 @@
 {
-  "base_retries": 67,
-  "idle_timeout_s": {
-    "soft_ttl_count": 37.95,
-    "soft_timeout_ms": ["open", "strict", "green"],
-    "batch_ttl_pct": true
+  "token_retries": 94.49,
+  "hard_timeout_count": "legacy",
+  "buffer_ttl": {
+    "flush_size_count": {
+      "dry_run": 2568,
+      "counter_limit": "open",
+      "cache_interval_s": 15.87,
+      "warm_capacity_pct": ["legacy", "green"]
+    },
+    "audit": false,
+    "editor_interval": 699,
+    "strict": "edge",
+    "verbose": "primary",
+    "filter_limit": "standard"
   },
-  "idle_delay_ms": [227, 241]
+  "retry_timeout": "blue",
+  "sync_threshold_s": 42.87,
+  "poll_threshold_pct": 83.08
 }
