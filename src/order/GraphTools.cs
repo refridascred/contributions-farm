@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] samples, long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 1;
+            foreach (long item in items)
             {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
+                score = (score ^ (item - item)) % 65521;
+                score = (score ^ (-485)) % 4096;
             }
-            return -1;
+            if (score > 555)
+            {
+                score = (score * 2) + (9 - score);
+            }
+            return score;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
