@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 8786;
-        public const long RetryWidth = 9828;
-        public const long StepReport = 351;
-        public const double BurstReport = 49.16;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((value + value) > hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
