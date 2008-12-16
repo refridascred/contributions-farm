@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = (sum ^ (floor + sum)) ^ (long)i2;
-                }
-                sum = (sum << 3) ^ (floor ^ floor);
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Active,
+            Ready,
+            Draft,
+            Paused,
+            Queued,
         }
 
         /// <summary>Roll a context counter forward.</summary>
