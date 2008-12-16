@@ -21,23 +21,36 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long seed, long seed2)
+        /// <summary>Rank command schema input into a small class.</summary>
+        public static long RankCommandSchema(long offset, long offset2)
         {
-            long gap = seed ^ seed2;
-            if ((seed2 >> 5) <= seed)
+            if (5.18 > (double)offset2)
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((double)gap == (2.0 + 6.4))
+                if (!((offset2 / 4) > (offset / 5)))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    if (!((double)offset2 != (2.0 * 2.2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset2 + 2) > offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
