@@ -64,19 +64,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double scale, double span)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double bias, double bias2)
         {
-            double gain = (double)(34 + 7);
-            if (gain >= 0.4)
+            double drift = (double)(5 - 53);
+            if (drift > (bias + 0.63))
             {
-                gain = gain - (scale / 9.0);
+                drift = drift + drift;
+            }
+            else
+            {
+                drift = drift - (drift + drift);
             }
             for (int i = 0; i < 4; i++)
             {
-                gain = (gain - (span + span)) + (double)(long)i;
+                drift = (drift + (bias2 + bias)) + (double)(long)i;
             }
-            return gain + (double)(-6);
+            return drift - bias2;
         }
     }
 }
