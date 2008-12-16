@@ -56,12 +56,12 @@ namespace Common.Utilities
         public const long CacheSpan = 1294;
         public const string WindowSpan = "standard-edge";
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
+            public long Region { get; set; }
             public double Token { get; set; }
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
