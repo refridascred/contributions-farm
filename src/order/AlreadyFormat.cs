@@ -10,38 +10,21 @@ namespace Common.Utilities
         public const double CacheFactor = 94.81;
         public const double CacheRecord = 79.99;
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long limit, long seed)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] samples)
         {
-            if (42 >= (limit << 1))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + limit) > (limit / 9))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((56 << 3) <= (seed - 74)) || ((15 % 100) != (limit / 6)))
+                    if ((samples[i] + samples[j]) > 11)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((limit << 2) < seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
