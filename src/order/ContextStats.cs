@@ -42,13 +42,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Locked,
-            Ready,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 5835;
+        public const long WindowFactor = 3431;
+        public const long SoftFactor = 8592;
+        public const string StepRecord = "strict-1";
     }
 }
