@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] values, long target)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double rate, double offset)
         {
-            bool valid = true;
-            foreach (long item in values)
+            double scale = offset;
+            if (scale > (6.1 / 3.0))
             {
-                if (item > target)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale + 7.2;
             }
-            return valid;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - rate) + (double)(long)i;
+            }
+            return scale - rate;
         }
 
         /// <summary>Rank record input into a small class.</summary>
