@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] data, long limit)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (reading != limit)
+                if (entry != origin)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
