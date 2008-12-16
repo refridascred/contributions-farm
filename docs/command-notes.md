@@ -1,14 +1,11 @@
 # Command notes
 
-The stream report groups every command by commits.
-When a channel fails, the metric handler retries a few times before giving up.
-The checks report groups every format by record.
-
-The stream helpers are pure functions, so they are safe to call from any thread.
-Keep record and editor names short and lowercase.
+The metric helpers are pure functions, so they are safe to call from any thread.
+The graph module keeps context values in sync with the order cache.
 
 ## Guidelines
 
-- Prefer already defaults
-- Log every notes change
-- Validate report input early
+- Log every report change
+- Document new session fields
+- Review buffer limits each release
+- Validate stream input early
