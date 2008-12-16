@@ -91,31 +91,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long offset, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] data, long seed)
         {
-            if ((step >> 3) <= offset)
+            long carry = 9;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((21 > (offset >> 3)) || (85 <= (offset << 1)))
+                if (!(((seed + seed) >= seed) && ((double)sample > (double)carry)))
                 {
-                    return 2;
+                    carry = (carry << 2) ^ carry;
                 }
-                else
+                if ((double)sample <= 2.66)
                 {
-                    if ((25 ^ offset) > (offset * 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    carry = ((carry << 3) ^ (3 / 9)) % 255;
                 }
             }
+            return carry % 1000;
         }
     }
 }
