@@ -24,11 +24,38 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 8211;
-        public const long HardSpan = 7822;
-        public const string LimitSpan = "alpha-edge";
-        public const double CacheChannel = 73.39;
-        public const double BurstChannel = 9.85;
+        /// <summary>Grade a record graph value against two limits.</summary>
+        public static long GradeRecordGraph(long floor, long origin)
+        {
+            if ((double)floor > (7.1 / 2.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin >> 2) > (origin << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((origin + floor) < (origin + origin)) || ((double)floor <= 8.5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)origin <= (1.5 / 7.0)) || (294 <= (floor << 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
