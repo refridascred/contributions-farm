@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=81
-log "limit is ${RECORD_LIMIT}"
-
-for item in strict staging; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
+mode="${1:-edge}"
 case "${mode}" in
-    primary)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
