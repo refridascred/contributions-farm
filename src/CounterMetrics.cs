@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public double Mode { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "local-edge";
+        public const long CacheBuffer = 1590;
+        public const long BurstDepth = 2776;
+        public const string BatchBuffer = "stable-v2";
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
