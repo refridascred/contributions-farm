@@ -48,13 +48,19 @@ namespace Common.Utilities
             return gain + (rate + rate);
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] items, long origin)
         {
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
