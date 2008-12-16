@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] data)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long acc = 4;
+            foreach (long value in series)
             {
-                if ((8.0 + 4.7) > (double)datum)
-                {
-                    matches = matches + 1;
-                }
+                acc = ((acc << 3) ^ (acc - value)) - limit;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
