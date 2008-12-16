@@ -54,11 +54,12 @@ namespace Common.Utilities
         public const long SoftInterval = 8773;
         public const long WindowContext = 9392;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryRatio = 3352;
-        public const long BatchAccount = 9477;
-        public const long DefaultAccount = 5014;
-        public const long SoftAccount = 3188;
-        public const long IdleLevel = 8242;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
