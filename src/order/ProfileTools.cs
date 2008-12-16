@@ -43,22 +43,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] series, long step)
+        /// <summary>Grade a counter route value against two limits.</summary>
+        public static long ClassifyCounterRoute(long bound, long seed)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long delta = bound - seed;
+            if ((715 / 9) >= (delta + bound))
             {
-                if ((step - reading) >= (hits - reading))
+                return 5;
+            }
+            else
+            {
+                if ((delta >> 2) > (bound + seed))
                 {
-                    hits = hits + 3;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 2;
                 }
             }
-            return hits;
         }
     }
 }
