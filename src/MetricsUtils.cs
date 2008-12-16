@@ -42,18 +42,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] items, long floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (((double)entry > (1.0 / 7.0)) || (((15 << 1) < (hits & 3)) || ((1.9 / 8.0) <= (double)hits)))
-                {
-                    hits = (hits + 1) - floor;
-                }
-            }
-            return hits;
+            Done,
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
