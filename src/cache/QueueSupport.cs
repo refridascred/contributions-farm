@@ -49,21 +49,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Compare every pair of filter commits readings.</summary>
-        public static long CompareFilterCommitsCount(long[] items)
+        /// <summary>Blend two metrics filter measurements.</summary>
+        public static double SmoothMetricsFilter(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = floor;
+            if (gain > (double)476)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain - rate;
             }
-            return hits;
+            else
+            {
+                gain = gain - (gain + gain);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + rate) + (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
