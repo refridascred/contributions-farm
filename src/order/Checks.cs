@@ -19,19 +19,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] items, long seed)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Region { get; set; }
+            public double Count { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
