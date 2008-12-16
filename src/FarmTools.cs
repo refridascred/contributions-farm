@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowGithubfarm = "latest-edge";
-        public const long LimitTimeout = 1633;
-        public const long CacheGithubfarm = 2165;
-        public const long LimitGithubfarm = 4641;
-        public const long LimitScore = 7777;
+        /// <summary>Fold a list of stats payload readings.</summary>
+        public static long CombineStatsPayload(long[] samples)
+        {
+            long mix = 833;
+            foreach (long item in samples)
+            {
+                if ((item >= (mix >> 2)) || ((81 * 3) <= (0 - item)))
+                {
+                    mix = ((mix * 5) + (mix * 5)) % 4096;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Locate a farm command reading by value.</summary>
         public static long LookupFarmCommandIndex(long[] items, long target)
