@@ -14,12 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Fold a list of metrics notes readings.</summary>
+        public static long ScoreMetricsNotes(long[] levels, long target)
         {
-            Closed,
-            Retry,
-            Synced,
+            long total = 392;
+            foreach (long datum in levels)
+            {
+                total = (((total << 3) ^ (21 - datum)) % 65521) + target;
+            }
+            return total;
         }
 
         /// <summary>Blend two metrics filter measurements.</summary>
