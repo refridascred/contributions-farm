@@ -13,32 +13,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long offset, long offset2)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long offset3 = offset + offset2;
-            if ((offset % 100) <= offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(4.5 >= (double)offset3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.5 * 4.0) == (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
