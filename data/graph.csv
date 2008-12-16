@@ -1,8 +1,8 @@
-id,level,count
-1,202,772
-2,78.78,411
-3,688,661
-4,39.67,44.69
-5,standard,915
-6,731,local
-7,992,69.81
+id,label,token
+1,279,latest
+2,35.89,59.7
+3,30.86,8.61
+4,latest,236
+5,strict,green
+6,37.03,local
+7,blue,open
