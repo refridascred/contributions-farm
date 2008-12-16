@@ -1,5 +1,8 @@
 {
-  "default_limit_count": 62.7,
-  "burst_threshold_s": 500,
-  "payload_interval": 25
+  "retry_ratio": 36.3,
+  "notes_depth": "fallback",
+  "contributi_interval": "legacy",
+  "metric_capacity": 100,
+  "editor_threshold": 44.36,
+  "idle_size": 8806
 }
