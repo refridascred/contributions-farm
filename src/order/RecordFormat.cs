@@ -53,19 +53,18 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] series, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] samples)
         {
-            bool found = true;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (item > floor)
+                if ((matches / 3) != (matches * 4))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
