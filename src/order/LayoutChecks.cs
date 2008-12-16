@@ -17,10 +17,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultSpan = "open-edge";
-        public const string IdleWidth = "latest-1";
-        public const long BatchDepth = 1136;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (((16.0 + 10.0) >= (double)count) || ((double)count >= (10.0 - 13.0)))
+                {
+                    count = ((count + 3) - sample) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool VerifyProfileLimits(long[] readings, long seed)
