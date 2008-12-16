@@ -19,18 +19,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the filter token entries that pass the check.</summary>
-        public static long MeasureFilterTokenMatches(long[] values, long bound)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((((8 - bound) <= (26 + seen)) || ((bound + entry) <= ((-6) << 3))) && (17 <= (bound + entry)))
-                {
-                    seen = seen + 3;
-                }
+                anchor = anchor ^ floor;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
