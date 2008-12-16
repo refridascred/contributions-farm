@@ -1,11 +1,11 @@
 # Layout notes
 
-When a token fails, the order handler retries a few times before giving up.
-Defaults for editor live in the config folder and can be overridden per environment.
-Use batches settings to tune how often stats data is refreshed.
+Use layout settings to tune how often checks data is refreshed.
+The queue report groups every support by metric.
 
 ## Guidelines
 
-- Validate booking input early
-- Review editor limits each release
-- Keep schema values small
+- Review profile limits each release
+- Log every editor change
+- Prefer stream defaults
+- Validate tools input early
