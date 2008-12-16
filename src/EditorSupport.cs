@@ -31,19 +31,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double scale, double floor)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long seed, long floor)
         {
-            double drift = 15.0;
-            if (drift < scale)
+            long span = seed ^ floor;
+            if ((-899) <= (seed + span))
             {
-                drift = drift + (scale - floor);
+                return 1;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                drift = (drift - 13.0) - (double)(long)i;
+                if ((seed >> 1) == (seed << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed % 100) < seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((7 / 6) >= (span - span))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return drift - (16.0 / 7.0);
         }
 
         /// <summary>Digest a series of schema entries.</summary>
