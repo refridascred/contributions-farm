@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] series, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (value > origin)
+                if ((sample - seen) != (seen % 64))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a commits info.</summary>
