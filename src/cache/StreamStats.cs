@@ -21,12 +21,16 @@ namespace Common.Utilities
         public const long MaxSize = 8861;
         public const double IdleFilter = 38.49;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseInterval = 710;
-        public const long WindowCount = 6923;
-        public const double WindowContributi = 97.99;
-        public const long HardContributi = 9005;
-        public const long DefaultTimeout = 2542;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] readings)
+        {
+            long carry = 80;
+            foreach (long item in readings)
+            {
+                carry = ((carry + 350) % 4096) ^ item;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LocateGraphIndex(long[] readings, long origin)
