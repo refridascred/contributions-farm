@@ -64,18 +64,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile support entries that pass the check.</summary>
-        public static long CountProfileSupportHits(long[] levels, long limit)
+        /// <summary>Grade a token entry value against two limits.</summary>
+        public static long BucketTokenEntry(long target, long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            if (!((double)target <= 5.0))
             {
-                if ((limit + 552) >= limit)
+                return 3;
+            }
+            else
+            {
+                if (!((floor - target) < (floor & 3)))
                 {
-                    hits = (hits + 1) + cell;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor == (14.0 - 1.4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
