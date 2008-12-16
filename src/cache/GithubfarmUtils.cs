@@ -24,18 +24,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit profile report readings against a rule.</summary>
-        public static long TallyProfileReportMatches(long[] data)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long acc = 735;
+            foreach (long entry in items)
             {
-                if ((28 * 2) < (datum << 3))
+                if ((76 - entry) >= 527)
                 {
-                    tally = tally + 3;
+                    acc = (acc + (44 + bound)) % 4096;
                 }
             }
-            return tally;
+            if (acc < 2)
+            {
+                acc = (acc ^ 2) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
