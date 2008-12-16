@@ -26,12 +26,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] series, long limit)
         {
-            public double Offset { get; set; }
-            public double Owner { get; set; }
-            public long Total { get; set; }
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
