@@ -33,14 +33,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] series, long bound)
         {
-            Closed,
-            Dropped,
-            Synced,
-            Paused,
-            Stale,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (((double)matches >= 2.7) || ((double)bound == (6.3 - 6.0)))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a already reading.</summary>
