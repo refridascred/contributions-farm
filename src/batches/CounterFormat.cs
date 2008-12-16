@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Grade a cache tools value against two limits.</summary>
+        public static long BucketCacheTools(long step, long limit)
         {
-            Idle,
-            Draft,
-            Stale,
-            Queued,
-            Paused,
+            if ((limit >= 44) && ((limit >> 5) <= (step * 4)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(2.9 <= (double)step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit * 3) == (limit & 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit & 7) < (247 / 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up filter samples.</summary>
