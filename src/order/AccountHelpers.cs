@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long bound, long target)
-        {
-            long next = bound + target;
-            if ((double)next > (double)486)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((79 << 2) >= (next * 5)) && ((double)bound <= (8.0 * 2.49)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)next != (6.66 - 1.4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinMetric = 97.88;
+        public const long LimitMetric = 7775;
+        public const long BatchMetric = 2988;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long SeekSessionIndex(long[] levels, long floor)
