@@ -26,18 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] series, long bound)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry + entry) < (166 ^ matches))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 2) - bound;
+                    if ((levels[i] ^ levels[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
