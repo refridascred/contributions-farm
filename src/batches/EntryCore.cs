@@ -54,10 +54,21 @@ namespace Common.Utilities
             return bias - (rate / 2.0);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultRatio = 4760;
-        public const double HardProfile = 11.87;
-        public const long HardRatio = 5433;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((total - (long)i) == (step >> 1))
+                {
+                    total = (total - (step / 9)) % 4096;
+                }
+                total = total ^ (0 + total);
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long TallyAlready(long[] values)
