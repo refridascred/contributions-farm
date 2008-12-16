@@ -6,10 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=321
-log "limit is ${RECORD_LIMIT}"
-
-for item in stable eu-west primary; do
+for item in eu-west staging; do
     log "checking ${item}"
 done
 
