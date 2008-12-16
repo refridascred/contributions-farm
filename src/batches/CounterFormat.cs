@@ -41,11 +41,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryDepth = 4158;
-        public const long SoftBatches = 5641;
-        public const long DefaultBatches = 7433;
-        public const double SoftWidth = 92.19;
-        public const long BaseDepth = 5337;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = sum + (sum / 2);
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
