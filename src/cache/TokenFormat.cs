@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long step, long seed)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] items, long bound)
         {
-            long span = step - seed;
-            if ((step + seed) >= (span ^ seed))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((span / 6) != (step ^ seed))
+                if ((items[i] < bound) && ((items[i] % 5) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)step > (double)span) || ((double)step < (double)seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a context record.</summary>
