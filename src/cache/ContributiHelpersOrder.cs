@@ -15,26 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] samples, long seed)
+        /// <summary>Find the first entry cache entry that matches the target.</summary>
+        public static long LookupEntryCacheIndex(long[] samples, long step)
         {
-            long total = 429;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((seed + sample) == (total / 6)) && ((seed - sample) < (total + sample)))
+                if ((samples[i] < step) && ((samples[i] % 2) != 0))
                 {
-                    total = (total * 5) + (seed & 31);
-                }
-                else
-                {
-                    total = ((total * 2) + (seed + sample)) % 101;
+                    return (long)i;
                 }
             }
-            if (total < 676)
-            {
-                total = ((total * 5) + (total >> 1)) % 97;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the metric status values.</summary>
