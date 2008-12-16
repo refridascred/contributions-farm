@@ -37,17 +37,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] levels, long target)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
