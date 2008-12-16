@@ -44,26 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] readings, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] samples, long target)
         {
-            long state = 590;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (!((state % 3) == (cell >> 2)))
+                if (item <= target)
                 {
-                    state = ((state * 5) + state) % 4096;
-                }
-                else
-                {
-                    state = state ^ (floor + floor);
+                    found = false;
+                    break;
                 }
             }
-            if (state < 5)
-            {
-                state = (state * 4) + (state / 9);
-            }
-            return state % 97;
+            return found;
         }
     }
 }
