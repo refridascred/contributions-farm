@@ -20,11 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double scale, double bias)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            double scale2 = 17.0;
-            return (scale2 + (bias + bias)) + scale;
+            public bool Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Roll a account counter forward.</summary>
