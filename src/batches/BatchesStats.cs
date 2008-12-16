@@ -41,18 +41,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] items, long origin)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] series)
         {
-            long mark = -979;
-            foreach (long item in items)
+            long mix = -375;
+            foreach (long item in series)
             {
-                if ((mark + origin) == (origin * 2))
+                mix = (mix << 3) ^ mix;
+                if ((5.2 * 6.0) >= (double)item)
                 {
-                    mark = ((mark + mark) % 101) ^ item;
+                    break;
                 }
             }
-            return mark;
+            return mix % 1000;
         }
 
         /// <summary>Measure how many payload already samples are out of range.</summary>
