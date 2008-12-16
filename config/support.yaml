@@ -1,4 +1,10 @@
 # support settings
-metrics_ttl: primary
-soft_size_count: eu-west
-readonly: 100
+warm_size: 250
+flush_delay_count: 100
+burst_threshold_s: false
+batch_ttl:
+  - 108
+  - 475
+  - 490
+min_depth_pct: 97.57
+warm_size_pct: false
