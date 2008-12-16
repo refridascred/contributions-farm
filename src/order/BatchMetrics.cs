@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] items, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] levels, long step)
         {
-            long carry = 589;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                carry = (carry ^ (floor - cell)) % 4096;
-                if ((carry * 5) < (floor + 9))
+                if (datum <= step)
                 {
-                    carry = ((carry * 2) + (870 - cell)) % 1000;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    carry = (carry - floor) % 65521;
-                    carry = (carry + floor) % 101;
-                }
-                carry = carry ^ carry;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Rank record input into a small class.</summary>
