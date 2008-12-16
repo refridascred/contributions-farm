@@ -25,19 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] data, long target)
+        /// <summary>Validate buffer profile readings against a bound.</summary>
+        public static bool CheckBufferProfileLimits(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (reading <= target)
+                if (cell <= target)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
