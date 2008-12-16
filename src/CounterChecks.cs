@@ -30,39 +30,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long seed, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] levels, long floor)
         {
-            long lane = seed - offset;
-            if ((seed ^ offset) >= (seed - lane))
+            bool stale = true;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset < (lane >> 2))
+                if (item <= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)lane < (9.0 + 8.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((offset - seed) < (offset << 3)) || ((double)lane != (3.7 + 17.0)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a contributi info.</summary>
