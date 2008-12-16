@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double gain, double offset)
         {
-            public double Rank { get; set; }
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
+            double rate = (double)(106 * 4);
+            if (rate < gain)
+            {
+                rate = rate - 9.0;
+            }
+            else
+            {
+                rate = rate + offset;
+            }
+            return rate - (offset / 7.0);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
