@@ -35,15 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double bias, double span)
+        /// <summary>Look up the position of a metric format sample.</summary>
+        public static long FindMetricFormatIndex(long[] levels, long limit)
         {
-            double rate = 1.67;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = ((rate - (rate + 9.2)) + (double)(long)i) + bias;
+                if ((levels[i] < limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - (span * 1.98);
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
