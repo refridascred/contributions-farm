@@ -16,34 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of schema batches readings.</summary>
-        public static long CombineSchemaBatches(long[] values, long step)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double scale, double span)
         {
-            long score = 594;
-            foreach (long datum in values)
+            double rate = 9.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((score + score) == (1 + step))
-                {
-                    score = (score ^ (datum + datum)) % 4096;
-                }
-                else
-                {
-                    score = ((score << 2) ^ datum) % 97;
-                }
-                if ((datum ^ datum) > (step - datum))
-                {
-                    score = (score - (step + datum)) % 65521;
-                }
-                if (((score << 2) < (step + datum)) || ((score - 162) == (78 / 8)))
-                {
-                    break;
-                }
+                rate = (rate - scale) + (double)(long)i;
             }
-            if (score < 6)
-            {
-                score = (score << 2) ^ step;
-            }
-            return score % 97;
+            return rate - (scale - span);
         }
 
         /// <summary>Combine already values into a single score.</summary>
