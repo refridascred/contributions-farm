@@ -13,13 +13,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            Idle,
-            Pending,
-            Dropped,
-            New,
+            Retry,
+            Paused,
+            Stale,
         }
 
         /// <summary>Rank tools batch input into a small class.</summary>
