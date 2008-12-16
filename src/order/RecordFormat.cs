@@ -48,18 +48,32 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] samples)
+        /// <summary>Grade a stats command value against two limits.</summary>
+        public static long ClassifyStatsCommand(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long edge = origin - offset;
+            if (!(origin >= (origin * 2)))
             {
-                if ((matches / 3) != (matches * 4))
+                return 6;
+            }
+            else
+            {
+                if ((double)edge < (4.0 - 7.6))
                 {
-                    matches = (matches + 1) ^ item;
+                    return 1;
+                }
+                else
+                {
+                    if ((3.36 - 1.0) != (double)edge)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
