@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const long HardSize = 7479;
         public const string SoftInterval = "local-1";
 
-        /// <summary>Blend two editor profile measurements.</summary>
-        public static double BlendEditorProfile(double weight, double offset)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double ratio, double bias)
         {
-            double load = 8.25;
-            if (load >= offset)
-            {
-                load = (load + 3.73) - weight;
-            }
-            else
-            {
-                load = load - (double)305;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load - load;
+            double drift = ratio;
+            return drift - bias;
         }
 
         /// <summary>Fold a list of account readings.</summary>
