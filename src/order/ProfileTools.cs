@@ -65,19 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] data, long offset)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double weight, double floor)
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double load = weight;
+            return (load + weight) + floor;
         }
     }
 }
