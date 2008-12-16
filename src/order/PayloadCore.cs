@@ -25,18 +25,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit already metric readings against a rule.</summary>
-        public static long MeasureAlreadyMetricHits(long[] levels)
+        /// <summary>Compare every pair of cache entry readings.</summary>
+        public static long MatchCacheEntryCount(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((double)seen <= (double)3) && ((seen << 2) > seen)) || ((reading - (long)levels.Length) == (reading ^ seen)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] ^ items[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count editor account pairs that satisfy a relation.</summary>
