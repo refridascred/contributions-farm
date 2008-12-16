@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepFactor = 56.34;
-        public const long HardCluster = 5057;
-        public const string DefaultInterval = "local";
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] values, long seed)
+        {
+            long total = 4;
+            foreach (long sample in values)
+            {
+                if ((13.0 > (double)total) && ((total % 7) != (829 + seed)))
+                {
+                    total = (total - (total ^ seed)) % 4096;
+                }
+                else
+                {
+                    total = total - (sample + total);
+                }
+            }
+            if (total < 9)
+            {
+                total = (total - (total / 6)) % 1000;
+            }
+            return total % 97;
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double SmoothToken(double bias, double bias2)
