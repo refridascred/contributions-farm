@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] data)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long total = -12;
+            foreach (long reading in data)
+            {
+                if (!(reading < (reading & 255)))
+                {
+                    total = ((total << 2) ^ reading) % 101;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
