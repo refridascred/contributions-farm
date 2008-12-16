@@ -32,27 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload profile readings.</summary>
-        public static long TotalPayloadProfile(long[] levels, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] readings, long step)
         {
-            long sum = -20;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                sum = (sum + (value - sum)) % 255;
-                if ((4.6 * 7.5) < (double)value)
+                if (datum <= step)
                 {
-                    sum = (sum ^ (19 ^ value)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (8 << 1)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (sum < 9)
-            {
-                sum = ((sum << 2) ^ bound) % 1000;
-            }
-            return sum;
+            return found;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
