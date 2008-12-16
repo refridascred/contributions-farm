@@ -23,18 +23,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] values)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen ^ seen) <= (seen - seen))
+                if (items[i] >= offset)
                 {
-                    seen = (seen + 1) ^ entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
