@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of commits record readings.</summary>
-        public static long PairCommitsRecordCount(long[] readings)
+        /// <summary>Project the next context buffer value.</summary>
+        public static double ScaleContextBuffer(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double weight = (double)((-3) - 19);
+            return ((weight - (11.0 + 3.45)) + rate) + bias;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
