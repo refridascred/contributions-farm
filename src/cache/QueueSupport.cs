@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Iterate the queue support series from a seed.</summary>
+        public static long IterateQueueSupport(long bound)
         {
-            Active,
-            Dropped,
-            Ready,
-            Pending,
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum + sum) % 65521;
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many payload cache samples are out of range.</summary>
