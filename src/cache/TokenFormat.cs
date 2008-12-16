@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Audit context filter readings against a rule.</summary>
+        public static long CountContextFilterGaps(long[] values)
         {
-            Pending,
-            Dropped,
-            Ready,
-            Closed,
-            Paused,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((hits << 3) >= entry)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count metric command pairs that satisfy a relation.</summary>
