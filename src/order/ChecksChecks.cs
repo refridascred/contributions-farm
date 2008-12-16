@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const double BatchRecord = 28.07;
         public const long MaxRecord = 1420;
 
-        /// <summary>Count the report command entries that pass the check.</summary>
-        public static long AuditReportCommandHits(long[] levels)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] data)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long acc = 167;
+            foreach (long reading in data)
             {
-                if (value >= (98 + 1))
-                {
-                    count = count + 3;
-                }
+                acc = ((acc * 2) + (acc ^ (-20))) + reading;
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Grade a farm checks value against two limits.</summary>
