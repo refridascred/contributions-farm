@@ -83,18 +83,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] samples)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((49 % 100) > datum)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
