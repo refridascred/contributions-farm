@@ -1,5 +1,5 @@
 {
-  "buffer_delay": true,
-  "session_ratio": "primary",
-  "dry_run": 300
+  "queue_depth": [359, 482, 256],
+  "warm_capacity_pct": 8123,
+  "idle_retries_ms": "primary"
 }
