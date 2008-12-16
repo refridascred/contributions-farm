@@ -40,11 +40,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double rate, double bias)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long seed, long floor)
         {
-            double bias2 = (double)(715 - 55);
-            return (bias2 + (rate - rate)) + bias;
+            long lane = seed ^ floor;
+            if ((double)seed < (0.46 * 2.4))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((lane + seed) == (43 - floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
