@@ -54,15 +54,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the stats githubfarm series from a seed.</summary>
-        public static long DeriveStatsGithubfarm(long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] items, long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (value <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
     }
 }
