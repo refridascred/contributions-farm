@@ -14,11 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            Locked,
-            Stale,
+            Dropped,
+            New,
+            Retry,
+            Closed,
             Draft,
         }
 
