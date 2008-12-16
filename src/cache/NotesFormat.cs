@@ -42,12 +42,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] items, long limit)
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
