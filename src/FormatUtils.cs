@@ -54,12 +54,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 5909;
-        public const long DefaultSchema = 7072;
-        public const long IdleInterval = 8607;
-        public const long MaxFactor = 2813;
-        public const double SoftSchema = 39.49;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatOutliers(long[] readings, long bound)
