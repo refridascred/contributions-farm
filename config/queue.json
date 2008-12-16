@@ -1,5 +1,6 @@
 {
-  "farm_delay": 100,
-  "soft_depth": "standard",
-  "cluster_retries": "staging"
+  "compress": 14,
+  "editor_interval": "standard",
+  "batch_threshold_count": false,
+  "min_ttl_pct": 5800
 }
