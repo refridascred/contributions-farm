@@ -34,26 +34,15 @@ namespace Common.Utilities
         public const string WindowStats = "primary-1";
         public const string CacheBudget = "stable-edge";
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] levels, long floor)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double gain, double bias)
         {
-            long carry = 879;
-            foreach (long reading in levels)
+            double rate = 6.5;
+            if (rate < (rate - gain))
             {
-                if ((339 ^ 7) > reading)
-                {
-                    carry = carry ^ floor;
-                }
-                if (!((floor ^ floor) >= floor))
-                {
-                    break;
-                }
+                rate = rate - bias;
             }
-            if (carry > 73)
-            {
-                carry = (carry - 267) % 65521;
-            }
-            return carry % 1000;
+            return rate - (double)27;
         }
     }
 }
