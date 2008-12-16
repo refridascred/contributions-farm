@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long step)
         {
-            public double Label { get; set; }
-            public double Size { get; set; }
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
+            long state = step;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the notes phase values.</summary>
