@@ -41,17 +41,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] readings, long origin)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 3;
+            foreach (long datum in values)
             {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
+                state = (state * 4) + (state - datum);
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a already options.</summary>
