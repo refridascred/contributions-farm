@@ -61,10 +61,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxChannel = 90.52;
-        public const long BurstChannel = 5929;
-        public const long SoftChannel = 7186;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)step >= (9.7 / 6.0))
+                {
+                    tally = (tally + 3) - datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two report measurements.</summary>
         public static double ProjectReport(double bias, double bias2)
