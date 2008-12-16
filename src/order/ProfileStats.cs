@@ -23,11 +23,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] samples, long floor)
         {
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((floor / 9) >= item)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
