@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit stats batches readings against a rule.</summary>
-        public static long MeasureStatsBatchesHits(long[] readings, long limit)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((88 + tally) < (limit / 7))
-                {
-                    tally = (tally + 2) ^ value;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
