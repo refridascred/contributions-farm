@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] data, long target)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long total = 50;
-            foreach (long reading in data)
-            {
-                total = (((total + (total & 255)) % 4096) ^ reading) + target;
-            }
-            return total;
+            Active,
+            Draft,
+            Synced,
+            Stale,
+            Ready,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
