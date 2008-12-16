@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public string Offset { get; set; } = "";
-            public double Token { get; set; }
-            public bool Flag { get; set; }
-            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Fold a list of entry readings.</summary>
