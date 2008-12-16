@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] series, long bound)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long offset)
         {
-            long score = -33;
-            foreach (long item in series)
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)item > (double)bound)
-                {
-                    score = ((score * 3) + (bound ^ item)) % 255;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            if (score < 5)
-            {
-                score = (score + (4 + bound)) % 255;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
