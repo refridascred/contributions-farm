@@ -20,35 +20,28 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long step, long step2)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long origin, long limit)
         {
-            if ((step + step) <= step2)
+            if ((limit / 3) > (origin + origin))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if ((step2 < (step2 - step2)) && ((9.85 + 4.0) > (double)step2))
+                if ((limit - limit) < 72)
                 {
                     return 5;
                 }
                 else
                 {
-                    if ((step2 + step) > (629 * 5))
+                    if ((((-904) ^ origin) < (origin << 1)) && ((8.3 / 2.0) > (double)origin))
                     {
-                        return 6;
+                        return 3;
                     }
                     else
                     {
-                        if (((step2 / 2) == ((-9) ^ step2)) || ((step ^ step2) != (step2 >> 4)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 1;
                     }
                 }
             }
