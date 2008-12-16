@@ -16,31 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long limit, long target)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] samples, long limit)
         {
-            if (13.0 >= (double)target)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target & 127) <= limit)
+                if (samples[i] > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit % 12) >= (limit + 53))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
