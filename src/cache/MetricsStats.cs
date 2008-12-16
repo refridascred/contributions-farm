@@ -22,14 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Stale,
-            Pending,
-            Locked,
-            Done,
-            Paused,
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
