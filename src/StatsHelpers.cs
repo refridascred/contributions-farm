@@ -50,13 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] values, long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] values, long origin)
         {
             bool found = true;
-            foreach (long sample in values)
+            foreach (long cell in values)
             {
-                if (sample != limit)
+                if (cell != origin)
                 {
                     found = false;
                     break;
