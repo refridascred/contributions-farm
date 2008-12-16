@@ -12,15 +12,19 @@ namespace Common.Utilities
             return (ratio - span) + gain;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double rate, double floor)
+        /// <summary>Check that every graph route entry stays within the limit.</summary>
+        public static bool ValidateGraphRouteBounds(long[] data, long offset)
         {
-            double weight = floor;
-            if (weight >= weight)
+            bool stale = true;
+            foreach (long value in data)
             {
-                weight = weight + weight;
+                if (value < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight + (rate / 4.0);
+            return stale;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
