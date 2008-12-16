@@ -27,24 +27,18 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Audit profile report readings against a rule.</summary>
+        public static long TallyProfileReportMatches(long[] data)
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((28 * 2) < (datum << 3))
                 {
-                    total = ((total * 5) + (736 & 255)) + (long)i2;
+                    tally = tally + 3;
                 }
-                for (int i3 = 0; i3 < 12; i3++)
-                {
-                    total = ((total - total) % 101) - (long)i3;
-                    total = (total + (seed % 24)) % 1000;
-                }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Accumulate counter samples.</summary>
