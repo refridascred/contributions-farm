@@ -41,38 +41,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long floor, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] series, long seed)
         {
-            if (977 > floor)
+            bool found = true;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(target <= ((-742) ^ floor)))
+                if (datum >= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((9.0 * 8.9) == (double)floor) || ((14.0 - 5.0) != (double)target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor - (-960)) < (target % 100))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
