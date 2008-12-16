@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Count the layout editor entries that pass the check.</summary>
+        public static long MeasureLayoutEditorGaps(long[] levels, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                carry = (carry * 4) + (bound + bound);
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (((6.43 + 0.4) == (double)entry) || ((step > 0) && (57 < count)))
+                {
+                    count = count + 3;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
