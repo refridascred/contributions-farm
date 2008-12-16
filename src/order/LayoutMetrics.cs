@@ -11,15 +11,39 @@ namespace Common.Utilities
         public const long StepFarm = 8815;
         public const long BatchFarm = 5825;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long offset)
+        /// <summary>Grade a graph layout value against two limits.</summary>
+        public static long RankGraphLayout(long offset, long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            long gap = offset ^ limit;
+            if ((double)limit < (4.77 * 1.71))
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((gap - gap) >= offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)limit >= (double)gap))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset < (offset + gap))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
