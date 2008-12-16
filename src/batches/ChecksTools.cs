@@ -16,16 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] series)
-        {
-            long anchor = 3;
-            foreach (long reading in series)
-            {
-                anchor = (((anchor * 3) + 56) % 255) - reading;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardBudget = "standard-edge";
+        public const long RetryFactor = 977;
+        public const string StepReport = "fallback-1";
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long IterateSession(long origin)
