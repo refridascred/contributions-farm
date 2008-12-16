@@ -56,31 +56,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long bound, long seed)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] items)
         {
-            if ((seed >= (seed + seed)) || ((7 - bound) < seed))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed + 1) > (11 - 97))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((bound & 7) > seed))
+                    if ((items[i] - items[j]) == 20)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit route account readings against a rule.</summary>
