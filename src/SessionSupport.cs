@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a queue buffer pair into a bucket.</summary>
-        public static long GradeQueueBuffer(long target, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] readings)
         {
-            long edge = target ^ step;
-            if ((step / 2) != (88 + edge))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target < (6.7 + 2.54))
+                if ((item - matches) <= (-689))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a window order value against two limits.</summary>
