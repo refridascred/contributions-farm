@@ -14,15 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of metrics notes readings.</summary>
-        public static long ScoreMetricsNotes(long[] levels, long target)
+        /// <summary>Measure how many payload cache samples are out of range.</summary>
+        public static long CountPayloadCacheMatches(long[] samples, long origin)
         {
-            long total = 392;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                total = (((total << 3) ^ (21 - datum)) % 65521) + target;
+                if ((44 & 3) >= (cell * 3))
+                {
+                    matches = (matches + 1) + origin;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Blend two metrics filter measurements.</summary>
