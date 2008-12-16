@@ -1,22 +1,30 @@
 # entry settings
+session_timeout:
+  metrics_timeout: open
+  counter_ttl:
+    - 248
+    - 4
+    - 308
+    - 122
+  batch_interval: 36
+checks_retries: 30
+enabled: false
 audit:
-  notes_window: 1024
-  soft_ttl_count: 50.96
-  retry_ratio_s: cached
-max_capacity_s: 63.42
-farm_delay: legacy
-checks_window:
-  burst_delay_s: true
-  verbose:
-    - 367
-    - 89
-    - 270
-    - 140
-  default_size_ms:
-    retry_interval: standard
-    entry_delay: staging
-    compress: 84
-  stream_depth: 76.74
-  cache_delay: 82.94
-batch_retries_s: 9409
-sync_interval_ms: latest
+  - green
+  - eu-west
+  - blue
+  - staging
+window_interval:
+  base_limit_ms: latest
+  batches_size: legacy
+  entry_limit:
+    base_window_s: local
+    token_retries: true
+    poll_timeout_s: false
+    profile_retries: legacy
+    flush_retries_count: false
+    retry_threshold_ms:
+      - 494
+      - 158
+      - 184
+      - 195
