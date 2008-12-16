@@ -46,18 +46,26 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many payload already samples are out of range.</summary>
-        public static long AuditPayloadAlreadyGaps(long[] samples)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long mark = -818;
+            foreach (long sample in series)
             {
-                if (!((seen << 1) >= (35 + datum)))
+                if (((7.5 * 20.0) != (double)sample) || ((6.9 / 6.0) >= (double)mark))
                 {
-                    seen = seen + 2;
+                    mark = (mark - ((-52) - sample)) % 4096;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (sample - mark);
                 }
             }
-            return seen;
+            if (mark > 168)
+            {
+                mark = (mark * 2) + (mark << 1);
+            }
+            return mark % 1000;
         }
     }
 }
