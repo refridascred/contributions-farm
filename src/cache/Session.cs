@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] readings)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 435;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result - (result * 2)) ^ entry;
             }
-            return tally;
+            if (result < (-9))
+            {
+                result = (result - result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
