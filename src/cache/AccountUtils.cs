@@ -27,11 +27,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseContributi = 78.59;
-        public const double DefaultContributi = 27.24;
-        public const double BurstLevel = 58.19;
-        public const long StepBudget = 7279;
-        public const long StepContributi = 6489;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] readings)
+        {
+            long carry = 868;
+            foreach (long value in readings)
+            {
+                if ((carry >> 5) < 6)
+                {
+                    carry = ((carry << 3) ^ value) % 97;
+                }
+            }
+            if (carry > 5)
+            {
+                carry = (carry << 2) ^ (5 + 87);
+            }
+            return carry;
+        }
     }
 }
