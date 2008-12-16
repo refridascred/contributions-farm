@@ -44,16 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = (sum ^ (seed - sum)) % 65521;
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 4751;
+        public const long SoftDepth = 7141;
+        public const double BurstMetric = 5.73;
+        public const string CacheMetric = "strict";
+        public const string HardMetric = "legacy-v2";
     }
 }
