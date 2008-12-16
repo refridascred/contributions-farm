@@ -56,13 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] data, long step)
         {
-            Idle,
-            Ready,
-            Done,
-            Paused,
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up report samples.</summary>
