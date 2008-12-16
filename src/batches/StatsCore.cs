@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] data, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (entry < seed)
+                if (((8.0 > (double)datum) || ((tally % 3) == (datum * 3))) && !((38 - (-645)) >= datum))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) + limit;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Adjust a checks reading.</summary>
