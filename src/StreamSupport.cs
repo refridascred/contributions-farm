@@ -34,38 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long seed, long offset)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            if (!((3.0 * 5.06) > (double)offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed > 1)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)seed == (double)offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((5.4 + 0.9) > (double)seed) && ((542 >> 2) != (offset + offset)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public bool Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
