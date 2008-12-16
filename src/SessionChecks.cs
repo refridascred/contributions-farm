@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 7440;
-        public const long DefaultSpan = 2992;
-        public const long CacheSpan = 4097;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
