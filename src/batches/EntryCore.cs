@@ -66,11 +66,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinWidth = 16.98;
-        public const string SoftStream = "local-1";
-        public const long BaseLevel = 4798;
-        public const long BurstRatio = 7532;
+        /// <summary>Check that every queue commits entry stays within the limit.</summary>
+        public static bool CheckQueueCommitsLimits(long[] samples, long step)
+        {
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long WeighSupport(long[] readings)
