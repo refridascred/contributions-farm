@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] samples)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry & 3) >= 13)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
