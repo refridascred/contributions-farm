@@ -44,11 +44,11 @@ namespace Common.Utilities
             return (load - (18.0 + 8.2)) + scale;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 6089;
-        public const long MinInterval = 8471;
-        public const long DefaultAccount = 5510;
-        public const long IdleLevel = 6397;
-        public const double BurstFactor = 7.68;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 49.28;
+        public const long IdleSize = 2536;
+        public const string IdleFormat = "legacy-1";
+        public const double LimitFormat = 62.64;
+        public const long DefaultFormat = 4878;
     }
 }
