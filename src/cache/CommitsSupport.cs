@@ -33,13 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] series)
         {
-            Failed,
-            Queued,
-            Synced,
-            Idle,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seen * 3) > 6)
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up farm samples.</summary>
