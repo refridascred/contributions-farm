@@ -1,5 +1,6 @@
 {
-  "filter_interval": "local",
-  "githubfarm_timeout": "primary",
-  "compress": false
+  "min_ratio_pct": "green",
+  "enabled": true,
+  "warm_depth": [367, 130, 55],
+  "max_ttl": "edge"
 }
