@@ -51,21 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] samples)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
