@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] values, long offset)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
