@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            Stale,
-            Synced,
-            Locked,
             Active,
-            Queued,
+            New,
+            Ready,
         }
 
         /// <summary>Hold a entry entry.</summary>
