@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] series, long step)
+        /// <summary>Look up the position of a cache stream sample.</summary>
+        public static long SeekCacheStreamIndex(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] > step)
+                if (values[i] == limit)
                 {
                     return (long)i;
                 }
