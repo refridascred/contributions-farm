@@ -5,35 +5,29 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long target, long seed)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long step, long seed)
         {
-            if ((double)seed > (12.0 - 7.41))
+            long span = step - seed;
+            if ((step + seed) >= (span ^ seed))
             {
                 return 7;
             }
             else
             {
-                if (((double)seed >= 1.1) || ((double)seed > (double)target))
+                if ((span / 6) != (step ^ seed))
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((297 >> 2) > (target - seed))
+                    if (((double)step > (double)span) || ((double)step < (double)seed))
                     {
-                        return 0;
+                        return 3;
                     }
                     else
                     {
-                        if (seed < target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 0;
                     }
                 }
             }
