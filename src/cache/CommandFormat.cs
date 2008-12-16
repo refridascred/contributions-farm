@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Done,
-            Paused,
-            Ready,
+            public long Owner { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a cache entry.</summary>
