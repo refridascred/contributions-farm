@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const long CacheWindow = 7024;
         public const long DefaultLevel = 3012;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] levels)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long state = 17;
-            foreach (long sample in levels)
-            {
-                if (237 > (state - state))
-                {
-                    state = (state - (sample ^ sample)) % 255;
-                }
-            }
-            return state % 4096;
+            Draft,
+            Active,
+            Dropped,
+            Locked,
+            Ready,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
