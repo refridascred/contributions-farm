@@ -55,12 +55,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstDepth = 3930;
-        public const long BaseCache = 8760;
-        public const long WindowFactor = 5468;
-        public const double BurstInterval = 49.53;
-        public const long BurstLevel = 1734;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public double Limit { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long IdleProfile = 7547;
