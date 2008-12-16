@@ -30,19 +30,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] series, long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] levels)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (entry >= limit)
+                if (value >= (count + 142))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
