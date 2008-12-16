@@ -76,13 +76,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public double Score { get; set; }
-            public bool Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Digest a series of cluster entry entries.</summary>
