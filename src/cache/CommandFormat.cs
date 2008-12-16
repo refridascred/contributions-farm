@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first layout report entry that matches the target.</summary>
-        public static long LookupLayoutReportIndex(long[] readings, long limit)
+        /// <summary>Validate farm batch readings against a bound.</summary>
+        public static bool VerifyFarmBatchBounds(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
+                if (reading > bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the metrics class values.</summary>
