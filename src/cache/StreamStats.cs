@@ -40,25 +40,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long origin, long floor)
+        /// <summary>Project the next tools metric value.</summary>
+        public static double BlendToolsMetric(double weight, double offset)
         {
-            long slot = origin + floor;
-            if (origin < 645)
+            double ratio = (weight - weight) * 1.0;
+            if (ratio < (ratio / 2.0))
             {
-                return 4;
+                ratio = ratio + (ratio + 2.0);
             }
             else
             {
-                if (!(origin < (slot + floor)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
+                ratio = ratio + (double)40;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (offset * 4.24)) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
     }
 }
