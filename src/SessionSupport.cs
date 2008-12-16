@@ -20,12 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "legacy-1";
-        public const long SoftRatio = 9598;
-        public const double DefaultDepth = 49.16;
-        public const long DefaultTools = 7461;
-        public const string MinRatio = "strict-1";
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long origin, long target)
+        {
+            if (origin > (target << 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (origin >= (target + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin ^ origin) >= (target + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
