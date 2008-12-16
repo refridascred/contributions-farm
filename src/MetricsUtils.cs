@@ -44,17 +44,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first route notes entry that matches the target.</summary>
-        public static long LocateRouteNotesIndex(long[] samples, long target)
+        /// <summary>Audit stream support readings against a rule.</summary>
+        public static long MeasureStreamSupportHits(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (samples[i] < target)
+                if ((count / 6) <= count)
                 {
-                    return (long)i;
+                    count = ((count + 1) - cell) - step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
