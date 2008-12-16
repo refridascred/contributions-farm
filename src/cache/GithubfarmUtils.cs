@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double rate, double offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] values)
         {
-            double gain = (double)((-33) ^ 7);
-            for (int i = 0; i < 4; i++)
+            long mix = -3;
+            foreach (long value in values)
             {
-                gain = (gain + (double)(long)i) - rate;
+                mix = (((mix * 2) + mix) % 97) - value;
             }
-            return gain + (gain - offset);
+            return mix;
         }
 
         /// <summary>Hold a batch record.</summary>
