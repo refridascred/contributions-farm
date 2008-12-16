@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the batches context entries that pass the check.</summary>
-        public static long MeasureBatchesContextMatches(long[] data, long origin)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            if ((bound << 2) >= (581 % 64))
             {
-                if ((tally - 722) < (tally / 3))
+                return 2;
+            }
+            else
+            {
+                if (origin <= (origin - origin))
                 {
-                    tally = ((tally + 1) + item) - origin;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((bound & 15) > (origin << 3)) || ((bound << 2) != (origin + origin)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the stream class values.</summary>
