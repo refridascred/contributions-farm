@@ -19,15 +19,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Roll a report command counter forward.</summary>
-        public static long SeriesReportCommand(long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] series)
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
+            long acc = 1;
+            foreach (long value in series)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                acc = (((acc * 2) + acc) % 4096) - value;
             }
-            return sum;
+            if (acc < 9)
+            {
+                acc = ((acc << 2) ^ acc) % 101;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
