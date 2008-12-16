@@ -65,15 +65,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double ratio, double span)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] levels)
         {
-            double drift = span;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                drift = ((drift - drift) + (double)(long)i) + ratio;
+                if ((value + 99) < 177)
+                {
+                    matches = matches + 1;
+                }
             }
-            return drift - 4.0;
+            return matches;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
