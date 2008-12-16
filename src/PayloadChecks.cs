@@ -50,32 +50,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a account buffer value against two limits.</summary>
-        public static long SortAccountBuffer(long origin, long floor)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long bound)
         {
-            long next = origin ^ floor;
-            if (((double)next > (7.11 + 5.37)) || ((origin - origin) != (4 - floor)))
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((195 / 4) > (next - floor))
+                acc = ((acc * 4) + (acc ^ acc)) % 65521;
+                acc = (acc + ((long)i >> 2)) % 101;
+                if (!(acc >= (acc + (long)i)))
                 {
-                    return 7;
+                    acc = ((acc << 3) ^ bound) % 4096;
                 }
                 else
                 {
-                    if (((double)floor == (17.0 / 2.0)) || ((18.0 + 3.0) <= (double)next))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    acc = (acc * 4) + (bound ^ acc);
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
