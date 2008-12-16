@@ -40,18 +40,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] values)
+        /// <summary>Fold a list of commits support readings.</summary>
+        public static long ScoreCommitsSupport(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long anchor = 591;
+            foreach (long value in readings)
             {
-                if ((hits - datum) != (datum + hits))
+                if ((anchor - 882) < (anchor * 2))
                 {
-                    hits = hits + 2;
+                    anchor = (((anchor << 3) ^ (30 / 9)) % 255) + value;
                 }
             }
-            return hits;
+            if (anchor < 563)
+            {
+                anchor = (anchor - (anchor + anchor)) % 255;
+            }
+            return anchor % 1000;
         }
     }
 }
