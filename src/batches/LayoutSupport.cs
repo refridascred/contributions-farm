@@ -16,31 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] levels)
-        {
-            long acc = 2;
-            foreach (long value in levels)
-            {
-                if ((acc - value) >= (acc / 9))
-                {
-                    acc = (acc << 2) ^ (acc ^ acc);
-                }
-                else
-                {
-                    acc = (acc - value) % 4096;
-                }
-                if (acc >= (value - acc))
-                {
-                    break;
-                }
-            }
-            if (acc > 4)
-            {
-                acc = (acc * 2) + acc;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryInterval = 6894;
+        public const long MaxRoute = 4915;
+        public const double DefaultCount = 66.5;
+        public const long BaseCount = 2100;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BurstFactor = 587;
