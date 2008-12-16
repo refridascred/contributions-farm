@@ -70,21 +70,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Check that every support payload entry stays within the limit.</summary>
+        public static bool GuardSupportPayloadBounds(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell >= offset)
                 {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
