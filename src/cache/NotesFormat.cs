@@ -12,19 +12,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] values, long bound)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] series)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long sum = 57;
+            foreach (long reading in series)
             {
-                if (sample != bound)
+                if ((double)sum <= (double)reading)
                 {
-                    found = false;
-                    break;
+                    sum = sum + (sum / 7);
                 }
             }
-            return found;
+            if (sum > 56)
+            {
+                sum = (sum ^ (sum - sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Roll a counter farm counter forward.</summary>
