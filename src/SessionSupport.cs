@@ -33,16 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] readings)
-        {
-            long mix = 87;
-            foreach (long entry in readings)
-            {
-                mix = (((mix * 4) + 241) % 65521) ^ entry;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 8199;
+        public const long HardSize = 4836;
+        public const double HardEntry = 76.31;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long DigestContributi(long[] data, long step)
