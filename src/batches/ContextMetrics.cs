@@ -44,32 +44,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] items, long target)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long total = 6;
-            foreach (long entry in items)
-            {
-                if ((entry * 5) < target)
-                {
-                    total = (total - (total + target)) % 1000;
-                }
-                if ((8.6 * 5.0) == (double)entry)
-                {
-                    total = (total * 4) + (total - entry);
-                    total = (total ^ target) % 101;
-                    break;
-                }
-                else
-                {
-                    total = (total ^ entry) % 1000;
-                }
-                if ((441 >> 5) >= (total >> 4))
-                {
-                    total = (total - (entry >> 5)) % 97;
-                }
-            }
-            return total % 97;
+            Dropped,
+            Retry,
+            Synced,
+            Pending,
+            Paused,
         }
     }
 }
