@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Done,
-            New,
-            Locked,
-            Retry,
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
