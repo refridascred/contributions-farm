@@ -24,12 +24,24 @@ namespace Common.Utilities
         public const double HardWidth = 47.7;
         public const string RetryBudget = "latest-v2";
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Grade a cache window value against two limits.</summary>
+        public static long BucketCacheWindow(long seed, long limit)
         {
-            Retry,
-            Draft,
-            Pending,
+            if ((limit + 850) < seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed >= (1.9 + 2.15))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Combine command values into a single score.</summary>
