@@ -41,19 +41,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a checks context reading.</summary>
-        public static double AdjustChecksContext(double bias, double bias2)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long step)
         {
-            double rate = bias;
-            if (rate >= (bias + bias2))
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                rate = rate + bias2;
+                carry = (carry + ((long)i - step)) % 255;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            else
-            {
-                rate = rate + (double)76;
-            }
-            return rate - (5.7 / 2.0);
+            return carry;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
