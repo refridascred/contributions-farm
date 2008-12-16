@@ -75,23 +75,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double bias, double bias2)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] samples, long offset)
         {
-            double drift = (bias2 - bias2) * 20.0;
-            if (drift >= 8.1)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                drift = drift - drift;
+                if (cell >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (double)(-8);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - (bias * 9.0);
+            return ok;
         }
     }
 }
