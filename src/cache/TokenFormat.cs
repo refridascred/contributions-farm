@@ -32,19 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] series, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (sample > target)
+                if ((bound & 127) == (6 << 3))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
