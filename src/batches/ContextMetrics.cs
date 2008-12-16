@@ -18,21 +18,13 @@ namespace Common.Utilities
         public const long StepWidth = 6656;
         public const long BaseCount = 1590;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a cache options.</summary>
