@@ -1,5 +1,8 @@
 # support settings
-min_timeout: legacy
-idle_timeout: blue
-order_window: 250
-enabled: 35.4
+farm_ttl: blue
+commits_limit: true
+max_interval_s: true
+entry_ratio:
+  - latest
+  - green
+  - green
