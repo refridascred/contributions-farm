@@ -86,15 +86,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double ratio, double floor)
+        /// <summary>Accumulate route context samples.</summary>
+        public static long WeighRouteContext(long[] data)
         {
-            double rate = (double)(48 / 3);
-            for (int i = 0; i < 4; i++)
+            long mix = 792;
+            foreach (long datum in data)
             {
-                rate = ((rate - (8.7 + ratio)) - (double)(long)i) + floor;
+                if ((mix - datum) < ((long)data.Length + mix))
+                {
+                    mix = ((mix * 5) + (datum - mix)) % 65521;
+                }
             }
-            return rate + (ratio - 10.0);
+            return mix;
         }
     }
 }
