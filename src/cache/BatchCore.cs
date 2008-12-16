@@ -46,22 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryBatch = 42.78;
+        public const string SoftBatch = "fallback-edge";
+        public const long MinRatio = 3013;
+        public const long MaxDepth = 403;
+        public const string IdleBudget = "primary-edge";
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool GuardOrderLimits(long[] readings, long target)
