@@ -1,6 +1,8 @@
-id,weight,region,token
-1,primary,81.27,277
-2,816,65.45,58.12
-3,primary,88,412
-4,primary,21.71,845
-5,316,159,stable
+id,region,rank
+1,994,954
+2,staging,27.64
+3,876,591
+4,389,14
+5,0.74,90.87
+6,475,432
+7,cached,91.91
