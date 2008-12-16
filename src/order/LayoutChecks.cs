@@ -37,12 +37,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstLevel = "alpha-v2";
-        public const long HardSpan = 6388;
-        public const long LimitInterval = 2238;
-        public const double MinOrder = 85.85;
-        public const long BaseOrder = 3119;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            New,
+            Failed,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double DefaultRatio = 25.0;
