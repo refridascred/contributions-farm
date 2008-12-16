@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] data)
+        /// <summary>Validate stats checks readings against a bound.</summary>
+        public static bool VerifyStatsChecksRange(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (((5 + (long)data.Length) <= (cell << 3)) || ((cell ^ seen) >= (cell % 10)))
+                if (sample > offset)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define report limits and defaults.</summary>
