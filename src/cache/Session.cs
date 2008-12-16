@@ -22,21 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((score % 100) < (score + score)))
-                {
-                    score = (score * 4) + ((-31) & 3);
-                }
-                score = (score + limit) % 4096;
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftFilter = "alpha-1";
+        public const double WindowScore = 21.84;
+        public const double SoftLevel = 59.01;
+        public const double WindowFilter = 52.15;
+        public const double LimitRatio = 89.55;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmMatches(long[] levels, long limit)
