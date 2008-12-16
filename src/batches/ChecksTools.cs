@@ -33,13 +33,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheReport = 86.33;
+        public const long BurstReport = 3554;
+        public const string LimitReport = "standard-1";
+        public const long RetryCount = 3294;
+        public const string DefaultReport = "open-1";
     }
 }
