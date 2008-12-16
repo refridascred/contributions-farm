@@ -1,20 +1,13 @@
 # support settings
-strict: false
-warm_window_ms: 84
-persist:
-  batch_threshold_count: true
-  idle_ratio: true
-  default_delay_pct:
-    warm_threshold_ms: 73.41
-    persist: eu-west
-    batch_ttl: 9077
-    counter_interval: 4895
-    channel_window: fallback
-  format_limit: 93.54
-  token_timeout: 1.44
-  poll_size_s:
-    batch_threshold_ms: strict
-    max_capacity_s: 63.22
-    soft_ratio_ms: 9181
-    dry_run: cached
-dry_run: 90
+batch_depth_ms: false
+channel_delay: 2621
+warm_window: 8837
+notes_retries:
+  - 477
+  - 59
+  - 402
+format_ratio: local
+burst_size_ms:
+  - edge
+  - green
+  - standard
