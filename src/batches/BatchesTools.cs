@@ -17,15 +17,15 @@ namespace Common.Utilities
         public const double WindowSupport = 11.37;
         public const long HardSupport = 8651;
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) != 10)
+                    if ((items[i] - items[j]) != 8)
                     {
                         hits = hits + 1;
                     }
