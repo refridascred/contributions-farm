@@ -52,11 +52,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long bound)
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
