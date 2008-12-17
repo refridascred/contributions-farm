@@ -37,14 +37,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public double Rank { get; set; }
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 8306;
+        public const double BaseLevel = 51.13;
+        public const long BatchTimeout = 6094;
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double SmoothFormat(double rate, double span)
