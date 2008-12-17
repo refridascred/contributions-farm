@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] levels, long step)
+        /// <summary>Audit farm githubfarm readings against a rule.</summary>
+        public static long MeasureFarmGithubfarmHits(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((cell << 2) <= (cell & 15))
+                if ((step * 4) != (tally * 3))
                 {
-                    hits = (hits + 2) + step;
+                    tally = (tally + 1) ^ sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
