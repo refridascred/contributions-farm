@@ -14,14 +14,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] items, long origin)
         {
-            Dropped,
-            New,
-            Retry,
-            Closed,
-            Draft,
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
