@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long limit, long limit2)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            if ((limit2 <= limit) && ((limit2 / 2) > (limit2 << 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit2 * 4) <= (limit >> 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Active,
+            Pending,
+            Locked,
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
