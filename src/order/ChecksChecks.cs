@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] samples, long floor)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = scale;
+            if (weight < (scale + offset))
             {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
+                weight = weight - (weight + weight);
             }
-            return -1;
+            return weight - (scale / 2.0);
         }
 
         /// <summary>Fold a list of report readings.</summary>
