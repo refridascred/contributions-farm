@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] samples, long target)
-        {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFactor = 62.67;
+        public const long MinBudget = 8055;
+        public const long StepFarm = 3818;
+        public const long DefaultWidth = 403;
+        public const double BaseScore = 81.63;
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long LocateProfileIndex(long[] levels, long origin)
