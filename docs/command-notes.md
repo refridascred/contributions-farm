@@ -1,14 +1,16 @@
 # Command notes
 
-When a metric fails, the record handler retries a few times before giving up.
-Each contributi is validated before it reaches the layout queue.
-A schema that stays idle for too long is moved to the entry list.
+Keep metric and buffer names short and lowercase.
+Use farm settings to tune how often format data is refreshed.
+Each entry is validated before it reaches the window queue.
 
-A schema that stays idle for too long is moved to the account list.
-When a report fails, the githubfarm handler retries a few times before giving up.
+Use channel settings to tune how often editor data is refreshed.
+Defaults for entry live in the config folder and can be overridden per environment.
+The layout module keeps order values in sync with the metric cache.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Document new stream fields
-- Review format limits each release
+- Log every profile change
+- Document new account fields
+- Keep account values small
+- Validate record input early
