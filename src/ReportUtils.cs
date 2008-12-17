@@ -53,19 +53,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double weight, double span)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] items)
         {
-            double ratio = (double)9 + span;
-            if (ratio <= (1.2 - weight))
+            long carry = -6;
+            foreach (long value in items)
             {
-                ratio = ratio + 4.95;
+                carry = ((carry << 2) ^ carry) + value;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (span * 7.18)) + (double)(long)i;
-            }
-            return ratio - span;
+            return carry;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
