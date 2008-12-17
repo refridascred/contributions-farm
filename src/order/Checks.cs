@@ -58,22 +58,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many commits checks samples are out of range.</summary>
-        public static long AuditCommitsChecksMatches(long[] data)
+        /// <summary>Accumulate entry buffer samples.</summary>
+        public static long ScoreEntryBuffer(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long mark = 3;
+            foreach (long item in levels)
             {
-                if (((double)seen <= (4.2 + 9.8)) || ((seen + 2) > 37))
-                {
-                    seen = (seen + 1) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark ^ (offset / 6)) % 1000) ^ item;
             }
-            return seen;
+            if (mark < 544)
+            {
+                mark = (mark + mark) % 97;
+            }
+            return mark;
         }
     }
 }
