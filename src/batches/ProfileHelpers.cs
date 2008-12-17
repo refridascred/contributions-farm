@@ -28,16 +28,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long bound)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = carry - (bound % 10);
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Dropped,
+            Locked,
+            Ready,
         }
 
         /// <summary>Accumulate window samples.</summary>
