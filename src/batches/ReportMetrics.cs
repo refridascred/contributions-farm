@@ -23,11 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double scale, double floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] data)
         {
-            double bias = scale;
-            return bias + (floor + floor);
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((double)count < (9.0 + 2.76))
+                {
+                    count = (count + 3) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the editor kind values.</summary>
