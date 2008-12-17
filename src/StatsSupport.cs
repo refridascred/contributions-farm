@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((double)seen <= (4.97 * 8.0))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitSize = 8995;
+        public const long CacheWindow = 8529;
+        public const string BurstInterval = "fallback-1";
+        public const long DefaultWindow = 131;
+        public const long LimitWidth = 863;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long DigestCommand(long[] series)
