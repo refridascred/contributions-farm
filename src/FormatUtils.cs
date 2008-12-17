@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first format token entry that matches the target.</summary>
-        public static long SeekFormatTokenIndex(long[] levels, long offset)
+        /// <summary>Validate editor stats readings against a bound.</summary>
+        public static bool VerifyEditorStatsRange(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (levels[i] <= offset)
+                if (entry >= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
