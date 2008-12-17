@@ -53,21 +53,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] readings)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((series[i] >= seed) && ((series[i] % 3) != 0))
                 {
-                    if ((readings[i] + readings[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
