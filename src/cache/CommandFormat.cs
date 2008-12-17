@@ -32,12 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] samples, long limit)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((tally + limit) >= tally)
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
