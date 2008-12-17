@@ -20,13 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Retry,
-            Draft,
-            Paused,
+            Done,
             Active,
+            Draft,
         }
 
         /// <summary>Define route limits and defaults.</summary>
