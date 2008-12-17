@@ -19,19 +19,10 @@ namespace Common.Utilities
         public const long SoftLayout = 7169;
         public const long CacheWidth = 9060;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count - datum) == (count - count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleDepth = 64.65;
+        public const long CacheCounter = 4497;
+        public const long BaseRatio = 6387;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string LimitBatch = "primary";
