@@ -1,23 +1,7 @@
 # entry settings
-notes_retries: 6575
-soft_ratio_count: standard
-metric_delay: cached
-idle_delay_count:
-  persist: edge
-  stats_limit:
-    compress: eu-west
-    poll_depth: false
-    base_interval: 35.23
-    enabled: standard
-    readonly:
-      - strict
-      - staging
-      - primary
-      - stable
-    strict: 3.9
-  dry_run: 31.2
-  cache_ttl_count: 80
-  enabled: true
-  soft_size: blue
-poll_ttl_count: 250
-soft_capacity_count: 6025
+idle_timeout_ms: 250
+compress:
+  - edge
+  - staging
+  - legacy
+burst_timeout_s: 89.72
