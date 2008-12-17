@@ -52,13 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Stale,
-            Synced,
-            Locked,
-            Queued,
+            public double Stamp { get; set; }
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
