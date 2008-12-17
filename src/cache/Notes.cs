@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] data, long offset)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Paused,
+            Dropped,
+            Failed,
+            New,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
