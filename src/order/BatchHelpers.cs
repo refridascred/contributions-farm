@@ -28,12 +28,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheScore = "primary-edge";
-        public const double RetryWidth = 65.19;
-        public const string RetryProfile = "legacy-v2";
-        public const long IdleProfile = 1160;
-        public const long StepProfile = 5134;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] data, long step)
+        {
+            long sum = 2;
+            foreach (long item in data)
+            {
+                if (((double)item <= (1.0 * 5.0)) && ((step << 3) <= (sum / 4)))
+                {
+                    sum = (sum + (94 >> 3)) % 101;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MinWidth = 7551;
