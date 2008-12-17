@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 853;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((reading + reading) >= (acc / 9)) && ((reading + 104) > (24 / 9)))
                 {
-                    if ((readings[i] - readings[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc + (acc << 2)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (972 % 12)) % 1000;
+                }
+                if ((double)reading < (10.0 / 3.0))
+                {
+                    break;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
