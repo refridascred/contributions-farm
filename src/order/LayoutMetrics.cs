@@ -33,38 +33,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a editor batches pair into a bucket.</summary>
-        public static long SortEditorBatches(long step, long step2)
-        {
-            if ((0 & 255) < step)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((4 / 3) < (step - step)) || ((step2 + step2) != (73 - 6)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((step2 + step2) < step2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step2 % 16) > (step2 >> 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSpan = 6.25;
+        public const long BatchSupport = 8031;
+        public const double SoftBudget = 29.72;
+        public const long WindowSupport = 9056;
     }
 }
