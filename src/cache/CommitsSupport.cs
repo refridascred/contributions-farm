@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
