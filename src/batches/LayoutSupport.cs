@@ -55,25 +55,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a account profile pair into a bucket.</summary>
-        public static long ClassifyAccountProfile(long limit, long origin)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long prev = limit ^ origin;
-            if ((prev * 3) == (origin / 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((4 >> 3) < (limit & 127)) && ((double)limit == (double)prev))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Draft,
+            Paused,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Describe the buffer kind values.</summary>
