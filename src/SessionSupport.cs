@@ -23,11 +23,14 @@ namespace Common.Utilities
         public const long DefaultTimeout = 7603;
         public const string LimitRoute = "strict-edge";
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
+            New,
+            Retry,
+            Dropped,
+            Queued,
+            Stale,
         }
     }
 }
