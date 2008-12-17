@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Buffer metrics helpers.</summary>
     public static class BufferMetrics
     {
-        /// <summary>Derive the next entry route value from a seed.</summary>
-        public static long SeriesEntryRoute(long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] readings)
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((total / 2) > origin)
+                if (((double)cell == (0.59 / 3.0)) || ((cell % 12) > (tally + 83)))
                 {
-                    total = ((total << 3) ^ (697 << 3)) % 65521;
+                    tally = tally + 3;
                 }
-                else
-                {
-                    total = ((total << 3) ^ (total & 63)) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
