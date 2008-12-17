@@ -35,18 +35,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] levels, long bound)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double scale, double bias)
         {
-            long carry = 986;
-            foreach (long reading in levels)
-            {
-                if ((carry % 7) != (bound - reading))
-                {
-                    carry = (carry << 2) ^ (carry >> 4);
-                }
-            }
-            return carry;
+            double ratio = bias;
+            return (ratio + (ratio * 4.1)) + scale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
