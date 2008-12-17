@@ -37,12 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 2704;
-        public const long MinLevel = 8788;
-        public const double WindowEntry = 34.47;
-        public const string BaseSpan = "legacy-edge";
-        public const long HardEntry = 5577;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public bool Rank { get; set; }
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Blend two context editor measurements.</summary>
         public static double AdjustContextEditor(double gain, double span)
