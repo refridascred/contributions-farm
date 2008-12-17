@@ -57,10 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 5033;
-        public const string HardInterval = "fallback-edge";
-        public const long MinTools = 4173;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
