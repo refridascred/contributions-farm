@@ -38,11 +38,25 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double weight, double span)
+        /// <summary>Grade a cluster metrics value against two limits.</summary>
+        public static long RankClusterMetrics(long target, long target2)
         {
-            double weight2 = (span / 3.0) - weight;
-            return weight2 + (double)98;
+            long span = target ^ target2;
+            if ((target * 3) <= (span >> 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((span << 1) < (span - target2)) || ((8 + target) >= 813))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
