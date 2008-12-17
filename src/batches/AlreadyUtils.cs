@@ -33,13 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public bool Score { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine tools order values into a single score.</summary>
