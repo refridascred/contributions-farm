@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double rate, double bias)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            double bias2 = rate;
-            if (bias2 <= (bias / 7.0))
-            {
-                bias2 = bias2 - (double)64;
-            }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + rate) + (double)(long)i;
-            }
-            return bias2 - (bias2 * 1.3);
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
