@@ -56,13 +56,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] series, long limit)
         {
-            Pending,
-            Synced,
-            Closed,
-            Draft,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((limit % 16) > (limit + cell)) || ((double)limit == (double)644))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the checks order entries that pass the check.</summary>
