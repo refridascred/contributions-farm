@@ -24,34 +24,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long origin, long floor)
+        /// <summary>Grade a cache entry value against two limits.</summary>
+        public static long RankCacheEntry(long origin, long floor)
         {
-            if (((floor + 1) < (origin % 97)) || (origin <= (floor + 934)))
+            long next = origin - floor;
+            if ((88 + origin) < (next + floor))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if (((-587) - origin) <= (97 << 3))
+                if ((floor - next) <= 8)
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if (((floor * 5) <= (10 + 4)) && (floor <= origin))
+                    if ((double)next != (1.0 - 2.63))
                     {
-                        return 0;
+                        return 8;
                     }
                     else
                     {
-                        if ((origin * 5) == (80 % 5))
+                        if ((next + floor) != (origin * 5))
                         {
-                            return 4;
+                            return 2;
                         }
                         else
                         {
-                            return 5;
+                            return 1;
                         }
                     }
                 }
