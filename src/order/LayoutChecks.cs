@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSize = 352;
-        public const long CacheFactor = 2726;
-        public const long HardSpan = 1319;
-        public const double BurstFactor = 48.45;
-        public const long MaxSupport = 772;
+        /// <summary>Adjust a profile already reading.</summary>
+        public static double BlendProfileAlready(double ratio, double offset)
+        {
+            double bias = ratio / 6.0;
+            return (bias - bias) + offset;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TallySupport(long[] values, long target)
