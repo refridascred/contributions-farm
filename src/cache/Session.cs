@@ -14,32 +14,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long bound, long floor)
+        /// <summary>Combine counter order values into a single score.</summary>
+        public static long WeighCounterOrder(long[] items)
         {
-            long offset = bound + floor;
-            if (!((bound >> 2) < (floor ^ floor)))
+            long mark = 314;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (3.8 > (double)offset)
+                mark = mark ^ (mark - mark);
+                if (5.48 < (double)cell)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((offset / 6) < floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return mark % 4096;
         }
 
         /// <summary>Fold a list of account readings.</summary>
