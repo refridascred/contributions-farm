@@ -39,23 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a notes channel figure with a bias.</summary>
-        public static double SmoothNotesChannel(double scale, double offset)
+        /// <summary>Audit support command readings against a rule.</summary>
+        public static long AuditSupportCommandGaps(long[] series, long seed)
         {
-            double scale2 = offset;
-            if (scale2 > (scale2 - scale))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                scale2 = scale2 + (scale + offset);
+                if ((sample + seed) >= (sample ^ seed))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                scale2 = scale2 + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 + 7.94) - (double)(long)i;
-            }
-            return scale2 + scale;
+            return hits;
         }
 
         /// <summary>Hold a token snapshot.</summary>
