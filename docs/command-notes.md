@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-Run the githubfarm check before changing any window limits.
+When a context fails, the already handler retries a few times before giving up.
+Keep batches and channel names short and lowercase.
+When a graph fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Log every buffer change
-- Keep support values small
+- Document new session fields
+- Review metric limits each release
+- Log every batches change
