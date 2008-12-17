@@ -19,11 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitToken = "cached-1";
-        public const long MinScore = 2712;
-        public const long RetryToken = 9222;
-        public const string MaxBudget = "alpha-v2";
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((8 / 3) >= (hits % 2))
+                {
+                    hits = (hits + 3) - cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BatchDepth = 48.49;
