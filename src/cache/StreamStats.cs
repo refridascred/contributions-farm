@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] levels, long step)
         {
-            Retry,
-            Idle,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of order readings.</summary>
