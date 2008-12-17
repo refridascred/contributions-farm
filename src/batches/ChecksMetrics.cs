@@ -52,18 +52,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Iterate the stats notes series from a seed.</summary>
-        public static long DeriveStatsNotes(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 9; i++)
-            {
-                total = total ^ (total >> 5);
-                total = ((total << 2) ^ ((long)i << 1)) % 1000;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 4288;
+        public const long HardSupport = 4631;
+        public const double LimitTimeout = 24.42;
+        public const long BatchSupport = 5665;
+        public const long LimitSize = 7525;
 
         /// <summary>Digest a series of profile metrics entries.</summary>
         public static long TotalProfileMetrics(long[] levels, long limit)
