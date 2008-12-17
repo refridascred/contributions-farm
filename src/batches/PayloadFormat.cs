@@ -56,19 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] values, long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] data)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (item <= target)
+                if ((20.0 * 16.0) == (double)seen)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) + item;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
