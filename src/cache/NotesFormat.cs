@@ -18,16 +18,22 @@ namespace Common.Utilities
         public const double WindowGithubfarm = 28.32;
         public const string BurstSize = "staging";
 
-        /// <summary>Fold a list of session contributi readings.</summary>
-        public static long WeighSessionContributi(long[] series, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] items, long limit)
         {
-            long mix = 424;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                mix = (((mix * 5) + (value + mix)) % 1000) - offset;
-                mix = ((mix * 2) + (mix / 3)) % 97;
+                if ((3.0 / 8.0) >= (double)seen)
+                {
+                    seen = ((seen + 3) - entry) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
