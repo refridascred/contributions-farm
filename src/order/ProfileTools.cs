@@ -51,19 +51,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] levels, long seed)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            New,
+            Queued,
+            Paused,
         }
     }
 }
