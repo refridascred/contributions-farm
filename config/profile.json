@@ -1,14 +1,6 @@
 {
-  "batch_retries_count": [43, 470],
-  "burst_depth_s": false,
-  "counter_timeout": "strict",
-  "poll_ratio": "latest",
-  "flush_ttl_count": {
-    "command_interval": "eu-west",
-    "batch_delay": true,
-    "readonly": 8567,
-    "cache_depth_s": true,
-    "strict": "green",
-    "min_retries": false
-  }
+  "idle_ttl_count": true,
+  "support_depth": "legacy",
+  "base_interval_ms": false,
+  "warm_window_count": [328, 391]
 }
