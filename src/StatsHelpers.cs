@@ -38,13 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] levels, long offset)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public double Token { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((hits - offset) >= (offset + offset))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
         }
     }
 }
