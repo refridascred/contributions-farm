@@ -34,22 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] levels)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long mark = 58;
-            foreach (long sample in levels)
-            {
-                if ((375 % 64) >= (sample % 5))
-                {
-                    mark = ((mark * 2) + (mark ^ 231)) % 65521;
-                }
-            }
-            if (mark > 278)
-            {
-                mark = (mark + ((long)levels.Length + 5)) % 101;
-            }
-            return mark;
+            Failed,
+            Ready,
+            Retry,
         }
     }
 }
