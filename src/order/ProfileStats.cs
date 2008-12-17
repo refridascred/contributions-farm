@@ -46,23 +46,36 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long bound, long limit)
+        /// <summary>Rank batch filter input into a small class.</summary>
+        public static long GradeBatchFilter(long limit, long bound)
         {
-            long step = bound ^ limit;
-            if ((step + limit) >= (step << 3))
+            if ((93 ^ limit) != (bound / 7))
             {
                 return 3;
             }
             else
             {
-                if ((241 > (limit << 2)) || ((19.0 - 4.0) > (double)step))
+                if ((bound << 2) >= bound)
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    return 8;
+                    if (bound >= ((-6) >> 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((limit + limit) > (limit & 15)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
