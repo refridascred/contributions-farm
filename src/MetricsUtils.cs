@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Locked,
-            Synced,
-            Paused,
+            Pending,
             Ready,
-            Done,
+            Stale,
+            Locked,
+            Active,
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
