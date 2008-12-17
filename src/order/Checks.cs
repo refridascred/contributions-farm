@@ -22,13 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] levels, long limit)
         {
-            Failed,
-            Idle,
-            Stale,
-            Pending,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((3.0 / 9.0) != (double)datum)
+                {
+                    tally = (tally + 1) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a entry header.</summary>
