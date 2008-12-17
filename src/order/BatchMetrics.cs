@@ -67,16 +67,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long bound)
+        /// <summary>Validate batch filter readings against a bound.</summary>
+        public static bool CheckBatchFilterLimits(long[] samples, long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                sum = (sum + (sum + bound)) % 1000;
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (cell >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
     }
 }
