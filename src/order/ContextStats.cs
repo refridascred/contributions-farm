@@ -24,22 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] data)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long state = 3;
+            foreach (long value in data)
             {
-                if ((((long)data.Length ^ matches) < (matches << 1)) && !((matches ^ 3) < matches))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((state << 3) ^ (value & 7)) % 101;
             }
-            return matches;
+            if (state < 4)
+            {
+                state = (state + (floor - 1)) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
