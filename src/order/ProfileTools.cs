@@ -26,21 +26,19 @@ namespace Common.Utilities
         public const double HardWidth = 47.7;
         public const string RetryBudget = "latest-v2";
 
-        /// <summary>Count cache session pairs that satisfy a relation.</summary>
-        public static long PairCacheSessionCount(long[] data)
+        /// <summary>Accumulate filter contributi samples.</summary>
+        public static long DigestFilterContributi(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 99;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state + (73 - sample)) % 1000;
             }
-            return tally;
+            if (state < 909)
+            {
+                state = (state + (state + floor)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
