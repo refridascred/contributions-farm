@@ -17,12 +17,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardDepth = 6441;
-        public const double BurstScore = 0.07;
-        public const double HardWidth = 67.51;
-        public const long BurstWindow = 9633;
-        public const long BaseWindow = 8965;
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double weight, double floor)
+        {
+            double scale = floor;
+            if (scale >= scale)
+            {
+                scale = (scale + (double)29) - weight;
+            }
+            else
+            {
+                scale = scale + (double)988;
+            }
+            return scale + scale;
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
