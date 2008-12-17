@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 9434;
-        public const long SoftTools = 8103;
-        public const long StepSize = 1578;
-        public const string DefaultTools = "standard-v2";
+        /// <summary>Locate a notes report reading by value.</summary>
+        public static long SeekNotesReportIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of report cache readings.</summary>
         public static long MatchReportCacheCount(long[] values)
