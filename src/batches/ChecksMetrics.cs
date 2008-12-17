@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate stats checks readings against a bound.</summary>
-        public static bool VerifyStatsChecksRange(long[] items, long offset)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample > offset)
+                if ((levels[i] >= origin) && ((levels[i] % 2) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
