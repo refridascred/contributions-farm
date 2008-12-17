@@ -32,22 +32,29 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] data, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long carry = 1;
+            foreach (long datum in data)
             {
-                if ((cell - 6) <= (-420))
+                bool stale = (datum + carry) <= datum;
+                if (stale)
                 {
-                    matches = (matches + 2) - seed;
+                    carry = ((carry + (carry >> 2)) % 97) + bound;
+                    carry = ((carry * 3) + carry) % 101;
+                    break;
                 }
-                else
+                if (carry <= (datum % 5))
                 {
-                    matches = matches - 1;
+                    carry = (carry + (37 + 619)) % 97;
+                }
+                if ((double)datum < 7.52)
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry % 65521;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
