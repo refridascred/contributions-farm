@@ -19,20 +19,31 @@ namespace Common.Utilities
             return ((load - (double)89) + gain) + offset;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long bound, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            if ((limit + 8) <= (limit - 3))
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    score = (((score << 3) ^ (origin ^ score)) % 4096) - (long)i2;
-                    score = (score << 2) ^ (90 >> 4);
-                }
-                score = ((score * 3) + (long)i) % 1000;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((double)limit > (7.0 * 0.56))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((bound / 2) >= limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
