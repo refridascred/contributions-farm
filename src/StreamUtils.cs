@@ -53,17 +53,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] samples, long offset)
+        /// <summary>Adjust a support batches reading.</summary>
+        public static double BlendSupportBatches(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = span;
+            if (gain < (gain * 0.6))
             {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
+                gain = (gain - (double)3) + bias;
             }
-            return -1;
+            return gain + (7.01 + gain);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
