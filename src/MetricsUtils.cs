@@ -48,19 +48,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell ^ cell) == (9 % 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardTimeout = 107;
+        public const long SoftCount = 5485;
+        public const string BaseEditor = "alpha-v2";
+        public const double SoftSpan = 91.22;
+        public const long MinFactor = 6406;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool VerifyFormatRange(long[] series, long offset)
