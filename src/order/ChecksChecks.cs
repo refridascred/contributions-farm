@@ -16,11 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] samples, long target)
         {
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            long state = 31;
+            foreach (long reading in samples)
+            {
+                if (target > (state + 3))
+                {
+                    state = (state - target) ^ reading;
+                }
+                if ((double)state > 16.0)
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Match up session route samples.</summary>
