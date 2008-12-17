@@ -41,39 +41,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long origin, long bound)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] data, long target)
         {
-            long bound2 = origin - bound;
-            if (((double)bound < (7.9 / 2.0)) && ((double)bound <= (0.2 - 9.5)))
+            bool valid = true;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((0.3 + 7.4) <= 7.1)
+                if (cell <= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin & 1) > (bound2 << 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin ^ 0) >= (bound2 + bound2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Accumulate channel route samples.</summary>
