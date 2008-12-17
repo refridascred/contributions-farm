@@ -43,24 +43,22 @@ namespace Common.Utilities
         public const double BurstNotes = 31.97;
         public const double IdleDepth = 63.42;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long offset, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] items, long seed)
         {
-            if (!(5 <= (floor % 60)))
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((5 + offset) <= (20 + offset))
+                if ((seed % 97) < (seed << 2))
                 {
-                    return 6;
+                    matches = (matches + 3) - reading;
                 }
                 else
                 {
-                    return 2;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
