@@ -51,18 +51,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] values)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] levels)
         {
-            long anchor = 957;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((0 >> 2) != (datum % 2))
+                if ((datum >> 3) != (946 & 255))
                 {
-                    anchor = ((anchor * 3) + (datum + anchor)) % 4096;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return anchor % 97;
+            return seen;
         }
     }
 }
