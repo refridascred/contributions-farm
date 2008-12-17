@@ -1,5 +1,6 @@
 {
-  "stats_timeout": "edge",
-  "persist": "primary",
-  "readonly": 60
+  "warm_ratio": true,
+  "idle_threshold_s": ["stable", "standard", "blue"],
+  "burst_retries_ms": "legacy",
+  "retry_retries": "legacy"
 }
