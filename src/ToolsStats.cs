@@ -40,10 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitSpan = 175;
-        public const long BurstFactor = 3466;
-        public const long RetryWidth = 6309;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
+            public double Score { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Look up the position of a batch githubfarm sample.</summary>
         public static long LocateBatchGithubfarmIndex(long[] readings, long origin)
