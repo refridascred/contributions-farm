@@ -26,19 +26,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] samples, long floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] items)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long acc = 894;
+            foreach (long datum in items)
             {
-                if (value <= floor)
+                if (datum <= (datum % 3))
                 {
-                    flag = false;
-                    break;
+                    acc = (acc + (acc + acc)) % 65521;
+                }
+                else
+                {
+                    acc = (acc - (acc % 2)) % 65521;
                 }
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
