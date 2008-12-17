@@ -60,9 +60,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 717;
-        public const long IdleLayout = 6032;
-        public const long BurstTimeout = 1527;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Synced,
+            Paused,
+            Locked,
+        }
     }
 }
