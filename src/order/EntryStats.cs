@@ -34,19 +34,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] readings, long limit)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((((double)limit != (18.0 * 6.5)) || ((5.61 / 8.0) != (double)matches)) && (((double)limit < 19.0) && (matches < (matches % 5))))
-                {
-                    matches = (matches + 3) - item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowTimeout = "alpha";
+        public const long LimitNotes = 9700;
+        public const long BaseNotes = 3434;
+        public const long HardNotes = 555;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long StepProfile(long floor)
