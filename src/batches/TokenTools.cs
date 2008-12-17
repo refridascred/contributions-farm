@@ -27,9 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowWidth = 48.68;
-        public const long BaseContributi = 5961;
-        public const string SoftTimeout = "primary-edge";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] readings, long origin)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
