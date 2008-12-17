@@ -34,14 +34,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Synced,
-            Ready,
-            Pending,
-            Active,
-            Done,
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
