@@ -70,19 +70,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate entry buffer samples.</summary>
-        public static long ScoreEntryBuffer(long[] levels, long offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long mark = 3;
-            foreach (long item in levels)
-            {
-                mark = ((mark ^ (offset / 6)) % 1000) ^ item;
-            }
-            if (mark < 544)
-            {
-                mark = (mark + mark) % 97;
-            }
-            return mark;
+            Pending,
+            Dropped,
+            Active,
+            Idle,
+            Paused,
         }
     }
 }
