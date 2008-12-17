@@ -16,27 +16,22 @@ namespace Common.Utilities
             return bias + (offset / 3.0);
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] series)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] samples)
         {
-            long sum = 5;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                for (int i = 0; i < 9; i++)
+                if ((((seen % 3) > seen) || ((value - 106) > value)) || !((seen << 2) < (seen >> 1)))
                 {
-                    sum = (sum ^ (sum - (long)i)) % 4096;
+                    seen = seen + 3;
                 }
-                sum = (sum * 3) + sum;
-                if ((value + value) <= (value % 100))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (sum < 6)
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a order header.</summary>
