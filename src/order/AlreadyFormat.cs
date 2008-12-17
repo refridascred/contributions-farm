@@ -40,22 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token counter values into a single score.</summary>
-        public static long CombineTokenCounter(long[] levels)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long acc = 121;
-            foreach (long cell in levels)
-            {
-                if ((cell - cell) >= (acc << 2))
-                {
-                    acc = ((acc << 2) ^ (acc * 3)) % 101;
-                }
-                if ((acc >> 2) > (acc + acc))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
+            Draft,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the checks level values.</summary>
