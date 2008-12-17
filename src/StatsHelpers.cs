@@ -15,19 +15,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] levels, long target)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum <= target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
