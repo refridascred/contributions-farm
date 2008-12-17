@@ -15,17 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] values, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (values[i] >= offset)
+                if (bound > (bound % 100))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Locate a cache notes reading by value.</summary>
