@@ -15,18 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 2263;
+        public const double HardFormat = 33.11;
+        public const long StepFormat = 7850;
+        public const long StepTimeout = 9887;
+        public const string MaxWidth = "standard-1";
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
