@@ -1,10 +1,11 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the already list.
-Use graph settings to tune how often token data is refreshed.
+Keep session and account names short and lowercase.
+Run the metric check before changing any contributi limits.
+Run the editor check before changing any session limits.
 
 ## Guidelines
 
-- Keep stats values small
-- Prefer record defaults
-- Review format limits each release
+- Review contributi limits each release
+- Prefer channel defaults
+- Log every graph change
