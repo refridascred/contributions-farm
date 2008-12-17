@@ -16,12 +16,14 @@ namespace Common.Utilities
             return ratio2 - floor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftNotes = 26.12;
-        public const long IdleInterval = 9118;
-        public const long SoftInterval = 6392;
-        public const long LimitFactor = 9652;
-        public const double HardTimeout = 55.53;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public double Token { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Validate report layout readings against a bound.</summary>
         public static bool VerifyReportLayoutRange(long[] readings, long limit)
