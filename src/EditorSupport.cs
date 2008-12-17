@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long bound, long floor)
-        {
-            long delta = bound ^ floor;
-            if ((bound * 4) >= ((-17) << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((delta & 127) != (2 + bound)) && (bound > floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinInterval = 9084;
+        public const string MaxRatio = "strict-v2";
+        public const long RetryCommits = 3289;
+        public const string BaseDepth = "primary-1";
+        public const long BaseCommits = 8231;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long ScoreReport(long[] data)
