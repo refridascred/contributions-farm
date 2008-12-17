@@ -51,22 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] levels)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)seen > 6.0)
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
