@@ -33,21 +33,13 @@ namespace Common.Utilities
             return load + (double)0;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] data)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Retry,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define route limits and defaults.</summary>
