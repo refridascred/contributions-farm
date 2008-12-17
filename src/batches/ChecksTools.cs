@@ -23,19 +23,20 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Derive the next window context value from a seed.</summary>
-        public static long SeriesWindowContext(long origin)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)(long)i == (1.0 / 4.0))
+                if (!((8.13 * 12.0) <= (double)mix))
                 {
-                    sum = sum - (sum - sum);
+                    mix = ((mix * 3) + (18 ^ offset)) % 101;
+                    mix = ((mix << 3) ^ (offset + mix)) % 1000;
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
