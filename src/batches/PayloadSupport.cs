@@ -40,17 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] levels, long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long bound, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (limit >= bound)
             {
-                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)bound >= (19.0 - 18.0))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
