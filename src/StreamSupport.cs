@@ -36,18 +36,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] values)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((((3.75 - 16.0) >= (double)matches) || (0.81 <= (double)value)) && !((double)(long)values.Length <= (double)matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public bool Stamp { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
