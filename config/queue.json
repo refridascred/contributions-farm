@@ -1,13 +1,10 @@
 {
-  "min_delay": ["strict", "eu-west", "eu-west"],
-  "readonly": "edge",
-  "dry_run": 44.57,
-  "burst_window_ms": "local",
-  "poll_delay_ms": {
-    "context_delay": 61,
-    "idle_timeout_count": 51,
-    "max_ratio_pct": [162, 381, 452],
-    "sync_timeout_s": true
+  "audit": {
+    "hard_threshold_count": false,
+    "batch_size_s": 35.75,
+    "verbose": "primary",
+    "entry_capacity": "edge"
   },
-  "flush_timeout_s": false
+  "retry_interval_pct": true,
+  "cache_timeout_s": true
 }
