@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (((-109) + 1) <= (seed ^ 8))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseTimeout = "fallback-edge";
+        public const long RetryFarm = 8294;
+        public const long SoftSpan = 4046;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
