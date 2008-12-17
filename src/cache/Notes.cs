@@ -61,9 +61,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxSpan = 6365;
-        public const long MinEntry = 9163;
-        public const long SoftEntry = 5691;
+        /// <summary>Combine counter command values into a single score.</summary>
+        public static long TallyCounterCommand(long[] readings, long bound)
+        {
+            long mark = 41;
+            foreach (long cell in readings)
+            {
+                if (cell > mark)
+                {
+                    mark = (((mark * 4) + (cell - mark)) % 4096) - bound;
+                }
+                else
+                {
+                    mark = mark ^ (mark % 100);
+                }
+            }
+            if (mark > 6)
+            {
+                mark = (mark ^ (mark * 5)) % 97;
+            }
+            return mark;
+        }
     }
 }
