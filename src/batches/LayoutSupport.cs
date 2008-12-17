@@ -42,14 +42,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
+            Synced,
             Failed,
-            Locked,
-            Stale,
-            Queued,
-            New,
+            Ready,
+            Active,
+            Pending,
         }
 
         /// <summary>Blend two contributi measurements.</summary>
