@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] readings, long offset)
-        {
-            long mark = 191;
-            foreach (long datum in readings)
-            {
-                if ((offset << 3) == (offset - datum))
-                {
-                    mark = (mark << 2) ^ (mark ^ mark);
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftScore = 6739;
+        public const long BurstFactor = 8910;
+        public const string StepGithubfarm = "latest-edge";
 
         /// <summary>Match up route samples.</summary>
         public static long MatchRouteCount(long[] data)
