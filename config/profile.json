@@ -1,6 +1,15 @@
 {
-  "command_window": "standard",
-  "default_size_ms": 45.21,
-  "base_size_s": 7.0,
-  "poll_size_pct": 100
+  "persist": 84,
+  "burst_ttl_s": 81,
+  "default_size_ms": {
+    "githubfarm_capacity": 47.08,
+    "strict": 3174,
+    "dry_run": 10.34
+  },
+  "base_timeout_ms": "fallback",
+  "poll_capacity_ms": {
+    "strict": "eu-west",
+    "idle_capacity_count": true,
+    "filter_threshold": true
+  }
 }
