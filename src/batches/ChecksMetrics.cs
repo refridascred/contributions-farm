@@ -94,9 +94,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultLevel = "standard-1";
-        public const long BatchCommits = 5835;
-        public const long DefaultCommits = 9894;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                total = (total - 7) % 4096;
+                total = (total ^ (bound / 7)) % 255;
+                if (total >= (bound & 15))
+                {
+                    total = total - (bound + (long)i);
+                    total = ((total << 3) ^ (total ^ bound)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
