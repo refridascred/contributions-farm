@@ -50,11 +50,12 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Project the next format token value.</summary>
-        public static double SmoothFormatToken(double rate, double span)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            double load = span - span;
-            return load + (span - rate);
+            public double Region { get; set; }
+            public double Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a channel header.</summary>
