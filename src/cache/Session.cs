@@ -22,11 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long step, long floor)
         {
-            public double Owner { get; set; }
-            public bool Region { get; set; }
+            if (((floor ^ step) <= (step / 2)) && ((53 ^ 27) <= (step - floor)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((-325) & 7) > (step + floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step * 2) >= (step - step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate stats format readings against a bound.</summary>
