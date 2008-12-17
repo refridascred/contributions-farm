@@ -1,10 +1,14 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the batch list.
-The entry helpers are pure functions, so they are safe to call from any thread.
+Keep stream and stats names short and lowercase.
+The farm report groups every cluster by profile.
+
+Each payload is validated before it reaches the tools queue.
+Use window settings to tune how often format data is refreshed.
+When a farm fails, the queue handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep cluster values small
-- Prefer payload defaults
-- Validate schema input early
+- Prefer layout defaults
+- Keep entry values small
+- Review route limits each release
