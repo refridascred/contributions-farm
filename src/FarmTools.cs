@@ -24,16 +24,10 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstChecks = 51.18;
+        public const long IdleBudget = 6257;
+        public const long LimitChecks = 4099;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BurstGraph = 540;
