@@ -83,18 +83,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics commits samples are out of range.</summary>
-        public static long MeasureMetricsCommitsHits(long[] levels, long seed)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((hits >> 2) < (seed + seed))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
+            Synced,
+            Draft,
+            Queued,
         }
 
         /// <summary>Iterate the cluster layout series from a seed.</summary>
