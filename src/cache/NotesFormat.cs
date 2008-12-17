@@ -23,12 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Synced,
-            Stale,
-            Draft,
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the farm githubfarm entries that pass the check.</summary>
