@@ -44,24 +44,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] values)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            long total = -24;
-            foreach (long datum in values)
+            long score = 29;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    total = (total ^ (datum >> 3)) % 97;
-                    total = ((total * 5) + ((long)i / 9)) % 1000;
-                }
-                total = ((total * 4) + (datum + datum)) % 97;
+                score = score - (cell >> 2);
             }
-            if (total > 546)
+            if (score < 553)
             {
-                total = (total + (total & 15)) % 255;
+                score = (score - 127) % 65521;
             }
-            return total;
+            return score;
         }
     }
 }
