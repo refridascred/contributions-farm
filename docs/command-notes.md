@@ -1,11 +1,10 @@
 # Command notes
 
-Keep session and account names short and lowercase.
-Run the metric check before changing any contributi limits.
-Run the editor check before changing any session limits.
+Use stream settings to tune how often farm data is refreshed.
+Each layout is validated before it reaches the stats queue.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Prefer channel defaults
-- Log every graph change
+- Document new counter fields
+- Prefer metric defaults
+- Log every layout change
