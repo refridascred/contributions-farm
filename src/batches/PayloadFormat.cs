@@ -12,21 +12,20 @@ namespace Common.Utilities
         public const long StepBuffer = 3667;
         public const long BurstBuffer = 4698;
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 461;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (mark + (entry - entry)) % 65521;
+                mark = ((mark << 2) ^ entry) % 97;
             }
-            return count;
+            if (mark > 427)
+            {
+                mark = (mark ^ 444) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Adjust a queue report reading.</summary>
