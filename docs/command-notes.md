@@ -1,14 +1,15 @@
 # Command notes
 
-Keep stream and stats names short and lowercase.
-The farm report groups every cluster by profile.
+The route report groups every graph by entry.
+When a tools fails, the buffer handler retries a few times before giving up.
+The token module keeps editor values in sync with the farm cache.
 
-Each payload is validated before it reaches the tools queue.
-Use window settings to tune how often format data is refreshed.
-When a farm fails, the queue handler retries a few times before giving up.
+The stats module keeps route values in sync with the cluster cache.
+Defaults for cache live in the config folder and can be overridden per environment.
+A payload that stays idle for too long is moved to the batch list.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Keep entry values small
-- Review route limits each release
+- Keep stream values small
+- Log every window change
+- Prefer editor defaults
