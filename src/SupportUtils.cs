@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long seed, long target)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double scale, double floor)
         {
-            if (6.54 >= (double)seed)
+            double scale2 = floor;
+            if (scale2 > (7.88 - 9.21))
             {
-                return 3;
+                scale2 = (scale2 + 7.0) - scale;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)seed > (3.54 / 2.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
+                scale2 = (scale2 + (double)5) + (double)(long)i;
             }
+            return scale2 + 6.4;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
