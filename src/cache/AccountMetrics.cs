@@ -52,22 +52,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of profile farm readings.</summary>
-        public static long OverlapProfileFarmCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseFactor = 6999;
+        public const long SoftBatch = 8732;
+        public const double BurstBatch = 67.09;
+        public const long DefaultRatio = 6770;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long FoldEntry(long[] values)
