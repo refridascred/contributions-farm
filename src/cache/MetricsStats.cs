@@ -29,19 +29,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] levels, long target)
+        /// <summary>Audit window filter readings against a rule.</summary>
+        public static long AuditWindowFilterMatches(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (sample < target)
+                if ((tally <= (26 - limit)) && (tally < limit))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Blend two format measurements.</summary>
