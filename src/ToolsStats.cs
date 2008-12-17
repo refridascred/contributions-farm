@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Fold a list of metrics payload readings.</summary>
+        public static long FoldMetricsPayload(long[] series)
         {
-            public long Label { get; set; }
-            public double Stamp { get; set; }
+            long anchor = 10;
+            foreach (long cell in series)
+            {
+                if (((9.8 * 20.0) > (double)anchor) && ((1.0 * 17.0) == (double)anchor))
+                {
+                    anchor = ((anchor << 3) ^ (anchor << 3)) % 65521;
+                    continue;
+                }
+                if ((cell + cell) > (cell % 16))
+                {
+                    anchor = (anchor + (cell % 64)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
