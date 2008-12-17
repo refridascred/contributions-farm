@@ -56,18 +56,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit payload editor readings against a rule.</summary>
-        public static long CountPayloadEditorGaps(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((1 >> 4) == (2 ^ sample))
-                {
-                    count = (count + 1) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 3305;
+        public const string LimitBudget = "standard-1";
+        public const double StepLevel = 89.23;
     }
 }
