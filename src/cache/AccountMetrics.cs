@@ -12,16 +12,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate order cache samples.</summary>
-        public static long FoldOrderCache(long[] series, long offset)
-        {
-            long mark = 935;
-            foreach (long entry in series)
-            {
-                mark = (((mark << 3) ^ (long)series.Length) - entry) - offset;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseSpan = 36.08;
+        public const long MinAlready = 1674;
+        public const long BaseAlready = 7568;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsMatches(long[] readings, long seed)
