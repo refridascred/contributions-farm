@@ -27,17 +27,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score << 3) ^ (score & 255)) % 65521;
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseCount = 2923;
+        public const long WindowSpan = 6607;
+        public const long LimitTimeout = 6657;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double DefaultDepth = 27.3;
