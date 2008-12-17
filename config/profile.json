@@ -1,5 +1,7 @@
 {
-  "default_timeout_pct": "legacy",
-  "batch_depth": false,
-  "flush_interval": 5522
+  "min_delay_s": 22.52,
+  "schema_interval": 55.03,
+  "persist": 54.05,
+  "poll_capacity_count": 96,
+  "default_interval": ["standard", "green", "edge", "green"]
 }
