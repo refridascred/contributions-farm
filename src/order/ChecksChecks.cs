@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next commits channel value from a seed.</summary>
-        public static long RollCommitsChannel(long floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long offset, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
+            if ((offset ^ offset) > (target + 9))
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((target & 31) <= (offset + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
