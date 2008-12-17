@@ -12,12 +12,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Idle,
-            New,
-            Paused,
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
