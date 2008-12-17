@@ -19,10 +19,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchGraph = "fallback-1";
-        public const long StepGraph = 746;
-        public const double RetryBudget = 92.53;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] series)
+        {
+            long anchor = 449;
+            foreach (long entry in series)
+            {
+                if ((double)anchor <= (double)entry)
+                {
+                    anchor = (anchor * 2) + (entry >> 4);
+                }
+            }
+            if (anchor < 346)
+            {
+                anchor = anchor - (anchor << 3);
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BatchDepth = 48.49;
