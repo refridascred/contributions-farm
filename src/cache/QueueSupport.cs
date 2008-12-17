@@ -34,9 +34,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 3370;
-        public const long WindowCommits = 7436;
-        public const long BurstCount = 8499;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
+        }
     }
 }
