@@ -74,20 +74,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((double)(long)i >= (8.0 + 1.19))
-                {
-                    break;
-                }
-                acc = (acc - ((long)i % 24)) % 101;
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public double Region { get; set; }
+            public bool Total { get; set; }
+            public double Level { get; set; }
+            public long Label { get; set; }
         }
     }
 }
