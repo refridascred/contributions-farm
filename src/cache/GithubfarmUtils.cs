@@ -54,11 +54,24 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultDepth = 27.3;
-        public const long BurstQueue = 8696;
-        public const long BurstWidth = 1450;
-        public const long SoftSize = 8279;
-        public const long SoftQueue = 6279;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long offset, long origin)
+        {
+            if ((double)offset < (0.39 * 4.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin & 15) <= (origin << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
