@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of report cache readings.</summary>
-        public static long MatchReportCacheCount(long[] values)
+        /// <summary>Digest a series of queue contributi entries.</summary>
+        public static long TallyQueueContributi(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 622;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total * 4) + (72 + sample)) % 65521;
             }
-            return matches;
+            if (total > 223)
+            {
+                total = (total - total) % 97;
+            }
+            return total;
         }
 
         /// <summary>Locate a queue metrics reading by value.</summary>
