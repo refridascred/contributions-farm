@@ -16,13 +16,38 @@ namespace Common.Utilities
             return load + (scale * 3.9);
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long limit, long limit2)
         {
-            Ready,
-            Idle,
-            Done,
-            Locked,
+            if (!((limit2 ^ limit) == (limit * 5)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit > (limit - limit2)) || ((double)limit != (16.0 + 4.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((6.1 + 5.0) == (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit2 ^ limit2) >= (limit / 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a buffer account reading.</summary>
