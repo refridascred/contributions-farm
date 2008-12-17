@@ -1,7 +1,6 @@
 {
-  "hard_size_pct": 19,
-  "audit": "blue",
-  "soft_timeout_pct": "legacy",
-  "compress": "local",
-  "dry_run": ["latest", "eu-west"]
+  "cache_size": [97, 172],
+  "commits_ratio": 1024,
+  "flush_retries": 4308,
+  "burst_window_s": false
 }
