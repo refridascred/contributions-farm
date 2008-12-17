@@ -33,9 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchDepth = 48.49;
-        public const double IdleMetrics = 63.32;
-        public const string BurstTimeout = "local-edge";
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample == (1.93 - 9.9))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
