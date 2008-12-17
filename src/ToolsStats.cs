@@ -45,15 +45,15 @@ namespace Common.Utilities
         public const long BurstFactor = 3466;
         public const long RetryWidth = 6309;
 
-        /// <summary>Project the next format schema value.</summary>
-        public static double ScaleFormatSchema(double rate, double offset)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double scale, double offset)
         {
-            double mean = (double)6 - (offset + 0.1);
-            if (mean > mean)
+            double load = (offset * 4.04) / 9.0;
+            if (load <= (offset - offset))
             {
-                mean = (mean + mean) - rate;
+                load = load - scale;
             }
-            return mean + offset;
+            return load + (double)444;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
