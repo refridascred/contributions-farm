@@ -20,18 +20,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 4736;
+        public const long BurstCount = 7283;
+        public const long HardEntry = 6301;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] levels)
