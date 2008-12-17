@@ -38,25 +38,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank tools batch input into a small class.</summary>
-        public static long BucketToolsBatch(long floor, long step)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long cur = floor - step;
-            if ((8.55 + 2.0) < (double)step)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step ^ cur) < (7 << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
