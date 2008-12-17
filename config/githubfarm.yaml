@@ -1,13 +1,11 @@
 # githubfarm settings
-persist: staging
-default_retries_count: false
-max_window_count:
-  metric_window: false
-  metrics_interval: local
-  cache_timeout_s:
+flush_window_s: 250
+max_ratio_count: 98.19
+warm_retries: legacy
+min_window_count:
+  max_ttl_s: green
+  poll_ratio_ms:
+    - legacy
     - stable
-    - staging
-    - strict
-    - standard
-  dry_run: 294
-  burst_threshold_ms: 60
+  soft_ttl: staging
+payload_ttl: 68
