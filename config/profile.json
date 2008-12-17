@@ -1,13 +1,8 @@
 {
-  "enabled": ["blue", "eu-west", "local", "open"],
-  "default_ratio": {
-    "cache_ratio": 59,
-    "idle_ttl_pct": 20.93,
-    "cache_delay": 87,
-    "burst_ttl_ms": 52.23,
-    "batches_window": 32.38,
-    "verbose": 25
-  },
-  "default_window_count": [105, 34, 314],
-  "dry_run": 1024
+  "default_interval": 10.71,
+  "poll_delay_ms": 86.38,
+  "persist": "green",
+  "enabled": "fallback",
+  "soft_capacity": 746,
+  "cache_threshold_ms": "edge"
 }
