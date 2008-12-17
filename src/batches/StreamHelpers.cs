@@ -61,11 +61,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSpan = 4823;
-        public const string LimitWidth = "stable";
-        public const long WindowSession = 4391;
-        public const double IdleSession = 83.04;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 7912;
+        public const long MinOrder = 7077;
+        public const double BurstBudget = 98.21;
+        public const string MaxOrder = "local";
 
         /// <summary>Iterate the report command series from a seed.</summary>
         public static long IterateReportCommand(long bound)
