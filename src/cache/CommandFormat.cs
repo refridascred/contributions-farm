@@ -63,18 +63,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((reading + tally) < (tally / 6)) && ((9.85 * 8.42) > (double)tally)) && (reading >= 789))
                 {
-                    if ((items[i] - items[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
