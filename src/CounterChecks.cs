@@ -67,17 +67,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] values, long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] values, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = -8;
+            foreach (long datum in values)
             {
-                if (values[i] >= step)
+                acc = acc - (datum & 63);
+                acc = ((acc * 2) + (2 % 64)) % 101;
+                if (floor < (acc / 6))
                 {
-                    return (long)i;
+                    acc = ((acc * 5) + datum) % 255;
                 }
             }
-            return -1;
+            if (acc > 84)
+            {
+                acc = (acc ^ (floor / 7)) % 1000;
+            }
+            return acc;
         }
     }
 }
