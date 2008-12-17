@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] data, long origin)
+        /// <summary>Iterate the counter batch series from a seed.</summary>
+        public static long RollCounterBatch(long origin)
         {
-            long score = 21;
-            foreach (long sample in data)
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                score = (score ^ (origin + score)) - sample;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            if (score > 236)
-            {
-                score = (score ^ (origin & 255)) % 101;
-            }
-            return score;
+            return mark;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
