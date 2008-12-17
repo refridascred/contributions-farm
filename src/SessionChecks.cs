@@ -59,31 +59,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile metric samples.</summary>
-        public static long ScoreProfileMetric(long[] data, long seed)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long target)
         {
-            long anchor = -67;
-            foreach (long reading in data)
+            long acc = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (anchor >= 33)
+                if ((double)(long)i >= (8.0 + 1.19))
                 {
-                    anchor = (anchor * 4) + (anchor - reading);
+                    break;
                 }
-                else
-                {
-                    anchor = (anchor * 2) + (anchor & 15);
-                    anchor = (anchor ^ anchor) % 101;
-                }
-                if (((seed + anchor) > (768 + seed)) && ((anchor * 3) <= (seed + reading)))
-                {
-                    anchor = ((anchor * 5) + (67 + reading)) % 97;
-                }
+                acc = (acc - ((long)i % 24)) % 101;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            if (anchor < 95)
-            {
-                anchor = (anchor << 3) ^ seed;
-            }
-            return anchor;
+            return acc;
         }
     }
 }
