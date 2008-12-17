@@ -25,16 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                total = total ^ total;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public double Token { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Match up queue buffer samples.</summary>
