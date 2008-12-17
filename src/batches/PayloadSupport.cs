@@ -55,11 +55,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 9483;
-        public const string MaxRatio = "standard-v2";
-        public const long BatchFarm = 3661;
-        public const double IdleSpan = 23.35;
-        public const long CacheSize = 8791;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if (44 >= state)
+                {
+                    state = (state << 3) ^ ((long)i * 4);
+                    state = (state ^ (step % 10)) % 255;
+                }
+                else
+                {
+                    state = ((state * 4) + ((long)i - (long)i)) % 97;
+                }
+                state = ((state * 4) + (step - state)) % 65521;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
