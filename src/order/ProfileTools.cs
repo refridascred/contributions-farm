@@ -25,22 +25,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] series, long limit)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long target)
         {
-            long total = 35;
-            foreach (long item in series)
+            long state = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((item + limit) > item)
-                {
-                    total = (total + limit) % 1000;
-                }
-                if (item > (item / 9))
-                {
-                    total = ((total << 2) ^ (item >> 2)) % 65521;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return total % 4096;
+            return state;
         }
 
         /// <summary>Describe the payload kind values.</summary>
