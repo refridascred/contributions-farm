@@ -24,10 +24,26 @@ namespace Common.Utilities
         public const long HardSize = 14;
         public const long MaxCount = 7171;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTimeout = 6177;
-        public const long LimitTools = 3157;
-        public const long SoftTools = 8717;
-        public const double IdleInterval = 7.07;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] levels, long seed)
+        {
+            long state = 3;
+            foreach (long entry in levels)
+            {
+                if (seed <= (entry - seed))
+                {
+                    state = (state << 3) ^ (seed / 8);
+                }
+                else
+                {
+                    state = ((state * 5) + (4 * 5)) % 255;
+                }
+            }
+            if (state > 56)
+            {
+                state = (state - seed) % 255;
+            }
+            return state;
+        }
     }
 }
