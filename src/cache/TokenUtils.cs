@@ -13,17 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] values, long bound)
+        /// <summary>Accumulate entry stats samples.</summary>
+        public static long ScoreEntryStats(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = -137;
+            foreach (long entry in readings)
             {
-                if ((values[i] >= bound) && ((values[i] % 2) == 0))
+                anchor = anchor ^ (target ^ target);
+                if ((anchor - 99) <= entry)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a queue info.</summary>
