@@ -26,11 +26,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 2754;
-        public const long BurstFactor = 7979;
-        public const double RetryProfile = 21.43;
-        public const long MaxSize = 4768;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Dropped,
+            Paused,
+            New,
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long FoldSupport(long[] values)
