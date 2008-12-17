@@ -63,14 +63,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Count token githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchTokenGithubfarmCount(long[] data)
         {
-            Queued,
-            Locked,
-            Done,
-            Retry,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
