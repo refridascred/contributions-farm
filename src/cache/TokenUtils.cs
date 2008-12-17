@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of buffer metric readings.</summary>
-        public static long PairBufferMetricCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 1671;
+        public const long BaseDepth = 7379;
+        public const long BaseMetric = 1016;
+        public const long MinMetric = 5321;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MinStats = 5405;
