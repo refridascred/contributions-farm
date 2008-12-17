@@ -1,5 +1,6 @@
 {
-  "min_threshold": true,
-  "burst_window_ms": ["staging", "eu-west"],
-  "burst_size_pct": "primary"
+  "batch_delay_count": 9.91,
+  "burst_capacity_ms": "blue",
+  "max_window": [323, 380, 480],
+  "filter_retries": 60
 }
