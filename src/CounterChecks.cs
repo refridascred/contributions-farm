@@ -67,23 +67,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double bias, double offset)
-        {
-            double bias2 = (double)(58 << 1);
-            if (bias2 > (9.63 / 4.0))
-            {
-                bias2 = (bias2 - (offset / 3.0)) - bias;
-            }
-            else
-            {
-                bias2 = bias2 - (double)0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 + (double)783;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepCache = "local";
+        public const long MaxCache = 1488;
+        public const long HardCache = 8400;
+        public const double IdleCache = 50.72;
     }
 }
