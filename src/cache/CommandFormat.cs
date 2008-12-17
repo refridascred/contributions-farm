@@ -46,39 +46,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long limit, long step)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            long gap = limit - step;
-            if ((step + step) < (limit * 4))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)gap > (17.0 * 0.2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + gap) > (step + limit))
+                    if ((samples[i] ^ samples[j]) < 4)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit <= (gap - 48)) || (93 >= (gap - 295)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the command report entries that pass the check.</summary>
