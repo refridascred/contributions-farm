@@ -67,12 +67,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Digest a series of profile metrics entries.</summary>
+        public static long TotalProfileMetrics(long[] levels, long limit)
         {
-            Closed,
-            Done,
-            Locked,
+            long acc = 3;
+            foreach (long cell in levels)
+            {
+                acc = acc - (cell - acc);
+                if ((limit << 3) == (acc & 15))
+                {
+                    acc = ((acc << 3) ^ limit) % 65521;
+                }
+            }
+            if (acc > 8)
+            {
+                acc = ((acc << 2) ^ (limit % 100)) % 255;
+            }
+            return acc;
         }
     }
 }
