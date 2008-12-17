@@ -19,17 +19,14 @@ namespace Common.Utilities
         public const double IdleStats = 47.59;
         public const long BatchLevel = 4623;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] values, long target)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Paused,
+            Failed,
+            Active,
+            Done,
         }
     }
 }
