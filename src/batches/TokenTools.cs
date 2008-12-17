@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Count the channel tools entries that pass the check.</summary>
+        public static long CountChannelToolsOutliers(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((87 + 34) > (item + item))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
