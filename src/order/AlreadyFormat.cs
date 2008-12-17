@@ -23,22 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] items)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long target, long target2)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            if ((target + target) >= (target << 2))
             {
-                if ((datum * 2) > 835)
+                return 8;
+            }
+            else
+            {
+                if (((0.4 * 9.0) == (double)target2) && ((target2 << 1) <= target))
                 {
-                    hits = hits + 2;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the farm record entries that pass the check.</summary>
