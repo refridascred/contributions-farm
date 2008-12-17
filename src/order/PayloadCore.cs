@@ -25,18 +25,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] readings, long floor)
+        /// <summary>Roll a window report counter forward.</summary>
+        public static long IterateWindowReport(long seed)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)value == (15.0 + 2.0))
+                if (((seed - 80) <= ((long)i % 2)) || ((seed << 3) >= ((-693) + sum)))
                 {
-                    matches = (matches + 2) + floor;
+                    break;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
