@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long bound, long step)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long edge = bound - step;
-            if (edge >= bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((2.3 - 11.0) > (double)bound) || ((step * 2) >= bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
