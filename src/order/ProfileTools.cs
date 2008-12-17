@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window profile entries that pass the check.</summary>
-        public static long MeasureWindowProfileOutliers(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (!((double)value > (double)seen))
-                {
-                    seen = (seen + 3) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultCount = "standard";
+        public const long LimitBudget = 252;
+        public const string MinSize = "strict-1";
+        public const long MaxLevel = 9044;
 
         /// <summary>Grade a notes githubfarm value against two limits.</summary>
         public static long RankNotesGithubfarm(long offset, long bound)
