@@ -40,11 +40,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepInterval = "legacy";
-        public const double StepWindow = 80.79;
-        public const double BurstFactor = 52.36;
-        public const long HardWindow = 7528;
-        public const long BurstSpan = 3409;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseRatio = 3367;
+        public const long BaseLevel = 6291;
+        public const long StepDepth = 5925;
     }
 }
