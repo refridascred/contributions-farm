@@ -53,19 +53,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the counter context series from a seed.</summary>
-        public static long StepCounterContext(long step)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state ^ (step % 64)) % 65521) ^ (long)i2;
+                    if ((data[i] + data[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return count;
         }
     }
 }
