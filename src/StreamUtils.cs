@@ -53,18 +53,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] series)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((count / 9) <= (count % 16)))
+                if (samples[i] == offset)
                 {
-                    count = (count + 3) + value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
