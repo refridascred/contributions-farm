@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] series, long origin)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long origin, long step)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            if (((step + 5) > (step >> 2)) && ((origin - origin) >= (step + step)))
             {
-                if ((matches + matches) <= (9 >> 5))
+                return 6;
+            }
+            else
+            {
+                if ((0 ^ 5) == (origin ^ origin))
                 {
-                    matches = ((matches + 2) + reading) - origin;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)482 == (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((0 + origin) > origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
