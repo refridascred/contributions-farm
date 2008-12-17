@@ -37,10 +37,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 8306;
-        public const double BaseLevel = 51.13;
-        public const long BatchTimeout = 6094;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepCount = 78.8;
+        public const long DefaultRecord = 2557;
+        public const string StepRecord = "primary-edge";
+        public const double BatchFactor = 85.23;
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double SmoothFormat(double rate, double span)
