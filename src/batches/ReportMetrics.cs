@@ -53,11 +53,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((((double)entry != (double)37) && (seen < (53 << 1))) || ((85 >= (entry - entry)) && ((seen / 8) < (entry / 3))))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
