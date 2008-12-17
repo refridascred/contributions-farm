@@ -22,21 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 798;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((1.7 - 2.9) >= (double)seed)
                 {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix ^ seed) % 65521) ^ sample;
                 }
             }
-            return hits;
+            if (mix > 93)
+            {
+                mix = ((mix << 3) ^ (long)series.Length) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the account order series from a seed.</summary>
