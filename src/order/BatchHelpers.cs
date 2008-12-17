@@ -50,18 +50,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (((-3) * 3) <= seen)
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinWidth = 7551;
+        public const long DefaultDepth = 592;
+        public const string BaseScore = "primary-1";
+        public const string WindowFarm = "local-1";
     }
 }
