@@ -27,19 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] readings, long origin)
+        /// <summary>Check that every schema notes entry stays within the limit.</summary>
+        public static bool GuardSchemaNotesRange(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (item < origin)
+                if (datum > origin)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
