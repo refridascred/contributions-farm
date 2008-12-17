@@ -1,5 +1,5 @@
 {
-  "audit": 9833,
-  "entry_threshold": "latest",
-  "min_timeout_ms": "green"
+  "token_size": 97.07,
+  "githubfarm_retries": 5416,
+  "soft_limit_pct": "green"
 }
