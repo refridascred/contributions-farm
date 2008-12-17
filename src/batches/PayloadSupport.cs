@@ -32,23 +32,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double weight, double floor)
+        /// <summary>Check that every farm profile entry stays within the limit.</summary>
+        public static bool GuardFarmProfileRange(long[] samples, long seed)
         {
-            double gain = floor;
-            if (gain > (gain - gain))
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                gain = gain + weight;
+                if (cell != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (weight + 6.61);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain + (4.8 - 4.26);
+            return ready;
         }
     }
 }
