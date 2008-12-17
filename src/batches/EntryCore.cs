@@ -24,32 +24,12 @@ namespace Common.Utilities
             return ratio + (2.76 / 5.0);
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long step, long limit)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long cur = step ^ limit;
-            if (7.8 < (double)limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((92 + 644) != (limit - cur))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step - step) == (step / 8)) && ((0 + cur) >= (limit << 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the order already entries that pass the check.</summary>
