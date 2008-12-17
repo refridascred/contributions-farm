@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] levels, long step)
+        /// <summary>Locate a commits format reading by value.</summary>
+        public static long SeekCommitsFormatIndex(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] < step) && ((levels[i] % 2) == 0))
+                if ((values[i] > step) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
