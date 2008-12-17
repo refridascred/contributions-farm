@@ -13,21 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Combine support record values into a single score.</summary>
+        public static long CombineSupportRecord(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 762;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((9.0 + 18.0) != (double)reading)
                 {
-                    if ((items[i] ^ items[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc ^ floor) % 101;
                 }
             }
-            return hits;
+            if (acc > 5)
+            {
+                acc = (acc - floor) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
