@@ -51,17 +51,13 @@ namespace Common.Utilities
             return load + (span - rate);
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] items, long origin)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
+            public double Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Fold a list of command readings.</summary>
