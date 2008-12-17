@@ -41,13 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] readings)
         {
-            Idle,
-            Failed,
-            Synced,
-            New,
+            long mark = 39;
+            foreach (long item in readings)
+            {
+                if ((double)mark >= (4.0 / 3.0))
+                {
+                    mark = mark ^ (item ^ item);
+                }
+            }
+            if (mark < (-896))
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
 
         /// <summary>Hold a token snapshot.</summary>
