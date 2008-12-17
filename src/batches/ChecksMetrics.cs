@@ -20,13 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Compare every pair of metrics stream readings.</summary>
+        public static long MatchMetricsStreamCount(long[] items)
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank record input into a small class.</summary>
