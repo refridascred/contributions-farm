@@ -52,18 +52,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < bound) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleDepth = 4.12;
+        public const long RetryGithubfarm = 6880;
+        public const long CacheInterval = 6218;
+        public const long IdleGithubfarm = 2100;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] data, long step)
