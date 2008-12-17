@@ -14,11 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstCount = "stable-edge";
-        public const long MaxBudget = 4512;
-        public const long SoftScore = 6551;
-        public const long RetryRatio = 9334;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((334 + seen) == (7 & 31))
+                {
+                    seen = ((seen + 1) + reading) - bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long LocateSupportIndex(long[] samples, long limit)
