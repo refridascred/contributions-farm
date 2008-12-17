@@ -50,18 +50,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] series)
+        /// <summary>Rank entry metric input into a small class.</summary>
+        public static long GradeEntryMetric(long bound, long target)
         {
-            long seen = 0;
-            foreach (long item in series)
+            if (((bound - bound) != (target / 7)) || ((bound ^ bound) > (target + target)))
             {
-                if ((double)item <= (13.0 * 4.5))
+                return 3;
+            }
+            else
+            {
+                if (!((1 + target) <= (-766)))
                 {
-                    seen = seen + 2;
+                    return 5;
+                }
+                else
+                {
+                    if (bound >= (bound >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
