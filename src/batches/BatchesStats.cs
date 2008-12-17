@@ -45,25 +45,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long origin, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] data, long seed)
         {
-            long span = origin ^ limit;
-            if (span >= (span + span))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((9.93 / 3.0) >= (double)span)
+                if ((value > (tally + value)) || ((tally + value) > value))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    tally = (tally + 3) - seed;
                 }
             }
+            return tally;
         }
     }
 }
