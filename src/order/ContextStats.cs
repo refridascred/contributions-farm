@@ -36,11 +36,24 @@ namespace Common.Utilities
         public const long WindowTimeout = 9325;
         public const long BaseContributi = 1572;
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long limit, long bound)
         {
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
+            if (!((13.0 * 8.5) < (double)limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit - limit) >= (bound << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
