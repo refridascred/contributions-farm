@@ -1,21 +1,7 @@
 # entry settings
-dry_run:
-  checks_threshold: strict
-  account_threshold: 100
-  editor_timeout: true
-  warm_depth_s:
-    warm_ratio: true
-    soft_threshold: legacy
-    strict: 9729
-    default_window_s: 50
-    audit:
-      - local
-      - primary
-  min_threshold_count: false
-  verbose: standard
-cache_capacity_ms: 30
-poll_interval_s: legacy
-hard_capacity_count:
-  - blue
-  - fallback
-  - fallback
+compress: false
+batch_ttl_s: true
+verbose: 3786
+batch_capacity:
+  - latest
+  - cached
