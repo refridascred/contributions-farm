@@ -65,19 +65,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] series, long offset)
+        /// <summary>Locate a queue contributi reading by value.</summary>
+        public static long FindQueueContributiIndex(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value != offset)
+                if ((levels[i] >= bound) && ((levels[i] % 5) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
