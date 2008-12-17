@@ -59,20 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long bound)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] series, long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (!(2 <= (acc + bound)))
+                if ((step > (step + cell)) && ((long)series.Length > (step - hits)))
                 {
-                    acc = (acc * 4) + (bound + (long)i);
-                    continue;
+                    hits = hits + 2;
                 }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a route stats.</summary>
