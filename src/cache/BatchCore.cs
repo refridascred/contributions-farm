@@ -52,14 +52,13 @@ namespace Common.Utilities
             return mean + 9.3;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
+            Paused,
+            Idle,
             Synced,
-            Dropped,
-            Ready,
-            Pending,
-            Stale,
+            Active,
         }
     }
 }
