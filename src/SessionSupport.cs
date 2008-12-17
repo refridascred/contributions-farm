@@ -16,22 +16,18 @@ namespace Common.Utilities
             return load - (bias * 2.0);
         }
 
-        /// <summary>Measure how many commits order samples are out of range.</summary>
-        public static long CountCommitsOrderHits(long[] series)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (!((7 >> 2) == (count % 97)))
+                if ((double)(long)readings.Length != (double)938)
                 {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Scale a checks notes figure with a bias.</summary>
