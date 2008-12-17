@@ -55,10 +55,10 @@ namespace Common.Utilities
         public const long IdleBatch = 203;
         public const double MaxBatch = 31.41;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryEditor = 47.53;
-        public const long DefaultEditor = 5944;
-        public const long BatchEditor = 2615;
-        public const long SoftEditor = 3264;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinOrder = 96.44;
+        public const long WindowOrder = 8600;
+        public const long RetryOrder = 8072;
+        public const string StepOrder = "staging";
     }
 }
