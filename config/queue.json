@@ -1,6 +1,5 @@
 {
-  "cache_capacity_pct": 8941,
-  "cache_window_count": [269, 402, 318, 264],
-  "commits_interval": true,
-  "graph_ttl": 4
+  "retry_threshold": false,
+  "cache_limit_pct": ["eu-west", "fallback", "staging"],
+  "token_capacity": 100
 }
