@@ -1,11 +1,12 @@
 # support settings
-filter_delay: 27.88
-min_delay_s: 7002
-burst_window_s:
-  - 205
-  - 10
-  - 305
-batch_ttl_ms:
-  - legacy
-  - green
-  - open
+max_interval: false
+sync_interval_pct:
+  - eu-west
+  - cached
+batch_retries_count:
+  soft_ratio_count: stable
+  retry_retries_pct: true
+  default_capacity_pct: true
+dry_run: eu-west
+batch_window: latest
+soft_retries: eu-west
