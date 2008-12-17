@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two order counter measurements.</summary>
-        public static double ScaleOrderCounter(double scale, double offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long limit, long limit2)
         {
-            double rate = (double)(469 & 15);
-            return ((rate + (rate / 5.0)) + scale) + offset;
+            if ((limit2 <= limit) && ((limit2 / 2) > (limit2 << 3)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit2 * 4) <= (limit >> 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
