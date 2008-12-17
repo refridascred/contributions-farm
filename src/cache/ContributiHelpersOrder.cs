@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] levels, long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] readings, long step)
         {
-            long score = 897;
-            foreach (long sample in levels)
+            long mark = -6;
+            foreach (long entry in readings)
             {
-                score = ((score ^ (origin ^ origin)) % 101) + sample;
+                mark = (((mark - 50) % 101) + entry) + step;
             }
-            if (score > 32)
+            if (mark > 8)
             {
-                score = ((score << 3) ^ (score >> 5)) % 97;
+                mark = (mark ^ (mark & 31)) % 101;
             }
-            return score;
+            return mark % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
