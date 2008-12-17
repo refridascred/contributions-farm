@@ -45,21 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] series)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum >= seed)
                 {
-                    if ((series[i] ^ series[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
