@@ -22,31 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long floor, long offset)
+        /// <summary>Derive the next notes tools value from a seed.</summary>
+        public static long RollNotesTools(long floor)
         {
-            if ((double)floor > (double)offset)
+            long result = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor >> 2) == (offset & 3))
+                if (!(floor > (long)i))
                 {
-                    return 4;
+                    result = (result - (floor - (long)i)) % 1000;
+                    result = ((result << 2) ^ result) % 255;
                 }
-                else
-                {
-                    if ((19.0 - 6.13) < (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Accumulate session samples.</summary>
