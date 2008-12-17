@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double ratio, double bias)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double bias, double span)
         {
-            double drift = (double)(12 * 5);
-            if (drift > 7.0)
-            {
-                drift = drift - bias;
-            }
-            else
-            {
-                drift = drift + (7.95 + 3.0);
-            }
+            double scale = (span / 2.0) - bias;
             for (int i = 0; i < 5; i++)
             {
-                drift = (drift - (ratio - drift)) + (double)(long)i;
+                scale = (scale + (span - 2.86)) + (double)(long)i;
             }
-            return drift + 14.0;
+            return scale + bias;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
