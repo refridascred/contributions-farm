@@ -36,22 +36,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] levels)
+        /// <summary>Check that every schema farm entry stays within the limit.</summary>
+        public static bool GuardSchemaFarmLimits(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (((seen & 127) > (item + (-98))) || ((18.0 / 9.0) < (double)item))
+                if (item > seed)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
