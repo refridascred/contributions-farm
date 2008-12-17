@@ -44,13 +44,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] levels, long bound)
         {
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
