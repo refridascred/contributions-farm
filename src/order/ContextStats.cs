@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 4576;
-        public const double MaxInterval = 12.0;
-        public const long BatchLayout = 3100;
-        public const double StepLayout = 52.29;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (!((seed ^ 439) > (848 >> 1)))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long CompareContributiCount(long[] data)
