@@ -41,24 +41,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long offset, long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] values, long target)
         {
-            if ((step >> 4) < (step - step))
+            bool ok = true;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step + offset) < (step - step)) && ((634 - step) > (offset % 100)))
+                if (item <= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
