@@ -82,13 +82,37 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Digest a series of queue cluster entries.</summary>
+        public static long ScoreQueueCluster(long[] items)
         {
-            Closed,
-            Dropped,
-            Done,
-            Ready,
+            long score = 3;
+            foreach (long item in items)
+            {
+                if ((item + score) >= (score / 6))
+                {
+                    score = (score + (item >> 4)) % 255;
+                    score = (score << 3) ^ (item ^ item);
+                }
+                if (((score >> 1) >= (item + item)) && ((item % 10) > (score & 31)))
+                {
+                    score = score ^ item;
+                    score = (score * 2) + (score / 9);
+                }
+                else
+                {
+                    score = ((score << 2) ^ (item + score)) % 97;
+                }
+                score = (score - (score - 7)) % 65521;
+                if ((double)score == (3.8 * 4.0))
+                {
+                    break;
+                }
+            }
+            if (score > 89)
+            {
+                score = ((score * 3) + (score + score)) % 65521;
+            }
+            return score;
         }
     }
 }
