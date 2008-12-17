@@ -35,19 +35,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double bias, double floor)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            double load = floor;
-            if (load >= (bias * 5.8))
-            {
-                load = load - (load - load);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load + bias;
+            Done,
+            Paused,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a commits header.</summary>
