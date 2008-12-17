@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] readings, long seed)
         {
-            long result = 8;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (4.37 >= (double)result)
+                if (cell < seed)
                 {
-                    result = ((result * 4) + (item & 255)) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            if (result > (-6))
-            {
-                result = (result << 2) ^ (result / 2);
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
