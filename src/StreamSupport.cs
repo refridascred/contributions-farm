@@ -31,22 +31,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] data, long seed)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] series, long floor)
         {
-            long acc = 6;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((14 + seed) <= (reading + 8))
+                if ((series[i] < floor) && ((series[i] % 2) == 0))
                 {
-                    acc = (acc ^ 370) % 1000;
+                    return (long)i;
                 }
             }
-            if (acc < 2)
-            {
-                acc = ((acc * 3) + seed) % 255;
-            }
-            return acc;
+            return -1;
         }
     }
 }
