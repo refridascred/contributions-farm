@@ -10,32 +10,11 @@ namespace Common.Utilities
         public const long BaseFilter = 2598;
         public const double WindowFilter = 91.18;
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long origin, long target)
-        {
-            if ((16.0 / 8.0) <= (double)origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((917 / 5) < (target - origin)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin >> 3) != (target << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitTimeout = 34.25;
+        public const long IdleRoute = 177;
+        public const long BurstBudget = 5808;
+        public const string MaxRoute = "open";
 
         /// <summary>Check that every tools notes entry stays within the limit.</summary>
         public static bool ValidateToolsNotesBounds(long[] values, long target)
