@@ -1,17 +1,7 @@
 {
-  "soft_threshold": ["green", "green"],
-  "sync_limit_ms": 16.68,
-  "cache_retries_pct": {
-    "base_ttl_ms": 83.12,
-    "enabled": 24,
-    "burst_capacity": {
-      "verbose": true,
-      "audit": 100,
-      "persist": 45,
-      "soft_ratio": "green"
-    },
-    "dry_run": [437, 87, 318, 166],
-    "entry_capacity": "primary"
-  },
-  "hard_depth_pct": 97.13
+  "cluster_threshold": true,
+  "burst_size": 57,
+  "already_interval": "eu-west",
+  "hard_timeout_pct": false,
+  "persist": 32
 }
