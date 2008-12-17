@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const double DefaultInterval = 89.55;
         public const long SoftTimeout = 8198;
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] items)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
