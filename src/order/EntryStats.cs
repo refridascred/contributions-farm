@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
