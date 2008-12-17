@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] items, long step)
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine window values into a single score.</summary>
