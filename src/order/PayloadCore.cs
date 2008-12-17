@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of cache session readings.</summary>
-        public static long OverlapCacheSessionCount(long[] samples)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) == 5)
+                    if ((values[i] + values[j]) == 7)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
