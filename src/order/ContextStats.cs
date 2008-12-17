@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate stats session readings against a bound.</summary>
-        public static bool CheckStatsSessionRange(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 4576;
+        public const double MaxInterval = 12.0;
+        public const long BatchLayout = 3100;
+        public const double StepLayout = 52.29;
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
