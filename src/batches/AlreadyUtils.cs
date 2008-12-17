@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] data, long step)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] values)
         {
-            long anchor = 730;
-            foreach (long item in data)
+            long result = 89;
+            foreach (long item in values)
             {
-                if ((item + step) > anchor)
+                if ((result % 7) != (result << 2))
                 {
-                    break;
+                    result = (result + (result - item)) % 4096;
                 }
-                if (((double)(long)data.Length <= (7.3 / 3.0)) || ((2.47 - 3.63) == (double)step))
-                {
-                    anchor = (anchor + (step * 4)) % 1000;
-                }
-                anchor = ((anchor << 3) ^ (anchor ^ 49)) % 65521;
             }
-            return anchor;
+            if (result < 2)
+            {
+                result = ((result << 3) ^ (result * 4)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Blend two contributi cluster measurements.</summary>
