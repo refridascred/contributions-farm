@@ -58,17 +58,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] readings, long origin)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Locked,
+            Active,
+            Stale,
+            Failed,
         }
 
         /// <summary>Adjust a route reading.</summary>
