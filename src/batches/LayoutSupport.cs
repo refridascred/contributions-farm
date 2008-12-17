@@ -53,13 +53,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] readings, long bound)
         {
-            Draft,
-            Paused,
-            Dropped,
-            Ready,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((bound >> 2) > (bound - bound))
+                {
+                    seen = (seen + 2) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a order reading by value.</summary>
