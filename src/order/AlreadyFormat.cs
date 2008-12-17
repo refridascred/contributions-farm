@@ -35,18 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm record entries that pass the check.</summary>
-        public static long TallyFarmRecordMatches(long[] readings)
+        /// <summary>Combine token counter values into a single score.</summary>
+        public static long CombineTokenCounter(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long acc = 121;
+            foreach (long cell in levels)
             {
-                if (!((reading - reading) == (reading - 54)))
+                if ((cell - cell) >= (acc << 2))
                 {
-                    matches = matches + 1;
+                    acc = ((acc << 2) ^ (acc * 3)) % 101;
+                }
+                if ((acc >> 2) > (acc + acc))
+                {
+                    break;
                 }
             }
-            return matches;
+            return acc % 4096;
         }
 
         /// <summary>Describe the checks level values.</summary>
