@@ -1,16 +1,7 @@
 # support settings
-compress: true
-persist: fallback
-max_window_s:
-  batch_interval_count: eu-west
-  idle_size_ms:
-    - 160
-    - 241
-    - 371
-    - 447
-  schema_ratio: 604
-batch_threshold_pct: 100
-stream_retries: primary
-min_size_s:
-  - local
-  - edge
+flush_delay_pct:
+  - 443
+  - 479
+  - 492
+payload_size: 34
+burst_delay_pct: blue
