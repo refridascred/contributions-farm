@@ -58,15 +58,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] samples, long step)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] items, long offset)
         {
-            long mix = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix ^ (step - mix)) % 97) ^ sample;
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
