@@ -22,38 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long target, long offset)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            if (!(96 >= (target << 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((378 << 2) <= (target + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (13 < (offset / 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset + 859) < target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Closed,
+            Ready,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
