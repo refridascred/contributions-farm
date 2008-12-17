@@ -1,18 +1,7 @@
 # support settings
-strict:
-  - 208
-  - 253
-sync_capacity: 10
-idle_ratio_pct:
-  readonly: stable
-  queue_capacity: false
-  profile_delay: 70
-  warm_limit_pct:
-    checks_capacity: true
-    sync_window: staging
-    sync_ratio_count: false
-    soft_threshold: 4
-    min_timeout_ms: false
-    warm_window_count: open
-  account_interval: 97.65
-max_size_s: legacy
+sync_ratio: true
+batch_size: 100
+flush_interval_ms: false
+layout_capacity: staging
+window_interval: false
+idle_size: 46
