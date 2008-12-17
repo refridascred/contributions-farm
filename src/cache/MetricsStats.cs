@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long target)
         {
-            public long Level { get; set; }
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            long score = target;
+            for (int i = 0; i < 6; i++)
+            {
+                score = (score ^ (5 - 6)) % 4096;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
