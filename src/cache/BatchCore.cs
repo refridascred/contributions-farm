@@ -29,16 +29,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Derive the next notes context value from a seed.</summary>
+        public static long RollNotesContext(long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = (anchor * 4) + (anchor << 1);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (((long)i >> 1) > limit)
+                {
+                    total = ((total * 5) + ((long)i * 4)) % 65521;
+                }
+                else
+                {
+                    total = (total * 3) + (total * 5);
+                }
+                total = (total + (total % 16)) % 1000;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Measure how many format editor samples are out of range.</summary>
