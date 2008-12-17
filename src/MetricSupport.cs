@@ -37,22 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] readings, long seed)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long sum = 838;
-            foreach (long item in readings)
-            {
-                if (seed < (sum / 4))
-                {
-                    sum = sum ^ (item + 1);
-                }
-            }
-            if (sum < 128)
-            {
-                sum = (sum ^ (seed + (long)readings.Length)) % 1000;
-            }
-            return sum;
+            Pending,
+            Closed,
+            Done,
         }
     }
 }
