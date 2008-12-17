@@ -55,18 +55,24 @@ namespace Common.Utilities
         public const string IdleCommits = "staging-edge";
         public const long IdleInterval = 9849;
 
-        /// <summary>Count the command report entries that pass the check.</summary>
-        public static long CountCommandReportMatches(long[] values, long step)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long floor, long seed)
         {
-            long tally = 0;
-            foreach (long value in values)
+            if ((floor + floor) < (seed / 2))
             {
-                if ((value % 7) > value)
+                return 8;
+            }
+            else
+            {
+                if (((seed >> 1) < (seed - floor)) && ((seed - 23) < seed))
                 {
-                    tally = (tally + 1) - step;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
     }
 }
