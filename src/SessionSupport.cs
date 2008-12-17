@@ -22,11 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchScore = "legacy-v2";
-        public const long BurstLevel = 4248;
-        public const long MinBudget = 9094;
-        public const long HardLevel = 5983;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Ready,
+            Draft,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BurstMetrics = 23.81;
