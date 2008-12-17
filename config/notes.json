@@ -1,16 +1,8 @@
 {
-  "sync_size_pct": {
-    "metrics_depth": "primary",
-    "max_threshold_s": {
-      "compress": true,
-      "idle_capacity_count": [34, 207, 83, 186],
-      "channel_depth": "standard",
-      "warm_capacity_s": 100,
-      "audit": true
-    },
-    "default_limit_ms": [93, 216, 186]
-  },
-  "farm_window": 30,
-  "base_depth_ms": 85,
-  "hard_ttl_count": [78, 107]
+  "idle_ttl": false,
+  "min_limit_count": "standard",
+  "queue_limit": 41.19,
+  "batch_retries": "standard",
+  "idle_timeout_s": 60,
+  "audit": "green"
 }
