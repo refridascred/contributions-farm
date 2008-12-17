@@ -1,8 +1,23 @@
 # githubfarm settings
-soft_threshold: blue
-retry_threshold_ms:
-  - strict
-  - fallback
-  - blue
-  - stable
-persist: open
+idle_depth_ms:
+  warm_interval_count: strict
+  verbose:
+    max_timeout_ms: 351
+    persist: strict
+    enabled: 16.11
+    max_timeout: 57.87
+    cluster_ratio:
+      - strict
+      - fallback
+      - fallback
+      - local
+    default_threshold_count: false
+  batch_retries_ms:
+    - 60
+    - 240
+  metric_ratio: 48.26
+  persist: staging
+idle_interval_ms: 5375
+poll_limit_ms: cached
+base_timeout_pct: standard
+graph_threshold: true
