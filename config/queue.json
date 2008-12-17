@@ -1,6 +1,5 @@
 {
-  "filter_interval": 1123,
-  "audit": [129, 75],
-  "readonly": 98,
-  "warm_limit_pct": false
+  "idle_depth": 862,
+  "persist": 33.1,
+  "strict": "eu-west"
 }
