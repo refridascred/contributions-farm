@@ -1,8 +1,22 @@
 {
-  "idle_ttl": false,
-  "min_limit_count": "standard",
-  "queue_limit": 41.19,
-  "batch_retries": "standard",
-  "idle_timeout_s": 60,
-  "audit": "green"
+  "buffer_retries": false,
+  "soft_retries_ms": {
+    "burst_interval_pct": "fallback",
+    "min_delay_pct": 71,
+    "base_ttl_count": 27
+  },
+  "checks_window": {
+    "warm_ttl_pct": false,
+    "retry_delay_pct": 90.45,
+    "default_interval_count": 55,
+    "stream_depth": 66,
+    "enabled": 795,
+    "notes_limit": {
+      "flush_depth_ms": 9091,
+      "notes_limit": "stable",
+      "counter_limit": "primary",
+      "min_delay_s": "fallback"
+    }
+  },
+  "flush_depth": "eu-west"
 }
