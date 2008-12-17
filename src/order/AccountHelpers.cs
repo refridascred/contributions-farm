@@ -45,12 +45,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] readings, long limit)
+        /// <summary>Find the first batch account entry that matches the target.</summary>
+        public static long LocateBatchAccountIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] < limit) && ((readings[i] % 5) != 0))
+                if ((levels[i] == bound) && ((levels[i] % 5) != 0))
                 {
                     return (long)i;
                 }
