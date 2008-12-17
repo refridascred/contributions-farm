@@ -63,39 +63,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long bound, long step)
+        /// <summary>Digest a series of schema filter entries.</summary>
+        public static long TotalSchemaFilter(long[] readings)
         {
-            long cur = bound + step;
-            if (!((bound + bound) >= (step + bound)))
+            long total = -727;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((cur - step) <= step)
+                if ((total % 7) == (value * 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((cur < (bound >> 2)) && ((double)7 <= (double)cur))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound > (19.0 * 6.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    total = ((total << 2) ^ total) % 1000;
                 }
             }
+            return total % 4096;
         }
     }
 }
