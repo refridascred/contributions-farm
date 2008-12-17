@@ -38,19 +38,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double ratio, double floor)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] readings)
         {
-            double rate = ratio - (double)42;
-            if (rate < rate)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate + (floor - 4.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - ratio;
-            }
-            return rate - rate;
+            return hits;
         }
     }
 }
