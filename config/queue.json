@@ -1,6 +1,5 @@
 {
-  "readonly": ["local", "primary", "strict", "stable"],
-  "sync_retries_count": "open",
-  "cache_size": 60,
-  "warm_ttl_count": 88.44
+  "commits_capacity": true,
+  "batch_threshold": 960,
+  "retry_retries_s": "cached"
 }
