@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] values)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] readings, long target)
         {
-            long carry = -75;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (((-6) <= cell) || ((0.5 * 13.0) >= (double)carry))
+                if ((690 + count) > (datum >> 1))
                 {
-                    carry = carry ^ (carry >> 1);
+                    count = (count + 1) - target;
                 }
                 else
                 {
-                    carry = carry ^ carry;
+                    count = count - 1;
                 }
             }
-            if (carry > (-32))
-            {
-                carry = (carry << 3) ^ (carry / 6);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
