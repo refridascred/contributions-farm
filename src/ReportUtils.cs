@@ -38,14 +38,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstBatch = 63.11;
+        public const long CacheBatch = 6773;
+        public const long StepBatch = 8483;
+        public const long MinCount = 4896;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MinProfile = 889;
