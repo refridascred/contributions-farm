@@ -20,10 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 4165;
-        public const string CacheSpan = "staging-edge";
-        public const long CacheGithubfarm = 7303;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 9009;
+        public const double BurstSpan = 58.45;
+        public const string MaxSession = "strict-1";
+        public const long SoftSession = 7207;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
