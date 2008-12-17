@@ -1,9 +1,13 @@
 # entry settings
-warm_size_ms: eu-west
-commits_size: 44.64
-readonly: 74.64
-soft_retries_count:
-  - edge
-  - staging
-  - green
-  - blue
+poll_capacity_count:
+  cache_timeout_ms:
+    - stable
+    - eu-west
+  hard_ttl: true
+  sync_window_count: 83.5
+  default_ttl: 63.8
+  retry_limit_ms: true
+  hard_timeout_ms: edge
+batch_capacity: false
+flush_retries_ms: 85.39
+metric_threshold: 30
