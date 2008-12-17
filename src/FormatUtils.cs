@@ -45,19 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] series, long limit)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the profile phase values.</summary>
