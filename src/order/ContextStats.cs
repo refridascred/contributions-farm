@@ -40,10 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultRatio = 65.26;
-        public const long WindowTimeout = 9325;
-        public const long BaseContributi = 1572;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Failed,
+            Synced,
+            Done,
+            Draft,
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
