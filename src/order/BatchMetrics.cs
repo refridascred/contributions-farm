@@ -76,21 +76,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] items)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 76;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (anchor ^ item) % 97;
             }
-            return count;
+            return anchor;
         }
     }
 }
