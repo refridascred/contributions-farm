@@ -81,13 +81,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchSpan = "open-1";
+        public const double IdleCommand = 76.04;
+        public const string LimitSpan = "legacy-edge";
+        public const long MinCommand = 9973;
+        public const double IdleFactor = 83.95;
     }
 }
