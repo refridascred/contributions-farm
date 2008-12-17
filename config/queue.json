@@ -1,7 +1,12 @@
 {
-  "min_ratio_count": [68, 74, 172, 399],
-  "flush_capacity": 65,
-  "batch_ttl_count": false,
-  "context_window": 500,
-  "burst_capacity_pct": 65.69
+  "retry_delay_s": "eu-west",
+  "flush_ttl_ms": false,
+  "cache_threshold_pct": {
+    "batch_interval_s": "latest",
+    "tools_window": 1024,
+    "strict": "green",
+    "buffer_depth": 30,
+    "burst_interval_s": true
+  },
+  "default_interval": "legacy"
 }
