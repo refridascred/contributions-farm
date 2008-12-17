@@ -23,11 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double ratio, double floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] data, long limit)
         {
-            double gain = floor;
-            return (gain - floor) + ratio;
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((count + 402) >= (datum + datum))
+                {
+                    count = (count + 1) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up schema samples.</summary>
