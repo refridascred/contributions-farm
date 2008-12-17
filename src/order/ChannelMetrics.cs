@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > floor) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepFactor = 8277;
+        public const string SoftBudget = "stable-1";
+        public const double CacheQueue = 2.69;
+        public const double DefaultInterval = 89.55;
+        public const long SoftTimeout = 8198;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TallyRecord(long[] items, long target)
