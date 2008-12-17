@@ -32,25 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] items)
         {
-            long score = seed;
-            for (int i = 0; i < 13; i++)
+            long anchor = 423;
+            foreach (long entry in items)
             {
-                if (((1.96 + 3.3) == (double)seed) && ((score + seed) < seed))
+                if ((double)entry >= (4.0 + 4.29))
                 {
-                    score = (score ^ score) % 65521;
-                    score = (score - (score / 6)) % 255;
+                    anchor = (anchor - (anchor % 5)) % 97;
                 }
-                else
-                {
-                    score = (score + (seed / 9)) % 4096;
-                }
-                score = ((score * 3) + (60 + score)) % 255;
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            if (anchor > 236)
+            {
+                anchor = (anchor ^ anchor) % 1000;
+            }
+            return anchor;
         }
     }
 }
