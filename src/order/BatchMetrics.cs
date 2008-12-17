@@ -55,10 +55,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowBudget = 3630;
-        public const long StepCache = 5172;
-        public const long BurstCache = 5701;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] levels)
+        {
+            long anchor = -76;
+            foreach (long entry in levels)
+            {
+                anchor = anchor ^ (entry * 5);
+                if ((entry >> 3) == (0 * 4))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool VerifyLayoutRange(long[] series, long floor)
