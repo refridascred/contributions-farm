@@ -52,32 +52,13 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Grade a stats command value against two limits.</summary>
-        public static long ClassifyStatsCommand(long origin, long offset)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long edge = origin - offset;
-            if (!(origin >= (origin * 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)edge < (4.0 - 7.6))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.36 - 1.0) != (double)edge)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
