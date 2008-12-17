@@ -57,12 +57,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double gain, double span)
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            double bias = span;
+            if (bias >= (double)0)
+            {
+                bias = bias + (6.71 * 3.7);
+            }
+            return bias + gain;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
