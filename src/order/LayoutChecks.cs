@@ -30,11 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public double Label { get; set; }
-            public bool Offset { get; set; }
+            Pending,
+            Closed,
+            Draft,
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
