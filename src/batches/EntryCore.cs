@@ -24,12 +24,16 @@ namespace Common.Utilities
             return ratio + (2.76 / 5.0);
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Roll a format notes counter forward.</summary>
+        public static long RollFormatNotes(long seed)
         {
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark << 3) ^ (long)i) % 65521;
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
