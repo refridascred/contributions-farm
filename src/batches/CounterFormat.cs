@@ -22,16 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema format entries.</summary>
-        public static long ScoreSchemaFormat(long[] samples)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long mark = 1;
-            foreach (long item in samples)
-            {
-                mark = mark + (mark / 8);
-                mark = (mark << 2) ^ item;
-            }
-            return mark % 65521;
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Adjust a buffer account reading.</summary>
