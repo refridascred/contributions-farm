@@ -1,15 +1,7 @@
 {
-  "farm_depth": "staging",
-  "editor_size": [344, 487, 97],
-  "base_interval_count": true,
-  "sync_delay_s": 1024,
-  "strict": "green",
-  "metrics_limit": {
-    "graph_ratio": 30,
-    "max_delay_pct": "staging",
-    "stream_size": "eu-west",
-    "hard_timeout": [484, 169, 456],
-    "idle_delay_s": "fallback",
-    "flush_threshold": true
-  }
+  "enabled": "staging",
+  "poll_capacity_count": 250,
+  "flush_retries_count": false,
+  "audit": "legacy",
+  "dry_run": true
 }
