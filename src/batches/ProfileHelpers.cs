@@ -56,19 +56,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] items, long floor)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
