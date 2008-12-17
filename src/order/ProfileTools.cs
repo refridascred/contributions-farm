@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a buffer cluster sample.</summary>
-        public static long LookupBufferClusterIndex(long[] data, long origin)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] < origin) && ((data[i] % 3) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
