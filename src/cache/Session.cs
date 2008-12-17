@@ -41,13 +41,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Dropped,
-            Paused,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinBudget = "staging-v2";
+        public const long BaseScore = 9455;
+        public const long LimitPayload = 5400;
+        public const long BasePayload = 7140;
+        public const double StepFactor = 15.84;
     }
 }
