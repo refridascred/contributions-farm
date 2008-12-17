@@ -71,17 +71,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] readings, long offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 607;
+            foreach (long cell in series)
             {
-                if (readings[i] > offset)
+                if ((((long)series.Length - cell) != (cell - anchor)) || ((cell & 3) <= (cell + anchor)))
                 {
-                    return (long)i;
+                    anchor = (anchor * 4) + 0;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
