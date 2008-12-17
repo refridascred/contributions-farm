@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double bias, double bias2)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            double mean = 2.52;
+            if (mean > mean)
+            {
+                mean = mean + (mean - bias2);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (bias2 - bias);
         }
 
         /// <summary>Define format limits and defaults.</summary>
