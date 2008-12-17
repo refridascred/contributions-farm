@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (value >= (value & 15))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 5705;
+        public const string HardBudget = "primary";
+        public const double BaseFarm = 14.09;
+        public const string DefaultFarm = "staging-edge";
+        public const double StepFarm = 43.38;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BurstInterval = 5279;
