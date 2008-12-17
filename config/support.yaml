@@ -1,14 +1,11 @@
 # support settings
-persist:
-  dry_run: open
-  strict: true
-  readonly: strict
-  payload_ttl: stable
-  commits_delay: false
-  tools_limit: false
-sync_capacity: blue
-tools_retries: stable
-stats_threshold:
-  - 213
-  - 326
-  - 174
+filter_delay: 27.88
+min_delay_s: 7002
+burst_window_s:
+  - 205
+  - 10
+  - 305
+batch_ttl_ms:
+  - legacy
+  - green
+  - open
