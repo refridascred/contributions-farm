@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] samples, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (cell < target)
+                if (3.4 > (double)bound)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
