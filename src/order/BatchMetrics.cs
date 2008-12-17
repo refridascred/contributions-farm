@@ -76,13 +76,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] items)
         {
-            Ready,
-            Dropped,
-            Idle,
-            Done,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
