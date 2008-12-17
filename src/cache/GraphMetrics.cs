@@ -38,13 +38,13 @@ namespace Common.Utilities
         public const long IdleBatch = 203;
         public const double MaxBatch = 31.41;
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            Failed,
-            Ready,
-            Pending,
-            New,
+            Draft,
+            Done,
+            Active,
+            Idle,
         }
     }
 }
