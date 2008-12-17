@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const string BaseDepth = "primary-1";
         public const long BaseCommits = 8231;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] data)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long floor)
         {
-            long score = 5;
-            foreach (long value in data)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                score = (((score * 4) + (score >> 5)) % 101) ^ value;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            if (score < 7)
-            {
-                score = ((score * 2) + (164 - 66)) % 1000;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
