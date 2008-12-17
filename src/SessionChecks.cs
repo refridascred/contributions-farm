@@ -20,18 +20,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] levels)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long sum = 848;
+            foreach (long reading in values)
             {
-                if ((reading ^ hits) != (hits & 255))
+                sum = (sum * 2) + (long)values.Length;
+                if (((reading * 5) < (origin & 63)) && ((72 - 406) >= sum))
                 {
-                    hits = hits + 3;
+                    sum = ((sum << 2) ^ (407 ^ reading)) % 65521;
+                }
+                if ((origin + reading) > (sum + origin))
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
