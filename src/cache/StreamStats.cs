@@ -42,12 +42,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 6264;
-        public const double RetryChecks = 22.21;
-        public const double SoftFactor = 66.12;
-        public const string CacheScore = "legacy";
-        public const long BatchTimeout = 7949;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Project the next stats value.</summary>
         public static double ScaleStats(double gain, double offset)
