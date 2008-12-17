@@ -44,14 +44,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Failed,
-            Ready,
-            Paused,
-            Done,
-            Draft,
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
