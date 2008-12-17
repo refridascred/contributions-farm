@@ -36,13 +36,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 23.81;
+        public const long MinFactor = 4464;
+        public const long HardWidth = 2452;
     }
 }
