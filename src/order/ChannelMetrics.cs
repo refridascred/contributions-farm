@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitFarm = 14.09;
-        public const long BaseTimeout = 3383;
-        public const long BatchCount = 3412;
-        public const double WindowFarm = 1.16;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > floor) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TallyRecord(long[] items, long target)
