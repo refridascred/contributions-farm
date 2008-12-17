@@ -1,10 +1,9 @@
 # entry settings
-warm_limit: local
-readonly: true
-verbose: fallback
-stats_retries: true
-graph_ttl: 60
-min_depth:
-  - 116
-  - 61
-  - 236
+warm_size_ms: eu-west
+commits_size: 44.64
+readonly: 74.64
+soft_retries_count:
+  - edge
+  - staging
+  - green
+  - blue
