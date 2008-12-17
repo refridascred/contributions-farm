@@ -1,4 +1,13 @@
 # entry settings
-burst_ttl_ms: edge
-batch_delay: false
-min_timeout: latest
+min_size_pct: 44
+tools_delay:
+  - 240
+  - 127
+  - 419
+  - 478
+githubfarm_depth:
+  - 422
+  - 112
+  - 375
+  - 328
+hard_threshold_pct: stable
