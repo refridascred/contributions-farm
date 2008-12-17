@@ -58,15 +58,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] items, long bound)
+        /// <summary>Count cluster account pairs that satisfy a relation.</summary>
+        public static long MatchClusterAccountCount(long[] samples)
         {
             long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (88 < (datum / 8))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) - bound;
+                    if ((samples[i] - samples[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
