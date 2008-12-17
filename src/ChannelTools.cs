@@ -27,11 +27,13 @@ namespace Common.Utilities
         public const string IdleInterval = "fallback-1";
         public const double WindowSpan = 0.35;
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public long Size { get; set; }
-            public double Label { get; set; }
+            Active,
+            Closed,
+            Queued,
+            Failed,
         }
     }
 }
