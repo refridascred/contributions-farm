@@ -22,22 +22,19 @@ namespace Common.Utilities
         public const long RetryBatch = 3056;
         public const long RetryRatio = 3965;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] series, long seed)
+        /// <summary>Check that every account graph entry stays within the limit.</summary>
+        public static bool VerifyAccountGraphBounds(long[] series, long step)
         {
-            long count = 0;
+            bool found = true;
             foreach (long item in series)
             {
-                if (!(seed >= count) || (68 > (item + seed)))
+                if (item < step)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
