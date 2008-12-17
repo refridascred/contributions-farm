@@ -23,18 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many token editor samples are out of range.</summary>
-        public static long TallyTokenEditorOutliers(long[] levels)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((sample % 64) < (tally - sample))
+                if ((offset % 97) >= offset)
                 {
-                    tally = tally + 2;
+                    matches = (matches + 2) - datum;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
