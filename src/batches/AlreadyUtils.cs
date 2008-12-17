@@ -14,15 +14,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit metric checks readings against a rule.</summary>
-        public static long MeasureMetricChecksMatches(long[] readings, long seed)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] values)
         {
             long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item <= (tally >> 2)) || ((seed + tally) != ((-95) + tally)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] - values[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
