@@ -1,5 +1,6 @@
 {
-  "batch_delay_ms": "open",
-  "retry_delay_s": [414, 493, 269],
-  "burst_timeout": [175, 370]
+  "dry_run": true,
+  "soft_ttl_s": true,
+  "cache_capacity_pct": 26,
+  "flush_window_pct": 12
 }
