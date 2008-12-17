@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks counter entries that pass the check.</summary>
-        public static long TallyChecksCounterOutliers(long[] series)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (0 > (hits - 35))
+                if (!(count > (652 % 16)) && ((offset + 98) < count))
                 {
-                    hits = (hits + 1) - reading;
+                    count = (count + 1) + sample;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
