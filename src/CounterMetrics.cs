@@ -42,12 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public double Total { get; set; }
+            Idle,
+            Failed,
+            Queued,
+            Active,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
