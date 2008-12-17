@@ -1,7 +1,6 @@
 {
-  "min_delay_s": 22.52,
-  "schema_interval": 55.03,
-  "persist": 54.05,
-  "poll_capacity_count": 96,
-  "default_interval": ["standard", "green", "edge", "green"]
+  "tools_depth": "cached",
+  "sync_interval": 10,
+  "min_threshold": false,
+  "entry_threshold": "stable"
 }
