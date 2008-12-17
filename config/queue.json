@@ -1,5 +1,8 @@
 {
-  "strict": [282, 158, 349, 291],
-  "idle_size_s": 852,
-  "persist": 77
+  "persist": 72.12,
+  "support_window": 500,
+  "burst_retries": "edge",
+  "audit": "eu-west",
+  "compress": 9403,
+  "stats_delay": false
 }
