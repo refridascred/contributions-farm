@@ -41,16 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                total = (total - bound) % 101;
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultDepth = 27.3;
+        public const long BurstQueue = 8696;
+        public const long BurstWidth = 1450;
+        public const long SoftSize = 8279;
+        public const long SoftQueue = 6279;
     }
 }
