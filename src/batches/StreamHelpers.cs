@@ -35,19 +35,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double gain, double span)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] levels)
         {
-            double weight = span;
-            if (weight >= (span * 7.64))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - (span + gain);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (gain * 5.0)) + (double)(long)i;
-            }
-            return weight - (span + gain);
+            return tally;
         }
 
         /// <summary>Describe the notes state values.</summary>
