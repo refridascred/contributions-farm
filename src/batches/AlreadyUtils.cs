@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitNotes = 71.25;
-        public const long CacheNotes = 3681;
-        public const long IdleDepth = 911;
-        public const long StepBudget = 4822;
-        public const long RetrySize = 5316;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public bool Flag { get; set; }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsMatches(long[] items)
