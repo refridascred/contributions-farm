@@ -1,11 +1,13 @@
 # support settings
-compress: 90
-strict:
-  dry_run: edge
-  compress: 9681
-  min_timeout: fallback
-  idle_size_s: staging
-stats_window: stable
-min_limit_s:
-  - 316
-  - 187
+report_window: 60
+warm_threshold_ms:
+  - local
+  - blue
+poll_ttl_pct:
+  retry_window: 36.63
+  contributi_window: strict
+  verbose: false
+  counter_window: latest
+  audit: latest
+  batch_limit: standard
+idle_delay_ms: legacy
