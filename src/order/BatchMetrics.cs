@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((sample & 255) == (sample / 6)) || ((seen % 16) > (seen / 6)))
                 {
-                    if ((samples[i] ^ samples[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Roll a schema cache counter forward.</summary>
