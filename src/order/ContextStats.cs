@@ -13,19 +13,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Adjust a commits cluster reading.</summary>
-        public static double BlendCommitsCluster(double ratio, double bias)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            double weight = ratio;
-            if (weight > weight)
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + bias) - (double)(long)i;
-            }
-            return weight + (double)34;
+            public double Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
