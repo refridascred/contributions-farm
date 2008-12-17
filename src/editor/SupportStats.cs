@@ -34,15 +34,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double bias, double bias2)
-        {
-            double drift = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = ((drift - drift) + (double)(long)i) - bias2;
-            }
-            return drift + 4.28;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheSpan = 28.05;
+        public const long RetryWidth = 7372;
+        public const long HardAlready = 8468;
     }
 }
