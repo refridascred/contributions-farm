@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] values)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double ratio, double offset)
         {
-            long sum = 636;
-            foreach (long datum in values)
+            double gain = (double)(27 ^ 8);
+            if (gain <= (double)9)
             {
-                if ((3 ^ datum) < ((long)values.Length ^ datum))
-                {
-                    sum = sum ^ (sum * 4);
-                }
-                else
-                {
-                    sum = (sum ^ (sum - datum)) % 97;
-                }
+                gain = (gain - ratio) - offset;
             }
-            return sum;
+            else
+            {
+                gain = gain - (gain - 4.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + (gain * 8.0);
         }
 
         /// <summary>Fold a list of entry readings.</summary>
