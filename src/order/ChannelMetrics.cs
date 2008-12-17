@@ -12,22 +12,21 @@ namespace Common.Utilities
         public const double DefaultInterval = 89.55;
         public const long SoftTimeout = 8198;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] items, long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long limit)
         {
-            long sum = 49;
-            foreach (long entry in items)
+            long score = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (((long)items.Length << 2) != (entry + 160))
+                score = ((score << 3) ^ (limit - score)) % 4096;
+                if (((limit >> 2) == (limit % 12)) || ((57 / 6) > (limit & 3)))
                 {
-                    sum = (sum + target) % 255;
+                    score = (score - (score & 3)) % 1000;
+                    continue;
                 }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            if (sum > (-2))
-            {
-                sum = (sum ^ (target - target)) % 65521;
-            }
-            return sum;
+            return score;
         }
 
         /// <summary>Accumulate schema samples.</summary>
