@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] levels, long bound)
+        /// <summary>Fold a list of record cache readings.</summary>
+        public static long TotalRecordCache(long[] samples)
         {
-            long sum = -29;
-            foreach (long entry in levels)
+            long mix = 805;
+            foreach (long item in samples)
             {
-                sum = ((sum << 2) ^ (bound / 9)) + entry;
+                if ((19.0 / 9.0) <= (double)item)
+                {
+                    mix = mix + mix;
+                }
+                for (int i = 0; i < 7; i++)
+                {
+                    mix = (mix - (mix >> 1)) - (long)i;
+                }
+                if (item < (mix & 15))
+                {
+                    mix = (mix + (mix & 7)) % 4096;
+                }
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Validate farm editor readings against a bound.</summary>
