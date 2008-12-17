@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] readings, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (value < limit)
+                if (((-109) + 1) <= (seed ^ 8))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) + reading;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Audit support command readings against a rule.</summary>
