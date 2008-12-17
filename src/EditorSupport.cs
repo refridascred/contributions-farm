@@ -49,22 +49,11 @@ namespace Common.Utilities
         public const long HardGraph = 3662;
         public const string IdleGraph = "staging-v2";
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] readings)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value + (long)readings.Length) > count)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
