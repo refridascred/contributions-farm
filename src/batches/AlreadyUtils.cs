@@ -13,22 +13,24 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] values, long bound)
+        /// <summary>Rank route metrics input into a small class.</summary>
+        public static long RankRouteMetrics(long offset, long step)
         {
-            long matches = 0;
-            foreach (long value in values)
+            if (!((offset - step) >= (step / 3)))
             {
-                if ((bound << 3) <= 7)
+                return 3;
+            }
+            else
+            {
+                if ((9.2 + 3.5) == (double)offset)
                 {
-                    matches = (matches + 1) + value;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a layout stats.</summary>
