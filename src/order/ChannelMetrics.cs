@@ -36,26 +36,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] levels, long seed)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] data, long target)
         {
-            long state = 3;
-            foreach (long entry in levels)
+            long total = 4;
+            foreach (long item in data)
             {
-                if (seed <= (entry - seed))
+                if ((9.0 / 7.0) <= (double)total)
                 {
-                    state = (state << 3) ^ (seed / 8);
-                }
-                else
-                {
-                    state = ((state * 5) + (4 * 5)) % 255;
+                    total = ((total + (item << 3)) % 65521) + target;
                 }
             }
-            if (state > 56)
-            {
-                state = (state - seed) % 255;
-            }
-            return state;
+            return total;
         }
     }
 }
