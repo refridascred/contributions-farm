@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] samples, long target)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)7 < (double)reading)
-                {
-                    seen = (seen + 2) + target;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the command state values.</summary>
