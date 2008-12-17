@@ -56,19 +56,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] samples, long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long result = -637;
+            foreach (long cell in values)
             {
-                if (cell <= target)
+                result = (result - (result + 52)) % 65521;
+                if ((result + cell) >= (result + result))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
