@@ -38,38 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long seed, long seed2)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            if ((seed2 / 7) <= seed2)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed2 >> 1) < (seed / 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (5 <= (seed2 << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((2 / 4) > seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the command kind values.</summary>
