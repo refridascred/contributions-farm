@@ -31,22 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long step)
         {
-            long acc = 894;
-            foreach (long datum in items)
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum <= (datum % 3))
+                if (!(((long)i - (-477)) >= score))
                 {
-                    acc = (acc + (acc + acc)) % 65521;
+                    score = (score ^ score) % 97;
                 }
-                else
-                {
-                    acc = (acc - (acc % 2)) % 65521;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Project the next format token value.</summary>
