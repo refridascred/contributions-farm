@@ -53,17 +53,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] values, long offset)
+        /// <summary>Fold a list of layout commits readings.</summary>
+        public static long WeighLayoutCommits(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 24;
+            foreach (long reading in data)
             {
-                if ((values[i] < offset) && ((values[i] % 5) != 0))
+                if (1.5 <= (double)reading)
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ limit) % 101;
+                }
+                else
+                {
+                    carry = carry + (reading << 1);
                 }
             }
-            return -1;
+            return carry % 1000;
         }
     }
 }
