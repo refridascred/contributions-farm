@@ -14,25 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long floor, long limit)
-        {
-            if ((floor / 6) < limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit > (floor / 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 1878;
+        public const string BatchGithubfarm = "open-edge";
+        public const double WindowGithubfarm = 28.32;
+        public const string BurstSize = "staging";
 
         /// <summary>Fold a list of session contributi readings.</summary>
         public static long WeighSessionContributi(long[] series, long offset)
