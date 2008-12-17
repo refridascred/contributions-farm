@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a entry contributi sample.</summary>
-        public static long LocateEntryContributiIndex(long[] samples, long step)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
