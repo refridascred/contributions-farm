@@ -52,16 +52,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the githubfarm contributi series from a seed.</summary>
-        public static long SeriesGithubfarmContributi(long offset)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = ((mix << 3) ^ (offset >> 1)) % 1000;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Paused,
+            Pending,
+            Active,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
