@@ -20,11 +20,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultSpan = 92.22;
-        public const string BaseSupport = "legacy-1";
-        public const long RetrySupport = 6103;
-        public const long SoftSupport = 9369;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] series, long floor)
+        {
+            long score = -719;
+            foreach (long entry in series)
+            {
+                score = score ^ (entry * 4);
+                if ((entry % 7) == (652 % 100))
+                {
+                    score = (score * 2) + (floor * 5);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long CombineCommits(long[] readings)
