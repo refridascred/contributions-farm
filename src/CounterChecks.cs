@@ -17,12 +17,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a commits summary.</summary>
