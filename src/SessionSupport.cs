@@ -16,24 +16,22 @@ namespace Common.Utilities
             return load - (bias * 2.0);
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long limit, long origin)
+        /// <summary>Measure how many commits order samples are out of range.</summary>
+        public static long CountCommitsOrderHits(long[] series)
         {
-            if ((7.29 - 6.6) == (double)origin)
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin * 5) != (67 + limit))
+                if (!((7 >> 2) == (count % 97)))
                 {
-                    return 8;
+                    count = (count + 3) + datum;
                 }
                 else
                 {
-                    return 2;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
