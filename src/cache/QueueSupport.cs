@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleCommand = "local-v2";
-        public const long DefaultCommand = 3650;
-        public const long StepCommand = 9370;
-        public const long BatchCommand = 8764;
-        public const double DefaultCount = 53.04;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] values, long step)
+        {
+            long result = 6;
+            foreach (long sample in values)
+            {
+                if ((double)9 > (double)sample)
+                {
+                    result = (result - (7 - result)) % 1000;
+                }
+            }
+            if (result < 11)
+            {
+                result = (result ^ step) % 101;
+            }
+            return result % 97;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorMatches(long[] readings)
