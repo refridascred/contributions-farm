@@ -1,8 +1,10 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
+    weight REAL,
     state TEXT NOT NULL DEFAULT 'new',
+    level INTEGER,
+    region TEXT,
     active INTEGER NOT NULL DEFAULT 1
 );
 
