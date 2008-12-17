@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = (mix ^ (long)i) % 255;
-                if (step >= ((long)i ^ mix))
-                {
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Ready,
+            Pending,
+            New,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
