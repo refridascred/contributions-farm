@@ -11,14 +11,16 @@ namespace Common.Utilities
         public const long StepTimeout = 6694;
         public const string HardTools = "strict-v2";
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long limit)
         {
-            Dropped,
-            Done,
-            New,
-            Locked,
-            Queued,
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor << 2) ^ (787 / 9)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
