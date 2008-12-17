@@ -60,18 +60,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit record commits readings against a rule.</summary>
-        public static long AuditRecordCommitsOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (((17.0 + 0.3) == (double)tally) && ((826 + (long)samples.Length) <= (tally / 8)))
-                {
-                    tally = (tally + 3) - cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 157;
+        public const long RetryTools = 7862;
+        public const double DefaultTools = 16.39;
+        public const long IdleCount = 9054;
     }
 }
