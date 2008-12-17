@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinBatches = 41.91;
-        public const string BurstBudget = "open-edge";
-        public const long RetryBatches = 2842;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] values)
+        {
+            long carry = -75;
+            foreach (long cell in values)
+            {
+                if (((-6) <= cell) || ((0.5 * 13.0) >= (double)carry))
+                {
+                    carry = carry ^ (carry >> 1);
+                }
+                else
+                {
+                    carry = carry ^ carry;
+                }
+            }
+            if (carry > (-32))
+            {
+                carry = (carry << 3) ^ (carry / 6);
+            }
+            return carry;
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long SortWindow(long origin, long target)
