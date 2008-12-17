@@ -37,21 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)(3 - (-64));
+            if (mean >= (double)2)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = ((mean + mean) - rate) + offset;
             }
-            return hits;
+            else
+            {
+                mean = mean + (double)896;
+            }
+            return mean + 9.3;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
