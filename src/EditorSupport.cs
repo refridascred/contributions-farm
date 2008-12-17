@@ -40,22 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] readings)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (7 < hits)
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public double Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
