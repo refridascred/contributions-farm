@@ -16,13 +16,17 @@ namespace Common.Utilities
             return load - (bias * 2.0);
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] data, long origin)
         {
-            Dropped,
-            Locked,
-            Paused,
-            Pending,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= origin) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the filter state values.</summary>
