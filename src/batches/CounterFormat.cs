@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Adjust a farm metrics reading.</summary>
+        public static double SmoothFarmMetrics(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = scale;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = ((load - (double)616) + (double)(long)i) + floor;
             }
-            return count;
+            return load + (scale * 3.9);
         }
 
         /// <summary>Hold a metric record.</summary>
