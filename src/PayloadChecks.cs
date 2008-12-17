@@ -35,19 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long step)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double bias, double floor)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            double load = floor;
+            if (load >= (bias * 5.8))
             {
-                if (!(((long)i - (-477)) >= score))
-                {
-                    score = (score ^ score) % 97;
-                }
-                score = ((score * 5) + (long)i) % 97;
+                load = load - (load - load);
             }
-            return score;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Project the next format token value.</summary>
