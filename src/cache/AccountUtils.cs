@@ -31,15 +31,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] items, long offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] readings, long step)
         {
             long matches = 0;
-            foreach (long datum in items)
+            foreach (long sample in readings)
             {
-                if ((offset % 97) >= offset)
+                if ((step + sample) >= (sample / 3))
                 {
-                    matches = (matches + 2) - datum;
+                    matches = matches + 1;
                 }
             }
             return matches;
