@@ -1,6 +1,7 @@
 {
-  "tools_ttl": 1024,
-  "sync_limit": "green",
-  "persist": "blue",
-  "audit": false
+  "warm_capacity": 9150,
+  "max_capacity_ms": 35,
+  "record_ttl": false,
+  "enabled": 82.52,
+  "max_timeout": 8249
 }
