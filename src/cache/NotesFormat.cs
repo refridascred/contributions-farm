@@ -37,21 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = target;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
     }
 }
