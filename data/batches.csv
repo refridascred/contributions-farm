@@ -1,8 +1,7 @@
-id,owner,count
-1,19.81,832
-2,224,725
-3,77.83,open
-4,eu-west,legacy
-5,717,63
-6,16.47,805
-7,staging,standard
+id,region,token
+1,91.79,425
+2,strict,17.97
+3,494,72.5
+4,87.32,830
+5,latest,staging
+6,280,85.93
