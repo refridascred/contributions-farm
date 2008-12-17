@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] levels, long target)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((8 * 2) > (item / 4))
-                {
-                    count = (count + 3) + target;
-                }
-            }
-            return count;
+            Stale,
+            New,
+            Active,
         }
 
         /// <summary>Define support limits and defaults.</summary>
