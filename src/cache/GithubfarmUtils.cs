@@ -15,27 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] values, long offset)
         {
-            long mark = 3;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                long gap = (datum % 12) << 2;
-                if ((gap >= (mark & 63)) && ((gap - 80) == (gap * 4)))
+                if (values[i] >= offset)
                 {
-                    mark = mark - (datum + mark);
-                }
-                if ((mark >> 4) > (50 & 255))
-                {
-                    mark = (mark ^ (datum + mark)) % 4096;
-                }
-                else
-                {
-                    mark = mark + ((long)series.Length + datum);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Locate a cache notes reading by value.</summary>
