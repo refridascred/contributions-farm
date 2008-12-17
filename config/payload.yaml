@@ -1,16 +1,10 @@
 # payload settings
-layout_delay:
-  enabled: true
-  verbose: false
-  min_depth_count: 6061
-  githubfarm_delay: 250
-idle_delay_s: fallback
-batch_interval:
-  - 215
-  - 365
-  - 430
-min_threshold_ms:
-  - 489
-  - 169
-idle_size: legacy
-verbose: latest
+warm_size_ms:
+  - blue
+  - fallback
+  - cached
+default_depth: 55.92
+already_timeout: 49.88
+poll_limit_pct: 1024
+record_depth: legacy
+format_interval: 30
