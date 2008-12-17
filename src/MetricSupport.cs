@@ -20,13 +20,17 @@ namespace Common.Utilities
             return gain + (double)640;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Look up the position of a batch record sample.</summary>
+        public static long FindBatchRecordIndex(long[] samples, long step)
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
