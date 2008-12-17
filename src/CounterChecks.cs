@@ -49,18 +49,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit stream notes readings against a rule.</summary>
-        public static long MeasureStreamNotesOutliers(long[] items, long bound)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (0 < (matches * 3))
+                if (sample >= seed)
                 {
-                    matches = ((matches + 2) + entry) + bound;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Accumulate filter samples.</summary>
