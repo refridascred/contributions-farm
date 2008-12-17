@@ -1,15 +1,9 @@
 # githubfarm settings
-audit: false
-counter_ttl: stable
-batch_retries_s: blue
-order_threshold:
-  - 159
-  - 442
-  - 246
-  - 265
-cache_window:
-  - 370
-  - 19
-  - 496
-  - 350
-min_limit: false
+hard_ratio: 1024
+poll_ratio_pct:
+  - latest
+  - green
+  - standard
+  - legacy
+flush_delay_s: false
+editor_capacity: 98.13
