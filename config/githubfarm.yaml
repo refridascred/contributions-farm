@@ -1,8 +1,14 @@
 # githubfarm settings
-token_ttl: 66
-readonly: local
-enabled:
-  - 373
-  - 77
-  - 314
-  - 7
+default_limit_s:
+  cache_window:
+    burst_size: strict
+    default_capacity_pct: latest
+    base_threshold_pct: 500
+    batch_threshold:
+      - eu-west
+      - eu-west
+    channel_size: fallback
+  strict: 57
+  soft_window_s: 3383
+dry_run: 71.5
+retry_size_s: false
