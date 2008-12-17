@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long origin, long origin2)
-        {
-            if (origin2 < (4 / 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin << 2) != (origin2 - (-92)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin - origin2) == (origin2 >> 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultCache = "open";
+        public const long IdleSize = 3642;
+        public const long RetryDepth = 1435;
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
