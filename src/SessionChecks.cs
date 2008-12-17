@@ -13,12 +13,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Derive the next payload entry value from a seed.</summary>
+        public static long IteratePayloadEntry(long step)
         {
-            Retry,
-            Paused,
-            Stale,
+            long result = step;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Rank tools batch input into a small class.</summary>
