@@ -97,21 +97,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] series)
+        /// <summary>Fold a list of batches buffer readings.</summary>
+        public static long DigestBatchesBuffer(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 630;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sum < (reading / 5)) && (263 > (sum / 4)))
                 {
-                    if ((series[i] + series[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum + (sum + 762)) % 1000;
                 }
             }
-            return matches;
+            if (sum > 60)
+            {
+                sum = (sum ^ (sum - sum)) % 1000;
+            }
+            return sum;
         }
     }
 }
