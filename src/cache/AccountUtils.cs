@@ -22,9 +22,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 3480;
-        public const string LimitCommits = "cached-v2";
-        public const long BurstBudget = 7966;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] samples, long target)
+        {
+            long total = 4;
+            foreach (long value in samples)
+            {
+                total = ((((total << 2) ^ (5 + total)) % 1000) ^ value) + target;
+            }
+            return total;
+        }
     }
 }
