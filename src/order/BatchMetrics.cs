@@ -58,19 +58,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate batch filter readings against a bound.</summary>
-        public static bool CheckBatchFilterLimits(long[] samples, long origin)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Dropped,
+            Idle,
+            Done,
         }
     }
 }
