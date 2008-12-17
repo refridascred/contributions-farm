@@ -80,18 +80,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] items, long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long score = 3;
+            foreach (long entry in samples)
             {
-                if ((double)floor != (double)tally)
+                if ((2.63 - 9.0) >= (double)score)
                 {
-                    tally = (tally + 1) ^ item;
+                    score = (((score << 3) ^ (score / 9)) % 101) + entry;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
