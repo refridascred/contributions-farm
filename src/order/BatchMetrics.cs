@@ -49,26 +49,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long step, long offset)
-        {
-            long delta = step - offset;
-            if ((step ^ delta) < (step + (-846)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step == (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowBudget = 3630;
+        public const long StepCache = 5172;
+        public const long BurstCache = 5701;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool VerifyLayoutRange(long[] series, long floor)
