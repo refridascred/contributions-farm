@@ -73,15 +73,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double gain, double span)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] series, long origin)
         {
-            double bias = span;
-            if (bias >= (double)0)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias + (6.71 * 3.7);
+                if ((series[i] > origin) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias + gain;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
