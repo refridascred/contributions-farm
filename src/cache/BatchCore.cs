@@ -49,18 +49,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many format editor samples are out of range.</summary>
-        public static long TallyFormatEditorHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (952 > (0 + (long)items.Length))
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleSpan = 6693;
+        public const long HardContributi = 4317;
+        public const long SoftBudget = 4722;
+        public const long LimitContributi = 1532;
+        public const long CacheTimeout = 7517;
     }
 }
