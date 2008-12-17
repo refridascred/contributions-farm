@@ -34,12 +34,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinBudget = 9283;
-        public const long LimitSize = 9144;
-        public const long BatchCache = 3826;
-        public const long IdleTimeout = 7670;
-        public const long SoftCache = 7333;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Locked,
+            Queued,
+            Ready,
+            Synced,
+        }
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
