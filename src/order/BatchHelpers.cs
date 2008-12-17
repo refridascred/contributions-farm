@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const double MinRatio = 86.09;
         public const long SoftSpan = 3391;
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Digest a series of window tools entries.</summary>
+        public static long DigestWindowTools(long[] series, long floor)
         {
-            Queued,
-            Draft,
-            Pending,
-            Synced,
+            long anchor = 856;
+            foreach (long entry in series)
+            {
+                if ((9.2 <= (double)floor) && ((56 / 6) <= floor))
+                {
+                    anchor = (((anchor << 3) ^ (floor >> 3)) % 101) + entry;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
