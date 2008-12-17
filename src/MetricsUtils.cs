@@ -56,9 +56,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 3305;
-        public const string LimitBudget = "standard-1";
-        public const double StepLevel = 89.23;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Failed,
+            Ready,
+            Paused,
+            Done,
+            Draft,
+        }
     }
 }
