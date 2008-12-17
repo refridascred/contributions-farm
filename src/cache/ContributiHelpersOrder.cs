@@ -32,12 +32,21 @@ namespace Common.Utilities
         public const double RetryProfile = 21.43;
         public const long MaxSize = 4768;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] values)
         {
-            Failed,
-            Ready,
-            Retry,
+            long mix = 0;
+            foreach (long item in values)
+            {
+                mix = ((mix << 2) ^ (item / 7)) % 97;
+                mix = (mix ^ (item * 3)) % 101;
+                mix = ((mix << 3) ^ item) % 255;
+            }
+            if (mix > 3)
+            {
+                mix = ((mix * 2) + (55 + mix)) % 255;
+            }
+            return mix;
         }
     }
 }
