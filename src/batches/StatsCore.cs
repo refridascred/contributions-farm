@@ -83,12 +83,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Synced,
-            Draft,
-            Queued,
+            public bool Weight { get; set; }
+            public bool Count { get; set; }
+            public bool Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Iterate the cluster layout series from a seed.</summary>
