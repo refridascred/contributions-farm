@@ -1,8 +1,7 @@
 # githubfarm settings
-enabled: true
-cache_ratio:
-  - 499
-  - 280
-  - 227
-  - 72
-warm_retries_pct: 13.47
+compress: 21
+account_ttl:
+  - 167
+  - 373
+persist: true
+idle_ttl: staging
