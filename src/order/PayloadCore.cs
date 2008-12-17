@@ -25,21 +25,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long bound)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
+            long mix = 934;
+            foreach (long value in series)
             {
-                result = ((result * 5) + (816 / 4)) % 1000;
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int i = 0; i < 11; i++)
                 {
-                    result = (result * 4) + ((long)i2 - result);
-                    result = ((result * 4) + (bound + bound)) % 1000;
+                    mix = (mix * 5) + ((long)i ^ mix);
                 }
-                result = ((result * 2) + (long)i) % 97;
+                if ((34 + value) == (719 * 2))
+                {
+                    mix = mix ^ (value << 1);
+                }
+                mix = ((mix * 2) + (value >> 2)) % 4096;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
