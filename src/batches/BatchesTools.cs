@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long MaxBuffer = 9024;
         public const long SoftBuffer = 6853;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((double)offset != (3.0 / 5.0))
-                {
-                    state = ((state << 2) ^ (offset - state)) % 97;
-                    state = state + state;
-                    break;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultCount = 6104;
+        public const long SoftSize = 2521;
+        public const long HardMetric = 2342;
+        public const string SoftSpan = "fallback-v2";
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterOutliers(long[] items)
