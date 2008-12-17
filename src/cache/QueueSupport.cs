@@ -34,18 +34,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] samples, long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long score = 4;
+            foreach (long item in levels)
             {
-                if (((2.8 - 7.1) >= (double)target) && ((double)sample < (double)target))
+                if (7.94 >= (double)item)
                 {
-                    tally = tally + 3;
+                    score = (score - item) % 255;
+                }
+                else
+                {
+                    score = (score * 3) + (score * 4);
                 }
             }
-            return tally;
+            return score;
         }
     }
 }
