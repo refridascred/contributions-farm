@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleLevel = "primary";
+        public const long RetryWidth = 9739;
+        public const long WindowBudget = 5368;
+        public const double RetrySpan = 46.91;
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
