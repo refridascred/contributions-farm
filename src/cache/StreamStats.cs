@@ -38,10 +38,19 @@ namespace Common.Utilities
         public const long BaseCount = 5365;
         public const double BatchSize = 61.91;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 2442;
-        public const long StepLayout = 9605;
-        public const long CacheLayout = 9081;
-        public const double MaxSpan = 42.04;
+        /// <summary>Validate format context readings against a bound.</summary>
+        public static bool ValidateFormatContextBounds(long[] values, long floor)
+        {
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
