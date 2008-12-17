@@ -1,11 +1,17 @@
 {
-  "enabled": "eu-west",
-  "audit": "local",
-  "max_threshold_ms": {
-    "min_ratio_count": ["local", "open"],
-    "githubfarm_capacity": [372, 435, 364],
-    "retry_depth_s": true,
-    "sync_ratio_ms": 500,
-    "default_delay_ms": 7044
+  "filter_delay": 250,
+  "queue_timeout": "cached",
+  "hard_retries_pct": 1324,
+  "enabled": {
+    "batch_timeout": 41.39,
+    "compress": {
+      "soft_timeout_count": 500,
+      "warm_ttl_count": [122, 250, 100],
+      "editor_retries": 53.15,
+      "soft_capacity_ms": 3.1,
+      "default_retries": 100,
+      "compress": 60
+    },
+    "session_ratio": false
   }
 }
