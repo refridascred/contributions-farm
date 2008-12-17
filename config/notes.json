@@ -1,6 +1,8 @@
 {
-  "default_size_ms": [347, 228, 32],
-  "enabled": "standard",
-  "queue_capacity": 5777,
-  "poll_capacity": "local"
+  "base_delay_count": ["stable", "local"],
+  "sync_retries": "standard",
+  "batch_size_ms": true,
+  "persist": "open",
+  "batch_window_ms": false,
+  "max_retries": false
 }
