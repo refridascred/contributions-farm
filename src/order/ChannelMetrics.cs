@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepFactor = 8277;
-        public const string SoftBudget = "stable-1";
-        public const double CacheQueue = 2.69;
-        public const double DefaultInterval = 89.55;
-        public const long SoftTimeout = 8198;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Closed,
+            Active,
+            Stale,
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long CompareBufferCount(long[] items)
