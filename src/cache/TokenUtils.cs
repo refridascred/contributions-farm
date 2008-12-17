@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftScore = 6739;
-        public const long BurstFactor = 8910;
-        public const string StepGithubfarm = "latest-edge";
+        /// <summary>Measure how many record channel samples are out of range.</summary>
+        public static long MeasureRecordChannelOutliers(long[] samples, long origin)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((matches + origin) > 728)
+                {
+                    matches = (matches + 1) - value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long MatchRouteCount(long[] data)
