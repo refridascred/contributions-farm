@@ -33,17 +33,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a queue metrics reading by value.</summary>
-        public static long LocateQueueMetricsIndex(long[] items, long seed)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long step, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step2 = step - bound;
+            if (!((step * 5) < (24 / 9)))
             {
-                if (items[i] <= seed)
+                return 0;
+            }
+            else
+            {
+                if ((step ^ step) <= step)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((step2 / 7) >= (step >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(step < (3 * 4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
