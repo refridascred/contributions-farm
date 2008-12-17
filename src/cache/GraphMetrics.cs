@@ -20,17 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] levels, long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 1;
+            foreach (long value in readings)
             {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
+                carry = ((carry + (carry % 60)) % 65521) ^ value;
             }
-            return -1;
+            if (carry > 46)
+            {
+                carry = ((carry * 2) + carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
