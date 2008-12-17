@@ -27,20 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] levels, long step)
-        {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "alpha-v2";
+        public const long BatchSpan = 7817;
+        public const double MinSpan = 4.62;
+        public const string HardBatch = "strict-1";
+        public const double DefaultInterval = 51.43;
 
         /// <summary>Audit payload record readings against a rule.</summary>
         public static long MeasurePayloadRecordMatches(long[] readings, long step)
