@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] data, long origin)
+        /// <summary>Adjust a commits window reading.</summary>
+        public static double BlendCommitsWindow(double gain, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = (double)(41 & 127);
+            return ((load - (double)89) + gain) + offset;
         }
 
         /// <summary>Define support limits and defaults.</summary>
