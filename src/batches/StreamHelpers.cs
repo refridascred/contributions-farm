@@ -72,11 +72,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 6491;
-        public const long LimitStream = 5023;
-        public const string BaseSpan = "staging-v2";
-        public const long WindowLevel = 9804;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = (acc - step) % 97;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long SeekFilterIndex(long[] data, long target)
