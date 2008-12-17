@@ -60,21 +60,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] data)
+        /// <summary>Accumulate cluster command samples.</summary>
+        public static long FoldClusterCommand(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 7;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((0 + seed) <= seed)
                 {
-                    if ((data[i] + data[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    result = result + cell;
+                }
+                if (!(cell >= (84 * 2)))
+                {
+                    break;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
