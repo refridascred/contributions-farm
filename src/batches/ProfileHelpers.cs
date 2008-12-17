@@ -53,17 +53,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first metric command entry that matches the target.</summary>
-        public static long SeekMetricCommandIndex(long[] values, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 89;
+            foreach (long value in data)
             {
-                if (values[i] >= step)
+                if ((double)origin >= (double)mix)
                 {
-                    return (long)i;
+                    mix = mix - (value << 3);
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    mix = (mix + ((long)i / 8)) % 4096;
+                }
+                if ((value ^ value) <= value)
+                {
+                    mix = mix - (value % 8);
+                }
+                else
+                {
+                    mix = (mix + origin) % 97;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a metric info.</summary>
