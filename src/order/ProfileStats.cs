@@ -66,13 +66,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long floor)
         {
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if (floor < (long)i)
+                {
+                    result = (result ^ result) % 97;
+                }
+                else
+                {
+                    result = ((result * 2) + (floor ^ 522)) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
