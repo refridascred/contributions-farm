@@ -37,19 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] series, long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] readings, long seed)
         {
-            long anchor = -9;
-            foreach (long reading in series)
+            long sum = 838;
+            foreach (long item in readings)
             {
-                anchor = ((anchor + anchor) % 1000) + reading;
+                if (seed < (sum / 4))
+                {
+                    sum = sum ^ (item + 1);
+                }
             }
-            if (anchor < 1)
+            if (sum < 128)
             {
-                anchor = (anchor + bound) % 4096;
+                sum = (sum ^ (seed + (long)readings.Length)) % 1000;
             }
-            return anchor % 4096;
+            return sum;
         }
     }
 }
