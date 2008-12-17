@@ -23,13 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Dropped,
-            Synced,
-            Locked,
-            Active,
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Digest a series of channel batches entries.</summary>
