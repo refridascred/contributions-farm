@@ -1,5 +1,13 @@
 {
-  "idle_depth": 862,
-  "persist": 33.1,
-  "strict": "eu-west"
+  "poll_ttl_s": true,
+  "default_interval_s": {
+    "min_delay": [104, 137, 141],
+    "cache_delay_pct": 4223,
+    "command_depth": 8,
+    "default_ttl": 14.81,
+    "burst_timeout_s": [35, 303, 74, 130],
+    "hard_timeout": false
+  },
+  "already_threshold": ["standard", "strict"],
+  "batches_timeout": ["edge", "fallback"]
 }
