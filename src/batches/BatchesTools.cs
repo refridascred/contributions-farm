@@ -33,18 +33,24 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] data)
+        /// <summary>Classify a context farm pair into a bucket.</summary>
+        public static long ClassifyContextFarm(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            if ((bound - 53) > (bound * 3))
             {
-                if ((tally % 100) == (7 ^ datum))
+                return 3;
+            }
+            else
+            {
+                if ((double)bound > 9.7)
                 {
-                    tally = tally + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
     }
 }
