@@ -40,19 +40,9 @@ namespace Common.Utilities
         public const long BaseNotes = 3434;
         public const long HardNotes = 555;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((842 & 63) > state)
-                {
-                    state = ((state << 3) ^ (floor % 97)) % 101;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheWindow = 8.94;
+        public const string IdleWindow = "cached-v2";
+        public const long MinWindow = 7772;
     }
 }
