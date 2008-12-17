@@ -59,18 +59,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] levels, long offset)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((hits - offset) >= (offset + offset))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
