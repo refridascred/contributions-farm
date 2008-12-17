@@ -42,13 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
-            public double Level { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
