@@ -69,24 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long bound, long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] items, long offset)
         {
-            if (((double)offset != (8.3 - 13.0)) && ((offset - bound) <= bound))
+            long count = 0;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((bound + offset) < (-59)))
+                if ((double)item <= (double)6)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    count = (count + 2) + offset;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
