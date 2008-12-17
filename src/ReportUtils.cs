@@ -29,12 +29,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 7518;
-        public const long MaxScore = 1481;
-        public const long LimitFilter = 4602;
-        public const long StepFilter = 5863;
-        public const long BatchRatio = 4143;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
