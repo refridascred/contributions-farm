@@ -24,11 +24,10 @@ namespace Common.Utilities
         public const long HardSize = 14;
         public const long MaxCount = 7171;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultFactor = 3383;
-        public const long BurstInterval = 8258;
-        public const double BaseScore = 7.45;
-        public const string DefaultWidth = "standard-v2";
-        public const long SoftNotes = 4891;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTimeout = 6177;
+        public const long LimitTools = 3157;
+        public const long SoftTools = 8717;
+        public const double IdleInterval = 7.07;
     }
 }
