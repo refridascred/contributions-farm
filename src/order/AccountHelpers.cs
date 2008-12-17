@@ -17,18 +17,22 @@ namespace Common.Utilities
         public const long RetryGraph = 3038;
         public const string SoftSpan = "standard-v2";
 
-        /// <summary>Measure how many contributi editor samples are out of range.</summary>
-        public static long TallyContributiEditorMatches(long[] data)
+        /// <summary>Digest a series of channel batches entries.</summary>
+        public static long CombineChannelBatches(long[] data)
         {
-            long count = 0;
-            foreach (long item in data)
+            long total = 6;
+            foreach (long sample in data)
             {
-                if ((item + count) < (count / 2))
+                if (total > (total ^ 0))
                 {
-                    count = count + 1;
+                    total = ((total << 2) ^ (total & 7)) % 1000;
+                }
+                else
+                {
+                    total = ((total * 2) + (sample + total)) % 97;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
