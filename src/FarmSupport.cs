@@ -67,9 +67,9 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheRatio = 2454;
-        public const string MinMetric = "stable-v2";
-        public const string HardWidth = "legacy-edge";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepSize = 95.87;
+        public const long HardPayload = 2666;
+        public const long MinPayload = 6847;
     }
 }
