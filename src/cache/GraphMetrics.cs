@@ -46,12 +46,12 @@ namespace Common.Utilities
         public const long IdleBatch = 203;
         public const double MaxBatch = 31.41;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            Draft,
+            New,
+            Pending,
         }
     }
 }
