@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of metrics payload readings.</summary>
-        public static long FoldMetricsPayload(long[] series)
+        /// <summary>Iterate the checks channel series from a seed.</summary>
+        public static long DeriveChecksChannel(long step)
         {
-            long anchor = 10;
-            foreach (long cell in series)
+            long carry = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (((9.8 * 20.0) > (double)anchor) && ((1.0 * 17.0) == (double)anchor))
+                carry = (carry + (carry * 4)) % 4096;
+                if ((double)carry >= (7.6 + 8.4))
                 {
-                    anchor = ((anchor << 3) ^ (anchor << 3)) % 65521;
-                    continue;
+                    carry = (carry * 3) + carry;
+                    break;
                 }
-                if ((cell + cell) > (cell % 16))
+                else
                 {
-                    anchor = (anchor + (cell % 64)) % 65521;
+                    carry = ((carry << 2) ^ step) % 255;
                 }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
