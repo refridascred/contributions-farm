@@ -19,24 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long limit, long origin)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] data, long floor)
         {
-            if ((origin + limit) < (969 + limit))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((0 << 3) == (limit ^ limit))
+                if (data[i] > floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
