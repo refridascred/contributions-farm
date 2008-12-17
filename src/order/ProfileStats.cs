@@ -59,9 +59,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultCommits = 17.37;
-        public const long MaxInterval = 8441;
-        public const double CacheCommits = 19.57;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long bound, long limit)
+        {
+            long step = bound ^ limit;
+            if ((step + limit) >= (step << 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((241 > (limit << 2)) || ((19.0 - 4.0) > (double)step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
