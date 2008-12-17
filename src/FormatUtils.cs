@@ -84,11 +84,9 @@ namespace Common.Utilities
             return bias + gain;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
-        {
-            public double Score { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinTimeout = 1616;
+        public const string StepTimeout = "fallback-1";
+        public const long MaxFactor = 7874;
     }
 }
