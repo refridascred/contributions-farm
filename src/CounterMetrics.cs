@@ -22,24 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank channel cluster input into a small class.</summary>
-        public static long ClassifyChannelCluster(long bound, long offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] items, long step)
         {
-            if ((bound & 127) == (offset & 63))
+            bool valid = true;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4 / 6) <= bound)
+                if (reading != step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the token status values.</summary>
