@@ -25,12 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleFormat = 31.03;
-        public const long SoftFormat = 1361;
-        public const long BurstDepth = 4460;
-        public const double RetryFormat = 98.68;
-        public const long SoftScore = 6065;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] data)
+        {
+            long score = 825;
+            foreach (long sample in data)
+            {
+                score = (score - (94 - sample)) % 1000;
+                score = (score + (sample & 31)) % 1000;
+                if ((sample / 6) < (score ^ 393))
+                {
+                    score = score ^ (sample + score);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Match up queue buffer samples.</summary>
         public static long MatchQueueBufferCount(long[] items)
