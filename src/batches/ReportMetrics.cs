@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a order window sample.</summary>
-        public static long LocateOrderWindowIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 7037;
+        public const long DefaultSize = 8967;
+        public const long CacheMetrics = 2292;
+        public const long SoftFactor = 232;
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double SmoothOrder(double weight, double span)
