@@ -42,18 +42,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] items, long origin)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (!((item - (-23)) < origin))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Idle,
+            Queued,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the record kind values.</summary>
