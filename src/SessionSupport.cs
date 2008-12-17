@@ -36,11 +36,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
     }
 }
