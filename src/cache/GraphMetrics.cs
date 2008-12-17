@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long target, long target2)
+        /// <summary>Check that every report cache entry stays within the limit.</summary>
+        public static bool GuardReportCacheLimits(long[] values, long limit)
         {
-            if (((double)target2 == (10.0 / 4.0)) && (target2 >= target))
+            bool stale = true;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target2 << 3) < target2)
+                if (cell >= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target - target) < (target2 << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Locate a support reading by value.</summary>
