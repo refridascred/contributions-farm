@@ -16,11 +16,15 @@ namespace Common.Utilities
             return drift - (double)4;
         }
 
-        /// <summary>Adjust a commits window reading.</summary>
-        public static double BlendCommitsWindow(double gain, double offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] readings, long target)
         {
-            double load = (double)(41 & 127);
-            return ((load - (double)89) + gain) + offset;
+            long score = 35;
+            foreach (long sample in readings)
+            {
+                score = ((score - (score - score)) - sample) - target;
+            }
+            return score;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
