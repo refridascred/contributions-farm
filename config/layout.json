@@ -1,9 +1,6 @@
 {
-  "compress": {
-    "max_timeout_ms": "strict",
-    "default_ttl_s": "stable",
-    "retry_retries_count": 19.02
-  },
-  "cluster_threshold": "legacy",
-  "dry_run": true
+  "default_ratio_pct": [68, 127, 270, 227],
+  "verbose": "open",
+  "idle_timeout_pct": "eu-west",
+  "base_window_pct": 1024
 }
