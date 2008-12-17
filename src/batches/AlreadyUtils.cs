@@ -15,10 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 5884;
-        public const long BatchQueue = 9533;
-        public const long SoftBudget = 9987;
+        /// <summary>Audit metric checks readings against a rule.</summary>
+        public static long MeasureMetricChecksMatches(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((item <= (tally >> 2)) || ((seed + tally) != ((-95) + tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
