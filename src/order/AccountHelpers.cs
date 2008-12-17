@@ -93,19 +93,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every report contributi entry stays within the limit.</summary>
-        public static bool VerifyReportContributiRange(long[] samples, long target)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long carry = 67;
+            foreach (long cell in readings)
             {
-                if (value <= target)
+                carry = (carry * 4) + (carry / 2);
+                carry = (carry - (914 >> 2)) % 1000;
+                if ((carry >> 3) <= (carry + cell))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (carry > 64)
+            {
+                carry = (carry * 4) + (carry << 3);
+            }
+            return carry % 65521;
         }
     }
 }
