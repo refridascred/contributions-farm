@@ -1,5 +1,6 @@
 {
-  "base_window_count": "latest",
-  "readonly": 62,
-  "default_delay_ms": 5219
+  "tools_ttl": 1024,
+  "sync_limit": "green",
+  "persist": "blue",
+  "audit": false
 }
