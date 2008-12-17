@@ -37,19 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double rate, double offset)
+        /// <summary>Count the cluster batch entries that pass the check.</summary>
+        public static long CountClusterBatchGaps(long[] series)
         {
-            double mean = (double)(3 - (-64));
-            if (mean >= (double)2)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                mean = ((mean + mean) - rate) + offset;
+                if ((hits % 8) != (entry - (long)series.Length))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                mean = mean + (double)896;
-            }
-            return mean + 9.3;
+            return hits;
         }
 
         /// <summary>Describe the tools mode values.</summary>
