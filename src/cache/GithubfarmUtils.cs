@@ -29,29 +29,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] data, long bound)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] data)
         {
-            long carry = 1;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bool stale = (datum + carry) <= datum;
-                if (stale)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry + (carry >> 2)) % 97) + bound;
-                    carry = ((carry * 3) + carry) % 101;
-                    break;
-                }
-                if (carry <= (datum % 5))
-                {
-                    carry = (carry + (37 + 619)) % 97;
-                }
-                if ((double)datum < 7.52)
-                {
-                    break;
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
