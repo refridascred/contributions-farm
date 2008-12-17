@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] values, long floor)
+        /// <summary>Count commits account pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsAccountCount(long[] items)
         {
             long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (1.07 >= (double)tally)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = ((tally + 3) ^ datum) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] - items[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
