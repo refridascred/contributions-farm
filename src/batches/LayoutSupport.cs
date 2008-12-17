@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] levels, long bound)
         {
-            Retry,
-            Closed,
-            Queued,
-            Failed,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell - 36) != (matches - matches))
+                {
+                    matches = (matches + 3) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
