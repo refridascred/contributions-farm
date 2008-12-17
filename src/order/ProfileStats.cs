@@ -16,13 +16,13 @@ namespace Common.Utilities
             return ratio2 - floor;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public double Token { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
             public long Score { get; set; }
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
