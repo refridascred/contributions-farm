@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate counter metric readings against a bound.</summary>
-        public static bool ValidateCounterMetricRange(long[] series, long origin)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long item in series)
+            double load = rate;
+            for (int i = 0; i < 4; i++)
             {
-                if (item <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                load = (load - bias) + (double)(long)i;
             }
-            return stale;
+            return load - (bias * 2.0);
         }
 
         /// <summary>Describe the record kind values.</summary>
