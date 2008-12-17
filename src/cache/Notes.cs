@@ -61,11 +61,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public long Token { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxSpan = 6365;
+        public const long MinEntry = 9163;
+        public const long SoftEntry = 5691;
     }
 }
