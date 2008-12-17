@@ -1,5 +1,18 @@
 {
-  "soft_interval_pct": "open",
-  "base_limit": "cached",
-  "base_limit_s": [409, 213]
+  "strict": false,
+  "sync_delay_ms": 33,
+  "warm_size_ms": 5860,
+  "token_capacity": "blue",
+  "buffer_delay": {
+    "poll_ratio_ms": 30,
+    "max_ttl_ms": "staging",
+    "flush_capacity": ["latest", "cached", "stable"],
+    "idle_delay_pct": {
+      "verbose": 60,
+      "cache_limit_count": [444, 84],
+      "layout_size": 42.04,
+      "stream_ratio": 91.83
+    },
+    "readonly": "primary"
+  }
 }
