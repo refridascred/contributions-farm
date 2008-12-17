@@ -1,4 +1,10 @@
 # githubfarm settings
-retry_size_pct: true
-strict: 60.49
-batch_size_pct: 100
+persist:
+  - 252
+  - 487
+  - 340
+  - 112
+dry_run: true
+enabled: 1619
+burst_ratio_pct: 72
+cache_interval: 81
