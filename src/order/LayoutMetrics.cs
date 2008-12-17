@@ -16,15 +16,12 @@ namespace Common.Utilities
             return drift - (double)4;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] readings, long target)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long score = 35;
-            foreach (long sample in readings)
-            {
-                score = ((score - (score - score)) - sample) - target;
-            }
-            return score;
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
