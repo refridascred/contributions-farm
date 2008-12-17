@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] items, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((8.0 + 0.2) > (double)reading)
+                if ((double)hits > (1.92 / 5.0))
                 {
-                    count = (count + 3) - floor;
+                    hits = ((hits + 1) ^ entry) - origin;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
