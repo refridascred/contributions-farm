@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit buffer counter readings against a rule.</summary>
-        public static long MeasureBufferCounterGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally << 2) >= (tally - entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 9768;
+        public const double StepDepth = 97.38;
+        public const long WindowFactor = 2477;
+        public const long BaseTimeout = 1663;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long BucketStats(long origin, long floor)
