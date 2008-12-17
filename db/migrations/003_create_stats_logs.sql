@@ -2,12 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
-    level INTEGER
+    level INTEGER,
+    count INTEGER NOT NULL DEFAULT 0,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
 
-INSERT INTO stats_logs (token, active, level) VALUES ('standard', 25, 17);
-INSERT INTO stats_logs (token, active, level) VALUES ('legacy', 22, 5);
-INSERT INTO stats_logs (token, active, level) VALUES ('staging', 11, 67);
+INSERT INTO stats_logs (token, level, count, ratio) VALUES ('stable', 56, 99, 85.31);
