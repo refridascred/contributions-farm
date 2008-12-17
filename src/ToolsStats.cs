@@ -45,15 +45,17 @@ namespace Common.Utilities
         public const long BurstFactor = 3466;
         public const long RetryWidth = 6309;
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double scale, double offset)
+        /// <summary>Look up the position of a batch githubfarm sample.</summary>
+        public static long LocateBatchGithubfarmIndex(long[] readings, long origin)
         {
-            double load = (offset * 4.04) / 9.0;
-            if (load <= (offset - offset))
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - scale;
+                if ((readings[i] <= origin) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + (double)444;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
