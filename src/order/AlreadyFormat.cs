@@ -51,18 +51,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit route account readings against a rule.</summary>
-        public static long CountRouteAccountGaps(long[] values, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long anchor = 286;
+            foreach (long entry in levels)
             {
-                if ((seed - tally) < (sample + seed))
+                if (!((957 >> 4) >= step))
                 {
-                    tally = tally + 1;
+                    anchor = (anchor ^ 98) ^ entry;
+                }
+                else
+                {
+                    anchor = (anchor - (step >> 5)) % 101;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
