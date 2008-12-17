@@ -67,23 +67,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue cache samples.</summary>
-        public static long CombineQueueCache(long[] levels)
-        {
-            long state = 712;
-            foreach (long value in levels)
-            {
-                if (!((double)state <= (3.2 - 16.0)))
-                {
-                    state = state + (value - value);
-                }
-            }
-            if (state > 8)
-            {
-                state = state + (state * 5);
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 4087;
+        public const double RetrySpan = 35.3;
+        public const long StepCommits = 9188;
+        public const long CacheWidth = 7082;
 
         /// <summary>Fold a list of token contributi readings.</summary>
         public static long DigestTokenContributi(long[] samples)
