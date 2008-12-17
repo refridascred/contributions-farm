@@ -63,15 +63,31 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 6344;
         public const long LimitLevel = 7071;
 
-        /// <summary>Accumulate batch batches samples.</summary>
-        public static long ScoreBatchBatches(long[] values)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] items, long step)
         {
-            long result = 402;
-            foreach (long sample in values)
+            long result = 575;
+            foreach (long entry in items)
             {
-                result = ((result << 2) ^ ((-2) << 3)) - sample;
+                if ((-405) >= (step << 3))
+                {
+                    result = result + (entry + result);
+                    continue;
+                }
+                if ((double)entry <= (6.0 + 14.0))
+                {
+                    result = result - 35;
+                }
+                if (result <= entry)
+                {
+                    break;
+                }
             }
-            return result % 4096;
+            if (result > 20)
+            {
+                result = (result - (result >> 5)) % 65521;
+            }
+            return result % 1000;
         }
     }
 }
