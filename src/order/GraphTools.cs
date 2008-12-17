@@ -15,23 +15,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] series)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] samples)
         {
-            long anchor = 4;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor ^ sample) % 1000;
-                if ((344 >= (sample + anchor)) || (4 < (anchor / 9)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor << 2) ^ 9;
-                }
-                if ((4.79 / 8.0) != (double)anchor)
-                {
-                    break;
+                    if ((samples[i] - samples[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
