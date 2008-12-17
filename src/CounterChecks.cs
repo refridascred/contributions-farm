@@ -54,19 +54,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] levels, long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long total = 9;
+            foreach (long sample in samples)
             {
-                if (sample >= seed)
+                if ((origin <= (total % 7)) || ((300 ^ 42) == (sample / 6)))
                 {
-                    ok = false;
-                    break;
+                    total = (total * 5) + (total / 9);
+                    total = ((total * 5) + (393 - 5)) % 65521;
                 }
+                total = total - total;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Adjust a entry reading.</summary>
