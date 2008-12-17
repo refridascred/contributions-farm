@@ -27,12 +27,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowFactor = 5223;
-        public const long CacheStats = 4807;
-        public const long HardStats = 2577;
-        public const string WindowStats = "primary-1";
-        public const string CacheBudget = "stable-edge";
+        /// <summary>Compare every pair of filter stream readings.</summary>
+        public static long OverlapFilterStreamCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long SeekPayloadIndex(long[] items, long offset)
