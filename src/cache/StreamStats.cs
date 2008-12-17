@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] items)
         {
-            Closed,
-            Active,
-            New,
-            Queued,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!(((double)tally < (4.34 - 2.3)) && ((tally >> 2) > cell)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
