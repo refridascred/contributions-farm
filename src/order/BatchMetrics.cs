@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] items)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long result = -448;
+            foreach (long datum in series)
             {
-                if (!((sample & 255) == (sample / 6)) || ((seen % 16) > (seen / 6)))
+                if ((double)result <= (9.1 + 16.0))
                 {
-                    seen = seen + 3;
+                    result = ((result - (result - 15)) % 255) ^ datum;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    result = ((result * 4) + ((-26) << 2)) % 97;
+                }
+                if ((7.0 - 8.09) < (10.0 * 11.0))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result < 26)
+            {
+                result = (result ^ (result + result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Roll a schema cache counter forward.</summary>
