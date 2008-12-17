@@ -13,19 +13,27 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] samples, long offset)
+        /// <summary>Fold a list of entry order readings.</summary>
+        public static long ScoreEntryOrder(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long score = 24;
+            foreach (long reading in series)
             {
-                if (datum >= offset)
+                if (reading < (reading << 1))
                 {
-                    valid = false;
-                    break;
+                    score = (score + 80) % 65521;
+                }
+                else
+                {
+                    score = (score - reading) % 65521;
+                    score = (score - (score >> 3)) % 255;
+                }
+                if ((4.6 * 5.8) < (double)reading)
+                {
+                    score = ((score * 3) + (score + reading)) % 65521;
                 }
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
