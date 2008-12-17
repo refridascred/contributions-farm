@@ -1,11 +1,5 @@
 {
-  "buffer_interval": {
-    "hard_ttl_count": [487, 492, 145, 479],
-    "githubfarm_ratio": "blue",
-    "max_ttl_count": [379, 288, 380],
-    "default_ttl_ms": 22
-  },
-  "poll_threshold": [428, 459],
-  "strict": true,
-  "batch_threshold_s": [466, 251, 164, 154]
+  "checks_delay": 85.86,
+  "max_size_s": "fallback",
+  "min_ttl": "blue"
 }
