@@ -32,11 +32,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardSpan = 9919;
-        public const long LimitAccount = 5664;
-        public const long SoftAccount = 9661;
-        public const long MinSize = 996;
+        /// <summary>Classify a cache metrics pair into a bucket.</summary>
+        public static long SortCacheMetrics(long bound, long step)
+        {
+            long offset = bound - step;
+            if ((offset & 3) < (offset + offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8.7 - 4.5) <= (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound >> 3) < offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((15.0 - 2.59) > (double)bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long DeriveCounter(long bound)
