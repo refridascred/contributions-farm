@@ -14,18 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if ((3.53 + 6.5) <= (double)matches)
+                if (datum < step)
                 {
-                    matches = (matches + 1) - value;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Measure how many metrics account samples are out of range.</summary>
