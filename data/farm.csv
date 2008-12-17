@@ -1,10 +1,7 @@
-id,token,level,state
-1,20.94,legacy,965
-2,55.94,27.68,414
-3,586,standard,90
-4,local,36.12,886
-5,16.88,standard,721
-6,216,952,5.67
-7,446,78.19,592
-8,staging,417,30.17
-9,cached,784,fallback
+id,active,region,label
+1,72.54,32.17,80.2
+2,blue,638,374
+3,staging,137,69.39
+4,314,441,460
+5,79.59,77.39,cached
+6,8.58,104,439
