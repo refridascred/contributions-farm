@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long RetryFarm = 8294;
         public const long SoftSpan = 4046;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
-            public bool Flag { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Adjust a support batches reading.</summary>
