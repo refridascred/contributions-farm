@@ -19,18 +19,17 @@ namespace Common.Utilities
         public const long SoftLayout = 7169;
         public const long CacheWidth = 9060;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] items, long offset)
+        /// <summary>Locate a support batches reading by value.</summary>
+        public static long SeekSupportBatchesIndex(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((3.48 - 9.19) <= (double)value)
+                if (data[i] > limit)
                 {
-                    matches = (matches + 3) + offset;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
