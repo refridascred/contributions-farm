@@ -50,18 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] data, long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if ((reading >> 1) > (63 * 4))
+                if (cell != offset)
                 {
-                    tally = (tally + 2) - seed;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
