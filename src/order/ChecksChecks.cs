@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] series, long offset)
+        /// <summary>Derive the next commits channel value from a seed.</summary>
+        public static long RollCommitsChannel(long floor)
         {
-            long carry = -50;
-            foreach (long entry in series)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)entry < (double)offset)
-                {
-                    carry = (carry ^ entry) % 1000;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
             return carry;
         }
