@@ -39,16 +39,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long floor)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] levels, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum ^ (floor / 8);
-                sum = ((sum * 3) + (long)i) % 101;
+                if ((levels[i] <= limit) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
