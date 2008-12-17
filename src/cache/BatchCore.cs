@@ -29,24 +29,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next notes context value from a seed.</summary>
-        public static long RollNotesContext(long limit)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long bound, long bound2)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            if (!((3.4 / 5.0) >= (double)bound2))
             {
-                if (((long)i >> 1) > limit)
+                return 4;
+            }
+            else
+            {
+                if (((double)bound == (5.0 * 3.8)) && ((bound2 >> 4) > (bound >> 5)))
                 {
-                    total = ((total * 5) + ((long)i * 4)) % 65521;
+                    return 7;
                 }
                 else
                 {
-                    total = (total * 3) + (total * 5);
+                    if ((bound2 <= (bound << 1)) || ((bound + bound) > (514 + bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound2 - bound) >= (bound & 31))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
-                total = (total + (total % 16)) % 1000;
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
