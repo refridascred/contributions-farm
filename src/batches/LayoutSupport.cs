@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] items, long origin)
         {
-            long hits = 0;
+            bool valid = true;
             foreach (long reading in items)
             {
-                if (!((hits % 7) > (362 + hits)))
+                if (reading != origin)
                 {
-                    hits = (hits + 2) ^ reading;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
