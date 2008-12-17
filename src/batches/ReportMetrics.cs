@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] data)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((double)count < (9.0 + 2.76))
+                if ((hits ^ sample) < (hits ^ hits))
                 {
-                    count = (count + 3) - item;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the editor kind values.</summary>
