@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] values)
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((double)cell <= (7.66 / 9.0))
                 {
-                    state = ((state * 5) + (201 + (long)i2)) % 4096;
-                    state = (state + state) % 97;
+                    count = count + 3;
                 }
-                if ((((long)i + (long)i) == ((long)i + limit)) || ((double)state <= 3.2))
+                else
                 {
-                    state = state + (state - state);
+                    count = count - 1;
                 }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Iterate the support notes series from a seed.</summary>
