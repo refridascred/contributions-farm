@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long bound)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Locked,
+            Queued,
+            New,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
