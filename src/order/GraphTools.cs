@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Stale,
-            Retry,
-            Closed,
-            Pending,
-            Queued,
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up editor samples.</summary>
