@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a order counter pair into a bucket.</summary>
-        public static long ClassifyOrderCounter(long seed, long bound)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long target)
         {
-            long step = seed + bound;
-            if ((bound > 4) && ((bound + 2) > step))
+            long score = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (step < 907)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step > (0.27 - 18.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((seed >> 3) <= (6 >> 1)) && (bound < (bound / 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Locate a support reading by value.</summary>
