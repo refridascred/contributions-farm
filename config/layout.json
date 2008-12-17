@@ -1,6 +1,6 @@
 {
-  "verbose": false,
-  "retry_capacity_pct": 64,
-  "readonly": false,
-  "warm_ttl_ms": ["stable", "blue", "legacy", "strict"]
+  "report_window": 4688,
+  "flush_delay": true,
+  "warm_capacity_count": true,
+  "retry_delay_pct": ["strict", "edge", "latest"]
 }
