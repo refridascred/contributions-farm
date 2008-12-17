@@ -59,12 +59,11 @@ namespace Common.Utilities
         public const long BatchCache = 2248;
         public const string SoftCache = "staging-edge";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 5444;
-        public const string MinBudget = "local-v2";
-        public const long LimitFilter = 6409;
-        public const double DefaultRatio = 42.25;
-        public const long BaseSize = 8543;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowLevel = 3847;
+        public const double DefaultRatio = 88.16;
+        public const long MinMetrics = 2058;
+        public const long DefaultMetrics = 1193;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long DigestPayload(long[] data, long origin)
