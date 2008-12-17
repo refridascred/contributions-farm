@@ -49,19 +49,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] items, long bound)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count + 9) < (count % 97))
-                {
-                    count = ((count + 1) + reading) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 5033;
+        public const string HardInterval = "fallback-edge";
+        public const long MinTools = 4173;
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
