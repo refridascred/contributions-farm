@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next payload checks value from a seed.</summary>
-        public static long RollPayloadChecks(long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] series)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            long total = 562;
+            foreach (long item in series)
             {
-                mix = mix - limit;
-                mix = mix ^ (982 >> 2);
-                mix = ((mix * 4) + (long)i) % 97;
+                total = total + item;
+                total = (total + item) % 1000;
             }
-            return mix;
+            if (total > 2)
+            {
+                total = (total - (total + total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the notes kind values.</summary>
