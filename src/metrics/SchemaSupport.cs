@@ -44,32 +44,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long floor, long origin)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long diff = floor - origin;
-            if (((double)diff >= (7.0 / 7.0)) && ((diff << 2) > floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin > (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((0.1 - 11.0) >= (double)floor) && (origin > (diff + 36)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
     }
 }
