@@ -22,22 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] items, long limit)
+        /// <summary>Accumulate channel metrics samples.</summary>
+        public static long TotalChannelMetrics(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long mark = 184;
+            foreach (long value in samples)
             {
-                if (((matches / 6) <= (matches ^ 556)) || (limit > (548 - reading)))
+                if ((mark % 97) != (mark & 127))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mark = (mark * 2) + value;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Match up support samples.</summary>
