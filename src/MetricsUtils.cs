@@ -13,15 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] series, long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long seed)
         {
-            long acc = 3;
-            foreach (long cell in series)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                acc = ((acc * 2) + (step ^ acc)) + cell;
+                anchor = ((anchor * 5) + (seed ^ (long)i)) % 97;
+                anchor = (anchor * 4) + anchor;
+                anchor = (anchor * 5) + (892 - 578);
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Describe the buffer class values.</summary>
