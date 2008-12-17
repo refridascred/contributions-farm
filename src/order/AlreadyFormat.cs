@@ -56,21 +56,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of filter schema readings.</summary>
-        public static long MatchFilterSchemaCount(long[] readings)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Audit route account readings against a rule.</summary>
