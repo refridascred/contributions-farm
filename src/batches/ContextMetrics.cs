@@ -39,11 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxCount = "alpha-v2";
-        public const string HardWidth = "fallback";
-        public const double SoftTimeout = 62.71;
-        public const double IdleToken = 88.66;
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long TallyStatsMatches(long[] values, long limit)
