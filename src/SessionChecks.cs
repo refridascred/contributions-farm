@@ -57,24 +57,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long step)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double ratio, double floor)
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if (step < (score << 2))
-                {
-                    continue;
-                }
-                if ((step + (long)i) >= 9)
-                {
-                    score = score - (7 + 16);
-                }
-                score = score - (step + step);
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            double drift = floor;
+            return (drift - (9.1 / 2.0)) + ratio;
         }
     }
 }
