@@ -27,16 +27,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long target)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = acc ^ (target + 24);
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
     }
 }
