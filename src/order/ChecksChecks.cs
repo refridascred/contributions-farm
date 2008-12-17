@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double ratio, double offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] levels)
         {
-            double gain = (double)(27 ^ 8);
-            if (gain <= (double)9)
+            long sum = 664;
+            foreach (long cell in levels)
             {
-                gain = (gain - ratio) - offset;
+                sum = (((sum * 4) + sum) % 1000) - cell;
             }
-            else
-            {
-                gain = gain - (gain - 4.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + (gain * 8.0);
+            return sum;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
