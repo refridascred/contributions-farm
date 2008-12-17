@@ -55,23 +55,22 @@ namespace Common.Utilities
             return scale + (double)1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] items)
         {
-            long result = -188;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                result = (result + (result - result)) % 101;
-                if (((result & 255) >= (item % 10)) || ((6.6 / 6.0) <= (double)result))
+                if ((entry << 1) <= (tally >> 1))
                 {
-                    result = (result ^ (item * 3)) % 97;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    result = result - (result % 10);
+                    tally = tally - 1;
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
