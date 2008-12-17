@@ -54,18 +54,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] samples)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] series, long offset)
         {
-            long score = 3;
-            foreach (long entry in samples)
+            long sum = 167;
+            foreach (long item in series)
             {
-                if ((2.63 - 9.0) >= (double)score)
+                if (sum >= item)
                 {
-                    score = (((score << 3) ^ (score / 9)) % 101) + entry;
+                    sum = ((sum ^ (sum / 6)) % 101) - offset;
+                }
+                if ((item - sum) < (item / 2))
+                {
+                    break;
                 }
             }
-            return score;
+            return sum % 65521;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
