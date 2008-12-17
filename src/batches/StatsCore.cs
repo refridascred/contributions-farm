@@ -35,26 +35,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] readings)
+        /// <summary>Count the contributi filter entries that pass the check.</summary>
+        public static long AuditContributiFilterMatches(long[] values, long target)
         {
-            long mix = -9;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (((-568) * 5) != (reading + mix))
+                if (!(((445 / 2) < target) || ((reading - count) == (count & 127))))
                 {
-                    mix = (mix ^ ((long)readings.Length / 7)) % 4096;
-                }
-                else
-                {
-                    mix = (mix * 5) + (reading + mix);
+                    count = count + 1;
                 }
             }
-            if (mix > (-108))
-            {
-                mix = ((mix * 5) + (mix + mix)) % 65521;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the stream phase values.</summary>
