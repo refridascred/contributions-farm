@@ -1,6 +1,7 @@
 {
-  "cache_size": [97, 172],
-  "commits_ratio": 1024,
-  "flush_retries": 4308,
-  "burst_window_s": false
+  "min_ratio_count": [68, 74, 172, 399],
+  "flush_capacity": 65,
+  "batch_ttl_count": false,
+  "context_window": 500,
+  "burst_capacity_pct": 65.69
 }
