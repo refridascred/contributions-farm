@@ -54,19 +54,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate cluster payload readings against a bound.</summary>
-        public static bool ValidateClusterPayloadBounds(long[] series, long floor)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < floor)
+                if (samples[i] >= origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a graph stats.</summary>
