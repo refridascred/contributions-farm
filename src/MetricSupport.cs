@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a filter entry reading.</summary>
-        public static double SmoothFilterEntry(double rate, double offset)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            double gain = rate;
-            if (gain <= rate)
-            {
-                gain = (gain - (rate - gain)) + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (rate * 1.0)) + (double)(long)i;
-            }
-            return gain + (double)640;
+            Locked,
+            Paused,
+            Retry,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Look up the position of a batch record sample.</summary>
