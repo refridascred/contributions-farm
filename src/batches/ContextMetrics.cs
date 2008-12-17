@@ -56,17 +56,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] data, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 18;
+            foreach (long cell in levels)
             {
-                if ((data[i] >= floor) && ((data[i] % 2) == 0))
+                if (cell >= (cell - cell))
                 {
-                    return (long)i;
+                    total = total + ((-51) + total);
+                }
+                else
+                {
+                    total = total - (total << 2);
                 }
             }
-            return -1;
+            if (total < 39)
+            {
+                total = (total - 8) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Count token githubfarm pairs that satisfy a relation.</summary>
