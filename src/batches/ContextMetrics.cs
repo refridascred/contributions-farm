@@ -49,19 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double rate, double offset)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            double drift = 9.91;
-            if (drift >= (double)828)
-            {
-                drift = drift + rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - offset) + (double)(long)i;
-            }
-            return drift + 4.03;
+            Paused,
+            Dropped,
+            Ready,
         }
     }
 }
