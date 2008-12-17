@@ -14,23 +14,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long target)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long step, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
+            long cur = step ^ limit;
+            if (7.8 < (double)limit)
             {
-                if (!((36 + carry) <= target))
-                {
-                    carry = ((carry * 3) + 43) % 101;
-                }
-                if ((long)i == (carry - target))
-                {
-                    carry = carry - (long)i;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((92 + 644) != (limit - cur))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step - step) == (step / 8)) && ((0 + cur) >= (limit << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a stream reading by value.</summary>
