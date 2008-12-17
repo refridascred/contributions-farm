@@ -88,17 +88,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] data, long target)
+        /// <summary>Fold a list of counter graph readings.</summary>
+        public static long ScoreCounterGraph(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 215;
+            foreach (long cell in samples)
             {
-                if ((data[i] <= target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc + ((-495) >> 4)) + cell;
             }
-            return -1;
+            if (acc > 2)
+            {
+                acc = (acc + acc) % 255;
+            }
+            return acc;
         }
     }
 }
