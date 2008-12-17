@@ -20,10 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 8603;
-        public const long DefaultTimeout = 7603;
-        public const string LimitRoute = "strict-edge";
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Dropped,
+            Locked,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
