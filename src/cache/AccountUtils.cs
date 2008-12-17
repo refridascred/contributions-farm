@@ -38,19 +38,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] values)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            long mark = 474;
+            foreach (long value in values)
             {
-                if (floor >= (floor - result))
+                if ((double)2 >= (double)mark)
                 {
-                    result = result + (floor + floor);
+                    mark = ((mark * 5) + (mark & 7)) ^ value;
                 }
-                result = ((result * 2) + (long)i) % 4093;
+                else
+                {
+                    mark = mark + mark;
+                }
             }
-            return result;
+            if (mark < (-4))
+            {
+                mark = ((mark << 3) ^ mark) % 255;
+            }
+            return mark;
         }
     }
 }
