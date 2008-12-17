@@ -29,21 +29,13 @@ namespace Common.Utilities
         public const double HardWidth = 47.7;
         public const string RetryBudget = "latest-v2";
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                long hits = (long)i;
-                if ((double)origin >= (double)hits)
-                {
-                    hits = ((hits * 4) + origin) % 255;
-                    anchor = (anchor - origin) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Active,
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
