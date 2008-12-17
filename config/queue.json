@@ -1,5 +1,5 @@
 {
-  "readonly": 76,
-  "farm_retries": 52.03,
-  "support_timeout": ["local", "eu-west"]
+  "audit": "fallback",
+  "soft_timeout_pct": 49.19,
+  "cluster_delay": 1024
 }
