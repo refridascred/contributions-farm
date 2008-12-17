@@ -25,19 +25,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate report layout readings against a bound.</summary>
-        public static bool VerifyReportLayoutRange(long[] readings, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (cell <= limit)
+                if ((((double)item > (0.3 * 8.1)) && ((item * 2) >= tally)) || ((tally + (long)series.Length) >= (tally - item)))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) + step;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
