@@ -23,16 +23,18 @@ namespace Common.Utilities
         public const double BaseRatio = 4.29;
         public const long DefaultContext = 1247;
 
-        /// <summary>Roll a route cluster counter forward.</summary>
-        public static long StepRouteCluster(long limit)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] values, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
+            long anchor = 99;
+            foreach (long cell in values)
             {
-                carry = (carry - (7 - (long)i)) % 4096;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (((long)values.Length % 64) > (cell % 100))
+                {
+                    anchor = ((anchor - (cell + (long)values.Length)) % 4096) + target;
+                }
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
