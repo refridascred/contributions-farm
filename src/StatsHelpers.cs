@@ -85,14 +85,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Done,
-            Retry,
-            Closed,
-            New,
-            Synced,
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public double Token { get; set; }
+            public double Total { get; set; }
         }
     }
 }
