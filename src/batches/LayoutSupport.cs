@@ -45,13 +45,14 @@ namespace Common.Utilities
         public const long CacheDepth = 5385;
         public const double MinStats = 67.7;
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            New,
-            Pending,
-            Dropped,
             Done,
+            Dropped,
+            Paused,
+            Retry,
+            Ready,
         }
     }
 }
