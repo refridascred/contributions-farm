@@ -60,11 +60,16 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] samples)
         {
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
+            long total = 915;
+            foreach (long datum in samples)
+            {
+                total = (total ^ (datum * 5)) % 101;
+                total = (total * 2) + (total * 4);
+            }
+            return total;
         }
     }
 }
