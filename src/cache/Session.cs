@@ -14,18 +14,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit batch checks readings against a rule.</summary>
-        public static long AuditBatchChecksGaps(long[] items, long origin)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum + origin) > (seen + seen))
+                if (readings[i] <= limit)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of account readings.</summary>
