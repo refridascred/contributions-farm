@@ -30,27 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command checks readings.</summary>
-        public static long WeighCommandChecks(long[] series)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] readings)
         {
-            long carry = 70;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (!((entry - carry) <= (carry / 9)))
+                if (((-3) * 3) <= seen)
                 {
-                    carry = (carry + ((-3) + carry)) % 65521;
-                    carry = carry ^ entry;
-                }
-                if (!((double)entry != (5.38 - 3.5)))
-                {
-                    carry = (carry + (entry + entry)) % 97;
-                }
-                else
-                {
-                    carry = carry - (entry << 2);
+                    seen = (seen + 3) + cell;
                 }
             }
-            return carry;
+            return seen;
         }
     }
 }
