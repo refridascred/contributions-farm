@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double ratio, double bias)
+        /// <summary>Count batches context pairs that satisfy a relation.</summary>
+        public static long PairBatchesContextCount(long[] data)
         {
-            double drift = (double)465 * 6.2;
-            if (drift >= (ratio / 3.0))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift - (4.7 * 3.5)) - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (ratio / 3.0)) + (double)(long)i;
-            }
-            return drift - ratio;
+            return seen;
         }
 
         /// <summary>Derive the next notes tools value from a seed.</summary>
