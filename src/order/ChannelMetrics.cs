@@ -29,9 +29,12 @@ namespace Common.Utilities
         public const double HardBudget = 26.12;
         public const string MinBudget = "alpha-v2";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string StepInterval = "fallback";
-        public const long LimitReport = 214;
-        public const string DefaultReport = "strict";
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
+        }
     }
 }
