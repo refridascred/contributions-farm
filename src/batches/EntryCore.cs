@@ -42,21 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] readings)
+        /// <summary>Count the order already entries that pass the check.</summary>
+        public static long CountOrderAlreadyHits(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((datum + datum) != (37 * 2)) && !((origin - datum) <= ((-61) << 3)))
                 {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the notes kind values.</summary>
