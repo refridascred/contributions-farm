@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long offset, long origin)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            if (((offset + offset) < 372) || ((85 - origin) >= origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin / 4) >= (18 - origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (origin >= (origin + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the record level values.</summary>
