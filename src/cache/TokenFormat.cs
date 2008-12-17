@@ -37,21 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 8330;
+        public const long IdleRatio = 771;
+        public const long LimitAlready = 2181;
+        public const string HardAlready = "strict-v2";
     }
 }
