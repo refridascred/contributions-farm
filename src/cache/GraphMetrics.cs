@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every report cache entry stays within the limit.</summary>
-        public static bool GuardReportCacheLimits(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxWidth = "staging-v2";
+        public const string CacheBuffer = "primary-edge";
+        public const long LimitSpan = 129;
+        public const long RetryBuffer = 1402;
+        public const long CacheFactor = 1357;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double MaxLayout = 86.32;
