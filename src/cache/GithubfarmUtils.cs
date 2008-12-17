@@ -27,21 +27,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] readings)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell - 6) <= (-420))
                 {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
