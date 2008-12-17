@@ -1,10 +1,6 @@
 # entry settings
-entry_delay: 76.24
-default_window_count: eu-west
-account_threshold:
-  - 282
-  - 322
-  - 374
-  - 354
-base_capacity: 100
-idle_limit: eu-west
+strict: eu-west
+soft_limit:
+  - 433
+  - 326
+max_delay: false
