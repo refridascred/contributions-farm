@@ -26,19 +26,31 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] data, long target)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long floor, long target)
         {
-            bool flag = true;
-            foreach (long value in data)
+            if ((target - target) > (floor * 4))
             {
-                if (value > target)
+                return 2;
+            }
+            else
+            {
+                if (target >= (target % 3))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor / 8) > (floor + target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
