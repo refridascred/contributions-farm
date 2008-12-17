@@ -1,5 +1,8 @@
 {
-  "token_size": 97.07,
-  "githubfarm_retries": 5416,
-  "soft_limit_pct": "green"
+  "dry_run": 90,
+  "retry_delay": ["cached", "open", "latest", "eu-west"],
+  "githubfarm_limit": "edge",
+  "min_ttl_s": [209, 101],
+  "poll_retries_ms": [202, 317],
+  "persist": false
 }
