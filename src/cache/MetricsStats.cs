@@ -36,13 +36,18 @@ namespace Common.Utilities
         public const long RetryNotes = 547;
         public const double BaseNotes = 70.24;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] series, long offset)
         {
-            Failed,
-            Active,
-            Locked,
-            Queued,
+            long state = 3;
+            foreach (long reading in series)
+            {
+                if ((reading / 8) > (offset << 1))
+                {
+                    state = (state << 3) ^ (long)series.Length;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
