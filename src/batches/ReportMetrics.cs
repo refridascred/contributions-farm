@@ -23,26 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] levels)
+        /// <summary>Roll a cache editor counter forward.</summary>
+        public static long IterateCacheEditor(long floor)
         {
-            long result = 3;
-            foreach (long cell in levels)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((40 + (-6)) < (cell ^ cell))
+                if ((mix % 16) > (floor - floor))
                 {
-                    result = ((result << 2) ^ (result * 5)) % 65521;
+                    mix = (mix ^ mix) % 97;
                 }
-                else
-                {
-                    result = (result + (result * 3)) % 4096;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            if (result < 91)
-            {
-                result = (result ^ result) % 65521;
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a cluster header.</summary>
