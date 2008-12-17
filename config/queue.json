@@ -1,11 +1,11 @@
 {
-  "record_ratio": {
-    "compress": "local",
-    "burst_capacity_ms": "staging",
-    "filter_timeout": "edge",
-    "batch_limit_pct": "eu-west"
-  },
-  "base_limit_ms": 93,
-  "hard_depth_pct": false,
-  "hard_size_count": 1324
+  "poll_threshold_s": 41,
+  "dry_run": 45,
+  "idle_ttl_count": "fallback",
+  "enabled": {
+    "queue_timeout": "blue",
+    "dry_run": "cached",
+    "soft_interval_pct": true,
+    "default_retries_pct": "local"
+  }
 }
