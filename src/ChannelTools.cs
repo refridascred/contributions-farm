@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] series, long floor)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long sum = 2;
-            foreach (long value in series)
-            {
-                if ((floor - sum) < floor)
-                {
-                    sum = (((sum << 3) ^ (49 + sum)) % 101) ^ value;
-                }
-            }
-            return sum;
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a session options.</summary>
