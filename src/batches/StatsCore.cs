@@ -22,35 +22,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long origin, long step)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long floor, long step)
         {
-            if (origin < step)
+            if (!((693 & 7) <= (floor + step)))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if ((step / 5) > (-73))
+                if (!(25 <= step))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if ((step ^ origin) != (step - step))
+                    if ((double)step == (18.0 * 0.9))
                     {
-                        return 3;
+                        return 1;
                     }
                     else
                     {
-                        if (((origin / 8) > (step * 2)) || ((double)step == (double)5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 5;
                     }
                 }
             }
