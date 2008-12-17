@@ -43,15 +43,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] values, long bound)
+        /// <summary>Audit metric report readings against a rule.</summary>
+        public static long CountMetricReportGaps(long[] readings)
         {
-            long sum = -13;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                sum = (sum + (cell - sum)) - bound;
+                if ((double)count >= 1.0)
+                {
+                    count = (count + 2) ^ reading;
+                }
             }
-            return sum % 4096;
+            return count;
         }
     }
 }
