@@ -14,17 +14,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                state = ((state * 2) + (state - floor)) % 4096;
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 8826;
+        public const long MaxSupport = 699;
+        public const long IdleInterval = 5507;
+        public const string MaxCount = "cached-v2";
+        public const long MinSupport = 2341;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
