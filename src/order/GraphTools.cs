@@ -5,14 +5,33 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] series, long origin)
         {
-            Active,
-            Pending,
-            Done,
-            Locked,
-            Ready,
+            long carry = 648;
+            foreach (long sample in series)
+            {
+                if (!(origin < (origin << 2)))
+                {
+                    carry = (carry ^ (44 - sample)) % 255;
+                    carry = (carry ^ (sample + carry)) % 255;
+                }
+                if ((carry / 3) < (carry % 10))
+                {
+                    carry = (carry - 84) % 1000;
+                    carry = carry ^ (6 << 2);
+                    break;
+                }
+                if ((carry % 100) > origin)
+                {
+                    carry = carry - ((long)series.Length % 7);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (391 * 2);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
