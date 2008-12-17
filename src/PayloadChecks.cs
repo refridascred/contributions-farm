@@ -65,31 +65,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long offset, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] series, long offset)
         {
-            if ((floor - 1) > (offset + 200))
+            bool found = true;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)floor < 2.83) && ((offset + floor) != (offset ^ 8)))
+                if (value != offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (555 < (offset + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
