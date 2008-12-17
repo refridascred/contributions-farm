@@ -1,6 +1,11 @@
 {
-  "enabled": ["standard", "cached"],
-  "dry_run": "latest",
-  "cache_timeout_pct": "fallback",
-  "retry_depth_count": true
+  "flush_interval_s": false,
+  "burst_ttl_pct": 9271,
+  "stats_ratio": {
+    "retry_threshold": 46.92,
+    "batch_limit": false,
+    "default_timeout_s": 8,
+    "schema_depth": false
+  },
+  "persist": ["latest", "fallback", "primary"]
 }
