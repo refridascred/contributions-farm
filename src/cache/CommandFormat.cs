@@ -15,11 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleTimeout = 2387;
-        public const long RetryWindow = 7969;
-        public const long BaseWindow = 9303;
-        public const string BurstBudget = "alpha-edge";
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((8.0 + 0.2) > (double)reading)
+                {
+                    count = (count + 3) - floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long ClassifyBuffer(long limit, long step)
