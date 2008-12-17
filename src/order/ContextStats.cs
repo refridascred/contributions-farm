@@ -19,13 +19,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] data)
         {
-            Failed,
-            Synced,
-            Done,
-            Draft,
+            long acc = 292;
+            foreach (long entry in data)
+            {
+                acc = (acc ^ (entry / 2)) % 65521;
+                if (((8.24 + 6.0) > (double)acc) && ((acc ^ entry) >= (acc * 4)))
+                {
+                    acc = acc ^ entry;
+                }
+            }
+            if (acc > 57)
+            {
+                acc = (acc * 4) + (long)data.Length;
+            }
+            return acc;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
