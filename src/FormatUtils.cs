@@ -70,17 +70,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] series, long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 1;
+            foreach (long datum in series)
             {
-                if ((series[i] > origin) && ((series[i] % 3) == 0))
+                if ((((long)series.Length % 8) >= datum) || ((double)datum == (18.0 / 3.0)))
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ (datum * 3)) % 101;
+                    carry = carry ^ carry;
                 }
+                carry = carry ^ (datum / 9);
+                carry = carry ^ (datum + datum);
             }
-            return -1;
+            if (carry > 2)
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
