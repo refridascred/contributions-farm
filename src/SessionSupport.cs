@@ -16,17 +16,24 @@ namespace Common.Utilities
             return load - (bias * 2.0);
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] data, long origin)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long limit, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((7.29 - 6.6) == (double)origin)
             {
-                if ((data[i] >= origin) && ((data[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((origin * 5) != (67 + limit))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
