@@ -1,6 +1,7 @@
-id,owner,ratio
-1,83.73,592
-2,64.21,396
-3,open,61.95
-4,local,cached
-5,blue,560
+id,active,weight,owner
+1,415,629,67.55
+2,654,796,11.23
+3,624,open,866
+4,312,blue,primary
+5,835,standard,31.59
+6,34.56,latest,403
