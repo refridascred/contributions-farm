@@ -22,15 +22,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] samples, long target)
+        /// <summary>Measure how many token editor samples are out of range.</summary>
+        public static long TallyTokenEditorOutliers(long[] levels)
         {
-            long total = 4;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                total = ((((total << 2) ^ (5 + total)) % 1000) ^ value) + target;
+                if ((sample % 64) < (tally - sample))
+                {
+                    tally = tally + 2;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
