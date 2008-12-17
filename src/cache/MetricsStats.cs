@@ -33,18 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit window filter readings against a rule.</summary>
-        public static long AuditWindowFilterMatches(long[] values, long limit)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally <= (26 - limit)) && (tally < limit))
+                if (items[i] < offset)
                 {
-                    tally = (tally + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Blend two format measurements.</summary>
