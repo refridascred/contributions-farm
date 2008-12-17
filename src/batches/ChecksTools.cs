@@ -37,17 +37,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long step)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            long state = origin;
+            for (int i = 0; i < 12; i++)
             {
-                acc = (acc << 3) ^ (step * 5);
-                acc = acc + ((long)i << 1);
-                acc = ((acc * 5) + (long)i) % 1000;
+                state = state - (origin - (long)i);
+                if ((origin - state) <= (long)i)
+                {
+                    state = (state ^ origin) % 4096;
+                }
+                else
+                {
+                    state = (state - (origin - 26)) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return acc;
+            return state;
         }
     }
 }
