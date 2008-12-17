@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a schema queue figure with a bias.</summary>
-        public static double ProjectSchemaQueue(double weight, double offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] samples, long target)
         {
-            double scale = (double)569 - offset;
-            if (scale < (scale * 6.4))
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                scale = scale + offset;
+                if (entry > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - weight;
-            }
-            return scale - (double)8;
+            return ok;
         }
 
         /// <summary>Define format limits and defaults.</summary>
