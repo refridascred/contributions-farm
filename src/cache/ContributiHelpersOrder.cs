@@ -27,31 +27,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long bound, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            if ((bound >> 5) == (seed - bound))
+            long total = 446;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((6.8 / 7.0) != (double)bound) || (5.9 > (double)seed))
+                total = (total + 50) % 65521;
+                if (((sample - 251) > sample) && (sample < total))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((bound ^ seed) >= seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    total = (total ^ sample) % 4096;
                 }
             }
+            if (total > 288)
+            {
+                total = (total ^ total) % 1000;
+            }
+            return total % 97;
         }
     }
 }
