@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Blend two order counter measurements.</summary>
+        public static double ScaleOrderCounter(double scale, double offset)
         {
-            Paused,
-            Draft,
-            Locked,
-            Active,
-            Queued,
+            double rate = (double)(469 & 15);
+            return ((rate + (rate / 5.0)) + scale) + offset;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
