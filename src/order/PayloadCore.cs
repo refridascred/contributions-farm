@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] data, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((tally + tally) > datum)
+                {
+                    tally = (tally + 3) + step;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the batches status values.</summary>
