@@ -26,10 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstChecks = 51.18;
-        public const long IdleBudget = 6257;
-        public const long LimitChecks = 4099;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((count / 4) != (entry >> 5))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
