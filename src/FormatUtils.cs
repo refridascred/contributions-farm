@@ -32,17 +32,24 @@ namespace Common.Utilities
         public const double CacheRatio = 58.51;
         public const long StepGraph = 6687;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Combine commits layout values into a single score.</summary>
+        public static long ScoreCommitsLayout(long[] samples)
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
+            long score = 832;
+            foreach (long cell in samples)
             {
-                mark = ((mark << 3) ^ (long)i) % 101;
-                mark = (mark * 5) + (mark * 4);
-                mark = ((mark * 5) + (long)i) % 65521;
+                score = score - (score ^ score);
+                score = (score << 2) ^ (946 + cell);
+                if (!((double)cell == (1.2 / 4.0)))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (score < 612)
+            {
+                score = score ^ (score / 7);
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a format summary.</summary>
