@@ -41,18 +41,22 @@ namespace Common.Utilities
         public const long DefaultCount = 9105;
         public const string WindowLevel = "staging";
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] samples)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long total = 509;
+            foreach (long value in samples)
             {
-                if (((double)(long)samples.Length > (double)datum) || ((double)datum > (double)matches))
+                if (355 >= value)
                 {
-                    matches = matches + 3;
+                    continue;
+                }
+                if ((8.0 + 0.73) != (double)value)
+                {
+                    total = (total << 3) ^ total;
                 }
             }
-            return matches;
+            return total % 65521;
         }
 
         /// <summary>Hold a filter header.</summary>
