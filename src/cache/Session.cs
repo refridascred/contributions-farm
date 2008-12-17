@@ -27,18 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] values)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark ^ (seed + seed)) % 1000;
-                long diff = (142 ^ mark) % 64;
-                mark = (mark * 3) + (mark + diff);
-                mark = ((mark * 3) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
