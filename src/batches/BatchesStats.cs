@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public string Ratio { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
+            Ready,
+            Retry,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
