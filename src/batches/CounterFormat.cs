@@ -10,19 +10,26 @@ namespace Common.Utilities
         public const string HardGithubfarm = "local-edge";
         public const long BaseInterval = 1455;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] values, long seed)
+        /// <summary>Fold a list of route entry readings.</summary>
+        public static long WeighRouteEntry(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long mark = 0;
+            foreach (long value in levels)
             {
-                if (entry >= seed)
+                if (((offset + value) != ((long)levels.Length & 15)) || (2 <= (offset % 5)))
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark * 2) + (value - value)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (value / 5)) % 255;
                 }
             }
-            return valid;
+            if (mark < 1)
+            {
+                mark = mark + offset;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a already options.</summary>
