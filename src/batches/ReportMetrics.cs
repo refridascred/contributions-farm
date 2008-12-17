@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySupport = 95.82;
-        public const long BatchSupport = 3212;
-        public const long HardScore = 8185;
-        public const long LimitTimeout = 5565;
-        public const long RetryInterval = 4305;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 207;
+        public const long MinBudget = 7589;
+        public const double IdleNotes = 28.22;
+        public const long WindowNotes = 1828;
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long SeekLayoutIndex(long[] samples, long seed)
