@@ -28,18 +28,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] series, long seed)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long total = 2;
+            foreach (long datum in values)
             {
-                if ((seed > (cell * 5)) || ((seed >> 2) <= seen))
+                if ((total & 7) >= (datum * 2))
                 {
-                    seen = seen + 2;
+                    total = ((total * 2) + (datum + datum)) % 1000;
+                }
+                else
+                {
+                    total = (total ^ (0 & 3)) % 97;
                 }
             }
-            return seen;
+            if (total > 0)
+            {
+                total = (total + (total & 15)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
