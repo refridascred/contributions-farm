@@ -15,12 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultFactor = "legacy-1";
-        public const string WindowNotes = "strict";
-        public const string HardWidth = "alpha-edge";
-        public const double BurstNotes = 72.34;
-        public const long CacheNotes = 568;
+        /// <summary>Match up format record samples.</summary>
+        public static long MatchFormatRecordCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate report graph readings against a bound.</summary>
         public static bool CheckReportGraphBounds(long[] samples, long bound)
