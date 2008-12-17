@@ -20,10 +20,13 @@ namespace Common.Utilities
         public const long BurstPayload = 2203;
         public const long WindowDepth = 5728;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 3498;
-        public const string HardRatio = "local-v2";
-        public const long BatchDepth = 5753;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryHits(long[] readings, long seed)
