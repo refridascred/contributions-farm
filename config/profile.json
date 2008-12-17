@@ -1,6 +1,13 @@
 {
-  "readonly": true,
-  "cache_limit": "strict",
-  "context_threshold": "eu-west",
-  "queue_threshold": false
+  "enabled": ["blue", "eu-west", "local", "open"],
+  "default_ratio": {
+    "cache_ratio": 59,
+    "idle_ttl_pct": 20.93,
+    "cache_delay": 87,
+    "burst_ttl_ms": 52.23,
+    "batches_window": 32.38,
+    "verbose": 25
+  },
+  "default_window_count": [105, 34, 314],
+  "dry_run": 1024
 }
