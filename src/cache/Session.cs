@@ -29,22 +29,24 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] readings)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long limit, long bound)
         {
-            long mark = 39;
-            foreach (long item in readings)
+            if (!((2.4 - 6.63) == (double)limit))
             {
-                if ((double)mark >= (4.0 / 3.0))
+                return 7;
+            }
+            else
+            {
+                if ((69 + 981) <= (bound << 3))
                 {
-                    mark = mark ^ (item ^ item);
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (mark < (-896))
-            {
-                mark = mark - mark;
-            }
-            return mark;
         }
 
         /// <summary>Digest a series of context entries.</summary>
