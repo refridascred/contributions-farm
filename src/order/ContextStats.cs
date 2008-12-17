@@ -19,23 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] readings, long seed)
+        /// <summary>Adjust a commits cluster reading.</summary>
+        public static double BlendCommitsCluster(double ratio, double bias)
         {
-            long state = 4;
-            foreach (long item in readings)
+            double weight = ratio;
+            if (weight > weight)
             {
-                state = ((state * 4) + item) % 255;
-                if ((double)seed <= (18.0 - 10.0))
-                {
-                    state = ((state * 4) + (seed ^ (long)readings.Length)) % 97;
-                }
+                weight = weight + weight;
             }
-            if (state > 883)
+            for (int i = 0; i < 4; i++)
             {
-                state = (state + (seed / 7)) % 255;
+                weight = (weight + bias) - (double)(long)i;
             }
-            return state % 97;
+            return weight + (double)34;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
