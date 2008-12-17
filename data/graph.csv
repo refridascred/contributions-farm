@@ -1,7 +1,7 @@
-id,token,owner,state
-1,82.39,stable,817
-2,298,108,67.19
-3,162,267,blue
-4,60.47,eu-west,574
-5,standard,183,staging
-6,32.29,open,326
+id,label,region
+1,79.3,cached
+2,89.66,452
+3,green,84.29
+4,731,147
+5,648,67.05
+6,stable,672
