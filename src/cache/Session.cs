@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] levels)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((cell / 8) <= 94)
                 {
-                    if ((levels[i] ^ levels[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) - bound;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
