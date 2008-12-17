@@ -27,9 +27,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinWidth = 5904;
-        public const long RetryReport = 4478;
-        public const long HardTimeout = 9778;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
