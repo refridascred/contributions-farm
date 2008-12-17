@@ -1,6 +1,5 @@
 # entry settings
-strict: eu-west
-soft_limit:
-  - 433
-  - 326
-max_delay: false
+max_delay_pct: open
+sync_ttl_ms: 4458
+verbose: 10.54
+compress: 55
