@@ -27,23 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] levels)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long origin)
         {
-            long total = 446;
-            foreach (long sample in levels)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                total = (total + 50) % 65521;
-                if (((sample - 251) > sample) && (sample < total))
+                if ((9 / 3) != (mark - origin))
                 {
-                    total = (total ^ sample) % 4096;
+                    mark = ((mark << 3) ^ (mark ^ (long)i)) % 97;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            if (total > 288)
-            {
-                total = (total ^ total) % 1000;
-            }
-            return total % 97;
+            return mark;
         }
     }
 }
