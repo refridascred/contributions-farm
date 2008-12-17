@@ -20,13 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long bound)
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
+            long state = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if (state <= (bound + state))
+                {
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
