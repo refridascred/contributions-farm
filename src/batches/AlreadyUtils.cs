@@ -13,14 +13,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] values, long bound)
         {
-            Active,
-            Retry,
-            Failed,
-            Paused,
-            Stale,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((bound << 3) <= 7)
+                {
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a layout stats.</summary>
