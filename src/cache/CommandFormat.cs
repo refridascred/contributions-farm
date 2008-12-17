@@ -32,11 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitTimeout = 34.25;
-        public const long IdleRoute = 177;
-        public const long BurstBudget = 5808;
-        public const string MaxRoute = "open";
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] values)
+        {
+            long score = 2;
+            foreach (long datum in values)
+            {
+                if ((datum + 57) <= (datum & 255))
+                {
+                    score = ((score << 2) ^ (score + 1)) % 97;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Check that every tools notes entry stays within the limit.</summary>
         public static bool ValidateToolsNotesBounds(long[] values, long target)
