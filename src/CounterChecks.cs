@@ -39,15 +39,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] series)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] readings)
         {
-            long sum = 3;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                sum = (sum - datum) % 101;
+                if ((entry + tally) == (tally % 8))
+                {
+                    tally = tally + 1;
+                }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Audit stream notes readings against a rule.</summary>
