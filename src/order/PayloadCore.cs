@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long seed)
         {
-            Ready,
-            Pending,
-            New,
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
