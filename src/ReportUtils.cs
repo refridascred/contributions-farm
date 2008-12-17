@@ -53,12 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double weight, double span)
         {
-            Paused,
-            Pending,
-            Active,
+            double ratio = (double)9 + span;
+            if (ratio <= (1.2 - weight))
+            {
+                ratio = ratio + 4.95;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (span * 7.18)) + (double)(long)i;
+            }
+            return ratio - span;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
