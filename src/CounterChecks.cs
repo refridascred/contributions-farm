@@ -56,10 +56,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepCache = "local";
-        public const long MaxCache = 1488;
-        public const long HardCache = 8400;
-        public const double IdleCache = 50.72;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public double Flag { get; set; }
+        }
     }
 }
