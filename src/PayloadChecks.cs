@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinLevel = 49.02;
+        public const long BaseBudget = 7265;
+        public const long DefaultSupport = 6785;
+        public const long CacheSupport = 2323;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool CheckCounterLimits(long[] samples, long limit)
