@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] levels, long origin)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)(long)levels.Length >= 1.0)
+                if (levels[i] > origin)
                 {
-                    matches = ((matches + 1) ^ reading) - origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Compare every pair of batch order readings.</summary>
