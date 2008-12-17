@@ -57,15 +57,32 @@ namespace Common.Utilities
         public const double StepRoute = 39.06;
         public const long CacheRoute = 3723;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double weight, double offset)
+        /// <summary>Classify a githubfarm record pair into a bucket.</summary>
+        public static long ClassifyGithubfarmRecord(long seed, long origin)
         {
-            double rate = (double)422;
-            if (rate >= (double)37)
+            long lane = seed ^ origin;
+            if ((7.79 / 2.0) >= (double)origin)
             {
-                rate = rate - (offset - weight);
+                return 1;
             }
-            return rate - (weight + 6.0);
+            else
+            {
+                if (((double)seed <= (double)origin) || ((double)origin < (double)lane))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed ^ seed) == (899 ^ seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
