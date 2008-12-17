@@ -13,18 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] values)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long carry = 82;
+            foreach (long datum in readings)
             {
-                if (((long)values.Length * 5) != (hits << 3))
+                if (((datum - carry) != ((-619) & 15)) || (datum >= (659 + carry)))
                 {
-                    hits = (hits + 2) - entry;
+                    carry = (carry * 3) + (datum << 1);
+                }
+                if ((6.5 - 3.6) != (double)carry)
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Adjust a buffer account reading.</summary>
