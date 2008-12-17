@@ -70,12 +70,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] samples, long limit)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((3.06 < (double)datum) || ((limit + datum) > (limit - hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
