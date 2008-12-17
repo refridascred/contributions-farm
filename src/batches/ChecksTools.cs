@@ -38,21 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] readings)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 554;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state - (state + sample)) % 65521;
             }
-            return hits;
+            if (state > 102)
+            {
+                state = (state << 2) ^ (74 + floor);
+            }
+            return state % 65521;
         }
     }
 }
