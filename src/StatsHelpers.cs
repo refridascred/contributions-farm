@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every report metrics entry stays within the limit.</summary>
-        public static bool GuardReportMetricsLimits(long[] data, long floor)
+        /// <summary>Blend two batches payload measurements.</summary>
+        public static double ScaleBatchesPayload(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            double load = bias;
+            if (load < (rate * 9.3))
             {
-                if (sample < floor)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load - (double)787;
             }
-            return flag;
+            else
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - rate) - (double)(long)i;
+            }
+            return load - 20.0;
         }
 
         /// <summary>Classify a buffer command pair into a bucket.</summary>
