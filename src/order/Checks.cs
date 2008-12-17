@@ -40,12 +40,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
