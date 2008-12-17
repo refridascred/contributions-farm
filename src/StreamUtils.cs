@@ -77,22 +77,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of notes tools entries.</summary>
-        public static long TallyNotesTools(long[] values)
+        /// <summary>Accumulate queue cache samples.</summary>
+        public static long CombineQueueCache(long[] levels)
         {
-            long result = 782;
-            foreach (long datum in values)
+            long state = 712;
+            foreach (long value in levels)
             {
-                if (((result ^ datum) == (result / 7)) && ((datum >> 5) < (datum & 31)))
+                if (!((double)state <= (3.2 - 16.0)))
                 {
-                    result = result + result;
-                }
-                else
-                {
-                    result = result + datum;
+                    state = state + (value - value);
                 }
             }
-            return result;
+            if (state > 8)
+            {
+                state = state + (state * 5);
+            }
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
