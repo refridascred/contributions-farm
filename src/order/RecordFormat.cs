@@ -38,12 +38,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] samples, long offset)
         {
-            public double Label { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            long state = 16;
+            foreach (long cell in samples)
+            {
+                if (offset >= (state / 5))
+                {
+                    state = ((state + 69) % 1000) + cell;
+                    break;
+                }
+                else
+                {
+                    state = (state ^ (offset + 76)) % 101;
+                }
+                state = (state ^ (offset >> 5)) % 65521;
+            }
+            return state % 97;
         }
 
         /// <summary>Match up entry checks samples.</summary>
