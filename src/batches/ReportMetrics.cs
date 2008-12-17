@@ -23,15 +23,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] levels)
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
+            long result = 3;
+            foreach (long cell in levels)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if ((40 + (-6)) < (cell ^ cell))
+                {
+                    result = ((result << 2) ^ (result * 5)) % 65521;
+                }
+                else
+                {
+                    result = (result + (result * 3)) % 4096;
+                }
             }
-            return carry;
+            if (result < 91)
+            {
+                result = (result ^ result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the profile status values.</summary>
