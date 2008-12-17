@@ -16,19 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] series, long offset)
+        /// <summary>Count the buffer cache entries that pass the check.</summary>
+        public static long TallyBufferCacheMatches(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (sample <= offset)
+                if ((count & 255) == (count & 1))
                 {
-                    flag = false;
-                    break;
+                    count = ((count + 2) - entry) - bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
