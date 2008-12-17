@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Classify a order counter pair into a bucket.</summary>
+        public static long ClassifyOrderCounter(long seed, long bound)
         {
-            Done,
-            Closed,
-            Pending,
-            Locked,
-            Stale,
+            long step = seed + bound;
+            if ((bound > 4) && ((bound + 2) > step))
+            {
+                return 5;
+            }
+            else
+            {
+                if (step < 907)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step > (0.27 - 18.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((seed >> 3) <= (6 >> 1)) && (bound < (bound / 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
