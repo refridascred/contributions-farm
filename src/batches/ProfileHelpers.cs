@@ -56,20 +56,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate channel route samples.</summary>
-        public static long WeighChannelRoute(long[] readings)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] series)
         {
-            long score = 31;
-            foreach (long reading in readings)
+            long mix = 758;
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    score = ((score ^ (reading + reading)) % 255) - (long)i;
-                }
-                score = score - score;
-                score = (score - (score >> 2)) % 255;
+                mix = (mix << 3) ^ ((long)series.Length ^ entry);
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
