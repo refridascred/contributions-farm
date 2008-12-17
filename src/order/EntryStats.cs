@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] readings, long offset)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != offset)
+                if ((levels[i] >= origin) && ((levels[i] % 3) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
