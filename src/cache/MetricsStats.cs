@@ -32,27 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry order readings.</summary>
-        public static long ScoreEntryOrder(long[] series)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long score = 24;
-            foreach (long reading in series)
-            {
-                if (reading < (reading << 1))
-                {
-                    score = (score + 80) % 65521;
-                }
-                else
-                {
-                    score = (score - reading) % 65521;
-                    score = (score - (score >> 3)) % 255;
-                }
-                if ((4.6 * 5.8) < (double)reading)
-                {
-                    score = ((score * 3) + (score + reading)) % 65521;
-                }
-            }
-            return score;
+            Pending,
+            Paused,
+            Failed,
+            Done,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
