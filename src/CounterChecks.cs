@@ -17,11 +17,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long offset, long offset2)
         {
-            public long Mode { get; set; }
-            public double Token { get; set; }
+            long edge = offset - offset2;
+            if (!((offset2 / 6) != (edge - edge)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((6.9 + 5.85) != (double)offset2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset >= edge)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)edge == (4.0 + 4.89)) && ((44 / 5) < (offset - offset2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format phase values.</summary>
