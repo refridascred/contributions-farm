@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] series)
+        /// <summary>Combine report order values into a single score.</summary>
+        public static long TallyReportOrder(long[] samples)
         {
-            long total = 562;
-            foreach (long item in series)
+            long sum = 58;
+            foreach (long reading in samples)
             {
-                total = total + item;
-                total = (total + item) % 1000;
+                if (((double)reading <= (3.98 - 5.2)) || (reading < (sum + sum)))
+                {
+                    sum = ((sum << 3) ^ sum) % 1000;
+                }
             }
-            if (total > 2)
+            if (sum < 0)
             {
-                total = (total - (total + total)) % 97;
+                sum = sum + (sum + sum);
             }
-            return total;
+            return sum % 4096;
         }
 
         /// <summary>Describe the notes kind values.</summary>
