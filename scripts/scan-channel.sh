@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-for item in primary local latest green; do
+for item in strict primary local legacy; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=332
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-open}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
