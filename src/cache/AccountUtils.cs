@@ -33,18 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] samples, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((seed & 15) >= cell)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 3480;
+        public const string LimitCommits = "cached-v2";
+        public const long BurstBudget = 7966;
     }
 }
