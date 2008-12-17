@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the stats githubfarm series from a seed.</summary>
-        public static long IterateStatsGithubfarm(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxDepth = 8937;
+        public const string MinBudget = "primary";
+        public const long LimitGraph = 6659;
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
