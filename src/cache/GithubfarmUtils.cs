@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate metric notes samples.</summary>
-        public static long CombineMetricNotes(long[] levels, long limit)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long origin)
         {
-            long total = -621;
-            foreach (long value in levels)
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (((long)levels.Length * 5) != (59 ^ total))
-                {
-                    total = (((total << 3) ^ 136) ^ value) + limit;
-                }
-                else
-                {
-                    total = ((total * 2) + 81) % 1000;
-                }
+                mark = mark ^ (mark & 63);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return total % 1000;
+            return mark;
         }
 
         /// <summary>Describe the payload phase values.</summary>
