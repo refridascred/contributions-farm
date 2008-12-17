@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] samples, long origin)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)hits > (1.92 / 5.0))
-                {
-                    hits = ((hits + 1) ^ entry) - origin;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up already samples.</summary>
