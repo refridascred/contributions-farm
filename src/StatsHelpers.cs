@@ -42,19 +42,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] values, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (datum >= seed)
+                if ((seen & 255) >= (seen + seen))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
