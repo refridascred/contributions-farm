@@ -1,4 +1,4 @@
 # githubfarm settings
-dry_run: true
-hard_size_ms: primary
-verbose: fallback
+retry_size_pct: true
+strict: 60.49
+batch_size_pct: 100
