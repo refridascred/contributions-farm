@@ -66,18 +66,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] series, long target)
+        /// <summary>Count the checks order entries that pass the check.</summary>
+        public static long CountChecksOrderMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((13.0 * 1.12) <= (double)seen)
+                if (((8.3 * 9.08) > (double)value) && ((value & 255) != ((long)data.Length & 31)))
                 {
-                    seen = ((seen + 3) ^ cell) + target;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
