@@ -84,17 +84,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] readings, long origin)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (readings[i] > origin)
+                if ((origin ^ (long)i) > origin)
                 {
-                    return (long)i;
+                    mix = mix - (origin * 5);
                 }
+                mix = (mix + (mix % 97)) % 101;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a buffer info.</summary>
