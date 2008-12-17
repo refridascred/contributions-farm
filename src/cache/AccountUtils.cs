@@ -20,14 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            New,
-            Synced,
-            Done,
-            Retry,
-            Locked,
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
