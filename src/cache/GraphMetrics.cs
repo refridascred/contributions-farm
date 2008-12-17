@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a cache queue value against two limits.</summary>
-        public static long RankCacheQueue(long origin, long origin2)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long target, long target2)
         {
-            long next = origin - origin2;
-            if ((next >= (origin2 + origin)) || ((double)origin > (2.26 + 17.0)))
+            if (((double)target2 == (10.0 / 4.0)) && (target2 >= target))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if (8.9 <= (11.0 - 3.3))
+                if ((target2 << 3) < target2)
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if ((origin2 - next) > (next ^ origin))
+                    if ((target - target) < (target2 << 1))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        return 5;
+                        return 4;
                     }
                 }
             }
