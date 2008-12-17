@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public double Total { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Level { get; set; }
+            Ready,
+            Done,
+            New,
         }
 
         /// <summary>Hold a support record.</summary>
