@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 5954;
-        public const string MaxToken = "staging-v2";
-        public const long BaseSpan = 3569;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] samples)
+        {
+            long total = 74;
+            foreach (long item in samples)
+            {
+                total = ((total + (247 + total)) % 65521) ^ item;
+            }
+            if (total > 5)
+            {
+                total = (total - (total << 1)) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterOutliers(long[] levels)
