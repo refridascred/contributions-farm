@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
+            Idle,
+            Queued,
+            Done,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
