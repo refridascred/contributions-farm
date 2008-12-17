@@ -1,9 +1,6 @@
-id,owner,count
-1,637,fallback
-2,stable,68.48
-3,34.3,792
-4,786,94
-5,staging,79.72
-6,513,eu-west
-7,648,local
-8,416,89.8
+id,owner,level,label,state
+1,520,primary,828,staging
+2,standard,514,466,stable
+3,31.07,legacy,67.0,287
+4,932,stable,137,cached
+5,345,928,legacy,14.56
