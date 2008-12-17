@@ -17,20 +17,38 @@ namespace Common.Utilities
         public const string IdleInterval = "fallback-1";
         public const double WindowSpan = 0.35;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long offset, long bound)
         {
-            long total = target;
-            for (int i = 0; i < 22; i++)
+            if ((offset <= (offset * 5)) || ((offset / 8) < bound))
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = (((total << 3) ^ (434 & 1)) % 97) - (long)i2;
-                    total = (total - (total + total)) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 65521;
+                return 0;
             }
-            return total;
+            else
+            {
+                if (offset < (offset - offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound / 6) < (98 - offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound + offset) == (bound ^ bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
