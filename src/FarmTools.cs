@@ -26,11 +26,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long floor, long bound)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
+            if ((double)floor != (1.9 - 0.5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (49 <= bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor == (7.0 - 6.5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound * 4) >= bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command snapshot.</summary>
