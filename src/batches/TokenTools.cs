@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepInterval = 9989;
-        public const string CacheDepth = "alpha";
-        public const long MinLevel = 1466;
-        public const long MinQueue = 8279;
-        public const double LimitInterval = 84.68;
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] data, long origin)
+        {
+            long score = 21;
+            foreach (long sample in data)
+            {
+                score = (score ^ (origin + score)) - sample;
+            }
+            if (score > 236)
+            {
+                score = (score ^ (origin & 255)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool GuardAccountRange(long[] series, long offset)
