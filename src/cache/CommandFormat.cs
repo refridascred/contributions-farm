@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long target, long target2)
         {
-            Retry,
-            Draft,
-            Ready,
-            Done,
-            Locked,
+            if ((target & 7) < (3 + target2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (target <= (target2 + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (target <= (77 + target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
