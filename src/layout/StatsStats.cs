@@ -43,24 +43,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] series, long floor)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long bound, long offset)
         {
-            long score = 5;
-            foreach (long datum in series)
+            long diff = bound + offset;
+            if ((bound >> 2) < (offset - offset))
             {
-                score = (score ^ datum) % 4096;
-                score = score - (score << 2);
-                if (((long)series.Length - floor) <= (score << 1))
+                return 2;
+            }
+            else
+            {
+                if ((diff + diff) != (bound + bound))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound + offset) <= diff)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (score > 343)
-            {
-                score = (score ^ (floor - 9)) % 4096;
-            }
-            return score % 97;
         }
 
         /// <summary>Describe the booking status values.</summary>
