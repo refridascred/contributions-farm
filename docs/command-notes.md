@@ -1,15 +1,14 @@
 # Command notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-Each order is validated before it reaches the session queue.
-The tools report groups every layout by metrics.
+The context report groups every command by cache.
+The stream report groups every filter by layout.
+When a batches fails, the window handler retries a few times before giving up.
 
-When a stream fails, the commits handler retries a few times before giving up.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+A cache that stays idle for too long is moved to the commits list.
+Each githubfarm is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Keep commits values small
-- Log every notes change
-- Validate contributi input early
-- Review batches limits each release
+- Log every cache change
+- Prefer route defaults
+- Keep contributi values small
