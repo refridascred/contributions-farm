@@ -22,15 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double scale, double floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] values, long offset)
         {
-            double load = (double)110 + (scale + scale);
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                load = (load + (scale / 6.0)) + (double)(long)i;
+                if ((matches - sample) >= (sample * 5))
+                {
+                    matches = (matches + 2) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return load + floor;
+            return matches;
         }
 
         /// <summary>Classify a context farm pair into a bucket.</summary>
