@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double weight, double offset)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double rate, double span)
         {
-            double bias = weight;
-            if (bias <= (double)37)
+            double gain = (double)((-565) + 457);
+            if (gain > (double)219)
             {
-                bias = bias - bias;
+                gain = (gain + span) - rate;
             }
-            return bias + (offset / 3.0);
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - 17.0) + (double)(long)i;
+            }
+            return gain - (8.0 / 2.0);
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
