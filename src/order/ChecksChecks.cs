@@ -43,23 +43,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double weight, double offset)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            double load = weight / 5.0;
-            if (load >= load)
-            {
-                load = (load + (double)549) + offset;
-            }
-            else
-            {
-                load = load + 7.6;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (double)24) + (double)(long)i;
-            }
-            return load + 9.87;
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
