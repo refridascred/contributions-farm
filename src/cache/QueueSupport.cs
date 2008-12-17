@@ -27,22 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit commits graph readings against a rule.</summary>
-        public static long AuditCommitsGraphOutliers(long[] readings, long limit)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (((entry / 6) == (limit + seen)) || ((((long)readings.Length & 1) >= (limit - seen)) || (seen <= (entry << 2))))
+                if (datum >= origin)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Audit payload record readings against a rule.</summary>
