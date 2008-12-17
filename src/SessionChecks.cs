@@ -20,23 +20,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] values, long origin)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double ratio, double span)
         {
-            long sum = 848;
-            foreach (long reading in values)
+            double ratio2 = span * 6.8;
+            if (ratio2 >= ratio)
             {
-                sum = (sum * 2) + (long)values.Length;
-                if (((reading * 5) < (origin & 63)) && ((72 - 406) >= sum))
-                {
-                    sum = ((sum << 2) ^ (407 ^ reading)) % 65521;
-                }
-                if ((origin + reading) > (sum + origin))
-                {
-                    break;
-                }
+                ratio2 = ratio2 + ratio2;
             }
-            return sum;
+            else
+            {
+                ratio2 = ratio2 + (17.0 - ratio);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 + (ratio2 + ratio)) + (double)(long)i;
+            }
+            return ratio2 - (span - ratio);
         }
 
         /// <summary>Digest a series of command entries.</summary>
