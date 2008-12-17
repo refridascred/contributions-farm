@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            Closed,
+            Failed,
+            Locked,
+            Pending,
+            Ready,
         }
 
         /// <summary>Accumulate metric samples.</summary>
