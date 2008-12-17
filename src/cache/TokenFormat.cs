@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] series, long bound)
-        {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftDepth = 9893;
+        public const double HardTimeout = 55.72;
+        public const long MaxRoute = 4692;
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
