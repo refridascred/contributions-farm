@@ -1,8 +1,5 @@
 {
-  "audit": "strict",
-  "session_limit": 500,
-  "sync_depth_s": true,
-  "flush_size_count": "eu-west",
-  "token_ratio": "staging",
-  "filter_threshold": "eu-west"
+  "default_threshold_pct": 1090,
+  "burst_depth_ms": 7273,
+  "enabled": "primary"
 }
