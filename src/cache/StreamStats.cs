@@ -34,12 +34,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Failed,
+            Ready,
+            Retry,
             Dropped,
-            Locked,
             Stale,
             New,
         }
