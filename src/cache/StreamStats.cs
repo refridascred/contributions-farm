@@ -27,19 +27,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate farm editor readings against a bound.</summary>
-        public static bool CheckFarmEditorRange(long[] levels, long floor)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Hold a record info.</summary>
