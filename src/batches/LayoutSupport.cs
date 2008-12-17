@@ -45,14 +45,11 @@ namespace Common.Utilities
         public const long CacheDepth = 5385;
         public const double MinStats = 67.7;
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            Done,
-            Dropped,
-            Paused,
-            Retry,
-            Ready,
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
