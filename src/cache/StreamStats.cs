@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] series, long floor)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!((floor + floor) != (count & 15)))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            Retry,
+            Idle,
+            Synced,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
