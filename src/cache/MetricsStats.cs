@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double rate, double bias)
         {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
+            double scale = (double)(-86);
+            if (scale <= (6.32 - rate))
+            {
+                scale = (scale - 8.4) - bias;
+            }
+            else
+            {
+                scale = scale + (scale / 5.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (double)5;
         }
 
         /// <summary>Describe the channel status values.</summary>
