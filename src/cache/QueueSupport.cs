@@ -19,18 +19,32 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the account batches entries that pass the check.</summary>
-        public static long CountAccountBatchesGaps(long[] samples, long bound)
+        /// <summary>Rank cluster account input into a small class.</summary>
+        public static long SortClusterAccount(long seed, long offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long bound = seed + offset;
+            if ((7 + offset) < (seed ^ offset))
             {
-                if ((bound >> 3) >= (reading >> 3))
+                return 4;
+            }
+            else
+            {
+                if ((859 + offset) < seed)
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound - 92) <= bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate filter samples.</summary>
