@@ -22,19 +22,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] data, long step)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Closed,
+            Retry,
+            Idle,
         }
     }
 }
