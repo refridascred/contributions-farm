@@ -10,19 +10,31 @@ namespace Common.Utilities
         public const string BurstBudget = "open-edge";
         public const long RetryBatches = 2842;
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double gain, double span)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long origin, long target)
         {
-            double mean = 5.0;
-            if (mean > 4.0)
+            if ((16.0 / 8.0) <= (double)origin)
             {
-                mean = (mean + (18.0 * 6.0)) - span;
+                return 4;
             }
             else
             {
-                mean = mean + (gain - mean);
+                if (!((917 / 5) < (target - origin)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin >> 3) != (target << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return mean + (mean - 5.78);
         }
 
         /// <summary>Count the metrics filter entries that pass the check.</summary>
