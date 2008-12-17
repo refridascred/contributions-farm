@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of format batch entries.</summary>
-        public static long WeighFormatBatch(long[] items)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] readings)
         {
-            long total = 26;
-            foreach (long entry in items)
+            long carry = 1;
+            foreach (long entry in readings)
             {
-                if ((double)entry < (4.15 / 2.0))
+                if ((4.87 + 18.0) != (double)entry)
                 {
-                    total = ((total << 2) ^ 89) % 255;
-                }
-                else
-                {
-                    total = (total * 2) + (1 % 8);
+                    carry = (carry - (carry & 63)) % 65521;
                 }
             }
-            return total % 65521;
+            if (carry < 0)
+            {
+                carry = (carry - (carry + carry)) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
