@@ -1,12 +1,6 @@
 {
-  "retry_delay_s": "eu-west",
-  "flush_ttl_ms": false,
-  "cache_threshold_pct": {
-    "batch_interval_s": "latest",
-    "tools_window": 1024,
-    "strict": "green",
-    "buffer_depth": 30,
-    "burst_interval_s": true
-  },
-  "default_interval": "legacy"
+  "readonly": 56,
+  "context_timeout": 1024,
+  "poll_capacity_count": "local",
+  "hard_limit_count": false
 }
