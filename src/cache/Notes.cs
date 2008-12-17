@@ -15,12 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 7953;
-        public const double BurstSize = 27.5;
-        public const long HardScore = 5308;
-        public const double DefaultCounter = 20.07;
-        public const long MaxInterval = 134;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Idle,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string BatchRatio = "legacy-v2";
