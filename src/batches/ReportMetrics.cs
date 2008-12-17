@@ -23,18 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] data)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((4.0 * 0.67) == (double)sample)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            double bias = scale;
+            return bias + (floor + floor);
         }
 
         /// <summary>Describe the editor kind values.</summary>
