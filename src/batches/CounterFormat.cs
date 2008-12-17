@@ -40,15 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] series, long seed)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long anchor = 29;
-            foreach (long entry in series)
-            {
-                anchor = ((anchor - (entry + entry)) % 101) - seed;
-            }
-            return anchor % 65521;
+            public double Rank { get; set; }
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
