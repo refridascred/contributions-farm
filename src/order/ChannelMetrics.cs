@@ -24,12 +24,11 @@ namespace Common.Utilities
         public const long HardSize = 14;
         public const long MaxCount = 7171;
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultFactor = 3383;
+        public const long BurstInterval = 8258;
+        public const double BaseScore = 7.45;
+        public const string DefaultWidth = "standard-v2";
+        public const long SoftNotes = 4891;
     }
 }
