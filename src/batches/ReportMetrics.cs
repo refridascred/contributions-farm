@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank channel graph input into a small class.</summary>
-        public static long GradeChannelGraph(long floor, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] series, long origin)
         {
-            if ((6 & 1) > floor)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step <= (803 * 3)) || (floor >= (floor / 8)))
+                if ((matches + matches) <= (9 >> 5))
                 {
-                    return 5;
+                    matches = ((matches + 2) + reading) - origin;
                 }
                 else
                 {
-                    return 3;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
