@@ -1,5 +1,6 @@
 {
-  "queue_ttl": 11,
-  "base_ttl": 1735,
-  "notes_ttl": ["latest", "latest"]
+  "window_limit": "green",
+  "batch_depth": "blue",
+  "idle_limit_s": false,
+  "soft_window_pct": 46.06
 }
