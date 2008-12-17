@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 2262;
-        public const long RetryWidth = 2245;
-        public const string WindowScore = "standard";
-        public const long SoftTimeout = 1678;
-        public const long IdleCount = 7842;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate report graph readings against a bound.</summary>
         public static bool CheckReportGraphBounds(long[] samples, long bound)
