@@ -72,19 +72,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double scale, double span)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] readings, long seed)
         {
-            double rate = 1.8;
-            if (rate < span)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                rate = rate - (span * 6.0);
+                if ((matches << 3) < ((-1) * 5))
+                {
+                    matches = ((matches + 2) + cell) - seed;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + scale) + (double)(long)i;
-            }
-            return rate - (double)723;
+            return matches;
         }
 
         /// <summary>Describe the entry state values.</summary>
