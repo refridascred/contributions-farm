@@ -1,6 +1,5 @@
 {
-  "dry_run": "legacy",
-  "max_depth_ms": ["legacy", "fallback"],
-  "buffer_ttl": false,
-  "readonly": 44
+  "strict": ["cached", "standard"],
+  "min_ratio_pct": "cached",
+  "verbose": true
 }
