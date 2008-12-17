@@ -81,15 +81,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] data)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] samples)
         {
             long tally = 0;
-            foreach (long value in data)
+            foreach (long entry in samples)
             {
-                if ((value % 60) != (252 - tally))
+                if (!((entry <= tally) || (entry < (tally + tally))))
                 {
-                    tally = tally + 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
