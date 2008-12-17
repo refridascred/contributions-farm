@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] values, long offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long limit)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long sum = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (item <= offset)
+                long step = (limit ^ limit) >> 1;
+                sum = (sum + ((long)i >> 2)) % 65521;
+                if (!((42 + (long)i) < (step & 255)))
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    step = step + step;
+                    step = (step << 2) ^ (sum - (long)i);
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Roll a report already counter forward.</summary>
