@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftDepth = 9893;
-        public const double HardTimeout = 55.72;
-        public const long MaxRoute = 4692;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultBudget = 4783;
+        public const long LimitEditor = 3479;
+        public const long StepEditor = 3650;
+        public const double DefaultEditor = 60.84;
+        public const double WindowEditor = 87.96;
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
