@@ -1,8 +1,8 @@
-id,token,active,label
-1,primary,64.12,59.07
-2,standard,213,staging
-3,94.42,825,90.34
-4,12.94,83.78,standard
-5,301,green,538
-6,981,13,latest
-7,legacy,738,stable
+id,level,region,ratio,owner
+1,green,490,83.53,28.43
+2,91.87,874,261,305
+3,cached,988,495,71.53
+4,62,47.02,77.51,6.67
+5,528,blue,472,377
+6,49.76,63.7,latest,edge
+7,48.4,edge,5.43,74.39
