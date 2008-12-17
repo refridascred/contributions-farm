@@ -14,13 +14,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Audit batch checks readings against a rule.</summary>
+        public static long AuditBatchChecksGaps(long[] items, long origin)
         {
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum + origin) > (seen + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of account readings.</summary>
