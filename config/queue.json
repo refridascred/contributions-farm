@@ -1,11 +1,5 @@
 {
-  "poll_threshold_s": 41,
-  "dry_run": 45,
-  "idle_ttl_count": "fallback",
-  "enabled": {
-    "queue_timeout": "blue",
-    "dry_run": "cached",
-    "soft_interval_pct": true,
-    "default_retries_pct": "local"
-  }
+  "strict": [282, 158, 349, 291],
+  "idle_size_s": 852,
+  "persist": 77
 }
