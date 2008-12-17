@@ -30,10 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryInterval = 3457;
-        public const double WindowPayload = 81.56;
-        public const double StepDepth = 81.72;
+        /// <summary>Iterate the account order series from a seed.</summary>
+        public static long DeriveAccountOrder(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = (carry * 2) + (offset * 2);
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandHits(long[] readings)
