@@ -1,6 +1,5 @@
 {
-  "window_limit": "green",
-  "batch_depth": "blue",
-  "idle_limit_s": false,
-  "soft_window_pct": 46.06
+  "enabled": false,
+  "order_threshold": 69,
+  "base_capacity_pct": 58
 }
