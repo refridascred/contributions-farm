@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a command payload reading by value.</summary>
-        public static long FindCommandPayloadIndex(long[] series, long target)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
