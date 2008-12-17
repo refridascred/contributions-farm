@@ -47,15 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] samples, long target)
         {
-            long sum = 2;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                sum = sum + (entry % 2);
+                if (((2.8 - 7.1) >= (double)target) && ((double)sample < (double)target))
+                {
+                    tally = tally + 3;
+                }
             }
-            return sum % 4096;
+            return tally;
         }
     }
 }
