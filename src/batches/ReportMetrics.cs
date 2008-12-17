@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cache editor counter forward.</summary>
-        public static long IterateCacheEditor(long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((mix % 16) > (floor - floor))
+                if ((4.0 * 0.67) == (double)sample)
                 {
-                    mix = (mix ^ mix) % 97;
+                    hits = hits + 3;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a cluster header.</summary>
