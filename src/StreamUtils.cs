@@ -83,23 +83,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] readings, long step)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] values, long seed)
         {
-            long anchor = 7;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor * 2) + entry;
-                if ((double)step >= (double)anchor)
+                if ((values[i] == seed) && ((values[i] % 3) != 0))
                 {
-                    anchor = anchor + (0 - entry);
+                    return (long)i;
                 }
             }
-            if (anchor < 9)
-            {
-                anchor = (anchor << 2) ^ (anchor + step);
-            }
-            return anchor % 97;
+            return -1;
         }
     }
 }
