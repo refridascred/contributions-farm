@@ -79,12 +79,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public double Level { get; set; }
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
+            Done,
+            Stale,
+            Active,
+            Idle,
         }
     }
 }
