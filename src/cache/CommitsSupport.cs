@@ -37,18 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout token readings.</summary>
-        public static long WeighLayoutToken(long[] series, long seed)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] readings)
         {
-            long carry = 818;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed + 29) > (carry % 10))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry * 3) + (value ^ 960)) % 1000;
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
