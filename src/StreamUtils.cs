@@ -19,24 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long floor, long step)
+        /// <summary>Count the metric stream entries that pass the check.</summary>
+        public static long MeasureMetricStreamGaps(long[] items, long limit)
         {
-            if ((double)floor >= 4.8)
+            long count = 0;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step >> 1) >= step)
+                if ((count >= (limit >> 5)) || (count < value))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a support batches reading.</summary>
