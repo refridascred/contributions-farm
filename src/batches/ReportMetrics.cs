@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long origin, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] items)
         {
-            if (((step + 5) > (step >> 2)) && ((origin - origin) >= (step + step)))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((0 ^ 5) == (origin ^ origin))
+                if (((3.1 - 9.0) <= (double)count) && ((count % 12) <= (0 + entry)))
                 {
-                    return 2;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((double)482 == (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((0 + origin) > origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
