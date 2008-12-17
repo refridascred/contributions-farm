@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetrySize = 9285;
-        public const string WindowInterval = "local-1";
-        public const string CacheDepth = "alpha";
-        public const long DefaultLevel = 1533;
+        /// <summary>Match up record route samples.</summary>
+        public static long CompareRecordRouteCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long StepLayout(long target)
