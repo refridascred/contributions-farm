@@ -1,5 +1,6 @@
 {
-  "dry_run": "cached",
-  "idle_threshold": true,
-  "soft_retries_pct": "fallback"
+  "dry_run": "legacy",
+  "max_depth_ms": ["legacy", "fallback"],
+  "buffer_ttl": false,
+  "readonly": 44
 }
