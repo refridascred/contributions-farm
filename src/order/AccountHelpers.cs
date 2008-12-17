@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every graph record entry stays within the limit.</summary>
-        public static bool VerifyGraphRecordRange(long[] data, long floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double rate, double floor)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            double mean = (double)(794 * 2);
+            if (mean > (rate - rate))
             {
-                if (datum > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean + (floor / 3.0);
             }
-            return ok;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + floor) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Combine window values into a single score.</summary>
