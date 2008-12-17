@@ -1,7 +1,5 @@
 # support settings
-flush_delay_pct:
-  - 443
-  - 479
-  - 492
-payload_size: 34
-burst_delay_pct: blue
+filter_capacity: true
+queue_retries: green
+max_capacity_pct: 44
+max_delay: false
