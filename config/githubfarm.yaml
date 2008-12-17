@@ -1,23 +1,18 @@
 # githubfarm settings
-idle_depth_ms:
-  warm_interval_count: strict
-  verbose:
-    max_timeout_ms: 351
-    persist: strict
-    enabled: 16.11
-    max_timeout: 57.87
-    cluster_ratio:
-      - strict
-      - fallback
-      - fallback
-      - local
-    default_threshold_count: false
-  batch_retries_ms:
-    - 60
-    - 240
-  metric_ratio: 48.26
-  persist: staging
-idle_interval_ms: 5375
-poll_limit_ms: cached
-base_timeout_pct: standard
-graph_threshold: true
+burst_limit_count: 30
+strict:
+  githubfarm_size: true
+  hard_retries: 57
+  default_ttl_ms: legacy
+  retry_window:
+    - eu-west
+    - standard
+    - latest
+  soft_size_s: 12.62
+flush_delay_s: 97.19
+default_depth_s: 91.36
+token_ttl: false
+warm_ratio_s:
+  - primary
+  - blue
+  - fallback
