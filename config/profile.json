@@ -1,6 +1,8 @@
 {
-  "tools_depth": "cached",
-  "sync_interval": 10,
-  "min_threshold": false,
-  "entry_threshold": "stable"
+  "enabled": 30,
+  "batch_delay_count": [486, 102, 415],
+  "cache_ttl_pct": "open",
+  "soft_ttl_pct": 4.14,
+  "compress": 78.72,
+  "stream_threshold": 250
 }
