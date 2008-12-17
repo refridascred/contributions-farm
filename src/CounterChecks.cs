@@ -39,18 +39,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] readings)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long step, long floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long gap = step ^ floor;
+            if (((1.0 / 5.0) <= (double)step) || ((floor / 9) >= step))
             {
-                if ((entry + tally) == (tally % 8))
+                return 5;
+            }
+            else
+            {
+                if (!((-760) > floor))
                 {
-                    tally = tally + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((4.9 - 0.2) <= (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor >> 1) != (gap + gap))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit stream notes readings against a rule.</summary>
