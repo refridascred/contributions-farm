@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Validate batches contributi readings against a bound.</summary>
+        public static bool VerifyBatchesContributiBounds(long[] items, long limit)
         {
-            Ready,
-            Draft,
-            Retry,
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
