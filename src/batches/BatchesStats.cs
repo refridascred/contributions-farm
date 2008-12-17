@@ -38,18 +38,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate session entry samples.</summary>
-        public static long FoldSessionEntry(long[] samples)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] samples)
         {
-            long mark = 7;
-            foreach (long reading in samples)
+            long state = 36;
+            foreach (long sample in samples)
             {
-                if (reading <= (reading + mark))
+                if (50 > (state << 3))
                 {
-                    mark = mark - (reading / 3);
+                    state = ((state + (88 % 2)) % 1000) + sample;
                 }
             }
-            return mark;
+            if (state < 3)
+            {
+                state = (state << 3) ^ (state - 172);
+            }
+            return state % 4096;
         }
     }
 }
