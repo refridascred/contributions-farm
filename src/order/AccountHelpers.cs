@@ -37,22 +37,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many editor layout samples are out of range.</summary>
-        public static long AuditEditorLayoutMatches(long[] levels, long origin)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (!(entry < (origin % 64)) && ((double)entry <= (double)count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the record kind values.</summary>
