@@ -1,5 +1,6 @@
 {
-  "audit": "fallback",
-  "soft_timeout_pct": 49.19,
-  "cluster_delay": 1024
+  "readonly": ["local", "primary", "strict", "stable"],
+  "sync_retries_count": "open",
+  "cache_size": 60,
+  "warm_ttl_count": 88.44
 }
