@@ -47,18 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] data, long seed)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long mix = 29;
+            foreach (long sample in readings)
             {
-                if ((value > (tally + value)) || ((tally + value) > value))
+                if ((sample + mix) > (sample - offset))
                 {
-                    tally = (tally + 3) - seed;
+                    mix = (mix - (sample + 843)) % 4096;
+                }
+                else
+                {
+                    mix = mix - (mix - 3);
                 }
             }
-            return tally;
+            return mix;
         }
     }
 }
