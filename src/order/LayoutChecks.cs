@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up graph layout samples.</summary>
-        public static long PairGraphLayoutCount(long[] values)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry != target)
                 {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
