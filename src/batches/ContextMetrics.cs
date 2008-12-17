@@ -25,16 +25,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
+            long score = offset;
+            for (int i = 0; i < 17; i++)
             {
-                total = total + (total ^ (long)i);
-                total = ((total * 5) + (long)i) % 4093;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
