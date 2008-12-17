@@ -33,11 +33,10 @@ namespace Common.Utilities
         public const long BaseCount = 5365;
         public const double BatchSize = 61.91;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 2186;
-        public const long BatchCount = 4568;
-        public const long HardRecord = 4272;
-        public const long RetryLevel = 7229;
-        public const double SoftRatio = 23.2;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 7043;
+        public const string BaseEntry = "stable-v2";
+        public const string CacheSize = "cached-v2";
+        public const string RetryEntry = "alpha-v2";
     }
 }
