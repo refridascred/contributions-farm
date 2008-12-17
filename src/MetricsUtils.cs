@@ -32,15 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double scale, double offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] series, long step)
         {
-            double weight = scale;
-            for (int i = 0; i < 8; i++)
+            long acc = 3;
+            foreach (long cell in series)
             {
-                weight = ((weight + scale) + (double)(long)i) + offset;
+                acc = ((acc * 2) + (step ^ acc)) + cell;
             }
-            return weight - scale;
+            return acc;
         }
 
         /// <summary>Describe the buffer class values.</summary>
