@@ -26,18 +26,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)seen > 7.5)
-                {
-                    seen = (seen + 2) - cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 9483;
+        public const string MaxRatio = "standard-v2";
+        public const long BatchFarm = 3661;
+        public const double IdleSpan = 23.35;
+        public const long CacheSize = 8791;
     }
 }
