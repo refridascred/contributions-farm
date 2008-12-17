@@ -1,8 +1,6 @@
 {
-  "schema_size": true,
-  "cache_threshold": 1219,
-  "verbose": ["stable", "edge", "strict"],
-  "counter_window": true,
-  "cluster_window": 52.71,
-  "enabled": 42.37
+  "verbose": "local",
+  "batch_size": 720,
+  "idle_delay_s": "staging",
+  "enabled": 1024
 }
