@@ -15,13 +15,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 485;
+        public const long DefaultSession = 8102;
+        public const long BaseSession = 8954;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
