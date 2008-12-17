@@ -18,13 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long limit)
         {
-            Ready,
-            Retry,
-            Synced,
-            Dropped,
+            long score = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score << 2) ^ ((long)i ^ score)) % 1000;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Match up payload samples.</summary>
