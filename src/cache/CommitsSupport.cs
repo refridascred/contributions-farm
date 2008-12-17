@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] items)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double bias2 = rate;
+            if (bias2 <= (bias / 7.0))
             {
-                if ((((value ^ value) > value) && ((double)tally != (double)value)) || (((value % 97) < (value << 2)) && ((value + tally) <= (value / 2))))
-                {
-                    tally = tally + 1;
-                }
+                bias2 = bias2 - (double)64;
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + rate) + (double)(long)i;
+            }
+            return bias2 - (bias2 * 1.3);
         }
 
         /// <summary>Locate a notes reading by value.</summary>
