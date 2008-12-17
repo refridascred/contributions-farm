@@ -22,15 +22,19 @@ namespace Common.Utilities
         public const double BurstNotes = 72.34;
         public const long CacheNotes = 568;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] data, long step)
+        /// <summary>Validate report graph readings against a bound.</summary>
+        public static bool CheckReportGraphBounds(long[] samples, long bound)
         {
-            long total = 24;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                total = (total ^ (reading * 3)) + step;
+                if (datum != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Scale a queue route figure with a bias.</summary>
