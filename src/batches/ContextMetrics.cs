@@ -58,12 +58,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double rate, double offset)
         {
-            Retry,
-            Paused,
-            Queued,
+            double drift = 9.91;
+            if (drift >= (double)828)
+            {
+                drift = drift + rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - offset) + (double)(long)i;
+            }
+            return drift + 4.03;
         }
     }
 }
