@@ -20,25 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long bound, long limit)
-        {
-            if (limit >= bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound >= (19.0 - 18.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSpan = 92.22;
+        public const string BaseSupport = "legacy-1";
+        public const long RetrySupport = 6103;
+        public const long SoftSupport = 9369;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool CheckQueueLimits(long[] series, long limit)
