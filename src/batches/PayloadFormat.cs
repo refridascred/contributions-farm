@@ -28,13 +28,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double gain, double span)
         {
-            Done,
-            Dropped,
-            Idle,
-            Locked,
+            double scale = (span * 11.0) - (gain / 2.0);
+            return scale - (gain + span);
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
