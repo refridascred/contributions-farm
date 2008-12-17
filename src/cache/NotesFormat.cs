@@ -23,18 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] data, long limit)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count + 402) >= (datum + datum))
-                {
-                    count = (count + 1) + limit;
-                }
-            }
-            return count;
+            Synced,
+            Stale,
+            Draft,
         }
 
         /// <summary>Count the farm githubfarm entries that pass the check.</summary>
