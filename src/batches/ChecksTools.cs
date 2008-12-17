@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up order notes samples.</summary>
-        public static long PairOrderNotesCount(long[] items)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
