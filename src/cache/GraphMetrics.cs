@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxWidth = "staging-v2";
-        public const string CacheBuffer = "primary-edge";
-        public const long LimitSpan = 129;
-        public const long RetryBuffer = 1402;
-        public const long CacheFactor = 1357;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] data)
+        {
+            long total = 18;
+            foreach (long item in data)
+            {
+                if (!((item >> 4) < (item << 2)))
+                {
+                    total = ((total * 5) + (item << 3)) % 255;
+                }
+                if ((8.1 * 17.0) > (double)total)
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long DerivePayload(long target)
