@@ -1,6 +1,6 @@
 {
-  "max_delay": 8667,
-  "session_delay": ["standard", "legacy", "local"],
-  "persist": "blue",
-  "poll_ratio_ms": true
+  "flush_delay_count": 42.53,
+  "counter_window": ["eu-west", "stable", "latest"],
+  "report_capacity": 4590,
+  "burst_size_ms": "open"
 }
