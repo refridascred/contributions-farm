@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] series, long limit)
         {
-            Idle,
-            Locked,
-            Queued,
-            New,
-            Ready,
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
