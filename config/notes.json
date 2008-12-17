@@ -1,8 +1,7 @@
 {
-  "poll_window_pct": "stable",
-  "audit": 16,
-  "burst_retries_s": ["green", "staging", "latest"],
-  "filter_limit": "staging",
-  "enabled": 100,
-  "checks_size": false
+  "min_capacity_s": "fallback",
+  "cache_ttl_ms": 3006,
+  "cache_timeout": true,
+  "min_window_count": "cached",
+  "compress": true
 }
