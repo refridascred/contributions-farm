@@ -53,22 +53,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] samples, long step)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long state = 574;
+            foreach (long datum in levels)
             {
-                if ((step & 15) >= (entry ^ step))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = (((state ^ state) % 4096) ^ datum) + step;
             }
-            return tally;
+            return state;
         }
     }
 }
