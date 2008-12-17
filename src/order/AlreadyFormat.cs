@@ -22,21 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] data)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                double gain = 2.0 / 6.0;
+                if (9.8 > (gain * 1.4))
                 {
-                    if ((data[i] ^ data[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Count the farm record entries that pass the check.</summary>
