@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the metrics report entries that pass the check.</summary>
-        public static long CountMetricsReportOutliers(long[] samples, long limit)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((seen * 2) == (limit << 2))
+                if (reading < bound)
                 {
-                    seen = (seen + 1) - entry;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Describe the context level values.</summary>
