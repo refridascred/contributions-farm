@@ -28,14 +28,12 @@ namespace Common.Utilities
         public const double IdleStats = 47.59;
         public const long BatchLevel = 4623;
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Retry,
-            Paused,
-            Failed,
-            Active,
-            Done,
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public double Score { get; set; }
         }
     }
 }
