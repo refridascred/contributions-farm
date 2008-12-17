@@ -43,11 +43,17 @@ namespace Common.Utilities
         public const string StepRecord = "primary-edge";
         public const double BatchFactor = 85.23;
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double rate, double span)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] levels, long target)
         {
-            double weight = span - rate;
-            return weight + (double)68;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= target) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
