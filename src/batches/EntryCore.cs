@@ -5,35 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = (anchor << 2) ^ ((long)i % 97);
-                if ((5.0 * 9.2) >= 0.53)
-                {
-                    anchor = (anchor + (2 - 703)) % 97;
-                    anchor = (anchor + anchor) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 101;
-                }
-                if ((bound % 64) != (bound % 10))
-                {
-                    anchor = (anchor * 3) + (bound ^ anchor);
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (bound + 334);
-                    anchor = (anchor + bound) % 65521;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetrySize = 9285;
+        public const string WindowInterval = "local-1";
+        public const string CacheDepth = "alpha";
+        public const long DefaultLevel = 1533;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long StepLayout(long target)
