@@ -64,24 +64,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] values, long floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] levels, long floor)
         {
-            long acc = -8;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                acc = acc - (datum & 63);
-                acc = ((acc * 2) + (2 % 64)) % 101;
-                if (floor < (acc / 6))
+                if (cell != floor)
                 {
-                    acc = ((acc * 5) + datum) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc > 84)
-            {
-                acc = (acc ^ (floor / 7)) % 1000;
-            }
-            return acc;
+            return flag;
         }
     }
 }
