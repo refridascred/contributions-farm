@@ -74,12 +74,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] items)
         {
-            Closed,
-            Dropped,
-            Done,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many metrics commits samples are out of range.</summary>
