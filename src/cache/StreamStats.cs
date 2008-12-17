@@ -29,19 +29,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Iterate the batches tools series from a seed.</summary>
-        public static long SeriesBatchesTools(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((state & 7) == ((long)i + state)) || ((seed ^ seed) > (seed % 12)))
-                {
-                    state = ((state << 2) ^ state) % 97;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 2186;
+        public const long BatchCount = 4568;
+        public const long HardRecord = 4272;
+        public const long RetryLevel = 7229;
+        public const double SoftRatio = 23.2;
     }
 }
