@@ -26,15 +26,13 @@ namespace Common.Utilities
             return (bias + floor) + ratio;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double scale, double span)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            double mean = scale;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = ((mean - (7.7 - mean)) + (double)(long)i) - span;
-            }
-            return mean + 8.19;
+            Synced,
+            New,
+            Paused,
+            Idle,
         }
     }
 }
