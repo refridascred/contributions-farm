@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] levels, long origin)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
+                score = (score - (offset - offset)) % 101;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
