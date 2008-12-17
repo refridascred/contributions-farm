@@ -23,15 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next graph payload value from a seed.</summary>
-        public static long StepGraphPayload(long bound)
+        /// <summary>Audit batches format readings against a rule.</summary>
+        public static long CountBatchesFormatMatches(long[] readings)
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                result = ((result * 3) + (long)i) % 97;
+                if ((3 * 5) <= (sample + tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Match up layout samples.</summary>
