@@ -20,17 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a schema contributi sample.</summary>
-        public static long LookupSchemaContributiIndex(long[] samples, long origin)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 2) != 0))
+                if (sample < bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
