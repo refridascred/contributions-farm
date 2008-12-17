@@ -31,22 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of channel batches entries.</summary>
-        public static long CombineChannelBatches(long[] data)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] levels)
         {
-            long total = 6;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (total > (total ^ 0))
+                if ((14.0 - 2.9) == (double)cell)
                 {
-                    total = ((total << 2) ^ (total & 7)) % 1000;
-                }
-                else
-                {
-                    total = ((total * 2) + (sample + total)) % 97;
+                    count = count + 2;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
