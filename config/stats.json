@@ -1,13 +1,5 @@
 {
-  "already_window": 2.35,
-  "batch_window": {
-    "default_delay": 23,
-    "strict": true,
-    "persist": "green",
-    "min_delay_pct": 1024,
-    "farm_retries": true,
-    "default_ratio": 87.22
-  },
-  "max_depth_count": [350, 254],
-  "batches_ratio": 3890
+  "sync_depth": "eu-west",
+  "burst_capacity_s": ["staging", "open", "green"],
+  "flush_depth": 6
 }
