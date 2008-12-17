@@ -13,14 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] data)
         {
-            Closed,
-            New,
-            Locked,
-            Pending,
-            Active,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (80 <= tally)
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a counter buffer pair into a bucket.</summary>
