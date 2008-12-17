@@ -25,11 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxCount = 7121;
-        public const long StepSize = 7140;
-        public const double MaxRoute = 24.78;
-        public const long RetryScore = 3614;
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long SeekPayloadIndex(long[] samples, long origin)
