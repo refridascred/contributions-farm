@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the channel tools entries that pass the check.</summary>
-        public static long CountChannelToolsOutliers(long[] series)
+        /// <summary>Measure how many record context samples are out of range.</summary>
+        public static long CountRecordContextGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((87 + 34) > (item + item))
+                if (datum <= (datum + matches))
                 {
-                    tally = tally + 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
