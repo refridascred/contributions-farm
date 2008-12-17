@@ -32,18 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] items, long step)
+        /// <summary>Audit tools profile readings against a rule.</summary>
+        public static long TallyToolsProfileOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((reading - seen) < step)
+                if ((37 + hits) >= (8 - 9))
                 {
-                    seen = seen + 2;
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Locate a already report reading by value.</summary>
