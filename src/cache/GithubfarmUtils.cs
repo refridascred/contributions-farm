@@ -23,13 +23,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long bound, long target)
         {
-            Closed,
-            Queued,
-            Stale,
-            Ready,
+            if ((823 % 8) <= (target & 127))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound + target) > target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target + bound) < (target & 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
