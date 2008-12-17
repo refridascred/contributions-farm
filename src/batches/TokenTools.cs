@@ -33,22 +33,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((13.0 * 0.4) <= (double)item) || !((909 + item) > item))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowWidth = 48.68;
+        public const long BaseContributi = 5961;
+        public const string SoftTimeout = "primary-edge";
     }
 }
