@@ -55,21 +55,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of cluster token readings.</summary>
-        public static long MatchClusterTokenCount(long[] series)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Locked,
+            Draft,
+            Ready,
+            Paused,
         }
 
         /// <summary>Accumulate graph samples.</summary>
