@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] samples)
+        /// <summary>Combine context metrics values into a single score.</summary>
+        public static long WeighContextMetrics(long[] values, long step)
         {
-            long total = 74;
-            foreach (long item in samples)
+            long acc = 547;
+            foreach (long value in values)
             {
-                total = ((total + (247 + total)) % 65521) ^ item;
+                acc = ((acc - ((long)values.Length + acc)) % 97) ^ value;
             }
-            if (total > 5)
+            if (acc < 93)
             {
-                total = (total - (total << 1)) % 4096;
+                acc = acc + step;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
