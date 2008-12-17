@@ -23,11 +23,17 @@ namespace Common.Utilities
         public const double BaseRatio = 4.29;
         public const long DefaultContext = 1247;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 301;
-        public const long BurstSize = 1469;
-        public const long RetryLayout = 535;
-        public const double CacheSize = 11.96;
+        /// <summary>Roll a route cluster counter forward.</summary>
+        public static long StepRouteCluster(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = (carry - (7 - (long)i)) % 4096;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long StepFarm(long step)
