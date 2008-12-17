@@ -28,10 +28,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstSpan = 3634;
-        public const long StepCount = 620;
-        public const string BatchScore = "alpha-v2";
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MinWidth = 7551;
