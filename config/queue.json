@@ -1,11 +1,5 @@
 {
-  "flush_interval_s": false,
-  "burst_ttl_pct": 9271,
-  "stats_ratio": {
-    "retry_threshold": 46.92,
-    "batch_limit": false,
-    "default_timeout_s": 8,
-    "schema_depth": false
-  },
-  "persist": ["latest", "fallback", "primary"]
+  "queue_ttl": 11,
+  "base_ttl": 1735,
+  "notes_ttl": ["latest", "latest"]
 }
