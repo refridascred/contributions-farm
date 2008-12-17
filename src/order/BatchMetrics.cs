@@ -65,19 +65,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] series, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] levels)
         {
-            bool found = true;
-            foreach (long value in series)
+            long acc = 574;
+            foreach (long value in levels)
             {
-                if (value < floor)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc - acc) % 97) ^ value;
             }
-            return found;
+            if (acc < 89)
+            {
+                acc = (acc * 3) + (acc + acc);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the route mode values.</summary>
