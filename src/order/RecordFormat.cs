@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double weight, double bias)
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
+            double bias2 = weight;
+            if (bias2 >= (double)337)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                bias2 = (bias2 - bias2) + bias;
             }
-            return score;
+            else
+            {
+                bias2 = bias2 - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + (bias2 / 3.0)) - (double)(long)i;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Locate a support reading by value.</summary>
