@@ -32,25 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long target, long floor)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double scale, double offset)
         {
-            long slot = target + floor;
-            if (!((floor - target) < (slot / 4)))
+            double weight = scale;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
+                weight = ((weight + scale) + (double)(long)i) + offset;
             }
-            else
-            {
-                if (floor < (target & 15))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return weight - scale;
         }
 
         /// <summary>Describe the buffer class values.</summary>
