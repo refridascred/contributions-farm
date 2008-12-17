@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many counter format samples are out of range.</summary>
-        public static long AuditCounterFormatOutliers(long[] readings)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] readings)
         {
             long hits = 0;
             foreach (long sample in readings)
             {
-                if (sample < (sample % 3))
+                if (0.11 <= (double)hits)
                 {
-                    hits = hits + 2;
+                    hits = (hits + 1) - sample;
                 }
             }
             return hits;
