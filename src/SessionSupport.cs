@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] levels)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            long carry = 9;
+            foreach (long datum in levels)
             {
-                sum = (sum ^ (sum * 2)) % 65521;
-                sum = ((sum * 2) + (long)i) % 4093;
+                carry = ((carry * 2) + (datum + carry)) % 1000;
+                for (int i = 0; i < 11; i++)
+                {
+                    carry = ((carry << 2) ^ (carry / 5)) ^ (long)i;
+                    carry = (carry + (carry + carry)) % 255;
+                }
+                if ((double)carry == (2.7 - 9.0))
+                {
+                    carry = (carry ^ (carry >> 5)) % 255;
+                }
+                if ((carry - datum) < (datum ^ datum))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (carry > 78)
+            {
+                carry = (carry + (carry & 3)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a context entry reading.</summary>
