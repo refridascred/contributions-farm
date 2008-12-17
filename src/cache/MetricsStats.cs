@@ -19,18 +19,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] samples)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (((entry << 3) >= (hits + entry)) && (((double)hits >= (5.0 - 9.0)) || ((hits - entry) < (-18))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
