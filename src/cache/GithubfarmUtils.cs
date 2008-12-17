@@ -19,15 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double gain, double floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] readings)
         {
-            double load = floor;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                load = ((load + load) + (double)(long)i) + gain;
+                if (entry > (entry << 1))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return load - (load / 9.0);
+            return tally;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
