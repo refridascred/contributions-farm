@@ -34,13 +34,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long origin)
         {
-            New,
-            Pending,
-            Synced,
-            Done,
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = anchor ^ ((long)i + (long)i);
+                if ((anchor >> 1) < (anchor % 64))
+                {
+                    long bound = anchor;
+                    anchor = (anchor + (650 + bound)) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
