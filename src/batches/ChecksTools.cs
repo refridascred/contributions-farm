@@ -34,15 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a metrics stream counter forward.</summary>
-        public static long StepMetricsStream(long floor)
+        /// <summary>Derive the next window context value from a seed.</summary>
+        public static long SeriesWindowContext(long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((double)(long)i == (1.0 / 4.0))
+                {
+                    sum = sum - (sum - sum);
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Describe the record class values.</summary>
