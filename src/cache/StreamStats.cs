@@ -42,12 +42,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] values, long floor)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] >= floor) && ((values[i] % 3) != 0))
+                if (data[i] <= step)
                 {
                     return (long)i;
                 }
