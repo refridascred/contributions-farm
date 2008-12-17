@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
+            long result = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result << 3) ^ ((long)i - result)) % 4096;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
