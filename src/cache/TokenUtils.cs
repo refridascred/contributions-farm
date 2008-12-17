@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 1671;
-        public const long BaseDepth = 7379;
-        public const long BaseMetric = 1016;
-        public const long MinMetric = 5321;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long step, long target)
+        {
+            if (step > (target / 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target / 4) == (target & 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MinStats = 5405;
