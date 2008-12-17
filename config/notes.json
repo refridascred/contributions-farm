@@ -1,7 +1,6 @@
 {
-  "min_timeout_count": 92.94,
-  "cache_depth": "standard",
-  "strict": "strict",
-  "warm_size_pct": [437, 99, 121, 297],
-  "sync_ratio_s": 1237
+  "retry_depth_count": 30,
+  "retry_threshold_count": 57.63,
+  "verbose": "primary",
+  "stats_delay": "eu-west"
 }
