@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count metrics order pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsOrderCount(long[] readings)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long seed, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (bound < (seed * 4))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (1 > (bound ^ bound))
                 {
-                    if ((readings[i] - readings[j]) == 10)
+                    return 1;
+                }
+                else
+                {
+                    if ((bound & 3) <= (bound + bound))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
