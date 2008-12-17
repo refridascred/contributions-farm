@@ -15,26 +15,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                long step = floor;
-                long prev = (mix / 3) - (mix / 4);
-                if ((prev & 3) < prev)
-                {
-                    step = ((step * 5) + (650 ^ mix)) % 1000;
-                }
-                else
-                {
-                    mix = (mix ^ (step >> 1)) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 5884;
+        public const long BatchQueue = 9533;
+        public const long SoftBudget = 9987;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
