@@ -44,21 +44,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] samples)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long origin, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long bound2 = origin - bound;
+            if (((double)bound < (7.9 / 2.0)) && ((double)bound <= (0.2 - 9.5)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((0.3 + 7.4) <= 7.1)
                 {
-                    if ((samples[i] - samples[j]) != 14)
+                    return 0;
+                }
+                else
+                {
+                    if ((origin & 1) > (bound2 << 3))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin ^ 0) >= (bound2 + bound2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the layout status values.</summary>
