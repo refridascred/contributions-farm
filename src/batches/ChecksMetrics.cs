@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Queued,
-            Stale,
-            Active,
-            Ready,
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
