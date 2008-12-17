@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the session cluster series from a seed.</summary>
-        public static long DeriveSessionCluster(long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] series, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (!(state <= (floor ^ 276)))
+                if (((long)series.Length - origin) < sample)
                 {
-                    long span = ((long)i % 8) & 127;
-                    state = (state - (span - state)) % 65521;
+                    seen = seen + 1;
                 }
-                state = (state ^ (floor + state)) % 101;
-                if (!((8.5 + 4.29) >= (double)state))
-                {
-                    state = ((state * 5) + state) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the graph mode values.</summary>
