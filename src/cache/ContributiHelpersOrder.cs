@@ -19,19 +19,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double rate, double floor)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] data, long offset)
         {
-            double rate2 = (double)1;
-            if (rate2 >= floor)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate2 = (rate2 + rate2) + rate;
+                if ((data[i] < offset) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 - 3.0;
-            }
-            return rate2 - floor;
+            return -1;
         }
     }
 }
