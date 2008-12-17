@@ -15,10 +15,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitPayload = 44.73;
-        public const long BurstPayload = 2203;
-        public const long WindowDepth = 5728;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long GradeContributi(long offset, long bound)
