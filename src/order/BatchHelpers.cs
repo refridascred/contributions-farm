@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] values, long offset)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((offset + offset) < (56 * 5))
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowLevel = "staging-1";
+        public const long LimitWidth = 938;
+        public const double MinRatio = 86.09;
+        public const long SoftSpan = 3391;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long ScoreSession(long[] readings, long target)
