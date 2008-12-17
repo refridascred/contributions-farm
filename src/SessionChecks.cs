@@ -20,18 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] samples)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] items, long offset)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((double)sample >= (0.79 / 9.0)) && ((73 + sample) > (offset << 3))) || ((sample % 60) != (matches - matches)))
                 {
-                    if ((samples[i] - samples[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
