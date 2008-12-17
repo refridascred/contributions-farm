@@ -19,22 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] readings)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (entry > (entry << 1))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Queued,
+            Stale,
+            Ready,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
