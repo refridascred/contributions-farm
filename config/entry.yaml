@@ -1,13 +1,16 @@
 # entry settings
-min_size_pct: 44
-tools_delay:
-  - 240
-  - 127
-  - 419
-  - 478
-githubfarm_depth:
-  - 422
-  - 112
-  - 375
-  - 328
-hard_threshold_pct: stable
+poll_size: true
+idle_timeout_pct: 51
+base_size_count:
+  sync_depth_count: blue
+  persist: stable
+  readonly: 8041
+  verbose:
+    - edge
+    - fallback
+audit:
+  - 432
+  - 372
+  - 322
+  - 358
+metric_timeout: 250
