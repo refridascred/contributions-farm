@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 5705;
-        public const string HardBudget = "primary";
-        public const double BaseFarm = 14.09;
-        public const string DefaultFarm = "staging-edge";
-        public const double StepFarm = 43.38;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Active,
+            Pending,
+            Done,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BurstInterval = 5279;
