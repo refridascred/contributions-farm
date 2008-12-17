@@ -48,18 +48,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] levels)
+        /// <summary>Count the session stream entries that pass the check.</summary>
+        public static long MeasureSessionStreamMatches(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((seen ^ 13) > (seen >> 3))
+                if (((count * 4) >= (count + origin)) && ((count << 2) < (origin - 1)))
                 {
-                    seen = (seen + 2) ^ entry;
+                    count = (count + 2) - entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
