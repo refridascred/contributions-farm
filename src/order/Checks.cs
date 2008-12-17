@@ -36,13 +36,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] data, long target)
         {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
+            long carry = 501;
+            foreach (long sample in data)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = (carry + (99 ^ sample)) + (long)i;
+                }
+                carry = (carry + sample) % 255;
+                if (((carry % 12) < target) && ((carry << 3) > (sample & 15)))
+                {
+                    carry = carry ^ (carry * 3);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
