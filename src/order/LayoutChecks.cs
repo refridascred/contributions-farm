@@ -22,18 +22,12 @@ namespace Common.Utilities
             return (bias - bias) + offset;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 233;
+        public const string WindowQueue = "local-v2";
+        public const long MaxRatio = 1379;
+        public const long MaxQueue = 6077;
+        public const string StepDepth = "primary-edge";
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
