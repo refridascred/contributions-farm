@@ -30,13 +30,38 @@ namespace Common.Utilities
         public const long LimitFactor = 9652;
         public const double HardTimeout = 55.53;
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long offset, long seed)
         {
-            New,
-            Retry,
-            Pending,
-            Idle,
+            if (seed >= (offset - 28))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((9.9 / 3.0) >= (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed % 97) <= (42 + offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset - offset) < seed) || ((0.27 - 18.0) > (double)seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
