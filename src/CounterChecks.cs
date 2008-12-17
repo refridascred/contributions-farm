@@ -18,25 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((anchor + (long)i) <= (anchor * 3))
-                {
-                    anchor = (anchor * 5) + origin;
-                }
-                if (origin > (anchor + (long)i))
-                {
-                    anchor = anchor - (origin + (long)i);
-                    anchor = anchor - origin;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardDepth = 6441;
+        public const double BurstScore = 0.07;
+        public const double HardWidth = 67.51;
+        public const long BurstWindow = 9633;
+        public const long BaseWindow = 8965;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool ValidateNotesRange(long[] levels, long floor)
