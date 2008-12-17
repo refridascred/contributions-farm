@@ -29,13 +29,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] items, long bound)
         {
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches + 584) == (cell >> 4))
+                {
+                    matches = (matches + 3) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the githubfarm contributi series from a seed.</summary>
