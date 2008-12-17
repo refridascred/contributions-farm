@@ -11,38 +11,19 @@ namespace Common.Utilities
         public const long WindowFactor = 2477;
         public const long BaseTimeout = 1663;
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long origin, long floor)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double rate, double floor)
         {
-            if (((floor << 3) > (floor >> 4)) && (floor < (floor - floor)))
+            double ratio = (7.3 - floor) + (rate / 8.0);
+            if (ratio < (double)(-5))
             {
-                return 2;
+                ratio = ratio + (ratio + ratio);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)floor < (3.0 / 6.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin <= 10.0)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (floor > (floor + floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                ratio = (ratio - (double)844) + (double)(long)i;
             }
+            return ratio - rate;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
