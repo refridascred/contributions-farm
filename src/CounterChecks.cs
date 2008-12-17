@@ -40,39 +40,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long step, long floor)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long gap = step ^ floor;
-            if (((1.0 / 5.0) <= (double)step) || ((floor / 9) >= step))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((-760) > floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((4.9 - 0.2) <= (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor >> 1) != (gap + gap))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Audit stream notes readings against a rule.</summary>
