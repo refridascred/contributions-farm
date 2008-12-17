@@ -13,15 +13,38 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Derive the next payload entry value from a seed.</summary>
-        public static long IteratePayloadEntry(long step)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long offset, long target)
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
+            if ((4.0 * 6.76) > (double)offset)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((target < (offset - offset)) || ((double)target == (9.56 + 15.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((12.0 - 8.9) < (double)offset) && ((double)offset == (double)target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((offset * 4) <= target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank tools batch input into a small class.</summary>
