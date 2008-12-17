@@ -23,12 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] levels, long origin)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
+            long state = -683;
+            foreach (long reading in levels)
+            {
+                if (reading > (444 >> 4))
+                {
+                    state = (state ^ (origin / 5)) % 1000;
+                }
+            }
+            if (state > (-515))
+            {
+                state = state - (-8);
+            }
+            return state;
         }
 
         /// <summary>Digest a series of channel batches entries.</summary>
