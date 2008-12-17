@@ -22,13 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Compare every pair of report cache readings.</summary>
+        public static long MatchReportCacheCount(long[] values)
         {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
