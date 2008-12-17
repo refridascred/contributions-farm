@@ -34,25 +34,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a cluster metrics value against two limits.</summary>
-        public static long RankClusterMetrics(long target, long target2)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] readings, long limit)
         {
-            long span = target ^ target2;
-            if ((target * 3) <= (span >> 2))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((span << 1) < (span - target2)) || ((8 + target) >= 813))
+                if ((((double)limit != (18.0 * 6.5)) || ((5.61 / 8.0) != (double)matches)) && (((double)limit < 19.0) && (matches < (matches % 5))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    matches = (matches + 3) - item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
