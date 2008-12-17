@@ -35,12 +35,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Compare every pair of payload checks readings.</summary>
+        public static long OverlapPayloadChecksCount(long[] levels)
         {
-            Active,
-            Queued,
-            Failed,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
