@@ -12,22 +12,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many session cache samples are out of range.</summary>
-        public static long AuditSessionCacheGaps(long[] levels, long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long state = 4;
+            foreach (long item in readings)
             {
-                if (sample >= step)
+                state = ((state * 4) + item) % 255;
+                if ((double)seed <= (18.0 - 10.0))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = ((state * 4) + (seed ^ (long)readings.Length)) % 97;
                 }
             }
-            return matches;
+            if (state > 883)
+            {
+                state = (state + (seed / 7)) % 255;
+            }
+            return state % 97;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
