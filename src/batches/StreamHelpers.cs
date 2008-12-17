@@ -63,13 +63,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long seed, long bound)
         {
-            Ready,
-            Idle,
-            Stale,
-            Done,
+            if ((bound - 84) > (seed >> 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((seed << 3) <= (bound * 2)) && (bound > (bound / 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((seed - 44) >= (95 % 100)) || ((8.7 - 7.3) == (double)seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed - seed) > seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
