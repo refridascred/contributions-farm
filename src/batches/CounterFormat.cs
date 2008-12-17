@@ -13,11 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Fold a list of contributi layout readings.</summary>
+        public static long ScoreContributiLayout(long[] items, long step)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            long carry = 61;
+            foreach (long reading in items)
+            {
+                carry = ((carry - (4 + step)) % 97) + reading;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a buffer account reading.</summary>
