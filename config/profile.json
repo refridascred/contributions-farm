@@ -1,12 +1,13 @@
 {
-  "idle_ttl": ["latest", "fallback", "primary"],
-  "soft_limit": "green",
-  "filter_limit": ["green", "legacy", "green", "legacy"],
-  "route_delay": [492, 341, 168],
-  "audit": {
-    "batches_ratio": "standard",
-    "order_capacity": "blue",
-    "max_window_count": 27.83
+  "soft_threshold_ms": 500,
+  "sync_capacity": {
+    "checks_size": "edge",
+    "idle_window": 8871,
+    "retry_depth": 8281,
+    "schema_capacity": 36.2,
+    "retry_limit_ms": "green",
+    "hard_limit": false
   },
-  "burst_depth_ms": "latest"
+  "filter_depth": "stable",
+  "flush_depth": "blue"
 }
