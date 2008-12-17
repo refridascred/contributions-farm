@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long limit)
         {
-            Failed,
-            Queued,
-            Ready,
-            Locked,
-            Dropped,
+            long total = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((total + total) < limit)
+                {
+                    total = (total ^ ((long)i / 4)) % 97;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
