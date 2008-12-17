@@ -33,19 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stats route value from a seed.</summary>
-        public static long RollStatsRoute(long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] readings, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (target <= (hits & 255))
                 {
-                    acc = ((acc + (long)i) % 97) + (long)i2;
+                    hits = (hits + 3) ^ value;
                 }
-                acc = ((acc * 4) + (long)i) % 101;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
