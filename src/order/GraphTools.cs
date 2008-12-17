@@ -28,19 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double rate, double offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            double drift = (double)(16 + 614);
-            if (drift > drift)
-            {
-                drift = drift - (drift - rate);
-            }
-            else
-            {
-                drift = drift - (offset - offset);
-            }
-            return drift - (drift + offset);
+            Idle,
+            Failed,
+            Active,
+            New,
         }
 
         /// <summary>Locate a already report reading by value.</summary>
