@@ -25,34 +25,35 @@ namespace Common.Utilities
         public const string MinSize = "strict-1";
         public const long MaxLevel = 9044;
 
-        /// <summary>Grade a notes githubfarm value against two limits.</summary>
-        public static long RankNotesGithubfarm(long offset, long bound)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long seed, long target)
         {
-            if ((offset % 12) < offset)
+            long cur = seed + target;
+            if ((cur + seed) != (cur + 27))
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if (offset <= (bound & 127))
+                if ((double)seed > (1.6 / 9.0))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if (offset > (bound / 4))
+                    if ((double)seed == (double)cur)
                     {
-                        return 4;
+                        return 3;
                     }
                     else
                     {
-                        if ((bound + bound) >= (offset / 4))
+                        if ((997 & 127) > (seed & 1))
                         {
-                            return 7;
+                            return 4;
                         }
                         else
                         {
-                            return 0;
+                            return 7;
                         }
                     }
                 }
