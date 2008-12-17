@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] samples)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (double)465 * 6.2;
+            if (drift >= (ratio / 3.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift - (4.7 * 3.5)) - bias;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (ratio / 3.0)) + (double)(long)i;
+            }
+            return drift - ratio;
         }
 
         /// <summary>Derive the next notes tools value from a seed.</summary>
