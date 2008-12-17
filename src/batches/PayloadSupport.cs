@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Grade a route window value against two limits.</summary>
+        public static long GradeRouteWindow(long origin, long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            long delta = origin - seed;
+            if ((seed + 4) == (delta + 47))
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((double)seed <= (17.0 * 3.01))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((0.4 - 14.0) > (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((delta < (seed & 255)) || ((origin << 2) > (delta + seed)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate batches contributi readings against a bound.</summary>
