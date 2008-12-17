@@ -29,24 +29,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long origin, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] data, long seed)
         {
-            if ((double)origin < (double)seed)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)origin == (2.41 * 4.13)) || ((seed - 71) >= (seed - origin)))
+                if ((reading >> 1) > (63 * 4))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    tally = (tally + 2) - seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
