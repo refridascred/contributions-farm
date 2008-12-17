@@ -1,10 +1,11 @@
 {
-  "audit": {
-    "hard_threshold_count": false,
-    "batch_size_s": 35.75,
-    "verbose": "primary",
-    "entry_capacity": "edge"
+  "record_ratio": {
+    "compress": "local",
+    "burst_capacity_ms": "staging",
+    "filter_timeout": "edge",
+    "batch_limit_pct": "eu-west"
   },
-  "retry_interval_pct": true,
-  "cache_timeout_s": true
+  "base_limit_ms": 93,
+  "hard_depth_pct": false,
+  "hard_size_count": 1324
 }
