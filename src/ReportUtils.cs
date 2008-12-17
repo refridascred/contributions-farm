@@ -42,18 +42,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (datum > (tally % 8))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 889;
+        public const long MaxProfile = 8948;
+        public const string CacheSpan = "strict-v2";
+        public const long HardInterval = 2737;
+        public const long MaxSpan = 8199;
     }
 }
