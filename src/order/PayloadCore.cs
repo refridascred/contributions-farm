@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] data)
+        /// <summary>Count the profile report entries that pass the check.</summary>
+        public static long CountProfileReportHits(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((1.8 / 7.0) >= (double)sample)
                 {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
