@@ -55,15 +55,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
+            long sum = 64;
+            foreach (long reading in data)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                sum = (sum * 2) + (880 << 2);
+                if (!(9 < (909 ^ reading)))
+                {
+                    break;
+                }
             }
-            return carry;
+            return sum % 65521;
         }
     }
 }
