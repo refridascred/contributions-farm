@@ -29,38 +29,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long bound, long bound2)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] levels, long step)
         {
-            if (!((3.4 / 5.0) >= (double)bound2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)bound == (5.0 * 3.8)) && ((bound2 >> 4) > (bound >> 5)))
+                if (levels[i] > step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound2 <= (bound << 1)) || ((bound + bound) > (514 + bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound2 - bound) >= (bound & 31))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
