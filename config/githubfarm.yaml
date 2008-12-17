@@ -1,11 +1,7 @@
 # githubfarm settings
-readonly: 7286
-min_window_s: standard
-sync_retries_count:
-  persist: 60
-  filter_ttl: 23
-  readonly: false
-  strict:
-    - legacy
-    - blue
-    - blue
+channel_delay: true
+batch_timeout: fallback
+warm_retries_count: open
+compress: 6.6
+verbose: 30
+profile_delay: false
