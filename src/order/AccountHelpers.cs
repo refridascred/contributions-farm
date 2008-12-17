@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinMetric = 97.88;
-        public const long LimitMetric = 7775;
-        public const long BatchMetric = 2988;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleTimeout = 3280;
+        public const long DefaultDepth = 7280;
+        public const long BaseSchema = 9668;
+        public const double MinRatio = 35.22;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long IdleSpan = 4364;
