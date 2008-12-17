@@ -31,22 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command cache readings against a rule.</summary>
-        public static long CountCommandCacheGaps(long[] readings, long bound)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((bound + 64) <= seen)
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Done,
+            Synced,
         }
     }
 }
