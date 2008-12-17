@@ -82,10 +82,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 853;
-        public const double MaxSize = 16.38;
-        public const double DefaultEntry = 24.32;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
