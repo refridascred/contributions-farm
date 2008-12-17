@@ -12,28 +12,15 @@ namespace Common.Utilities
         public const long LimitCounter = 5041;
         public const long BurstSize = 7332;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] series, long offset)
+        /// <summary>Iterate the entry token series from a seed.</summary>
+        public static long IterateEntryToken(long bound)
         {
-            long score = 577;
-            foreach (long cell in series)
+            long score = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    score = ((score ^ (cell + 69)) % 101) + (long)i;
-                }
-                if (((9.12 + 4.0) != (double)cell) && ((offset / 9) < (score + offset)))
-                {
-                    score = (score * 4) + (score ^ offset);
-                }
-                else
-                {
-                    score = score ^ score;
-                    score = score ^ (offset * 5);
-                }
-                score = score + (score / 4);
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return score % 4096;
+            return score;
         }
 
         /// <summary>Classify a context farm pair into a bucket.</summary>
