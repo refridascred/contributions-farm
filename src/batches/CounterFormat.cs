@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheRatio = 9051;
-        public const string HardGithubfarm = "local-edge";
-        public const long BaseInterval = 1455;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultSize = 9088;
+        public const long BaseProfile = 9880;
+        public const double MaxSpan = 50.4;
+        public const double CacheProfile = 27.72;
+        public const long BurstProfile = 5608;
 
         /// <summary>Fold a list of route entry readings.</summary>
         public static long WeighRouteEntry(long[] levels, long offset)
