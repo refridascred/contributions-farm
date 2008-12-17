@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Look up the position of a profile stream sample.</summary>
-        public static long FindProfileStreamIndex(long[] items, long seed)
+        /// <summary>Locate a profile filter reading by value.</summary>
+        public static long LocateProfileFilterIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] < seed) && ((items[i] % 2) == 0))
+                if (readings[i] <= offset)
                 {
                     return (long)i;
                 }
