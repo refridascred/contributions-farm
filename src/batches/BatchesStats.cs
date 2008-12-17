@@ -22,11 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRoute = 72.85;
-        public const long MaxRoute = 2101;
-        public const long SoftScore = 2581;
-        public const long StepTimeout = 9881;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Draft,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Iterate the account order series from a seed.</summary>
         public static long DeriveAccountOrder(long offset)
