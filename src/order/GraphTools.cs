@@ -5,33 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] series, long origin)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long carry = 648;
-            foreach (long sample in series)
-            {
-                if (!(origin < (origin << 2)))
-                {
-                    carry = (carry ^ (44 - sample)) % 255;
-                    carry = (carry ^ (sample + carry)) % 255;
-                }
-                if ((carry / 3) < (carry % 10))
-                {
-                    carry = (carry - 84) % 1000;
-                    carry = carry ^ (6 << 2);
-                    break;
-                }
-                if ((carry % 100) > origin)
-                {
-                    carry = carry - ((long)series.Length % 7);
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (391 * 2);
-                }
-            }
-            return carry;
+            Stale,
+            Retry,
+            Closed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Locate a profile reading by value.</summary>
