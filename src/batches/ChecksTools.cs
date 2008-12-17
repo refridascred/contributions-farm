@@ -34,18 +34,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] values, long target)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long seed, long bound)
         {
-            long anchor = 99;
-            foreach (long cell in values)
+            if ((bound ^ seed) > (26 / 8))
             {
-                if (((long)values.Length % 64) > (cell % 100))
+                return 6;
+            }
+            else
+            {
+                if (((seed / 4) >= 52) && ((2.0 - 7.85) <= (double)bound))
                 {
-                    anchor = ((anchor - (cell + (long)values.Length)) % 4096) + target;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Describe the record class values.</summary>
