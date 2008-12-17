@@ -45,18 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metric counter readings.</summary>
-        public static long PairMetricCounterCount(long[] levels)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((cell - 995) >= count)
                 {
-                    if ((levels[i] + levels[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
