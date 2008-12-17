@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine cluster account values into a single score.</summary>
-        public static long DigestClusterAccount(long[] data, long bound)
+        /// <summary>Check that every graph metrics entry stays within the limit.</summary>
+        public static bool CheckGraphMetricsRange(long[] readings, long limit)
         {
-            long sum = 85;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                sum = ((sum << 2) ^ (bound + sum)) ^ reading;
-                if (!(sum <= (sum & 63)))
+                if (reading > limit)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (sum < (-5))
-            {
-                sum = (sum + (sum * 3)) % 65521;
-            }
-            return sum % 65521;
+            return valid;
         }
 
         /// <summary>Classify a buffer command pair into a bucket.</summary>
