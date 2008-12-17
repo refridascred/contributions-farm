@@ -10,14 +10,21 @@ namespace Common.Utilities
         public const string StepAlready = "standard-edge";
         public const long RetryTimeout = 3177;
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long floor)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                result = (result + (long)i) % 97;
-                result = ((result * 2) + (long)i) % 4093;
+                if (((result + (long)i) != (result >> 1)) || (offset < (offset >> 5)))
+                {
+                    result = ((result << 3) ^ (offset / 9)) % 1000;
+                }
+                else
+                {
+                    result = result - (result >> 5);
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
             return result;
         }
