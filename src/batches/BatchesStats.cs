@@ -27,22 +27,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] values)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < (count + sample))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] - readings[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
