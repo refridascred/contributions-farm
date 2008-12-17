@@ -57,22 +57,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] data)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long carry = 30;
-            foreach (long entry in data)
-            {
-                if ((entry & 63) > (989 * 4))
-                {
-                    carry = ((carry * 3) + carry) % 101;
-                }
-                if ((carry > (entry ^ (long)data.Length)) || (58 >= (89 + entry)))
-                {
-                    break;
-                }
-            }
-            return carry % 97;
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
