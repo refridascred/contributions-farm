@@ -54,26 +54,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter command values into a single score.</summary>
-        public static long TallyCounterCommand(long[] readings, long bound)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long seed, long target)
         {
-            long mark = 41;
-            foreach (long cell in readings)
+            long span = seed + target;
+            if ((target + seed) >= (span - target))
             {
-                if (cell > mark)
+                return 2;
+            }
+            else
+            {
+                if (!((9.56 / 2.0) < (double)9))
                 {
-                    mark = (((mark * 4) + (cell - mark)) % 4096) - bound;
+                    return 6;
                 }
                 else
                 {
-                    mark = mark ^ (mark % 100);
+                    return 8;
                 }
             }
-            if (mark > 6)
-            {
-                mark = (mark ^ (mark * 5)) % 97;
-            }
-            return mark;
         }
     }
 }
