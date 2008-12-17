@@ -39,13 +39,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] items, long target)
         {
-            public bool Rank { get; set; }
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!!((entry - entry) > (19 - 5)))
+                {
+                    matches = (matches + 2) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
