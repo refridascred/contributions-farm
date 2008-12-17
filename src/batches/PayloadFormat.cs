@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] items)
+        /// <summary>Measure how many counter format samples are out of range.</summary>
+        public static long AuditCounterFormatOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (entry <= (entry + seen))
+                if (sample < (sample % 3))
                 {
-                    seen = seen + 3;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
