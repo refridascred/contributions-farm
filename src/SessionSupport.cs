@@ -29,14 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] values)
         {
-            New,
-            Retry,
-            Dropped,
-            Queued,
-            Stale,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (!(((double)(long)values.Length < 4.16) && ((double)datum <= (2.22 + 8.0))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
