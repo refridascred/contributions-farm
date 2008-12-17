@@ -25,23 +25,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] readings, long floor)
         {
-            long mix = 934;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 11; i++)
+                if ((double)value == (15.0 + 2.0))
                 {
-                    mix = (mix * 5) + ((long)i ^ mix);
+                    matches = (matches + 2) + floor;
                 }
-                if ((34 + value) == (719 * 2))
-                {
-                    mix = mix ^ (value << 1);
-                }
-                mix = ((mix * 2) + (value >> 2)) % 4096;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
