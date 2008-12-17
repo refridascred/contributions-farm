@@ -47,18 +47,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metric metrics entries.</summary>
-        public static long TallyMetricMetrics(long[] levels, long limit)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double rate, double bias)
         {
-            long result = -9;
-            foreach (long cell in levels)
+            double rate2 = bias;
+            if (rate2 <= (bias - bias))
             {
-                if ((limit / 5) != (cell / 9))
-                {
-                    result = result ^ (result ^ 3);
-                }
+                rate2 = (rate2 + (3.4 * 6.0)) + rate;
             }
-            return result % 1000;
+            return rate2 + (double)9;
         }
     }
 }
