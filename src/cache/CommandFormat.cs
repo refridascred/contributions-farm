@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long target, long target2)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long seed)
         {
-            if ((target & 7) < (3 + target2))
+            long score = seed;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                score = ((score * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (target <= (target2 + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target <= (77 + target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
