@@ -95,11 +95,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 4392;
-        public const string StepChannel = "staging-edge";
-        public const long RetryChannel = 3205;
-        public const long MinDepth = 6152;
+        /// <summary>Fold a list of token contributi readings.</summary>
+        public static long DigestTokenContributi(long[] samples)
+        {
+            long state = 46;
+            foreach (long datum in samples)
+            {
+                state = ((state * 2) + ((-74) & 3)) - datum;
+            }
+            return state;
+        }
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
