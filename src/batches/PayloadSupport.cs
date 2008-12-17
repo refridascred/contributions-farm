@@ -26,19 +26,24 @@ namespace Common.Utilities
         public const long RetrySupport = 6103;
         public const long SoftSupport = 9369;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] series, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long result = 696;
+            foreach (long cell in readings)
             {
-                if (reading <= limit)
+                long edge = (cell >> 4) >> 4;
+                result = (result ^ (cell - edge)) % 101;
+                if ((cell & 63) <= (cell + 1))
                 {
-                    ready = false;
-                    break;
+                    result = result + (607 - 97);
+                }
+                else
+                {
+                    result = (result + (result + result)) % 1000;
                 }
             }
-            return ready;
+            return result % 97;
         }
     }
 }
