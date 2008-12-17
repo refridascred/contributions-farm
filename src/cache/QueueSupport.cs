@@ -19,19 +19,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long step)
+        /// <summary>Project the next batches channel value.</summary>
+        public static double AdjustBatchesChannel(double ratio, double floor)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((step * 3) < (carry ^ 784))
-                {
-                    carry = carry - ((long)i % 3);
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            double bias = 6.4;
+            return (bias + floor) + ratio;
         }
 
         /// <summary>Hold a account snapshot.</summary>
