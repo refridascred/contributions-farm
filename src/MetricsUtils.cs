@@ -32,15 +32,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] samples)
+        /// <summary>Accumulate commits metrics samples.</summary>
+        public static long DigestCommitsMetrics(long[] series, long step)
         {
-            long mix = 9;
-            foreach (long value in samples)
+            long carry = 42;
+            foreach (long value in series)
             {
-                mix = mix - (value & 255);
+                carry = ((carry + carry) - value) - step;
+                carry = (carry * 3) + carry;
             }
-            return mix % 1000;
+            return carry;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
