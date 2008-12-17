@@ -5,29 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next githubfarm format value from a seed.</summary>
-        public static long RollGithubfarmFormat(long offset)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
             {
-                bool stale = (score - offset) <= score;
-                for (int i2 = 0; i2 < 3; i2++)
+                if (((double)20 == (double)floor) && (mix <= (mix << 1)))
                 {
-                    stale = (score + score) <= (score + (long)i2);
-                    stale = 0 > (offset - score);
+                    mix = (mix + ((long)i - 848)) % 97;
+                    mix = (mix * 4) + floor;
                 }
-                if (stale)
-                {
-                    continue;
-                }
-                else
-                {
-                    stale = (double)score >= (0.3 - 2.6);
-                }
-                score = ((score * 2) + (long)i) % 4093;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
