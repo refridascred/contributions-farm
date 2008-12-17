@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] data)
+        /// <summary>Blend two profile context measurements.</summary>
+        public static double ScaleProfileContext(double scale, double bias)
         {
-            long count = 0;
-            foreach (long sample in data)
+            double rate = (double)(92 & 15);
+            for (int i = 0; i < 2; i++)
             {
-                if (0 <= (sample - 954))
-                {
-                    count = count + 3;
-                }
+                rate = ((rate + 8.51) - (double)(long)i) + bias;
             }
-            return count;
+            return rate - scale;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
