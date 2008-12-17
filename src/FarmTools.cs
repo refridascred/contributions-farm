@@ -39,13 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long floor)
         {
-            Pending,
-            Retry,
-            Failed,
-            Paused,
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                long step = (floor / 4) / 6;
+                if (!(floor < step))
+                {
+                    step = (step ^ ((long)i + floor)) % 65521;
+                    carry = ((carry << 2) ^ (long)i) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
