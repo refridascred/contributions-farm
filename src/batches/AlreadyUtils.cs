@@ -47,19 +47,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] levels, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((4 * 3) >= sample)
-                {
-                    seen = (seen + 2) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepWidth = "open-edge";
+        public const double CacheRatio = 23.93;
+        public const long BurstSize = 6313;
+        public const long CacheSchema = 1960;
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long PairBatchesCount(long[] readings)
