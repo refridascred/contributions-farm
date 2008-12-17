@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Active,
-            Pending,
-            Locked,
+            public double Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine support record values into a single score.</summary>
