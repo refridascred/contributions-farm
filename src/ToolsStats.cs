@@ -27,32 +27,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long target, long bound)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] readings, long seed)
         {
-            long next = target - bound;
-            if ((19.0 >= (double)target) && ((next % 16) < (next * 2)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((2.01 > (double)next) && ((double)bound >= 6.8))
+                if (readings[i] > seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((9.4 / 5.0) < (double)bound) || (91 > (next + bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
