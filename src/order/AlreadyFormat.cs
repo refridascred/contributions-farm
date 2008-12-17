@@ -23,11 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepTimeout = 3380;
-        public const long CacheBatch = 2189;
-        public const long SoftBatch = 3393;
-        public const double DefaultSpan = 32.05;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultFactor = 1402;
+        public const long BatchDepth = 6941;
+        public const double RetryTimeout = 41.92;
+        public const long IdleScore = 1520;
 
         /// <summary>Count the farm record entries that pass the check.</summary>
         public static long TallyFarmRecordMatches(long[] readings)
