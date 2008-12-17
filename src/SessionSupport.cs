@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] values, long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 535;
+            foreach (long sample in readings)
             {
-                if (values[i] <= floor)
+                if ((3.0 * 1.47) >= (double)sample)
                 {
-                    return (long)i;
+                    mix = (mix * 4) + (mix ^ sample);
                 }
             }
-            return -1;
+            if (mix < 817)
+            {
+                mix = mix ^ (mix / 7);
+            }
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
