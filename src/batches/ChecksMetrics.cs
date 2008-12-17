@@ -25,20 +25,12 @@ namespace Common.Utilities
         public const string MaxBatches = "local-edge";
         public const long CacheBatches = 393;
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if (acc >= (target + target))
-                {
-                    acc = (acc ^ ((long)i + target)) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 5458;
+        public const long StepScore = 6377;
+        public const long StepRatio = 6948;
+        public const double HardTimeout = 40.66;
+        public const long MaxStats = 4034;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long CombineGraph(long[] series, long offset)
