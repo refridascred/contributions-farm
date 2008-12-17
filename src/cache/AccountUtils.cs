@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] data, long floor)
+        /// <summary>Count githubfarm checks pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmChecksCount(long[] series)
         {
-            long anchor = -961;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor + anchor) % 1000) ^ datum;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (anchor < (-878))
-            {
-                anchor = anchor ^ (floor * 3);
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
