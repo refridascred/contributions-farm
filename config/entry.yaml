@@ -1,25 +1,8 @@
 # entry settings
-base_ratio_ms:
-  burst_ratio: 30
-  flush_window:
-    - staging
-    - open
-    - latest
-  compress: 10
-  batch_threshold_ms: legacy
-poll_ratio: 2807
-base_capacity_count: 100
-audit: 31
-idle_depth:
-  tools_window: 30.05
-  graph_interval:
-    - 125
-    - 45
-  compress: 21.4
-  graph_delay: false
-  dry_run: false
-  min_threshold_pct:
-    - staging
-    - cached
-    - standard
-    - staging
+readonly:
+  - staging
+  - cached
+  - local
+  - local
+max_threshold_pct: 100
+stats_size: 95
