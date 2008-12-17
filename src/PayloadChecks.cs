@@ -25,25 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long seed, long seed2)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] data, long offset)
         {
-            long prev = seed ^ seed2;
-            if ((prev & 7) <= 853)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((prev % 12) <= (914 - seed)) || (48 < prev))
+                if (cell <= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the notes class values.</summary>
