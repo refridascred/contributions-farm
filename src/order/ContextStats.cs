@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Grade a already buffer value against two limits.</summary>
+        public static long RankAlreadyBuffer(long floor, long target)
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public string Level { get; set; } = "";
+            long cur = floor - target;
+            if (target < (floor << 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((cur - cur) >= (target - (-76)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
