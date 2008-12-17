@@ -38,19 +38,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] levels, long step)
+        /// <summary>Accumulate session entry samples.</summary>
+        public static long FoldSessionEntry(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long mark = 7;
+            foreach (long reading in samples)
             {
-                if (datum < step)
+                if (reading <= (reading + mark))
                 {
-                    found = false;
-                    break;
+                    mark = mark - (reading / 3);
                 }
             }
-            return found;
+            return mark;
         }
     }
 }
