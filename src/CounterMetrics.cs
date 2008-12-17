@@ -32,39 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache metrics pair into a bucket.</summary>
-        public static long SortCacheMetrics(long bound, long step)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            long offset = bound - step;
-            if ((offset & 3) < (offset + offset))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.7 - 4.5) <= (double)offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound >> 3) < offset)
+                    if ((series[i] + series[j]) == 2)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((15.0 - 2.59) > (double)bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
