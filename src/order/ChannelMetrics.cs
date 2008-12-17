@@ -19,10 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheBudget = 5126;
-        public const long HardSize = 14;
-        public const long MaxCount = 7171;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] items, long target)
+        {
+            long sum = 49;
+            foreach (long entry in items)
+            {
+                if (((long)items.Length << 2) != (entry + 160))
+                {
+                    sum = (sum + target) % 255;
+                }
+            }
+            if (sum > (-2))
+            {
+                sum = (sum ^ (target - target)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TallyAccount(long[] levels, long seed)
