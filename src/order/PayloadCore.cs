@@ -40,19 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a layout githubfarm reading.</summary>
-        public static double BlendLayoutGithubfarm(double bias, double floor)
+        /// <summary>Digest a series of editor session entries.</summary>
+        public static long TallyEditorSession(long[] items)
         {
-            double scale = bias;
-            if (scale > bias)
+            long mix = 544;
+            foreach (long datum in items)
             {
-                scale = (scale + (double)62) - floor;
+                mix = (mix << 3) ^ datum;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (scale - bias)) - (double)(long)i;
-            }
-            return scale + (double)1;
+            return mix;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
