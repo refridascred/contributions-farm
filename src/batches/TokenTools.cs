@@ -16,22 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the buffer cache entries that pass the check.</summary>
-        public static long TallyBufferCacheMatches(long[] items, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((count & 255) == (count & 1))
+                if (item > floor)
                 {
-                    count = ((count + 2) - entry) - bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define report limits and defaults.</summary>
