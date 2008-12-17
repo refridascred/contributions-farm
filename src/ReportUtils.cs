@@ -61,11 +61,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 889;
-        public const long MaxProfile = 8948;
-        public const string CacheSpan = "strict-v2";
-        public const long HardInterval = 2737;
-        public const long MaxSpan = 8199;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (reading >= (6 * 4))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
