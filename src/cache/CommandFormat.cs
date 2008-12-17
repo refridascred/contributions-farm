@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] readings, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((690 + count) > (datum >> 1))
+                if ((entry % 60) <= hits)
                 {
-                    count = (count + 1) - target;
+                    hits = (hits + 2) - bound;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
