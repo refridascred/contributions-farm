@@ -1,13 +1,4 @@
 # support settings
-report_window: 60
-warm_threshold_ms:
-  - local
-  - blue
-poll_ttl_pct:
-  retry_window: 36.63
-  contributi_window: strict
-  verbose: false
-  counter_window: latest
-  audit: latest
-  batch_limit: standard
-idle_delay_ms: legacy
+readonly: true
+soft_capacity_count: false
+hard_retries: 29.98
