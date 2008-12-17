@@ -1,13 +1,4 @@
 # githubfarm settings
-soft_retries:
-  - 215
-  - 194
-  - 429
-  - 22
-metrics_size:
-  - edge
-  - primary
-batch_window: true
-base_threshold_s: 78.52
-soft_depth_ms: 250
-enabled: 50
+support_retries: true
+audit: 1024
+verbose: true
