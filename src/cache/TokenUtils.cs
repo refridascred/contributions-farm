@@ -25,12 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] items, long origin)
         {
-            Failed,
-            New,
-            Dropped,
+            long carry = 62;
+            foreach (long entry in items)
+            {
+                if ((7.0 / 5.0) > (double)entry)
+                {
+                    carry = ((carry + carry) % 65521) - origin;
+                }
+                else
+                {
+                    carry = (carry - (carry + carry)) % 255;
+                }
+            }
+            return carry % 65521;
         }
     }
 }
