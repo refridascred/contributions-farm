@@ -1,19 +1,5 @@
 {
-  "cache_ttl_s": "strict",
-  "order_retries": [279, 163, 325, 355],
-  "hard_retries_ms": "green",
-  "context_delay": {
-    "hard_ttl_count": {
-      "flush_timeout_pct": "latest",
-      "base_depth_s": 75,
-      "flush_delay_pct": 1758
-    },
-    "account_depth": false,
-    "channel_ttl": true,
-    "sync_depth_pct": false,
-    "persist": "primary",
-    "audit": 80
-  },
-  "min_threshold": "blue",
-  "dry_run": [203, 287, 368, 11]
+  "default_timeout_ms": 16,
+  "retry_ratio_s": "stable",
+  "burst_limit": "blue"
 }
