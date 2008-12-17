@@ -26,20 +26,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] items)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] series, long target)
         {
-            long carry = 54;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((3 + sample) >= (carry - sample)))
+                if (series[i] == target)
                 {
-                    carry = carry + (carry + sample);
-                    carry = ((carry * 2) + sample) % 65521;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + carry) % 65521;
             }
-            return carry;
+            return -1;
         }
     }
 }
