@@ -20,11 +20,18 @@ namespace Common.Utilities
             return rate - (offset / 7.0);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowSize = 9501;
-        public const string StepSize = "local-v2";
-        public const long StepWidth = 6656;
-        public const long BaseCount = 1590;
+        /// <summary>Locate a editor graph reading by value.</summary>
+        public static long FindEditorGraphIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
