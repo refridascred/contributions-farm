@@ -72,12 +72,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] samples, long step)
         {
-            public double Rank { get; set; }
-            public double Count { get; set; }
-            public long Offset { get; set; }
+            long mix = 0;
+            foreach (long sample in samples)
+            {
+                mix = ((mix ^ (step - mix)) % 97) ^ sample;
+            }
+            return mix;
         }
     }
 }
