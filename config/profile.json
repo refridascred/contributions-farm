@@ -1,6 +1,5 @@
 {
-  "idle_ttl_count": true,
-  "support_depth": "legacy",
-  "base_interval_ms": false,
-  "warm_window_count": [328, 391]
+  "retry_depth_s": 91.36,
+  "verbose": false,
+  "idle_delay_s": "latest"
 }
