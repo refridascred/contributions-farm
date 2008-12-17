@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] values, long origin)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((origin % 10) >= origin)
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
