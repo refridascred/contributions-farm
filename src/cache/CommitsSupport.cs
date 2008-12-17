@@ -33,39 +33,19 @@ namespace Common.Utilities
         public const long IdleTimeout = 4716;
         public const long MaxCluster = 8852;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long seed, long limit)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] samples, long limit)
         {
-            long prev = seed - limit;
-            if (((1.1 / 8.0) >= (double)seed) && ((8.05 + 18.0) >= (double)limit))
+            bool found = true;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed - (-1)) >= prev)
+                if (item <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + limit) <= (limit - seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((2.8 - 9.65) < (double)limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
