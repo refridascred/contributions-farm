@@ -39,15 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleSpan = 9856;
+        public const long StepBudget = 8965;
+        public const string MaxFactor = "open";
+        public const long DefaultRoute = 1222;
     }
 }
