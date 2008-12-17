@@ -52,32 +52,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long limit, long seed)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long span = limit + seed;
-            if (((span & 255) > (seed & 3)) || (limit <= (limit % 16)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((8.7 + 2.62) != (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)973 > (double)span)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            New,
+            Active,
+            Locked,
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
