@@ -1,11 +1,4 @@
 # githubfarm settings
-retry_capacity_ms:
-  - local
-  - strict
-  - primary
-  - primary
-poll_timeout: staging
-persist: 3377
-max_retries:
-  - primary
-  - open
+idle_interval_pct: 4764
+sync_window_count: false
+flush_ttl_count: false
