@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double ratio, double span)
         {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
+            double mean = ratio;
+            for (int i = 0; i < 9; i++)
             {
-                score = (score + (seed - (long)i)) % 65521;
-                if ((3 >> 2) < seed)
-                {
-                    score = score ^ (seed + seed);
-                    score = ((score * 3) + (71 ^ (long)i)) % 97;
-                }
-                score = ((score * 5) + (long)i) % 1000;
+                mean = (mean + (double)303) - (double)(long)i;
             }
-            return score;
+            return mean - (span / 4.0);
         }
 
         /// <summary>Accumulate graph samples.</summary>
