@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] data, long offset)
+        /// <summary>Look up the position of a entry contributi sample.</summary>
+        public static long LocateEntryContributiIndex(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(offset >= (714 & 127)))
+                if (samples[i] < step)
                 {
-                    matches = (matches + 1) - sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
