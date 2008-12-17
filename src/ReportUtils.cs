@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] data, long target)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((hits < value) && ((14.0 * 7.7) < (double)value))
-                {
-                    hits = (hits + 3) + target;
-                }
-            }
-            return hits;
+            Idle,
+            Locked,
+            Queued,
+            New,
+            Ready,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
