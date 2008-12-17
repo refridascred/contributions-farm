@@ -75,13 +75,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Blend two cache filter measurements.</summary>
+        public static double BlendCacheFilter(double rate, double bias)
         {
-            Active,
-            New,
-            Queued,
-            Paused,
+            double rate2 = (double)(-4) + (rate * 6.0);
+            return (rate2 + rate2) + bias;
         }
     }
 }
