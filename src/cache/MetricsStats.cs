@@ -33,39 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long seed, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] levels, long offset)
         {
-            long diff = seed - floor;
-            if (floor < (floor - floor))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((diff * 2) <= (seed * 3)) && ((floor - seed) > (6 << 2)))
+                if ((17.0 / 8.0) == (double)sample)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((floor - floor) < seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)74 <= (double)diff)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = (hits + 1) - offset;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two format measurements.</summary>
