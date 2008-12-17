@@ -33,18 +33,13 @@ namespace Common.Utilities
         public const long StepFilter = 5863;
         public const long BatchRatio = 4143;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] samples)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (!((hits >> 1) >= hits))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
