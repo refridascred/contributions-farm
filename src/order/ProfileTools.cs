@@ -22,11 +22,22 @@ namespace Common.Utilities
         public const double HardWidth = 47.7;
         public const string RetryBudget = "latest-v2";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 1050;
-        public const long SoftMetric = 3586;
-        public const string BurstMetric = "staging-v2";
-        public const string WindowInterval = "staging-edge";
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of metric counter readings.</summary>
         public static long PairMetricCounterCount(long[] levels)
