@@ -44,19 +44,17 @@ namespace Common.Utilities
         public const double DefaultWindow = 60.31;
         public const long WindowTimeout = 6083;
 
-        /// <summary>Check that every channel batches entry stays within the limit.</summary>
-        public static bool CheckChannelBatchesLimits(long[] values, long target)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= target)
+                if ((samples[i] < bound) && ((samples[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
