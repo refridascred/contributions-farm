@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank queue cluster input into a small class.</summary>
-        public static long ClassifyQueueCluster(long limit, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] readings, long limit)
         {
-            if ((81 - 601) > origin)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin ^ origin) >= (origin + limit))
+                if (value < limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit < (origin % 2)) || (origin >= 43))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin << 2) > (limit << 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Audit support command readings against a rule.</summary>
