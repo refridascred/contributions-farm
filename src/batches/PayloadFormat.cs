@@ -35,17 +35,22 @@ namespace Common.Utilities
             return scale - (gain + span);
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] levels, long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
+                if ((tally + tally) != (value + (-885)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
