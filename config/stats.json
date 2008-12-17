@@ -1,7 +1,5 @@
 {
-  "cluster_depth": 2530,
-  "soft_limit": "green",
-  "poll_capacity": "primary",
-  "soft_size_count": ["latest", "fallback", "standard"],
-  "retry_limit_s": "stable"
+  "cache_window_ms": "primary",
+  "enabled": false,
+  "default_timeout_ms": ["green", "strict"]
 }
