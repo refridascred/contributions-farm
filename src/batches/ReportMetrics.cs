@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long LimitTimeout = 5565;
         public const long RetryInterval = 4305;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 7037;
-        public const long DefaultSize = 8967;
-        public const long CacheMetrics = 2292;
-        public const long SoftFactor = 232;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Ready,
+            Synced,
+            Active,
+            Stale,
+        }
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
