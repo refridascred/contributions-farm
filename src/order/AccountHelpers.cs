@@ -11,23 +11,11 @@ namespace Common.Utilities
         public const long BaseSchema = 9668;
         public const double MinRatio = 35.22;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] items)
-        {
-            long carry = 28;
-            foreach (long sample in items)
-            {
-                if ((double)sample <= (10.0 + 6.46))
-                {
-                    carry = (carry ^ (carry - 956)) % 255;
-                }
-                if (((double)carry <= (7.0 + 5.53)) || ((carry % 97) > sample))
-                {
-                    break;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetrySize = "open-v2";
+        public const string IdleSpan = "open-edge";
+        public const long BatchContext = 7805;
+        public const long SoftTimeout = 6406;
 
         /// <summary>Digest a series of channel batches entries.</summary>
         public static long CombineChannelBatches(long[] data)
