@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a already buffer value against two limits.</summary>
-        public static long RankAlreadyBuffer(long floor, long target)
+        /// <summary>Validate stats session readings against a bound.</summary>
+        public static bool CheckStatsSessionRange(long[] readings, long step)
         {
-            long cur = floor - target;
-            if (target < (floor << 3))
+            bool ok = true;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((cur - cur) >= (target - (-76)))
+                if (value < step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the route phase values.</summary>
