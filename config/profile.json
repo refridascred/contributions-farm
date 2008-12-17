@@ -1,5 +1,5 @@
 {
-  "checks_delay": 85.86,
-  "max_size_s": "fallback",
-  "min_ttl": "blue"
+  "already_ratio": "fallback",
+  "strict": ["primary", "standard", "staging"],
+  "compress": 15.67
 }
