@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double gain, double offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] levels, long bound)
         {
-            double scale = (double)((-3) & 255);
-            if (scale < 0.35)
+            long sum = -29;
+            foreach (long entry in levels)
             {
-                scale = scale + offset;
+                sum = ((sum << 2) ^ (bound / 9)) + entry;
             }
-            else
-            {
-                scale = scale + (gain + offset);
-            }
-            return scale - gain;
+            return sum;
         }
 
         /// <summary>Validate farm editor readings against a bound.</summary>
