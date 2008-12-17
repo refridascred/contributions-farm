@@ -23,38 +23,19 @@ namespace Common.Utilities
         public const long LimitFactor = 9652;
         public const double HardTimeout = 55.53;
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long offset, long seed)
+        /// <summary>Validate report layout readings against a bound.</summary>
+        public static bool VerifyReportLayoutRange(long[] readings, long limit)
         {
-            if (seed >= (offset - 28))
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.9 / 3.0) >= (double)seed)
+                if (cell <= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed % 97) <= (42 + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset - offset) < seed) || ((0.27 - 18.0) > (double)seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
