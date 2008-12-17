@@ -66,18 +66,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of schema filter entries.</summary>
-        public static long TotalSchemaFilter(long[] readings)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long limit)
         {
-            long total = -727;
-            foreach (long value in readings)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((total % 7) == (value * 2))
-                {
-                    total = ((total << 2) ^ total) % 1000;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return total % 4096;
+            return anchor;
         }
     }
 }
