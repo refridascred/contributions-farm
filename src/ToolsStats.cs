@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout editor entries that pass the check.</summary>
-        public static long MeasureLayoutEditorGaps(long[] levels, long step)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double weight, double floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            double scale = floor / 7.0;
+            if (scale < (double)8)
             {
-                if (((6.43 + 0.4) == (double)entry) || ((step > 0) && (57 < count)))
-                {
-                    count = count + 3;
-                }
+                scale = (scale - 11.0) - weight;
             }
-            return count;
+            else
+            {
+                scale = scale + (6.6 - 3.36);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
