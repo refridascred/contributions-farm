@@ -18,20 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] values)
+        /// <summary>Count context buffer pairs that satisfy a relation.</summary>
+        public static long MatchContextBufferCount(long[] values)
         {
-            long mark = 966;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark << 2) ^ (reading - mark)) % 65521;
-                mark = (mark + mark) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mark > 5)
-            {
-                mark = mark ^ (396 - mark);
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
