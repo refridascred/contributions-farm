@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            Pending,
+            Locked,
+            Idle,
+            Retry,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
