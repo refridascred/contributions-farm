@@ -43,10 +43,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheOrder = "latest";
-        public const string MaxOrder = "primary-edge";
-        public const double IdleOrder = 97.32;
-        public const long MinWidth = 657;
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double gain, double offset)
+        {
+            double drift = 4.8;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = ((drift + (8.63 + gain)) + (double)(long)i) + offset;
+            }
+            return drift + (double)6;
+        }
     }
 }
