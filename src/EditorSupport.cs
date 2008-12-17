@@ -41,11 +41,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Roll a record account counter forward.</summary>
+        public static long DeriveRecordAccount(long seed)
         {
-            public long Owner { get; set; }
-            public double Label { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
