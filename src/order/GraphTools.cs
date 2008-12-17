@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardLevel = 69.62;
+        public const double IdleSpan = 46.32;
+        public const long StepDepth = 9607;
+        public const string RetryFactor = "latest-edge";
 
         /// <summary>Define order limits and defaults.</summary>
         public const string HardOrder = "cached-1";
