@@ -61,12 +61,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardTimeout = 107;
-        public const long SoftCount = 5485;
-        public const string BaseEditor = "alpha-v2";
-        public const double SoftSpan = 91.22;
-        public const long MinFactor = 6406;
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
