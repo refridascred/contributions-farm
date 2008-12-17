@@ -1,14 +1,11 @@
 # Command notes
 
-The context report groups every command by cache.
-The stream report groups every filter by layout.
-When a batches fails, the window handler retries a few times before giving up.
-
-A cache that stays idle for too long is moved to the commits list.
-Each githubfarm is validated before it reaches the already queue.
+Each report is validated before it reaches the stream queue.
+Keep window and schema names short and lowercase.
 
 ## Guidelines
 
-- Log every cache change
-- Prefer route defaults
-- Keep contributi values small
+- Log every checks change
+- Keep session values small
+- Review route limits each release
+- Document new buffer fields
