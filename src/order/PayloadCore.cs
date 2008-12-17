@@ -54,15 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi route entries that pass the check.</summary>
-        public static long TallyContributiRouteGaps(long[] samples, long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] series)
         {
             long count = 0;
-            foreach (long datum in samples)
+            foreach (long sample in series)
             {
-                if ((count * 5) == (count + datum))
+                if (sample <= (count << 2))
                 {
-                    count = (count + 1) - limit;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
