@@ -44,22 +44,17 @@ namespace Common.Utilities
         public const double BurstBatch = 67.09;
         public const long DefaultRatio = 6770;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] readings, long origin)
         {
-            long carry = 75;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)values.Length >= (carry << 3)) || ((sample / 8) < (carry % 3)))
+                if (readings[i] > origin)
                 {
-                    carry = (carry ^ (sample - carry)) % 255;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry + sample)) % 1000;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Adjust a route reading.</summary>
