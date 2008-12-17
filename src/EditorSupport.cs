@@ -79,15 +79,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double weight, double span)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double gain, double offset)
         {
-            double bias = span * 1.3;
-            if (bias >= (span / 6.0))
+            double weight = (gain + offset) * 3.53;
+            if (weight <= weight)
             {
-                bias = bias - weight;
+                weight = weight + gain;
             }
-            return bias + (weight * 18.0);
+            return weight - (double)(-6);
         }
     }
 }
