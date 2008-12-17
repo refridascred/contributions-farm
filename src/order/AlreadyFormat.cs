@@ -56,21 +56,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] items)
+        /// <summary>Compare every pair of filter schema readings.</summary>
+        public static long MatchFilterSchemaCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] - items[j]) == 20)
+                    if ((readings[i] + readings[j]) < 1)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit route account readings against a rule.</summary>
