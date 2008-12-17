@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] readings, long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (datum <= offset)
+                if (floor <= entry)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
