@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Queued,
-            Done,
-            Synced,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowStream = 8.19;
+        public const double HardSize = 72.47;
+        public const double IdleStream = 98.22;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long MeasureContributiMatches(long[] items, long limit)
