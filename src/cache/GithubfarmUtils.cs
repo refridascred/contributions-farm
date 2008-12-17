@@ -54,24 +54,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long offset, long origin)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            if ((double)offset < (0.39 * 4.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin & 15) <= (origin << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Done,
+            Pending,
+            Idle,
+            Active,
         }
     }
 }
