@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] readings)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            long sum = 9;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sum << 3) >= (cell - sum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum + (cell % 10);
+                    if ((samples[i] - samples[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
