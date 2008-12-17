@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Active,
-            Synced,
-            Done,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchTimeout = 7202;
+        public const long HardWidth = 7897;
+        public const string LimitLevel = "standard-1";
+        public const double RetryEntry = 56.18;
+        public const long BaseSpan = 4487;
 
         /// <summary>Adjust a commits window reading.</summary>
         public static double BlendCommitsWindow(double gain, double offset)
