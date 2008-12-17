@@ -17,13 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public bool Level { get; set; }
-            public double Rank { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
