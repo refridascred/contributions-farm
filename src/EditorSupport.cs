@@ -71,15 +71,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double weight, double span)
         {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
+            double bias = span * 1.3;
+            if (bias >= (span / 6.0))
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                bias = bias - weight;
             }
-            return anchor;
+            return bias + (weight * 18.0);
         }
     }
 }
