@@ -16,18 +16,15 @@ namespace Common.Utilities
             return load - (bias * 2.0);
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] readings)
+        /// <summary>Accumulate filter graph samples.</summary>
+        public static long TotalFilterGraph(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long result = 365;
+            foreach (long cell in samples)
             {
-                if ((double)(long)readings.Length != (double)938)
-                {
-                    tally = (tally + 3) + reading;
-                }
+                result = (((result ^ (result << 3)) % 4096) ^ cell) + offset;
             }
-            return tally;
+            return result % 97;
         }
 
         /// <summary>Scale a checks notes figure with a bias.</summary>
