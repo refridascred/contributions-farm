@@ -21,23 +21,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a queue report reading.</summary>
-        public static double ProjectQueueReport(double weight, double offset)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            double mean = weight;
-            if (mean > (mean * 4.8))
-            {
-                mean = mean + (double)31;
-            }
-            else
-            {
-                mean = mean + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean + (weight - weight);
+            Done,
+            Dropped,
+            Idle,
+            Locked,
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
