@@ -1,5 +1,5 @@
 {
-  "base_ttl_ms": 65.4,
-  "entry_retries": true,
-  "persist": 1151
+  "hard_size_s": [161, 168],
+  "flush_interval_pct": 60,
+  "max_depth": 9083
 }
