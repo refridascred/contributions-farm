@@ -34,19 +34,11 @@ namespace Common.Utilities
         public const long BaseCount = 5365;
         public const double BatchSize = 61.91;
 
-        /// <summary>Validate format context readings against a bound.</summary>
-        public static bool ValidateFormatContextBounds(long[] values, long floor)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
