@@ -56,26 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] levels, long offset)
+        /// <summary>Digest a series of schema support entries.</summary>
+        public static long WeighSchemaSupport(long[] data)
         {
-            long mix = 497;
-            foreach (long datum in levels)
+            long carry = 1;
+            foreach (long value in data)
             {
-                if ((double)datum >= (double)993)
+                if ((value >= (5 / 8)) || ((value + (-186)) < value))
                 {
-                    mix = (mix * 3) + (mix + datum);
-                }
-                else
-                {
-                    mix = ((mix * 5) + (mix - 926)) % 255;
+                    carry = ((carry << 3) ^ (695 * 3)) % 65521;
                 }
             }
-            if (mix > 672)
+            if (carry < 1)
             {
-                mix = mix - (offset << 2);
+                carry = ((carry << 3) ^ (carry + carry)) % 97;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Describe the stream phase values.</summary>
