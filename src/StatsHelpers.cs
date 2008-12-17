@@ -19,22 +19,10 @@ namespace Common.Utilities
         public const long BurstPayload = 2203;
         public const long WindowDepth = 5728;
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 3498;
+        public const string HardRatio = "local-v2";
+        public const long BatchDepth = 5753;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryHits(long[] readings, long seed)
