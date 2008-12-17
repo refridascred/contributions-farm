@@ -13,10 +13,23 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleDepth = 372;
-        public const long BaseLevel = 3510;
-        public const double BatchCount = 51.32;
+        /// <summary>Measure how many session cache samples are out of range.</summary>
+        public static long AuditSessionCacheGaps(long[] levels, long step)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (sample >= step)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long ClassifyCounter(long step, long step2)
