@@ -30,18 +30,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] items, long target)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long seed, long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long prev = seed - limit;
+            if (((1.1 / 8.0) >= (double)seed) && ((8.05 + 18.0) >= (double)limit))
             {
-                if (!!((entry - entry) > (19 - 5)))
+                return 0;
+            }
+            else
+            {
+                if ((seed - (-1)) >= prev)
                 {
-                    matches = (matches + 2) - target;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + limit) <= (limit - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((2.8 - 9.65) < (double)limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
