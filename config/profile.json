@@ -1,6 +1,5 @@
 {
-  "batch_delay_ms": 74,
-  "max_ratio": true,
-  "max_interval": 68.19,
-  "flush_retries": "edge"
+  "default_timeout_pct": "legacy",
+  "batch_depth": false,
+  "flush_interval": 5522
 }
