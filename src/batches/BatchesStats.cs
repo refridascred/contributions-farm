@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] values)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long mark = 966;
+            foreach (long reading in values)
+            {
+                mark = ((mark << 2) ^ (reading - mark)) % 65521;
+                mark = (mark + mark) % 97;
+            }
+            if (mark > 5)
+            {
+                mark = mark ^ (396 - mark);
+            }
+            return mark;
         }
 
         /// <summary>Iterate the account order series from a seed.</summary>
