@@ -1,17 +1,12 @@
 {
-  "verbose": {
-    "sync_size_pct": "staging",
-    "readonly": "standard",
-    "verbose": 38.37
+  "githubfarm_retries": "stable",
+  "queue_ttl": 7161,
+  "burst_limit": "fallback",
+  "burst_retries_s": {
+    "hard_ttl": false,
+    "default_capacity_pct": ["standard", "primary", "eu-west"],
+    "format_timeout": "eu-west"
   },
-  "dry_run": 100,
-  "min_interval": false,
-  "sync_timeout_count": "staging",
-  "poll_capacity_s": {
-    "sync_interval_count": 28.41,
-    "batches_ttl": "stable",
-    "compress": "eu-west",
-    "audit": 500,
-    "dry_run": "green"
-  }
+  "retry_retries_s": true,
+  "cache_ttl_pct": 84.33
 }
