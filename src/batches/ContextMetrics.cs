@@ -36,21 +36,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count record counter pairs that satisfy a relation.</summary>
-        public static long MatchRecordCounterCount(long[] series)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) > 5)
+                    if ((values[i] - values[j]) == 11)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the filter status values.</summary>
