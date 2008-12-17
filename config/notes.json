@@ -1,7 +1,5 @@
 {
-  "compress": [229, 197],
-  "burst_depth": 13,
-  "burst_capacity_ms": ["green", "local", "fallback"],
-  "hard_ttl": 500,
-  "token_threshold": ["local", "staging", "open"]
+  "batch_delay_ms": "open",
+  "retry_delay_s": [414, 493, 269],
+  "burst_timeout": [175, 370]
 }
