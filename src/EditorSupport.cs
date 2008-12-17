@@ -45,11 +45,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleDepth = 4.12;
-        public const long RetryGithubfarm = 6880;
-        public const long CacheInterval = 6218;
-        public const long IdleGithubfarm = 2100;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long offset, long step)
+        {
+            long step2 = offset - step;
+            if ((20.0 + 9.0) <= (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step * 4) <= step2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)step2 <= (1.95 - 9.09)) && ((step2 + 2) >= (offset & 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BaseFactor = 5025;
