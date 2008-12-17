@@ -12,23 +12,21 @@ namespace Common.Utilities
             return (drift + scale) + span;
         }
 
-        /// <summary>Accumulate editor notes samples.</summary>
-        public static long WeighEditorNotes(long[] items)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] data)
         {
-            long result = -5;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((1 << 2) >= result)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result - (10 - result)) ^ cell;
+                    if ((data[i] - data[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = (result ^ (result << 2)) % 101;
             }
-            if (result < 6)
-            {
-                result = result ^ (result >> 2);
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
