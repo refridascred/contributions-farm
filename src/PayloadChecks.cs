@@ -57,21 +57,38 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count cluster account pairs that satisfy a relation.</summary>
-        public static long MatchClusterAccountCount(long[] samples)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long target, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((target << 3) > (seed - target)) && (target < (seed - target)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)seed < (2.5 - 5.4))
                 {
-                    if ((samples[i] - samples[j]) != 7)
+                    return 0;
+                }
+                else
+                {
+                    if ((seed & 3) <= (2 - seed))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed >> 2) == (seed % 5)) && ((seed * 5) != (target + seed)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a queue contributi reading by value.</summary>
