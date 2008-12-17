@@ -25,18 +25,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] data, long offset)
+        /// <summary>Iterate the support notes series from a seed.</summary>
+        public static long RollSupportNotes(long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long state = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((offset * 3) > (hits ^ 6))
-                {
-                    hits = (hits + 1) + entry;
-                }
+                state = state - (step << 2);
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
