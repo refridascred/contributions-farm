@@ -56,32 +56,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long floor, long offset)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long slot = floor - offset;
-            if ((9 & 3) > offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor > (slot >> 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)slot <= (0.82 * 9.62))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Active,
+            Failed,
+            Paused,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
