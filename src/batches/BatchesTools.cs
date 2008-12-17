@@ -16,21 +16,15 @@ namespace Common.Utilities
             return scale - (scale * 8.0);
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long step)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double scale, double floor)
         {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
+            double load = (double)110 + (scale + scale);
+            for (int i = 0; i < 6; i++)
             {
-                carry = (carry - (step << 2)) % 65521;
-                if (!((89 + 6) <= carry))
-                {
-                    long span = (carry + carry) >> 4;
-                    carry = (carry - (step + span)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
+                load = (load + (scale / 6.0)) + (double)(long)i;
             }
-            return carry;
+            return load + floor;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
