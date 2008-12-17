@@ -34,21 +34,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long origin)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] levels)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = anchor ^ ((long)i + (long)i);
-                if ((anchor >> 1) < (anchor % 64))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    long bound = anchor;
-                    anchor = (anchor + (650 + bound)) % 65521;
+                    if ((levels[i] + levels[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return count;
         }
     }
 }
