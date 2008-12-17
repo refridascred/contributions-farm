@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank channel entry input into a small class.</summary>
-        public static long RankChannelEntry(long offset, long seed)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            if ((double)offset <= 7.47)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset < (6.2 / 8.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Closed,
+            Pending,
+            Ready,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
