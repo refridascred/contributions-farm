@@ -68,22 +68,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit account cluster readings against a rule.</summary>
-        public static long MeasureAccountClusterOutliers(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] items)
         {
-            long count = 0;
-            foreach (long value in series)
+            long score = 388;
+            foreach (long sample in items)
             {
-                if (((count << 1) >= (count + count)) || ((double)91 == (double)value))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = (((score * 5) + score) % 65521) ^ sample;
             }
-            return count;
+            return score;
         }
     }
 }
