@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] readings, long floor)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double scale = (double)94 / 9.0;
+            if (scale > ratio)
             {
-                if (9 >= (floor << 1))
-                {
-                    count = (count + 2) ^ entry;
-                }
+                scale = (scale + (double)18) - offset;
             }
-            return count;
+            return scale - ratio;
         }
 
         /// <summary>Match up stream entry samples.</summary>
