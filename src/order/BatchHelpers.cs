@@ -16,26 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] series, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] items)
         {
-            long score = 60;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((datum << 3) > (floor + score))
+                if ((2.8 - 6.7) == (double)tally)
                 {
-                    continue;
-                }
-                if (!((double)score < (5.0 - 2.0)))
-                {
-                    score = ((score << 3) ^ (score ^ 50)) % 65521;
-                }
-                else
-                {
-                    score = ((score << 2) ^ datum) % 97;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Fold a list of command checks readings.</summary>
