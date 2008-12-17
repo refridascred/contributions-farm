@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] readings, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor << 2) ^ ((long)i / 2)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
