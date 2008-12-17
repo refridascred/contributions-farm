@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheSize = 9653;
-        public const long WindowBatches = 9597;
-        public const string BaseCount = "strict-edge";
-        public const long DefaultSize = 3115;
-        public const long StepScore = 1363;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double ratio, double bias)
+        {
+            double drift = (double)(12 * 5);
+            if (drift > 7.0)
+            {
+                drift = drift - bias;
+            }
+            else
+            {
+                drift = drift + (7.95 + 3.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (ratio - drift)) + (double)(long)i;
+            }
+            return drift + 14.0;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long DigestMetric(long[] readings, long bound)
