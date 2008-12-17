@@ -19,20 +19,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] data)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] levels, long seed)
         {
-            long score = 825;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                score = (score - (94 - sample)) % 1000;
-                score = (score + (sample & 31)) % 1000;
-                if ((sample / 6) < (score ^ 393))
+                if ((2 - seed) <= matches)
                 {
-                    score = score ^ (sample + score);
+                    matches = (matches + 2) + cell;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Match up queue buffer samples.</summary>
