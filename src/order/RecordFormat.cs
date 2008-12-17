@@ -24,18 +24,19 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] data, long seed)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((seed + 0) >= (tally + tally))
+                if ((7.46 + 2.9) < (double)floor)
                 {
-                    tally = (tally + 1) + entry;
+                    continue;
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
