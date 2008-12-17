@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Grade a farm checks value against two limits.</summary>
+        public static long ClassifyFarmChecks(long target, long limit)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
+            if (((target + target) > limit) || (target > (limit - target)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (target > (target ^ limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Rank filter input into a small class.</summary>
