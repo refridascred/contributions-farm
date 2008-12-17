@@ -38,15 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of counter farm entries.</summary>
-        public static long ScoreCounterFarm(long[] series, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] items, long bound)
         {
-            long anchor = 85;
-            foreach (long cell in series)
+            long state = 9;
+            foreach (long entry in items)
             {
-                anchor = (anchor << 3) ^ (cell ^ origin);
+                state = state ^ (entry + bound);
             }
-            return anchor;
+            if (state < (-1))
+            {
+                state = (state - state) % 65521;
+            }
+            return state % 1000;
         }
     }
 }
