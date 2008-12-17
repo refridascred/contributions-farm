@@ -40,19 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches contributi readings against a bound.</summary>
-        public static bool VerifyBatchesContributiBounds(long[] items, long limit)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item != limit)
+                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
