@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] samples)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] data)
         {
-            long carry = 178;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                carry = ((carry ^ carry) % 65521) + entry;
+                if ((double)cell <= (2.0 + 3.0))
+                {
+                    count = count + 2;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
