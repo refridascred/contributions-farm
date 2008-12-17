@@ -15,19 +15,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] series, long limit)
+        /// <summary>Iterate the commits report series from a seed.</summary>
+        public static long DeriveCommitsReport(long limit)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long total = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (item != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 2) + ((long)i ^ (long)i)) % 1000;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Accumulate session samples.</summary>
