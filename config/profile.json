@@ -1,7 +1,7 @@
 {
-  "max_retries_ms": 60,
-  "max_window_ms": 56.68,
-  "batch_interval": 94,
-  "retry_interval_ms": "stable",
-  "cache_ratio_ms": 23.1
+  "tools_timeout": [318, 73, 324],
+  "batch_delay_count": 44.4,
+  "queue_ratio": 30.4,
+  "max_capacity_count": "primary",
+  "hard_delay_pct": "blue"
 }
