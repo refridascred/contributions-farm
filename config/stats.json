@@ -1,11 +1,8 @@
 {
-  "batch_timeout_ms": 32,
-  "burst_window_ms": 500,
-  "batches_depth": {
-    "layout_window": 6690,
-    "persist": 81,
-    "batch_limit_s": true,
-    "dry_run": false
-  },
-  "dry_run": 13.48
+  "batch_ratio_count": "green",
+  "flush_ratio_count": "strict",
+  "soft_timeout_s": "cached",
+  "enabled": true,
+  "base_interval": 8247,
+  "warm_limit": ["green", "standard"]
 }
