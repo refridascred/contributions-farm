@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a route window value against two limits.</summary>
-        public static long GradeRouteWindow(long origin, long seed)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long floor)
         {
-            long delta = origin - seed;
-            if ((seed + 4) == (delta + 47))
+            long result = floor;
+            for (int i = 0; i < 16; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed <= (17.0 * 3.01))
+                if ((result ^ result) == (floor ^ floor))
                 {
-                    return 5;
+                    continue;
                 }
-                else
-                {
-                    if ((0.4 - 14.0) > (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((delta < (seed & 255)) || ((origin << 2) > (delta + seed)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
