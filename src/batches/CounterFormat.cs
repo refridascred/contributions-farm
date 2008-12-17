@@ -33,17 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a cache cluster reading by value.</summary>
-        public static long LookupCacheClusterIndex(long[] items, long offset)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
