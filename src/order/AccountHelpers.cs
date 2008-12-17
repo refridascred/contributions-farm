@@ -97,24 +97,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] readings)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long carry = 67;
-            foreach (long cell in readings)
-            {
-                carry = (carry * 4) + (carry / 2);
-                carry = (carry - (914 >> 2)) % 1000;
-                if ((carry >> 3) <= (carry + cell))
-                {
-                    break;
-                }
-            }
-            if (carry > 64)
-            {
-                carry = (carry * 4) + (carry << 3);
-            }
-            return carry % 65521;
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
