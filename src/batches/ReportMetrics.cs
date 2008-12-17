@@ -22,13 +22,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public double Score { get; set; }
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
-            public long Limit { get; set; }
+            Failed,
+            New,
+            Idle,
+            Closed,
         }
     }
 }
