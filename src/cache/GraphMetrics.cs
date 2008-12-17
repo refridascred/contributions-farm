@@ -19,12 +19,23 @@ namespace Common.Utilities
         public const long SoftLayout = 7169;
         public const long CacheWidth = 9060;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 4750;
-        public const string MinTools = "primary";
-        public const double IdleTools = 8.33;
-        public const long RetryDepth = 297;
-        public const long BatchSize = 5217;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] levels, long limit)
+        {
+            long anchor = 909;
+            foreach (long value in levels)
+            {
+                if (((value - value) > (limit + limit)) && (89 > (limit >> 2)))
+                {
+                    anchor = anchor ^ anchor;
+                }
+            }
+            if (anchor > 37)
+            {
+                anchor = (anchor + (anchor & 127)) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string LimitBatch = "primary";
