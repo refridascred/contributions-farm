@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstReport = "fallback-v2";
-        public const double WindowReport = 24.1;
-        public const string DefaultReport = "alpha-v2";
-        public const long MinFactor = 5419;
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long ClassifyFilter(long floor, long limit)
