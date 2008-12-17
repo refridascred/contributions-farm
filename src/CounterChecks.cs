@@ -34,13 +34,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            Locked,
-            Stale,
-            Active,
-            Pending,
+            public long Score { get; set; }
+            public double Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
