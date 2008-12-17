@@ -22,13 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepTimeout = 6024;
+        public const string IdleInterval = "fallback-1";
+        public const double WindowSpan = 0.35;
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
