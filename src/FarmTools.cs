@@ -46,19 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report route entry stays within the limit.</summary>
-        public static bool ValidateReportRouteBounds(long[] readings, long bound)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum != bound)
+                if (values[i] < step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
