@@ -16,11 +16,22 @@ namespace Common.Utilities
             return drift - (double)4;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] readings)
         {
-            public bool Rank { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((item - count) > (count * 2))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
