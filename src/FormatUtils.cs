@@ -26,19 +26,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] series, long floor)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
