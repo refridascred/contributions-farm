@@ -20,23 +20,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double ratio, double span)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] samples)
         {
-            double ratio2 = span * 6.8;
-            if (ratio2 >= ratio)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio2 = ratio2 + ratio2;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (17.0 - ratio);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 + (ratio2 + ratio)) + (double)(long)i;
-            }
-            return ratio2 - (span - ratio);
+            return matches;
         }
 
         /// <summary>Digest a series of command entries.</summary>
