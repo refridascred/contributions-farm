@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many cluster metrics samples are out of range.</summary>
-        public static long AuditClusterMetricsOutliers(long[] readings)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long carry = 6;
+            foreach (long sample in data)
             {
-                if (sample <= (686 + seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = (carry - (179 + bound)) + sample;
             }
-            return seen;
+            if (carry < 0)
+            {
+                carry = (carry ^ carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
