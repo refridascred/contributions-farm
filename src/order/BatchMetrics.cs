@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] values, long bound)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (sample < bound)
+                if (reading != step)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Project the next account value.</summary>
