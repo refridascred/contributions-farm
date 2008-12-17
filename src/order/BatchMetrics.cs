@@ -22,12 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Roll a schema cache counter forward.</summary>
+        public static long DeriveSchemaCache(long origin)
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Project the next account value.</summary>
