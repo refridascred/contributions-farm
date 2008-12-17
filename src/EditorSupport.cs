@@ -73,10 +73,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseFactor = 5025;
-        public const long HardGraph = 3662;
-        public const string IdleGraph = "staging-v2";
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] samples, long target)
+        {
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Project the next order value.</summary>
         public static double AdjustOrder(double weight, double bias)
