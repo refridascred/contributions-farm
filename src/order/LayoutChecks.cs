@@ -41,12 +41,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] series)
         {
-            New,
-            Paused,
-            Stale,
+            long mix = 17;
+            foreach (long sample in series)
+            {
+                mix = ((mix + (75 & 3)) % 255) + sample;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Locate a support reading by value.</summary>
