@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Done,
+            Locked,
+            Paused,
             Stale,
-            Synced,
-            Idle,
+            Closed,
+            Done,
         }
 
         /// <summary>Hold a filter stats.</summary>
