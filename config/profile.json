@@ -1,13 +1,7 @@
 {
-  "soft_threshold_ms": 500,
-  "sync_capacity": {
-    "checks_size": "edge",
-    "idle_window": 8871,
-    "retry_depth": 8281,
-    "schema_capacity": 36.2,
-    "retry_limit_ms": "green",
-    "hard_limit": false
-  },
-  "filter_depth": "stable",
-  "flush_depth": "blue"
+  "max_retries_ms": 60,
+  "max_window_ms": 56.68,
+  "batch_interval": 94,
+  "retry_interval_ms": "stable",
+  "cache_ratio_ms": 23.1
 }
