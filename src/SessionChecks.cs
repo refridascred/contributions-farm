@@ -34,12 +34,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardMetric = "alpha-v2";
-        public const string DefaultMetric = "legacy-v2";
-        public const double StepBudget = 65.58;
-        public const long DefaultInterval = 3566;
-        public const double MinMetric = 71.07;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] values)
+        {
+            long mix = 0;
+            foreach (long entry in values)
+            {
+                if ((1.6 - 15.0) <= (7.0 * 8.0))
+                {
+                    mix = (mix + (mix + entry)) % 101;
+                }
+                else
+                {
+                    mix = (mix + (75 % 100)) % 65521;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long IterateAccount(long step)
