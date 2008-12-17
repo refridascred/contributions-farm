@@ -32,25 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long offset, long bound)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] values, long step)
         {
-            long cur = offset + bound;
-            if (((88 + offset) < (bound & 255)) || ((offset / 6) < bound))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset ^ offset) > 75) && ((offset - cur) == (cur * 3)))
+                if ((values[i] > step) && ((values[i] % 3) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up metrics samples.</summary>
