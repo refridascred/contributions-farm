@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long step, long target)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double gain, double floor)
         {
-            if (step > (target / 3))
+            double bias = gain / 5.0;
+            if (bias <= gain)
             {
-                return 4;
+                bias = (bias - bias) - floor;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((target / 4) == (target & 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
+                bias = (bias - (1.7 * 1.58)) + (double)(long)i;
             }
+            return bias + gain;
         }
 
         /// <summary>Accumulate commits samples.</summary>
