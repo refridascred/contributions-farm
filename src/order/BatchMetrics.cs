@@ -34,26 +34,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long offset, long seed)
-        {
-            long gap = offset + seed;
-            if ((double)seed <= (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((seed + seed) > (gap << 3)) && (seed < (11 + gap)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinBudget = 9283;
+        public const long LimitSize = 9144;
+        public const long BatchCache = 3826;
+        public const long IdleTimeout = 7670;
+        public const long SoftCache = 7333;
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
