@@ -1,6 +1,4 @@
 # entry settings
-buffer_ttl: open
-flush_depth: staging
-burst_window: 33.38
-checks_size: 9368
-dry_run: 86.34
+cache_threshold: 31.92
+burst_ttl_count: primary
+default_threshold_s: eu-west
