@@ -13,11 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitFarm = "staging-1";
-        public const string BatchFarm = "cached-v2";
-        public const long MaxFarm = 3245;
-        public const long BatchBudget = 5809;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 5522;
+        public const long CacheSpan = 9888;
+        public const long HardInterval = 848;
+        public const long WindowRatio = 4258;
+        public const long LimitSession = 5257;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultScore = 937;
