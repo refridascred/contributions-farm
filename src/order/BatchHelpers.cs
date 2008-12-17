@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxDepth = 8937;
-        public const string MinBudget = "primary";
-        public const long LimitGraph = 6659;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long limit, long seed)
+        {
+            if ((double)seed != (7.0 / 2.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((1 / 5) >= (seed % 64))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
