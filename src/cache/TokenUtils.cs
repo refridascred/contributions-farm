@@ -25,14 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Queued,
-            Failed,
-            Synced,
-            New,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleFormat = 31.03;
+        public const long SoftFormat = 1361;
+        public const long BurstDepth = 4460;
+        public const double RetryFormat = 98.68;
+        public const long SoftScore = 6065;
 
         /// <summary>Match up queue buffer samples.</summary>
         public static long MatchQueueBufferCount(long[] items)
