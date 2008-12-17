@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a stream queue sample.</summary>
-        public static long LookupStreamQueueIndex(long[] series, long offset)
+        /// <summary>Project the next session buffer value.</summary>
+        public static double SmoothSessionBuffer(double ratio, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = 7.1;
+            for (int i = 0; i < 8; i++)
             {
-                if ((series[i] >= offset) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                scale = ((scale + (floor * 6.16)) + (double)(long)i) - ratio;
             }
-            return -1;
+            return scale - (scale * 8.0);
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
