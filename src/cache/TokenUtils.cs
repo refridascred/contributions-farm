@@ -33,21 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up queue buffer samples.</summary>
-        public static long MatchQueueBufferCount(long[] items)
+        /// <summary>Derive the next channel token value from a seed.</summary>
+        public static long IterateChannelToken(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((items[i] - items[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark - (step + (long)i)) % 65521) + (long)i2;
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
     }
 }
