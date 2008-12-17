@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Idle,
-            Queued,
-            Done,
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
