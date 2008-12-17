@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many format metric samples are out of range.</summary>
-        public static long AuditFormatMetricHits(long[] items, long origin)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] data)
         {
             long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (923 >= (origin + count))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] ^ data[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
