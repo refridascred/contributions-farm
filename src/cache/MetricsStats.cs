@@ -36,17 +36,13 @@ namespace Common.Utilities
         public const long RetryNotes = 547;
         public const double BaseNotes = 70.24;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] values, long step)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Active,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
