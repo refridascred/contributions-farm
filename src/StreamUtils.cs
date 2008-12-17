@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] levels)
+        /// <summary>Rank queue cluster input into a small class.</summary>
+        public static long ClassifyQueueCluster(long limit, long origin)
         {
-            long result = 358;
-            foreach (long value in levels)
+            if ((81 - 601) > origin)
             {
-                result = (result ^ (value - value)) % 101;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((origin ^ origin) >= (origin + limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit < (origin % 2)) || (origin >= 43))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin << 2) > (limit << 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a notes channel figure with a bias.</summary>
