@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public bool Ratio { get; set; }
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
