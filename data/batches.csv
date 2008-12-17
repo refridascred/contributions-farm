@@ -1,7 +1,10 @@
-id,weight,active,rank
-1,397,stable,766
-2,505,strict,staging
-3,open,73.81,blue
-4,open,5,80
-5,54.53,edge,15.65
-6,cached,67.14,12.57
+id,ratio,label
+1,blue,8.97
+2,76.59,latest
+3,eu-west,98.32
+4,local,eu-west
+5,221,25.78
+6,eu-west,950
+7,fallback,primary
+8,595,35.27
+9,122,open
