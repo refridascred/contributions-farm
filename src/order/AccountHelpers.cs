@@ -39,12 +39,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Find the first batch account entry that matches the target.</summary>
-        public static long LocateBatchAccountIndex(long[] levels, long bound)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] levels, long target)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] == bound) && ((levels[i] % 5) != 0))
+                if (levels[i] >= target)
                 {
                     return (long)i;
                 }
