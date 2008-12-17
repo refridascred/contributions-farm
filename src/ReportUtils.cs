@@ -18,12 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 3351;
-        public const long HardCommand = 8683;
-        public const long LimitCommand = 188;
-        public const long StepSize = 3180;
-        public const double BatchWidth = 58.75;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long limit, long origin)
+        {
+            if ((origin + limit) < (969 + limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((0 << 3) == (limit ^ limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteGaps(long[] items, long bound)
