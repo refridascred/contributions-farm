@@ -24,16 +24,21 @@ namespace Common.Utilities
             return ratio + (2.76 / 5.0);
         }
 
-        /// <summary>Roll a format notes counter forward.</summary>
-        public static long RollFormatNotes(long seed)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] levels)
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark << 3) ^ (long)i) % 65521;
-                mark = ((mark * 3) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
