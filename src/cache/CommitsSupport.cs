@@ -20,21 +20,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Audit filter session readings against a rule.</summary>
+        public static long TallyFilterSessionHits(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((value * 5) < (seen << 2))
                 {
-                    if ((readings[i] - readings[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) + bound;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a metrics options.</summary>
