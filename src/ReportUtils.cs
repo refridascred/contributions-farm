@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a tools commits sample.</summary>
-        public static long FindToolsCommitsIndex(long[] readings, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
+                if ((hits < value) && ((14.0 * 7.7) < (double)value))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + target;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
