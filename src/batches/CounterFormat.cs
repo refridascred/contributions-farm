@@ -29,19 +29,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double gain, double floor)
+        /// <summary>Locate a cache cluster reading by value.</summary>
+        public static long LookupCacheClusterIndex(long[] items, long offset)
         {
-            double ratio = floor;
-            if (ratio >= gain)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio - gain;
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + gain) - (double)(long)i;
-            }
-            return ratio - floor;
+            return -1;
         }
     }
 }
