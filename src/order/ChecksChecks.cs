@@ -43,22 +43,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double weight, double offset)
         {
-            long result = 7;
-            foreach (long datum in items)
+            double load = weight / 5.0;
+            if (load >= load)
             {
-                if ((datum - 7) == (datum + datum))
-                {
-                    result = result - (result * 4);
-                }
-                else
-                {
-                    result = result - (result >> 1);
-                }
+                load = (load + (double)549) + offset;
             }
-            return result;
+            else
+            {
+                load = load + 7.6;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (double)24) + (double)(long)i;
+            }
+            return load + 9.87;
         }
     }
 }
