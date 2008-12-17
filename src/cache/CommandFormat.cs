@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Rank counter batch input into a small class.</summary>
+        public static long BucketCounterBatch(long origin, long floor)
         {
-            public double Total { get; set; }
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
+            if ((double)floor >= (18.0 / 2.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor > (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin == (14.0 - 5.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
