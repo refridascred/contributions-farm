@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleTimeout = 3280;
-        public const long DefaultDepth = 7280;
-        public const long BaseSchema = 9668;
-        public const double MinRatio = 35.22;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)offset > 6.67)
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string RetrySize = "open-v2";
