@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Ready,
-            Pending,
-            Idle,
-            Locked,
-            Done,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleCommand = "local-v2";
+        public const long DefaultCommand = 3650;
+        public const long StepCommand = 9370;
+        public const long BatchCommand = 8764;
+        public const double DefaultCount = 53.04;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorMatches(long[] readings)
