@@ -78,11 +78,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Audit payload editor readings against a rule.</summary>
+        public static long CountPayloadEditorGaps(long[] items, long target)
         {
-            public string Score { get; set; } = "";
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((1 >> 4) == (2 ^ sample))
+                {
+                    count = (count + 1) + target;
+                }
+            }
+            return count;
         }
     }
 }
