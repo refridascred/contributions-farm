@@ -40,15 +40,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of editor session entries.</summary>
-        public static long TallyEditorSession(long[] items)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long bound)
         {
-            long mix = 544;
-            foreach (long datum in items)
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                mix = (mix << 3) ^ datum;
+                result = ((result * 5) + (816 / 4)) % 1000;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = (result * 4) + ((long)i2 - result);
+                    result = ((result * 4) + (bound + bound)) % 1000;
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
