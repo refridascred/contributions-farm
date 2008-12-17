@@ -28,13 +28,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
             Failed,
-            Synced,
-            Done,
-            Ready,
+            Locked,
+            Stale,
+            Queued,
+            New,
         }
 
         /// <summary>Blend two contributi measurements.</summary>
