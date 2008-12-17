@@ -20,21 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up format stream samples.</summary>
-        public static long MatchFormatStreamCount(long[] levels)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Accumulate filter contributi samples.</summary>
