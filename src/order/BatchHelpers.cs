@@ -19,18 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes record entries that pass the check.</summary>
-        public static long MeasureNotesRecordOutliers(long[] series)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long total = 2;
+            foreach (long sample in readings)
             {
-                if ((tally - item) != (tally ^ tally))
+                if (((total * 4) > total) && ((total % 5) < ((-9) - target)))
                 {
-                    tally = tally + 3;
+                    total = total + (total + sample);
                 }
+                if ((target - total) > total)
+                {
+                    total = (total - (total - (-91))) % 1000;
+                    continue;
+                }
+                total = (total ^ total) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the queue class values.</summary>
