@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] samples, long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] readings, long bound)
         {
-            long state = 277;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                state = ((state ^ reading) % 255) - target;
+                if (value <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
