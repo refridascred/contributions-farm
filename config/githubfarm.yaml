@@ -1,11 +1,5 @@
 # githubfarm settings
-flush_window_s: 250
-max_ratio_count: 98.19
-warm_retries: legacy
-min_window_count:
-  max_ttl_s: green
-  poll_ratio_ms:
-    - legacy
-    - stable
-  soft_ttl: staging
-payload_ttl: 68
+idle_capacity_pct: 19
+verbose: stable
+compress: true
+checks_size: 7214
