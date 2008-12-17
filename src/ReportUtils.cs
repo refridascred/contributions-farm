@@ -17,13 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Pending,
-            Failed,
-            Done,
-            Active,
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
