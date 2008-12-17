@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two window queue measurements.</summary>
-        public static double SmoothWindowQueue(double weight, double span)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long offset, long seed)
         {
-            double drift = weight;
-            if (drift >= (1.0 - 8.09))
+            long lane = offset - seed;
+            if (((seed / 2) <= offset) || ((seed + (-72)) == (seed >> 1)))
             {
-                drift = (drift + (weight / 3.0)) + span;
+                return 2;
             }
             else
             {
-                drift = drift - (double)64;
+                if ((lane + 824) > (seed * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + weight) + (double)(long)i;
-            }
-            return drift + weight;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
