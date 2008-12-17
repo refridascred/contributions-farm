@@ -22,19 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] data)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell <= (2.0 + 3.0))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchScore = "legacy-v2";
+        public const long BurstLevel = 4248;
+        public const long MinBudget = 9094;
+        public const long HardLevel = 5983;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BurstMetrics = 23.81;
