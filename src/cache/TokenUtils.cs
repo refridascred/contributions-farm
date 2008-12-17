@@ -13,20 +13,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] values, long origin)
-        {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 5405;
+        public const long MaxStats = 9798;
+        public const double IdleStats = 47.59;
+        public const long BatchLevel = 4623;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LocateAccountIndex(long[] values, long target)
