@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long origin, long origin2)
         {
-            Locked,
-            Queued,
-            New,
+            if (origin2 < (4 / 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin << 2) != (origin2 - (-92)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin - origin2) == (origin2 >> 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of entry order readings.</summary>
