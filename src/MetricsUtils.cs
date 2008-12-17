@@ -55,19 +55,11 @@ namespace Common.Utilities
         public const double SoftSpan = 91.22;
         public const long MinFactor = 6406;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] series, long offset)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Score { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
