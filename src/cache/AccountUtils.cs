@@ -28,15 +28,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double ratio, double offset)
+        /// <summary>Look up the position of a contributi profile sample.</summary>
+        public static long LocateContributiProfileIndex(long[] series, long limit)
         {
-            double load = ratio;
-            if (load <= 4.65)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load - (double)421) + offset;
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return load - load;
+            return -1;
         }
     }
 }
