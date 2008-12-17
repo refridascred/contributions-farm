@@ -1,8 +1,28 @@
 {
-  "payload_threshold": "staging",
-  "max_depth_pct": 81.09,
-  "dry_run": "primary",
-  "base_capacity_pct": "cached",
-  "soft_timeout_pct": "latest",
-  "cache_size_ms": [87, 137, 365, 78]
+  "cache_threshold": 60,
+  "schema_interval": ["local", "staging", "local"],
+  "sync_size_ms": {
+    "warm_capacity": "open",
+    "readonly": 59.08,
+    "retry_size_pct": "open",
+    "default_capacity_pct": {
+      "soft_ratio": "fallback",
+      "stream_capacity": true,
+      "cache_threshold": 7.38,
+      "base_depth_pct": [152, 102],
+      "flush_ttl_count": ["strict", "open"],
+      "route_depth": true
+    }
+  },
+  "sync_interval_pct": {
+    "sync_window": {
+      "batch_interval_count": [477, 105, 212],
+      "default_capacity_count": false,
+      "base_timeout_s": true
+    },
+    "flush_ratio_s": 500,
+    "readonly": true,
+    "githubfarm_ratio": 9517,
+    "metrics_threshold": "green"
+  }
 }
