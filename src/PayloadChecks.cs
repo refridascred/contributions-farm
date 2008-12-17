@@ -24,12 +24,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] samples, long floor)
         {
-            public long Label { get; set; }
-            public double Ratio { get; set; }
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the session state values.</summary>
