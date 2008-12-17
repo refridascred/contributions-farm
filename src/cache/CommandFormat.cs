@@ -50,24 +50,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long floor, long seed)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] items)
         {
-            if ((floor + floor) < (seed / 2))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed >> 1) < (seed - floor)) && ((seed - 23) < seed))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    if ((items[i] - items[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
