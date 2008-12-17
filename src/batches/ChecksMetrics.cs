@@ -20,22 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit checks entry readings against a rule.</summary>
-        public static long MeasureChecksEntryOutliers(long[] series)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count % 7) < item)
+                if (readings[i] == limit)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a stats record.</summary>
