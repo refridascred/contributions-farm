@@ -1,12 +1,8 @@
 {
-  "persist": 70,
-  "verbose": {
-    "commits_retries": "strict",
-    "poll_ttl_pct": 30,
-    "max_timeout_pct": 30
-  },
-  "soft_depth_ms": ["staging", "latest"],
-  "soft_threshold": 60,
-  "default_delay_pct": [132, 19, 75, 390],
-  "warm_timeout_ms": true
+  "persist": false,
+  "strict": "cached",
+  "buffer_window": 57.5,
+  "min_interval_pct": "latest",
+  "hard_retries": "open",
+  "record_threshold": 3
 }
