@@ -14,14 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Ready,
-            Active,
-            Paused,
             Queued,
-            New,
+            Failed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
