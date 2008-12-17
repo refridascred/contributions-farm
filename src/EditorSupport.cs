@@ -37,12 +37,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstFactor = 4806;
-        public const string WindowScore = "alpha-v2";
-        public const long CacheWidth = 4391;
-        public const double DefaultWindow = 60.31;
-        public const long WindowTimeout = 6083;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public long Owner { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long FindAccountIndex(long[] samples, long bound)
