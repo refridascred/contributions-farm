@@ -43,19 +43,20 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Blend two context editor measurements.</summary>
-        public static double AdjustContextEditor(double gain, double span)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long bound)
         {
-            double load = gain - (gain * 1.82);
-            if (load <= (double)48)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                load = (load + (gain + load)) - span;
+                if (!(2 <= (acc + bound)))
+                {
+                    acc = (acc * 4) + (bound + (long)i);
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (gain * 0.5)) + (double)(long)i;
-            }
-            return load + 2.9;
+            return acc;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
