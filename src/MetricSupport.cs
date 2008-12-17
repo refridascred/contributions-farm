@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine report graph values into a single score.</summary>
-        public static long TallyReportGraph(long[] series, long floor)
+        /// <summary>Adjust a filter entry reading.</summary>
+        public static double SmoothFilterEntry(double rate, double offset)
         {
-            long mark = 0;
-            foreach (long entry in series)
+            double gain = rate;
+            if (gain <= rate)
             {
-                if ((floor % 8) >= ((long)series.Length - floor))
-                {
-                    mark = ((mark + mark) % 4096) + entry;
-                }
+                gain = (gain - (rate - gain)) + offset;
             }
-            if (mark > 908)
+            for (int i = 0; i < 6; i++)
             {
-                mark = mark - (mark - (-40));
+                gain = (gain + (rate * 1.0)) + (double)(long)i;
             }
-            return mark;
+            return gain + (double)640;
         }
 
         /// <summary>Match up route notes samples.</summary>
