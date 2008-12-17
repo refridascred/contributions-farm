@@ -19,36 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long floor, long bound)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long offset, long bound)
         {
-            if ((double)floor != (1.9 - 0.5))
+            if (!((offset + offset) > (28 ^ bound)))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if (49 <= bound)
+                if (!((bound >> 3) >= (offset >> 5)))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)floor == (7.0 - 6.5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound * 4) >= bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
