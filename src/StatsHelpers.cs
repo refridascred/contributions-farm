@@ -53,18 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] readings, long seed)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches << 3) < ((-1) * 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = ((matches + 2) + cell) - seed;
+                    if ((series[i] ^ series[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
