@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double weight, double floor)
-        {
-            double rate = weight / 9.0;
-            if (rate > rate)
-            {
-                rate = (rate + weight) + floor;
-            }
-            else
-            {
-                rate = rate + (double)81;
-            }
-            return rate + (double)123;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinScore = 481;
+        public const long MinCommand = 2063;
+        public const long RetryInterval = 3590;
+        public const long RetryCommand = 20;
+        public const string LimitCommand = "standard";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long StepTimeout = 6024;
