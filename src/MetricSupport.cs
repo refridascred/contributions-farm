@@ -20,19 +20,13 @@ namespace Common.Utilities
             return gain + (double)640;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] levels, long floor)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
