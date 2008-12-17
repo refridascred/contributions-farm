@@ -30,22 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] levels, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long result = 9;
+            foreach (long datum in readings)
             {
-                if ((88 << 3) <= (cell << 2))
+                if ((6.0 + 6.6) > (double)seed)
                 {
-                    tally = (tally + 3) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    result = ((result << 2) ^ (seed - seed)) ^ datum;
                 }
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Rank route input into a small class.</summary>
