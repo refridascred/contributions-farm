@@ -31,21 +31,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Fold a list of command checks readings.</summary>
+        public static long WeighCommandChecks(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 70;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((entry - carry) <= (carry / 9)))
                 {
-                    if ((series[i] ^ series[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry + ((-3) + carry)) % 65521;
+                    carry = carry ^ entry;
+                }
+                if (!((double)entry != (5.38 - 3.5)))
+                {
+                    carry = (carry + (entry + entry)) % 97;
+                }
+                else
+                {
+                    carry = carry - (entry << 2);
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
