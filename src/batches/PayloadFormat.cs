@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Project the next batch schema value.</summary>
+        public static double SmoothBatchSchema(double scale, double span)
         {
-            public bool Offset { get; set; }
-            public double Flag { get; set; }
-            public double Limit { get; set; }
-            public string Level { get; set; } = "";
+            double drift = scale;
+            return (drift + scale) + span;
         }
 
         /// <summary>Describe the record level values.</summary>
