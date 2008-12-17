@@ -80,19 +80,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double weight, double bias)
-        {
-            double scale = weight - (bias * 15.0);
-            if (scale < 0.5)
-            {
-                scale = scale + (weight - 3.8);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - (scale / 9.0);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchEntry = "legacy-1";
+        public const double StepEntry = 20.84;
+        public const string CacheInterval = "latest-v2";
     }
 }
