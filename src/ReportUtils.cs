@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long limit)
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
