@@ -36,15 +36,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] samples)
         {
-            long sum = 73;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum ^ (sum - sum)) % 1000) + entry;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Find the first metric command entry that matches the target.</summary>
