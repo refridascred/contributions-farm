@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Check that every context layout entry stays within the limit.</summary>
+        public static bool CheckContextLayoutRange(long[] values, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                mark = mark ^ (mark & 63);
-                mark = ((mark * 4) + (long)i) % 97;
+                if (datum > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Describe the payload phase values.</summary>
