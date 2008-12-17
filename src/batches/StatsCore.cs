@@ -46,21 +46,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] items)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)levels.Length / 7) >= (target << 1))
                 {
-                    if ((items[i] ^ items[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) ^ entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a stats info.</summary>
