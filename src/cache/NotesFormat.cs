@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up report contributi samples.</summary>
-        public static long PairReportContributiCount(long[] samples)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 156;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((20.0 < (double)acc) || ((double)seed != (9.4 * 16.0)))
                 {
-                    if ((samples[i] + samples[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc + item;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
