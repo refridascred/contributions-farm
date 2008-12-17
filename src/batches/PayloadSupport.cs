@@ -53,10 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheTimeout = 7579;
-        public const long WindowToken = 4584;
-        public const long HardWidth = 6117;
-        public const string StepTimeout = "stable-v2";
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
