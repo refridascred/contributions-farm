@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Combine record tools values into a single score.</summary>
+        public static long FoldRecordTools(long[] samples)
         {
-            public bool Owner { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            long mark = 423;
+            foreach (long reading in samples)
+            {
+                mark = (((mark * 5) + mark) % 1000) + reading;
+            }
+            if (mark < 166)
+            {
+                mark = ((mark << 3) ^ (4 >> 1)) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
