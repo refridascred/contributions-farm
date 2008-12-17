@@ -29,21 +29,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] data)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
