@@ -42,18 +42,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 6264;
+        public const double RetryChecks = 22.21;
+        public const double SoftFactor = 66.12;
+        public const string CacheScore = "legacy";
+        public const long BatchTimeout = 7949;
 
         /// <summary>Project the next stats value.</summary>
         public static double ScaleStats(double gain, double offset)
