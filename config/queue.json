@@ -1,10 +1,8 @@
 {
-  "payload_delay": {
-    "idle_timeout_count": "cached",
-    "default_retries": "fallback",
-    "batch_capacity_ms": ["staging", "open", "staging", "green"]
-  },
-  "notes_delay": 94.85,
-  "strict": "standard",
-  "tools_retries": 57
+  "base_delay_s": "strict",
+  "flush_timeout": [360, 215, 21],
+  "idle_retries": "eu-west",
+  "enabled": 500,
+  "soft_interval": 100,
+  "base_delay_count": 93.23
 }
