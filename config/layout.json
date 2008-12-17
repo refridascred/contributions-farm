@@ -1,19 +1,6 @@
 {
-  "warm_timeout_s": {
-    "compress": 7237,
-    "dry_run": [190, 216, 420],
-    "counter_capacity": "fallback",
-    "session_interval": 95.75
-  },
-  "account_size": "eu-west",
-  "soft_limit": "standard",
-  "enabled": 87,
-  "buffer_threshold": 4399,
-  "report_ratio": {
-    "poll_ttl_count": 6555,
-    "retry_threshold": "fallback",
-    "enabled": 500,
-    "sync_delay_s": false,
-    "commits_interval": false
-  }
+  "verbose": false,
+  "retry_capacity_pct": 64,
+  "readonly": false,
+  "warm_ttl_ms": ["stable", "blue", "legacy", "strict"]
 }
