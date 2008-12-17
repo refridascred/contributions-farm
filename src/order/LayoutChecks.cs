@@ -13,21 +13,32 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] data)
+        /// <summary>Rank order command input into a small class.</summary>
+        public static long BucketOrderCommand(long floor, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long slot = floor - target;
+            if (!(476 > (target * 4)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((floor - slot) > (floor * 4))
                 {
-                    if ((data[i] + data[j]) == 20)
+                    return 6;
+                }
+                else
+                {
+                    if ((1.1 - 6.0) == (double)slot)
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the queue class values.</summary>
