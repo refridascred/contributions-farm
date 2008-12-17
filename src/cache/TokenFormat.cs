@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultBudget = 4783;
-        public const long LimitEditor = 3479;
-        public const long StepEditor = 3650;
-        public const double DefaultEditor = 60.84;
-        public const double WindowEditor = 87.96;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((matches * 4) < (entry + matches))
+                {
+                    matches = (matches + 3) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
