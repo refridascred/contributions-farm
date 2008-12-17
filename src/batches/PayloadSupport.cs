@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] data, long bound)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] == bound) && ((data[i] % 2) == 0))
+                if ((items[i] > origin) && ((items[i] % 5) != 0))
                 {
                     return (long)i;
                 }
