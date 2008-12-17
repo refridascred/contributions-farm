@@ -6,7 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local green edge; do
+mode="${1:-fallback}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in legacy latest; do
     log "checking ${item}"
 done
 
