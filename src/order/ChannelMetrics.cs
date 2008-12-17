@@ -30,21 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((474 + count) <= 8)
                 {
-                    if ((data[i] - data[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = ((count + 2) ^ value) + floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
