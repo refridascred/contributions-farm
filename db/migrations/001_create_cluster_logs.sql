@@ -1,11 +1,13 @@
 -- Create the cluster_logs table.
 CREATE TABLE IF NOT EXISTS cluster_logs (
     id INTEGER PRIMARY KEY,
-    score REAL NOT NULL DEFAULT 0,
-    ratio REAL,
+    label TEXT,
+    region TEXT,
+    level INTEGER,
     count INTEGER NOT NULL DEFAULT 0,
-    created_at TIMESTAMP,
-    state TEXT NOT NULL DEFAULT 'new'
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_cluster_logs_score ON cluster_logs (score);
+CREATE INDEX IF NOT EXISTS idx_cluster_logs_label ON cluster_logs (label);
+
+INSERT INTO cluster_logs (label, region, level, count, token) VALUES ('open', 'local', 68, 22, 'blue');
