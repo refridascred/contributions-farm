@@ -28,27 +28,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] values)
-        {
-            long total = 2;
-            foreach (long datum in values)
-            {
-                if ((total & 7) >= (datum * 2))
-                {
-                    total = ((total * 2) + (datum + datum)) % 1000;
-                }
-                else
-                {
-                    total = (total ^ (0 & 3)) % 97;
-                }
-            }
-            if (total > 0)
-            {
-                total = (total + (total & 15)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstSpan = 3634;
+        public const long StepCount = 620;
+        public const string BatchScore = "alpha-v2";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MinWidth = 7551;
