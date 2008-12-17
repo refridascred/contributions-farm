@@ -25,22 +25,12 @@ namespace Common.Utilities
         public const double WindowGithubfarm = 28.32;
         public const string BurstSize = "staging";
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] items, long limit)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((3.0 / 8.0) >= (double)seen)
-                {
-                    seen = ((seen + 3) - entry) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Retry,
+            New,
         }
     }
 }
