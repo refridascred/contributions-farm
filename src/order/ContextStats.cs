@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate record order samples.</summary>
-        public static long TallyRecordOrder(long[] values, long bound)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long sum = 891;
-            foreach (long item in values)
-            {
-                if (sum < (item % 10))
-                {
-                    sum = (sum - (bound / 6)) % 65521;
-                }
-                else
-                {
-                    sum = (sum * 3) + (371 + item);
-                }
-            }
-            return sum;
+            public long Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many session cache samples are out of range.</summary>
