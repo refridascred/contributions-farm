@@ -1,5 +1,10 @@
 {
-  "batch_limit": 3621,
-  "idle_threshold": 8522,
-  "buffer_retries": 7586
+  "idle_depth": 4.46,
+  "readonly": ["latest", "green", "eu-west", "standard"],
+  "hard_interval": {
+    "batch_ratio": "green",
+    "burst_delay_s": true,
+    "burst_ratio_s": 7688,
+    "compress": "green"
+  }
 }
