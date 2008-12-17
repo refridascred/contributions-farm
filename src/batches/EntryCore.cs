@@ -32,18 +32,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the order already entries that pass the check.</summary>
-        public static long CountOrderAlreadyHits(long[] levels, long origin)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (((datum + datum) != (37 * 2)) && !((origin - datum) <= ((-61) << 3)))
+                if (cell <= offset)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Describe the notes kind values.</summary>
