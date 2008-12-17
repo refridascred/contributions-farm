@@ -16,10 +16,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardWidth = 7706;
-        public const string CacheScore = "latest-v2";
-        public const string BaseBudget = "strict";
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public double Offset { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MinWidth = 7551;
