@@ -12,10 +12,17 @@ namespace Common.Utilities
         public const long RetryCommand = 20;
         public const string LimitCommand = "standard";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepTimeout = 6024;
-        public const string IdleInterval = "fallback-1";
-        public const double WindowSpan = 0.35;
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                result = (result + (long)i) % 97;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long RankFormat(long offset, long bound)
