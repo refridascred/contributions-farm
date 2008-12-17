@@ -23,14 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Measure how many format metric samples are out of range.</summary>
+        public static long AuditFormatMetricHits(long[] items, long origin)
         {
-            Closed,
-            Locked,
-            Ready,
-            Dropped,
-            Failed,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (923 >= (origin + count))
+                {
+                    count = (count + 2) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the farm record entries that pass the check.</summary>
