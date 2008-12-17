@@ -1,6 +1,6 @@
 {
-  "readonly": 56,
-  "context_timeout": 1024,
-  "poll_capacity_count": "local",
-  "hard_limit_count": false
+  "filter_interval": 1123,
+  "audit": [129, 75],
+  "readonly": 98,
+  "warm_limit_pct": false
 }
