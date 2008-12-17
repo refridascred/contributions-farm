@@ -27,31 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a counter buffer pair into a bucket.</summary>
-        public static long SortCounterBuffer(long floor, long floor2)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            if (!((floor + floor) > (floor - floor2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor2 / 6) == (59 ^ floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)floor > 8.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
