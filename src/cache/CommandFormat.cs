@@ -16,22 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] samples, long limit)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long result = 63;
+            foreach (long cell in samples)
             {
-                if ((tally + limit) >= tally)
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result ^ (result & 7)) % 4096) ^ cell;
             }
-            return tally;
+            if (result < 271)
+            {
+                result = result - (result * 3);
+            }
+            return result;
         }
 
         /// <summary>Count the metrics filter entries that pass the check.</summary>
