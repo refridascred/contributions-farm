@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate channel tools readings against a bound.</summary>
-        public static bool GuardChannelToolsRange(long[] series, long offset)
-        {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 4174;
+        public const long MaxBudget = 1825;
+        public const double IdleLevel = 33.9;
+        public const long MaxCount = 6799;
+        public const long BurstBudget = 8764;
 
         /// <summary>Adjust a format reading.</summary>
         public static double ScaleFormat(double scale, double offset)
