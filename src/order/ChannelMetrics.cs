@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count commits account pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsAccountCount(long[] items)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] - items[j]) != 9)
+                    if ((values[i] ^ values[j]) == 5)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
