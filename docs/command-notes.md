@@ -1,12 +1,14 @@
 # Command notes
 
-Keep account and command names short and lowercase.
-Defaults for cache live in the config folder and can be overridden per environment.
-When a entry fails, the githubfarm handler retries a few times before giving up.
+The account report groups every report by tools.
+The notes module keeps contributi values in sync with the channel cache.
+When a record fails, the batch handler retries a few times before giving up.
+
+Keep command and stats names short and lowercase.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep channel values small
-- Prefer payload defaults
-- Document new route fields
-- Log every queue change
+- Document new batches fields
+- Review graph limits each release
+- Validate route input early
