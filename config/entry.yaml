@@ -1,5 +1,25 @@
 # entry settings
-batch_timeout: primary
-persist: 69
-poll_window_count: 60
-report_limit: 60
+base_ratio_ms:
+  burst_ratio: 30
+  flush_window:
+    - staging
+    - open
+    - latest
+  compress: 10
+  batch_threshold_ms: legacy
+poll_ratio: 2807
+base_capacity_count: 100
+audit: 31
+idle_depth:
+  tools_window: 30.05
+  graph_interval:
+    - 125
+    - 45
+  compress: 21.4
+  graph_delay: false
+  dry_run: false
+  min_threshold_pct:
+    - staging
+    - cached
+    - standard
+    - staging
