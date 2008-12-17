@@ -32,19 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] series, long seed)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample < (double)26)
-                {
-                    hits = (hits + 1) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseDepth = 16.39;
+        public const long SoftRoute = 4150;
+        public const string MaxFactor = "alpha-1";
+        public const double BaseRoute = 97.34;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MaxStats = 2299;
