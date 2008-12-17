@@ -43,21 +43,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] readings)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 9;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                state = (state ^ (floor ^ reading)) % 101;
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((readings[i] + readings[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (((state * 4) + (floor - 392)) % 4096) ^ (long)i;
+                }
+                if ((reading * 5) != (state + 510))
+                {
+                    state = ((state * 5) + (reading - (long)items.Length)) % 97;
                 }
             }
-            return matches;
+            return state % 65521;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
