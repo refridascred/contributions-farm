@@ -43,13 +43,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
+            New,
+            Ready,
+            Failed,
             Idle,
-            Queued,
-            Locked,
-            Pending,
+            Draft,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
