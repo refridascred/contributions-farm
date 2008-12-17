@@ -16,12 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double gain, double span)
         {
-            Active,
-            Done,
-            New,
+            double mean = 5.0;
+            if (mean > 4.0)
+            {
+                mean = (mean + (18.0 * 6.0)) - span;
+            }
+            else
+            {
+                mean = mean + (gain - mean);
+            }
+            return mean + (mean - 5.78);
         }
 
         /// <summary>Count the metrics filter entries that pass the check.</summary>
