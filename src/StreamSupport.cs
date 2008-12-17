@@ -13,14 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Queued,
-            Failed,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxCount = 7121;
+        public const long StepSize = 7140;
+        public const double MaxRoute = 24.78;
+        public const long RetryScore = 3614;
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long SeekPayloadIndex(long[] samples, long origin)
