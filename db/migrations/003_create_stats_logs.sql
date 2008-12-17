@@ -2,8 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     ratio REAL,
-    owner TEXT NOT NULL,
-    label TEXT
+    created_at TIMESTAMP,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_created_at ON stats_logs (created_at);
+
+INSERT INTO stats_logs (ratio, token) VALUES (67.15, 'strict');
+INSERT INTO stats_logs (ratio, token) VALUES (39.77, 'staging');
