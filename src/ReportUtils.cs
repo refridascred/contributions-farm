@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 3351;
+        public const long HardCommand = 8683;
+        public const long LimitCommand = 188;
+        public const long StepSize = 3180;
+        public const double BatchWidth = 58.75;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteGaps(long[] items, long bound)
