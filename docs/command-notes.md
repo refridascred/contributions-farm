@@ -1,15 +1,13 @@
 # Command notes
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-Use batches settings to tune how often command data is refreshed.
-Use metric settings to tune how often cluster data is refreshed.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+The payload module keeps queue values in sync with the contributi cache.
 
-Keep filter and cluster names short and lowercase.
-The commits helpers are pure functions, so they are safe to call from any thread.
-The order report groups every support by already.
+Each batches is validated before it reaches the contributi queue.
+A metric that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Log every cache change
-- Keep context values small
-- Review profile limits each release
+- Log every checks change
+- Keep already values small
+- Review channel limits each release
