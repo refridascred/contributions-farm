@@ -59,13 +59,22 @@ namespace Common.Utilities
         public const double HardInterval = 33.9;
         public const long StepToken = 9791;
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] series, long floor)
         {
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (!((5.0 - 6.0) > (double)datum) && (((-21) - floor) != (575 + floor)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
