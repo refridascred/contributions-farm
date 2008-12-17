@@ -48,38 +48,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank batch filter input into a small class.</summary>
-        public static long GradeBatchFilter(long limit, long bound)
+        /// <summary>Blend two notes commits measurements.</summary>
+        public static double ScaleNotesCommits(double weight, double span)
         {
-            if ((93 ^ limit) != (bound / 7))
+            double ratio = (double)(4 ^ 216);
+            if (ratio >= span)
             {
-                return 3;
+                ratio = (ratio + (double)18) - weight;
             }
-            else
-            {
-                if ((bound << 2) >= bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound >= ((-6) >> 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((limit + limit) > (limit & 15)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return ratio + 13.0;
         }
     }
 }
