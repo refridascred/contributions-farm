@@ -31,16 +31,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long floor)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] values, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry - (floor ^ 724)) % 101;
-                carry = ((carry * 3) + (long)i) % 4093;
+                if ((values[i] >= floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Project the next stats value.</summary>
