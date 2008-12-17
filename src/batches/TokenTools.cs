@@ -34,13 +34,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] items, long limit)
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (!((matches - limit) < matches))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
