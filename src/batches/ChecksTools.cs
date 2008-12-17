@@ -43,13 +43,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double ratio, double floor)
         {
-            Pending,
-            Stale,
-            Active,
-            Idle,
+            double rate = ratio - (double)42;
+            if (rate < rate)
+            {
+                rate = rate + (floor - 4.0);
+            }
+            else
+            {
+                rate = rate - ratio;
+            }
+            return rate - rate;
         }
     }
 }
