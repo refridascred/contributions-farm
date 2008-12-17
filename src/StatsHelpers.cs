@@ -44,18 +44,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] items, long step)
+        /// <summary>Iterate the payload checks series from a seed.</summary>
+        public static long IteratePayloadChecks(long offset)
         {
-            long sum = 663;
-            foreach (long item in items)
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((item + step) < (sum << 1)))
+                if (2.14 <= (double)offset)
                 {
-                    sum = sum - (step % 7);
+                    break;
                 }
+                else
+                {
+                    carry = (carry - (long)i) % 255;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Hold a support summary.</summary>
