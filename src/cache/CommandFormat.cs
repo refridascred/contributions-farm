@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinBatches = 41.91;
+        public const string BurstBudget = "open-edge";
+        public const long RetryBatches = 2842;
 
         /// <summary>Blend two token measurements.</summary>
         public static double ScaleToken(double gain, double span)
