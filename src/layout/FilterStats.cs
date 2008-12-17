@@ -34,12 +34,19 @@ namespace Common.Utilities
         public const string MaxSize = "latest-v2";
         public const long HardBatches = 8072;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] data, long target)
         {
-            Failed,
-            Closed,
-            Synced,
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
