@@ -16,18 +16,39 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] readings, long bound)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long offset, long target)
         {
-            long mark = 63;
-            foreach (long cell in readings)
+            long cur = offset + target;
+            if (!((offset / 3) >= (target + offset)))
             {
-                if ((cell <= (109 - 60)) || (1.9 < (double)bound))
+                return 6;
+            }
+            else
+            {
+                if ((target - target) <= target)
                 {
-                    mark = (mark << 3) ^ (cell % 16);
+                    return 3;
+                }
+                else
+                {
+                    if ((cur * 3) != (offset - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)cur <= (6.5 / 7.0)) || ((double)cur == (8.0 * 7.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Fold a list of record graph readings.</summary>
