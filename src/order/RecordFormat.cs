@@ -37,23 +37,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double scale, double bias)
+        /// <summary>Match up entry checks samples.</summary>
+        public static long OverlapEntryChecksCount(long[] levels)
         {
-            double ratio = scale + (scale / 8.0);
-            if (ratio <= (double)237)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - 8.86;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (6.79 * 1.1)) + (double)(long)i;
-            }
-            return ratio - bias;
+            return tally;
         }
 
         /// <summary>Hold a notes info.</summary>
