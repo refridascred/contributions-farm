@@ -19,14 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Count the notes record entries that pass the check.</summary>
+        public static long MeasureNotesRecordOutliers(long[] series)
         {
-            Failed,
-            Ready,
-            Done,
-            Dropped,
-            Draft,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((tally - item) != (tally ^ tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next format value.</summary>
