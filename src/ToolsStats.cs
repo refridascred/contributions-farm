@@ -27,11 +27,32 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double bias, double floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long target, long bound)
         {
-            double load = (double)87;
-            return ((load - (9.75 / 5.0)) + bias) + floor;
+            long next = target - bound;
+            if ((19.0 >= (double)target) && ((next % 16) < (next * 2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((2.01 > (double)next) && ((double)bound >= 6.8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((9.4 / 5.0) < (double)bound) || (91 > (next + bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
