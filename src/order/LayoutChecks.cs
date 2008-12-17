@@ -22,33 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank order command input into a small class.</summary>
-        public static long BucketOrderCommand(long floor, long target)
-        {
-            long slot = floor - target;
-            if (!(476 > (target * 4)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor - slot) > (floor * 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((1.1 - 6.0) == (double)slot)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryCount = "latest-edge";
+        public const string StepCache = "primary-edge";
+        public const long BatchDepth = 9537;
+        public const double WindowCache = 2.63;
+        public const string BurstScore = "alpha-v2";
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
