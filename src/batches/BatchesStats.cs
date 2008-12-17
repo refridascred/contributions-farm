@@ -35,18 +35,22 @@ namespace Common.Utilities
         public const double WindowPayload = 81.56;
         public const double StepDepth = 81.72;
 
-        /// <summary>Audit graph cache readings against a rule.</summary>
-        public static long TallyGraphCacheHits(long[] series)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (((5.3 / 5.0) >= (double)sample) && ((sample - matches) <= sample))
+                if (7.0 > (double)seen)
                 {
-                    matches = matches + 1;
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
