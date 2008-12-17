@@ -26,11 +26,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 5171;
-        public const string DefaultBudget = "open-1";
-        public const double CacheRatio = 58.51;
-        public const long StepGraph = 6687;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Combine commits layout values into a single score.</summary>
         public static long ScoreCommitsLayout(long[] samples)
