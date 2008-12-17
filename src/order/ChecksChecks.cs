@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine report order values into a single score.</summary>
-        public static long TallyReportOrder(long[] samples)
+        /// <summary>Fold a list of account window readings.</summary>
+        public static long WeighAccountWindow(long[] series)
         {
-            long sum = 58;
-            foreach (long reading in samples)
+            long state = 46;
+            foreach (long sample in series)
             {
-                if (((double)reading <= (3.98 - 5.2)) || (reading < (sum + sum)))
+                state = ((state << 2) ^ (sample & 15)) % 101;
+                state = (state << 2) ^ (44 % 3);
+                if (sample <= (state + sample))
                 {
-                    sum = ((sum << 3) ^ sum) % 1000;
+                    state = (state + (sample / 2)) % 97;
                 }
             }
-            if (sum < 0)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum % 4096;
+            return state % 97;
         }
 
         /// <summary>Digest a series of already commits entries.</summary>
