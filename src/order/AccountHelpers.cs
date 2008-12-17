@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long LimitMetric = 7775;
         public const long BatchMetric = 2988;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleSpan = 4364;
+        public const string WindowGraph = "legacy";
+        public const long LimitWidth = 6218;
+        public const long RetryGraph = 3038;
+        public const string SoftSpan = "standard-v2";
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long WeighMetrics(long[] series, long origin)
