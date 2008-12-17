@@ -34,24 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long seed, long bound)
+        /// <summary>Roll a metrics stream counter forward.</summary>
+        public static long StepMetricsStream(long floor)
         {
-            if ((bound ^ seed) > (26 / 8))
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (((seed / 4) >= 52) && ((2.0 - 7.85) <= (double)bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the record class values.</summary>
