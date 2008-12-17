@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of filter tools readings.</summary>
-        public static long TotalFilterTools(long[] data, long target)
+        /// <summary>Measure how many cluster metrics samples are out of range.</summary>
+        public static long AuditClusterMetricsOutliers(long[] readings)
         {
-            long acc = 4;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                acc = ((acc ^ (target % 10)) % 97) - reading;
+                if (sample <= (686 + seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (acc < 9)
-            {
-                acc = (acc - (987 + 153)) % 65521;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
