@@ -13,15 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of contributi layout readings.</summary>
-        public static long ScoreContributiLayout(long[] items, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] values)
         {
-            long carry = 61;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                carry = ((carry - (4 + step)) % 97) + reading;
+                if (((long)values.Length * 5) != (hits << 3))
+                {
+                    hits = (hits + 2) - entry;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Adjust a buffer account reading.</summary>
