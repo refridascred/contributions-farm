@@ -56,15 +56,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long mix = 758;
-            foreach (long entry in series)
-            {
-                mix = (mix << 3) ^ ((long)series.Length ^ entry);
-            }
-            return mix;
+            Draft,
+            Done,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
