@@ -23,11 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string RetrySize = "open-v2";
-        public const string IdleSpan = "open-edge";
-        public const long BatchContext = 7805;
-        public const long SoftTimeout = 6406;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Dropped,
+            Synced,
+            Locked,
+            Active,
+        }
 
         /// <summary>Digest a series of channel batches entries.</summary>
         public static long CombineChannelBatches(long[] data)
