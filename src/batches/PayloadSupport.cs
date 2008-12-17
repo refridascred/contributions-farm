@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] readings, long bound)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Idle,
+            Dropped,
+            Active,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
