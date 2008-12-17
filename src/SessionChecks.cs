@@ -12,38 +12,18 @@ namespace Common.Utilities
         public const long DefaultSize = 3115;
         public const long StepScore = 1363;
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long offset, long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] readings, long bound)
         {
-            if ((4.0 * 6.76) > (double)offset)
+            long mark = 63;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target < (offset - offset)) || ((double)target == (9.56 + 15.0)))
+                if ((cell <= (109 - 60)) || (1.9 < (double)bound))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((12.0 - 8.9) < (double)offset) && ((double)offset == (double)target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((offset * 4) <= target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = (mark << 3) ^ (cell % 16);
                 }
             }
+            return mark;
         }
 
         /// <summary>Rank tools batch input into a small class.</summary>
