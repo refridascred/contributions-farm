@@ -37,10 +37,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 3388;
-        public const double StepRoute = 39.06;
-        public const long CacheRoute = 3723;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public double Rank { get; set; }
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double SmoothFormat(double rate, double span)
