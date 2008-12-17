@@ -15,18 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] readings, long bound)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if ((7.5 / 9.0) == (double)bound)
+                if (item != limit)
                 {
-                    hits = (hits + 2) + entry;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Accumulate session samples.</summary>
