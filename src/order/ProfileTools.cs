@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long seed)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] items, long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (entry >= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
