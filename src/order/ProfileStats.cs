@@ -17,11 +17,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowInterval = 5858;
-        public const long BatchGithubfarm = 8550;
-        public const long RetryGithubfarm = 8851;
-        public const long StepGithubfarm = 1082;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TotalChecks(long[] readings)
