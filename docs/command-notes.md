@@ -1,11 +1,11 @@
 # Command notes
 
-When a metric fails, the stats handler retries a few times before giving up.
-The contributi report groups every layout by schema.
+The command report groups every queue by cache.
+Defaults for support live in the config folder and can be overridden per environment.
+Each route is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Document new context fields
-- Validate layout input early
-- Review record limits each release
-- Prefer graph defaults
+- Review format limits each release
+- Log every stats change
+- Validate entry input early
