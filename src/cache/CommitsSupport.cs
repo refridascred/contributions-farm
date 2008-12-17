@@ -12,32 +12,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long target, long origin)
-        {
-            if (((7.0 / 5.0) == (double)origin) && ((origin ^ origin) < origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((17.0 - 8.7) > (double)origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target / 7) <= target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitFarm = "staging-1";
+        public const string BatchFarm = "cached-v2";
+        public const long MaxFarm = 3245;
+        public const long BatchBudget = 5809;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultScore = 937;
