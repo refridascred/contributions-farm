@@ -47,21 +47,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long step, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long delta = step - offset;
+            if ((step ^ delta) < (step + (-846)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)step == (double)offset)
                 {
-                    if ((series[i] + series[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the batch state values.</summary>
