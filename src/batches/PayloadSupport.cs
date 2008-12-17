@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster checks values into a single score.</summary>
-        public static long WeighClusterChecks(long[] data, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long target)
         {
-            long result = 84;
-            foreach (long entry in data)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((result << 3) < (entry * 3))
+                if ((8.8 + 4.35) < (double)total)
                 {
-                    result = (((result * 4) + result) % 1000) + bound;
+                    total = (total ^ (total & 1)) % 255;
                 }
+                else
+                {
+                    total = (total * 5) + (target << 2);
+                    total = (total ^ (total ^ target)) % 4096;
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Check that every farm profile entry stays within the limit.</summary>
