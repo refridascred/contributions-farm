@@ -19,18 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric stream entries that pass the check.</summary>
-        public static long MeasureMetricStreamGaps(long[] items, long limit)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count >= (limit >> 5)) || (count < value))
+                if ((series[i] > floor) && ((series[i] % 5) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Adjust a support batches reading.</summary>
