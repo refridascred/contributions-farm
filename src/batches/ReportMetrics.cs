@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long LimitTimeout = 5565;
         public const long RetryInterval = 4305;
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] samples, long seed)
         {
-            Ready,
-            Synced,
-            Active,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cache info.</summary>
