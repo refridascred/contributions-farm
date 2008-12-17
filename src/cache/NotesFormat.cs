@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long anchor = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Done,
+            Closed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
