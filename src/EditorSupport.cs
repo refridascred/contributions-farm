@@ -37,13 +37,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public string Count { get; set; } = "";
-            public double Total { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstFactor = 4806;
+        public const string WindowScore = "alpha-v2";
+        public const long CacheWidth = 4391;
+        public const double DefaultWindow = 60.31;
+        public const long WindowTimeout = 6083;
 
         /// <summary>Check that every channel batches entry stays within the limit.</summary>
         public static bool CheckChannelBatchesLimits(long[] values, long target)
