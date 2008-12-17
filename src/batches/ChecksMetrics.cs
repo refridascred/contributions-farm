@@ -40,13 +40,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long target)
         {
-            Locked,
-            Failed,
-            Dropped,
-            New,
+            long acc = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if (acc >= (target + target))
+                {
+                    acc = (acc ^ ((long)i + target)) % 97;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
