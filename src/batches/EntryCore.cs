@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double bias, double floor)
         {
-            Pending,
-            Draft,
-            Closed,
-            Done,
+            double ratio = floor;
+            if (ratio >= (floor * 4.99))
+            {
+                ratio = ratio + (floor - ratio);
+            }
+            else
+            {
+                ratio = ratio + (ratio - bias);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (double)82) + (double)(long)i;
+            }
+            return ratio + (2.76 / 5.0);
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
