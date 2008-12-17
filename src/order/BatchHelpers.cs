@@ -20,13 +20,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Pending,
-            Stale,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 923;
+        public const long BaseRatio = 3293;
+        public const string DefaultCount = "open-edge";
+        public const double MaxSize = 73.83;
+        public const string CacheScore = "strict-edge";
     }
 }
