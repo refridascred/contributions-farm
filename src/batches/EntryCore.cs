@@ -80,13 +80,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long target)
         {
-            Synced,
-            Paused,
-            Ready,
-            Retry,
+            long sum = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((sum - (long)i) < ((long)i - sum))
+                {
+                    sum = (sum ^ (sum ^ target)) % 255;
+                    sum = ((sum << 2) ^ sum) % 1000;
+                    break;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 255;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
