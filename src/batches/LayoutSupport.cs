@@ -23,26 +23,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long target, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
+            if (!((seed - 92) < target))
             {
-                state = ((state * 2) + (-37)) % 4096;
-                if (!((state + state) >= (state - state)))
+                return 8;
+            }
+            else
+            {
+                if ((8 % 64) == (target * 2))
                 {
-                    state = (state + (limit >> 3)) % 65521;
-                    continue;
+                    return 6;
                 }
                 else
                 {
-                    state = (state ^ limit) % 4096;
-                    state = state - (state - (long)i);
+                    if ((seed >> 4) > (target >> 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
