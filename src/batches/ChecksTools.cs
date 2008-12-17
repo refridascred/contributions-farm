@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Check that every metrics notes entry stays within the limit.</summary>
+        public static bool VerifyMetricsNotesLimits(long[] items, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 10; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if (sample > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
