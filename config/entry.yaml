@@ -1,5 +1,28 @@
 # entry settings
-max_delay_pct: open
-sync_ttl_ms: 4458
-verbose: 10.54
-compress: 55
+readonly:
+  - 291
+  - 295
+persist: 30
+retry_timeout_count: 7.65
+hard_capacity_ms:
+  enabled: edge
+  compress:
+    - 233
+    - 388
+    - 267
+    - 159
+  soft_limit_pct:
+    route_delay: false
+    default_timeout: edge
+    account_capacity: 47.51
+    warm_ttl: 31.8
+    retry_ttl_ms: true
+    burst_size_count:
+      - 40
+      - 410
+  dry_run:
+    - 333
+    - 286
+    - 454
+soft_ttl_count: local
+min_capacity_s: blue
