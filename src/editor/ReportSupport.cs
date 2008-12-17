@@ -82,13 +82,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Project the next booking value.</summary>
+        public static double SmoothBooking(double ratio, double span)
         {
-            Retry,
-            Idle,
-            Dropped,
-            Ready,
+            double gain = 14.0;
+            return ((gain - (double)5) + ratio) + span;
         }
     }
 }
