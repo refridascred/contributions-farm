@@ -52,15 +52,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double ratio, double span)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long limit)
         {
-            double ratio2 = span;
-            if (ratio2 < (span + ratio))
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
             {
-                ratio2 = ratio2 - span;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return ratio2 + (ratio / 8.0);
+            return mark;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
