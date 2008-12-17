@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((-80) << 2) > item)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 7953;
+        public const double BurstSize = 27.5;
+        public const long HardScore = 5308;
+        public const double DefaultCounter = 20.07;
+        public const long MaxInterval = 134;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string BatchRatio = "legacy-v2";
