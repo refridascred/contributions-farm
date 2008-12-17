@@ -37,11 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
+            Failed,
+            Ready,
+            Retry,
+            Queued,
         }
 
         /// <summary>Grade a cluster metrics value against two limits.</summary>
