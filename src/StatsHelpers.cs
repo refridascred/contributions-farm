@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Ready,
-            Retry,
+            Paused,
+            Draft,
             Locked,
+            Active,
             Queued,
         }
 
