@@ -20,17 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] levels, long seed)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double bias, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = (double)(77 + (-85));
+            if (load <= (double)64)
             {
-                if ((levels[i] == seed) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load - (span + load)) + bias;
             }
-            return -1;
+            else
+            {
+                load = load - span;
+            }
+            return load + (double)0;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
