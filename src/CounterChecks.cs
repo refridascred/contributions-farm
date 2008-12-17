@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] readings, long floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 2) ^ ((long)i / 2)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
