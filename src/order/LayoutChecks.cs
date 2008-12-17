@@ -69,11 +69,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 7394;
-        public const long SoftNotes = 9615;
-        public const long LimitInterval = 6250;
-        public const double CacheNotes = 43.75;
-        public const long BatchCount = 2089;
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public string Count { get; set; } = "";
+            public double Size { get; set; }
+            public bool Score { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
