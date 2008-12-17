@@ -61,15 +61,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double gain, double bias)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] readings)
         {
-            double weight = gain / 5.0;
-            if (weight > gain)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                weight = weight - bias;
+                if ((tally ^ value) == (value ^ 4))
+                {
+                    tally = tally + 2;
+                }
             }
-            return weight - bias;
+            return tally;
         }
 
         /// <summary>Fold a list of command readings.</summary>
