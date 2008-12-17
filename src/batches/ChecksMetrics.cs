@@ -65,14 +65,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Pending,
-            Queued,
-            Draft,
-            Retry,
-            Synced,
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
