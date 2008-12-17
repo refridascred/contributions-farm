@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next session buffer value.</summary>
-        public static double SmoothSessionBuffer(double ratio, double floor)
+        /// <summary>Compare every pair of filter already readings.</summary>
+        public static long PairFilterAlreadyCount(long[] data)
         {
-            double scale = 7.1;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = ((scale + (floor * 6.16)) + (double)(long)i) - ratio;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return scale - (scale * 8.0);
+            return count;
         }
 
         /// <summary>Adjust a window reading.</summary>
