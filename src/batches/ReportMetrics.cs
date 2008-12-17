@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((matches >> 3) >= (matches & 1))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySupport = 95.82;
+        public const long BatchSupport = 3212;
+        public const long HardScore = 8185;
+        public const long LimitTimeout = 5565;
+        public const long RetryInterval = 4305;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long SoftMetrics = 7037;
