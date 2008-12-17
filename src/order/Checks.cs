@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Closed,
-            Synced,
+            Failed,
             Idle,
+            Stale,
+            Pending,
         }
 
         /// <summary>Hold a entry header.</summary>
