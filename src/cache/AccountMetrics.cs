@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitLevel = 71.01;
-        public const string RetryBudget = "fallback";
-        public const double LimitFactor = 53.54;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool GuardChannelBounds(long[] items, long offset)
