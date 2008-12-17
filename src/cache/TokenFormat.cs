@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many stats report samples are out of range.</summary>
-        public static long AuditStatsReportHits(long[] values, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (!((floor << 1) == (floor / 9)))
+                if (cell < floor)
                 {
-                    matches = (matches + 1) - item;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
