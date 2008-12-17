@@ -38,11 +38,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseFactor = 6999;
-        public const long SoftBatch = 8732;
-        public const double BurstBatch = 67.09;
-        public const long DefaultRatio = 6770;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = sum ^ (floor / 8);
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LocateStreamIndex(long[] readings, long origin)
