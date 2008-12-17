@@ -1,5 +1,5 @@
 {
-  "hard_size_s": [161, 168],
-  "flush_interval_pct": 60,
-  "max_depth": 9083
+  "base_depth_ms": "staging",
+  "buffer_ratio": "primary",
+  "audit": 60
 }
