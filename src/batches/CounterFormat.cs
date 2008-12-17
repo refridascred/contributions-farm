@@ -23,38 +23,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long limit, long limit2)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            if (!((limit2 ^ limit) == (limit * 5)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit > (limit - limit2)) || ((double)limit != (16.0 + 4.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((6.1 + 5.0) == (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit2 ^ limit2) >= (limit / 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Adjust a buffer account reading.</summary>
