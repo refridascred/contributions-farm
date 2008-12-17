@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((7 >= target) && (((long)i + (-7)) == (acc - (long)i)))
-                {
-                    acc = (acc + ((long)i >> 4)) % 4096;
-                }
-                else
-                {
-                    acc = acc - ((long)i % 64);
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowMetric = 62.94;
+        public const long MinSpan = 5854;
+        public const long CacheWidth = 1436;
+        public const double SoftMetric = 50.01;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long FoldCounter(long[] data, long floor)
