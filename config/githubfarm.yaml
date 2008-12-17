@@ -1,9 +1,4 @@
 # githubfarm settings
-retry_window_s: 7479
-tools_threshold:
-  - 223
-  - 226
-  - 291
-  - 56
-soft_depth: 10.56
-warm_threshold_count: 55
+dry_run: true
+hard_size_ms: primary
+verbose: fallback
