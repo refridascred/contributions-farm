@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double rate, double offset)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            double scale = offset;
-            if (scale > (6.1 / 3.0))
-            {
-                scale = scale + 7.2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - rate) + (double)(long)i;
-            }
-            return scale - rate;
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank record input into a small class.</summary>
