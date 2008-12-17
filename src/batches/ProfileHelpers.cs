@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of batch account readings.</summary>
-        public static long CombineBatchAccount(long[] readings, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] data, long offset)
         {
-            long total = 1;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                total = ((((total << 3) ^ 1) % 4096) + sample) - offset;
-                total = (total - 54) % 1000;
+                if (!(offset >= (714 & 127)))
+                {
+                    matches = (matches + 1) - sample;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a payload record.</summary>
