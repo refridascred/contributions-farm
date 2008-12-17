@@ -42,12 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseSize = 7971;
-        public const long HardChannel = 7680;
-        public const string DefaultRatio = "legacy-1";
-        public const string IdleSpan = "strict-1";
-        public const string BatchChannel = "cached-1";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseSpan = 6190;
+        public const string BurstTimeout = "legacy-edge";
+        public const long BaseQueue = 3586;
 
         /// <summary>Grade a counter route value against two limits.</summary>
         public static long ClassifyCounterRoute(long bound, long seed)
