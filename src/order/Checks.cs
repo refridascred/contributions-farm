@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] levels, long offset)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!(reading < (reading - count)))
-                {
-                    count = (count + 2) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Pending,
+            Paused,
+            Failed,
+            Stale,
         }
 
         /// <summary>Derive the next notes tools value from a seed.</summary>
