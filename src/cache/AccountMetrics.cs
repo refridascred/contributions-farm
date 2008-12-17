@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count githubfarm token pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmTokenCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitLevel = 71.01;
+        public const string RetryBudget = "fallback";
+        public const double LimitFactor = 53.54;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool GuardChannelBounds(long[] items, long offset)
