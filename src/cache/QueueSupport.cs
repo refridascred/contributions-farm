@@ -42,15 +42,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many metrics account samples are out of range.</summary>
-        public static long TallyMetricsAccountGaps(long[] levels, long target)
+        /// <summary>Audit payload record readings against a rule.</summary>
+        public static long MeasurePayloadRecordMatches(long[] readings, long step)
         {
             long hits = 0;
-            foreach (long cell in levels)
+            foreach (long entry in readings)
             {
-                if ((hits + cell) <= (cell >> 2))
+                if ((hits - entry) >= (hits ^ step))
                 {
-                    hits = (hits + 2) + target;
+                    hits = hits + 1;
                 }
             }
             return hits;
