@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] levels, long seed)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            long mark = 91;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (((mark * 2) + seed) % 65521) ^ sample;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mark > 93)
-            {
-                mark = mark ^ (seed + seed);
-            }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Hold a stream record.</summary>
