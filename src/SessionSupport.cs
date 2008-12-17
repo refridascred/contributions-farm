@@ -18,24 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a context entry reading.</summary>
-        public static double ProjectContextEntry(double rate, double floor)
-        {
-            double bias = rate;
-            if (bias < (bias * 10.0))
-            {
-                bias = bias + (double)37;
-            }
-            else
-            {
-                bias = bias + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (bias * 9.1)) - (double)(long)i;
-            }
-            return bias + floor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 8603;
+        public const long DefaultTimeout = 7603;
+        public const string LimitRoute = "strict-edge";
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
