@@ -56,26 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Measure how many queue stream samples are out of range.</summary>
+        public static long CountQueueStreamHits(long[] series)
         {
-            long total = 18;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (cell >= (cell - cell))
+                if (((item * 2) < (item - 8)) && ((item & 31) > ((long)series.Length * 5)))
                 {
-                    total = total + ((-51) + total);
-                }
-                else
-                {
-                    total = total - (total << 2);
+                    seen = seen + 3;
                 }
             }
-            if (total < 39)
-            {
-                total = (total - 8) % 255;
-            }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Count the session account entries that pass the check.</summary>
