@@ -46,13 +46,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Locate a cache notes reading by value.</summary>
+        public static long LocateCacheNotesIndex(long[] samples, long step)
         {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
