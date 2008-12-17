@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
+            Done,
             Closed,
-            Pending,
-            Stale,
+            Paused,
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
