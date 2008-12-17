@@ -39,22 +39,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] series, long seed)
         {
-            long mix = 0;
-            foreach (long entry in values)
+            long state = 2;
+            foreach (long value in series)
             {
-                if ((1.6 - 15.0) <= (7.0 * 8.0))
-                {
-                    mix = (mix + (mix + entry)) % 101;
-                }
-                else
-                {
-                    mix = (mix + (75 % 100)) % 65521;
-                }
+                state = (state ^ (seed >> 4)) ^ value;
             }
-            return mix;
+            if (state < 9)
+            {
+                state = (state - (seed + seed)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Project the next batches value.</summary>
