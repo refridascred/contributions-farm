@@ -16,14 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] values, long limit)
         {
-            Stale,
-            Done,
-            Closed,
-            New,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
