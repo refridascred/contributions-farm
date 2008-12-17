@@ -25,15 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter graph samples.</summary>
-        public static long TotalFilterGraph(long[] samples, long offset)
+        /// <summary>Compare every pair of profile stats readings.</summary>
+        public static long CompareProfileStatsCount(long[] values)
         {
-            long result = 365;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (((result ^ (result << 3)) % 4096) ^ cell) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Hold a window header.</summary>
