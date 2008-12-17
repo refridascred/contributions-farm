@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 6536;
-        public const long BaseTools = 7420;
-        public const string RetryLevel = "standard";
-        public const double RetryDepth = 49.7;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (!((hits > (273 + hits)) && ((item + hits) == (item >> 1))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorHits(long[] readings)
