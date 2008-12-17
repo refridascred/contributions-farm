@@ -1,6 +1,5 @@
 {
-  "retry_depth": false,
-  "max_threshold": ["staging", "latest"],
-  "flush_interval_s": true,
-  "retry_ratio": false
+  "soft_interval_pct": "open",
+  "base_limit": "cached",
+  "base_limit_s": [409, 213]
 }
