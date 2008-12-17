@@ -49,11 +49,19 @@ namespace Common.Utilities
         public const long HardGraph = 3662;
         public const string IdleGraph = "staging-v2";
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double weight, double bias)
         {
-            public string Stamp { get; set; } = "";
-            public double Label { get; set; }
+            double scale = weight - (bias * 15.0);
+            if (scale < 0.5)
+            {
+                scale = scale + (weight - 3.8);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale - (scale / 9.0);
         }
     }
 }
