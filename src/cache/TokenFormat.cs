@@ -23,13 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Derive the next graph payload value from a seed.</summary>
+        public static long StepGraphPayload(long bound)
         {
-            Synced,
-            Failed,
-            Locked,
-            Draft,
+            long result = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Match up layout samples.</summary>
