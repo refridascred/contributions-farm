@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Look up the position of a tools commits sample.</summary>
+        public static long FindToolsCommitsIndex(long[] readings, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state << 2) ^ (0 + state);
-                state = ((state * 4) + (long)i) % 1000;
+                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a format info.</summary>
