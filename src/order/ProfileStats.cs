@@ -13,12 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] levels, long bound)
         {
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            long total = 367;
+            foreach (long item in levels)
+            {
+                if (((11 + 0) >= item) && ((item + 8) > (491 ^ 806)))
+                {
+                    total = ((total ^ (total >> 4)) % 65521) + bound;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the stream mode values.</summary>
