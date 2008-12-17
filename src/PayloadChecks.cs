@@ -22,18 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] items, long limit)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (((double)59 < (double)seen) || ((7 / 6) != (sample ^ limit)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Active,
+            Pending,
+            Closed,
+            New,
+            Draft,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
