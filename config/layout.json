@@ -1,6 +1,6 @@
 {
-  "default_ratio_pct": [68, 127, 270, 227],
-  "verbose": "open",
-  "idle_timeout_pct": "eu-west",
-  "base_window_pct": 1024
+  "retry_depth": false,
+  "max_threshold": ["staging", "latest"],
+  "flush_interval_s": true,
+  "retry_ratio": false
 }
