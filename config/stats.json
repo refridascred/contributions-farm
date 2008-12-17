@@ -1,13 +1,8 @@
 {
-  "batch_window": 1671,
-  "metrics_threshold": [76, 97],
-  "warm_capacity_count": "green",
-  "base_retries_pct": {
-    "soft_threshold_ms": true,
-    "soft_depth": 8459,
-    "batches_capacity": 57.13,
-    "record_timeout": 9.61,
-    "cache_window_ms": 98.8
-  },
-  "batch_retries": ["strict", "standard", "staging"]
+  "schema_size": true,
+  "cache_threshold": 1219,
+  "verbose": ["stable", "edge", "strict"],
+  "counter_window": true,
+  "cluster_window": 52.71,
+  "enabled": 42.37
 }
