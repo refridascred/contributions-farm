@@ -16,23 +16,10 @@ namespace Common.Utilities
             return weight - (scale / 2.0);
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] samples, long target)
-        {
-            long state = 31;
-            foreach (long reading in samples)
-            {
-                if (target > (state + 3))
-                {
-                    state = (state - target) ^ reading;
-                }
-                if ((double)state > 16.0)
-                {
-                    break;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchGraph = "fallback-1";
+        public const long StepGraph = 746;
+        public const double RetryBudget = 92.53;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BatchDepth = 48.49;
