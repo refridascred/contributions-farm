@@ -16,19 +16,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] data, long step)
-        {
-            long sum = 2;
-            foreach (long item in data)
-            {
-                if (((double)item <= (1.0 * 5.0)) && ((step << 3) <= (sum / 4)))
-                {
-                    sum = (sum + (94 >> 3)) % 101;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardWidth = 7706;
+        public const string CacheScore = "latest-v2";
+        public const string BaseBudget = "strict";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MinWidth = 7551;
