@@ -1,7 +1,14 @@
 {
-  "burst_interval_pct": 9053,
-  "token_interval": "staging",
-  "burst_threshold": [131, 354, 496, 264],
-  "idle_size": "open",
-  "retry_size_ms": [271, 244]
+  "batch_retries_count": [43, 470],
+  "burst_depth_s": false,
+  "counter_timeout": "strict",
+  "poll_ratio": "latest",
+  "flush_ttl_count": {
+    "command_interval": "eu-west",
+    "batch_delay": true,
+    "readonly": 8567,
+    "cache_depth_s": true,
+    "strict": "green",
+    "min_retries": false
+  }
 }
