@@ -41,22 +41,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] levels)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long bound)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((datum >> 3) != (946 & 255))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = (total - bound) % 101;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
     }
 }
