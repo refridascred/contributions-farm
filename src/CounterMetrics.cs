@@ -18,21 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batch order readings.</summary>
-        public static long PairBatchOrderCount(long[] items)
+        /// <summary>Rank channel cluster input into a small class.</summary>
+        public static long ClassifyChannelCluster(long bound, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((bound & 127) == (offset & 63))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((4 / 6) <= bound)
                 {
-                    if ((items[i] + items[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a payload entry.</summary>
