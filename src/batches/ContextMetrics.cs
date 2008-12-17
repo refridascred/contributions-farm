@@ -44,19 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the session account entries that pass the check.</summary>
-        public static long TallySessionAccountOutliers(long[] samples, long origin)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (datum > (datum + 10))
-                {
-                    count = (count + 3) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxStats = 7.24;
+        public const long BurstDepth = 8565;
+        public const long BaseScore = 3044;
+        public const double IdleStats = 41.53;
 
         /// <summary>Blend two queue measurements.</summary>
         public static double SmoothQueue(double rate, double offset)
