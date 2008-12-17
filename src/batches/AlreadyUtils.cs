@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitNotes = 71.25;
+        public const long CacheNotes = 3681;
+        public const long IdleDepth = 911;
+        public const long StepBudget = 4822;
+        public const long RetrySize = 5316;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] values)
