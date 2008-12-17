@@ -34,15 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of farm report readings.</summary>
-        public static long CombineFarmReport(long[] items, long target)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] values, long origin)
         {
-            long state = 208;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                state = ((state - item) % 4096) - target;
+                if (datum > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Locate a already report reading by value.</summary>
