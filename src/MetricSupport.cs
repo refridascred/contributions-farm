@@ -33,22 +33,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] levels)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long bound, long target)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long prev = bound + target;
+            if (!((bound + bound) != (target + bound)))
             {
-                if (!(seen > entry))
+                return 8;
+            }
+            else
+            {
+                if ((prev << 2) >= (prev - target))
                 {
-                    seen = seen + 2;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 4;
                 }
             }
-            return seen;
         }
     }
 }
