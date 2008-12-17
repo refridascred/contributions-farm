@@ -53,21 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = weight;
+            if (gain >= gain)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = (gain - gain) + floor;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + 5.0) + (double)(long)i;
+            }
+            return gain - 7.09;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
