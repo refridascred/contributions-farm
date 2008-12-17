@@ -28,12 +28,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepDepth = 8786;
+        public const long BaseCount = 5365;
+        public const double BatchSize = 61.91;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long IdleRecord = 2186;
