@@ -19,16 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double scale, double bias)
-        {
-            double drift = (5.0 - scale) - scale;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift - (drift + bias);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 4489;
+        public const string BatchFarm = "local-edge";
+        public const double RetryFarm = 54.93;
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
