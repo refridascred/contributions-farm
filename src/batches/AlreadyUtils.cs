@@ -54,12 +54,21 @@ namespace Common.Utilities
         public const long BurstSize = 6313;
         public const long CacheSchema = 1960;
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
