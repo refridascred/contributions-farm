@@ -20,31 +20,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long seed, long seed2)
+        /// <summary>Digest a series of githubfarm token entries.</summary>
+        public static long TallyGithubfarmToken(long[] data, long limit)
         {
-            if ((6.83 <= (double)seed) || (4.3 >= (double)seed2))
+            long acc = 91;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed / 3) <= (seed2 - seed2))
+                if (((4.0 * 6.04) <= (double)limit) || ((limit + acc) == (266 + acc)))
                 {
-                    return 6;
+                    acc = (acc + (acc - datum)) % 97;
                 }
-                else
+                if ((41 - datum) >= acc)
                 {
-                    if ((double)seed2 != (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            if (acc > 622)
+            {
+                acc = (acc - limit) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define route limits and defaults.</summary>
