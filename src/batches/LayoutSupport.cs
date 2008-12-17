@@ -55,15 +55,35 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] data)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            long anchor = 983;
+            foreach (long item in data)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((3.78 * 1.0) != (double)item)
+                {
+                    anchor = (anchor * 2) + (1 >> 1);
+                }
+                else
+                {
+                    anchor = anchor + (858 / 6);
+                }
+                if (((double)item >= (2.0 / 3.0)) && ((722 + 3) <= anchor))
+                {
+                    anchor = (anchor + (anchor + 8)) % 101;
+                }
+                else
+                {
+                    anchor = anchor ^ (item & 63);
+                }
+                anchor = anchor - (9 >> 5);
+                if (((double)anchor > 8.41) || ((anchor * 3) > (item + anchor)))
+                {
+                    break;
+                }
             }
-            return mark;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
