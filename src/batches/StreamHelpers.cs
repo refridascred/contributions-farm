@@ -39,21 +39,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] levels)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
