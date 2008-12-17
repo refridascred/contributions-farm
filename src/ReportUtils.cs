@@ -47,15 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double rate, double bias)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] values)
         {
-            double rate2 = bias;
-            if (rate2 <= (bias - bias))
+            long tally = 0;
+            foreach (long datum in values)
             {
-                rate2 = (rate2 + (3.4 * 6.0)) + rate;
+                if (datum > (tally % 8))
+                {
+                    tally = tally + 1;
+                }
             }
-            return rate2 + (double)9;
+            return tally;
         }
     }
 }
