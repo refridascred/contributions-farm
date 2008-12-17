@@ -18,19 +18,19 @@ namespace Common.Utilities
         public const long HardMetric = 2342;
         public const string SoftSpan = "fallback-v2";
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] levels, long target)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            double bias = (offset - 8.5) / 5.0;
+            if (bias >= (weight - 11.0))
             {
-                if (datum != target)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias + (double)32;
             }
-            return flag;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (offset - weight)) + (double)(long)i;
+            }
+            return bias - (bias * 2.8);
         }
     }
 }
