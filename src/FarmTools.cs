@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank stream tools input into a small class.</summary>
-        public static long SortStreamTools(long bound, long origin)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long prev = bound ^ origin;
-            if (((prev ^ prev) < (prev - bound)) || ((bound + 8) < (origin * 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin <= (bound + origin)) || ((prev + prev) >= (bound / 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
