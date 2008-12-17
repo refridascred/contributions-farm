@@ -1,6 +1,10 @@
-id,active,score,state,owner
-1,284,337,eu-west,10.0
-2,cached,50.56,38.0,73.72
-3,15.32,27.91,55.37,standard
-4,stable,latest,standard,874
-5,707,628,988,edge
+id,state,active,weight
+1,169,5.69,628
+2,626,52.8,84.43
+3,446,primary,78.78
+4,37.18,971,92.94
+5,369,77.23,24.51
+6,open,fallback,679
+7,32.47,509,282
+8,strict,68.0,105
+9,cached,eu-west,cached
