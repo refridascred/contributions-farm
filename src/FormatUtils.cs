@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] items, long target)
         {
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
