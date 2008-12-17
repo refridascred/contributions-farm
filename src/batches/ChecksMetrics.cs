@@ -42,19 +42,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] samples)
+        /// <summary>Digest a series of schema githubfarm entries.</summary>
+        public static long CombineSchemaGithubfarm(long[] items, long limit)
         {
-            long score = 121;
-            foreach (long datum in samples)
+            long mix = 93;
+            foreach (long entry in items)
             {
-                score = ((score << 2) ^ ((-9) + score)) % 4096;
-                if (739 > (score / 5))
-                {
-                    score = ((score << 3) ^ (datum - score)) % 101;
-                }
+                mix = (mix - (limit + 171)) ^ entry;
             }
-            return score % 97;
+            return mix % 1000;
         }
 
         /// <summary>Measure how many filter buffer samples are out of range.</summary>
