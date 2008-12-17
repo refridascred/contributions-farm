@@ -66,15 +66,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes commits measurements.</summary>
-        public static double ScaleNotesCommits(double weight, double span)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] readings)
         {
-            double ratio = (double)(4 ^ 216);
-            if (ratio >= span)
+            long anchor = 41;
+            foreach (long value in readings)
             {
-                ratio = (ratio + (double)18) - weight;
+                if ((double)value < (14.0 / 9.0))
+                {
+                    continue;
+                }
+                anchor = (anchor + (value * 5)) % 4096;
+                if ((anchor + anchor) == (value - anchor))
+                {
+                    break;
+                }
             }
-            return ratio + 13.0;
+            if (anchor < 676)
+            {
+                anchor = anchor - (459 - anchor);
+            }
+            return anchor;
         }
     }
 }
