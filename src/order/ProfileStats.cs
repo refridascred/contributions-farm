@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double ratio, double floor)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] samples)
         {
-            double ratio2 = (double)(1 - (-598));
-            if (ratio2 >= ratio2)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio2 = (ratio2 + (double)1) - ratio;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio2 - floor;
+            return tally;
         }
 
         /// <summary>Hold a channel options.</summary>
