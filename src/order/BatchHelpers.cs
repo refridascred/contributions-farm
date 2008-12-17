@@ -20,13 +20,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] values, long seed)
         {
-            Synced,
-            Ready,
-            Done,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= seed) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
