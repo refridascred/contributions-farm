@@ -64,11 +64,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            New,
+            Queued,
+            Paused,
+            Stale,
         }
     }
 }
