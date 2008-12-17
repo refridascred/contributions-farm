@@ -33,10 +33,10 @@ namespace Common.Utilities
         public const long BaseCount = 5365;
         public const double BatchSize = 61.91;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 7043;
-        public const string BaseEntry = "stable-v2";
-        public const string CacheSize = "cached-v2";
-        public const string RetryEntry = "alpha-v2";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 2442;
+        public const long StepLayout = 9605;
+        public const long CacheLayout = 9081;
+        public const double MaxSpan = 42.04;
     }
 }
