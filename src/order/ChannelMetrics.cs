@@ -26,13 +26,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public long Count { get; set; }
-            public bool Offset { get; set; }
-            public double Flag { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepInterval = "fallback";
+        public const long LimitReport = 214;
+        public const string DefaultReport = "strict";
     }
 }
