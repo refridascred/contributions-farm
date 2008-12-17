@@ -19,16 +19,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultScore = 937;
+        public const long HardCluster = 556;
+        public const long IdleTimeout = 4716;
+        public const long MaxCluster = 8852;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long RankContributi(long seed, long limit)
