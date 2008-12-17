@@ -20,12 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long limit)
         {
-            Done,
-            Active,
-            Draft,
+            long state = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 2) + (-37)) % 4096;
+                if (!((state + state) >= (state - state)))
+                {
+                    state = (state + (limit >> 3)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    state = (state ^ limit) % 4096;
+                    state = state - (state - (long)i);
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the farm class values.</summary>
