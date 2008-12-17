@@ -20,11 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a profile already reading.</summary>
-        public static double BlendProfileAlready(double ratio, double offset)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            double bias = ratio / 6.0;
-            return (bias - bias) + offset;
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
