@@ -17,13 +17,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long bound, long step)
         {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            long diff = bound - step;
+            if ((bound + step) < (step % 64))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)diff != (9.0 / 5.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a commits summary.</summary>
