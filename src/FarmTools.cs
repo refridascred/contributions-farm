@@ -47,13 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Check that every report route entry stays within the limit.</summary>
+        public static bool ValidateReportRouteBounds(long[] readings, long bound)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
