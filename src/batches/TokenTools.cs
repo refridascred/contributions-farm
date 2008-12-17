@@ -31,11 +31,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 2680;
-        public const long WindowPayload = 8247;
-        public const long RetryWidth = 420;
-        public const double BatchPayload = 67.78;
-        public const long SoftPayload = 2497;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] data, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((9.17 / 9.0) == (double)bound)
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
+        }
     }
 }
