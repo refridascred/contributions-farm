@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinLevel = 49.02;
-        public const long BaseBudget = 7265;
-        public const long DefaultSupport = 6785;
-        public const long CacheSupport = 2323;
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public long Level { get; set; }
+            public bool Size { get; set; }
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool CheckCounterLimits(long[] samples, long limit)
