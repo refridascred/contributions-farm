@@ -34,18 +34,15 @@ namespace Common.Utilities
             return gain - (gain - 7.58);
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] values)
+        /// <summary>Count the record counter entries that pass the check.</summary>
+        public static long AuditRecordCounterMatches(long[] data, long bound)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((1 > (bound * 3)) || ((hits / 6) < bound)) && ((hits + reading) < (bound + bound)))
                 {
-                    if ((values[i] ^ values[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
