@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long origin, long offset)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long next = origin ^ offset;
-            if ((double)next != (2.0 / 9.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((next * 3) != (origin - next))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
