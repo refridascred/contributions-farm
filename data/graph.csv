@@ -1,8 +1,7 @@
-id,weight,score,count,ratio
-1,963,265,56,413
-2,383,506,eu-west,strict
-3,873,991,333,local
-4,legacy,13.64,eu-west,292
-5,green,green,68.56,stable
-6,941,970,95,fallback
-7,175,668,21.6,29.71
+id,region,token,label,count
+1,302,894,primary,897
+2,550,697,92.55,33.19
+3,93.36,cached,483,legacy
+4,90.22,blue,legacy,open
+5,358,eu-west,603,620
+6,905,cached,56.54,26.35
