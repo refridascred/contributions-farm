@@ -1,4 +1,9 @@
 # githubfarm settings
-idle_interval_pct: 4764
-sync_window_count: false
-flush_ttl_count: false
+default_threshold_ms: primary
+hard_ttl: 30
+compress: 30
+burst_capacity_count: 85
+warm_window:
+  - cached
+  - open
+  - edge
