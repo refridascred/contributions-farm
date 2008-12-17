@@ -27,19 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((9 / 3) != (mark - origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (mark ^ (long)i)) % 97;
+                    if ((levels[i] + levels[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return hits;
         }
     }
 }
