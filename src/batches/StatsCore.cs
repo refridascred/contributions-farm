@@ -90,12 +90,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Closed,
-            Stale,
-            Queued,
+            Active,
+            Failed,
+            Locked,
         }
     }
 }
