@@ -58,11 +58,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] items, long bound)
         {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (88 < (datum / 8))
+                {
+                    seen = (seen + 2) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a queue contributi reading by value.</summary>
