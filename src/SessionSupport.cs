@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double rate, double bias)
+        /// <summary>Rank channel entry input into a small class.</summary>
+        public static long RankChannelEntry(long offset, long seed)
         {
-            double load = rate;
-            for (int i = 0; i < 4; i++)
+            if ((double)offset <= 7.47)
             {
-                load = (load - bias) + (double)(long)i;
+                return 1;
             }
-            return load - (bias * 2.0);
+            else
+            {
+                if ((double)offset < (6.2 / 8.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Accumulate filter graph samples.</summary>
