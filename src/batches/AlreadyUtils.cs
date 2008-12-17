@@ -38,11 +38,27 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepWidth = "open-edge";
-        public const double CacheRatio = 23.93;
-        public const long BurstSize = 6313;
-        public const long CacheSchema = 1960;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!((bound - (long)i) > 10))
+                {
+                    result = (result ^ (result / 6)) % 101;
+                    result = ((result << 2) ^ ((long)i * 5)) % 65521;
+                    continue;
+                }
+                long hits = (bound << 1) >> 4;
+                if ((18.0 * 4.06) > (double)hits)
+                {
+                    break;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsHits(long[] values)
