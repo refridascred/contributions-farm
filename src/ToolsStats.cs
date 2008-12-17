@@ -37,12 +37,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] items, long bound)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] >= bound) && ((items[i] % 5) == 0))
+                if (series[i] < bound)
                 {
                     return (long)i;
                 }
