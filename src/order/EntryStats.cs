@@ -44,25 +44,11 @@ namespace Common.Utilities
         public const string StepRecord = "primary-edge";
         public const double BatchFactor = 85.23;
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long step, long step2)
-        {
-            long span = step ^ step2;
-            if (((span + step2) == (step2 + span)) && ((321 + step) == (step ^ span)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step << 2) >= step2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 349;
+        public const long StepRatio = 240;
+        public const long IdleCounter = 5282;
+        public const long SoftDepth = 9472;
+        public const long BaseSize = 9627;
     }
 }
