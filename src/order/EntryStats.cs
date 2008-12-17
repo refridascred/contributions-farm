@@ -20,22 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 4165;
+        public const string CacheSpan = "staging-edge";
+        public const long CacheGithubfarm = 7303;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
