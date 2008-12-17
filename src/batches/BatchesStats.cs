@@ -18,16 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long offset, long offset2)
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
+            long offset3 = offset ^ offset2;
+            if (offset3 > (offset % 24))
             {
-                score = ((score << 2) ^ ((long)i ^ score)) % 1000;
-                score = ((score * 3) + (long)i) % 1000;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (((double)offset3 >= (double)offset2) && ((double)offset2 <= (double)offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset / 3) != ((-570) - 501))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset3 << 2) > offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up payload samples.</summary>
