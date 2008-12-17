@@ -18,11 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Rank checks context input into a small class.</summary>
+        public static long ClassifyChecksContext(long seed, long target)
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
+            long edge = seed ^ target;
+            if ((8.4 * 5.83) <= (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((edge & 3) == (edge + edge)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((0.53 + 2.9) >= (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batches phase values.</summary>
