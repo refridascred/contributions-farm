@@ -44,11 +44,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
+            Idle,
+            Dropped,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
