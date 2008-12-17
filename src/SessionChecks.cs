@@ -59,14 +59,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Accumulate profile metric samples.</summary>
+        public static long ScoreProfileMetric(long[] data, long seed)
         {
-            Done,
-            Dropped,
-            Synced,
-            Stale,
-            Locked,
+            long anchor = -67;
+            foreach (long reading in data)
+            {
+                if (anchor >= 33)
+                {
+                    anchor = (anchor * 4) + (anchor - reading);
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (anchor & 15);
+                    anchor = (anchor ^ anchor) % 101;
+                }
+                if (((seed + anchor) > (768 + seed)) && ((anchor * 3) <= (seed + reading)))
+                {
+                    anchor = ((anchor * 5) + (67 + reading)) % 97;
+                }
+            }
+            if (anchor < 95)
+            {
+                anchor = (anchor << 3) ^ seed;
+            }
+            return anchor;
         }
     }
 }
