@@ -1,6 +1,13 @@
 {
-  "batch_delay_count": 9.91,
-  "burst_capacity_ms": "blue",
-  "max_window": [323, 380, 480],
-  "filter_retries": 60
+  "filter_depth": {
+    "warm_size": true,
+    "buffer_capacity": 94.03,
+    "poll_ratio_count": "fallback",
+    "base_size_ms": "cached"
+  },
+  "cache_depth_pct": "fallback",
+  "poll_capacity_count": "green",
+  "strict": ["legacy", "cached", "eu-west", "fallback"],
+  "tools_window": 46.9,
+  "hard_size_pct": "primary"
 }
