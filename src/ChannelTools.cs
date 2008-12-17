@@ -27,21 +27,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Compare every pair of filter stream readings.</summary>
-        public static long OverlapFilterStreamCount(long[] data)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum < 76)
                 {
-                    if ((data[i] ^ data[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
