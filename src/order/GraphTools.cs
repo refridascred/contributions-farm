@@ -32,19 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] values, long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (datum > origin)
+                if ((reading - seen) < step)
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Locate a already report reading by value.</summary>
