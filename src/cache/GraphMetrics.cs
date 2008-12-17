@@ -32,15 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Closed,
-            Idle,
-            New,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBuffer = 71.19;
+        public const long CacheBuffer = 9561;
+        public const double BaseBuffer = 18.32;
+        public const long BaseSize = 6128;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BaseTools = 4750;
