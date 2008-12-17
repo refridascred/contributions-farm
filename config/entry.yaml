@@ -1,12 +1,15 @@
 # entry settings
-base_timeout:
-  - 454
-  - 237
-warm_ratio_count:
-  - fallback
-  - strict
-  - local
-  - green
-readonly: 85.85
-flush_window_count: 100
-soft_limit_s: edge
+buffer_size:
+  flush_threshold: 80.17
+  burst_depth_pct: 1024
+  tools_timeout: 57
+  enabled: open
+  poll_capacity_count: legacy
+  readonly:
+    sync_ratio_ms: 4718
+    base_retries_count: 9790
+    batch_interval_pct: 30
+    compress: 28
+warm_depth: edge
+soft_ratio_count: open
+burst_retries_pct: 45.71
