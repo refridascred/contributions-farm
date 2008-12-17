@@ -15,16 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the commits report series from a seed.</summary>
-        public static long DeriveCommitsReport(long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] items, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                total = ((total * 2) + ((long)i ^ (long)i)) % 1000;
-                total = ((total * 3) + (long)i) % 1000;
+                if (((matches / 6) <= (matches ^ 556)) || (limit > (548 - reading)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Accumulate session samples.</summary>
