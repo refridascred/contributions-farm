@@ -24,17 +24,14 @@ namespace Common.Utilities
         public const double WindowGithubfarm = 28.32;
         public const string BurstSize = "staging";
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] levels, long step)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long acc = 3;
-            foreach (long cell in levels)
-            {
-                acc = ((acc + (cell - acc)) % 65521) + step;
-                acc = ((acc << 2) ^ cell) % 4096;
-                acc = acc + (624 & 7);
-            }
-            return acc;
+            Failed,
+            Pending,
+            Closed,
+            Idle,
+            Locked,
         }
     }
 }
