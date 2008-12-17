@@ -19,15 +19,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] levels, long seed)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] data)
         {
             long matches = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2 - seed) <= matches)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 2) + cell;
+                    if ((data[i] + data[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
