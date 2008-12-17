@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (13.0 < (double)cell)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitFarm = 14.09;
+        public const long BaseTimeout = 3383;
+        public const long BatchCount = 3412;
+        public const double WindowFarm = 1.16;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TallyRecord(long[] items, long target)
