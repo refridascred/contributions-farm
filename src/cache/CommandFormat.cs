@@ -21,11 +21,39 @@ namespace Common.Utilities
         public const long BaseWindow = 9303;
         public const string BurstBudget = "alpha-edge";
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long limit, long step)
         {
-            public string Token { get; set; } = "";
-            public double Label { get; set; }
+            long gap = limit - step;
+            if ((step + step) < (limit * 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)gap > (17.0 * 0.2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + gap) > (step + limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit <= (gap - 48)) || (93 >= (gap - 295)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
