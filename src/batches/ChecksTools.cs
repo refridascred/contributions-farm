@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardWidth = 5911;
-        public const long LimitLevel = 1876;
-        public const string IdleSize = "latest-1";
-        public const double BaseRatio = 4.29;
-        public const long DefaultContext = 1247;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long CombineSupport(long[] values, long target)
