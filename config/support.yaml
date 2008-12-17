@@ -1,20 +1,4 @@
 # support settings
-hard_window:
-  - cached
-  - stable
-default_window:
-  warm_size_count: standard
-  burst_limit_s: false
-  route_limit: 500
-retry_depth_count: 84.85
-cache_timeout_ms: 30
-dry_run:
-  batch_interval:
-    - 291
-    - 205
-  cache_limit: 6.75
-  retry_ttl_pct: fallback
-  strict: fallback
-  flush_size_s: true
-  counter_limit: 250
-compress: 30
+audit: strict
+support_ttl: stable
+enabled: false
