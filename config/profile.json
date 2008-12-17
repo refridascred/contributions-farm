@@ -1,8 +1,7 @@
 {
-  "enabled": 30,
-  "batch_delay_count": [486, 102, 415],
-  "cache_ttl_pct": "open",
-  "soft_ttl_pct": 4.14,
-  "compress": 78.72,
-  "stream_threshold": 250
+  "burst_interval_pct": 9053,
+  "token_interval": "staging",
+  "burst_threshold": [131, 354, 496, 264],
+  "idle_size": "open",
+  "retry_size_ms": [271, 244]
 }
