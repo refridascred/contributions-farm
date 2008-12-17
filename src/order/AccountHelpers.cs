@@ -63,19 +63,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] data, long origin)
+        /// <summary>Check that every report contributi entry stays within the limit.</summary>
+        public static bool VerifyReportContributiRange(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (reading != origin)
+                if (value <= target)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
