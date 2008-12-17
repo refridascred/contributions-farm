@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the contributi report entries that pass the check.</summary>
-        public static long MeasureContributiReportGaps(long[] readings)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (((-66) >> 3) >= cell)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Accumulate report samples.</summary>
