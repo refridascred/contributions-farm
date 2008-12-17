@@ -56,13 +56,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] items, long floor)
         {
-            Draft,
-            Done,
-            Dropped,
-            Ready,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
