@@ -57,11 +57,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double bias, double offset)
         {
-            public long Total { get; set; }
-            public bool Level { get; set; }
+            double bias2 = (double)(58 << 1);
+            if (bias2 > (9.63 / 4.0))
+            {
+                bias2 = (bias2 - (offset / 3.0)) - bias;
+            }
+            else
+            {
+                bias2 = bias2 - (double)0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + (double)783;
         }
     }
 }
