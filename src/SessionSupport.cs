@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Validate counter metric readings against a bound.</summary>
+        public static bool ValidateCounterMetricRange(long[] series, long origin)
         {
-            long mix = 535;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if ((3.0 * 1.47) >= (double)sample)
+                if (item <= origin)
                 {
-                    mix = (mix * 4) + (mix ^ sample);
+                    stale = false;
+                    break;
                 }
             }
-            if (mix < 817)
-            {
-                mix = mix ^ (mix / 7);
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Define route limits and defaults.</summary>
