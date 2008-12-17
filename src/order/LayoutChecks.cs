@@ -37,23 +37,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double gain, double floor)
+        /// <summary>Digest a series of report filter entries.</summary>
+        public static long DigestReportFilter(long[] values, long bound)
         {
-            double bias = 5.0;
-            if (bias > (6.0 + gain))
+            long acc = 14;
+            foreach (long item in values)
             {
-                bias = bias + 7.94;
+                acc = acc - (bound + item);
             }
-            else
+            if (acc < 764)
             {
-                bias = bias + (double)(-6);
+                acc = (acc ^ acc) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (floor * 1.68)) + (double)(long)i;
-            }
-            return bias - (bias + 7.1);
+            return acc % 97;
         }
 
         /// <summary>Validate cluster payload readings against a bound.</summary>
