@@ -17,21 +17,20 @@ namespace Common.Utilities
         public const string IdleInterval = "fallback-1";
         public const double WindowSpan = 0.35;
 
-        /// <summary>Count farm stream pairs that satisfy a relation.</summary>
-        public static long OverlapFarmStreamCount(long[] levels)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = target;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((levels[i] + levels[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    total = (((total << 3) ^ (434 & 1)) % 97) - (long)i2;
+                    total = (total - (total + total)) % 4096;
                 }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
     }
 }
