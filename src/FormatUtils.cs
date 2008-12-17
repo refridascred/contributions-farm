@@ -32,19 +32,17 @@ namespace Common.Utilities
         public const double CacheRatio = 58.51;
         public const long StepGraph = 6687;
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double bias, double floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long floor)
         {
-            double gain = floor / 4.0;
-            if (gain > bias)
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                gain = gain - (8.7 / 7.0);
+                mark = ((mark << 3) ^ (long)i) % 101;
+                mark = (mark * 5) + (mark * 4);
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - gain) - (double)(long)i;
-            }
-            return gain - bias;
+            return mark;
         }
 
         /// <summary>Hold a format summary.</summary>
