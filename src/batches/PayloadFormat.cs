@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long StepBuffer = 3667;
         public const long BurstBuffer = 4698;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] samples)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long mark = 461;
-            foreach (long entry in samples)
-            {
-                mark = (mark + (entry - entry)) % 65521;
-                mark = ((mark << 2) ^ entry) % 97;
-            }
-            if (mark > 427)
-            {
-                mark = (mark ^ 444) % 101;
-            }
-            return mark % 4096;
+            public bool Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Adjust a queue report reading.</summary>
