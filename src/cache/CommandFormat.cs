@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheFilter = 8.3;
-        public const long BaseFilter = 2598;
-        public const double WindowFilter = 91.18;
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public double Total { get; set; }
+            public double Count { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double LimitTimeout = 34.25;
