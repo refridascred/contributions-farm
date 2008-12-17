@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] data)
+        /// <summary>Combine metric route values into a single score.</summary>
+        public static long CombineMetricRoute(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long mix = 8;
+            foreach (long sample in values)
             {
-                if ((hits ^ sample) < (hits ^ hits))
-                {
-                    hits = hits + 3;
-                }
+                mix = (((mix * 5) + (9 % 24)) % 1000) + sample;
             }
-            return hits;
+            if (mix < 86)
+            {
+                mix = (mix ^ (mix / 2)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the editor kind values.</summary>
