@@ -26,18 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] samples)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((count / 4) != (entry >> 5))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
