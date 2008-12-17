@@ -44,13 +44,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long step)
         {
-            public double Region { get; set; }
-            public bool Total { get; set; }
-            public double Level { get; set; }
-            public long Label { get; set; }
+            long score = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if (step < (score << 2))
+                {
+                    continue;
+                }
+                if ((step + (long)i) >= 9)
+                {
+                    score = score - (7 + 16);
+                }
+                score = score - (step + step);
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
