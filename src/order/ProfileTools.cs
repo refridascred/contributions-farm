@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] data, long seed)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long bound, long step)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long lane = bound ^ step;
+            if (((lane * 4) < (lane << 1)) && ((bound % 5) <= (lane >> 3)))
             {
-                if ((2.15 * 8.0) == (double)hits)
+                return 2;
+            }
+            else
+            {
+                if ((lane - lane) == (4 + step))
                 {
-                    hits = ((hits + 2) + reading) + seed;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step != (5.07 - 15.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((bound ^ 8) <= (bound << 3)) || ((step << 3) >= (bound - step)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
