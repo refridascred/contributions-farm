@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftInterval = 2759;
+        public const long BatchSupport = 2443;
+        public const string MaxSupport = "staging-v2";
+        public const long BaseSupport = 2040;
+        public const string CacheSupport = "staging";
 
         /// <summary>Define account limits and defaults.</summary>
         public const long RetryAccount = 131;
