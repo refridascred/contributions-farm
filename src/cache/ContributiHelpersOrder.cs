@@ -23,18 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] levels, long limit)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double rate2 = (double)1;
+            if (rate2 >= floor)
             {
-                if ((hits - hits) > limit)
-                {
-                    hits = (hits + 3) + item;
-                }
+                rate2 = (rate2 + rate2) + rate;
             }
-            return hits;
+            else
+            {
+                rate2 = rate2 - 3.0;
+            }
+            return rate2 - floor;
         }
     }
 }
