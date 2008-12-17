@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFactor = 62.67;
-        public const long MinBudget = 8055;
-        public const long StepFarm = 3818;
-        public const long DefaultWidth = 403;
-        public const double BaseScore = 81.63;
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const string MinSession = "staging-v2";
