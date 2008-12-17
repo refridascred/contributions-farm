@@ -41,12 +41,18 @@ namespace Common.Utilities
         public const long StepFilter = 5863;
         public const long BatchRatio = 4143;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] samples)
         {
-            Retry,
-            Draft,
-            Queued,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (!((hits >> 1) >= hits))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of metric metrics entries.</summary>
