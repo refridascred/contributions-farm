@@ -38,13 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            Failed,
-            Active,
-            Draft,
-            Ready,
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
