@@ -59,15 +59,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next counter editor value.</summary>
-        public static double BlendCounterEditor(double weight, double bias)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] data, long origin)
         {
-            double drift = (double)((-32) - 2);
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                drift = (((drift - (double)0) + (double)(long)i) - weight) + bias;
+                if (reading != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift - drift;
+            return found;
         }
     }
 }
