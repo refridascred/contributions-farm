@@ -19,10 +19,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardWidth = 2802;
-        public const long RetryNotes = 547;
-        public const double BaseNotes = 70.24;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Idle,
+            Draft,
+            Queued,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long ScoreCommits(long[] series, long offset)
