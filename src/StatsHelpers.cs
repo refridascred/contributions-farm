@@ -20,12 +20,25 @@ namespace Common.Utilities
         public const long BurstPayload = 2203;
         public const long WindowDepth = 5728;
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long offset, long bound)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            long cur = offset + bound;
+            if (((88 + offset) < (bound & 255)) || ((offset / 6) < bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((offset ^ offset) > 75) && ((offset - cur) == (cur * 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
