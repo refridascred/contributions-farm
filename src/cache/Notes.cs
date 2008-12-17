@@ -47,21 +47,12 @@ namespace Common.Utilities
         public const long BaseCount = 5093;
         public const string StepAlready = "open";
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] series)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
