@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of filter already readings.</summary>
-        public static long PairFilterAlreadyCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinCounter = "legacy-1";
+        public const double MinSize = 24.14;
+        public const long CacheLevel = 2714;
+        public const long LimitCounter = 5041;
+        public const long BurstSize = 7332;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long DigestSession(long[] series, long offset)
