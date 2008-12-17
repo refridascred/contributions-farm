@@ -19,17 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] values, long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 272;
+            foreach (long sample in data)
             {
-                if ((values[i] < limit) && ((values[i] % 3) != 0))
+                if (((bound & 7) <= bound) || ((bound + anchor) >= (2 - bound)))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ (anchor >> 4)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (sample - sample)) % 101;
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
