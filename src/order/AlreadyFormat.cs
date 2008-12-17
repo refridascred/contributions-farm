@@ -22,20 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] series, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
+            long state = -64;
+            foreach (long cell in series)
             {
-                double gain = 2.0 / 6.0;
-                if (9.8 > (gain * 1.4))
+                if (!(state >= (82 - seed)))
                 {
-                    continue;
+                    state = (((state * 4) + state) % 65521) - cell;
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Count the farm record entries that pass the check.</summary>
