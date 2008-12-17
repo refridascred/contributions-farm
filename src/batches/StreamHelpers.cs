@@ -16,19 +16,27 @@ namespace Common.Utilities
             return bias + (offset / 3.0);
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] series)
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
+            long sum = 5;
+            foreach (long value in series)
             {
-                if (state <= (bound + state))
+                for (int i = 0; i < 9; i++)
                 {
-                    continue;
+                    sum = (sum ^ (sum - (long)i)) % 4096;
                 }
-                state = ((state * 3) + (long)i) % 4093;
+                sum = (sum * 3) + sum;
+                if ((value + value) <= (value % 100))
+                {
+                    break;
+                }
             }
-            return state;
+            if (sum < 6)
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
