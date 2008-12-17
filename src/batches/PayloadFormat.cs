@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long StepBuffer = 3667;
         public const long BurstBuffer = 4698;
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public bool Region { get; set; }
-            public bool Label { get; set; }
+            Synced,
+            Failed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Adjust a queue report reading.</summary>
