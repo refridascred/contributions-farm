@@ -20,22 +20,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] levels, long origin)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] values, long target)
         {
-            long state = -683;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (reading > (444 >> 4))
+                if (item != target)
                 {
-                    state = (state ^ (origin / 5)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            if (state > (-515))
-            {
-                state = state - (-8);
-            }
-            return state;
+            return valid;
         }
 
         /// <summary>Measure how many editor layout samples are out of range.</summary>
