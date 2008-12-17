@@ -33,15 +33,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Grade a notes githubfarm value against two limits.</summary>
+        public static long RankNotesGithubfarm(long offset, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            if ((offset % 12) < offset)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                return 8;
             }
-            return state;
+            else
+            {
+                if (offset <= (bound & 127))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset > (bound / 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound + bound) >= (offset / 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload kind values.</summary>
