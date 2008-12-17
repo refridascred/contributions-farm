@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Pending,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultCluster = "staging-1";
+        public const string CacheCluster = "fallback-edge";
+        public const long SoftCluster = 7688;
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long IterateChecks(long bound)
