@@ -24,39 +24,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache entry value against two limits.</summary>
-        public static long RankCacheEntry(long origin, long floor)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long next = origin - floor;
-            if ((88 + origin) < (next + floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor - next) <= 8)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)next != (1.0 - 2.63))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((next + floor) != (origin * 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
