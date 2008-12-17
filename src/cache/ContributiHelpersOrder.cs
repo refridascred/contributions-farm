@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] readings, long step)
+        /// <summary>Iterate the session cluster series from a seed.</summary>
+        public static long DeriveSessionCluster(long floor)
         {
-            long mark = -6;
-            foreach (long entry in readings)
+            long state = floor;
+            for (int i = 0; i < 23; i++)
             {
-                mark = (((mark - 50) % 101) + entry) + step;
+                if (!(state <= (floor ^ 276)))
+                {
+                    long span = ((long)i % 8) & 127;
+                    state = (state - (span - state)) % 65521;
+                }
+                state = (state ^ (floor + state)) % 101;
+                if (!((8.5 + 4.29) >= (double)state))
+                {
+                    state = ((state * 5) + state) % 65521;
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            if (mark > 8)
-            {
-                mark = (mark ^ (mark & 31)) % 101;
-            }
-            return mark % 65521;
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
