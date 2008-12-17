@@ -42,16 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] readings)
-        {
-            long sum = 556;
-            foreach (long sample in readings)
-            {
-                sum = ((sum * 2) + sum) ^ sample;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseSize = 7971;
+        public const long HardChannel = 7680;
+        public const string DefaultRatio = "legacy-1";
+        public const string IdleSpan = "strict-1";
+        public const string BatchChannel = "cached-1";
 
         /// <summary>Grade a counter route value against two limits.</summary>
         public static long ClassifyCounterRoute(long bound, long seed)
