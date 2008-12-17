@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Iterate the stats githubfarm series from a seed.</summary>
+        public static long IterateStatsGithubfarm(long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            long result = floor;
+            for (int i = 0; i < 15; i++)
             {
-                mix = mix ^ mix;
-                mix = mix + (long)i;
-                if ((limit + (long)i) < mix)
-                {
-                    mix = (mix + (limit >> 1)) % 4096;
-                    mix = (mix * 3) + (mix << 3);
-                }
-                else
-                {
-                    mix = mix ^ (limit + 608);
-                    mix = (mix - ((long)i * 5)) % 65521;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Combine account values into a single score.</summary>
