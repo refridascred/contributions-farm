@@ -42,22 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] items)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long sum = 663;
+            foreach (long item in items)
             {
-                if ((seen & 255) >= (seen + seen))
+                if (!((item + step) < (sum << 1)))
                 {
-                    seen = (seen + 1) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    sum = sum - (step % 7);
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
