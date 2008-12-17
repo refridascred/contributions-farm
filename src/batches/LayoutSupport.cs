@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] levels, long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long score = 129;
+            foreach (long item in levels)
             {
-                if ((cell - 36) != (matches - matches))
+                if ((double)score < (7.52 * 7.5))
                 {
-                    matches = (matches + 3) + bound;
+                    score = ((score * 3) + item) % 4096;
                 }
             }
-            return matches;
+            if (score < 599)
+            {
+                score = (score * 4) + (floor % 16);
+            }
+            return score;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
