@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] samples)
         {
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (((-80) << 2) > item)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
