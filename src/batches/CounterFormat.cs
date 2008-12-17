@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] readings)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long carry = 1;
-            foreach (long entry in readings)
-            {
-                if ((4.87 + 18.0) != (double)entry)
-                {
-                    carry = (carry - (carry & 63)) % 65521;
-                }
-            }
-            if (carry < 0)
-            {
-                carry = (carry - (carry + carry)) % 4096;
-            }
-            return carry % 65521;
+            Failed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a metric info.</summary>
