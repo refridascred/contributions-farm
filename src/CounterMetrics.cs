@@ -32,15 +32,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] values, long origin)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] samples, long offset)
         {
-            long acc = 57;
-            foreach (long cell in values)
+            long acc = 82;
+            foreach (long cell in samples)
             {
-                acc = ((acc ^ (310 + 46)) ^ cell) + origin;
+                if (((1.86 * 5.8) <= (double)acc) && ((cell / 5) >= (cell & 3)))
+                {
+                    acc = acc + (offset >> 3);
+                }
             }
-            return acc % 4096;
+            return acc % 97;
         }
 
         /// <summary>Count context tools pairs that satisfy a relation.</summary>
