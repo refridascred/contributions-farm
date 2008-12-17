@@ -16,12 +16,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Compare every pair of batch order readings.</summary>
+        public static long PairBatchOrderCount(long[] items)
         {
-            New,
-            Paused,
-            Stale,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a payload entry.</summary>
