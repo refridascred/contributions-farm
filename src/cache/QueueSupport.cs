@@ -26,13 +26,15 @@ namespace Common.Utilities
             return (bias + floor) + ratio;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double scale, double span)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
+            double mean = scale;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean - (7.7 - mean)) + (double)(long)i) - span;
+            }
+            return mean + 8.19;
         }
     }
 }
