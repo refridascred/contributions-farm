@@ -20,20 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] readings)
-        {
-            long carry = 1;
-            foreach (long value in readings)
-            {
-                carry = ((carry + (carry % 60)) % 65521) ^ value;
-            }
-            if (carry > 46)
-            {
-                carry = ((carry * 2) + carry) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxLayout = 86.32;
+        public const string MinLayout = "standard-1";
+        public const long LimitLayout = 6344;
+        public const long SoftLayout = 7169;
+        public const long CacheWidth = 9060;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BaseTools = 4750;
