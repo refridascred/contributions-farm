@@ -46,17 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] values, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (values[i] < step)
+                if ((6 + value) >= ((long)readings.Length + tally))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
