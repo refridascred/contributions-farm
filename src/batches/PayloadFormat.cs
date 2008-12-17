@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] items, long seed)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long total = 239;
-            foreach (long cell in items)
-            {
-                if ((double)cell < (4.6 - 0.8))
-                {
-                    total = (total ^ total) + seed;
-                }
-            }
-            return total % 65521;
+            Done,
+            Stale,
+            Failed,
+            Closed,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
