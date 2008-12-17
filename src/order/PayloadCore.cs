@@ -19,23 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double ratio, double bias)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] samples, long seed)
         {
-            double bias2 = 7.2;
-            if (bias2 > bias2)
+            long sum = 0;
+            foreach (long value in samples)
             {
-                bias2 = (bias2 + bias2) - ratio;
+                sum = (((sum << 2) ^ (sum - 72)) - value) - seed;
             }
-            else
-            {
-                bias2 = bias2 + (bias - bias);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - (bias2 * 8.4)) + (double)(long)i;
-            }
-            return bias2 + 6.75;
+            return sum;
         }
 
         /// <summary>Accumulate stream layout samples.</summary>
