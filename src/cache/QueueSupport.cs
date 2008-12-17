@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] values, long step)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long result = 6;
-            foreach (long sample in values)
-            {
-                if ((double)9 > (double)sample)
-                {
-                    result = (result - (7 - result)) % 1000;
-                }
-            }
-            if (result < 11)
-            {
-                result = (result ^ step) % 101;
-            }
-            return result % 97;
+            Synced,
+            Paused,
+            Idle,
+            Closed,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
