@@ -36,24 +36,21 @@ namespace Common.Utilities
         public const long WindowTimeout = 9325;
         public const long BaseContributi = 1572;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long limit, long bound)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
-            if (!((13.0 * 8.5) < (double)limit))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit - limit) >= (bound << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    if ((samples[i] + samples[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
