@@ -66,30 +66,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] data, long origin)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long step, long target)
         {
-            long mix = 89;
-            foreach (long value in data)
+            if (!((double)target > 1.0))
             {
-                if ((double)origin >= (double)mix)
+                return 4;
+            }
+            else
+            {
+                if (((target & 3) > (33 + step)) || ((step >> 4) != (target >> 4)))
                 {
-                    mix = mix - (value << 3);
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    mix = (mix + ((long)i / 8)) % 4096;
-                }
-                if ((value ^ value) <= value)
-                {
-                    mix = mix - (value % 8);
+                    return 3;
                 }
                 else
                 {
-                    mix = (mix + origin) % 97;
+                    return 1;
                 }
             }
-            return mix;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
