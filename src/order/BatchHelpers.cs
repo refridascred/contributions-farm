@@ -20,17 +20,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] values, long seed)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Stale,
+            Queued,
+            Closed,
         }
     }
 }
