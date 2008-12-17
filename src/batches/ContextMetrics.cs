@@ -30,18 +30,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue stream samples are out of range.</summary>
-        public static long CountQueueStreamHits(long[] series)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long total = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (((item * 2) < (item - 8)) && ((item & 31) > ((long)series.Length * 5)))
-                {
-                    seen = seen + 3;
-                }
+                total = total + (total ^ (long)i);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
