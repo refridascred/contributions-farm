@@ -50,19 +50,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] data, long step)
+        /// <summary>Compare every pair of cluster token readings.</summary>
+        public static long MatchClusterTokenCount(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum <= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] - series[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
