@@ -20,22 +20,10 @@ namespace Common.Utilities
             return gain + (double)640;
         }
 
-        /// <summary>Match up route notes samples.</summary>
-        public static long MatchRouteNotesCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 6784;
+        public const long BaseDepth = 5222;
+        public const long BaseStats = 9359;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheHits(long[] levels)
