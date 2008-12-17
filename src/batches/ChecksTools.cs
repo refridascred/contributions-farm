@@ -37,24 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long origin)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                state = state - (origin - (long)i);
-                if ((origin - state) <= (long)i)
-                {
-                    state = (state ^ origin) % 4096;
-                }
-                else
-                {
-                    state = (state - (origin - 26)) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Pending,
+            Stale,
+            Active,
+            Idle,
         }
     }
 }
