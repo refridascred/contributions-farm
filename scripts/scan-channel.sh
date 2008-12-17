@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary fallback local; do
+CHANNEL_LIMIT=294
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in cached open green strict; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=178
-log "limit is ${CHANNEL_LIMIT}"
