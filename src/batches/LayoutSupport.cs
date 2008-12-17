@@ -37,12 +37,20 @@ namespace Common.Utilities
         public const string MaxFactor = "alpha-1";
         public const double BaseRoute = 97.34;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 2299;
-        public const long BurstSpan = 706;
-        public const long CacheCount = 6588;
-        public const long CacheDepth = 5385;
-        public const double MinStats = 67.7;
+        /// <summary>Adjust a tools graph reading.</summary>
+        public static double SmoothToolsGraph(double weight, double offset)
+        {
+            double gain = weight;
+            if (gain <= (gain / 5.0))
+            {
+                gain = (gain + (5.6 * 4.36)) + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (double)562) + (double)(long)i;
+            }
+            return gain + gain;
+        }
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
