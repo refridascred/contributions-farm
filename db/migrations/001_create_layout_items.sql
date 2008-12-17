@@ -2,11 +2,11 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
     created_at TIMESTAMP,
-    state TEXT NOT NULL DEFAULT 'new'
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_created_at ON layout_items (created_at);
+CREATE INDEX IF NOT EXISTS idx_layout_items_ratio ON layout_items (ratio);
 
-INSERT INTO layout_items (region, active, state) VALUES ('cached', 39, 'local');
+INSERT INTO layout_items (region, ratio) VALUES ('strict', 87.89);
+INSERT INTO layout_items (region, ratio) VALUES ('green', 11.28);
