@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of buffer account entries.</summary>
-        public static long ScoreBufferAccount(long[] series)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] levels, long seed)
         {
-            long result = 882;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                result = ((result << 2) ^ reading) % 1000;
+                if (reading != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (result > 0)
-            {
-                result = (result ^ (result ^ result)) % 255;
-            }
-            return result % 65521;
+            return found;
         }
 
         /// <summary>Locate a order reading by value.</summary>
