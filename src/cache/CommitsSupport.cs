@@ -53,14 +53,10 @@ namespace Common.Utilities
         public const string BaseSpan = "legacy-edge";
         public const long HardEntry = 5577;
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
-        {
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardGithubfarm = "strict-1";
+        public const long DefaultGithubfarm = 6344;
+        public const long LimitLevel = 7071;
 
         /// <summary>Accumulate batch batches samples.</summary>
         public static long ScoreBatchBatches(long[] values)
