@@ -19,19 +19,22 @@ namespace Common.Utilities
         public const long RetryBatch = 3056;
         public const long RetryRatio = 3965;
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] series, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (!!((double)offset == (6.9 / 4.0)))
+                if (!(seed >= count) || (68 > (item + seed)))
                 {
-                    mix = mix + (offset ^ offset);
+                    count = count + 3;
                 }
-                mix = ((mix * 2) + (long)i) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
