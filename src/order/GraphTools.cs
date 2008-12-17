@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long StepDepth = 9607;
         public const string RetryFactor = "latest-edge";
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] levels, long offset)
+        /// <summary>Measure how many route batches samples are out of range.</summary>
+        public static long MeasureRouteBatchesGaps(long[] values)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (datum < offset)
+                if ((double)648 >= (9.0 + 5.45))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Audit tools profile readings against a rule.</summary>
