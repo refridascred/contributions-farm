@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((386 ^ offset) >= offset)
-                {
-                    score = score + (offset * 5);
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            Ready,
+            Pending,
+            Idle,
+            Locked,
+            Done,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
