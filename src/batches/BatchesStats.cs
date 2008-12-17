@@ -27,15 +27,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] levels, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] values)
         {
             long count = 0;
-            foreach (long cell in levels)
+            foreach (long sample in values)
             {
-                if ((14.0 / 2.0) >= (double)cell)
+                if (sample < (count + sample))
                 {
-                    count = (count + 3) - target;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
