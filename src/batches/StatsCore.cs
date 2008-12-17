@@ -22,17 +22,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next commits cluster value from a seed.</summary>
-        public static long StepCommitsCluster(long seed)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long origin, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
+            if (origin < step)
             {
-                long tally = ((long)i - acc) * 5;
-                acc = (acc << 3) ^ (tally + seed);
-                acc = ((acc * 5) + (long)i) % 97;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((step / 5) > (-73))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step ^ origin) != (step - step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((origin / 8) > (step * 2)) || ((double)step == (double)5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
