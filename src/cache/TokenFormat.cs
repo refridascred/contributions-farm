@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] values, long bound)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] values)
         {
-            long mix = 440;
-            foreach (long item in values)
+            long acc = 75;
+            foreach (long sample in values)
             {
-                mix = (((mix << 2) ^ 747) ^ item) - bound;
+                if (((8.0 - 13.0) != (double)acc) && ((950 << 3) < (acc & 3)))
+                {
+                    acc = (acc + (sample << 1)) % 255;
+                }
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
