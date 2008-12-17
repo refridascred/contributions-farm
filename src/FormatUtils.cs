@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] items, long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] data)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long mark = 449;
+            foreach (long value in data)
             {
-                if (entry > target)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark * 2) + (50 & 127)) + value;
             }
-            return ok;
+            if (mark > 0)
+            {
+                mark = (mark + (mark - mark)) % 65521;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
