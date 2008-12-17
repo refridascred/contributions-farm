@@ -29,21 +29,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] values)
+        /// <summary>Validate stats format readings against a bound.</summary>
+        public static bool VerifyStatsFormatBounds(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell <= target)
                 {
-                    if ((values[i] - values[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
