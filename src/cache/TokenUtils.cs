@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            Queued,
+            Failed,
+            Synced,
+            New,
         }
 
         /// <summary>Match up queue buffer samples.</summary>
