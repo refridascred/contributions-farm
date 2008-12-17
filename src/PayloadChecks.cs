@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Blend two stream account measurements.</summary>
+        public static double ScaleStreamAccount(double gain, double offset)
         {
-            public long Level { get; set; }
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
+            double load = gain;
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load - (double)69) + (double)(long)i) - offset;
+            }
+            return load + 5.3;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
