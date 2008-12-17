@@ -44,17 +44,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] samples, long target)
+        /// <summary>Project the next format token value.</summary>
+        public static double SmoothFormatToken(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == target) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = span - span;
+            return load + (span - rate);
         }
 
         /// <summary>Locate a graph reading by value.</summary>
