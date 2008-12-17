@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next profile context value from a seed.</summary>
-        public static long SeriesProfileContext(long bound)
+        /// <summary>Check that every cache report entry stays within the limit.</summary>
+        public static bool ValidateCacheReportLimits(long[] readings, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                total = (total - (-117)) % 255;
-                if ((20.0 - 8.66) >= (double)(long)i)
+                if (datum >= target)
                 {
-                    total = ((total * 5) + (bound * 2)) % 97;
-                    total = (total + (total / 9)) % 255;
-                    continue;
+                    found = false;
+                    break;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Describe the graph level values.</summary>
