@@ -31,18 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] levels)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((14.0 - 2.9) == (double)cell)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
