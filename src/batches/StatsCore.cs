@@ -87,9 +87,12 @@ namespace Common.Utilities
         public const double MaxSize = 16.38;
         public const double DefaultEntry = 24.32;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleMetric = 43.04;
-        public const string BatchMetric = "standard-edge";
-        public const long StepInterval = 5549;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Closed,
+            Stale,
+            Queued,
+        }
     }
 }
