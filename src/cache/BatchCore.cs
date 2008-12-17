@@ -38,13 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] items, long step)
         {
-            Paused,
-            Idle,
-            Synced,
-            Active,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((9 + 40) < step)
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
         }
     }
 }
