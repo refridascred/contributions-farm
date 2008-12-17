@@ -66,11 +66,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Locate a metric queue reading by value.</summary>
+        public static long LookupMetricQueueIndex(long[] readings, long bound)
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of counter graph readings.</summary>
