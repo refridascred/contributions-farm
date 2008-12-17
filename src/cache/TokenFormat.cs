@@ -20,25 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long bound, long target)
+        /// <summary>Measure how many stats report samples are out of range.</summary>
+        public static long AuditStatsReportHits(long[] values, long floor)
         {
-            long delta = bound ^ target;
-            if (13.0 >= (double)delta)
+            long matches = 0;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((delta >> 5) < 402)
+                if (!((floor << 1) == (floor / 9)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 1) - item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
