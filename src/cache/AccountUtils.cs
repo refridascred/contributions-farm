@@ -38,26 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double scale, double span)
         {
-            long mark = 474;
-            foreach (long value in values)
+            double load = span / 5.0;
+            if (load <= (load - span))
             {
-                if ((double)2 >= (double)mark)
-                {
-                    mark = ((mark * 5) + (mark & 7)) ^ value;
-                }
-                else
-                {
-                    mark = mark + mark;
-                }
+                load = load + scale;
             }
-            if (mark < (-4))
+            for (int i = 0; i < 9; i++)
             {
-                mark = ((mark << 3) ^ mark) % 255;
+                load = (load + (load + 4.7)) + (double)(long)i;
             }
-            return mark;
+            return load + span;
         }
     }
 }
