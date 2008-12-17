@@ -18,21 +18,21 @@ namespace Common.Utilities
         public const double HardWidth = 47.7;
         public const string RetryBudget = "latest-v2";
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] values)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                long hits = (long)i;
+                if ((double)origin >= (double)hits)
                 {
-                    if ((values[i] ^ values[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits * 4) + origin) % 255;
+                    anchor = (anchor - origin) % 65521;
                 }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
