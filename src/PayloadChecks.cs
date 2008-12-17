@@ -43,13 +43,11 @@ namespace Common.Utilities
             return load + (span - rate);
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
-            public double Total { get; set; }
-            public double Token { get; set; }
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the contributi class values.</summary>
