@@ -1,8 +1,11 @@
 {
-  "idle_depth_pct": "stable",
-  "cache_ttl_count": 60,
-  "idle_delay": 60.36,
-  "warm_retries_count": [379, 443, 478],
-  "verbose": 5539,
-  "hard_capacity_ms": "latest"
+  "buffer_interval": {
+    "hard_ttl_count": [487, 492, 145, 479],
+    "githubfarm_ratio": "blue",
+    "max_ttl_count": [379, 288, 380],
+    "default_ttl_ms": 22
+  },
+  "poll_threshold": [428, 459],
+  "strict": true,
+  "batch_threshold_s": [466, 251, 164, 154]
 }
