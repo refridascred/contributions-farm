@@ -37,21 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] data)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 365;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix + (mix * 4)) % 97) - sample;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
