@@ -64,15 +64,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] values, long bound)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long score = 736;
-            foreach (long value in values)
-            {
-                score = (score - (bound / 5)) ^ value;
-            }
-            return score % 65521;
+            public double Rank { get; set; }
+            public double Count { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
