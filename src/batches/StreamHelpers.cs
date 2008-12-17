@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] data, long bound)
+        /// <summary>Compare every pair of commits checks readings.</summary>
+        public static long CompareCommitsChecksCount(long[] data)
         {
-            long carry = 6;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry - (179 + bound)) + sample;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (carry < 0)
-            {
-                carry = (carry ^ carry) % 1000;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
