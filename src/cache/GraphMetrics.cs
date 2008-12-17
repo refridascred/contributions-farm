@@ -55,10 +55,19 @@ namespace Common.Utilities
         public const long IdleBatch = 203;
         public const double MaxBatch = 31.41;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinOrder = 96.44;
-        public const long WindowOrder = 8600;
-        public const long RetryOrder = 8072;
-        public const string StepOrder = "staging";
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
