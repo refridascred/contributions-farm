@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinCounter = "legacy-1";
-        public const double MinSize = 24.14;
-        public const long CacheLevel = 2714;
-        public const long LimitCounter = 5041;
-        public const long BurstSize = 7332;
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public bool Weight { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Iterate the entry token series from a seed.</summary>
         public static long IterateEntryToken(long bound)
