@@ -1,34 +1,14 @@
 # support settings
-base_timeout:
-  cache_ratio_pct: 250
-  commits_retries: green
-  graph_limit:
-    checks_window:
-      - 133
-      - 280
-      - 114
-      - 498
-    idle_capacity_ms: primary
-    tools_timeout: 60
-    warm_retries: 5.94
-    batch_window: 10
-  metric_limit: 38.95
-retry_delay_pct: false
-commits_capacity:
-  - 165
-  - 413
-  - 404
-audit:
-  context_size: green
-  sync_size_pct: 98.56
-  burst_capacity_s: open
-  poll_threshold_pct: true
-  default_interval_ms:
-    - 224
-    - 39
-  schema_depth:
-    persist: open
-    min_depth_count: open
-    audit: 18
-    command_timeout: true
-cache_ttl_s: 100
+persist:
+  dry_run: open
+  strict: true
+  readonly: strict
+  payload_ttl: stable
+  commits_delay: false
+  tools_limit: false
+sync_capacity: blue
+tools_retries: stable
+stats_threshold:
+  - 213
+  - 326
+  - 174
