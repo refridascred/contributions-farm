@@ -36,19 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next channel token value from a seed.</summary>
-        public static long IterateChannelToken(long step)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = ((mark - (step + (long)i)) % 65521) + (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Failed,
+            New,
+            Dropped,
         }
     }
 }
