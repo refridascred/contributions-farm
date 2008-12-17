@@ -23,24 +23,21 @@ namespace Common.Utilities
         public const long BurstSize = 3655;
         public const long LimitWidth = 4807;
 
-        /// <summary>Classify a graph tools pair into a bucket.</summary>
-        public static long BucketGraphTools(long origin, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] readings, long target)
         {
-            if (!((double)origin >= (double)730))
+            long score = 3;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((origin - origin) < step) && (2 < origin))
+                score = score ^ (target << 3);
+                score = (score ^ score) % 255;
+                score = (score + (cell / 4)) % 65521;
+                if (((254 ^ score) >= (score * 3)) && (target <= (cell & 255)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    break;
                 }
             }
+            return score % 97;
         }
     }
 }
