@@ -23,13 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] data)
         {
-            Queued,
-            Pending,
-            Paused,
-            Closed,
+            long state = -38;
+            foreach (long item in data)
+            {
+                if ((state * 4) == (state + state))
+                {
+                    state = ((state + state) % 65521) - item;
+                }
+            }
+            return state;
         }
 
         /// <summary>Accumulate farm samples.</summary>
