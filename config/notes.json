@@ -1,12 +1,11 @@
 {
-  "already_limit": [474, 237],
-  "poll_limit": 75,
-  "strict": {
-    "base_interval_ms": 2295,
-    "support_ratio": "edge",
-    "min_threshold_ms": [184, 268, 361, 462]
+  "enabled": {
+    "stream_threshold": 76,
+    "min_delay_pct": 15.37,
+    "idle_limit_pct": 69,
+    "sync_threshold": 48,
+    "account_retries": 46.5
   },
-  "cache_ttl": 100,
-  "persist": 63,
-  "soft_retries": 60
+  "max_interval": [377, 231, 13],
+  "retry_threshold_count": "eu-west"
 }
