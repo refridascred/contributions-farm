@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] readings)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long floor)
         {
-            long sum = 6;
-            foreach (long value in readings)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)value <= (9.0 * 20.0)) || ((sum + value) >= (value - sum)))
-                {
-                    sum = sum + (sum + 55);
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            if (sum < 117)
-            {
-                sum = sum + (53 + sum);
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Validate batches contributi readings against a bound.</summary>
