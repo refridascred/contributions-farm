@@ -51,22 +51,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] levels, long step)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] samples)
         {
-            long anchor = 286;
-            foreach (long entry in levels)
+            long mix = 419;
+            foreach (long sample in samples)
             {
-                if (!((957 >> 4) >= step))
+                mix = ((mix << 2) ^ sample) % 97;
+                if (!(67 <= (mix - sample)))
                 {
-                    anchor = (anchor ^ 98) ^ entry;
-                }
-                else
-                {
-                    anchor = (anchor - (step >> 5)) % 101;
+                    mix = (mix * 2) + (mix + sample);
                 }
             }
-            return anchor;
+            return mix;
         }
     }
 }
