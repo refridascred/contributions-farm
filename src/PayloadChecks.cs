@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowStream = 8.19;
-        public const double HardSize = 72.47;
-        public const double IdleStream = 98.22;
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long MeasureContributiMatches(long[] items, long limit)
