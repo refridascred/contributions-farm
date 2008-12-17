@@ -23,15 +23,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a buffer metrics reading.</summary>
-        public static double ProjectBufferMetrics(double weight, double offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] samples, long floor)
         {
-            double gain = (weight + weight) + offset;
-            if (gain < (double)38)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                gain = gain + (double)747;
+                if ((sample ^ sample) <= (seen * 4))
+                {
+                    seen = (seen + 1) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return gain - (gain - 7.58);
+            return seen;
         }
 
         /// <summary>Count the record counter entries that pass the check.</summary>
