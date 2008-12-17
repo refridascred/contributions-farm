@@ -20,19 +20,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] series, long floor)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] values)
         {
-            long score = -719;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = score ^ (entry * 4);
-                if ((entry % 7) == (652 % 100))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score * 2) + (floor * 5);
+                    if ((values[i] ^ values[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
