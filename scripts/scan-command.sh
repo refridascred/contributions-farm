@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in stable green blue; do
+for item in primary eu-west; do
     log "checking ${item}"
 done
 
-mode="${1:-latest}"
+mode="${1:-staging}"
 case "${mode}" in
-    fallback)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=212
+log "limit is ${COMMAND_LIMIT}"
