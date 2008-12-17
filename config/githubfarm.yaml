@@ -1,10 +1,11 @@
 # githubfarm settings
-buffer_timeout:
-  soft_depth_s: 5471
-  burst_threshold_s: 36
-  payload_depth: staging
-  githubfarm_threshold: 88
-idle_limit_pct: blue
-counter_depth: 76.31
-soft_ttl_count: 53.55
-record_ttl: open
+readonly: 7286
+min_window_s: standard
+sync_retries_count:
+  persist: 60
+  filter_ttl: 23
+  readonly: false
+  strict:
+    - legacy
+    - blue
+    - blue
