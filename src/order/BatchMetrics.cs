@@ -27,18 +27,11 @@ namespace Common.Utilities
         public const long MinSize = 5793;
         public const long DefaultEditor = 1415;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] data)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((tally - 3) > (tally - tally))
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
