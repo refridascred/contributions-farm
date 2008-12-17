@@ -37,32 +37,23 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long offset, long step)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long floor)
         {
-            long step2 = offset - step;
-            if ((20.0 + 9.0) <= (double)offset)
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step * 4) <= step2)
+                if (((double)floor <= (double)552) || ((anchor & 127) <= floor))
                 {
-                    return 0;
+                    anchor = ((anchor << 3) ^ (floor + 27)) % 65521;
                 }
-                else
+                if ((double)anchor != (4.57 - 8.6))
                 {
-                    if (((double)step2 <= (1.95 - 9.09)) && ((step2 + 2) >= (offset & 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    anchor = (anchor * 5) + (long)i;
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
