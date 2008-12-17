@@ -49,24 +49,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Digest a series of profile checks entries.</summary>
-        public static long WeighProfileChecks(long[] values)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] samples, long limit)
         {
-            long acc = 78;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((58 <= reading) && (reading >= (reading - reading)))
+                if (samples[i] < limit)
                 {
-                    acc = (acc + acc) % 4096;
-                    continue;
+                    return (long)i;
                 }
-                acc = (acc + acc) % 101;
             }
-            if (acc > (-47))
-            {
-                acc = acc ^ (acc - acc);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Validate batch filter readings against a bound.</summary>
