@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] items, long step)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long anchor = 363;
-            foreach (long item in items)
-            {
-                if ((double)item >= 0.85)
-                {
-                    anchor = ((anchor ^ ((-11) + 54)) % 97) - step;
-                }
-            }
-            return anchor;
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
