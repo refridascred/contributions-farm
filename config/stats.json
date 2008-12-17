@@ -1,7 +1,8 @@
 {
-  "farm_ttl": 89.23,
-  "support_size": 6327,
-  "layout_capacity": "green",
-  "base_depth_s": "stable",
-  "account_limit": "fallback"
+  "retry_ttl_s": "edge",
+  "idle_depth_ms": false,
+  "enabled": true,
+  "idle_ratio": 60,
+  "base_ttl_ms": 3869,
+  "token_delay": "local"
 }
