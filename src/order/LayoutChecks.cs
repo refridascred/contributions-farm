@@ -67,14 +67,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Closed,
-            Locked,
-            Active,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 7394;
+        public const long SoftNotes = 9615;
+        public const long LimitInterval = 6250;
+        public const double CacheNotes = 43.75;
+        public const long BatchCount = 2089;
     }
 }
