@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double ratio, double offset)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long bound)
         {
-            double scale = (double)94 / 9.0;
-            if (scale > ratio)
+            long state = bound;
+            for (int i = 0; i < 9; i++)
             {
-                scale = (scale + (double)18) - offset;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return scale - ratio;
+            return state;
         }
 
         /// <summary>Match up stream entry samples.</summary>
