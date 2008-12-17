@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] data, long target)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
