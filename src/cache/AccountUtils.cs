@@ -34,9 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitDepth = 8131;
-        public const long StepCommits = 2161;
-        public const long WindowCommits = 4683;
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double scale, double offset)
+        {
+            double bias = (double)3 + (double)224;
+            if (bias < (offset / 5.0))
+            {
+                bias = (bias + (double)326) - scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - 4.86) + (double)(long)i;
+            }
+            return bias - offset;
+        }
     }
 }
