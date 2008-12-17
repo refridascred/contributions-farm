@@ -1,7 +1,10 @@
 {
-  "min_delay": 1.62,
-  "verbose": "edge",
-  "strict": [494, 465, 89, 489],
-  "contributi_depth": [66, 208, 381],
-  "readonly": 84.07
+  "payload_delay": {
+    "idle_timeout_count": "cached",
+    "default_retries": "fallback",
+    "batch_capacity_ms": ["staging", "open", "staging", "green"]
+  },
+  "notes_delay": 94.85,
+  "strict": "standard",
+  "tools_retries": 57
 }
