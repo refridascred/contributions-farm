@@ -20,39 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a buffer command pair into a bucket.</summary>
-        public static long ClassifyBufferCommand(long offset, long seed)
-        {
-            if ((seed << 1) == (offset + 16))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((seed + offset) > 34))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset > (offset * 5)) || ((16.0 * 3.0) > (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset < (5 & 63))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitPayload = 44.73;
+        public const long BurstPayload = 2203;
+        public const long WindowDepth = 5728;
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long MatchGraphCount(long[] series)
