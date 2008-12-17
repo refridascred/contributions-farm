@@ -44,15 +44,22 @@ namespace Common.Utilities
         public const long BurstSize = 6313;
         public const long CacheSchema = 1960;
 
-        /// <summary>Blend two command batch measurements.</summary>
-        public static double SmoothCommandBatch(double bias, double offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] values)
         {
-            double mean = offset;
-            if (mean < (mean - bias))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                mean = mean + (double)8;
+                if ((tally >> 5) > tally)
+                {
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mean + 9.6;
+            return tally;
         }
     }
 }
