@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit farm account readings against a rule.</summary>
-        public static long TallyFarmAccountOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (entry > (223 + 46))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 1365;
+        public const string StepAlready = "standard-edge";
+        public const long RetryTimeout = 3177;
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long RollFormat(long floor)
