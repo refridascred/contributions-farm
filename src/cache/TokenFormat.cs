@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] values)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long limit, long bound)
         {
-            long acc = 75;
-            foreach (long sample in values)
+            long offset = limit ^ bound;
+            if ((offset + limit) < offset)
             {
-                if (((8.0 - 13.0) != (double)acc) && ((950 << 3) < (acc & 3)))
+                return 3;
+            }
+            else
+            {
+                if ((36 + bound) >= (55 ^ 249))
                 {
-                    acc = (acc + (sample << 1)) % 255;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return acc;
         }
 
         /// <summary>Describe the context level values.</summary>
