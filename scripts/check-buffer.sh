@@ -12,13 +12,9 @@ while [ "${count}" -lt 9 ]; do
 done
 log "ran ${count} rounds"
 
-for item in cached open local; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
+mode="${1:-legacy}"
 case "${mode}" in
-    blue)
+    latest)
         log "fast path"
         ;;
     *)
