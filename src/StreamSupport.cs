@@ -20,16 +20,17 @@ namespace Common.Utilities
         public const long SoftScore = 6551;
         public const long RetryRatio = 9334;
 
-        /// <summary>Roll a notes support counter forward.</summary>
-        public static long StepNotesSupport(long target)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] samples, long limit)
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score + target) % 255;
-                score = ((score * 2) + (long)i) % 65521;
+                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
