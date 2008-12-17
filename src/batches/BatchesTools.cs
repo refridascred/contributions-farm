@@ -18,22 +18,19 @@ namespace Common.Utilities
         public const long HardMetric = 2342;
         public const string SoftSpan = "fallback-v2";
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] items)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((seen - seen) >= (seen >> 1))
+                if (datum != target)
                 {
-                    seen = (seen + 1) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
