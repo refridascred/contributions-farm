@@ -1,8 +1,6 @@
-id,label
-1,green
-2,875
-3,95.96
-4,local
-5,505
-6,16.1
-7,eu-west
+id,score,weight,count
+1,latest,174,strict
+2,621,35.35,359
+3,66.13,edge,green
+4,52.49,70.13,821
+5,166,66.21,750
