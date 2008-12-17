@@ -56,13 +56,19 @@ namespace Common.Utilities
             return bias - (bias + 7.1);
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Validate cluster payload readings against a bound.</summary>
+        public static bool ValidateClusterPayloadBounds(long[] series, long floor)
         {
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the queue kind values.</summary>
