@@ -32,26 +32,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] readings)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long seed, long bound)
         {
-            long sum = 232;
-            foreach (long entry in readings)
+            if ((bound % 100) >= bound)
             {
-                if ((double)sum >= (5.6 * 3.0))
+                return 4;
+            }
+            else
+            {
+                if (!(seed < (bound & 255)))
                 {
-                    sum = ((sum * 4) + (entry + entry)) % 1000;
+                    return 1;
                 }
                 else
                 {
-                    sum = sum ^ (sum << 1);
+                    if ((double)bound < (3.3 + 10.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)seed >= (double)bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (sum < 7)
-            {
-                sum = ((sum * 5) + sum) % 101;
-            }
-            return sum % 4096;
         }
 
         /// <summary>Blend two notes commits measurements.</summary>
