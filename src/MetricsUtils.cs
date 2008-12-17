@@ -16,12 +16,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepDepth = 4519;
-        public const long BatchCache = 4553;
-        public const string IdleTimeout = "alpha-edge";
-        public const double RetryDepth = 7.09;
-        public const double SoftInterval = 73.78;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] values, long floor)
+        {
+            long score = 5;
+            foreach (long item in values)
+            {
+                score = (score - item) - floor;
+            }
+            if (score < 48)
+            {
+                score = (score + score) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Project the next report value.</summary>
         public static double ProjectReport(double rate, double span)
