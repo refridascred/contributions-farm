@@ -33,26 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] samples, long step)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long state = 1;
-            foreach (long reading in samples)
-            {
-                if ((reading + state) > (state + state))
-                {
-                    state = ((state << 2) ^ (reading - state)) % 4096;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (state - 781)) % 1000;
-                }
-            }
-            if (state < 4)
-            {
-                state = (state ^ step) % 4096;
-            }
-            return state % 97;
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine layout values into a single score.</summary>
