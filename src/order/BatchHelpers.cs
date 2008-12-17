@@ -26,10 +26,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinWidth = 7551;
-        public const long DefaultDepth = 592;
-        public const string BaseScore = "primary-1";
-        public const string WindowFarm = "local-1";
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double bias, double bias2)
+        {
+            double gain = bias;
+            if (gain >= bias)
+            {
+                gain = gain - bias2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + 4.0) + (double)(long)i;
+            }
+            return gain + (15.0 + gain);
+        }
     }
 }
