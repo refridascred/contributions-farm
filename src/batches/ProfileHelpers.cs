@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Count the stats channel entries that pass the check.</summary>
+        public static long AuditStatsChannelMatches(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(((item + item) != (25 ^ seen)) && ((seen * 2) <= seen)))
                 {
-                    if ((data[i] - data[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the payload phase values.</summary>
