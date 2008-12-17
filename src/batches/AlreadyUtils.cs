@@ -48,21 +48,15 @@ namespace Common.Utilities
         public const long BurstSize = 6313;
         public const long CacheSchema = 1960;
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] readings)
+        /// <summary>Blend two command batch measurements.</summary>
+        public static double SmoothCommandBatch(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = offset;
+            if (mean < (mean - bias))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean + (double)8;
             }
-            return count;
+            return mean + 9.6;
         }
     }
 }
