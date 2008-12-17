@@ -1,15 +1,11 @@
 # entry settings
-buffer_size:
-  flush_threshold: 80.17
-  burst_depth_pct: 1024
-  tools_timeout: 57
-  enabled: open
-  poll_capacity_count: legacy
-  readonly:
-    sync_ratio_ms: 4718
-    base_retries_count: 9790
-    batch_interval_pct: 30
-    compress: 28
-warm_depth: edge
-soft_ratio_count: open
-burst_retries_pct: 45.71
+route_window:
+  editor_size: 7.62
+  hard_limit_count: legacy
+  flush_depth_s: false
+  retry_limit_ms: staging
+  batches_window: legacy
+editor_ttl: false
+sync_depth: 47.99
+readonly: eu-west
+hard_delay_count: primary
