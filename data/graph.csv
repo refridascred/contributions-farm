@@ -1,7 +1,8 @@
-id,label,region
-1,79.3,cached
-2,89.66,452
-3,green,84.29
-4,731,147
-5,648,67.05
-6,stable,672
+id,weight,score,count,ratio
+1,963,265,56,413
+2,383,506,eu-west,strict
+3,873,991,333,local
+4,legacy,13.64,eu-west,292
+5,green,green,68.56,stable
+6,941,970,95,fallback
+7,175,668,21.6,29.71
