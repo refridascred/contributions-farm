@@ -55,11 +55,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardRatio = "cached-1";
-        public const long RetrySize = 5622;
-        public const long MinSize = 3691;
-        public const long MinEntry = 9507;
+        /// <summary>Locate a already report reading by value.</summary>
+        public static long LookupAlreadyReportIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > origin) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long FindChannelIndex(long[] data, long target)
