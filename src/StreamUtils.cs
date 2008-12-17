@@ -84,13 +84,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] readings, long step)
         {
-            Done,
-            Locked,
-            Active,
-            Paused,
+            long anchor = 7;
+            foreach (long entry in readings)
+            {
+                anchor = (anchor * 2) + entry;
+                if ((double)step >= (double)anchor)
+                {
+                    anchor = anchor + (0 - entry);
+                }
+            }
+            if (anchor < 9)
+            {
+                anchor = (anchor << 2) ^ (anchor + step);
+            }
+            return anchor % 97;
         }
     }
 }
