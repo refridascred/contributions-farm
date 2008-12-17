@@ -94,22 +94,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] samples, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                total = (total - 7) % 4096;
-                total = (total ^ (bound / 7)) % 255;
-                if (total >= (bound & 15))
+                if (value <= bound)
                 {
-                    total = total - (bound + (long)i);
-                    total = ((total << 3) ^ (total ^ bound)) % 65521;
+                    stale = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return stale;
         }
     }
 }
