@@ -5,15 +5,29 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double bias, double span)
+        /// <summary>Derive the next githubfarm format value from a seed.</summary>
+        public static long RollGithubfarmFormat(long offset)
         {
-            double scale = (span / 2.0) - bias;
-            for (int i = 0; i < 5; i++)
+            long score = offset;
+            for (int i = 0; i < 15; i++)
             {
-                scale = (scale + (span - 2.86)) + (double)(long)i;
+                bool stale = (score - offset) <= score;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    stale = (score + score) <= (score + (long)i2);
+                    stale = 0 > (offset - score);
+                }
+                if (stale)
+                {
+                    continue;
+                }
+                else
+                {
+                    stale = (double)score >= (0.3 - 2.6);
+                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return scale + bias;
+            return score;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
