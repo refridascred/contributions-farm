@@ -1,14 +1,8 @@
 # githubfarm settings
-enabled:
-  layout_retries: eu-west
-  compress:
-    - eu-west
-    - standard
-  default_ratio: 70.39
-  poll_depth_ms: strict
-retry_delay: 1093
-notes_threshold: 13
-poll_retries:
-  - 160
-  - 367
-burst_interval_s: 250
+batch_interval_count: 17.24
+batch_delay_s: false
+hard_limit_count:
+  - 361
+  - 158
+  - 65
+  - 103
