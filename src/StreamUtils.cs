@@ -101,19 +101,13 @@ namespace Common.Utilities
         public const long RetryChannel = 3205;
         public const long MinDepth = 6152;
 
-        /// <summary>Check that every metrics context entry stays within the limit.</summary>
-        public static bool GuardMetricsContextBounds(long[] data, long target)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            New,
+            Queued,
+            Draft,
         }
     }
 }
