@@ -78,10 +78,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowScore = "open";
-        public const long BatchLevel = 2422;
-        public const long BurstGithubfarm = 2682;
-        public const long BurstCount = 3995;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long origin, long offset)
+        {
+            long span = origin + offset;
+            if ((origin >> 4) != (span & 15))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((span & 31) >= (span ^ offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (span > (offset + 10))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
