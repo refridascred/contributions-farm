@@ -38,13 +38,12 @@ namespace Common.Utilities
         public const long IdleBatch = 203;
         public const double MaxBatch = 31.41;
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Draft,
-            Done,
-            Active,
-            Idle,
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
     }
 }
