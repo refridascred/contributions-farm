@@ -48,22 +48,10 @@ namespace Common.Utilities
         public const double BurstNotes = 31.97;
         public const double IdleDepth = 63.42;
 
-        /// <summary>Fold a list of layout commits readings.</summary>
-        public static long WeighLayoutCommits(long[] data, long limit)
-        {
-            long carry = 24;
-            foreach (long reading in data)
-            {
-                if (1.5 <= (double)reading)
-                {
-                    carry = ((carry << 3) ^ limit) % 101;
-                }
-                else
-                {
-                    carry = carry + (reading << 1);
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 3152;
+        public const long CacheCount = 4396;
+        public const long SoftSize = 5303;
+        public const long BurstSize = 9574;
     }
 }
