@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next batch schema value.</summary>
-        public static double SmoothBatchSchema(double scale, double span)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long step, long target)
         {
-            double drift = scale;
-            return (drift + scale) + span;
+            if ((76 - 29) >= (step & 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target - step) > (target & 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (step >= (target - step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((14.0 * 4.9) > (double)step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
