@@ -56,12 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
