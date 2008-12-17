@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the layout command entries that pass the check.</summary>
-        public static long AuditLayoutCommandOutliers(long[] levels, long step)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long mark = 91;
+            foreach (long sample in levels)
             {
-                if ((reading > (reading * 3)) || (((seen * 5) < (step % 12)) && ((step - reading) <= (33 - seen))))
-                {
-                    seen = seen + 1;
-                }
+                mark = (((mark * 2) + seed) % 65521) ^ sample;
             }
-            return seen;
+            if (mark > 93)
+            {
+                mark = mark ^ (seed + seed);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a stream record.</summary>
