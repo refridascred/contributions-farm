@@ -1,7 +1,8 @@
 # githubfarm settings
-compress: 21
-account_ttl:
-  - 167
-  - 373
-persist: true
-idle_ttl: staging
+soft_threshold: blue
+retry_threshold_ms:
+  - strict
+  - fallback
+  - blue
+  - stable
+persist: open
