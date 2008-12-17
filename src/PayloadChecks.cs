@@ -63,19 +63,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] samples, long origin)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Draft,
+            Closed,
+            Idle,
         }
     }
 }
