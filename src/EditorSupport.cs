@@ -35,18 +35,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] series)
+        /// <summary>Check that every channel batches entry stays within the limit.</summary>
+        public static bool CheckChannelBatchesLimits(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if ((double)matches != (2.38 * 6.0))
+                if (item >= target)
                 {
-                    matches = (matches + 3) + value;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
