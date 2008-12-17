@@ -38,19 +38,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every farm profile entry stays within the limit.</summary>
-        public static bool GuardFarmProfileRange(long[] samples, long seed)
+        /// <summary>Digest a series of counter farm entries.</summary>
+        public static long ScoreCounterFarm(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long anchor = 85;
+            foreach (long cell in series)
             {
-                if (cell != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (anchor << 3) ^ (cell ^ origin);
             }
-            return ready;
+            return anchor;
         }
     }
 }
