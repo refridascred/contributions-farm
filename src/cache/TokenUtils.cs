@@ -28,12 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] levels)
         {
-            public bool Token { get; set; }
-            public bool Score { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (6.85 > (double)hits)
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
     }
 }
