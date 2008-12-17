@@ -76,15 +76,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] values)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long origin, long target)
         {
-            long anchor = 76;
-            foreach (long item in values)
+            if ((origin + origin) <= origin)
             {
-                anchor = (anchor ^ item) % 97;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((29 + target) > (target + 95))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
