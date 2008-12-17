@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] items, long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 6;
+            foreach (long value in readings)
             {
-                if ((items[i] > origin) && ((items[i] % 5) != 0))
+                if (((double)value <= (9.0 * 20.0)) || ((sum + value) >= (value - sum)))
                 {
-                    return (long)i;
+                    sum = sum + (sum + 55);
                 }
             }
-            return -1;
+            if (sum < 117)
+            {
+                sum = sum + (53 + sum);
+            }
+            return sum;
         }
 
         /// <summary>Validate batches contributi readings against a bound.</summary>
