@@ -34,10 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinCommits = 14.3;
-        public const string IdleCommits = "staging-edge";
-        public const long IdleInterval = 9849;
+        /// <summary>Count the metrics filter entries that pass the check.</summary>
+        public static long TallyMetricsFilterGaps(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((double)floor == (0.2 - 3.8))
+                {
+                    tally = (tally + 2) - cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long GradeNotes(long floor, long seed)
