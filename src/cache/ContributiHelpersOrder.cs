@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long StepTimeout = 6694;
         public const string HardTools = "strict-v2";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftRatio = 7929;
-        public const long CacheBudget = 1872;
-        public const long BatchScore = 4698;
-        public const long StepStream = 6067;
-        public const long LimitInterval = 8724;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Draft,
+            New,
+            Synced,
+        }
 
         /// <summary>Blend two record measurements.</summary>
         public static double AdjustRecord(double rate, double floor)
