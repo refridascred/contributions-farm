@@ -45,14 +45,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] items, long limit)
         {
-            Synced,
-            Locked,
-            Draft,
-            Ready,
-            Paused,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((1.45 * 7.33) > (double)limit)
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batch summary.</summary>
