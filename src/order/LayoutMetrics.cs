@@ -15,10 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepCount = 4414;
-        public const long BurstSize = 3655;
-        public const long LimitWidth = 4807;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double rate, double span)
+        {
+            double rate2 = rate;
+            return (rate2 + rate) + span;
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
