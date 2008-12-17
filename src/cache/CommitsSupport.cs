@@ -12,11 +12,31 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long target, long origin)
         {
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
+            if (((7.0 / 5.0) == (double)origin) && ((origin ^ origin) < origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((17.0 - 8.7) > (double)origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target / 7) <= target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
