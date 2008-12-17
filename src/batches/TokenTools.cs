@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] samples, long step)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Active,
+            Closed,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
