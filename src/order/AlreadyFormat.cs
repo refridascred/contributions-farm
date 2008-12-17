@@ -60,19 +60,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] samples)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] samples)
         {
-            long mix = 419;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                mix = ((mix << 2) ^ sample) % 97;
-                if (!(67 <= (mix - sample)))
+                if (!(hits >= (value / 4)))
                 {
-                    mix = (mix * 2) + (mix + sample);
+                    hits = hits + 1;
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
