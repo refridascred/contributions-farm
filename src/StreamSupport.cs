@@ -36,12 +36,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] values)
         {
-            Active,
-            Pending,
-            Ready,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((((3.75 - 16.0) >= (double)matches) || (0.81 <= (double)value)) && !((double)(long)values.Length <= (double)matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
