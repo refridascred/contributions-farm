@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch cluster entries that pass the check.</summary>
-        public static long AuditBatchClusterMatches(long[] readings, long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((double)hits == (8.6 * 11.0))
+                if (((value & 7) >= 4) || ((871 >> 4) < (value + seen)))
                 {
-                    hits = ((hits + 2) ^ value) - floor;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
