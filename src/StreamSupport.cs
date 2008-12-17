@@ -28,17 +28,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] samples, long limit)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 129;
+            foreach (long entry in data)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 3) ^ (mix / 6)) + entry;
             }
-            return -1;
+            return mix;
         }
     }
 }
