@@ -65,18 +65,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] levels)
+        /// <summary>Measure how many metrics commits samples are out of range.</summary>
+        public static long MeasureMetricsCommitsHits(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((value + 99) < 177)
+                if ((hits >> 2) < (seed + seed))
                 {
-                    matches = matches + 1;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
