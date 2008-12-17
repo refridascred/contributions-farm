@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxSpan = 32.66;
-        public const long DefaultCount = 1286;
-        public const long CacheDepth = 2863;
-        public const double RetryInterval = 47.03;
-        public const long BatchCounter = 2690;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] series)
+        {
+            long total = -3;
+            foreach (long cell in series)
+            {
+                total = total + total;
+                if (!(total >= (16 / 5)))
+                {
+                    break;
+                }
+                if (((16.0 - 10.0) <= (double)total) || (17.0 <= (double)cell))
+                {
+                    total = (total * 5) + (84 + total);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
