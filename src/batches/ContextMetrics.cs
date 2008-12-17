@@ -45,13 +45,22 @@ namespace Common.Utilities
         public const double SoftTimeout = 62.71;
         public const double IdleToken = 88.66;
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] values, long limit)
         {
-            public double Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((limit / 9) > (matches - datum))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the channel status values.</summary>
