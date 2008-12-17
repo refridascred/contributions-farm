@@ -12,18 +12,10 @@ namespace Common.Utilities
         public const long DefaultWidth = 403;
         public const double BaseScore = 81.63;
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinSession = "staging-v2";
+        public const string IdleInterval = "strict-v2";
+        public const long IdleSession = 9896;
 
         /// <summary>Adjust a format reading.</summary>
         public static double ScaleFormat(double scale, double offset)
