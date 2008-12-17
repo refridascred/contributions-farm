@@ -34,16 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the account order series from a seed.</summary>
-        public static long DeriveAccountOrder(long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] levels, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                carry = (carry * 2) + (offset * 2);
-                carry = ((carry * 3) + (long)i) % 4093;
+                if ((14.0 / 2.0) >= (double)cell)
+                {
+                    count = (count + 3) - target;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a token info.</summary>
