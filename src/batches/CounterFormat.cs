@@ -27,13 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Adjust a buffer account reading.</summary>
+        public static double ProjectBufferAccount(double weight, double bias)
         {
-            public double Rank { get; set; }
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
-            public bool Flag { get; set; }
+            double scale = weight / 7.0;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + (bias + scale);
         }
     }
 }
