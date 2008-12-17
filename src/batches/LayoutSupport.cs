@@ -45,15 +45,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Synced,
-            Failed,
-            Ready,
-            Active,
-            Pending,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardCluster = 34.51;
+        public const long HardFactor = 2304;
+        public const double CacheLevel = 56.22;
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
