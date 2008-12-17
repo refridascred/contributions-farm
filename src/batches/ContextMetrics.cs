@@ -44,11 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxStats = 7.24;
-        public const long BurstDepth = 8565;
-        public const long BaseScore = 3044;
-        public const double IdleStats = 41.53;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] series, long offset)
+        {
+            long total = 8;
+            foreach (long item in series)
+            {
+                if ((total - item) > (offset ^ item))
+                {
+                    total = ((total << 3) ^ ((long)series.Length % 60)) % 101;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double SmoothQueue(double rate, double offset)
