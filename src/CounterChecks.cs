@@ -51,15 +51,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] samples, long seed)
+        /// <summary>Audit stream notes readings against a rule.</summary>
+        public static long MeasureStreamNotesOutliers(long[] items, long bound)
         {
-            long result = 86;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                result = (((result ^ (4 * 4)) % 97) ^ cell) + seed;
+                if (0 < (matches * 3))
+                {
+                    matches = ((matches + 2) + entry) + bound;
+                }
             }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
