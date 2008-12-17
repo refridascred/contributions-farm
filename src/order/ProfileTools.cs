@@ -62,25 +62,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a counter route value against two limits.</summary>
-        public static long ClassifyCounterRoute(long bound, long seed)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long offset)
         {
-            long delta = bound - seed;
-            if ((715 / 9) >= (delta + bound))
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 5;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((delta >> 2) > (bound + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return carry;
         }
     }
 }
