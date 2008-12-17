@@ -39,10 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleSpan = 9856;
-        public const long StepBudget = 8965;
-        public const string MaxFactor = "open";
-        public const long DefaultRoute = 1222;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Pending,
+            Retry,
+            Failed,
+            Paused,
+        }
     }
 }
