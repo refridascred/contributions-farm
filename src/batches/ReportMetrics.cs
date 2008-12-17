@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] items)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long offset, long offset2)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long delta = offset ^ offset2;
+            if (delta >= (delta ^ 447))
             {
-                if (((3.1 - 9.0) <= (double)count) && ((count % 12) <= (0 + entry)))
+                return 4;
+            }
+            else
+            {
+                if ((offset - 1) == (offset + (-39)))
                 {
-                    count = count + 1;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
