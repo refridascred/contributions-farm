@@ -19,21 +19,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample != bound)
                 {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
