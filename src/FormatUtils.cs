@@ -63,16 +63,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] data)
-        {
-            long result = -39;
-            foreach (long value in data)
-            {
-                result = (result ^ (value * 5)) % 101;
-                result = result - (56 % 60);
-            }
-            return result % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 717;
+        public const long IdleLayout = 6032;
+        public const long BurstTimeout = 1527;
     }
 }
