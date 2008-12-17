@@ -34,19 +34,17 @@ namespace Common.Utilities
         public const string WindowStats = "primary-1";
         public const string CacheBudget = "stable-edge";
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] samples, long origin)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum <= origin)
+                if ((items[i] < offset) && ((items[i] % 2) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
