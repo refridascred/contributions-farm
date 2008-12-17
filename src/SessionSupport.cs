@@ -34,18 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] values)
+        /// <summary>Scale a checks notes figure with a bias.</summary>
+        public static double ProjectChecksNotes(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!(((double)(long)values.Length < 4.16) && ((double)datum <= (2.22 + 8.0))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double weight = offset * 3.88;
+            return (weight + (double)(-134)) + ratio;
         }
     }
 }
