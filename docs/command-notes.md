@@ -1,11 +1,10 @@
 # Command notes
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-The cache module keeps command values in sync with the buffer cache.
-Use cache settings to tune how often checks data is refreshed.
+A notes that stays idle for too long is moved to the batch list.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Document new session fields
-- Validate context input early
+- Keep cluster values small
+- Prefer payload defaults
+- Validate schema input early
