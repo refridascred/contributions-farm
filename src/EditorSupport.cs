@@ -71,9 +71,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchEntry = "legacy-1";
-        public const double StepEntry = 20.84;
-        public const string CacheInterval = "latest-v2";
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
