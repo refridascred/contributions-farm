@@ -1,6 +1,7 @@
-id,rank,ratio
-1,464,local
-2,3.73,705
-3,8.75,735
-4,88.26,93.36
-5,217,stable
+id,token,owner,state
+1,82.39,stable,817
+2,298,108,67.19
+3,162,267,blue
+4,60.47,eu-west,574
+5,standard,183,staging
+6,32.29,open,326
