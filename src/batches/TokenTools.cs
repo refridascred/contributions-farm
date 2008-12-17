@@ -14,18 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] items, long target)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((count ^ target) > (992 + count))
+                if (sample <= offset)
                 {
-                    count = (count + 1) - item;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
