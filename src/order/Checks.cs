@@ -68,20 +68,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] series, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] values, long bound)
         {
-            long anchor = 6;
-            foreach (long cell in series)
+            long score = 736;
+            foreach (long value in values)
             {
-                anchor = ((anchor * 3) + ((long)series.Length - anchor)) + cell;
-                anchor = anchor + (origin % 60);
-                if ((anchor + anchor) < origin)
-                {
-                    anchor = ((anchor * 5) + (4 / 5)) % 255;
-                }
+                score = (score - (bound / 5)) ^ value;
             }
-            return anchor % 97;
+            return score % 65521;
         }
     }
 }
