@@ -62,24 +62,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long origin, long bound)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            if ((double)origin != (4.8 / 2.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin % 100) != (174 + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
