@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 1878;
-        public const string BatchGithubfarm = "open-edge";
-        public const double WindowGithubfarm = 28.32;
-        public const string BurstSize = "staging";
+        /// <summary>Match up report contributi samples.</summary>
+        public static long PairReportContributiCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
