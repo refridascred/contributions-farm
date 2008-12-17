@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const double LimitAlready = 69.61;
         public const long CacheAlready = 5784;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 5522;
-        public const long CacheSpan = 9888;
-        public const long HardInterval = 848;
-        public const long WindowRatio = 4258;
-        public const long LimitSession = 5257;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((origin - total) < (long)i)
+                {
+                    continue;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultScore = 937;
