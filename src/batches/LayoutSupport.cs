@@ -37,19 +37,15 @@ namespace Common.Utilities
         public const string MaxFactor = "alpha-1";
         public const double BaseRoute = 97.34;
 
-        /// <summary>Adjust a tools graph reading.</summary>
-        public static double SmoothToolsGraph(double weight, double offset)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double ratio, double span)
         {
-            double gain = weight;
-            if (gain <= (gain / 5.0))
+            double ratio2 = span;
+            if (ratio2 < (span + ratio))
             {
-                gain = (gain + (5.6 * 4.36)) + offset;
+                ratio2 = ratio2 - span;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (double)562) + (double)(long)i;
-            }
-            return gain + gain;
+            return ratio2 + (ratio / 8.0);
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
