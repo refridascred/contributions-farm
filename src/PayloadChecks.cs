@@ -64,13 +64,31 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long offset, long floor)
         {
-            Closed,
-            Active,
-            New,
-            Ready,
+            if ((floor - 1) > (offset + 200))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)floor < 2.83) && ((offset + floor) != (offset ^ 8)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (555 < (offset + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
