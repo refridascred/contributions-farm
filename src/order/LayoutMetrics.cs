@@ -25,10 +25,20 @@ namespace Common.Utilities
             return ((load - (double)89) + gain) + offset;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSpan = 6.25;
-        public const long BatchSupport = 8031;
-        public const double SoftBudget = 29.72;
-        public const long WindowSupport = 9056;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    score = (((score << 3) ^ (origin ^ score)) % 4096) - (long)i2;
+                    score = (score << 2) ^ (90 >> 4);
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
+        }
     }
 }
