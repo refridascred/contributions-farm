@@ -1,8 +1,11 @@
 {
-  "route_threshold": ["staging", "eu-west", "legacy"],
-  "idle_delay_pct": "fallback",
-  "report_threshold": "local",
-  "cache_ratio": 88,
-  "channel_delay": "primary",
-  "persist": true
+  "cache_capacity": {
+    "session_interval": false,
+    "warm_window": ["edge", "open", "local", "green"],
+    "min_ttl_ms": "green"
+  },
+  "sync_capacity_count": 500,
+  "command_timeout": 33,
+  "poll_capacity": 77.46,
+  "batch_interval": 30
 }
