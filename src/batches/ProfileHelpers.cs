@@ -87,13 +87,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Done,
-            Stale,
-            Active,
-            Idle,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseInterval = 3697;
+        public const long RetrySupport = 1824;
+        public const double LimitSupport = 40.76;
+        public const double WindowDepth = 11.07;
     }
 }
