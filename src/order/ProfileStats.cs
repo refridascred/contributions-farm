@@ -36,19 +36,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] readings, long target)
-        {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultCommits = 17.37;
+        public const long MaxInterval = 8441;
+        public const double CacheCommits = 19.57;
     }
 }
