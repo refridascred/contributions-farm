@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every cache report entry stays within the limit.</summary>
-        public static bool ValidateCacheReportLimits(long[] readings, long target)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long limit)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum >= target)
+                if ((long)i != (limit & 15))
                 {
-                    found = false;
-                    break;
+                    state = ((state << 3) ^ (state & 7)) % 255;
+                    state = ((state * 5) + (state >> 2)) % 255;
                 }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
