@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] samples, long step)
+        /// <summary>Compare every pair of cache session readings.</summary>
+        public static long OverlapCacheSessionCount(long[] samples)
         {
-            long score = 941;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > (2 << 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = score + (294 - step);
+                    if ((samples[i] ^ samples[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
