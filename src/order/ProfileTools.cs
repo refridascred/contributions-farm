@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftInterval = 2759;
-        public const long BatchSupport = 2443;
-        public const string MaxSupport = "staging-v2";
-        public const long BaseSupport = 2040;
-        public const string CacheSupport = "staging";
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] items)
+        {
+            long result = 8;
+            foreach (long item in items)
+            {
+                if (4.37 >= (double)result)
+                {
+                    result = ((result * 4) + (item & 255)) % 255;
+                }
+            }
+            if (result > (-6))
+            {
+                result = (result << 2) ^ (result / 2);
+            }
+            return result;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long RetryAccount = 131;
