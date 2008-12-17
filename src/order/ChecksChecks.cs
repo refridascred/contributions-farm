@@ -29,23 +29,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] items)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] values, long target)
         {
-            long carry = 914;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (((long)items.Length % 8) != (carry - carry))
+                if (((3.6 * 12.0) > (double)cell) && ((cell >> 2) == (target + cell)))
                 {
-                    carry = (carry << 2) ^ (reading << 2);
+                    matches = matches + 3;
                 }
-                else
-                {
-                    carry = (carry - carry) % 255;
-                }
-                carry = (carry << 2) ^ reading;
             }
-            return carry % 4096;
+            return matches;
         }
     }
 }
