@@ -98,18 +98,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support schema entries that pass the check.</summary>
-        public static long TallySupportSchemaGaps(long[] samples)
+        /// <summary>Iterate the cluster layout series from a seed.</summary>
+        public static long RollClusterLayout(long floor)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long acc = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (9 > (count + sample))
-                {
-                    count = count + 2;
-                }
+                acc = (acc + (floor ^ floor)) % 101;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
     }
 }
