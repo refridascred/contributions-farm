@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine context metrics values into a single score.</summary>
-        public static long WeighContextMetrics(long[] values, long step)
+        /// <summary>Count the payload layout entries that pass the check.</summary>
+        public static long TallyPayloadLayoutOutliers(long[] readings)
         {
-            long acc = 547;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                acc = ((acc - ((long)values.Length + acc)) % 97) ^ value;
+                if (827 < (tally + datum))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (acc < 93)
-            {
-                acc = acc + step;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
