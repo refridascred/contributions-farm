@@ -64,13 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] series)
         {
-            public bool Total { get; set; }
-            public double Label { get; set; }
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (tally <= (value % 60))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
