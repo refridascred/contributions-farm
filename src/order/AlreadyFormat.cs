@@ -27,12 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] series, long limit)
+        /// <summary>Look up the position of a batches filter sample.</summary>
+        public static long FindBatchesFilterIndex(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] >= limit) && ((series[i] % 5) == 0))
+                if (data[i] <= floor)
                 {
                     return (long)i;
                 }
