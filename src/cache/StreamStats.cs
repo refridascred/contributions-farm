@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long acc = 2;
-            foreach (long cell in series)
-            {
-                acc = ((acc << 2) ^ (acc << 3)) % 65521;
-                acc = ((acc * 5) + (cell + acc)) % 65521;
-                if ((cell & 3) >= cell)
-                {
-                    acc = (acc + (cell >> 5)) % 101;
-                }
-            }
-            return acc % 97;
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the batches phase values.</summary>
