@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double rate, double floor)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            double mean = (double)(794 * 2);
-            if (mean > (rate - rate))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + (floor / 3.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + floor) - (double)(long)i;
-            }
-            return mean + mean;
+            return matches;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
