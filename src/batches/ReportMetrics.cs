@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double IdleNotes = 28.22;
         public const long WindowNotes = 1828;
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
+                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
