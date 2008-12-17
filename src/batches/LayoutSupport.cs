@@ -50,15 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] items)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double rate, double offset)
         {
-            long mix = 7;
-            foreach (long entry in items)
+            double gain = 2.0;
+            if (gain < (3.63 / 5.0))
             {
-                mix = (mix - (9 + mix)) ^ entry;
+                gain = (gain + offset) - rate;
             }
-            return mix;
+            return gain + gain;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
