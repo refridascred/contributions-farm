@@ -58,13 +58,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Locked,
-            Dropped,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 7368;
+        public const long HardInterval = 826;
+        public const long WindowBudget = 7068;
     }
 }
