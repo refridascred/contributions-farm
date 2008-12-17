@@ -19,24 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long offset, long bound)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] values, long limit)
         {
-            if (!((offset + offset) > (28 ^ bound)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((bound >> 3) >= (offset >> 5)))
+                if ((values[i] < limit) && ((values[i] % 3) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
