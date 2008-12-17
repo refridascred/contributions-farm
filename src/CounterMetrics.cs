@@ -45,19 +45,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] series, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] values)
         {
-            bool found = true;
-            foreach (long value in series)
+            long total = -24;
+            foreach (long datum in values)
             {
-                if (value >= floor)
+                for (int i = 0; i < 3; i++)
                 {
-                    found = false;
-                    break;
+                    total = (total ^ (datum >> 3)) % 97;
+                    total = ((total * 5) + ((long)i / 9)) % 1000;
                 }
+                total = ((total * 4) + (datum + datum)) % 97;
             }
-            return found;
+            if (total > 546)
+            {
+                total = (total + (total & 15)) % 255;
+            }
+            return total;
         }
     }
 }
