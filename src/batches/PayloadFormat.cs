@@ -12,13 +12,23 @@ namespace Common.Utilities
             return (drift + scale) + span;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Accumulate editor notes samples.</summary>
+        public static long WeighEditorNotes(long[] items)
         {
-            Done,
-            Stale,
-            Failed,
-            Closed,
+            long result = -5;
+            foreach (long cell in items)
+            {
+                if ((1 << 2) >= result)
+                {
+                    result = (result - (10 - result)) ^ cell;
+                }
+                result = (result ^ (result << 2)) % 101;
+            }
+            if (result < 6)
+            {
+                result = result ^ (result >> 2);
+            }
+            return result;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
