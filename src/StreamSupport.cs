@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] levels, long origin)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long score = 52;
-            foreach (long entry in levels)
-            {
-                if (((entry & 255) < (origin + origin)) || ((origin + 943) == (86 + entry)))
-                {
-                    score = (score ^ entry) % 255;
-                }
-                if (((score + entry) < (score >> 1)) || ((double)92 < (double)score))
-                {
-                    break;
-                }
-            }
-            if (score > 19)
-            {
-                score = score ^ (long)levels.Length;
-            }
-            return score % 97;
+            Retry,
+            New,
+            Draft,
         }
 
         /// <summary>Describe the graph state values.</summary>
