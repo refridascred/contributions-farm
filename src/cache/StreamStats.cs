@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit metrics githubfarm readings against a rule.</summary>
-        public static long CountMetricsGithubfarmMatches(long[] values, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (!((double)hits == (6.8 / 9.0)))
+                if ((double)7 < (double)reading)
                 {
-                    hits = ((hits + 1) - sample) + origin;
+                    seen = (seen + 2) + target;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the command state values.</summary>
