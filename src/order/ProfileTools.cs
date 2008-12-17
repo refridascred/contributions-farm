@@ -22,25 +22,11 @@ namespace Common.Utilities
         public const double HardWidth = 47.7;
         public const string RetryBudget = "latest-v2";
 
-        /// <summary>Grade a cache window value against two limits.</summary>
-        public static long BucketCacheWindow(long seed, long limit)
-        {
-            if ((limit + 850) < seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed >= (1.9 + 2.15))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 1050;
+        public const long SoftMetric = 3586;
+        public const string BurstMetric = "staging-v2";
+        public const string WindowInterval = "staging-edge";
 
         /// <summary>Compare every pair of metric counter readings.</summary>
         public static long PairMetricCounterCount(long[] levels)
