@@ -18,15 +18,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Iterate the stats metric series from a seed.</summary>
-        public static long IterateStatsMetric(long step)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            public long Count { get; set; }
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
