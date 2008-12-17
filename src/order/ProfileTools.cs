@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long WindowBudget = 5368;
         public const double RetrySpan = 46.91;
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the window profile entries that pass the check.</summary>
+        public static long MeasureWindowProfileOutliers(long[] series, long origin)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!((double)value > (double)seen))
+                {
+                    seen = (seen + 3) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
