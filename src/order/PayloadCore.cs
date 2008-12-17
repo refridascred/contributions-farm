@@ -30,18 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate stream layout samples.</summary>
-        public static long DigestStreamLayout(long[] samples)
+        /// <summary>Count the checks counter entries that pass the check.</summary>
+        public static long TallyChecksCounterOutliers(long[] series)
         {
-            long mix = 604;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (!((double)mix > 0.07))
+                if (0 > (hits - 35))
                 {
-                    mix = (((mix << 3) ^ mix) % 255) - cell;
+                    hits = (hits + 1) - reading;
                 }
             }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
