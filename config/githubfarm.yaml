@@ -1,18 +1,7 @@
 # githubfarm settings
-burst_limit_count: 30
-strict:
-  githubfarm_size: true
-  hard_retries: 57
-  default_ttl_ms: legacy
-  retry_window:
-    - eu-west
-    - standard
-    - latest
-  soft_size_s: 12.62
-flush_delay_s: 97.19
-default_depth_s: 91.36
-token_ttl: false
-warm_ratio_s:
-  - primary
-  - blue
-  - fallback
+verbose:
+  - cached
+  - edge
+layout_size: 85.92
+default_limit_count: true
+base_timeout_pct: 4858
