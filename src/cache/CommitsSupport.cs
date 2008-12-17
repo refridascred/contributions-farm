@@ -12,24 +12,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!(((total * 3) <= (total & 1)) || (((long)i >> 2) == (total >> 4))))
-                {
-                    total = ((total * 4) + (origin >> 1)) % 255;
-                }
-                if ((total + 104) < total)
-                {
-                    break;
-                }
-                total = (total << 3) ^ (total - origin);
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Idle,
+            New,
+            Paused,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
