@@ -16,17 +16,13 @@ namespace Common.Utilities
         public const long RetryProfile = 4444;
         public const long StepTimeout = 4098;
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] series, long bound)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
+            public long Region { get; set; }
         }
     }
 }
