@@ -19,17 +19,18 @@ namespace Common.Utilities
         public const long SoftLayout = 7169;
         public const long CacheWidth = 9060;
 
-        /// <summary>Locate a support batches reading by value.</summary>
-        public static long SeekSupportBatchesIndex(long[] data, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (data[i] > limit)
+                if ((count - datum) == (count - count))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
