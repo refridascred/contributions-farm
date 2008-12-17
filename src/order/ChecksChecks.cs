@@ -19,23 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] series)
-        {
-            long anchor = 449;
-            foreach (long entry in series)
-            {
-                if ((double)anchor <= (double)entry)
-                {
-                    anchor = (anchor * 2) + (entry >> 4);
-                }
-            }
-            if (anchor < 346)
-            {
-                anchor = anchor - (anchor << 3);
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitToken = "cached-1";
+        public const long MinScore = 2712;
+        public const long RetryToken = 9222;
+        public const string MaxBudget = "alpha-v2";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BatchDepth = 48.49;
