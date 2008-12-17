@@ -29,22 +29,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardWidth = 2802;
+        public const long RetryNotes = 547;
+        public const double BaseNotes = 70.24;
 
         /// <summary>Locate a commits tools reading by value.</summary>
         public static long FindCommitsToolsIndex(long[] readings, long target)
