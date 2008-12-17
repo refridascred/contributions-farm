@@ -31,18 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] readings, long step)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long floor)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long result = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((step + sample) >= (sample / 3))
+                if (floor >= (floor - result))
                 {
-                    matches = matches + 1;
+                    result = result + (floor + floor);
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
     }
 }
