@@ -35,18 +35,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the contributi filter entries that pass the check.</summary>
-        public static long AuditContributiFilterMatches(long[] values, long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long mix = 497;
+            foreach (long datum in levels)
             {
-                if (!(((445 / 2) < target) || ((reading - count) == (count & 127))))
+                if ((double)datum >= (double)993)
                 {
-                    count = count + 1;
+                    mix = (mix * 3) + (mix + datum);
+                }
+                else
+                {
+                    mix = ((mix * 5) + (mix - 926)) % 255;
                 }
             }
-            return count;
+            if (mix > 672)
+            {
+                mix = mix - (offset << 2);
+            }
+            return mix;
         }
 
         /// <summary>Describe the stream phase values.</summary>
