@@ -21,15 +21,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double weight, double bias)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] levels, long limit)
         {
-            double scale = (double)(570 + 288);
-            if (scale < weight)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                scale = scale - scale;
+                if ((hits - hits) > limit)
+                {
+                    hits = (hits + 3) + item;
+                }
             }
-            return scale - bias;
+            return hits;
         }
     }
 }
