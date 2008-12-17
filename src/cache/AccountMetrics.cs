@@ -12,19 +12,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] items, long offset)
+        /// <summary>Accumulate order cache samples.</summary>
+        public static long FoldOrderCache(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long mark = 935;
+            foreach (long entry in series)
             {
-                if (datum < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = (((mark << 3) ^ (long)series.Length) - entry) - offset;
             }
-            return stale;
+            return mark % 4096;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
