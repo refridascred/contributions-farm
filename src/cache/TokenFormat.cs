@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] series, long floor)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Failed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define report limits and defaults.</summary>
