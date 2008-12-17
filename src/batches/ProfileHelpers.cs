@@ -76,13 +76,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Accumulate channel route samples.</summary>
+        public static long WeighChannelRoute(long[] readings)
         {
-            Dropped,
-            Locked,
-            Done,
-            Failed,
+            long score = 31;
+            foreach (long reading in readings)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    score = ((score ^ (reading + reading)) % 255) - (long)i;
+                }
+                score = score - score;
+                score = (score - (score >> 2)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
