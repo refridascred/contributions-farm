@@ -59,19 +59,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] items, long limit)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading != limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] ^ data[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
