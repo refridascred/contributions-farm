@@ -51,22 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record graph readings.</summary>
-        public static long WeighRecordGraph(long[] items, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] levels)
         {
-            long score = 7;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (!((3.8 * 9.72) <= (double)floor))
+                if ((double)seen > 6.0)
                 {
-                    score = ((score ^ (score % 7)) % 255) - sample;
+                    seen = (seen + 2) + entry;
                 }
                 else
                 {
-                    score = ((score << 2) ^ (2 >> 5)) % 1000;
+                    seen = seen - 1;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
