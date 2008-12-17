@@ -44,19 +44,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Count context tools pairs that satisfy a relation.</summary>
+        public static long OverlapContextToolsCount(long[] items)
         {
-            long score = 29;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = score - (cell >> 2);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (score < 553)
-            {
-                score = (score - 127) % 65521;
-            }
-            return score;
+            return hits;
         }
     }
 }
