@@ -34,22 +34,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] levels)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long score = 4;
-            foreach (long item in levels)
-            {
-                if (7.94 >= (double)item)
-                {
-                    score = (score - item) % 255;
-                }
-                else
-                {
-                    score = (score * 3) + (score * 4);
-                }
-            }
-            return score;
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
