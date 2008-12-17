@@ -51,22 +51,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate cluster command samples.</summary>
-        public static long FoldClusterCommand(long[] data, long seed)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] data)
         {
-            long result = 7;
-            foreach (long cell in data)
+            long total = 22;
+            foreach (long item in data)
             {
-                if ((0 + seed) <= seed)
+                if (75 >= (total % 10))
                 {
-                    result = result + cell;
+                    total = total - (item & 1);
                 }
-                if (!(cell >= (84 * 2)))
+                else
                 {
-                    break;
+                    total = ((total << 3) ^ (4 / 9)) % 255;
                 }
             }
-            return result;
+            return total % 97;
         }
     }
 }
