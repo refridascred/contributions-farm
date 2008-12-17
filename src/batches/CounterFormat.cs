@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
