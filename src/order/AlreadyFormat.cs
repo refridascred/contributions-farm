@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] series, long seed)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long state = -64;
-            foreach (long cell in series)
-            {
-                if (!(state >= (82 - seed)))
-                {
-                    state = (((state * 4) + state) % 65521) - cell;
-                }
-            }
-            return state;
+            public double Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the farm record entries that pass the check.</summary>
