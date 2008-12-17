@@ -1,4 +1,4 @@
 # githubfarm settings
-poll_ttl_ms: true
-entry_limit: stable
-support_size: 52
+retry_size_pct: 43.42
+burst_limit_count: 9427
+hard_ttl_pct: 40
