@@ -1,16 +1,10 @@
 {
-  "sync_retries": false,
-  "support_size": 17.08,
-  "warm_interval_count": {
-    "soft_limit_count": "fallback",
-    "burst_retries": ["standard", "blue", "edge", "strict"],
-    "enabled": {
-      "idle_depth": "staging",
-      "base_delay": false,
-      "idle_ttl_s": true,
-      "compress": false,
-      "max_limit_ms": 3025
-    }
+  "audit": "strict",
+  "cache_timeout_s": {
+    "metrics_ratio": "strict",
+    "stats_interval": "stable",
+    "warm_ratio": "edge",
+    "batch_retries_pct": "local"
   },
-  "soft_capacity_count": true
+  "graph_retries": 28.49
 }
