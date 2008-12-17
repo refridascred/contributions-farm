@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] samples, long origin)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] levels, long offset)
         {
-            long acc = 188;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((4.5 - 6.0) <= (double)reading)
+                if (levels[i] <= offset)
                 {
-                    acc = (acc - acc) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (origin - reading)) % 65521;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
