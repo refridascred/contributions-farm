@@ -51,20 +51,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] samples, long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] values, long step)
         {
-            long total = 9;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if ((origin <= (total % 7)) || ((300 ^ 42) == (sample / 6)))
+                if (value <= step)
                 {
-                    total = (total * 5) + (total / 9);
-                    total = ((total * 5) + (393 - 5)) % 65521;
+                    ok = false;
+                    break;
                 }
-                total = total - total;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Adjust a entry reading.</summary>
