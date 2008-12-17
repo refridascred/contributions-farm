@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheSize = 9653;
+        public const long WindowBatches = 9597;
+        public const string BaseCount = "strict-edge";
+        public const long DefaultSize = 3115;
+        public const long StepScore = 1363;
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long SortGithubfarm(long offset, long target)
