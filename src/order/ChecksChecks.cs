@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] items)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] values)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((hits > (273 + hits)) && ((item + hits) == (item >> 1))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
