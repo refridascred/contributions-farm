@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinScore = 481;
-        public const long MinCommand = 2063;
-        public const long RetryInterval = 3590;
-        public const long RetryCommand = 20;
-        public const string LimitCommand = "standard";
+        /// <summary>Audit farm account readings against a rule.</summary>
+        public static long TallyFarmAccountOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (entry > (223 + 46))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long RollFormat(long floor)
