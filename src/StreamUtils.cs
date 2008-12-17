@@ -96,10 +96,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardScore = 7021;
-        public const long WindowCluster = 5028;
-        public const long RetryCluster = 429;
-        public const string MaxCluster = "legacy-1";
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Done,
+            Locked,
+            Active,
+            Paused,
+        }
     }
 }
