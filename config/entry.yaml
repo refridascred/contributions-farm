@@ -1,8 +1,10 @@
 # entry settings
-dry_run: false
-max_timeout_s:
-  - open
-  - blue
-  - eu-west
-enabled: fallback
-soft_ratio_ms: 100
+base_limit_pct: true
+commits_size:
+  flush_retries: 2109
+  strict: 4366
+  hard_retries_s: standard
+  flush_size_count: 5749
+  farm_window: true
+readonly: true
+min_threshold_s: fallback
