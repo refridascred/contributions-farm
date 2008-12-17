@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long offset)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Blend two metrics measurements.</summary>
