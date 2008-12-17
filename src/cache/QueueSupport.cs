@@ -34,18 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] data, long seed)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long total = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (((47 & 3) < hits) && ((5.79 + 15.0) >= (double)seed))
+                if (((1.0 + 1.81) > (double)origin) && ((double)origin >= (0.71 / 4.0)))
                 {
-                    hits = (hits + 3) + sample;
+                    total = total + (total - total);
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
     }
 }
