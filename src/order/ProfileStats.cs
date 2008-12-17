@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] levels, long offset)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio2 = (double)(1 - (-598));
+            if (ratio2 >= ratio2)
             {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
+                ratio2 = (ratio2 + (double)1) - ratio;
             }
-            return -1;
+            return ratio2 - floor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
