@@ -62,24 +62,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long step, long target)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long step)
         {
-            if (!((double)target > 1.0))
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                return 4;
+                mark = mark - (mark - 715);
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (((target & 3) > (33 + step)) || ((step >> 4) != (target >> 4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
