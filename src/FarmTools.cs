@@ -26,12 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a command snapshot.</summary>
