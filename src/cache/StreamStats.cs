@@ -31,14 +31,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long floor)
         {
-            Ready,
-            Retry,
-            Dropped,
-            Stale,
-            New,
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = (carry - (floor ^ 724)) % 101;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define order limits and defaults.</summary>
