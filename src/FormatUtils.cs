@@ -28,13 +28,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] series)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry <= 13.0)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine commits layout values into a single score.</summary>
