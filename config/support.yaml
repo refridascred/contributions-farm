@@ -1,7 +1,18 @@
 # support settings
-sync_ratio: true
-batch_size: 100
-flush_interval_ms: false
-layout_capacity: staging
-window_interval: false
-idle_size: 46
+flush_depth_s: true
+command_interval: true
+sync_depth_count: green
+enabled:
+  poll_timeout_ms: true
+  sync_retries: false
+  burst_threshold_ms:
+    - standard
+    - standard
+    - latest
+    - fallback
+  retry_delay: 75.48
+  compress: 30
+min_limit:
+  already_retries: false
+  window_window: 17.97
+  flush_size_pct: local
