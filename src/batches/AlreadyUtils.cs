@@ -40,14 +40,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Combine tools order values into a single score.</summary>
+        public static long ScoreToolsOrder(long[] levels, long floor)
         {
-            Paused,
-            Ready,
-            Queued,
-            Done,
-            Active,
+            long carry = 680;
+            foreach (long item in levels)
+            {
+                carry = (carry + (item * 3)) - floor;
+                if ((item ^ (long)levels.Length) != (carry + item))
+                {
+                    carry = (carry + (item & 3)) % 4096;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the cluster class values.</summary>
