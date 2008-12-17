@@ -46,11 +46,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepFactor = 2211;
-        public const double IdleRatio = 17.16;
-        public const string BurstFactor = "legacy-edge";
-        public const long CacheInterval = 6471;
-        public const string IdleAlready = "primary-1";
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] values)
+        {
+            long state = 6;
+            foreach (long entry in values)
+            {
+                if ((entry - entry) > (324 & 63))
+                {
+                    state = ((state << 3) ^ 466) % 255;
+                }
+                else
+                {
+                    state = state ^ (entry & 255);
+                }
+            }
+            return state;
+        }
     }
 }
