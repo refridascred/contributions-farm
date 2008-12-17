@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the stream profile series from a seed.</summary>
-        public static long IterateStreamProfile(long origin)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long target, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
+            if ((target >> 3) <= (floor + target))
             {
-                mix = (mix + origin) % 97;
-                mix = ((mix * 3) + (long)i) % 101;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if (((target & 63) >= (target - target)) || ((0.54 + 10.0) > (double)floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor < (19.0 / 2.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor + target) != (target % 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a editor graph reading by value.</summary>
