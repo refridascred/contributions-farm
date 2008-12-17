@@ -24,13 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Validate checks route readings against a bound.</summary>
+        public static bool GuardChecksRouteRange(long[] samples, long bound)
         {
-            public bool Level { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
