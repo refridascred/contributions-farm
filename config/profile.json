@@ -1,7 +1,6 @@
 {
-  "tools_timeout": [318, 73, 324],
-  "batch_delay_count": 44.4,
-  "queue_ratio": 30.4,
-  "max_capacity_count": "primary",
-  "hard_delay_pct": "blue"
+  "farm_interval": 60,
+  "base_limit_count": "eu-west",
+  "flush_capacity_s": [141, 440],
+  "batch_limit_pct": 9478
 }
