@@ -14,16 +14,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = anchor ^ (738 << 2);
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
