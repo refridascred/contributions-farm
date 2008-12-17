@@ -33,21 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] levels)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 58;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((375 % 64) >= (sample % 5))
                 {
-                    if ((levels[i] + levels[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark * 2) + (mark ^ 231)) % 65521;
                 }
             }
-            return hits;
+            if (mark > 278)
+            {
+                mark = (mark + ((long)levels.Length + 5)) % 101;
+            }
+            return mark;
         }
     }
 }
