@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] samples)
         {
-            Pending,
-            Ready,
-            Stale,
-            Locked,
-            Active,
+            long mix = 64;
+            foreach (long datum in samples)
+            {
+                if ((datum / 7) <= (datum & 255))
+                {
+                    mix = mix + (mix >> 5);
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
