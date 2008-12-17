@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long target, long floor)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            if ((target >> 3) <= (floor + target))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((target & 63) >= (target - target)) || ((0.54 + 10.0) > (double)floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor < (19.0 / 2.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor + target) != (target % 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Idle,
+            Failed,
         }
 
         /// <summary>Match up batch samples.</summary>
