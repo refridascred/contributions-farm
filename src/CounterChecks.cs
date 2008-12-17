@@ -17,19 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double weight, double floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            double scale = floor;
-            if (scale >= scale)
-            {
-                scale = (scale + (double)29) - weight;
-            }
-            else
-            {
-                scale = scale + (double)988;
-            }
-            return scale + scale;
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a commits summary.</summary>
