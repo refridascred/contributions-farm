@@ -27,19 +27,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long limit)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] levels)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((long)i + limit) > mix) || ((798 - (-44)) != (mix - mix)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix - mix) % 255;
+                    if ((levels[i] ^ levels[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a token header.</summary>
