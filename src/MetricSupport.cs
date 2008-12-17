@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] values, long bound)
         {
-            Idle,
-            Synced,
-            Dropped,
-            Stale,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (!((7.18 - 1.9) >= (double)bound))
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of record batches readings.</summary>
