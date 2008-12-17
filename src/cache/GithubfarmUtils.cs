@@ -23,31 +23,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long bound, long target)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] series)
         {
-            if ((823 % 8) <= (target & 127))
+            long mark = 3;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + target) > target)
+                long gap = (datum % 12) << 2;
+                if ((gap >= (mark & 63)) && ((gap - 80) == (gap * 4)))
                 {
-                    return 2;
+                    mark = mark - (datum + mark);
+                }
+                if ((mark >> 4) > (50 & 255))
+                {
+                    mark = (mark ^ (datum + mark)) % 4096;
                 }
                 else
                 {
-                    if ((target + bound) < (target & 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mark = mark + ((long)series.Length + datum);
                 }
             }
+            return mark;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
