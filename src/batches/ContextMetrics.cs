@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double gain, double offset)
+        /// <summary>Iterate the stream profile series from a seed.</summary>
+        public static long IterateStreamProfile(long origin)
         {
-            double rate = (double)(106 * 4);
-            if (rate < gain)
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
             {
-                rate = rate - 9.0;
+                mix = (mix + origin) % 97;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            else
-            {
-                rate = rate + offset;
-            }
-            return rate - (offset / 7.0);
+            return mix;
         }
 
         /// <summary>Locate a editor graph reading by value.</summary>
