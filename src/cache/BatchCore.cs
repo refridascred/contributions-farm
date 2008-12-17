@@ -38,18 +38,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] items, long step)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double weight2 = 2.0;
+            if (weight2 <= (offset / 5.0))
             {
-                if ((9 + 40) < step)
-                {
-                    matches = (matches + 2) ^ item;
-                }
+                weight2 = weight2 - (weight2 * 1.0);
             }
-            return matches;
+            else
+            {
+                weight2 = weight2 + (weight * 9.52);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + weight2) + (double)(long)i;
+            }
+            return weight2 + offset;
         }
     }
 }
