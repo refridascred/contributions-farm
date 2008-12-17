@@ -36,18 +36,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] readings, long step)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((step % 8) >= (sample - 48))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the payload checks series from a seed.</summary>
