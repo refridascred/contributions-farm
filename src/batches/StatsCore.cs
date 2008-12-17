@@ -22,31 +22,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long floor, long step)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long step)
         {
-            if (!((693 & 7) <= (floor + step)))
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(25 <= step))
+                if (((long)i - (long)i) < (6 << 3))
                 {
-                    return 7;
+                    result = ((result << 3) ^ (step - result)) % 255;
+                    break;
                 }
                 else
                 {
-                    if ((double)step == (18.0 * 0.9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    result = (result + (step + (long)i)) % 101;
                 }
+                long matches = step;
+                if ((step >= 3) || ((matches % 60) < result))
+                {
+                    result = ((result << 2) ^ (matches + step)) % 101;
+                    continue;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Digest a series of schema support entries.</summary>
