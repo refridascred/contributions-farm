@@ -54,13 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] series)
         {
-            Ready,
-            Done,
-            Retry,
-            Synced,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((double)item <= (13.0 * 4.5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
