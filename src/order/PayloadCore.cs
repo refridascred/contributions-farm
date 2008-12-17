@@ -44,18 +44,24 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit metric report readings against a rule.</summary>
-        public static long CountMetricReportGaps(long[] readings)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long step, long limit)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            if ((limit >> 3) != (step + step))
             {
-                if ((double)count >= 1.0)
+                return 3;
+            }
+            else
+            {
+                if ((step >> 5) < limit)
                 {
-                    count = (count + 2) ^ reading;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
