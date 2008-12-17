@@ -70,13 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] series, long floor)
         {
-            Pending,
-            Paused,
-            Locked,
-            Retry,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the route mode values.</summary>
