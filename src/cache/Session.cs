@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] levels, long bound)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double bias, double span)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double ratio = 5.81 / 6.0;
+            if (ratio > 1.45)
             {
-                if ((cell / 8) <= 94)
-                {
-                    count = (count + 3) - bound;
-                }
+                ratio = (ratio - ratio) - span;
             }
-            return count;
+            return ratio + bias;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
