@@ -14,31 +14,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long step, long floor)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double weight, double offset)
         {
-            if (((floor ^ step) <= (step / 2)) && ((53 ^ 27) <= (step - floor)))
+            double mean = (double)7 / 5.0;
+            if (mean < (2.7 + weight))
             {
-                return 5;
+                mean = mean - (2.86 / 8.0);
             }
             else
             {
-                if (((-325) & 7) > (step + floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step * 2) >= (step - step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                mean = mean + mean;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (offset / 4.0)) - (double)(long)i;
+            }
+            return mean - (double)5;
         }
 
         /// <summary>Fold a list of account readings.</summary>
