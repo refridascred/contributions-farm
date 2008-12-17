@@ -55,11 +55,12 @@ namespace Common.Utilities
         public const string HardInterval = "fallback-edge";
         public const long MinTools = 4173;
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
