@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] series, long limit)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (count <= 0)
-                {
-                    count = ((count + 3) + reading) - limit;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Adjust a commits cluster reading.</summary>
