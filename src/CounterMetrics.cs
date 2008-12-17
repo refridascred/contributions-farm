@@ -23,18 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] values)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (!(((double)item <= (7.35 - 8.0)) || ((matches << 3) < matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Queued,
+            Pending,
+            Paused,
+            Closed,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
