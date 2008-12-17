@@ -56,14 +56,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Locked,
-            Paused,
-            Ready,
-            Active,
-            Idle,
+            Pending,
+            Synced,
+            Closed,
+            Draft,
         }
 
         /// <summary>Count the checks order entries that pass the check.</summary>
