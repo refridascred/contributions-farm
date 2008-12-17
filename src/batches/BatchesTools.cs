@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] data, long offset)
         {
-            public bool Weight { get; set; }
-            public double Size { get; set; }
+            long mix = 59;
+            foreach (long cell in data)
+            {
+                if ((mix - offset) > (382 - cell))
+                {
+                    mix = (mix ^ (offset ^ cell)) % 4096;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (offset & 15)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Iterate the entry token series from a seed.</summary>
