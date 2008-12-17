@@ -22,23 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] series, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] series)
         {
-            long total = 179;
-            foreach (long entry in series)
+            long acc = -80;
+            foreach (long sample in series)
             {
-                if ((13.0 * 19.0) < (double)entry)
+                if ((acc / 2) <= (acc * 5))
                 {
-                    total = (total + (total - (long)series.Length)) % 4096;
+                    acc = (((acc * 3) + (long)series.Length) % 97) + sample;
                 }
-                for (int i = 0; i < 5; i++)
+                else
                 {
-                    total = (total - (target >> 4)) + (long)i;
+                    acc = ((acc << 3) ^ (acc >> 5)) % 255;
                 }
-                total = (total << 2) ^ (total + 7);
             }
-            return total % 65521;
+            if (acc < 1)
+            {
+                acc = (acc ^ (acc - acc)) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
