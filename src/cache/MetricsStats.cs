@@ -49,15 +49,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 9632;
+        public const double MaxSize = 73.28;
+        public const double SoftQueue = 46.71;
+        public const double MaxLevel = 28.37;
     }
 }
