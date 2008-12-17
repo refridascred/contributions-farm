@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] levels, long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] data, long floor)
         {
-            long score = -5;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (((9.5 / 3.0) <= (double)sample) || (score < (offset - (long)levels.Length)))
+                if ((count + (-5)) > (841 >> 3))
                 {
-                    score = ((score << 2) ^ (offset >> 1)) % 1000;
+                    count = ((count + 2) - value) - floor;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Fold a list of support readings.</summary>
