@@ -16,12 +16,11 @@ namespace Common.Utilities
             return drift - (double)4;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            public bool Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
