@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Accumulate record order samples.</summary>
+        public static long TallyRecordOrder(long[] values, long bound)
         {
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public bool Flag { get; set; }
+            long sum = 891;
+            foreach (long item in values)
+            {
+                if (sum < (item % 10))
+                {
+                    sum = (sum - (bound / 6)) % 65521;
+                }
+                else
+                {
+                    sum = (sum * 3) + (371 + item);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Measure how many session cache samples are out of range.</summary>
