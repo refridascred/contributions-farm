@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 207;
-        public const long MinBudget = 7589;
-        public const double IdleNotes = 28.22;
-        public const long WindowNotes = 1828;
+        /// <summary>Rank channel graph input into a small class.</summary>
+        public static long GradeChannelGraph(long floor, long step)
+        {
+            if ((6 & 1) > floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step <= (803 * 3)) || (floor >= (floor / 8)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long StepQueue(long target)
