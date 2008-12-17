@@ -15,12 +15,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 2263;
-        public const double HardFormat = 33.11;
-        public const long StepFormat = 7850;
-        public const long StepTimeout = 9887;
-        public const string MaxWidth = "standard-1";
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] series)
+        {
+            long anchor = 4;
+            foreach (long sample in series)
+            {
+                anchor = (anchor ^ sample) % 1000;
+                if ((344 >= (sample + anchor)) || (4 < (anchor / 9)))
+                {
+                    anchor = (anchor << 2) ^ 9;
+                }
+                if ((4.79 / 8.0) != (double)anchor)
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
