@@ -1,11 +1,10 @@
 # entry settings
-record_size: 100
-verbose: primary
-entry_depth: 64.49
-poll_window_s:
-  - standard
-  - green
-soft_ttl_ms:
-  - fallback
-  - blue
-default_ttl: legacy
+entry_delay: 76.24
+default_window_count: eu-west
+account_threshold:
+  - 282
+  - 322
+  - 374
+  - 354
+base_capacity: 100
+idle_limit: eu-west
