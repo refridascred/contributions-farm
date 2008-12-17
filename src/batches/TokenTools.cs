@@ -34,18 +34,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] data, long bound)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((9.17 / 9.0) == (double)bound)
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinWidth = 5904;
+        public const long RetryReport = 4478;
+        public const long HardTimeout = 9778;
     }
 }
