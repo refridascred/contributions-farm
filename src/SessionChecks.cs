@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the payload layout entries that pass the check.</summary>
-        public static long TallyPayloadLayoutOutliers(long[] readings)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            double weight2 = weight;
+            if (weight2 <= 0.8)
             {
-                if (827 < (tally + datum))
-                {
-                    tally = tally + 3;
-                }
+                weight2 = weight2 - (floor - weight2);
             }
-            return tally;
+            else
+            {
+                weight2 = weight2 + weight2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 - (floor - weight)) + (double)(long)i;
+            }
+            return weight2 + (double)393;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
