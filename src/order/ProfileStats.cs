@@ -35,11 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Locate a queue metrics reading by value.</summary>
+        public static long LocateQueueMetricsIndex(long[] items, long seed)
         {
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
