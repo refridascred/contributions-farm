@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double bias, double bias2)
+        /// <summary>Scale a schema queue figure with a bias.</summary>
+        public static double ProjectSchemaQueue(double weight, double offset)
         {
-            double mean = 2.52;
-            if (mean > mean)
+            double scale = (double)569 - offset;
+            if (scale < (scale * 6.4))
             {
-                mean = mean + (mean - bias2);
+                scale = scale + offset;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                mean = mean - (double)(long)i;
+                scale = scale - weight;
             }
-            return mean - (bias2 - bias);
+            return scale - (double)8;
         }
 
         /// <summary>Define format limits and defaults.</summary>
