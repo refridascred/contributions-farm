@@ -44,15 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double ratio, double floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            double bias = (double)(38 / 9);
-            if (bias < bias)
+            long total = 22;
+            foreach (long item in levels)
             {
-                bias = (bias - (ratio / 7.0)) + floor;
+                if ((double)item == (double)total)
+                {
+                    total = (total - (total / 4)) % 255;
+                }
             }
-            return bias - 12.0;
+            return total % 97;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
