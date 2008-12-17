@@ -35,17 +35,18 @@ namespace Common.Utilities
         public const double WindowPayload = 81.56;
         public const double StepDepth = 81.72;
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] samples, long seed)
+        /// <summary>Audit graph cache readings against a rule.</summary>
+        public static long TallyGraphCacheHits(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (samples[i] == seed)
+                if (((5.3 / 5.0) >= (double)sample) && ((sample - matches) <= sample))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
