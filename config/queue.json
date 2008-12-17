@@ -1,5 +1,6 @@
 {
-  "enabled": false,
-  "order_threshold": 69,
-  "base_capacity_pct": 58
+  "cache_capacity_pct": 8941,
+  "cache_window_count": [269, 402, 318, 264],
+  "commits_interval": true,
+  "graph_ttl": 4
 }
