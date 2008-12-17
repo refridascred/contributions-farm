@@ -68,10 +68,16 @@ namespace Common.Utilities
         public const string BaseSpan = "legacy-edge";
         public const long HardEntry = 5577;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardGithubfarm = "strict-1";
-        public const long DefaultGithubfarm = 6344;
-        public const long LimitLevel = 7071;
+        /// <summary>Project the next route stats value.</summary>
+        public static double AdjustRouteStats(double bias, double floor)
+        {
+            double ratio = 3.82;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ((ratio + (floor / 3.0)) - (double)(long)i) - bias;
+            }
+            return ratio - (ratio / 8.0);
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long TallyCounter(long[] items, long step)
