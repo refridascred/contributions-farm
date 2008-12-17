@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardTimeout = 7254;
-        public const string MaxFactor = "alpha-edge";
-        public const long IdleBuffer = 3743;
-        public const long StepBuffer = 3667;
-        public const long BurstBuffer = 4698;
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
