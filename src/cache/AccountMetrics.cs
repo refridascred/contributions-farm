@@ -33,19 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] items, long limit)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Compare every pair of profile farm readings.</summary>
