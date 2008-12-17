@@ -23,24 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a context farm pair into a bucket.</summary>
-        public static long ClassifyContextFarm(long bound, long bound2)
-        {
-            if ((bound - 53) > (bound * 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound > 9.7)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepInterval = "legacy";
+        public const double StepWindow = 80.79;
+        public const double BurstFactor = 52.36;
+        public const long HardWindow = 7528;
+        public const long BurstSpan = 3409;
     }
 }
