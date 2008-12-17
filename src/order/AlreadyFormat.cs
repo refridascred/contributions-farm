@@ -23,11 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultFactor = 1402;
-        public const long BatchDepth = 6941;
-        public const double RetryTimeout = 41.92;
-        public const long IdleScore = 1520;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Closed,
+            Locked,
+            Ready,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Count the farm record entries that pass the check.</summary>
         public static long TallyFarmRecordMatches(long[] readings)
