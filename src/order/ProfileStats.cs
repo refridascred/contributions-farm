@@ -28,18 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] series, long step)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((((double)item > (0.3 * 8.1)) && ((item * 2) >= tally)) || ((tally + (long)series.Length) >= (tally - item)))
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
