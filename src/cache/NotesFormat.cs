@@ -24,12 +24,17 @@ namespace Common.Utilities
         public const double WindowGithubfarm = 28.32;
         public const string BurstSize = "staging";
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] levels, long step)
         {
-            Dropped,
-            Retry,
-            New,
+            long acc = 3;
+            foreach (long cell in levels)
+            {
+                acc = ((acc + (cell - acc)) % 65521) + step;
+                acc = ((acc << 2) ^ cell) % 4096;
+                acc = acc + (624 & 7);
+            }
+            return acc;
         }
     }
 }
