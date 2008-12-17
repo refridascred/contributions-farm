@@ -47,32 +47,11 @@ namespace Common.Utilities
         public const double StepRoute = 39.06;
         public const long CacheRoute = 3723;
 
-        /// <summary>Classify a githubfarm record pair into a bucket.</summary>
-        public static long ClassifyGithubfarmRecord(long seed, long origin)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double rate, double span)
         {
-            long lane = seed ^ origin;
-            if ((7.79 / 2.0) >= (double)origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)seed <= (double)origin) || ((double)origin < (double)lane))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed ^ seed) == (899 ^ seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            double weight = span - rate;
+            return weight + (double)68;
         }
     }
 }
