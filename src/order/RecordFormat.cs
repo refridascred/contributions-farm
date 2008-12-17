@@ -15,22 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up format record samples.</summary>
-        public static long MatchFormatRecordCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 2262;
+        public const long RetryWidth = 2245;
+        public const string WindowScore = "standard";
+        public const long SoftTimeout = 1678;
+        public const long IdleCount = 7842;
 
         /// <summary>Validate report graph readings against a bound.</summary>
         public static bool CheckReportGraphBounds(long[] samples, long bound)
