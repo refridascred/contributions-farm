@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] series, long step)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = -961;
+            foreach (long datum in data)
             {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor + anchor) % 1000) ^ datum;
             }
-            return -1;
+            if (anchor < (-878))
+            {
+                anchor = anchor ^ (floor * 3);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the schema class values.</summary>
