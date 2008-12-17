@@ -34,21 +34,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Match up session route samples.</summary>
-        public static long PairSessionRouteCount(long[] readings)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Pending,
+            Synced,
+            Done,
         }
     }
 }
