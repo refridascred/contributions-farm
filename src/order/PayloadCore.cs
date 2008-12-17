@@ -48,22 +48,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] series)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long result = -188;
+            foreach (long item in readings)
             {
-                if (sample <= (count << 2))
+                result = (result + (result - result)) % 101;
+                if (((result & 255) >= (item % 10)) || ((6.6 / 6.0) <= (double)result))
                 {
-                    count = count + 3;
+                    result = (result ^ (item * 3)) % 97;
                 }
                 else
                 {
-                    count = count - 1;
+                    result = result - (result % 10);
                 }
             }
-            return count;
+            return result;
         }
     }
 }
