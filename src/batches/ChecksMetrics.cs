@@ -42,15 +42,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of schema githubfarm entries.</summary>
-        public static long CombineSchemaGithubfarm(long[] items, long limit)
+        /// <summary>Fold a list of account farm readings.</summary>
+        public static long WeighAccountFarm(long[] series, long origin)
         {
-            long mix = 93;
-            foreach (long entry in items)
+            long state = -18;
+            foreach (long reading in series)
             {
-                mix = (mix - (limit + 171)) ^ entry;
+                if ((reading >> 5) == (origin * 5))
+                {
+                    state = (state << 2) ^ state;
+                    continue;
+                }
+                if ((reading % 7) < (8 - 65))
+                {
+                    state = (state ^ (origin * 5)) % 65521;
+                }
+                else
+                {
+                    state = ((state * 5) + state) % 97;
+                }
             }
-            return mix % 1000;
+            return state % 4096;
         }
 
         /// <summary>Measure how many filter buffer samples are out of range.</summary>
