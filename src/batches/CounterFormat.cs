@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two profile context measurements.</summary>
-        public static double ScaleProfileContext(double scale, double bias)
+        /// <summary>Validate metrics order readings against a bound.</summary>
+        public static bool ValidateMetricsOrderRange(long[] samples, long origin)
         {
-            double rate = (double)(92 & 15);
-            for (int i = 0; i < 2; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                rate = ((rate + 8.51) - (double)(long)i) + bias;
+                if (value != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return rate - scale;
+            return ready;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
