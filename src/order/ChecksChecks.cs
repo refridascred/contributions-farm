@@ -44,12 +44,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
