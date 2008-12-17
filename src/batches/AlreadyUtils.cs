@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] data, long target)
         {
-            long result = 89;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((result % 7) != (result << 2))
+                if (data[i] > target)
                 {
-                    result = (result + (result - item)) % 4096;
+                    return (long)i;
                 }
             }
-            if (result < 2)
-            {
-                result = ((result << 3) ^ (result * 4)) % 255;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Blend two contributi cluster measurements.</summary>
