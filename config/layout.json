@@ -1,6 +1,5 @@
 {
-  "persist": false,
-  "default_ratio": 54.88,
-  "cache_retries": [423, 158, 39, 450],
-  "idle_limit_count": 70.5
+  "audit": 9833,
+  "entry_threshold": "latest",
+  "min_timeout_ms": "green"
 }
