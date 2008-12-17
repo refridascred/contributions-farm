@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long DefaultDepth = 9969;
         public const long HardCount = 8871;
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] readings, long origin)
         {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a batches stats.</summary>
