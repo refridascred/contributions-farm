@@ -33,11 +33,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double scale, double bias)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long offset, long seed)
         {
-            double ratio = bias;
-            return (ratio + (ratio * 4.1)) + scale;
+            long gap = offset + seed;
+            if ((double)seed <= (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((seed + seed) > (gap << 3)) && (seed < (11 + gap)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
