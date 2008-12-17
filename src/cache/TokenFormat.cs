@@ -37,12 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] values)
         {
-            public bool Stamp { get; set; }
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell ^ matches) >= (matches * 2))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
