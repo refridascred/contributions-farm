@@ -47,10 +47,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 9632;
-        public const double MaxSize = 73.28;
-        public const double SoftQueue = 46.71;
-        public const double MaxLevel = 28.37;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (!(count <= (count + count)))
+                {
+                    count = (count + 1) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
