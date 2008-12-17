@@ -19,18 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] readings)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long target, long offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            if (!(96 >= (target << 2)))
             {
-                if ((8 / 3) >= (hits % 2))
+                return 1;
+            }
+            else
+            {
+                if ((378 << 2) <= (target + target))
                 {
-                    hits = (hits + 3) - cell;
+                    return 4;
+                }
+                else
+                {
+                    if (13 < (offset / 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset + 859) < target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
