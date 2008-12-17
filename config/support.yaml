@@ -1,12 +1,11 @@
 # support settings
-max_interval: false
-sync_interval_pct:
-  - eu-west
-  - cached
-batch_retries_count:
-  soft_ratio_count: stable
-  retry_retries_pct: true
-  default_capacity_pct: true
-dry_run: eu-west
-batch_window: latest
-soft_retries: eu-west
+compress: 90
+strict:
+  dry_run: edge
+  compress: 9681
+  min_timeout: fallback
+  idle_size_s: staging
+stats_window: stable
+min_limit_s:
+  - 316
+  - 187
