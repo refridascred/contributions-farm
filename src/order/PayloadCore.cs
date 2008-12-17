@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] values)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] items)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((double)cell <= (7.66 / 9.0))
+                if ((((seen - 45) < (seen >> 4)) && ((item % 16) >= seen)) && (((8.97 * 9.0) < (double)item) && ((seen / 4) <= (item & 1))))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Iterate the support notes series from a seed.</summary>
