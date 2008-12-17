@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 8503;
-        public const long HardTimeout = 7912;
-        public const long MaxFactor = 5711;
-        public const string SoftScore = "legacy-1";
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordHits(long[] levels, long target)
