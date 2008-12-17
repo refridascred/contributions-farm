@@ -1,11 +1,12 @@
 # Command notes
 
-The command report groups every queue by cache.
-Defaults for support live in the config folder and can be overridden per environment.
-Each route is validated before it reaches the cluster queue.
+Keep account and command names short and lowercase.
+Defaults for cache live in the config folder and can be overridden per environment.
+When a entry fails, the githubfarm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review format limits each release
-- Log every stats change
-- Validate entry input early
+- Keep channel values small
+- Prefer payload defaults
+- Document new route fields
+- Log every queue change
