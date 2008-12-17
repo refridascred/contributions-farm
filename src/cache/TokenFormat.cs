@@ -20,21 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] levels)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long bound, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long delta = bound ^ target;
+            if (13.0 >= (double)delta)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((delta >> 5) < 402)
                 {
-                    if ((levels[i] - levels[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
