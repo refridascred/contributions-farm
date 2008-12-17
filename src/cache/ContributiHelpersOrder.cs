@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultDepth = 8166;
-        public const double BurstSpan = 82.43;
-        public const long StepTimeout = 6694;
-        public const string HardTools = "strict-v2";
+        /// <summary>Locate a report cluster reading by value.</summary>
+        public static long LookupReportClusterIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
