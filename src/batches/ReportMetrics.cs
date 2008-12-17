@@ -53,22 +53,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] readings)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((((double)entry != (double)37) && (seen < (53 << 1))) || ((85 >= (entry - entry)) && ((seen / 8) < (entry / 3))))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            New,
+            Pending,
+            Done,
         }
     }
 }
