@@ -46,19 +46,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] levels, long offset)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
