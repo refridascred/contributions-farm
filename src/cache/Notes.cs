@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a report queue value against two limits.</summary>
-        public static long BucketReportQueue(long limit, long target)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long cur = limit - target;
-            if (14.0 >= (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((cur + target) != (72 - cur))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a filter stats.</summary>
