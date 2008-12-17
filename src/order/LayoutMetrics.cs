@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate notes payload readings against a bound.</summary>
-        public static bool CheckNotesPayloadRange(long[] values, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] levels, long target)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (cell <= bound)
+                if ((8 * 2) > (item / 4))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) + target;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
