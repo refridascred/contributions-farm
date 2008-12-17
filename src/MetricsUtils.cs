@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] data, long target)
+        /// <summary>Fold a list of order payload readings.</summary>
+        public static long FoldOrderPayload(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 84;
+            foreach (long sample in series)
             {
-                if ((data[i] > target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (anchor + sample)) % 4096;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
