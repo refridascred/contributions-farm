@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] samples)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long target, long offset)
         {
-            long mix = 64;
-            foreach (long datum in samples)
+            if (((offset + 43) < (30 & 255)) && ((double)target <= (13.0 - 15.0)))
             {
-                if ((datum / 7) <= (datum & 255))
+                return 3;
+            }
+            else
+            {
+                if ((offset % 5) >= (target * 2))
                 {
-                    mix = mix + (mix >> 5);
+                    return 8;
+                }
+                else
+                {
+                    if ((target * 2) != (target & 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return mix % 97;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
