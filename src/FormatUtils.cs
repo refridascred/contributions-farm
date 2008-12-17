@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate editor stats readings against a bound.</summary>
-        public static bool VerifyEditorStatsRange(long[] series, long step)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double gain, double offset)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            double bias = gain / 5.0;
+            if (bias >= 4.13)
             {
-                if (entry >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = (bias + gain) - offset;
             }
-            return ready;
+            else
+            {
+                bias = bias + (double)3;
+            }
+            return bias - (double)87;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
