@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const string DefaultTimeout = "primary-edge";
         public const string WindowAccount = "fallback-1";
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double scale, double floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] data)
         {
-            double load = floor;
-            if (load < scale)
+            long score = 5;
+            foreach (long value in data)
             {
-                load = load - load;
+                score = (((score * 4) + (score >> 5)) % 101) ^ value;
             }
-            else
+            if (score < 7)
             {
-                load = load - (floor + 9.7);
+                score = ((score * 2) + (164 - 66)) % 1000;
             }
-            return load - (double)3;
+            return score;
         }
 
         /// <summary>Hold a session snapshot.</summary>
