@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double weight, double offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] items, long offset)
         {
-            double drift = (double)(3 + (-6));
-            return ((drift - (double)70) + weight) + offset;
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((317 >> 1) >= (offset + 0))
+                {
+                    count = (count + 1) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
