@@ -38,22 +38,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] series)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell - 995) >= count)
+                if ((items[i] < seed) && ((items[i] % 2) == 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
