@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile report entries that pass the check.</summary>
-        public static long CountProfileReportHits(long[] series)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((1.8 / 7.0) >= (double)sample)
+                if ((offset * 3) > (hits ^ 6))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the stream state values.</summary>
