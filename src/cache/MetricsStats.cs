@@ -41,19 +41,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double bias, double offset)
+        /// <summary>Locate a commits tools reading by value.</summary>
+        public static long FindCommitsToolsIndex(long[] readings, long target)
         {
-            double ratio = 20.0;
-            if (ratio > (8.5 - bias))
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio - (offset + 9.4);
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (offset * 9.0)) - (double)(long)i;
-            }
-            return ratio - (double)759;
+            return -1;
         }
 
         /// <summary>Describe the batches mode values.</summary>
