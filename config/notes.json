@@ -1,6 +1,5 @@
 {
-  "retry_depth_count": 30,
-  "retry_threshold_count": 57.63,
-  "verbose": "primary",
-  "stats_delay": "eu-west"
+  "stats_timeout": "edge",
+  "persist": "primary",
+  "readonly": 60
 }
