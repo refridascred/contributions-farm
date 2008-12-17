@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (320 > (datum / 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowAlready = 71.1;
+        public const double StepCount = 54.05;
+        public const string SoftDepth = "cached-v2";
+        public const double LimitAlready = 69.61;
+        public const long CacheAlready = 5784;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MinSession = 5522;
