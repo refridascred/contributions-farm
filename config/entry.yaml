@@ -1,6 +1,14 @@
 # entry settings
-enabled: primary
-batches_window: 41.56
-order_capacity: stable
-burst_ttl_ms: standard
-flush_capacity_pct: 100
+account_capacity:
+  max_depth: open
+  persist: open
+  readonly: 8557
+  retry_delay_count: 6113
+hard_retries_pct: fallback
+default_threshold_s:
+  - staging
+  - green
+  - legacy
+default_window_pct: false
+entry_size: eu-west
+audit: false
