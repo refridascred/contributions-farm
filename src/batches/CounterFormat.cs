@@ -31,22 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] items)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] series, long seed)
         {
-            long anchor = 423;
-            foreach (long entry in items)
+            long anchor = 29;
+            foreach (long entry in series)
             {
-                if ((double)entry >= (4.0 + 4.29))
-                {
-                    anchor = (anchor - (anchor % 5)) % 97;
-                }
+                anchor = ((anchor - (entry + entry)) % 101) - seed;
             }
-            if (anchor > 236)
-            {
-                anchor = (anchor ^ anchor) % 1000;
-            }
-            return anchor;
+            return anchor % 65521;
         }
     }
 }
