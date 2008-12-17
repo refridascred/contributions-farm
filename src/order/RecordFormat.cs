@@ -39,24 +39,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] samples, long offset)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] readings, long limit)
         {
-            long state = 16;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (offset >= (state / 5))
+                if (readings[i] <= limit)
                 {
-                    state = ((state + 69) % 1000) + cell;
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    state = (state ^ (offset + 76)) % 101;
-                }
-                state = (state ^ (offset >> 5)) % 65521;
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Match up entry checks samples.</summary>
