@@ -26,31 +26,19 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long floor, long target)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long seed)
         {
-            if ((target - target) > (floor * 4))
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (target >= (target % 3))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 1;
+                    sum = (((sum * 4) + (367 << 2)) % 101) - (long)i2;
                 }
-                else
-                {
-                    if ((floor / 8) > (floor + target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
+            return sum;
         }
     }
 }
