@@ -53,21 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double rate, double span)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            double bias = (double)379 + span;
+            if (bias >= 9.1)
             {
-                long step = (floor / 4) / 6;
-                if (!(floor < step))
-                {
-                    step = (step ^ ((long)i + floor)) % 65521;
-                    carry = ((carry << 2) ^ (long)i) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
+                bias = (bias - (span * 6.14)) - rate;
             }
-            return carry;
+            else
+            {
+                bias = bias + bias;
+            }
+            return bias - (double)33;
         }
     }
 }
