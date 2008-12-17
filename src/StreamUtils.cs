@@ -58,23 +58,13 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long step)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((4 >> 5) <= (total + step))
-                {
-                    total = total ^ ((-523) / 7);
-                }
-                else
-                {
-                    total = ((total * 5) + (total * 5)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public double Score { get; set; }
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Accumulate queue cache samples.</summary>
