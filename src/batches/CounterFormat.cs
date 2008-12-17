@@ -13,22 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long carry = 82;
-            foreach (long datum in readings)
-            {
-                if (((datum - carry) != ((-619) & 15)) || (datum >= (659 + carry)))
-                {
-                    carry = (carry * 3) + (datum << 1);
-                }
-                if ((6.5 - 3.6) != (double)carry)
-                {
-                    break;
-                }
-            }
-            return carry % 97;
+            Closed,
+            New,
+            Locked,
+            Pending,
+            Active,
         }
 
         /// <summary>Adjust a buffer account reading.</summary>
