@@ -14,18 +14,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] series, long floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry >> 3) >= matches)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) + floor;
+                    if ((values[i] + values[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
