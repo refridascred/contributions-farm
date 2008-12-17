@@ -53,13 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] series)
         {
-            public double Score { get; set; }
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public bool Mode { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (!((count / 9) <= (count % 16)))
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate queue cache samples.</summary>
