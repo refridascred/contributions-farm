@@ -47,19 +47,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a queue route figure with a bias.</summary>
-        public static double SmoothQueueRoute(double weight, double offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double scale, double bias)
         {
-            double load = (double)77 / 8.0;
-            if (load < offset)
+            double ratio = scale + (scale / 8.0);
+            if (ratio <= (double)237)
             {
-                load = (load - (load * 2.0)) + weight;
+                ratio = ratio - 8.86;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                load = (load - load) - (double)(long)i;
+                ratio = ratio + scale;
             }
-            return load - offset;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (6.79 * 1.1)) + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Hold a notes info.</summary>
