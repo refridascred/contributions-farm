@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Count githubfarm token pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmTokenCount(long[] items)
         {
-            Paused,
-            Failed,
-            Queued,
-            Retry,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
