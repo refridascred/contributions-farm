@@ -1,8 +1,6 @@
-id,count,state,weight
-1,latest,blue,stable
-2,13.9,85,24.86
-3,34.48,fallback,188
-4,660,90.28,staging
-5,local,822,local
-6,93.38,410,28.64
-7,fallback,885,52.06
+id,rank,label,active,ratio
+1,edge,local,local,edge
+2,latest,edge,87.92,107
+3,231,81,629,262
+4,open,16.07,666,43.25
+5,strict,814,standard,224
