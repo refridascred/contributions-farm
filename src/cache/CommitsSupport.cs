@@ -20,18 +20,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit filter session readings against a rule.</summary>
-        public static long TallyFilterSessionHits(long[] series, long bound)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long bound)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((value * 5) < (seen << 2))
-                {
-                    seen = (seen + 2) + bound;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Hold a metrics options.</summary>
