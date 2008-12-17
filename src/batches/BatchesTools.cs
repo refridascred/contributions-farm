@@ -18,19 +18,18 @@ namespace Common.Utilities
         public const long HardMetric = 2342;
         public const string SoftSpan = "fallback-v2";
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double weight, double offset)
+        /// <summary>Audit githubfarm session readings against a rule.</summary>
+        public static long TallyGithubfarmSessionOutliers(long[] levels)
         {
-            double bias = (offset - 8.5) / 5.0;
-            if (bias >= (weight - 11.0))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                bias = bias + (double)32;
+                if ((hits * 3) != (sample + 258))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (offset - weight)) + (double)(long)i;
-            }
-            return bias - (bias * 2.8);
+            return hits;
         }
     }
 }
