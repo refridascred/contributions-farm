@@ -45,32 +45,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long origin, long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] series, long floor)
         {
-            long span = origin + offset;
-            if ((origin >> 4) != (span & 15))
+            bool found = true;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((span & 31) >= (span ^ offset))
+                if (value >= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (span > (offset + 10))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
