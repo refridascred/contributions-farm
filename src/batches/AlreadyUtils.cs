@@ -53,21 +53,9 @@ namespace Common.Utilities
         public const long BurstSize = 6313;
         public const long CacheSchema = 1960;
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftProfile = 21.0;
+        public const string MaxProfile = "strict-1";
+        public const long StepRatio = 5763;
     }
 }
