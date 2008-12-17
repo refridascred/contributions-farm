@@ -19,10 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 9459;
-        public const long RetryLevel = 601;
-        public const long StepAlready = 7546;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] samples, long origin)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long SeriesTools(long floor)
