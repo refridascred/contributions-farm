@@ -39,14 +39,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long bound, long seed)
         {
-            Synced,
-            Active,
-            Closed,
-            Pending,
-            Dropped,
+            if ((bound >> 5) == (seed - bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((6.8 / 7.0) != (double)bound) || (5.9 > (double)seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((bound ^ seed) >= seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
