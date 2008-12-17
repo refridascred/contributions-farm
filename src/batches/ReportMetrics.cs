@@ -24,12 +24,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long origin, long floor)
         {
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            if (((floor + 1) < (origin % 97)) || (origin <= (floor + 934)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-587) - origin) <= (97 << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((floor * 5) <= (10 + 4)) && (floor <= origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin * 5) == (80 % 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
