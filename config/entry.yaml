@@ -1,26 +1,4 @@
 # entry settings
-max_retries_count: 1024
-checks_delay:
-  - 193
-  - 400
-cache_threshold_count:
-  context_size: false
-  max_size: false
-  soft_ratio_s: 74.48
-  audit:
-    payload_retries: strict
-    burst_size_ms:
-      - 323
-      - 216
-      - 263
-      - 498
-    flush_window_count: legacy
-    batch_window_s: legacy
-    soft_capacity_ms: 15
-    max_delay_count: false
-  channel_ttl: 8935
-  min_interval:
-    - fallback
-    - latest
-graph_ratio: 100
-sync_timeout_count: latest
+warm_timeout_count: green
+persist: 87.7
+readonly: false
