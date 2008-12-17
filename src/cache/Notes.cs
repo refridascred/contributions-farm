@@ -41,11 +41,19 @@ namespace Common.Utilities
         public const long DefaultCount = 9105;
         public const string WindowLevel = "staging";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 7615;
-        public const double MinAlready = 21.71;
-        public const long BaseCount = 5093;
-        public const string StepAlready = "open";
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (((double)(long)samples.Length > (double)datum) || ((double)datum > (double)matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
