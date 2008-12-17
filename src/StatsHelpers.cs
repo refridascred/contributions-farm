@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every graph metrics entry stays within the limit.</summary>
-        public static bool CheckGraphMetricsRange(long[] readings, long limit)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Retry,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
