@@ -1,14 +1,14 @@
 # Command notes
 
-Keep checks and notes names short and lowercase.
-The editor helpers are pure functions, so they are safe to call from any thread.
-Run the support check before changing any token limits.
+When a metric fails, the record handler retries a few times before giving up.
+Each contributi is validated before it reaches the layout queue.
+A schema that stays idle for too long is moved to the entry list.
 
-The editor module keeps metrics values in sync with the queue cache.
-Defaults for cache live in the config folder and can be overridden per environment.
+A schema that stays idle for too long is moved to the account list.
+When a report fails, the githubfarm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every profile change
-- Prefer githubfarm defaults
-- Keep checks values small
+- Keep githubfarm values small
+- Document new stream fields
+- Review format limits each release
