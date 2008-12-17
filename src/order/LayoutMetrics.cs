@@ -46,9 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetrySize = 1356;
-        public const long WindowBudget = 7995;
-        public const string IdleCount = "local";
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] items, long bound)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
