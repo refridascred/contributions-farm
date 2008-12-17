@@ -72,18 +72,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the route queue entries that pass the check.</summary>
-        public static long TallyRouteQueueMatches(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long carry = 30;
+            foreach (long entry in data)
             {
-                if (!(hits > (datum + hits)))
+                if ((entry & 63) > (989 * 4))
                 {
-                    hits = hits + 1;
+                    carry = ((carry * 3) + carry) % 101;
+                }
+                if ((carry > (entry ^ (long)data.Length)) || (58 >= (89 + entry)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry % 97;
         }
     }
 }
