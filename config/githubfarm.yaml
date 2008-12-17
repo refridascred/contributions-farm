@@ -1,4 +1,9 @@
 # githubfarm settings
-retry_depth_ms: staging
-hard_ratio: standard
-route_delay: true
+retry_window_s: 7479
+tools_threshold:
+  - 223
+  - 226
+  - 291
+  - 56
+soft_depth: 10.56
+warm_threshold_count: 55
