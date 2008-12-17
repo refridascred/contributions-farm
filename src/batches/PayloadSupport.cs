@@ -38,19 +38,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] items, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] readings)
         {
-            long state = 9;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                state = state ^ (entry + bound);
+                if ((double)seen > 7.5)
+                {
+                    seen = (seen + 2) - cell;
+                }
             }
-            if (state < (-1))
-            {
-                state = (state - state) % 65521;
-            }
-            return state % 1000;
+            return seen;
         }
     }
 }
