@@ -84,10 +84,11 @@ namespace Common.Utilities
             return bias + gain;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 157;
-        public const long RetryTools = 7862;
-        public const double DefaultTools = 16.39;
-        public const long IdleCount = 9054;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public double Score { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
