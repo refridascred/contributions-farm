@@ -29,21 +29,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] data)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long origin, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)origin < (double)seed)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((double)origin == (2.41 * 4.13)) || ((seed - 71) >= (seed - origin)))
                 {
-                    if ((data[i] + data[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
