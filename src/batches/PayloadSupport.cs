@@ -34,24 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] readings)
-        {
-            long result = 696;
-            foreach (long cell in readings)
-            {
-                long edge = (cell >> 4) >> 4;
-                result = (result ^ (cell - edge)) % 101;
-                if ((cell & 63) <= (cell + 1))
-                {
-                    result = result + (607 - 97);
-                }
-                else
-                {
-                    result = (result + (result + result)) % 1000;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 2032;
+        public const double IdleInterval = 2.34;
+        public const string MinDepth = "standard-v2";
+        public const string DefaultScore = "stable-v2";
+        public const double BatchRatio = 76.59;
     }
 }
