@@ -20,17 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] readings, long target)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long seed, long seed2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((6.83 <= (double)seed) || (4.3 >= (double)seed2))
             {
-                if (readings[i] <= target)
+                return 2;
+            }
+            else
+            {
+                if ((seed / 3) <= (seed2 - seed2))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed2 != (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
