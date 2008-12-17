@@ -70,12 +70,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] readings)
         {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((value + (long)readings.Length) > count)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
