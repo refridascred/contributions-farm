@@ -17,13 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] samples, long origin)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
