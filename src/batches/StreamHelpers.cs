@@ -50,23 +50,14 @@ namespace Common.Utilities
             return weight - (span + gain);
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long origin)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!((origin + origin) == (result * 4)))
-                {
-                    result = ((result << 2) ^ result) % 1000;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = (result - (result ^ result)) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Locked,
+            Paused,
+            Ready,
+            Active,
+            Idle,
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
