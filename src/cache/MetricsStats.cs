@@ -19,14 +19,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] samples)
         {
-            Idle,
-            Draft,
-            Queued,
-            Synced,
-            Closed,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (((entry << 3) >= (hits + entry)) && (((double)hits >= (5.0 - 9.0)) || ((hits - entry) < (-18))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit window filter readings against a rule.</summary>
