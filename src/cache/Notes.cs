@@ -24,23 +24,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] samples, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample ^ sample) <= (seen * 4))
-                {
-                    seen = (seen + 1) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchRatio = "legacy-v2";
+        public const long BatchWindow = 2033;
+        public const long DefaultCount = 9105;
+        public const string WindowLevel = "staging";
 
         /// <summary>Count the record counter entries that pass the check.</summary>
         public static long AuditRecordCounterMatches(long[] data, long bound)
