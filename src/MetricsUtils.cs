@@ -31,19 +31,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double rate, double span)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double ratio, double offset)
         {
-            double drift = (double)8 - span;
-            if (drift >= span)
-            {
-                drift = (drift + drift) + rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (drift * 10.0)) + (double)(long)i;
-            }
-            return drift - (drift / 3.0);
+            double gain = 4.22;
+            return ((gain - (double)92) + ratio) + offset;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
