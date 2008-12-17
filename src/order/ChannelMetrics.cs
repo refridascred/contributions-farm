@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const double DefaultInterval = 89.55;
         public const long SoftTimeout = 8198;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long step)
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                score = ((score << 3) ^ (limit - score)) % 4096;
-                if (((limit >> 2) == (limit % 12)) || ((57 / 6) > (limit & 3)))
-                {
-                    score = (score - (score & 3)) % 1000;
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Accumulate schema samples.</summary>
