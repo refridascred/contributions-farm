@@ -37,13 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Adjust a layout githubfarm reading.</summary>
+        public static double BlendLayoutGithubfarm(double bias, double floor)
         {
-            Dropped,
-            Queued,
-            Done,
-            Paused,
+            double scale = bias;
+            if (scale > bias)
+            {
+                scale = (scale + (double)62) - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (scale - bias)) - (double)(long)i;
+            }
+            return scale + (double)1;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
