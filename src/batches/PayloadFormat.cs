@@ -44,18 +44,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] series)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long acc = 23;
+            foreach (long item in series)
             {
-                if ((datum - count) > (6 >> 3))
-                {
-                    count = count + 1;
-                }
+                acc = ((acc << 3) ^ item) + limit;
             }
-            return count;
+            return acc % 4096;
         }
     }
 }
