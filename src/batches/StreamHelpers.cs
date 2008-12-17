@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of commits checks readings.</summary>
-        public static long CompareCommitsChecksCount(long[] data)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = weight;
+            if (bias <= (double)37)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = bias - bias;
             }
-            return count;
+            return bias + (offset / 3.0);
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
