@@ -33,12 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long target, long limit)
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            if ((limit & 31) >= (target + target))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((4.3 + 11.0) > (double)limit) && ((double)target > (double)limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)99 > (double)limit) && ((double)target < 8.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)limit > (7.71 - 4.2)) || ((limit & 63) > (limit * 4)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine tools order values into a single score.</summary>
