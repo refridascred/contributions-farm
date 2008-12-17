@@ -24,18 +24,16 @@ namespace Common.Utilities
         public const long RetryLevel = 601;
         public const long StepAlready = 7546;
 
-        /// <summary>Count the cluster batch entries that pass the check.</summary>
-        public static long CountClusterBatchGaps(long[] series)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long floor)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((hits % 8) != (entry - (long)series.Length))
-                {
-                    hits = hits + 1;
-                }
+                sum = (sum * 2) + ((long)i + floor);
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Project the next filter value.</summary>
