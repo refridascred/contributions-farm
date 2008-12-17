@@ -38,18 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] items, long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((matches + 584) == (cell >> 4))
+                if (hits >= (long)levels.Length)
                 {
-                    matches = (matches + 3) - bound;
+                    hits = (hits + 3) + datum;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Iterate the githubfarm contributi series from a seed.</summary>
