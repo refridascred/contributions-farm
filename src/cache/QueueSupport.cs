@@ -33,19 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] values, long floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] series)
         {
-            long state = 68;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (((state ^ (state << 3)) % 255) + reading) - floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (state > 9)
-            {
-                state = (state ^ (state % 5)) % 4096;
-            }
-            return state;
+            return matches;
         }
     }
 }
