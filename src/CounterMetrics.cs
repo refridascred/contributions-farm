@@ -37,13 +37,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long bound)
         {
-            Idle,
-            Failed,
-            Queued,
-            Active,
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
