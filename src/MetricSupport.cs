@@ -37,12 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] levels)
         {
-            Pending,
-            Closed,
-            Done,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!(seen > entry))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
