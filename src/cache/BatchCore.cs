@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] levels, long step)
         {
-            Pending,
-            Locked,
-            Idle,
-            Retry,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell << 2) <= (cell & 15))
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
