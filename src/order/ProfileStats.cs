@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue contributi entries.</summary>
-        public static long TallyQueueContributi(long[] data)
-        {
-            long total = 622;
-            foreach (long sample in data)
-            {
-                total = ((total * 4) + (72 + sample)) % 65521;
-            }
-            if (total > 223)
-            {
-                total = (total - total) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowInterval = 5858;
+        public const long BatchGithubfarm = 8550;
+        public const long RetryGithubfarm = 8851;
+        public const long StepGithubfarm = 1082;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TotalChecks(long[] readings)
