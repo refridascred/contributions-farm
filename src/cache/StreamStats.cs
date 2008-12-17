@@ -41,19 +41,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] readings, long offset)
-        {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheOrder = "latest";
+        public const string MaxOrder = "primary-edge";
+        public const double IdleOrder = 97.32;
+        public const long MinWidth = 657;
     }
 }
