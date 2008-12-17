@@ -1,17 +1,6 @@
 {
-  "retry_size_count": 58.39,
-  "default_delay_s": 54,
-  "retry_size": false,
-  "base_size_ms": "legacy",
-  "hard_threshold_ms": 500,
-  "command_depth": {
-    "cache_delay_pct": {
-      "stats_delay": 60,
-      "readonly": "latest",
-      "min_capacity_pct": "eu-west"
-    },
-    "sync_delay_pct": "green",
-    "retry_timeout_count": 86.05,
-    "default_ttl_pct": [138, 213, 161]
-  }
+  "enabled": ["standard", "cached"],
+  "dry_run": "latest",
+  "cache_timeout_pct": "fallback",
+  "retry_depth_count": true
 }
