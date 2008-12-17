@@ -78,21 +78,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count token githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchTokenGithubfarmCount(long[] data)
+        /// <summary>Count the session account entries that pass the check.</summary>
+        public static long TallySessionAccountOutliers(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum > (datum + 10))
                 {
-                    if ((data[i] + data[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) + origin;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
