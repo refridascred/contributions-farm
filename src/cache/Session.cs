@@ -49,22 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] values)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] readings, long bound)
         {
-            long state = 24;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((458 - state) == ((-842) - value))
+                if ((readings[i] < bound) && ((readings[i] % 2) == 0))
                 {
-                    state = (state + state) % 4096;
+                    return (long)i;
                 }
             }
-            if (state < 73)
-            {
-                state = (state - 5) % 4096;
-            }
-            return state;
+            return -1;
         }
     }
 }
