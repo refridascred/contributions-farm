@@ -36,11 +36,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Scale a checks notes figure with a bias.</summary>
-        public static double ProjectChecksNotes(double ratio, double offset)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            double weight = offset * 3.88;
-            return (weight + (double)(-134)) + ratio;
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
