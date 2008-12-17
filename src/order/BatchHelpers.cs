@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a filter payload reading by value.</summary>
-        public static long LocateFilterPayloadIndex(long[] items, long limit)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (items[i] >= limit)
+                mix = mix ^ mix;
+                mix = mix + (long)i;
+                if ((limit + (long)i) < mix)
                 {
-                    return (long)i;
+                    mix = (mix + (limit >> 1)) % 4096;
+                    mix = (mix * 3) + (mix << 3);
                 }
+                else
+                {
+                    mix = mix ^ (limit + 608);
+                    mix = (mix - ((long)i * 5)) % 65521;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
