@@ -30,16 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate commits metrics samples.</summary>
-        public static long DigestCommitsMetrics(long[] series, long step)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double rate, double span)
         {
-            long carry = 42;
-            foreach (long value in series)
+            double drift = (double)8 - span;
+            if (drift >= span)
             {
-                carry = ((carry + carry) - value) - step;
-                carry = (carry * 3) + carry;
+                drift = (drift + drift) + rate;
             }
-            return carry;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (drift * 10.0)) + (double)(long)i;
+            }
+            return drift - (drift / 3.0);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
