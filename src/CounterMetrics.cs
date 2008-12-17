@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long seed, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] readings, long offset)
         {
-            if (bound < (seed * 4))
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (1 > (bound ^ bound))
+                if (datum <= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound & 3) <= (bound + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
