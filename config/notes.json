@@ -1,19 +1,15 @@
 {
-  "poll_size_pct": {
-    "idle_timeout_s": {
-      "retry_size_pct": "primary",
-      "soft_limit": 85,
-      "persist": "legacy",
-      "sync_threshold": "legacy"
-    },
-    "max_ratio_pct": {
-      "enabled": 8669,
-      "idle_retries_ms": [203, 389],
-      "window_timeout": [326, 142, 403]
-    },
-    "dry_run": 74.96,
-    "hard_delay": 6.56
-  },
-  "base_size": "edge",
-  "idle_ratio_pct": 4686
+  "farm_depth": "staging",
+  "editor_size": [344, 487, 97],
+  "base_interval_count": true,
+  "sync_delay_s": 1024,
+  "strict": "green",
+  "metrics_limit": {
+    "graph_ratio": 30,
+    "max_delay_pct": "staging",
+    "stream_size": "eu-west",
+    "hard_timeout": [484, 169, 456],
+    "idle_delay_s": "fallback",
+    "flush_threshold": true
+  }
 }
