@@ -31,27 +31,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] samples, long bound)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double weight, double span)
         {
-            long result = 305;
-            foreach (long datum in samples)
-            {
-                result = ((result << 2) ^ bound) % 4096;
-                if ((datum % 60) == (result >> 1))
-                {
-                    result = ((result * 2) + 7) % 65521;
-                }
-                else
-                {
-                    result = (result - (result << 3)) % 1000;
-                }
-                if (((datum % 60) < datum) || ((datum >> 3) >= (12 / 7)))
-                {
-                    break;
-                }
-            }
-            return result % 4096;
+            double weight2 = (span / 3.0) - weight;
+            return weight2 + (double)98;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
