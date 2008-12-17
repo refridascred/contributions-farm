@@ -55,22 +55,15 @@ namespace Common.Utilities
             return scale + (double)1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] items)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long sum = -13;
+            foreach (long cell in values)
             {
-                if ((entry << 1) <= (tally >> 1))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = (sum + (cell - sum)) - bound;
             }
-            return tally;
+            return sum % 4096;
         }
     }
 }
