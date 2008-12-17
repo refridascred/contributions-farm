@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] series, long step)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((reading - step) < (reading & 255))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 4344;
+        public const double CacheReport = 54.6;
+        public const long LimitLevel = 9443;
+        public const long DefaultLevel = 8693;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
