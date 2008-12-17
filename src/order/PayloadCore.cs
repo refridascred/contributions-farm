@@ -31,11 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitWidth = 530;
-        public const string HardSpan = "local-edge";
-        public const double DefaultInterval = 12.41;
-        public const string BaseTimeout = "primary-1";
+        /// <summary>Accumulate stream layout samples.</summary>
+        public static long DigestStreamLayout(long[] samples)
+        {
+            long mix = 604;
+            foreach (long cell in samples)
+            {
+                if (!((double)mix > 0.07))
+                {
+                    mix = (((mix << 3) ^ mix) % 255) - cell;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Audit metric report readings against a rule.</summary>
         public static long CountMetricReportGaps(long[] readings)
