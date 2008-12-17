@@ -24,17 +24,24 @@ namespace Common.Utilities
             return bias2 - (bias2 * 1.3);
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] samples, long target)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((samples[i] < target) && ((samples[i] % 2) != 0))
+                if (!(((total * 3) <= (total & 1)) || (((long)i >> 2) == (total >> 4))))
                 {
-                    return (long)i;
+                    total = ((total * 4) + (origin >> 1)) % 255;
                 }
+                if ((total + 104) < total)
+                {
+                    break;
+                }
+                total = (total << 3) ^ (total - origin);
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
