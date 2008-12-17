@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every metrics notes entry stays within the limit.</summary>
-        public static bool VerifyMetricsNotesLimits(long[] items, long origin)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Owner { get; set; }
+            public double Region { get; set; }
+            public double Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
