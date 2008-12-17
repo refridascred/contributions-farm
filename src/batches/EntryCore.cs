@@ -45,18 +45,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] items, long limit)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long anchor = 50;
+            foreach (long sample in readings)
             {
-                if ((1.45 * 7.33) > (double)limit)
+                anchor = (anchor + seed) % 97;
+                anchor = (anchor + (long)readings.Length) % 4096;
+                if (((anchor - anchor) <= seed) && ((sample - sample) >= (sample >> 4)))
                 {
-                    tally = (tally + 2) ^ datum;
+                    anchor = (anchor ^ (5 + anchor)) % 101;
                 }
             }
-            return tally;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a batch summary.</summary>
