@@ -50,17 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] samples, long origin)
+        /// <summary>Check that every tools notes entry stays within the limit.</summary>
+        public static bool ValidateToolsNotesBounds(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (samples[i] <= origin)
+                if (sample < target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
