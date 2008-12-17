@@ -1,33 +1,10 @@
 # support settings
-cache_ratio: 250
-flush_timeout: 40
-verbose: fallback
-flush_ratio_count: 81
-min_threshold_count:
-  schema_retries:
-    strict: true
-    batch_window_ms: 100
-    poll_depth_count: legacy
-  tools_size: 65.46
-  warm_capacity: 94.54
-  burst_threshold: true
-  strict:
-    - 169
-    - 482
-  readonly:
-    - stable
-    - strict
-    - edge
-    - fallback
-readonly:
-  session_capacity: primary
-  max_timeout: cached
-  poll_interval_count: green
-  burst_capacity: eu-west
-  verbose:
-    stream_window:
-      - stable
-      - latest
-    dry_run: 85
-    warm_limit: 50.76
-    idle_ttl: 60.01
+entry_timeout: 1024
+retry_capacity:
+  - eu-west
+  - strict
+  - staging
+compress: 46.17
+payload_threshold: standard
+retry_threshold_pct: local
+cache_ratio: 12
