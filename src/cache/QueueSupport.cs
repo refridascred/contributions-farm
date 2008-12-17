@@ -34,19 +34,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            long total = origin;
-            for (int i = 0; i < 14; i++)
+            long sum = 2;
+            foreach (long entry in items)
             {
-                if (((1.0 + 1.81) > (double)origin) && ((double)origin >= (0.71 / 4.0)))
-                {
-                    total = total + (total - total);
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                sum = sum + (entry % 2);
             }
-            return total;
+            return sum % 4096;
         }
     }
 }
