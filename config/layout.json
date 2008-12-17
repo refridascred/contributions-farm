@@ -1,5 +1,9 @@
 {
-  "base_depth_ms": "staging",
-  "buffer_ratio": "primary",
-  "audit": 60
+  "compress": {
+    "max_timeout_ms": "strict",
+    "default_ttl_s": "stable",
+    "retry_retries_count": 19.02
+  },
+  "cluster_threshold": "legacy",
+  "dry_run": true
 }
