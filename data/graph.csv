@@ -1,6 +1,9 @@
-id,active,state,weight
-1,782,37,7.97
-2,61.2,420,647
-3,primary,874,466
-4,latest,359,968
-5,771,668,642
+id,ratio,token,count,label
+1,63.94,95.39,local,edge
+2,51.42,901,local,702
+3,local,317,eu-west,3.86
+4,edge,30.25,cached,62
+5,4.73,74.02,78.02,latest
+6,661,515,44,67.37
+7,standard,strict,blue,65.58
+8,local,75,958,119
