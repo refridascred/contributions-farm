@@ -1,10 +1,4 @@
 # support settings
-readonly: true
-poll_interval_pct:
-  - latest
-  - standard
-soft_retries_s:
-  - fallback
-  - standard
-verbose: 77.94
-layout_timeout: 4197
+audit: 60
+context_limit: 70.93
+enabled: false
