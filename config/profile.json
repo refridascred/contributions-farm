@@ -1,8 +1,8 @@
 {
-  "default_interval": 10.71,
-  "poll_delay_ms": 86.38,
-  "persist": "green",
-  "enabled": "fallback",
-  "soft_capacity": 746,
-  "cache_threshold_ms": "edge"
+  "audit": "strict",
+  "session_limit": 500,
+  "sync_depth_s": true,
+  "flush_size_count": "eu-west",
+  "token_ratio": "staging",
+  "filter_threshold": "eu-west"
 }
