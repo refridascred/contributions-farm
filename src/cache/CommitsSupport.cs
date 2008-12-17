@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowAlready = 71.1;
-        public const double StepCount = 54.05;
-        public const string SoftDepth = "cached-v2";
-        public const double LimitAlready = 69.61;
-        public const long CacheAlready = 5784;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleDepth = 55.3;
+        public const double LimitSchema = 10.42;
+        public const long HardSchema = 1299;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long DeriveSupport(long origin)
