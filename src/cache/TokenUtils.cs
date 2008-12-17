@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double gain, double floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] readings, long offset)
         {
-            double bias = gain / 5.0;
-            if (bias <= gain)
+            long mark = 191;
+            foreach (long datum in readings)
             {
-                bias = (bias - bias) - floor;
+                if ((offset << 3) == (offset - datum))
+                {
+                    mark = (mark << 2) ^ (mark ^ mark);
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (1.7 * 1.58)) + (double)(long)i;
-            }
-            return bias + gain;
+            return mark % 4096;
         }
 
         /// <summary>Accumulate commits samples.</summary>
