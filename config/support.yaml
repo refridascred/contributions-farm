@@ -1,4 +1,10 @@
 # support settings
-audit: strict
-support_ttl: stable
-enabled: false
+hard_limit_pct: edge
+verbose: false
+base_ttl_count:
+  - 329
+  - 377
+  - 81
+flush_delay_count: 500
+flush_ttl_ms: 1024
+batch_delay: 7391
