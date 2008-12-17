@@ -1,8 +1,7 @@
 {
-  "base_delay_count": ["stable", "local"],
-  "sync_retries": "standard",
-  "batch_size_ms": true,
-  "persist": "open",
-  "batch_window_ms": false,
-  "max_retries": false
+  "soft_depth": [25, 479, 392],
+  "session_window": true,
+  "warm_capacity_ms": "open",
+  "flush_depth_ms": [125, 351, 165],
+  "flush_interval_count": "latest"
 }
