@@ -1,7 +1,8 @@
 {
-  "enabled": "staging",
-  "poll_capacity_count": 250,
-  "flush_retries_count": false,
-  "audit": "legacy",
-  "dry_run": true
+  "payload_threshold": "staging",
+  "max_depth_pct": 81.09,
+  "dry_run": "primary",
+  "base_capacity_pct": "cached",
+  "soft_timeout_pct": "latest",
+  "cache_size_ms": [87, 137, 365, 78]
 }
