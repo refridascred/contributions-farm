@@ -37,15 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long target)
+        /// <summary>Count the farm githubfarm entries that pass the check.</summary>
+        public static long AuditFarmGithubfarmHits(long[] readings, long offset)
         {
-            long state = target;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                state = ((state * 5) + (long)i) % 97;
+                if (offset > (seen & 31))
+                {
+                    seen = (seen + 3) + item;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
