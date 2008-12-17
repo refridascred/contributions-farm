@@ -35,18 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] values)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long carry = 986;
+            foreach (long reading in levels)
             {
-                if (((value & 7) >= 4) || ((871 >> 4) < (value + seen)))
+                if ((carry % 7) != (bound - reading))
                 {
-                    seen = seen + 3;
+                    carry = (carry << 2) ^ (carry >> 4);
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
