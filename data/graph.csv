@@ -1,8 +1,8 @@
-id,token,state,label,owner
-1,948,eu-west,edge,open
-2,blue,latest,strict,169
-3,legacy,23.51,open,91
-4,73.43,77.68,321,green
-5,0.69,124,standard,66.42
-6,233,61.5,68.32,open
-7,eu-west,423,804,fallback
+id,owner,state,rank
+1,856,69,455
+2,83.27,861,692
+3,935,119,green
+4,548,181,126
+5,latest,606,585
+6,92.73,519,51.21
+7,53.41,primary,477
