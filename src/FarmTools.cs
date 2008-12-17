@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 9768;
-        public const double StepDepth = 97.38;
-        public const long WindowFactor = 2477;
-        public const long BaseTimeout = 1663;
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
+        {
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double BlendWindow(double rate, double floor)
