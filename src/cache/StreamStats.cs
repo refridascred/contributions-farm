@@ -34,10 +34,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepDepth = 8786;
-        public const long BaseCount = 5365;
-        public const double BatchSize = 61.91;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Failed,
+            Dropped,
+            Locked,
+            Stale,
+            New,
+        }
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
