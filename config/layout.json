@@ -1,6 +1,7 @@
 {
-  "report_window": 4688,
-  "flush_delay": true,
-  "warm_capacity_count": true,
-  "retry_delay_pct": ["strict", "edge", "latest"]
+  "base_ratio_s": 1235,
+  "cache_timeout_s": 1024,
+  "burst_window_pct": true,
+  "hard_ratio_count": [285, 325, 115],
+  "cache_capacity": [138, 283, 469]
 }
