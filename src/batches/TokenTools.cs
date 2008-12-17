@@ -31,19 +31,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every schema notes entry stays within the limit.</summary>
-        public static bool GuardSchemaNotesRange(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 2680;
+        public const long WindowPayload = 8247;
+        public const long RetryWidth = 420;
+        public const double BatchPayload = 67.78;
+        public const long SoftPayload = 2497;
     }
 }
