@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Failed,
-            Closed,
-            Done,
-            Idle,
-            Paused,
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Audit metric checks readings against a rule.</summary>
