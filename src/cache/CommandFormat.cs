@@ -37,18 +37,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics filter entries that pass the check.</summary>
-        public static long TallyMetricsFilterGaps(long[] items, long floor)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)floor == (0.2 - 3.8))
+                if (samples[i] <= origin)
                 {
-                    tally = (tally + 2) - cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
