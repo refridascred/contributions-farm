@@ -30,22 +30,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] series)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long origin)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)sample == (1.93 - 9.9))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
     }
 }
