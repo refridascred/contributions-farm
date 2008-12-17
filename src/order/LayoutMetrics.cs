@@ -22,14 +22,38 @@ namespace Common.Utilities
         public const long SoftLayout = 7513;
         public const double BurstLayout = 37.96;
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Classify a editor batches pair into a bucket.</summary>
+        public static long SortEditorBatches(long step, long step2)
         {
-            Draft,
-            Retry,
-            Synced,
-            Dropped,
-            Idle,
+            if ((0 & 255) < step)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((4 / 3) < (step - step)) || ((step2 + step2) != (73 - 6)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((step2 + step2) < step2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step2 % 16) > (step2 >> 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
