@@ -31,12 +31,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Measure how many editor layout samples are out of range.</summary>
+        public static long AuditEditorLayoutMatches(long[] levels, long origin)
         {
-            public double Flag { get; set; }
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (!(entry < (origin % 64)) && ((double)entry <= (double)count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
