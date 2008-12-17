@@ -42,22 +42,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] readings)
+        /// <summary>Digest a series of stats report entries.</summary>
+        public static long FoldStatsReport(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long score = 174;
+            foreach (long reading in items)
             {
-                if (7.0 > (double)seen)
-                {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = (score << 2) ^ reading;
             }
-            return seen;
+            return score % 4096;
         }
     }
 }
