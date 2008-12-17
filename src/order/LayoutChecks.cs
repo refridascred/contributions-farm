@@ -59,13 +59,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] samples, long step)
         {
-            public string Count { get; set; } = "";
-            public double Size { get; set; }
-            public bool Score { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((step & 15) >= (entry ^ step))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
