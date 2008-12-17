@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] readings)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((hits * 4) < hits)
+                if ((seed & 15) >= cell)
                 {
-                    hits = (hits + 3) + reading;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
