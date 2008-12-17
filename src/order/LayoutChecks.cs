@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] levels, long target)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Pending,
+            Failed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Adjust a profile already reading.</summary>
