@@ -66,18 +66,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a metric queue reading by value.</summary>
-        public static long LookupMetricQueueIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSpan = 4823;
+        public const string LimitWidth = "stable";
+        public const long WindowSession = 4391;
+        public const double IdleSession = 83.04;
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
