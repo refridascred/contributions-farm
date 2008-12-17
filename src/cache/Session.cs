@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double bias, double span)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long bound, long step)
         {
-            double ratio = 5.81 / 6.0;
-            if (ratio > 1.45)
+            long edge = bound - step;
+            if (edge >= bound)
             {
-                ratio = (ratio - ratio) - span;
+                return 5;
             }
-            return ratio + bias;
+            else
+            {
+                if (((2.3 - 11.0) > (double)bound) || ((step * 2) >= bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
