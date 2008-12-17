@@ -27,12 +27,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            New,
-            Pending,
-            Stale,
+            long mix = 9;
+            foreach (long value in samples)
+            {
+                mix = mix - (value & 255);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the filter state values.</summary>
