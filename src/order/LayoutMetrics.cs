@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepBudget = "cached";
-        public const string LimitFarm = "primary-1";
-        public const long StepFarm = 8815;
-        public const long BatchFarm = 5825;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((double)tally > (7.0 - 2.93))
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long StepCount = 4414;
