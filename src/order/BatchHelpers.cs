@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] samples, long bound)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Accumulate order samples.</summary>
