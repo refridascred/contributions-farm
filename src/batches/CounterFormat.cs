@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] data)
+        /// <summary>Combine layout format values into a single score.</summary>
+        public static long FoldLayoutFormat(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 44;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (result > (cell & 15))
                 {
-                    if ((data[i] + data[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result + (result ^ cell)) % 65521;
+                }
+                else
+                {
+                    result = (result - (bound - 189)) % 101;
                 }
             }
-            return hits;
+            if (result < 2)
+            {
+                result = (result * 2) + ((long)items.Length * 2);
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
