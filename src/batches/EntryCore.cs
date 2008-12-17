@@ -72,25 +72,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Count the route queue entries that pass the check.</summary>
+        public static long TallyRouteQueueMatches(long[] series)
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((sum - (long)i) < ((long)i - sum))
+                if (!(hits > (datum + hits)))
                 {
-                    sum = (sum ^ (sum ^ target)) % 255;
-                    sum = ((sum << 2) ^ sum) % 1000;
-                    break;
+                    hits = hits + 1;
                 }
-                else
-                {
-                    sum = (sum ^ sum) % 255;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return hits;
         }
     }
 }
