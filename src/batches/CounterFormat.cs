@@ -16,21 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up stream entry samples.</summary>
-        public static long OverlapStreamEntryCount(long[] levels)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry >= seed)
                 {
-                    if ((levels[i] + levels[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a already options.</summary>
