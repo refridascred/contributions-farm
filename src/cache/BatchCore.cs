@@ -54,19 +54,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metric layout entry stays within the limit.</summary>
-        public static bool VerifyMetricLayoutRange(long[] values, long step)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Dropped,
+            Ready,
+            Pending,
+            Stale,
         }
     }
 }
