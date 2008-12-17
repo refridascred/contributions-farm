@@ -23,18 +23,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] data, long target)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] data)
         {
-            long total = 4;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((9.0 / 7.0) <= (double)total)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = ((total + (item << 3)) % 65521) + target;
+                    if ((data[i] - data[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
