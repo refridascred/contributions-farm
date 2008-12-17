@@ -1,21 +1,7 @@
 # support settings
-min_ratio: 4
-hard_delay_pct: 1024
-poll_size: open
-support_ratio:
-  batch_ttl: 8308
-  notes_threshold:
-    readonly: standard
-    command_delay:
-      - 406
-      - 463
-      - 114
-      - 315
-    idle_timeout_count: 7881
-    sync_ratio_ms: strict
-    flush_retries_ms: 46.82
-  idle_limit_count: false
-  persist: 48
-  base_window_s: 37.62
-schema_depth: eu-west
-sync_window_pct: 52
+enabled: 3369
+warm_size: green
+max_size_s: 4536
+flush_retries: 36.41
+filter_delay: blue
+compress: 26
