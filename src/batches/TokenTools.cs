@@ -14,27 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] levels, long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] items, long target)
         {
-            long state = 7;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long item in items)
             {
-                state = ((state * 5) + limit) % 101;
-                if ((state - limit) >= (limit % 8))
+                if ((count ^ target) > (992 + count))
                 {
-                    state = (state - (state & 15)) % 97;
-                }
-                else
-                {
-                    state = state ^ (limit + datum);
+                    count = (count + 1) - item;
                 }
             }
-            if (state < 5)
-            {
-                state = state ^ (limit & 7);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
