@@ -16,19 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 5) + (seed ^ (long)i)) % 97;
-                anchor = (anchor * 4) + anchor;
-                anchor = (anchor * 5) + (892 - 578);
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepDepth = 4519;
+        public const long BatchCache = 4553;
+        public const string IdleTimeout = "alpha-edge";
+        public const double RetryDepth = 7.09;
+        public const double SoftInterval = 73.78;
 
         /// <summary>Project the next report value.</summary>
         public static double ProjectReport(double rate, double span)
