@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] data, long floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long offset)
         {
-            long state = 491;
-            foreach (long entry in data)
+            long acc = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((entry > (state >> 4)) && ((entry & 1) <= 0))
+                if (((long)i / 7) == (long)i)
                 {
-                    state = (state - floor) % 255;
+                    acc = (acc + ((long)i - 28)) % 4096;
                 }
-                else
-                {
-                    state = state - (state * 5);
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            if (state < 899)
-            {
-                state = state - (state * 3);
-            }
-            return state % 4096;
+            return acc;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
