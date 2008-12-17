@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Classify a tools payload pair into a bucket.</summary>
+        public static long SortToolsPayload(long bound, long origin)
         {
-            Retry,
-            New,
-            Draft,
+            if (((origin << 3) >= (origin - bound)) || (bound <= (bound * 4)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin < 4.12)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
