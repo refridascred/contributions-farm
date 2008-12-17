@@ -34,14 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardMetric = "alpha-v2";
+        public const string DefaultMetric = "legacy-v2";
+        public const double StepBudget = 65.58;
+        public const long DefaultInterval = 3566;
+        public const double MinMetric = 71.07;
 
         /// <summary>Roll a account counter forward.</summary>
         public static long IterateAccount(long step)
