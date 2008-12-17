@@ -50,18 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already format readings.</summary>
-        public static long WeighAlreadyFormat(long[] values)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long result = 8;
-            foreach (long sample in values)
-            {
-                if ((6.14 * 4.5) <= (double)result)
-                {
-                    result = (((result * 5) + (result & 63)) % 101) - sample;
-                }
-            }
-            return result % 1000;
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Project the next format schema value.</summary>
