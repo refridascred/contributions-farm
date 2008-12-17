@@ -34,21 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxDepth = "open";
+        public const long BaseEntry = 9214;
+        public const long MaxLevel = 9274;
+        public const string BurstWidth = "alpha-edge";
+        public const double SoftWidth = 29.29;
     }
 }
