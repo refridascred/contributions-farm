@@ -55,19 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] levels)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long anchor = -76;
-            foreach (long entry in levels)
-            {
-                anchor = anchor ^ (entry * 5);
-                if ((entry >> 3) == (0 * 4))
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
+            Dropped,
+            Pending,
+            Done,
+            Draft,
+            Stale,
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
