@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] data, long step)
+        /// <summary>Check that every graph record entry stays within the limit.</summary>
+        public static bool VerifyGraphRecordRange(long[] data, long floor)
         {
-            long acc = 4;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((step ^ acc) <= (reading + acc))
+                if (datum > floor)
                 {
-                    acc = acc + (99 / 6);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ reading) % 1000;
-                }
-                if ((acc / 9) <= (acc + 8))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return acc % 97;
+            return ok;
         }
 
         /// <summary>Combine window values into a single score.</summary>
