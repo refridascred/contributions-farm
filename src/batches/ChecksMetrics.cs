@@ -86,14 +86,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            Locked,
             Dropped,
+            Active,
+            Queued,
             Closed,
-            Idle,
-            Synced,
         }
     }
 }
