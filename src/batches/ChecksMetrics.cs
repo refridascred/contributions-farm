@@ -59,23 +59,14 @@ namespace Common.Utilities
         public const long BatchSupport = 5665;
         public const long LimitSize = 7525;
 
-        /// <summary>Digest a series of profile metrics entries.</summary>
-        public static long TotalProfileMetrics(long[] levels, long limit)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long acc = 3;
-            foreach (long cell in levels)
-            {
-                acc = acc - (cell - acc);
-                if ((limit << 3) == (acc & 15))
-                {
-                    acc = ((acc << 3) ^ limit) % 65521;
-                }
-            }
-            if (acc > 8)
-            {
-                acc = ((acc << 2) ^ (limit % 100)) % 255;
-            }
-            return acc;
+            Pending,
+            Queued,
+            Draft,
+            Retry,
+            Synced,
         }
     }
 }
