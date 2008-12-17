@@ -20,10 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 4736;
-        public const long BurstCount = 7283;
-        public const long HardEntry = 6301;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (((entry - entry) > entry) || (((-160) * 2) == (8 + entry)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] levels)
