@@ -14,17 +14,32 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] readings, long limit)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long bound, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long offset = bound + floor;
+            if (!((bound >> 2) < (floor ^ floor)))
             {
-                if (readings[i] <= limit)
+                return 8;
+            }
+            else
+            {
+                if (3.8 > (double)offset)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!((offset / 6) < floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of account readings.</summary>
