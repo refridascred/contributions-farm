@@ -1,17 +1,18 @@
 {
-  "filter_delay": 250,
-  "queue_timeout": "cached",
-  "hard_retries_pct": 1324,
-  "enabled": {
-    "batch_timeout": 41.39,
-    "compress": {
-      "soft_timeout_count": 500,
-      "warm_ttl_count": [122, 250, 100],
-      "editor_retries": 53.15,
-      "soft_capacity_ms": 3.1,
-      "default_retries": 100,
-      "compress": 60
+  "checks_ttl": 30,
+  "cache_ttl": "staging",
+  "default_ttl_count": {
+    "batch_ratio_ms": {
+      "base_delay_ms": 85.63,
+      "metric_delay": 4.68,
+      "cache_window_s": 69.9,
+      "readonly": 500,
+      "account_timeout": "fallback",
+      "hard_capacity_ms": 36.33
     },
-    "session_ratio": false
+    "persist": 15,
+    "commits_retries": "cached",
+    "enabled": true,
+    "metric_timeout": "primary"
   }
 }
