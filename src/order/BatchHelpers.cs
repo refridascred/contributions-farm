@@ -16,13 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] samples, long target)
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public double Offset { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > target) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
