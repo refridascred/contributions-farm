@@ -1,21 +1,12 @@
 # entry settings
-readonly:
-  retry_interval: 1011
-  dry_run: false
-  channel_threshold: standard
-  base_limit: local
-idle_retries:
-  base_limit:
-    - cached
-    - latest
-  retry_interval: true
-  persist: primary
-  compress: eu-west
-  order_capacity:
-    - blue
-    - primary
-    - green
-    - stable
-burst_ratio:
-  - 115
-  - 102
+tools_limit: 39.83
+flush_limit_count:
+  - 161
+  - 422
+metrics_depth:
+  - edge
+  - blue
+  - standard
+  - eu-west
+retry_window: green
+stats_size: true
