@@ -23,25 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long target, long target2)
-        {
-            if ((target + target) >= (target << 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((0.4 * 9.0) == (double)target2) && ((target2 << 1) <= target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepTimeout = 3380;
+        public const long CacheBatch = 2189;
+        public const long SoftBatch = 3393;
+        public const double DefaultSpan = 32.05;
 
         /// <summary>Count the farm record entries that pass the check.</summary>
         public static long TallyFarmRecordMatches(long[] readings)
