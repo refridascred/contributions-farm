@@ -35,15 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] series)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] data)
         {
-            long mix = 17;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                mix = ((mix + (75 & 3)) % 255) + sample;
+                if (seen >= (reading >> 1))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Locate a support reading by value.</summary>
