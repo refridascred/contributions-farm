@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] samples)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long anchor = 730;
+            foreach (long item in data)
             {
-                if ((9 >> 3) > (value - value))
+                if ((item + step) > anchor)
                 {
-                    seen = seen + 3;
+                    break;
                 }
-                else
+                if (((double)(long)data.Length <= (7.3 / 3.0)) || ((2.47 - 3.63) == (double)step))
                 {
-                    seen = seen - 1;
+                    anchor = (anchor + (step * 4)) % 1000;
                 }
+                anchor = ((anchor << 3) ^ (anchor ^ 49)) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Blend two contributi cluster measurements.</summary>
