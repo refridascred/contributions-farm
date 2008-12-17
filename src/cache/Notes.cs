@@ -41,22 +41,25 @@ namespace Common.Utilities
         public const long DefaultCount = 9105;
         public const string WindowLevel = "staging";
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] samples)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long offset, long limit)
         {
-            long total = 509;
-            foreach (long value in samples)
+            long bound = offset ^ limit;
+            if ((double)bound < (3.0 * 8.3))
             {
-                if (355 >= value)
+                return 1;
+            }
+            else
+            {
+                if (11.0 <= (double)limit)
                 {
-                    continue;
+                    return 4;
                 }
-                if ((8.0 + 0.73) != (double)value)
+                else
                 {
-                    total = (total << 3) ^ total;
+                    return 5;
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Hold a filter header.</summary>
