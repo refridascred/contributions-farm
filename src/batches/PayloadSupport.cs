@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] samples, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
+            long state = 277;
+            foreach (long reading in samples)
             {
-                if ((result ^ result) == (floor ^ floor))
-                {
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 1000;
+                state = ((state ^ reading) % 255) - target;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
