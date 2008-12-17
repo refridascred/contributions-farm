@@ -1,8 +1,8 @@
 {
-  "batch_ratio_count": "green",
-  "flush_ratio_count": "strict",
-  "soft_timeout_s": "cached",
-  "enabled": true,
-  "base_interval": 8247,
-  "warm_limit": ["green", "standard"]
+  "route_threshold": ["staging", "eu-west", "legacy"],
+  "idle_delay_pct": "fallback",
+  "report_threshold": "local",
+  "cache_ratio": 88,
+  "channel_delay": "primary",
+  "persist": true
 }
