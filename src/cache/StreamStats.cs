@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] levels, long step)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (double)((-3) & 255);
+            if (scale < 0.35)
             {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
+                scale = scale + offset;
             }
-            return -1;
+            else
+            {
+                scale = scale + (gain + offset);
+            }
+            return scale - gain;
         }
 
         /// <summary>Rank checks context input into a small class.</summary>
