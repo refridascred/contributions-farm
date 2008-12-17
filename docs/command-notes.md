@@ -1,16 +1,11 @@
 # Command notes
 
-Each command is validated before it reaches the entry queue.
-Defaults for batches live in the config folder and can be overridden per environment.
-Run the queue check before changing any farm limits.
-
-When a entry fails, the metric handler retries a few times before giving up.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Keep stream and graph names short and lowercase.
+Use metric settings to tune how often window data is refreshed.
+A checks that stays idle for too long is moved to the metrics list.
+The stats report groups every cluster by account.
 
 ## Guidelines
 
-- Validate token input early
-- Prefer report defaults
-- Keep buffer values small
-- Document new notes fields
+- Validate queue input early
+- Review metric limits each release
+- Log every batches change
