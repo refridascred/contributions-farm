@@ -13,18 +13,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] items)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((entry + seen) > 953)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Active,
+            Retry,
+            Failed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Hold a layout stats.</summary>
