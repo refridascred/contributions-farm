@@ -22,22 +22,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] values, long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long score = 577;
+            foreach (long cell in series)
             {
-                if ((matches - sample) >= (sample * 5))
+                for (int i = 0; i < 11; i++)
                 {
-                    matches = (matches + 2) + offset;
+                    score = ((score ^ (cell + 69)) % 101) + (long)i;
+                }
+                if (((9.12 + 4.0) != (double)cell) && ((offset / 9) < (score + offset)))
+                {
+                    score = (score * 4) + (score ^ offset);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    score = score ^ score;
+                    score = score ^ (offset * 5);
                 }
+                score = score + (score / 4);
             }
-            return matches;
+            return score % 4096;
         }
 
         /// <summary>Classify a context farm pair into a bucket.</summary>
