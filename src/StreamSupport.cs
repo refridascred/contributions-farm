@@ -31,12 +31,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] data, long seed)
         {
-            Closed,
-            Done,
-            Synced,
+            long acc = 6;
+            foreach (long reading in data)
+            {
+                if ((14 + seed) <= (reading + 8))
+                {
+                    acc = (acc ^ 370) % 1000;
+                }
+            }
+            if (acc < 2)
+            {
+                acc = ((acc * 3) + seed) % 255;
+            }
+            return acc;
         }
     }
 }
