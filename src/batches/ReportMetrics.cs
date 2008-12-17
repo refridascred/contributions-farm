@@ -18,23 +18,13 @@ namespace Common.Utilities
         public const long CacheMetrics = 2292;
         public const long SoftFactor = 232;
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double weight, double span)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            double rate = (weight * 20.0) - weight;
-            if (rate >= rate)
-            {
-                rate = rate + rate;
-            }
-            else
-            {
-                rate = rate + 7.8;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (weight / 8.0)) + (double)(long)i;
-            }
-            return rate + (span + rate);
+            public bool Level { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
