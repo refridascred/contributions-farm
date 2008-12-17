@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Audit buffer counter readings against a rule.</summary>
+        public static long MeasureBufferCounterGaps(long[] values)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((tally << 2) >= (tally - entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank already input into a small class.</summary>
