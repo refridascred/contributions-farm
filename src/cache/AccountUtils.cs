@@ -17,19 +17,22 @@ namespace Common.Utilities
         public const string IdleInterval = "strict-v2";
         public const long IdleSession = 9896;
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double scale, double offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] readings, long offset)
         {
-            double bias = (double)3 + (double)224;
-            if (bias < (offset / 5.0))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                bias = (bias + (double)326) - scale;
+                if (!(count <= (offset + 4)))
+                {
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - 4.86) + (double)(long)i;
-            }
-            return bias - offset;
+            return count;
         }
     }
 }
