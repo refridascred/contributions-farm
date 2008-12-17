@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long StepTimeout = 6694;
         public const string HardTools = "strict-v2";
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor << 2) ^ (787 / 9)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftRatio = 7929;
+        public const long CacheBudget = 1872;
+        public const long BatchScore = 4698;
+        public const long StepStream = 6067;
+        public const long LimitInterval = 8724;
 
         /// <summary>Blend two record measurements.</summary>
         public static double AdjustRecord(double rate, double floor)
