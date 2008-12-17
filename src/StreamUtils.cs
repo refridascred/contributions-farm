@@ -96,13 +96,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Dropped,
-            New,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardScore = 7021;
+        public const long WindowCluster = 5028;
+        public const long RetryCluster = 429;
+        public const string MaxCluster = "legacy-1";
     }
 }
