@@ -1,5 +1,7 @@
 {
-  "already_ratio": "fallback",
-  "strict": ["primary", "standard", "staging"],
-  "compress": 15.67
+  "max_threshold_ms": "open",
+  "sync_limit_s": "stable",
+  "flush_ttl": 36.47,
+  "sync_window_s": "local",
+  "flush_timeout_ms": 76.95
 }
