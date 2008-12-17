@@ -45,19 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double rate, double span)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] data, long target)
         {
-            double bias = (double)379 + span;
-            if (bias >= 9.1)
+            bool flag = true;
+            foreach (long value in data)
             {
-                bias = (bias - (span * 6.14)) - rate;
+                if (value > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            return bias - (double)33;
+            return flag;
         }
     }
 }
