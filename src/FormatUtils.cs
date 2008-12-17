@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] readings, long seed)
-        {
-            long result = 694;
-            foreach (long value in readings)
-            {
-                if (((0.9 - 6.7) >= (0.7 + 15.0)) || ((6.9 - 7.5) == (double)seed))
-                {
-                    result = ((result * 3) + (91 * 5)) + value;
-                }
-                else
-                {
-                    result = result - result;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 6100;
+        public const long DefaultSize = 6245;
+        public const string MinReport = "standard-v2";
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteLimits(long[] series, long floor)
