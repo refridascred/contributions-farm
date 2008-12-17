@@ -30,19 +30,11 @@ namespace Common.Utilities
         public const long DefaultCount = 9105;
         public const string WindowLevel = "staging";
 
-        /// <summary>Count the record counter entries that pass the check.</summary>
-        public static long AuditRecordCounterMatches(long[] data, long bound)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (((1 > (bound * 3)) || ((hits / 6) < bound)) && ((hits + reading) < (bound + bound)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 7615;
+        public const double MinAlready = 21.71;
+        public const long BaseCount = 5093;
+        public const string StepAlready = "open";
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long OverlapGraphCount(long[] series)
