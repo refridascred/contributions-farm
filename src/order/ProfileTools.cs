@@ -29,17 +29,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] series, long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] series, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 35;
+            foreach (long item in series)
             {
-                if (series[i] == seed)
+                if ((item + limit) > item)
                 {
-                    return (long)i;
+                    total = (total + limit) % 1000;
+                }
+                if (item > (item / 9))
+                {
+                    total = ((total << 2) ^ (item >> 2)) % 65521;
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Describe the payload kind values.</summary>
