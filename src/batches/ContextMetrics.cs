@@ -36,18 +36,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] series, long offset)
+        /// <summary>Locate a contributi metrics reading by value.</summary>
+        public static long LocateContributiMetricsIndex(long[] items, long seed)
         {
-            long total = 8;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((total - item) > (offset ^ item))
+                if (items[i] > seed)
                 {
-                    total = ((total << 3) ^ ((long)series.Length % 60)) % 101;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Blend two queue measurements.</summary>
