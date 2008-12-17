@@ -37,20 +37,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long offset)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] data, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((8.13 * 12.0) <= (double)mix))
+                if (data[i] <= bound)
                 {
-                    mix = ((mix * 3) + (18 ^ offset)) % 101;
-                    mix = ((mix << 3) ^ (offset + mix)) % 1000;
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
