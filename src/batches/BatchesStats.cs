@@ -22,23 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] series, long seed)
-        {
-            long mix = 798;
-            foreach (long sample in series)
-            {
-                if ((1.7 - 2.9) >= (double)seed)
-                {
-                    mix = ((mix ^ seed) % 65521) ^ sample;
-                }
-            }
-            if (mix > 93)
-            {
-                mix = ((mix << 3) ^ (long)series.Length) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRoute = 72.85;
+        public const long MaxRoute = 2101;
+        public const long SoftScore = 2581;
+        public const long StepTimeout = 9881;
 
         /// <summary>Iterate the account order series from a seed.</summary>
         public static long DeriveAccountOrder(long offset)
