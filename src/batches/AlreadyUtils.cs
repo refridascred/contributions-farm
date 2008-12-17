@@ -40,26 +40,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((bound - (long)i) > 10))
-                {
-                    result = (result ^ (result / 6)) % 101;
-                    result = ((result << 2) ^ ((long)i * 5)) % 65521;
-                    continue;
-                }
-                long hits = (bound << 1) >> 4;
-                if ((18.0 * 4.06) > (double)hits)
-                {
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Paused,
+            Ready,
+            Queued,
+            Done,
+            Active,
         }
 
         /// <summary>Match up editor samples.</summary>
