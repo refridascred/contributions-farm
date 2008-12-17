@@ -63,39 +63,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long seed, long bound)
-        {
-            if ((bound - 84) > (seed >> 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed << 3) <= (bound * 2)) && (bound > (bound / 5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed - 44) >= (95 % 100)) || ((8.7 - 7.3) == (double)seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed - seed) > seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 6491;
+        public const long LimitStream = 5023;
+        public const string BaseSpan = "staging-v2";
+        public const long WindowLevel = 9804;
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long SeekFilterIndex(long[] data, long target)
