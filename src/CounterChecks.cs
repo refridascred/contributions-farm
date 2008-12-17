@@ -57,19 +57,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] levels, long floor)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Total { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
