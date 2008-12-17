@@ -36,19 +36,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a window report counter forward.</summary>
-        public static long IterateWindowReport(long seed)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((seed - 80) <= ((long)i % 2)) || ((seed << 3) >= ((-693) + sum)))
-                {
-                    break;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            Done,
+            Idle,
+            Draft,
+            Paused,
+            Stale,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
