@@ -42,12 +42,10 @@ namespace Common.Utilities
             return ((load - (9.75 / 5.0)) + bias) + floor;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitSpan = 175;
+        public const long BurstFactor = 3466;
+        public const long RetryWidth = 6309;
 
         /// <summary>Project the next format schema value.</summary>
         public static double ScaleFormatSchema(double rate, double offset)
