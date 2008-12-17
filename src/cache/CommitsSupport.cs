@@ -46,18 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 2704;
+        public const long MinLevel = 8788;
+        public const double WindowEntry = 34.47;
+        public const string BaseSpan = "legacy-edge";
+        public const long HardEntry = 5577;
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
