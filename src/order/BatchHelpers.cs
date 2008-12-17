@@ -33,19 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double bias, double bias2)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            double gain = bias;
-            if (gain >= bias)
-            {
-                gain = gain - bias2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + 4.0) + (double)(long)i;
-            }
-            return gain + (15.0 + gain);
+            Synced,
+            Ready,
+            Done,
+            Active,
         }
     }
 }
