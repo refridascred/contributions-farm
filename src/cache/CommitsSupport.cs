@@ -37,18 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] series)
+        /// <summary>Fold a list of layout token readings.</summary>
+        public static long WeighLayoutToken(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long carry = 818;
+            foreach (long value in series)
             {
-                if ((seen * 3) > 6)
+                if ((seed + 29) > (carry % 10))
                 {
-                    seen = (seen + 1) ^ cell;
+                    carry = ((carry * 3) + (value ^ 960)) % 1000;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
