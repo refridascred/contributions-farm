@@ -27,15 +27,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a record account counter forward.</summary>
-        public static long DeriveRecordAccount(long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] levels, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if ((88 << 3) <= (cell << 2))
+                {
+                    tally = (tally + 3) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
