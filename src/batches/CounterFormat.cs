@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics order readings against a bound.</summary>
-        public static bool ValidateMetricsOrderRange(long[] samples, long origin)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != origin)
+                if ((data[i] <= limit) && ((data[i] % 3) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
