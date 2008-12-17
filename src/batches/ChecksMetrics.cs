@@ -69,18 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] items, long offset)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((double)item <= (double)6)
-                {
-                    count = (count + 2) + offset;
-                }
-            }
-            return count;
+            Locked,
+            Failed,
+            Dropped,
+            New,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
