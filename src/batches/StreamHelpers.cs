@@ -35,19 +35,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] samples, long floor)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double gain, double span)
         {
-            bool found = true;
-            foreach (long item in samples)
+            double weight = span;
+            if (weight >= (span * 7.64))
             {
-                if (item > floor)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight - (span + gain);
             }
-            return found;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (gain * 5.0)) + (double)(long)i;
+            }
+            return weight - (span + gain);
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
