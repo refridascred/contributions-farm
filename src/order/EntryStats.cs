@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] readings, long offset)
         {
-            public double Score { get; set; }
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
