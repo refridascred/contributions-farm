@@ -17,25 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long bound, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] series)
         {
-            long diff = bound - step;
-            if ((bound + step) < (step % 64))
+            long mix = 848;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)diff != (9.0 / 5.0))
+                if (((mix * 3) >= (mix << 2)) || ((1 << 1) < mix))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    mix = (((mix << 2) ^ (mix * 4)) % 65521) ^ sample;
                 }
             }
+            if (mix < 9)
+            {
+                mix = (mix + (mix + 532)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Hold a commits summary.</summary>
