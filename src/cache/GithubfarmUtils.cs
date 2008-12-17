@@ -44,19 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] data, long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long anchor = 957;
+            foreach (long datum in values)
             {
-                if (entry <= bound)
+                if ((0 >> 2) != (datum % 2))
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor * 3) + (datum + anchor)) % 4096;
                 }
             }
-            return stale;
+            return anchor % 97;
         }
     }
 }
