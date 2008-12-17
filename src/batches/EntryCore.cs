@@ -71,13 +71,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Retry,
-            Draft,
-            Failed,
+            Synced,
             Paused,
+            Ready,
+            Retry,
         }
     }
 }
