@@ -1,11 +1,11 @@
 {
-  "cache_capacity": {
-    "session_interval": false,
-    "warm_window": ["edge", "open", "local", "green"],
-    "min_ttl_ms": "green"
-  },
-  "sync_capacity_count": 500,
-  "command_timeout": 33,
-  "poll_capacity": 77.46,
-  "batch_interval": 30
+  "enabled": "eu-west",
+  "audit": "local",
+  "max_threshold_ms": {
+    "min_ratio_count": ["local", "open"],
+    "githubfarm_capacity": [372, 435, 364],
+    "retry_depth_s": true,
+    "sync_ratio_ms": 500,
+    "default_delay_ms": 7044
+  }
 }
