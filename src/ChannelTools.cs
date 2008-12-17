@@ -34,19 +34,19 @@ namespace Common.Utilities
         public const string WindowStats = "primary-1";
         public const string CacheBudget = "stable-edge";
 
-        /// <summary>Project the next context cache value.</summary>
-        public static double BlendContextCache(double rate, double floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] samples, long origin)
         {
-            double scale = (9.6 + rate) * 9.23;
-            if (scale >= scale)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                scale = (scale + (rate + rate)) - floor;
+                if (datum <= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - scale) - (double)(long)i;
-            }
-            return scale - 7.0;
+            return stale;
         }
     }
 }
