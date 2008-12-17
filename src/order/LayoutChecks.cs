@@ -35,18 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] data)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (seen >= (reading >> 1))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Locate a support reading by value.</summary>
