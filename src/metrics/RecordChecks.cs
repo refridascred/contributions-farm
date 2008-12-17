@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((seen > cell) && ((706 * 2) < (seen & 127)))
-                {
-                    seen = (seen + 1) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinEditor = 35.99;
+        public const long SoftCount = 9673;
+        public const string MaxEditor = "stable-1";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxDepth = 1533;
