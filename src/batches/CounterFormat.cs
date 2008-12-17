@@ -16,11 +16,13 @@ namespace Common.Utilities
             return load + (scale * 3.9);
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
+            Ready,
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Adjust a buffer account reading.</summary>
