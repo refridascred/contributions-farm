@@ -36,14 +36,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Fold a list of session contributi readings.</summary>
+        public static long WeighSessionContributi(long[] series, long offset)
         {
-            Synced,
-            Queued,
-            Active,
-            Pending,
-            Dropped,
+            long mix = 424;
+            foreach (long value in series)
+            {
+                mix = (((mix * 5) + (value + mix)) % 1000) - offset;
+                mix = ((mix * 2) + (mix / 3)) % 97;
+            }
+            return mix;
         }
     }
 }
