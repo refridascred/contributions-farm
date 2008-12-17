@@ -36,21 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] series)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((entry < hits) || ((entry - entry) > (6 >> 3))) || ((hits ^ 6) < (long)data.Length))
                 {
-                    if ((series[i] + series[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) - bound;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
