@@ -1,6 +1,7 @@
-id,ratio,owner
-1,24.75,679
-2,47.55,14.43
-3,green,18
-4,open,53.3
-5,11.03,67.67
+id,count,region,token
+1,72.54,101,315
+2,strict,221,strict
+3,715,staging,816
+4,open,45.25,4
+5,643,454,659
+6,241,684,latest
