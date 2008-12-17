@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long offset, long target)
-        {
-            if ((offset ^ offset) > (target + 9))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target & 31) <= (offset + offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 6536;
+        public const long BaseTools = 7420;
+        public const string RetryLevel = "standard";
+        public const double RetryDepth = 49.7;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorHits(long[] readings)
