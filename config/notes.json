@@ -1,6 +1,16 @@
 {
-  "dry_run": true,
-  "soft_ttl_s": true,
-  "cache_capacity_pct": 26,
-  "flush_window_pct": 12
+  "sync_retries": false,
+  "support_size": 17.08,
+  "warm_interval_count": {
+    "soft_limit_count": "fallback",
+    "burst_retries": ["standard", "blue", "edge", "strict"],
+    "enabled": {
+      "idle_depth": "staging",
+      "base_delay": false,
+      "idle_ttl_s": true,
+      "compress": false,
+      "max_limit_ms": 3025
+    }
+  },
+  "soft_capacity_count": true
 }
