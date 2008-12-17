@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] items, long offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((317 >> 1) >= (offset + 0))
-                {
-                    count = (count + 1) ^ sample;
-                }
-            }
-            return count;
+            Queued,
+            Closed,
+            Synced,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
