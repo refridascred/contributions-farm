@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long bound, long floor)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] readings)
         {
-            long offset = bound + floor;
-            if ((double)bound < (1.1 * 1.0))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset > (floor & 127)) && ((double)bound > (double)offset))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    if ((readings[i] ^ readings[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up stats samples.</summary>
