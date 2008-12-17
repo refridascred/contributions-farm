@@ -19,16 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the support notes series from a seed.</summary>
-        public static long RollSupportNotes(long step)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double ratio, double bias)
         {
-            long state = step;
-            for (int i = 0; i < 19; i++)
+            double bias2 = 7.2;
+            if (bias2 > bias2)
             {
-                state = state - (step << 2);
-                state = ((state * 3) + (long)i) % 4093;
+                bias2 = (bias2 + bias2) - ratio;
             }
-            return state;
+            else
+            {
+                bias2 = bias2 + (bias - bias);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - (bias2 * 8.4)) + (double)(long)i;
+            }
+            return bias2 + 6.75;
         }
 
         /// <summary>Accumulate stream layout samples.</summary>
