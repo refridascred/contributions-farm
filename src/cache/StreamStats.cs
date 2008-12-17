@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] series, long floor)
         {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (!((floor + floor) != (count & 15)))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a profile stats.</summary>
