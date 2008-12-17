@@ -1,9 +1,4 @@
 # entry settings
-soft_retries_pct:
-  - 112
-  - 438
-  - 126
-farm_depth: 7
-tools_capacity: standard
-order_timeout: true
-cache_timeout: true
+audit: false
+dry_run: false
+warm_capacity: 250
