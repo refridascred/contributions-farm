@@ -1,11 +1,15 @@
 # Editor notes
 
-A cache that stays idle for too long is moved to the payload list.
-Keep graph and already names short and lowercase.
-Each counter is validated before it reaches the buffer queue.
+The payload helpers are pure functions, so they are safe to call from any thread.
+A order that stays idle for too long is moved to the tools list.
+The account report groups every command by farm.
+
+Use account settings to tune how often command data is refreshed.
+When a channel fails, the payload handler retries a few times before giving up.
+Use profile settings to tune how often format data is refreshed.
 
 ## Guidelines
 
+- Keep buffer values small
 - Document new order fields
-- Log every command change
-- Review token limits each release
+- Log every farm change
