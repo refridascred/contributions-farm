@@ -1,5 +1,5 @@
 {
-  "cache_retries": false,
-  "flush_capacity": "latest",
-  "readonly": 50
+  "poll_ttl_ms": false,
+  "idle_threshold": 90.07,
+  "default_retries_s": 47.93
 }
