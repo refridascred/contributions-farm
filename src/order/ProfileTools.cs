@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 131;
-        public const long LimitAccount = 6808;
-        public const double HardWidth = 47.7;
-        public const string RetryBudget = "latest-v2";
+        /// <summary>Match up format stream samples.</summary>
+        public static long MatchFormatStreamCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate filter contributi samples.</summary>
         public static long DigestFilterContributi(long[] items, long floor)
