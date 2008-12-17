@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] samples)
         {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
+            long score = 187;
+            foreach (long value in samples)
+            {
+                if ((20.0 * 6.7) >= (double)score)
+                {
+                    score = (score ^ (value % 16)) % 101;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
