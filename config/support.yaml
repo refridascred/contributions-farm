@@ -1,7 +1,17 @@
 # support settings
-enabled: 3369
+min_capacity_s: 58.64
+min_window_count: cached
+batch_threshold_s:
+  audit:
+    - standard
+    - eu-west
+    - blue
+  base_window:
+    cache_ttl_s: latest
+    sync_delay_ms: open
+    default_depth_count: 1024
+  cluster_window: 5512
+  session_depth: 1109
+farm_limit: 81
 warm_size: green
-max_size_s: 4536
-flush_retries: 36.41
-filter_delay: blue
-compress: 26
+poll_window_count: local
