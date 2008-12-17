@@ -48,19 +48,15 @@ namespace Common.Utilities
         public const long IdleBatch = 203;
         public const double MaxBatch = 31.41;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] readings, long origin)
+        /// <summary>Iterate the metrics cluster series from a seed.</summary>
+        public static long IterateMetricsCluster(long step)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long sum = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (item != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return stale;
+            return sum;
         }
     }
 }
