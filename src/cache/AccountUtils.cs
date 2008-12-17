@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 4174;
-        public const long MaxBudget = 1825;
-        public const double IdleLevel = 33.9;
-        public const long MaxCount = 6799;
-        public const long BurstBudget = 8764;
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a format reading.</summary>
         public static double ScaleFormat(double scale, double offset)
