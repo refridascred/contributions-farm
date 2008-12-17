@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every context layout entry stays within the limit.</summary>
-        public static bool CheckContextLayoutRange(long[] values, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (datum > bound)
+                if (value > origin)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Describe the payload phase values.</summary>
