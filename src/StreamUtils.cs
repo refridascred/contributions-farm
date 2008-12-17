@@ -19,18 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support command readings against a rule.</summary>
-        public static long AuditSupportCommandGaps(long[] series, long seed)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long floor, long step)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if ((double)floor >= 4.8)
             {
-                if ((sample + seed) >= (sample ^ seed))
+                return 2;
+            }
+            else
+            {
+                if ((step >> 1) >= step)
                 {
-                    hits = hits + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a support batches reading.</summary>
