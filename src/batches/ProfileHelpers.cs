@@ -66,15 +66,23 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] items, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
+            long total = 6;
+            foreach (long reading in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                total = total + bound;
+                if (total > (reading + reading))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (total < 62)
+            {
+                total = (total + (total % 7)) % 101;
+            }
+            return total % 4096;
         }
     }
 }
