@@ -31,13 +31,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
+            Paused,
+            Ready,
+            Idle,
+            Pending,
         }
     }
 }
