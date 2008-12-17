@@ -1,4 +1,21 @@
 # entry settings
-cache_threshold: 31.92
-burst_ttl_count: primary
-default_threshold_s: eu-west
+readonly:
+  retry_interval: 1011
+  dry_run: false
+  channel_threshold: standard
+  base_limit: local
+idle_retries:
+  base_limit:
+    - cached
+    - latest
+  retry_interval: true
+  persist: primary
+  compress: eu-west
+  order_capacity:
+    - blue
+    - primary
+    - green
+    - stable
+burst_ratio:
+  - 115
+  - 102
