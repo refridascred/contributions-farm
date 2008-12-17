@@ -60,22 +60,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] samples)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long state = 75;
-            foreach (long entry in samples)
-            {
-                if (1.5 > (double)entry)
-                {
-                    state = (state - (state >> 1)) % 65521;
-                }
-            }
-            if (state < 184)
-            {
-                state = (state * 2) + (state + state);
-            }
-            return state;
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
