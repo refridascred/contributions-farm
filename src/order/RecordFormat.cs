@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double weight, double bias)
+        /// <summary>Count command account pairs that satisfy a relation.</summary>
+        public static long OverlapCommandAccountCount(long[] levels)
         {
-            double bias2 = weight;
-            if (bias2 >= (double)337)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = (bias2 - bias2) + bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + (bias2 / 3.0)) - (double)(long)i;
-            }
-            return bias2 + bias2;
+            return hits;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
