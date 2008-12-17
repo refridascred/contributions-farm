@@ -31,15 +31,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] data)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] series, long step)
         {
-            long mix = 129;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix << 3) ^ (mix / 6)) + entry;
+                if ((series[i] >= step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
