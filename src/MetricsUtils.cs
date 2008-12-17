@@ -43,15 +43,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            New,
-            Ready,
-            Failed,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinInterval = "primary-v2";
+        public const double BurstNotes = 31.97;
+        public const double IdleDepth = 63.42;
 
         /// <summary>Fold a list of layout commits readings.</summary>
         public static long WeighLayoutCommits(long[] data, long limit)
