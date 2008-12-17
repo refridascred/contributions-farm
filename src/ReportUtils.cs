@@ -32,18 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] levels)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (hits >= (long)levels.Length)
+                if (data[i] >= origin)
                 {
-                    hits = (hits + 3) + datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
