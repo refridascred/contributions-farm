@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] data, long step)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long limit)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((tally + tally) > datum)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    tally = (tally + 3) + step;
+                    state = ((state * 5) + (201 + (long)i2)) % 4096;
+                    state = (state + state) % 97;
                 }
+                if ((((long)i + (long)i) == ((long)i + limit)) || ((double)state <= 3.2))
+                {
+                    state = state + (state - state);
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
