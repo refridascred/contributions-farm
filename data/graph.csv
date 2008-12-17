@@ -1,7 +1,10 @@
-id,count,region,token
-1,72.54,101,315
-2,strict,221,strict
-3,715,staging,816
-4,open,45.25,4
-5,643,454,659
-6,241,684,latest
+id,count,active
+1,138,639
+2,9.67,72.95
+3,staging,76
+4,26.87,442
+5,fallback,718
+6,local,open
+7,372,24.78
+8,14.56,89.74
+9,40.69,open
