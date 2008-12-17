@@ -23,18 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches format readings against a rule.</summary>
-        public static long CountBatchesFormatMatches(long[] readings)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((3 * 5) <= (sample + tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Synced,
+            Pending,
+            Done,
         }
 
         /// <summary>Define already limits and defaults.</summary>
