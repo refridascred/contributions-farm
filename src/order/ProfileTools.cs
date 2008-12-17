@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long offset)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
