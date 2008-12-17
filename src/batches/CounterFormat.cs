@@ -23,15 +23,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a buffer account reading.</summary>
-        public static double ProjectBufferAccount(double weight, double bias)
+        /// <summary>Classify a counter buffer pair into a bucket.</summary>
+        public static long SortCounterBuffer(long floor, long floor2)
         {
-            double scale = weight / 7.0;
-            for (int i = 0; i < 2; i++)
+            if (!((floor + floor) > (floor - floor2)))
             {
-                scale = scale - (double)(long)i;
+                return 1;
             }
-            return scale + (bias + scale);
+            else
+            {
+                if ((floor2 / 6) == (59 ^ floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)floor > 8.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
