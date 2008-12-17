@@ -14,12 +14,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheLevel = "local-1";
-        public const long IdleCount = 6771;
-        public const string DefaultRecord = "open-edge";
-        public const long CacheRecord = 1518;
-        public const long WindowCount = 2443;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long WeighAccount(long[] readings)
