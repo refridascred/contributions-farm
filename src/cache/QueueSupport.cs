@@ -34,11 +34,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 3370;
+        public const long WindowCommits = 7436;
+        public const long BurstCount = 8499;
     }
 }
