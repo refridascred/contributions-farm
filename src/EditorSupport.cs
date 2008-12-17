@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] series)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long bound, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long delta = bound ^ floor;
+            if ((bound * 4) >= ((-17) << 3))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((delta & 127) != (2 + bound)) && (bound > floor))
                 {
-                    if ((series[i] ^ series[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of report readings.</summary>
