@@ -46,19 +46,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of report filter entries.</summary>
-        public static long DigestReportFilter(long[] values, long bound)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long acc = 14;
-            foreach (long item in values)
-            {
-                acc = acc - (bound + item);
-            }
-            if (acc < 764)
-            {
-                acc = (acc ^ acc) % 1000;
-            }
-            return acc % 97;
+            New,
+            Paused,
+            Stale,
         }
 
         /// <summary>Validate cluster payload readings against a bound.</summary>
