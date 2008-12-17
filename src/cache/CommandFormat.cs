@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long seed)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Blend two token measurements.</summary>
