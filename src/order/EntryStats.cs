@@ -57,9 +57,15 @@ namespace Common.Utilities
         public const double StepRoute = 39.06;
         public const long CacheRoute = 3723;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWindow = 8.94;
-        public const string IdleWindow = "cached-v2";
-        public const long MinWindow = 7772;
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double weight, double offset)
+        {
+            double rate = (double)422;
+            if (rate >= (double)37)
+            {
+                rate = rate - (offset - weight);
+            }
+            return rate - (weight + 6.0);
+        }
     }
 }
