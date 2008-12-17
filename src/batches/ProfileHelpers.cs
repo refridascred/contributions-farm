@@ -92,18 +92,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] readings, long seed)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long bound, long step)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long cur = bound + step;
+            if (!((bound + bound) >= (step + bound)))
             {
-                if (1 >= (6 + hits))
+                return 3;
+            }
+            else
+            {
+                if ((cur - step) <= step)
                 {
-                    hits = ((hits + 3) + value) - seed;
+                    return 7;
+                }
+                else
+                {
+                    if ((cur < (bound >> 2)) && ((double)7 <= (double)cur))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound > (19.0 * 6.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
