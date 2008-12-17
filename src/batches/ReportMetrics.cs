@@ -24,19 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks route readings against a bound.</summary>
-        public static bool GuardChecksRouteRange(long[] samples, long bound)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
