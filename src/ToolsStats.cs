@@ -12,23 +12,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double weight, double floor)
+        /// <summary>Digest a series of buffer account entries.</summary>
+        public static long ScoreBufferAccount(long[] series)
         {
-            double scale = floor / 7.0;
-            if (scale < (double)8)
+            long result = 882;
+            foreach (long reading in series)
             {
-                scale = (scale - 11.0) - weight;
+                result = ((result << 2) ^ reading) % 1000;
             }
-            else
+            if (result > 0)
             {
-                scale = scale + (6.6 - 3.36);
+                result = (result ^ (result ^ result)) % 255;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - scale;
+            return result % 65521;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
