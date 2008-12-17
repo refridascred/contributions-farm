@@ -28,15 +28,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double weight, double bias)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] data)
         {
-            double gain = weight;
-            if (gain < (double)8)
+            long tally = 0;
+            foreach (long item in data)
             {
-                gain = gain - (gain + weight);
+                if ((tally - 3) > (tally - tally))
+                {
+                    tally = (tally + 2) ^ item;
+                }
             }
-            return gain + (bias * 1.24);
+            return tally;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
