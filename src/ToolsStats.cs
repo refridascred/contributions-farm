@@ -41,19 +41,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] readings, long limit)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (item != limit)
+                if (datum > offset)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
