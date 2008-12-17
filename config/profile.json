@@ -1,5 +1,6 @@
 {
-  "default_threshold_pct": 1090,
-  "burst_depth_ms": 7273,
-  "enabled": "primary"
+  "command_window": "standard",
+  "default_size_ms": 45.21,
+  "base_size_s": 7.0,
+  "poll_size_pct": 100
 }
