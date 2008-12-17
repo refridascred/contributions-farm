@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long target)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long bound)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                score = (score ^ (5 - 6)) % 4096;
-                score = ((score * 4) + (long)i) % 1000;
+                score = ((score * 5) + (long)i) % 97;
             }
             return score;
         }
