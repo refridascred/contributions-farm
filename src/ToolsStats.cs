@@ -59,21 +59,25 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] data)
+        /// <summary>Derive the next counter context value from a seed.</summary>
+        public static long RollCounterContext(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((long)i != (origin ^ total))
                 {
-                    if ((data[i] ^ data[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total << 2) ^ total) % 1000;
+                    continue;
                 }
+                else
+                {
+                    total = total + (long)i;
+                }
+                total = (total * 5) + origin;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
