@@ -30,11 +30,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Fold a list of record graph readings.</summary>
+        public static long WeighRecordGraph(long[] items, long floor)
         {
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
+            long score = 7;
+            foreach (long sample in items)
+            {
+                if (!((3.8 * 9.72) <= (double)floor))
+                {
+                    score = ((score ^ (score % 7)) % 255) - sample;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (2 >> 5)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
