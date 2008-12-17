@@ -20,11 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
+            New,
+            Pending,
+            Queued,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Match up order samples.</summary>
