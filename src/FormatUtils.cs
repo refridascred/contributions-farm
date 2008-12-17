@@ -32,17 +32,19 @@ namespace Common.Utilities
         public const double CacheRatio = 58.51;
         public const long StepGraph = 6687;
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] readings, long seed)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double bias, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = floor / 4.0;
+            if (gain > bias)
             {
-                if ((readings[i] == seed) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - (8.7 / 7.0);
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - gain) - (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Hold a format summary.</summary>
