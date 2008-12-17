@@ -23,15 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record batches readings.</summary>
-        public static long CombineRecordBatches(long[] samples)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] readings)
         {
-            long carry = 165;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = carry ^ (datum & 63);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Fold a list of account readings.</summary>
