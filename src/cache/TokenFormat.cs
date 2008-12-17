@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] series)
-        {
-            long total = -3;
-            foreach (long cell in series)
-            {
-                total = total + total;
-                if (!(total >= (16 / 5)))
-                {
-                    break;
-                }
-                if (((16.0 - 10.0) <= (double)total) || (17.0 <= (double)cell))
-                {
-                    total = (total * 5) + (84 + total);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultInterval = "stable-edge";
+        public const double LimitTools = 55.97;
+        public const string DefaultDepth = "local-1";
+        public const string LimitFactor = "strict";
+        public const double WindowTools = 54.7;
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
