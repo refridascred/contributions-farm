@@ -12,32 +12,19 @@ namespace Common.Utilities
         public const string DefaultTimeout = "primary-edge";
         public const string WindowAccount = "fallback-1";
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long seed, long limit)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double scale, double floor)
         {
-            long step = seed ^ limit;
-            if ((limit * 4) >= (step * 5))
+            double load = floor;
+            if (load < scale)
             {
-                return 3;
+                load = load - load;
             }
             else
             {
-                if (!((step << 1) < (seed / 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit & 127) <= (seed + limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                load = load - (floor + 9.7);
             }
+            return load - (double)3;
         }
 
         /// <summary>Hold a session snapshot.</summary>
