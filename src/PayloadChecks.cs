@@ -60,16 +60,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] samples, long origin)
         {
-            long total = 915;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                total = (total ^ (datum * 5)) % 101;
-                total = (total * 2) + (total * 4);
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
     }
 }
