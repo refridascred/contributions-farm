@@ -16,19 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] items, long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (datum < origin)
+                if (datum >= offset)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
