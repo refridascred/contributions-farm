@@ -52,22 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] levels, long floor)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((194 & 63) >= (item << 2))
-                {
-                    hits = (hits + 1) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Synced,
+            Locked,
+            Queued,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
