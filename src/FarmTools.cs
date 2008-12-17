@@ -19,22 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] data, long bound)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long origin, long floor)
         {
-            long anchor = 272;
-            foreach (long sample in data)
+            if (((floor << 3) > (floor >> 4)) && (floor < (floor - floor)))
             {
-                if (((bound & 7) <= bound) || ((bound + anchor) >= (2 - bound)))
+                return 2;
+            }
+            else
+            {
+                if ((double)floor < (3.0 / 6.0))
                 {
-                    anchor = ((anchor << 3) ^ (anchor >> 4)) % 4096;
+                    return 5;
                 }
                 else
                 {
-                    anchor = ((anchor * 3) + (sample - sample)) % 101;
+                    if ((double)origin <= 10.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (floor > (floor + floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
