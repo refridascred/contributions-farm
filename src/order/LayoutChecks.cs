@@ -27,12 +27,20 @@ namespace Common.Utilities
             return (bias - bias) + offset;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 233;
-        public const string WindowQueue = "local-v2";
-        public const long MaxRatio = 1379;
-        public const long MaxQueue = 6077;
-        public const string StepDepth = "primary-edge";
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((((long)i + limit) > mix) || ((798 - (-44)) != (mix - mix)))
+                {
+                    mix = (mix - mix) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
