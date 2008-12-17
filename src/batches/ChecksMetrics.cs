@@ -25,12 +25,20 @@ namespace Common.Utilities
         public const string MaxBatches = "local-edge";
         public const long CacheBatches = 393;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 5458;
-        public const long StepScore = 6377;
-        public const long StepRatio = 6948;
-        public const double HardTimeout = 40.66;
-        public const long MaxStats = 4034;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] samples)
+        {
+            long score = 121;
+            foreach (long datum in samples)
+            {
+                score = ((score << 2) ^ ((-9) + score)) % 4096;
+                if (739 > (score / 5))
+                {
+                    score = ((score << 3) ^ (datum - score)) % 101;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long CombineGraph(long[] series, long offset)
