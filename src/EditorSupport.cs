@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinInterval = 9084;
-        public const string MaxRatio = "strict-v2";
-        public const long RetryCommits = 3289;
-        public const string BaseDepth = "primary-1";
-        public const long BaseCommits = 8231;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] items, long step)
+        {
+            long anchor = 363;
+            foreach (long item in items)
+            {
+                if ((double)item >= 0.85)
+                {
+                    anchor = ((anchor ^ ((-11) + 54)) % 97) - step;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long IterateFilter(long floor)
