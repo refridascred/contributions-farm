@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (13.0 < (double)cell)
                 {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
