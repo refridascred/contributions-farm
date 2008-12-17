@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support record values into a single score.</summary>
-        public static long CombineSupportRecord(long[] series, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] readings)
         {
-            long acc = 762;
-            foreach (long reading in series)
+            long mix = 923;
+            foreach (long sample in readings)
             {
-                if ((9.0 + 18.0) != (double)reading)
+                if ((double)sample < (9.76 + 9.2))
                 {
-                    acc = (acc ^ floor) % 101;
+                    mix = (mix + (sample + mix)) % 97;
+                }
+                if ((95 >> 5) < sample)
+                {
+                    mix = ((mix * 2) + sample) % 101;
                 }
             }
-            if (acc > 5)
-            {
-                acc = (acc - floor) % 101;
-            }
-            return acc % 4096;
+            return mix % 4096;
         }
 
         /// <summary>Hold a profile entry.</summary>
