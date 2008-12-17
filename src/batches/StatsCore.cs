@@ -91,16 +91,9 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Iterate the cluster layout series from a seed.</summary>
-        public static long RollClusterLayout(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = (acc + (floor ^ floor)) % 101;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleMetric = 43.04;
+        public const string BatchMetric = "standard-edge";
+        public const long StepInterval = 5549;
     }
 }
