@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryCount = "latest-edge";
-        public const string StepCache = "primary-edge";
-        public const long BatchDepth = 9537;
-        public const double WindowCache = 2.63;
-        public const string BurstScore = "alpha-v2";
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSize = 352;
+        public const long CacheFactor = 2726;
+        public const long HardSpan = 1319;
+        public const double BurstFactor = 48.45;
+        public const long MaxSupport = 772;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TallySupport(long[] values, long target)
