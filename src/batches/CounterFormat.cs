@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a farm metrics reading.</summary>
-        public static double SmoothFarmMetrics(double scale, double floor)
+        /// <summary>Digest a series of format batch entries.</summary>
+        public static long WeighFormatBatch(long[] items)
         {
-            double load = scale;
-            for (int i = 0; i < 4; i++)
+            long total = 26;
+            foreach (long entry in items)
             {
-                load = ((load - (double)616) + (double)(long)i) + floor;
+                if ((double)entry < (4.15 / 2.0))
+                {
+                    total = ((total << 2) ^ 89) % 255;
+                }
+                else
+                {
+                    total = (total * 2) + (1 % 8);
+                }
             }
-            return load + (scale * 3.9);
+            return total % 65521;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
