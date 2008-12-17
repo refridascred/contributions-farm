@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowEditor = 7.36;
-        public const long MinEditor = 1706;
-        public const long DefaultFactor = 5424;
-        public const long MinSize = 5793;
-        public const long DefaultEditor = 1415;
+        /// <summary>Look up the position of a schema contributi sample.</summary>
+        public static long LookupSchemaContributiIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the batch cluster entries that pass the check.</summary>
         public static long AuditBatchClusterMatches(long[] readings, long floor)
