@@ -1,10 +1,8 @@
 {
-  "idle_depth": 4.46,
-  "readonly": ["latest", "green", "eu-west", "standard"],
-  "hard_interval": {
-    "batch_ratio": "green",
-    "burst_delay_s": true,
-    "burst_ratio_s": 7688,
-    "compress": "green"
-  }
+  "idle_depth_pct": "stable",
+  "cache_ttl_count": 60,
+  "idle_delay": 60.36,
+  "warm_retries_count": [379, 443, 478],
+  "verbose": 5539,
+  "hard_capacity_ms": "latest"
 }
