@@ -13,13 +13,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            Ready,
-            Closed,
-            Idle,
-            Synced,
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a report record.</summary>
