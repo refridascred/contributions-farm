@@ -23,21 +23,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] series)
+        /// <summary>Adjust a buffer metrics reading.</summary>
+        public static double ProjectBufferMetrics(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = (weight + weight) + offset;
+            if (gain < (double)38)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain + (double)747;
             }
-            return hits;
+            return gain - (gain - 7.58);
         }
 
         /// <summary>Describe the command kind values.</summary>
