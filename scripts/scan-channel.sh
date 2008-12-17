@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest local; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=284
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-stable}"
+mode="${1:-open}"
 case "${mode}" in
-    fallback)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -20,5 +19,8 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=173
-log "limit is ${CHANNEL_LIMIT}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
