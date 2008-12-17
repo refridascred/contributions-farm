@@ -33,39 +33,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long step, long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] readings)
         {
-            long step2 = step - bound;
-            if (!((step * 5) < (24 / 9)))
+            long sum = 232;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step ^ step) <= step)
+                if ((double)sum >= (5.6 * 3.0))
                 {
-                    return 8;
+                    sum = ((sum * 4) + (entry + entry)) % 1000;
                 }
                 else
                 {
-                    if ((step2 / 7) >= (step >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(step < (3 * 4)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    sum = sum ^ (sum << 1);
                 }
             }
+            if (sum < 7)
+            {
+                sum = ((sum * 5) + sum) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
