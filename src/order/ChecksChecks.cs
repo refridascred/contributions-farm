@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double scale, double offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] series, long offset)
         {
-            double weight = scale;
-            if (weight < (scale + offset))
+            long carry = -50;
+            foreach (long entry in series)
             {
-                weight = weight - (weight + weight);
+                if ((double)entry < (double)offset)
+                {
+                    carry = (carry ^ entry) % 1000;
+                }
             }
-            return weight - (scale / 2.0);
+            return carry;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
