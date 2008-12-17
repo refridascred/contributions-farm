@@ -1,11 +1,6 @@
 # entry settings
-route_window:
-  editor_size: 7.62
-  hard_limit_count: legacy
-  flush_depth_s: false
-  retry_limit_ms: staging
-  batches_window: legacy
-editor_ttl: false
-sync_depth: 47.99
-readonly: eu-west
-hard_delay_count: primary
+soft_window_s:
+  - 248
+  - 357
+min_interval_s: 51.48
+retry_interval_s: 45
