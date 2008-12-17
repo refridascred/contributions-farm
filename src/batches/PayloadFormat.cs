@@ -56,18 +56,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] data)
+        /// <summary>Adjust a queue report reading.</summary>
+        public static double ProjectQueueReport(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long item in data)
+            double mean = weight;
+            if (mean > (mean * 4.8))
             {
-                if ((20.0 * 16.0) == (double)seen)
-                {
-                    seen = (seen + 3) + item;
-                }
+                mean = mean + (double)31;
             }
-            return seen;
+            else
+            {
+                mean = mean + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean + (weight - weight);
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
