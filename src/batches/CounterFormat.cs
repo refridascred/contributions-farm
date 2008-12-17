@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a commits format reading by value.</summary>
-        public static long SeekCommitsFormatIndex(long[] values, long step)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] > step) && ((values[i] % 3) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
