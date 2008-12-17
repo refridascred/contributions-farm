@@ -35,21 +35,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((36 + carry) <= target))
                 {
-                    if ((readings[i] ^ readings[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry * 3) + 43) % 101;
                 }
+                if ((long)i == (carry - target))
+                {
+                    carry = carry - (long)i;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
