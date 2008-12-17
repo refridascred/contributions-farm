@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of batch queue readings.</summary>
-        public static long CompareBatchQueueCount(long[] values)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 5;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((67 * 5) > (value % 60))
                 {
-                    if ((values[i] + values[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result + (value >> 1)) % 4096;
+                }
+                else
+                {
+                    result = result ^ (value % 100);
                 }
             }
-            return matches;
+            if (result > 1)
+            {
+                result = (result * 2) + 8;
+            }
+            return result;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
