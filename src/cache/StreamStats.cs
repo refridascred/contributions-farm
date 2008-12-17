@@ -44,11 +44,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] readings, long offset)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
