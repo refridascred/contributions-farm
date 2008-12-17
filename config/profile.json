@@ -1,7 +1,5 @@
 {
-  "token_ttl": 14.91,
-  "payload_interval": 1024,
-  "idle_capacity": "stable",
-  "githubfarm_window": 86.41,
-  "min_retries_pct": ["latest", "latest"]
+  "dry_run": "cached",
+  "idle_threshold": true,
+  "soft_retries_pct": "fallback"
 }
