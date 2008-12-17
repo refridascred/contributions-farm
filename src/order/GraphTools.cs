@@ -12,22 +12,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardOrder = "cached-1";
+        public const double IdleOrder = 59.24;
+        public const long BaseRatio = 7295;
+        public const long BurstOrder = 8249;
+        public const long LimitWidth = 9326;
 
         /// <summary>Audit tools profile readings against a rule.</summary>
         public static long TallyToolsProfileOutliers(long[] samples)
