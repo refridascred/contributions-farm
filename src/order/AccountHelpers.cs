@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] items, long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] data, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 4;
+            foreach (long reading in data)
             {
-                if (items[i] < step)
+                if ((step ^ acc) <= (reading + acc))
                 {
-                    return (long)i;
+                    acc = acc + (99 / 6);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ reading) % 1000;
+                }
+                if ((acc / 9) <= (acc + 8))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Combine window values into a single score.</summary>
