@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate channel metrics samples.</summary>
-        public static long TotalChannelMetrics(long[] samples)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long mark = 184;
-            foreach (long value in samples)
-            {
-                if ((mark % 97) != (mark & 127))
-                {
-                    mark = (mark * 2) + value;
-                }
-            }
-            return mark;
+            Closed,
+            Synced,
+            Idle,
         }
 
         /// <summary>Locate a route reading by value.</summary>
