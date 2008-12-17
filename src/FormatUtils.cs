@@ -53,18 +53,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route stats readings against a rule.</summary>
-        public static long AuditRouteStatsMatches(long[] data, long limit)
+        /// <summary>Match up editor entry samples.</summary>
+        public static long OverlapEditorEntryCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches + cell) >= (matches ^ limit))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((readings[i] + readings[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
