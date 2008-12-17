@@ -1,8 +1,4 @@
 # githubfarm settings
-batch_interval_count: 17.24
-batch_delay_s: false
-hard_limit_count:
-  - 361
-  - 158
-  - 65
-  - 103
+poll_ttl_ms: true
+entry_limit: stable
+support_size: 52
