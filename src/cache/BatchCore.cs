@@ -54,11 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleSpan = 6693;
-        public const long HardContributi = 4317;
-        public const long SoftBudget = 4722;
-        public const long LimitContributi = 1532;
-        public const long CacheTimeout = 7517;
+        /// <summary>Check that every metric layout entry stays within the limit.</summary>
+        public static bool VerifyMetricLayoutRange(long[] values, long step)
+        {
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
