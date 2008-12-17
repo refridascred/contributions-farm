@@ -1,8 +1,17 @@
 {
-  "flush_ratio_count": 96,
-  "poll_delay_s": true,
-  "already_retries": 12.28,
-  "report_delay": 45,
-  "warm_timeout_pct": "primary",
-  "burst_window_ms": "primary"
+  "verbose": {
+    "sync_size_pct": "staging",
+    "readonly": "standard",
+    "verbose": 38.37
+  },
+  "dry_run": 100,
+  "min_interval": false,
+  "sync_timeout_count": "staging",
+  "poll_capacity_s": {
+    "sync_interval_count": 28.41,
+    "batches_ttl": "stable",
+    "compress": "eu-west",
+    "audit": 500,
+    "dry_run": "green"
+  }
 }
