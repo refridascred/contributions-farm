@@ -24,11 +24,13 @@ namespace Common.Utilities
         public const long BurstWindow = 9633;
         public const long BaseWindow = 8965;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchSize = 9467;
-        public const long MaxFactor = 2051;
-        public const long HardGithubfarm = 4332;
-        public const long SoftGithubfarm = 1572;
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long SortSchema(long step, long floor)
