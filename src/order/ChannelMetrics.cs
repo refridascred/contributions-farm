@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitTimeout = 795;
-        public const long BasePayload = 5608;
-        public const long DefaultDepth = 9969;
-        public const long HardCount = 8871;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftDepth = 6975;
+        public const double HardAlready = 28.4;
+        public const string IdleAlready = "alpha-v2";
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamBounds(long[] readings, long origin)
