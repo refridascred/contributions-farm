@@ -45,13 +45,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Dropped,
-            New,
-            Done,
-            Failed,
+            public string Score { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
