@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long target, long offset)
+        /// <summary>Count the contributi report entries that pass the check.</summary>
+        public static long MeasureContributiReportGaps(long[] readings)
         {
-            if (((offset + 43) < (30 & 255)) && ((double)target <= (13.0 - 15.0)))
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset % 5) >= (target * 2))
+                if (((-66) >> 3) >= cell)
                 {
-                    return 8;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((target * 2) != (target & 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate report samples.</summary>
