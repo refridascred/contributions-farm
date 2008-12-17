@@ -26,19 +26,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] levels, long origin)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long bound)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc << 2) ^ (acc - bound);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return stale;
+            return acc;
         }
     }
 }
