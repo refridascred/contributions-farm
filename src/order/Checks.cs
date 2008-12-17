@@ -15,20 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next notes tools value from a seed.</summary>
-        public static long RollNotesTools(long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] readings, long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (!(floor > (long)i))
+                if ((7.5 / 9.0) == (double)bound)
                 {
-                    result = (result - (floor - (long)i)) % 1000;
-                    result = ((result << 2) ^ result) % 255;
+                    hits = (hits + 2) + entry;
                 }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Accumulate session samples.</summary>
