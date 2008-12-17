@@ -59,17 +59,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] levels, long target)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 24;
+            foreach (long value in values)
             {
-                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                if ((458 - state) == ((-842) - value))
                 {
-                    return (long)i;
+                    state = (state + state) % 4096;
                 }
             }
-            return -1;
+            if (state < 73)
+            {
+                state = (state - 5) % 4096;
+            }
+            return state;
         }
     }
 }
