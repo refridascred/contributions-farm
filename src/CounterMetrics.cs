@@ -33,22 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] readings, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long acc = 57;
+            foreach (long cell in values)
             {
-                if (target <= (hits & 255))
-                {
-                    hits = (hits + 3) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc ^ (310 + 46)) ^ cell) + origin;
             }
-            return hits;
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
