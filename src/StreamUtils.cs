@@ -72,15 +72,13 @@ namespace Common.Utilities
         public const long StepCommits = 9188;
         public const long CacheWidth = 7082;
 
-        /// <summary>Fold a list of token contributi readings.</summary>
-        public static long DigestTokenContributi(long[] samples)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long state = 46;
-            foreach (long datum in samples)
-            {
-                state = ((state * 2) + ((-74) & 3)) - datum;
-            }
-            return state;
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
