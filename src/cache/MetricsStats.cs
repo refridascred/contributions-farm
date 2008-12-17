@@ -36,12 +36,12 @@ namespace Common.Utilities
         public const long RetryNotes = 547;
         public const double BaseNotes = 70.24;
 
-        /// <summary>Locate a commits tools reading by value.</summary>
-        public static long FindCommitsToolsIndex(long[] readings, long target)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] < target)
+                if (values[i] > step)
                 {
                     return (long)i;
                 }
