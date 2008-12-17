@@ -1,4 +1,13 @@
 # githubfarm settings
-support_retries: true
-audit: 1024
-verbose: true
+persist: staging
+default_retries_count: false
+max_window_count:
+  metric_window: false
+  metrics_interval: local
+  cache_timeout_s:
+    - stable
+    - staging
+    - strict
+    - standard
+  dry_run: 294
+  burst_threshold_ms: 60
