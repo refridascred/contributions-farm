@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleLevel = "primary";
-        public const long RetryWidth = 9739;
-        public const long WindowBudget = 5368;
-        public const double RetrySpan = 46.91;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] data, long seed)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((2.15 * 8.0) == (double)hits)
+                {
+                    hits = ((hits + 2) + reading) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the window profile entries that pass the check.</summary>
         public static long MeasureWindowProfileOutliers(long[] series, long origin)
