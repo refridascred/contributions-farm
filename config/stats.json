@@ -1,7 +1,13 @@
 {
-  "warm_capacity": 9150,
-  "max_capacity_ms": 35,
-  "record_ttl": false,
-  "enabled": 82.52,
-  "max_timeout": 8249
+  "metric_size": {
+    "persist": [43, 204, 199, 95],
+    "burst_size": 2097,
+    "sync_capacity_pct": 41,
+    "hard_capacity": 1024,
+    "buffer_capacity": "blue"
+  },
+  "default_window": [138, 296],
+  "readonly": [258, 195, 21, 165],
+  "base_limit_s": 52.58,
+  "cache_retries": "staging"
 }
