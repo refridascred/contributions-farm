@@ -41,22 +41,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of schema support entries.</summary>
-        public static long WeighSchemaSupport(long[] data)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long seed, long step)
         {
-            long carry = 1;
-            foreach (long value in data)
+            if ((5.5 - 5.7) != (double)step)
             {
-                if ((value >= (5 / 8)) || ((value + (-186)) < value))
+                return 4;
+            }
+            else
+            {
+                if ((seed ^ 2) >= (step + 218))
                 {
-                    carry = ((carry << 3) ^ (695 * 3)) % 65521;
+                    return 0;
+                }
+                else
+                {
+                    if (!((step * 5) <= step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (carry < 1)
-            {
-                carry = ((carry << 3) ^ (carry + carry)) % 97;
-            }
-            return carry;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
