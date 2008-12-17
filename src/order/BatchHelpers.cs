@@ -28,12 +28,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheScore = "primary-edge";
+        public const double RetryWidth = 65.19;
+        public const string RetryProfile = "legacy-v2";
+        public const long IdleProfile = 1160;
+        public const long StepProfile = 5134;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MinWidth = 7551;
