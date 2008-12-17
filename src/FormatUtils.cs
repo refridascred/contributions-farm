@@ -60,12 +60,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Audit record commits readings against a rule.</summary>
+        public static long AuditRecordCommitsOutliers(long[] samples)
         {
-            Synced,
-            Paused,
-            Locked,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((17.0 + 0.3) == (double)tally) && ((826 + (long)samples.Length) <= (tally / 8)))
+                {
+                    tally = (tally + 3) - cell;
+                }
+            }
+            return tally;
         }
     }
 }
