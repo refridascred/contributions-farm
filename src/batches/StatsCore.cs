@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Classify a buffer token pair into a bucket.</summary>
+        public static long SortBufferToken(long seed, long limit)
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long prev = seed ^ limit;
+            if (!((double)limit != (2.0 - 0.7)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit + prev) >= (seed - seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
