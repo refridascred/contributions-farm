@@ -47,22 +47,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] data)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double rate, double bias)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double rate2 = bias;
+            if (rate2 > (bias + rate2))
             {
-                if (!(count <= (count + count)))
-                {
-                    count = (count + 1) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate2 = rate2 - rate;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 + rate2) + (double)(long)i;
+            }
+            return rate2 + 6.0;
         }
     }
 }
