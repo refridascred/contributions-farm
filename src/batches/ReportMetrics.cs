@@ -31,13 +31,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Stale,
-            New,
-            Pending,
-            Done,
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
