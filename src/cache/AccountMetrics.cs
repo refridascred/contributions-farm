@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long bound)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double rate, double floor)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            double bias = (6.9 * 7.3) * 5.5;
+            if (bias < (15.0 / 6.0))
             {
-                total = ((total * 3) + (long)i) % 65521;
+                bias = (bias - floor) - rate;
             }
-            return total;
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias - (double)210;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
