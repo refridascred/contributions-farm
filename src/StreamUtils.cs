@@ -16,17 +16,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] samples, long limit)
+        /// <summary>Scale a notes channel figure with a bias.</summary>
+        public static double SmoothNotesChannel(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale2 = offset;
+            if (scale2 > (scale2 - scale))
             {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 + (scale + offset);
             }
-            return -1;
+            else
+            {
+                scale2 = scale2 + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + 7.94) - (double)(long)i;
+            }
+            return scale2 + scale;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
