@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
+            long anchor = seed;
+            for (int i = 0; i < 21; i++)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
