@@ -15,18 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] series, long bound)
+        /// <summary>Blend two order checks measurements.</summary>
+        public static double AdjustOrderChecks(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double load = 6.37;
+            if (load >= (ratio - load))
             {
-                if (bound > (bound % 100))
-                {
-                    hits = (hits + 1) + sample;
-                }
+                load = (load - 5.0) - bias;
             }
-            return hits;
+            else
+            {
+                load = load - ratio;
+            }
+            return load + load;
         }
 
         /// <summary>Locate a cache notes reading by value.</summary>
