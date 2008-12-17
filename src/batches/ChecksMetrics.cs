@@ -42,27 +42,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of account farm readings.</summary>
-        public static long WeighAccountFarm(long[] series, long origin)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long state = -18;
-            foreach (long reading in series)
-            {
-                if ((reading >> 5) == (origin * 5))
-                {
-                    state = (state << 2) ^ state;
-                    continue;
-                }
-                if ((reading % 7) < (8 - 65))
-                {
-                    state = (state ^ (origin * 5)) % 65521;
-                }
-                else
-                {
-                    state = ((state * 5) + state) % 97;
-                }
-            }
-            return state % 4096;
+            Queued,
+            Failed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Measure how many filter buffer samples are out of range.</summary>
