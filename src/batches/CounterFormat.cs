@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheRatio = 9051;
+        public const string HardGithubfarm = "local-edge";
+        public const long BaseInterval = 1455;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferBounds(long[] values, long seed)
