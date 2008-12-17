@@ -38,11 +38,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstBatch = 63.11;
-        public const long CacheBatch = 6773;
-        public const long StepBatch = 8483;
-        public const long MinCount = 4896;
+        /// <summary>Iterate the githubfarm contributi series from a seed.</summary>
+        public static long SeriesGithubfarmContributi(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix << 3) ^ (offset >> 1)) % 1000;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MinProfile = 889;
