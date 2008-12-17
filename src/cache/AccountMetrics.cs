@@ -65,15 +65,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] items)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long score = 388;
-            foreach (long sample in items)
-            {
-                score = (((score * 5) + score) % 65521) ^ sample;
-            }
-            return score;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
