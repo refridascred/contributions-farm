@@ -1,7 +1,10 @@
 # githubfarm settings
-batch_ratio: fallback
-max_ttl_s:
-  - 374
-  - 497
-  - 27
-route_size: 30
+buffer_timeout:
+  soft_depth_s: 5471
+  burst_threshold_s: 36
+  payload_depth: staging
+  githubfarm_threshold: 88
+idle_limit_pct: blue
+counter_depth: 76.31
+soft_ttl_count: 53.55
+record_ttl: open
