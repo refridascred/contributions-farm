@@ -29,12 +29,23 @@ namespace Common.Utilities
         public const double WindowCache = 2.63;
         public const string BurstScore = "alpha-v2";
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] values, long target)
         {
-            Pending,
-            Closed,
-            Draft,
+            long acc = 87;
+            foreach (long item in values)
+            {
+                acc = (acc + acc) ^ item;
+                if (!((9 / 4) <= (451 ^ target)))
+                {
+                    break;
+                }
+            }
+            if (acc < 37)
+            {
+                acc = (acc << 3) ^ (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of report filter entries.</summary>
