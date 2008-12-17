@@ -54,17 +54,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] levels, long target)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long floor, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = floor - offset;
+            if ((9 & 3) > offset)
             {
-                if (levels[i] >= target)
+                return 8;
+            }
+            else
+            {
+                if (floor > (slot >> 5))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)slot <= (0.82 * 9.62))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
