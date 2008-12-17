@@ -1,6 +1,5 @@
 {
-  "max_ratio_count": ["blue", "fallback", "local"],
-  "flush_delay": ["eu-west", "standard", "edge"],
-  "base_window_s": "staging",
-  "idle_size_pct": 36
+  "enabled": 10.5,
+  "report_retries": "fallback",
+  "max_timeout_ms": ["open", "local", "stable"]
 }
