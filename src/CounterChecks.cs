@@ -35,12 +35,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public double Weight { get; set; }
+            Closed,
+            Ready,
+            Draft,
+            Pending,
         }
 
         /// <summary>Hold a support options.</summary>
