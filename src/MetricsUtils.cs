@@ -48,10 +48,24 @@ namespace Common.Utilities
         public const double BurstNotes = 31.97;
         public const double IdleDepth = 63.42;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 3152;
-        public const long CacheCount = 4396;
-        public const long SoftSize = 5303;
-        public const long BurstSize = 9574;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long offset, long floor)
+        {
+            if (!(5 <= (floor % 60)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((5 + offset) <= (20 + offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
