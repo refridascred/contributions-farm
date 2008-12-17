@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const double CacheProfile = 27.72;
         public const long BurstProfile = 5608;
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] data)
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (0 <= (sample - 954))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
