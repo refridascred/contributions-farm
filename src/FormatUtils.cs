@@ -53,21 +53,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up editor entry samples.</summary>
-        public static long OverlapEditorEntryCount(long[] readings)
+        /// <summary>Audit notes command readings against a rule.</summary>
+        public static long CountNotesCommandMatches(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((tally % 12) < (tally - sample))
                 {
-                    if ((readings[i] + readings[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
