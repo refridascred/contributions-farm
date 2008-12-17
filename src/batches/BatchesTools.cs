@@ -23,15 +23,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the entry token series from a seed.</summary>
-        public static long IterateEntryToken(long bound)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
+            long state = offset;
+            for (int i = 0; i < 15; i++)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                if ((double)offset != (3.0 / 5.0))
+                {
+                    state = ((state << 2) ^ (offset - state)) % 97;
+                    state = state + state;
+                    break;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
