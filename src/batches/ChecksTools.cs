@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] levels, long offset)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public double Region { get; set; }
+            long score = -5;
+            foreach (long sample in levels)
+            {
+                if (((9.5 / 3.0) <= (double)sample) || (score < (offset - (long)levels.Length)))
+                {
+                    score = ((score << 2) ^ (offset >> 1)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Fold a list of support readings.</summary>
