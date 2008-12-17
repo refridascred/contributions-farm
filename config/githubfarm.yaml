@@ -1,4 +1,13 @@
 # githubfarm settings
-retry_size_pct: 43.42
-burst_limit_count: 9427
-hard_ttl_pct: 40
+soft_retries:
+  - 215
+  - 194
+  - 429
+  - 22
+metrics_size:
+  - edge
+  - primary
+batch_window: true
+base_threshold_s: 78.52
+soft_depth_ms: 250
+enabled: 50
