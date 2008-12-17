@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] levels, long origin)
         {
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
-            public bool Count { get; set; }
-            public long Score { get; set; }
+            long score = 897;
+            foreach (long sample in levels)
+            {
+                score = ((score ^ (origin ^ origin)) % 101) + sample;
+            }
+            if (score > 32)
+            {
+                score = ((score << 3) ^ (score >> 5)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
