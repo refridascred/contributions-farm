@@ -19,18 +19,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the farm githubfarm entries that pass the check.</summary>
-        public static long AuditFarmGithubfarmHits(long[] readings, long offset)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (offset > (seen & 31))
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
+            Synced,
+            Queued,
+            Active,
+            Pending,
+            Dropped,
         }
     }
 }
