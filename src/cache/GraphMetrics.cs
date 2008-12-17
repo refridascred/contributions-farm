@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long RetryBuffer = 1402;
         public const long CacheFactor = 1357;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxLayout = 86.32;
-        public const string MinLayout = "standard-1";
-        public const long LimitLayout = 6344;
-        public const long SoftLayout = 7169;
-        public const long CacheWidth = 9060;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = (anchor * 5) + (target << 2);
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double IdleDepth = 64.65;
