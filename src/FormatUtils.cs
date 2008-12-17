@@ -26,14 +26,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 5171;
+        public const string DefaultBudget = "open-1";
+        public const double CacheRatio = 58.51;
+        public const long StepGraph = 6687;
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long FindCounterIndex(long[] readings, long seed)
