@@ -37,17 +37,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] series, long bound)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double bias, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = (double)87;
+            return ((load - (9.75 / 5.0)) + bias) + floor;
         }
 
         /// <summary>Hold a record snapshot.</summary>
