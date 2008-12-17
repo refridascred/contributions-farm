@@ -1,8 +1,5 @@
 {
-  "base_delay_s": "strict",
-  "flush_timeout": [360, 215, 21],
-  "idle_retries": "eu-west",
-  "enabled": 500,
-  "soft_interval": 100,
-  "base_delay_count": 93.23
+  "readonly": 76,
+  "farm_retries": 52.03,
+  "support_timeout": ["local", "eu-west"]
 }
