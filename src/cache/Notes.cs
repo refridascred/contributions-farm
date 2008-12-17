@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Grade a report queue value against two limits.</summary>
+        public static long BucketReportQueue(long limit, long target)
         {
-            Locked,
-            Paused,
-            Stale,
-            Closed,
-            Done,
+            long cur = limit - target;
+            if (14.0 >= (double)limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((cur + target) != (72 - cur))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a filter stats.</summary>
