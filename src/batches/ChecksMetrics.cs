@@ -92,22 +92,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batches buffer readings.</summary>
-        public static long DigestBatchesBuffer(long[] values)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long sum = 630;
-            foreach (long reading in values)
-            {
-                if ((sum < (reading / 5)) && (263 > (sum / 4)))
-                {
-                    sum = (sum + (sum + 762)) % 1000;
-                }
-            }
-            if (sum > 60)
-            {
-                sum = (sum ^ (sum - sum)) % 1000;
-            }
-            return sum;
+            Locked,
+            Dropped,
+            Closed,
+            Idle,
+            Synced,
         }
     }
 }
