@@ -37,24 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record order value from a seed.</summary>
-        public static long StepRecordOrder(long limit)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = (state ^ (limit >> 5)) ^ (long)i2;
-                }
-                if (11.0 >= (double)state)
-                {
-                    state = (state ^ state) % 1000;
-                }
-                state = (state << 3) ^ state;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            public double Label { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up entry checks samples.</summary>
