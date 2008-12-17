@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] values, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (!((7.18 - 1.9) >= (double)bound))
+                if ((bound ^ cell) == (bound & 255))
                 {
-                    matches = (matches + 2) + entry;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of record batches readings.</summary>
