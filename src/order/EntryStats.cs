@@ -43,17 +43,25 @@ namespace Common.Utilities
         public const string StepRecord = "primary-edge";
         public const double BatchFactor = 85.23;
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] levels, long target)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long step, long step2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long span = step ^ step2;
+            if (((span + step2) == (step2 + span)) && ((321 + step) == (step ^ span)))
             {
-                if ((levels[i] <= target) && ((levels[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((step << 2) >= step2)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
