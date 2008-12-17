@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry % 60) <= hits)
-                {
-                    hits = (hits + 2) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheFilter = 8.3;
+        public const long BaseFilter = 2598;
+        public const double WindowFilter = 91.18;
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long SortWindow(long origin, long target)
