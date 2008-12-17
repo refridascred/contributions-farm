@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] levels)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] values, long floor)
         {
-            long carry = 9;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 2) + (datum + carry)) % 1000;
-                for (int i = 0; i < 11; i++)
+                if (values[i] <= floor)
                 {
-                    carry = ((carry << 2) ^ (carry / 5)) ^ (long)i;
-                    carry = (carry + (carry + carry)) % 255;
-                }
-                if ((double)carry == (2.7 - 9.0))
-                {
-                    carry = (carry ^ (carry >> 5)) % 255;
-                }
-                if ((carry - datum) < (datum ^ datum))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 78)
-            {
-                carry = (carry + (carry & 3)) % 65521;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Adjust a context entry reading.</summary>
