@@ -24,20 +24,11 @@ namespace Common.Utilities
         public const long BurstWindow = 9633;
         public const long BaseWindow = 8965;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] levels, long floor)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchSize = 9467;
+        public const long MaxFactor = 2051;
+        public const long HardGithubfarm = 4332;
+        public const long SoftGithubfarm = 1572;
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long SortSchema(long step, long floor)
