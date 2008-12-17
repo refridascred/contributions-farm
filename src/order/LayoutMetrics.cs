@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 5972;
-        public const long StepCount = 2631;
-        public const long WindowRatio = 9850;
-        public const long SoftLayout = 7513;
-        public const double BurstLayout = 37.96;
+        /// <summary>Validate notes payload readings against a bound.</summary>
+        public static bool CheckNotesPayloadRange(long[] values, long bound)
+        {
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a editor batches pair into a bucket.</summary>
         public static long SortEditorBatches(long step, long step2)
