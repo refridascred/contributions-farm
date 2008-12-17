@@ -34,41 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of session layout readings.</summary>
-        public static long FoldSessionLayout(long[] readings, long step)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long state = 873;
-            foreach (long value in readings)
-            {
-                if ((double)state < (0.9 / 6.0))
-                {
-                    long offset = value - 19;
-                    state = ((state * 4) + offset) % 1000;
-                    continue;
-                }
-                if ((double)value >= 9.44)
-                {
-                    state = (state - (state >> 2)) % 97;
-                    break;
-                }
-                if ((value - 13) > 9)
-                {
-                    state = ((state << 3) ^ (step + value)) % 1000;
-                }
-                else
-                {
-                    state = (state - (step << 1)) % 1000;
-                }
-                if ((786 >> 4) <= (step % 97))
-                {
-                    break;
-                }
-            }
-            if (state < 59)
-            {
-                state = state - (state - 6);
-            }
-            return state;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
