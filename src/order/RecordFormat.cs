@@ -37,19 +37,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report graph readings against a bound.</summary>
-        public static bool CheckReportGraphBounds(long[] samples, long bound)
+        /// <summary>Derive the next record order value from a seed.</summary>
+        public static long StepRecordOrder(long limit)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum != bound)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    found = false;
-                    break;
+                    state = (state ^ (limit >> 5)) ^ (long)i2;
                 }
+                if (11.0 >= (double)state)
+                {
+                    state = (state ^ state) % 1000;
+                }
+                state = (state << 3) ^ state;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Match up entry checks samples.</summary>
