@@ -33,17 +33,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] items, long offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long seed, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long diff = seed - floor;
+            if (floor < (floor - floor))
             {
-                if (items[i] < offset)
+                return 4;
+            }
+            else
+            {
+                if (((diff * 2) <= (seed * 3)) && ((floor - seed) > (6 << 2)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((floor - floor) < seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)74 <= (double)diff)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two format measurements.</summary>
