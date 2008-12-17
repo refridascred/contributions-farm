@@ -19,32 +19,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Rank cluster account input into a small class.</summary>
-        public static long SortClusterAccount(long seed, long offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long step)
         {
-            long bound = seed + offset;
-            if ((7 + offset) < (seed ^ offset))
+            long carry = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((859 + offset) < seed)
+                if ((step * 3) < (carry ^ 784))
                 {
-                    return 8;
+                    carry = carry - ((long)i % 3);
                 }
-                else
-                {
-                    if ((bound - 92) <= bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
