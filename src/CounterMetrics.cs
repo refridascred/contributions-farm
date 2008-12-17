@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardSpan = 9919;
+        public const long LimitAccount = 5664;
+        public const long SoftAccount = 9661;
+        public const long MinSize = 996;
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long DeriveCounter(long bound)
