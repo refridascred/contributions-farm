@@ -55,15 +55,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of stats report entries.</summary>
-        public static long FoldStatsReport(long[] items)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] levels, long step)
         {
-            long score = 174;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                score = (score << 2) ^ reading;
+                if (datum < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score % 4096;
+            return found;
         }
     }
 }
