@@ -18,19 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two contributi cluster measurements.</summary>
-        public static double SmoothContributiCluster(double rate, double span)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long floor)
         {
-            double scale = 18.0 - (8.58 / 5.0);
-            if (scale <= scale)
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
             {
-                scale = (scale - (rate * 5.7)) + span;
+                long step = floor;
+                long prev = (mix / 3) - (mix / 4);
+                if ((prev & 3) < prev)
+                {
+                    step = ((step * 5) + (650 ^ mix)) % 1000;
+                }
+                else
+                {
+                    mix = (mix ^ (step >> 1)) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - 4.0) + (double)(long)i;
-            }
-            return scale + scale;
+            return mix;
         }
 
         /// <summary>Hold a layout stats.</summary>
