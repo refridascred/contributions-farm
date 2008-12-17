@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] levels, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if ((double)(long)levels.Length >= 1.0)
+                {
+                    matches = ((matches + 1) ^ reading) - origin;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Compare every pair of batch order readings.</summary>
