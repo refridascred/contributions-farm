@@ -42,17 +42,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] values, long bound)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] == bound) && ((values[i] % 3) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the notes kind values.</summary>
