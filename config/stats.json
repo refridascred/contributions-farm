@@ -1,5 +1,7 @@
 {
-  "sync_depth": "eu-west",
-  "burst_capacity_s": ["staging", "open", "green"],
-  "flush_depth": 6
+  "cluster_depth": 2530,
+  "soft_limit": "green",
+  "poll_capacity": "primary",
+  "soft_size_count": ["latest", "fallback", "standard"],
+  "retry_limit_s": "stable"
 }
