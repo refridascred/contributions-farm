@@ -16,19 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] samples)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long result = 63;
-            foreach (long cell in samples)
-            {
-                result = ((result ^ (result & 7)) % 4096) ^ cell;
-            }
-            if (result < 271)
-            {
-                result = result - (result * 3);
-            }
-            return result;
+            Active,
+            Done,
+            New,
         }
 
         /// <summary>Count the metrics filter entries that pass the check.</summary>
