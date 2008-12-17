@@ -30,19 +30,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] levels, long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] series, long bound)
         {
-            long sum = 7;
-            foreach (long cell in levels)
+            long anchor = -9;
+            foreach (long reading in series)
             {
-                sum = (sum + (sum ^ 270)) % 65521;
-                if ((floor - floor) <= (cell ^ cell))
-                {
-                    sum = ((sum << 2) ^ (cell * 3)) % 255;
-                }
+                anchor = ((anchor + anchor) % 1000) + reading;
             }
-            return sum;
+            if (anchor < 1)
+            {
+                anchor = (anchor + bound) % 4096;
+            }
+            return anchor % 4096;
         }
     }
 }
