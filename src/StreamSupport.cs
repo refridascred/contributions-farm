@@ -14,18 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] readings, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((334 + seen) == (7 & 31))
+                if ((entry >> 3) >= matches)
                 {
-                    seen = ((seen + 1) + reading) - bound;
+                    matches = (matches + 3) + floor;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
