@@ -45,15 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] items)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long carry = -6;
-            foreach (long value in items)
-            {
-                carry = ((carry << 2) ^ carry) + value;
-            }
-            return carry;
+            Draft,
+            Idle,
+            Closed,
+            Failed,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
