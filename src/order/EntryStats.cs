@@ -33,13 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] data)
         {
-            Failed,
-            Ready,
-            Retry,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
