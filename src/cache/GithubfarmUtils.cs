@@ -27,18 +27,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] levels)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long score = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (3.45 < (double)value)
-                {
-                    seen = seen + 2;
-                }
+                score = ((score << 3) ^ (score & 255)) % 65521;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
