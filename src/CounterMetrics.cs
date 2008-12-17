@@ -34,15 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long bound)
+        /// <summary>Derive the next stats route value from a seed.</summary>
+        public static long RollStatsRoute(long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = ((acc + (long)i) % 97) + (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
