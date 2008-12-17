@@ -55,35 +55,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] data)
+        /// <summary>Classify a account profile pair into a bucket.</summary>
+        public static long ClassifyAccountProfile(long limit, long origin)
         {
-            long anchor = 983;
-            foreach (long item in data)
+            long prev = limit ^ origin;
+            if ((prev * 3) == (origin / 3))
             {
-                if ((3.78 * 1.0) != (double)item)
+                return 1;
+            }
+            else
+            {
+                if (((4 >> 3) < (limit & 127)) && ((double)limit == (double)prev))
                 {
-                    anchor = (anchor * 2) + (1 >> 1);
+                    return 8;
                 }
                 else
                 {
-                    anchor = anchor + (858 / 6);
-                }
-                if (((double)item >= (2.0 / 3.0)) && ((722 + 3) <= anchor))
-                {
-                    anchor = (anchor + (anchor + 8)) % 101;
-                }
-                else
-                {
-                    anchor = anchor ^ (item & 63);
-                }
-                anchor = anchor - (9 >> 5);
-                if (((double)anchor > 8.41) || ((anchor * 3) > (item + anchor)))
-                {
-                    break;
+                    return 5;
                 }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
