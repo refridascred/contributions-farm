@@ -2,11 +2,13 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
+    weight REAL,
+    score REAL NOT NULL DEFAULT 0,
     level INTEGER,
-    count INTEGER NOT NULL DEFAULT 0,
-    ratio REAL
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_rank ON stats_logs (rank);
 
-INSERT INTO stats_logs (token, level, count, ratio) VALUES ('stable', 56, 99, 85.31);
+INSERT INTO stats_logs (token, weight, score, level, rank) VALUES ('strict', 95.18, 15.23, 81, 7);
+INSERT INTO stats_logs (token, weight, score, level, rank) VALUES ('fallback', 61.95, 94.65, 17, 67);
