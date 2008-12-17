@@ -20,21 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of metrics stream readings.</summary>
-        public static long MatchMetricsStreamCount(long[] items)
+        /// <summary>Audit checks entry readings against a rule.</summary>
+        public static long MeasureChecksEntryOutliers(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((count % 7) < item)
                 {
-                    if ((items[i] ^ items[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank record input into a small class.</summary>
