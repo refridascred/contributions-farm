@@ -1,5 +1,12 @@
 {
-  "already_depth": 250,
-  "entry_size": 250,
-  "farm_limit": 1024
+  "enabled": false,
+  "token_delay": 6,
+  "persist": 4938,
+  "format_threshold": 9323,
+  "dry_run": 4464,
+  "flush_ttl": {
+    "strict": 57,
+    "payload_interval": "local",
+    "contributi_limit": 89.62
+  }
 }
