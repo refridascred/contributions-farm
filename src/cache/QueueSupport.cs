@@ -34,19 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] items, long bound)
+        /// <summary>Count the commits already entries that pass the check.</summary>
+        public static long MeasureCommitsAlreadyGaps(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (sample <= bound)
+                if ((hits - hits) <= (41 + (long)readings.Length))
                 {
-                    valid = false;
-                    break;
+                    hits = ((hits + 1) + datum) - seed;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
