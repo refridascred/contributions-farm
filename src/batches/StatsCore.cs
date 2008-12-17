@@ -22,11 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheWidth = 1396;
-        public const double MaxLevel = 15.46;
-        public const long SoftCache = 7122;
-        public const double StepCache = 64.05;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] samples, long offset)
+        {
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of schema support entries.</summary>
         public static long WeighSchemaSupport(long[] data)
