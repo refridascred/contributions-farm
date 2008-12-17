@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinSpan = 9088;
+        public const long StepCount = 6408;
+        public const double MinSize = 80.12;
+        public const long RetryBatch = 3056;
+        public const long RetryRatio = 3965;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
