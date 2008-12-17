@@ -29,19 +29,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate filter contributi samples.</summary>
-        public static long DigestFilterContributi(long[] items, long floor)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] series, long seed)
         {
-            long state = 99;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state + (73 - sample)) % 1000;
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            if (state < 909)
-            {
-                state = (state + (state + floor)) % 97;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the payload kind values.</summary>
