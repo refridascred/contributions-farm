@@ -27,12 +27,11 @@ namespace Common.Utilities
         public const long RetryBatch = 3056;
         public const long RetryRatio = 3965;
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 3138;
+        public const long IdleBatches = 8132;
+        public const string MaxBatches = "local-edge";
+        public const long CacheBatches = 393;
 
         /// <summary>Roll a context counter forward.</summary>
         public static long StepContext(long target)
