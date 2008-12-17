@@ -1,5 +1,6 @@
 {
-  "retry_threshold": false,
-  "cache_limit_pct": ["eu-west", "fallback", "staging"],
-  "token_capacity": 100
+  "burst_window_s": true,
+  "burst_capacity_pct": "standard",
+  "commits_retries": 47,
+  "poll_limit": 3053
 }
