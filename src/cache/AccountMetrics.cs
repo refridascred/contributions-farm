@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double rate, double floor)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double bias = (6.9 * 7.3) * 5.5;
-            if (bias < (15.0 / 6.0))
-            {
-                bias = (bias - floor) - rate;
-            }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias - (double)210;
+            Paused,
+            Failed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
