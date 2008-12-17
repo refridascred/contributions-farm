@@ -17,26 +17,18 @@ namespace Common.Utilities
         public const long RetryGraph = 3038;
         public const string SoftSpan = "standard-v2";
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] series, long origin)
+        /// <summary>Measure how many contributi editor samples are out of range.</summary>
+        public static long TallyContributiEditorMatches(long[] data)
         {
-            long state = 1;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((double)state == (double)origin)
+                if ((item + count) < (count / 2))
                 {
-                    state = (state - state) % 101;
-                }
-                else
-                {
-                    state = (state - (origin + reading)) % 1000;
-                }
-                if (((reading << 2) > (1 & 31)) || (94 > (state + origin)))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
