@@ -23,14 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public bool Size { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftNotes = 26.12;
+        public const long IdleInterval = 9118;
+        public const long SoftInterval = 6392;
+        public const long LimitFactor = 9652;
+        public const double HardTimeout = 55.53;
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
