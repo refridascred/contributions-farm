@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const string DefaultReport = "alpha-v2";
         public const long MinFactor = 5419;
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long floor, long limit)
         {
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
+            if ((floor / 6) < limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if (limit > (floor / 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
