@@ -1,8 +1,15 @@
 {
-  "dry_run": 90,
-  "retry_delay": ["cached", "open", "latest", "eu-west"],
-  "githubfarm_limit": "edge",
-  "min_ttl_s": [209, 101],
-  "poll_retries_ms": [202, 317],
-  "persist": false
+  "metrics_ratio": 88,
+  "flush_size": {
+    "batch_limit": {
+      "route_limit": "latest",
+      "batches_depth": 35.33,
+      "metrics_interval": 20,
+      "support_ttl": "blue"
+    },
+    "compress": 250,
+    "readonly": "green"
+  },
+  "command_depth": 1371,
+  "buffer_depth": [262, 82, 14, 87]
 }
