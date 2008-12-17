@@ -14,19 +14,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double bias, double span)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long floor)
         {
-            double load = (double)(77 + (-85));
-            if (load <= (double)64)
+            long state = floor;
+            for (int i = 0; i < 14; i++)
             {
-                load = (load - (span + load)) + bias;
+                state = ((state * 2) + (state - floor)) % 4096;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            else
-            {
-                load = load - span;
-            }
-            return load + (double)0;
+            return state;
         }
 
         /// <summary>Describe the route status values.</summary>
