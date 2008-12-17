@@ -39,16 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long bound)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = (acc << 2) ^ (acc - bound);
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Synced,
+            Active,
+            Closed,
+            Pending,
+            Dropped,
         }
     }
 }
