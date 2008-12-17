@@ -31,17 +31,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] series, long step)
+        /// <summary>Audit command cache readings against a rule.</summary>
+        public static long CountCommandCacheGaps(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((series[i] >= step) && ((series[i] % 2) != 0))
+                if ((bound + 64) <= seen)
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
