@@ -37,15 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] samples)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long mix = 365;
-            foreach (long sample in samples)
-            {
-                mix = ((mix + (mix * 4)) % 97) - sample;
-            }
-            return mix;
+            Dropped,
+            Queued,
+            Done,
+            Paused,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
