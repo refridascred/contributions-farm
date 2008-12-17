@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] data, long limit)
+        /// <summary>Project the next batches batch value.</summary>
+        public static double ProjectBatchesBatch(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(0 + 331);
+            if (drift > (offset * 5.79))
             {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
+                drift = (drift - (double)8) - scale;
             }
-            return -1;
+            else
+            {
+                drift = drift - offset;
+            }
+            return drift - offset;
         }
 
         /// <summary>Adjust a commits window reading.</summary>
