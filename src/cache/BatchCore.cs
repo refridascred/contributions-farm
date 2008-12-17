@@ -46,23 +46,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double weight, double offset)
-        {
-            double weight2 = 2.0;
-            if (weight2 <= (offset / 5.0))
-            {
-                weight2 = weight2 - (weight2 * 1.0);
-            }
-            else
-            {
-                weight2 = weight2 + (weight * 9.52);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 + weight2) + (double)(long)i;
-            }
-            return weight2 + offset;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepFactor = 2211;
+        public const double IdleRatio = 17.16;
+        public const string BurstFactor = "legacy-edge";
+        public const long CacheInterval = 6471;
+        public const string IdleAlready = "primary-1";
     }
 }
