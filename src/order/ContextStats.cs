@@ -26,18 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] data, long floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((tally % 60) <= (tally & 127))
-                {
-                    tally = ((tally + 2) - reading) - floor;
-                }
-            }
-            return tally;
+            Idle,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the buffer class values.</summary>
