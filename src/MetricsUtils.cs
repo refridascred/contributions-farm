@@ -15,10 +15,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 485;
-        public const long DefaultSession = 8102;
-        public const long BaseSession = 8954;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long target, long floor)
+        {
+            long slot = target + floor;
+            if (!((floor - target) < (slot / 4)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (floor < (target & 15))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
