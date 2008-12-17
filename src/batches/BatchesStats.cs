@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long bound, long floor)
         {
-            public bool Owner { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
+            long offset = bound + floor;
+            if ((double)bound < (1.1 * 1.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset > (floor & 127)) && ((double)bound > (double)offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Match up stats samples.</summary>
