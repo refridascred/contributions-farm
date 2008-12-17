@@ -36,13 +36,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Failed,
+            Dropped,
             New,
-            Idle,
-            Closed,
+            Done,
+            Failed,
         }
     }
 }
