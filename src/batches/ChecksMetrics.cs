@@ -19,11 +19,20 @@ namespace Common.Utilities
         public const long RetryBatch = 3056;
         public const long RetryRatio = 3965;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 3138;
-        public const long IdleBatches = 8132;
-        public const string MaxBatches = "local-edge";
-        public const long CacheBatches = 393;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!!((double)offset == (6.9 / 4.0)))
+                {
+                    mix = mix + (offset ^ offset);
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TotalStats(long[] samples)
