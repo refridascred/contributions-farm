@@ -41,21 +41,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 7;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (mix - (9 + mix)) ^ entry;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
