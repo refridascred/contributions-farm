@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] data, long offset)
         {
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a filter stats.</summary>
