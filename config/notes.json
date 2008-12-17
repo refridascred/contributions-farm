@@ -1,7 +1,12 @@
 {
-  "soft_depth": [25, 479, 392],
-  "session_window": true,
-  "warm_capacity_ms": "open",
-  "flush_depth_ms": [125, 351, 165],
-  "flush_interval_count": "latest"
+  "already_limit": [474, 237],
+  "poll_limit": 75,
+  "strict": {
+    "base_interval_ms": 2295,
+    "support_ratio": "edge",
+    "min_threshold_ms": [184, 268, 361, 462]
+  },
+  "cache_ttl": 100,
+  "persist": 63,
+  "soft_retries": 60
 }
