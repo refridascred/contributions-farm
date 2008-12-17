@@ -39,22 +39,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the session stream entries that pass the check.</summary>
-        public static long MeasureSessionStreamMatches(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((count * 4) >= (count + origin)) && ((count << 2) < (origin - 1)))
-                {
-                    count = (count + 2) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowScore = "open";
+        public const long BatchLevel = 2422;
+        public const long BurstGithubfarm = 2682;
+        public const long BurstCount = 3995;
     }
 }
