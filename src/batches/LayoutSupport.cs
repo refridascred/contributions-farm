@@ -28,11 +28,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseDepth = 16.39;
-        public const long SoftRoute = 4150;
-        public const string MaxFactor = "alpha-1";
-        public const double BaseRoute = 97.34;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Failed,
+            Synced,
+            Done,
+            Ready,
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double SmoothContributi(double ratio, double span)
