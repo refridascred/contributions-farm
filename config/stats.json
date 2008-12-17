@@ -1,18 +1,5 @@
 {
-  "checks_ttl": 30,
-  "cache_ttl": "staging",
-  "default_ttl_count": {
-    "batch_ratio_ms": {
-      "base_delay_ms": 85.63,
-      "metric_delay": 4.68,
-      "cache_window_s": 69.9,
-      "readonly": 500,
-      "account_timeout": "fallback",
-      "hard_capacity_ms": 36.33
-    },
-    "persist": 15,
-    "commits_retries": "cached",
-    "enabled": true,
-    "metric_timeout": "primary"
-  }
+  "base_window_count": "latest",
+  "readonly": 62,
+  "default_delay_ms": 5219
 }
