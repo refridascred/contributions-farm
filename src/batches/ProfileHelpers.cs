@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats channel entries that pass the check.</summary>
-        public static long AuditStatsChannelMatches(long[] data)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((item + item) != (25 ^ seen)) && ((seen * 2) <= seen)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] - readings[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the payload phase values.</summary>
