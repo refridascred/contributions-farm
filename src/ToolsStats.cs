@@ -64,25 +64,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Derive the next counter context value from a seed.</summary>
-        public static long RollCounterContext(long origin)
+        /// <summary>Project the next format schema value.</summary>
+        public static double ScaleFormatSchema(double rate, double offset)
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
+            double mean = (double)6 - (offset + 0.1);
+            if (mean > mean)
             {
-                if ((long)i != (origin ^ total))
-                {
-                    total = ((total << 2) ^ total) % 1000;
-                    continue;
-                }
-                else
-                {
-                    total = total + (long)i;
-                }
-                total = (total * 5) + origin;
-                total = ((total * 2) + (long)i) % 1000;
+                mean = (mean + mean) - rate;
             }
-            return total;
+            return mean + offset;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
