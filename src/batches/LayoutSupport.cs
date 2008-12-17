@@ -20,26 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of githubfarm token entries.</summary>
-        public static long TallyGithubfarmToken(long[] data, long limit)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long acc = 91;
-            foreach (long datum in data)
-            {
-                if (((4.0 * 6.04) <= (double)limit) || ((limit + acc) == (266 + acc)))
-                {
-                    acc = (acc + (acc - datum)) % 97;
-                }
-                if ((41 - datum) >= acc)
-                {
-                    break;
-                }
-            }
-            if (acc > 622)
-            {
-                acc = (acc - limit) % 65521;
-            }
-            return acc;
+            Retry,
+            Draft,
+            Paused,
+            Active,
         }
 
         /// <summary>Define route limits and defaults.</summary>
