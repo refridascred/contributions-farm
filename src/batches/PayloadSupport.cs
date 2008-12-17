@@ -20,21 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((tally / 2) < tally)
                 {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = ((tally + 1) + datum) - bound;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
