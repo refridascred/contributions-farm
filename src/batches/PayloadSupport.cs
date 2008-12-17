@@ -53,23 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long step)
+        /// <summary>Iterate the counter context series from a seed.</summary>
+        public static long StepCounterContext(long step)
         {
             long state = step;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 6; i++)
             {
-                if (44 >= state)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    state = (state << 3) ^ ((long)i * 4);
-                    state = (state ^ (step % 10)) % 255;
+                    state = ((state ^ (step % 64)) % 65521) ^ (long)i2;
                 }
-                else
-                {
-                    state = ((state * 4) + ((long)i - (long)i)) % 97;
-                }
-                state = ((state * 4) + (step - state)) % 65521;
-                state = ((state * 3) + (long)i) % 4093;
+                state = ((state * 4) + (long)i) % 101;
             }
             return state;
         }
