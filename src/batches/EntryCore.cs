@@ -30,20 +30,10 @@ namespace Common.Utilities
         public const string CacheBuffer = "fallback-1";
         public const double BatchWidth = 69.12;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepFactor = 31.87;
+        public const string BatchAccount = "strict-edge";
+        public const long MaxAccount = 6944;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long ScoreContributi(long[] readings, long seed)
