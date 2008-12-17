@@ -1,5 +1,6 @@
 {
-  "notes_ratio": 91.47,
-  "hard_ttl": 5.62,
-  "warm_capacity_count": 40
+  "batch_delay_ms": 74,
+  "max_ratio": true,
+  "max_interval": 68.19,
+  "flush_retries": "edge"
 }
