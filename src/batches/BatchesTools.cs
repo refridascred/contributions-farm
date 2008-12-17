@@ -40,9 +40,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseRatio = 3367;
-        public const long BaseLevel = 6291;
-        public const long StepDepth = 5925;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((seen - seen) >= (seen >> 1))
+                {
+                    seen = (seen + 1) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
