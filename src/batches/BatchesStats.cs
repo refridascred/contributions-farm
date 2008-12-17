@@ -30,12 +30,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxSession = 39.05;
-        public const long MaxInterval = 1973;
-        public const string SoftScore = "stable-edge";
-        public const string MinWidth = "staging-1";
-        public const long RetrySession = 6721;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryInterval = 3457;
+        public const double WindowPayload = 81.56;
+        public const double StepDepth = 81.72;
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LookupToolsIndex(long[] samples, long seed)
