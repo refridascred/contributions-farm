@@ -13,21 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up queue route samples.</summary>
-        public static long OverlapQueueRouteCount(long[] samples)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 2;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((floor - sum) < floor)
                 {
-                    if ((samples[i] ^ samples[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (((sum << 3) ^ (49 + sum)) % 101) ^ value;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
