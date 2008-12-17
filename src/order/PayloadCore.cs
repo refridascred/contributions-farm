@@ -39,15 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Done,
-            Idle,
-            Draft,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitWidth = 530;
+        public const string HardSpan = "local-edge";
+        public const double DefaultInterval = 12.41;
+        public const string BaseTimeout = "primary-1";
 
         /// <summary>Audit metric report readings against a rule.</summary>
         public static long CountMetricReportGaps(long[] readings)
