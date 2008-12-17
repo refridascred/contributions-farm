@@ -1,21 +1,7 @@
 # githubfarm settings
-notes_retries:
-  already_size:
-    batch_limit_ms: fallback
-    burst_retries_ms: green
-    enabled: 100
-    retry_window: 25
-    warm_limit_ms: primary
-    sync_threshold: green
-  notes_ttl: true
-  farm_limit: edge
-  metrics_delay:
-    - 460
-    - 483
-    - 322
-  cache_retries:
-    - blue
-    - standard
-    - staging
-entry_ratio: 24.69
-sync_threshold_pct: 1589
+batch_ratio: fallback
+max_ttl_s:
+  - 374
+  - 497
+  - 27
+route_size: 30
