@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] readings, long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] readings, long step)
         {
-            long tally = 0;
+            long seen = 0;
             foreach (long entry in readings)
             {
-                if (floor <= entry)
+                if ((seen % 12) >= step)
                 {
-                    tally = tally + 3;
+                    seen = (seen + 3) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
