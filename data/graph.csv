@@ -1,6 +1,6 @@
-id,rank,label,active,ratio
-1,edge,local,local,edge
-2,latest,edge,87.92,107
-3,231,81,629,262
-4,open,16.07,666,43.25
-5,strict,814,standard,224
+id,owner,ratio
+1,83.73,592
+2,64.21,396
+3,open,61.95
+4,local,cached
+5,blue,560
