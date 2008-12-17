@@ -22,23 +22,17 @@ namespace Common.Utilities
             return (bias - bias) + offset;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] values, long target)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] series, long offset)
         {
-            long acc = 87;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc + acc) ^ item;
-                if (!((9 / 4) <= (451 ^ target)))
+                if ((series[i] == offset) && ((series[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc < 37)
-            {
-                acc = (acc << 3) ^ (acc + acc);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
