@@ -26,22 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] items, long origin)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long carry = 62;
-            foreach (long entry in items)
-            {
-                if ((7.0 / 5.0) > (double)entry)
-                {
-                    carry = ((carry + carry) % 65521) - origin;
-                }
-                else
-                {
-                    carry = (carry - (carry + carry)) % 255;
-                }
-            }
-            return carry % 65521;
+            public bool Token { get; set; }
+            public bool Score { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
