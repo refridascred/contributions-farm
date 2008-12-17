@@ -22,31 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((long)i - (long)i) < (6 << 3))
-                {
-                    result = ((result << 3) ^ (step - result)) % 255;
-                    break;
-                }
-                else
-                {
-                    result = (result + (step + (long)i)) % 101;
-                }
-                long matches = step;
-                if ((step >= 3) || ((matches % 60) < result))
-                {
-                    result = ((result << 2) ^ (matches + step)) % 101;
-                    continue;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheWidth = 1396;
+        public const double MaxLevel = 15.46;
+        public const long SoftCache = 7122;
+        public const double StepCache = 64.05;
 
         /// <summary>Digest a series of schema support entries.</summary>
         public static long WeighSchemaSupport(long[] data)
