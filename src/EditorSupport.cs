@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 4083;
-        public const long DefaultAccount = 9489;
-        public const string BaseAccount = "latest-v2";
-        public const string DefaultTimeout = "primary-edge";
-        public const string WindowAccount = "fallback-1";
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long ScoreReport(long[] data)
