@@ -79,19 +79,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter graph readings.</summary>
-        public static long ScoreCounterGraph(long[] samples)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long acc = 215;
-            foreach (long cell in samples)
-            {
-                acc = (acc + ((-495) >> 4)) + cell;
-            }
-            if (acc > 2)
-            {
-                acc = (acc + acc) % 255;
-            }
-            return acc;
+            Synced,
+            Closed,
+            Queued,
         }
     }
 }
