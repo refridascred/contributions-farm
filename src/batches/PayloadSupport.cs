@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long target)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((8.8 + 4.35) < (double)total)
-                {
-                    total = (total ^ (total & 1)) % 255;
-                }
-                else
-                {
-                    total = (total * 5) + (target << 2);
-                    total = (total ^ (total ^ target)) % 4096;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Ready,
+            Draft,
+            Retry,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
