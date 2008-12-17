@@ -45,17 +45,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] series, long seed)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long origin, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long span = origin ^ limit;
+            if (span >= (span + span))
             {
-                if (series[i] >= seed)
+                return 5;
+            }
+            else
+            {
+                if ((9.93 / 3.0) >= (double)span)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
