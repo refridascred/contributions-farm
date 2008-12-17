@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((double)20 == (double)floor) && (mix <= (mix << 1)))
-                {
-                    mix = (mix + ((long)i - 848)) % 97;
-                    mix = (mix * 4) + floor;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 5954;
+        public const string MaxToken = "staging-v2";
+        public const long BaseSpan = 3569;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterOutliers(long[] levels)
