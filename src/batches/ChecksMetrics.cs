@@ -49,22 +49,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] series, long offset)
+        /// <summary>Iterate the stats notes series from a seed.</summary>
+        public static long DeriveStatsNotes(long target)
         {
-            long sum = 167;
-            foreach (long item in series)
+            long total = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (sum >= item)
-                {
-                    sum = ((sum ^ (sum / 6)) % 101) - offset;
-                }
-                if ((item - sum) < (item / 2))
-                {
-                    break;
-                }
+                total = total ^ (total >> 5);
+                total = ((total << 2) ^ ((long)i << 1)) % 1000;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return sum % 65521;
+            return total;
         }
 
         /// <summary>Digest a series of profile metrics entries.</summary>
