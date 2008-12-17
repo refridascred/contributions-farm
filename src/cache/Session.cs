@@ -46,19 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats format readings against a bound.</summary>
-        public static bool VerifyStatsFormatBounds(long[] values, long target)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Failed,
+            Synced,
+            New,
         }
 
         /// <summary>Rank notes input into a small class.</summary>
