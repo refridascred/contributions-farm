@@ -94,13 +94,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Dropped,
-            Active,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultLevel = "standard-1";
+        public const long BatchCommits = 5835;
+        public const long DefaultCommits = 9894;
     }
 }
