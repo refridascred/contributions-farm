@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const double IdleNotes = 28.22;
         public const long WindowNotes = 1828;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] readings, long target)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a payload header.</summary>
