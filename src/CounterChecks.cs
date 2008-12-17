@@ -17,22 +17,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] series)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long mix = 848;
-            foreach (long sample in series)
-            {
-                if (((mix * 3) >= (mix << 2)) || ((1 << 1) < mix))
-                {
-                    mix = (((mix << 2) ^ (mix * 4)) % 65521) ^ sample;
-                }
-            }
-            if (mix < 9)
-            {
-                mix = (mix + (mix + 532)) % 4096;
-            }
-            return mix;
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the format phase values.</summary>
