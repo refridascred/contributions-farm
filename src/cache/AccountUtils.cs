@@ -30,17 +30,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a contributi profile sample.</summary>
-        public static long LocateContributiProfileIndex(long[] series, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (series[i] == limit)
+                if ((hits * 4) < hits)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
