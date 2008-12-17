@@ -14,11 +14,25 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long seed, long seed2)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
+            long prev = seed ^ seed2;
+            if ((prev & 7) <= 853)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((prev % 12) <= (914 - seed)) || (48 < prev))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
