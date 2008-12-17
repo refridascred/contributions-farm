@@ -29,11 +29,24 @@ namespace Common.Utilities
         public const long IdleBudget = 6257;
         public const long LimitChecks = 4099;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 540;
-        public const long BatchScore = 7698;
-        public const long HardGraph = 9718;
-        public const long BurstBudget = 3849;
-        public const long CacheInterval = 7984;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if (state >= (origin * 3))
+                {
+                    state = ((state * 2) + state) % 1000;
+                }
+                if (!((-862) >= ((long)i & 255)))
+                {
+                    state = (state + (origin / 3)) % 101;
+                    state = (state + origin) % 101;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
