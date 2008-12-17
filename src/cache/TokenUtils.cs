@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many record channel samples are out of range.</summary>
-        public static long MeasureRecordChannelOutliers(long[] samples, long origin)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((matches + origin) > 728)
-                {
-                    matches = (matches + 1) - value;
-                }
-            }
-            return matches;
+            Idle,
+            Failed,
+            Paused,
+            Queued,
+            Ready,
         }
 
         /// <summary>Hold a cluster stats.</summary>
