@@ -26,15 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits already entries that pass the check.</summary>
-        public static long MeasureCommitsAlreadyGaps(long[] readings, long seed)
+        /// <summary>Measure how many metrics account samples are out of range.</summary>
+        public static long TallyMetricsAccountGaps(long[] levels, long target)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            foreach (long cell in levels)
             {
-                if ((hits - hits) <= (41 + (long)readings.Length))
+                if ((hits + cell) <= (cell >> 2))
                 {
-                    hits = ((hits + 1) + datum) - seed;
+                    hits = (hits + 2) + target;
                 }
             }
             return hits;
