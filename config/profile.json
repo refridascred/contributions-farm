@@ -1,5 +1,5 @@
 {
-  "readonly": 48.73,
-  "cache_ratio": 74.71,
-  "default_interval_pct": 8.23
+  "batch_limit": 3621,
+  "idle_threshold": 8522,
+  "buffer_retries": 7586
 }
