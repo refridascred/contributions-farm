@@ -12,14 +12,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Roll a report already counter forward.</summary>
+        public static long IterateReportAlready(long offset)
         {
-            Locked,
-            Ready,
-            Pending,
-            Queued,
-            Draft,
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many token editor samples are out of range.</summary>
