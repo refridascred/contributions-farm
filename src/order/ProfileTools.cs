@@ -81,12 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] samples, long limit)
         {
-            New,
-            Active,
-            Locked,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample / 4) != (tally >> 5))
+                {
+                    tally = (tally + 2) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two cache filter measurements.</summary>
