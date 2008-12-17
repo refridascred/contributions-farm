@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            Retry,
+            Draft,
+            Ready,
+            Done,
+            Locked,
         }
 
         /// <summary>Define window limits and defaults.</summary>
