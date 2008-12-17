@@ -56,11 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchTimeout = 9586;
-        public const double WindowRatio = 46.18;
-        public const double MinWidth = 61.52;
-        public const long WindowRecord = 7499;
-        public const long DefaultWidth = 7200;
+        /// <summary>Count the command report entries that pass the check.</summary>
+        public static long CountCommandReportMatches(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((value % 7) > value)
+                {
+                    tally = (tally + 1) - step;
+                }
+            }
+            return tally;
+        }
     }
 }
