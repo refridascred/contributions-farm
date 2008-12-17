@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultDepth = 52.16;
-        public const long StepFactor = 2397;
-        public const double MaxLayout = 26.1;
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public double Count { get; set; }
+            public long Label { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long IdleDepth = 372;
