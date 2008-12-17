@@ -1,4 +1,12 @@
 # entry settings
-audit: false
-dry_run: false
-warm_capacity: 250
+soft_interval_s: staging
+burst_interval_pct: cached
+checks_limit: true
+sync_threshold_count:
+  - 242
+  - 102
+  - 284
+  - 283
+verbose:
+  - legacy
+  - open
