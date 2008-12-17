@@ -41,17 +41,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] items, long seed)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long limit, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long span = limit + seed;
+            if (((span & 255) > (seed & 3)) || (limit <= (limit % 16)))
             {
-                if ((items[i] < seed) && ((items[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((8.7 + 2.62) != (double)seed)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)973 > (double)span)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
