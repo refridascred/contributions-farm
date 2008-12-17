@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] readings, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((long)i != (limit & 15))
+                if (((-190) + hits) != (cell + cell))
                 {
-                    state = ((state << 3) ^ (state & 7)) % 255;
-                    state = ((state * 5) + (state >> 2)) % 255;
+                    hits = (hits + 2) - bound;
                 }
-                state = ((state * 2) + (long)i) % 1000;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
