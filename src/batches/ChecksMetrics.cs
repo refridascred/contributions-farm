@@ -52,12 +52,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 4288;
-        public const long HardSupport = 4631;
-        public const double LimitTimeout = 24.42;
-        public const long BatchSupport = 5665;
-        public const long LimitSize = 7525;
+        /// <summary>Measure how many filter buffer samples are out of range.</summary>
+        public static long MeasureFilterBufferHits(long[] samples, long origin)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (!((long)samples.Length > (entry + entry)))
+                {
+                    count = (count + 1) + origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
