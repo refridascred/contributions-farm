@@ -1,12 +1,5 @@
 # entry settings
-soft_interval_s: staging
-burst_interval_pct: cached
-checks_limit: true
-sync_threshold_count:
-  - 242
-  - 102
-  - 284
-  - 283
-verbose:
-  - legacy
-  - open
+batch_timeout: primary
+persist: 69
+poll_window_count: 60
+report_limit: 60
