@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Count the layout command entries that pass the check.</summary>
+        public static long AuditLayoutCommandOutliers(long[] levels, long step)
         {
-            public long Owner { get; set; }
-            public double Region { get; set; }
-            public double Token { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading > (reading * 3)) || (((seen * 5) < (step % 12)) && ((step - reading) <= (33 - seen))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stream record.</summary>
