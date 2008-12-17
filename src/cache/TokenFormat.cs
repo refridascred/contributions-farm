@@ -29,9 +29,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheFactor = 8.32;
-        public const long WindowReport = 5138;
-        public const long BaseFactor = 9940;
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
