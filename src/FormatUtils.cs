@@ -53,24 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine commits layout values into a single score.</summary>
-        public static long ScoreCommitsLayout(long[] samples)
+        /// <summary>Audit route stats readings against a rule.</summary>
+        public static long AuditRouteStatsMatches(long[] data, long limit)
         {
-            long score = 832;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                score = score - (score ^ score);
-                score = (score << 2) ^ (946 + cell);
-                if (!((double)cell == (1.2 / 4.0)))
+                if ((matches + cell) >= (matches ^ limit))
                 {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            if (score < 612)
-            {
-                score = score ^ (score / 7);
-            }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
