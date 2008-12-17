@@ -1,7 +1,5 @@
 {
-  "poll_depth": "standard",
-  "sync_ttl_pct": 68,
-  "max_size": 75.89,
-  "cache_size": 500,
-  "verbose": 60
+  "cache_retries": false,
+  "flush_capacity": "latest",
+  "readonly": 50
 }
