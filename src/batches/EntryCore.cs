@@ -24,22 +24,11 @@ namespace Common.Utilities
             return ratio + (2.76 / 5.0);
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxLevel = 8979;
+        public const long LimitBuffer = 9330;
+        public const string CacheBuffer = "fallback-1";
+        public const double BatchWidth = 69.12;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteLimits(long[] levels, long offset)
