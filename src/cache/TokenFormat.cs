@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long limit, long bound)
+        /// <summary>Count the metrics report entries that pass the check.</summary>
+        public static long CountMetricsReportOutliers(long[] samples, long limit)
         {
-            long offset = limit ^ bound;
-            if ((offset + limit) < offset)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((36 + bound) >= (55 ^ 249))
+                if ((seen * 2) == (limit << 2))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    seen = (seen + 1) - entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the context level values.</summary>
