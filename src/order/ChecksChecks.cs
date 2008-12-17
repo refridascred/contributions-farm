@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] levels)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] samples, long floor)
         {
-            long sum = 664;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (((sum * 4) + sum) % 1000) - cell;
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
