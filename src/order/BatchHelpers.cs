@@ -16,17 +16,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] samples, long target)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Ready,
+            Done,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
