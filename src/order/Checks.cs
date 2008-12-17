@@ -86,17 +86,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] items, long floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 6;
+            foreach (long cell in series)
             {
-                if (items[i] < floor)
+                anchor = ((anchor * 3) + ((long)series.Length - anchor)) + cell;
+                anchor = anchor + (origin % 60);
+                if ((anchor + anchor) < origin)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 5) + (4 / 5)) % 255;
                 }
             }
-            return -1;
+            return anchor % 97;
         }
     }
 }
