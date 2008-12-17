@@ -20,22 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] readings, long limit)
+        /// <summary>Audit githubfarm notes readings against a rule.</summary>
+        public static long TallyGithubfarmNotesGaps(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (datum < 76)
+                if ((seed + seed) <= (tally + seed))
                 {
-                    seen = (seen + 2) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 3) - value;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
