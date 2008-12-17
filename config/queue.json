@@ -1,5 +1,12 @@
 {
-  "batch_window_ms": "fallback",
-  "strict": 3079,
-  "idle_ratio_ms": 44
+  "persist": 70,
+  "verbose": {
+    "commits_retries": "strict",
+    "poll_ttl_pct": 30,
+    "max_timeout_pct": 30
+  },
+  "soft_depth_ms": ["staging", "latest"],
+  "soft_threshold": 60,
+  "default_delay_pct": [132, 19, 75, 390],
+  "warm_timeout_ms": true
 }
