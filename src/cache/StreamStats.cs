@@ -13,18 +13,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] items)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long acc = 2;
+            foreach (long cell in series)
             {
-                if (!(((double)tally < (4.34 - 2.3)) && ((tally >> 2) > cell)))
+                acc = ((acc << 2) ^ (acc << 3)) % 65521;
+                acc = ((acc * 5) + (cell + acc)) % 65521;
+                if ((cell & 3) >= cell)
                 {
-                    tally = tally + 2;
+                    acc = (acc + (cell >> 5)) % 101;
                 }
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
