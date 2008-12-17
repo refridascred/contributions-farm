@@ -68,23 +68,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double scale, double span)
+        /// <summary>Audit account cluster readings against a rule.</summary>
+        public static long MeasureAccountClusterOutliers(long[] series)
         {
-            double ratio = (double)(137 + 0);
-            if (ratio <= scale)
+            long count = 0;
+            foreach (long value in series)
             {
-                ratio = ratio - (span + 8.2);
+                if (((count << 1) >= (count + count)) || ((double)91 == (double)value))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                ratio = ratio + 18.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio - (ratio * 7.5);
+            return count;
         }
     }
 }
