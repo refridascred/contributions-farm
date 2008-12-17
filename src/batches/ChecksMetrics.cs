@@ -67,19 +67,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] samples, long bound)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Done,
+            Locked,
         }
     }
 }
