@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next batches batch value.</summary>
-        public static double ProjectBatchesBatch(double scale, double offset)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            double drift = (double)(0 + 331);
-            if (drift > (offset * 5.79))
-            {
-                drift = (drift - (double)8) - scale;
-            }
-            else
-            {
-                drift = drift - offset;
-            }
-            return drift - offset;
+            Active,
+            Synced,
+            Done,
         }
 
         /// <summary>Adjust a commits window reading.</summary>
