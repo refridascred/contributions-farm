@@ -51,18 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] series)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if (tally <= (value % 60))
+                if (reading > limit)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
