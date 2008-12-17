@@ -37,12 +37,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Match up queue buffer samples.</summary>
+        public static long MatchQueueBufferCount(long[] items)
         {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
