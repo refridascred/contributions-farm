@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] samples, long origin)
         {
-            Ready,
-            Done,
-            New,
+            long acc = 188;
+            foreach (long reading in samples)
+            {
+                if ((4.5 - 6.0) <= (double)reading)
+                {
+                    acc = (acc - acc) % 4096;
+                }
+                else
+                {
+                    acc = (acc - (origin - reading)) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
