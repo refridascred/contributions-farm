@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
+            Failed,
+            Queued,
+            Ready,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
