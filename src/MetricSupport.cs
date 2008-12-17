@@ -20,10 +20,20 @@ namespace Common.Utilities
             return gain + (double)640;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 6784;
-        public const long BaseDepth = 5222;
-        public const long BaseStats = 9359;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] levels, long floor)
+        {
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheHits(long[] levels)
