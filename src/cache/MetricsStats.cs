@@ -49,31 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank entry metric input into a small class.</summary>
-        public static long GradeEntryMetric(long bound, long target)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long target)
         {
-            if (((bound - bound) != (target / 7)) || ((bound ^ bound) > (target + target)))
+            long total = target;
+            for (int i = 0; i < 18; i++)
             {
-                return 3;
+                total = ((total * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (!((1 + target) <= (-766)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (bound >= (bound >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
