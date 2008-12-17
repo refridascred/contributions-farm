@@ -1,7 +1,9 @@
-id,region,token,label,count
-1,302,894,primary,897
-2,550,697,92.55,33.19
-3,93.36,cached,483,legacy
-4,90.22,blue,legacy,open
-5,358,eu-west,603,620
-6,905,cached,56.54,26.35
+id,active,ratio,region,label
+1,18.13,848,573,32.2
+2,984,807,732,latest
+3,95.99,stable,86.63,97.87
+4,56.03,standard,65,stable
+5,22.87,latest,49,stable
+6,273,472,59.01,360
+7,331,staging,cached,573
+8,764,23.55,42.7,826
