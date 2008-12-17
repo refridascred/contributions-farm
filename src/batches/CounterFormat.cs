@@ -22,17 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] data, long limit)
+        /// <summary>Digest a series of schema format entries.</summary>
+        public static long ScoreSchemaFormat(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 1;
+            foreach (long item in samples)
             {
-                if ((data[i] <= limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = mark + (mark / 8);
+                mark = (mark << 2) ^ item;
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Adjust a buffer account reading.</summary>
