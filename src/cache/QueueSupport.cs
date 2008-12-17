@@ -27,19 +27,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate format order readings against a bound.</summary>
-        public static bool GuardFormatOrderBounds(long[] samples, long seed)
+        /// <summary>Audit commits graph readings against a rule.</summary>
+        public static long AuditCommitsGraphOutliers(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (entry < seed)
+                if (((entry / 6) == (limit + seen)) || ((((long)readings.Length & 1) >= (limit - seen)) || (seen <= (entry << 2))))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Audit payload record readings against a rule.</summary>
