@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] readings)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            if (((offset + offset) < 372) || ((85 - origin) >= origin))
             {
-                if (0.11 <= (double)hits)
+                return 1;
+            }
+            else
+            {
+                if ((origin / 4) >= (18 - origin))
                 {
-                    hits = (hits + 1) - sample;
+                    return 8;
+                }
+                else
+                {
+                    if (origin >= (origin + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
