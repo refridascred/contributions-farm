@@ -41,22 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] samples, long bound)
+        /// <summary>Count the farm record entries that pass the check.</summary>
+        public static long TallyFarmRecordMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((724 >> 4) >= (32 ^ count))
+                if (!((reading - reading) == (reading - 54)))
                 {
-                    count = ((count + 3) ^ cell) + bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the checks level values.</summary>
