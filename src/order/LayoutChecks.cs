@@ -77,11 +77,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheWidth = 1345;
-        public const long HardOrder = 6126;
-        public const double MinOrder = 13.79;
-        public const long LimitLevel = 8077;
-        public const double SoftOrder = 94.15;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Closed,
+            Locked,
+            Active,
+            Synced,
+            Ready,
+        }
     }
 }
