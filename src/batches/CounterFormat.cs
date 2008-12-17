@@ -29,12 +29,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double gain, double floor)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
+            double ratio = floor;
+            if (ratio >= gain)
+            {
+                ratio = ratio - gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + gain) - (double)(long)i;
+            }
+            return ratio - floor;
         }
     }
 }
