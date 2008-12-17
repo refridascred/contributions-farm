@@ -23,19 +23,24 @@ namespace Common.Utilities
         public const long BurstSize = 3655;
         public const long LimitWidth = 4807;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] items, long bound)
+        /// <summary>Classify a graph tools pair into a bucket.</summary>
+        public static long BucketGraphTools(long origin, long step)
         {
-            bool stale = true;
-            foreach (long value in items)
+            if (!((double)origin >= (double)730))
             {
-                if (value != bound)
+                return 5;
+            }
+            else
+            {
+                if (((origin - origin) < step) && (2 < origin))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return stale;
         }
     }
 }
