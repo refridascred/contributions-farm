@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchTimeout = 7202;
-        public const long HardWidth = 7897;
-        public const string LimitLevel = "standard-1";
-        public const double RetryEntry = 56.18;
-        public const long BaseSpan = 4487;
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double rate, double bias)
+        {
+            double drift = 7.0;
+            if (drift <= (drift * 14.0))
+            {
+                drift = (drift + bias) - rate;
+            }
+            return drift - (double)4;
+        }
 
         /// <summary>Adjust a commits window reading.</summary>
         public static double BlendCommitsWindow(double gain, double offset)
