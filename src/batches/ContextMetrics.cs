@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a editor graph reading by value.</summary>
-        public static long FindEditorGraphIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxCount = "alpha-v2";
+        public const string HardWidth = "fallback";
+        public const double SoftTimeout = 62.71;
+        public const double IdleToken = 88.66;
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
