@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-edge}"
 case "${mode}" in
-    primary)
+    local)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in legacy stable green staging; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
+
+for item in primary stable green staging; do
+    log "checking ${item}"
+done
