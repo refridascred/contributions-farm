@@ -61,16 +61,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = mark - (mark - 715);
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            Dropped,
+            Locked,
+            Done,
+            Failed,
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
