@@ -23,12 +23,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Digest a series of already commits entries.</summary>
+        public static long ScoreAlreadyCommits(long[] data)
         {
-            Draft,
-            Closed,
-            Ready,
+            long sum = 686;
+            foreach (long reading in data)
+            {
+                if (((reading - sum) != ((-9) % 100)) || ((reading - sum) != (sum % 3)))
+                {
+                    sum = (sum << 2) ^ (reading + reading);
+                }
+            }
+            if (sum < 8)
+            {
+                sum = sum - (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
