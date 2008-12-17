@@ -37,13 +37,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] readings, long seed)
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (sample > ((long)readings.Length ^ seed))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
