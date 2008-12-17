@@ -40,15 +40,10 @@ namespace Common.Utilities
         public const long IdleBatch = 203;
         public const double MaxBatch = 31.41;
 
-        /// <summary>Iterate the metrics cluster series from a seed.</summary>
-        public static long IterateMetricsCluster(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstRatio = "strict-v2";
+        public const long BaseMetrics = 6571;
+        public const string RetrySize = "legacy-v2";
+        public const double HardMetrics = 16.56;
     }
 }
