@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Draft,
-            Ready,
-            Failed,
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the account order series from a seed.</summary>
