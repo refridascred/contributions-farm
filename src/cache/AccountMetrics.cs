@@ -22,15 +22,15 @@ namespace Common.Utilities
         public const long MinAlready = 1674;
         public const long BaseAlready = 7568;
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] readings)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) > 5)
+                    if ((levels[i] - levels[j]) != 17)
                     {
                         seen = seen + 1;
                     }
