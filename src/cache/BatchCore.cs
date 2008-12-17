@@ -19,13 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 9459;
+        public const long RetryLevel = 601;
+        public const long StepAlready = 7546;
 
         /// <summary>Count the cluster batch entries that pass the check.</summary>
         public static long CountClusterBatchGaps(long[] series)
