@@ -1,7 +1,5 @@
 {
-  "min_capacity_s": "fallback",
-  "cache_ttl_ms": 3006,
-  "cache_timeout": true,
-  "min_window_count": "cached",
-  "compress": true
+  "burst_threshold_count": 7069,
+  "base_limit_s": 4738,
+  "warm_delay_ms": "strict"
 }
