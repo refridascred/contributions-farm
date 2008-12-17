@@ -1,5 +1,5 @@
 {
-  "burst_threshold_count": 7069,
-  "base_limit_s": 4738,
-  "warm_delay_ms": "strict"
+  "strict": 3518,
+  "base_ratio_count": 250,
+  "poll_capacity_ms": "primary"
 }
