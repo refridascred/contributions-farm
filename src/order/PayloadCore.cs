@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] items)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((((seen - 45) < (seen >> 4)) && ((item % 16) >= seen)) && (((8.97 * 9.0) < (double)item) && ((seen / 4) <= (item & 1))))
+                if (!((reading * 3) == (hits & 7)))
                 {
-                    seen = seen + 2;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Accumulate commits samples.</summary>
