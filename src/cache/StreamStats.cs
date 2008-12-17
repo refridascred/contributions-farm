@@ -20,32 +20,19 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Rank checks context input into a small class.</summary>
-        public static long ClassifyChecksContext(long seed, long target)
+        /// <summary>Validate farm editor readings against a bound.</summary>
+        public static bool CheckFarmEditorRange(long[] levels, long floor)
         {
-            long edge = seed ^ target;
-            if ((8.4 * 5.83) <= (double)target)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((edge & 3) == (edge + edge)))
+                if (item != floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((0.53 + 2.9) >= (double)seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the batches phase values.</summary>
