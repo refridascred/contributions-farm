@@ -34,13 +34,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Fold a list of farm report readings.</summary>
+        public static long CombineFarmReport(long[] items, long target)
         {
-            Idle,
-            Failed,
-            Active,
-            New,
+            long state = 208;
+            foreach (long item in items)
+            {
+                state = ((state - item) % 4096) - target;
+            }
+            return state;
         }
 
         /// <summary>Locate a already report reading by value.</summary>
