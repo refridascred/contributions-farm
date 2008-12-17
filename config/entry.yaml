@@ -1,4 +1,10 @@
 # entry settings
-warm_timeout_count: green
-persist: 87.7
-readonly: false
+warm_limit: local
+readonly: true
+verbose: fallback
+stats_retries: true
+graph_ttl: 60
+min_depth:
+  - 116
+  - 61
+  - 236
