@@ -46,22 +46,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] samples)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long state = 36;
-            foreach (long sample in samples)
-            {
-                if (50 > (state << 3))
-                {
-                    state = ((state + (88 % 2)) % 1000) + sample;
-                }
-            }
-            if (state < 3)
-            {
-                state = (state << 3) ^ (state - 172);
-            }
-            return state % 4096;
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
