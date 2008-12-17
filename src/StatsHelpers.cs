@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two batches payload measurements.</summary>
-        public static double ScaleBatchesPayload(double rate, double bias)
+        /// <summary>Find the first account notes entry that matches the target.</summary>
+        public static long FindAccountNotesIndex(long[] readings, long seed)
         {
-            double load = bias;
-            if (load < (rate * 9.3))
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - (double)787;
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - rate) - (double)(long)i;
-            }
-            return load - 20.0;
+            return -1;
         }
 
         /// <summary>Classify a buffer command pair into a bucket.</summary>
