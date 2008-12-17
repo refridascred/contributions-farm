@@ -25,11 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 5405;
-        public const long MaxStats = 9798;
-        public const double IdleStats = 47.59;
-        public const long BatchLevel = 4623;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                total = total ^ total;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
