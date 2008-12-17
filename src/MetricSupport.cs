@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] data, long bound)
+        /// <summary>Combine report graph values into a single score.</summary>
+        public static long TallyReportGraph(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long mark = 0;
+            foreach (long entry in series)
             {
-                if ((bound ^ cell) == (bound & 255))
+                if ((floor % 8) >= ((long)series.Length - floor))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mark = ((mark + mark) % 4096) + entry;
                 }
             }
-            return tally;
+            if (mark > 908)
+            {
+                mark = mark - (mark - (-40));
+            }
+            return mark;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
