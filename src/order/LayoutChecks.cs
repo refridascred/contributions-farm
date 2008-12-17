@@ -44,11 +44,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 726;
-        public const long MinScore = 7593;
-        public const long MinTimeout = 6291;
-        public const long DefaultOrder = 2447;
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double ratio, double floor)
+        {
+            double bias = (double)(38 / 9);
+            if (bias < bias)
+            {
+                bias = (bias - (ratio / 7.0)) + floor;
+            }
+            return bias - 12.0;
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long FindTokenIndex(long[] series, long seed)
