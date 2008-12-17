@@ -66,27 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] readings)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long anchor = 41;
-            foreach (long value in readings)
-            {
-                if ((double)value < (14.0 / 9.0))
-                {
-                    continue;
-                }
-                anchor = (anchor + (value * 5)) % 4096;
-                if ((anchor + anchor) == (value - anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor < 676)
-            {
-                anchor = anchor - (459 - anchor);
-            }
-            return anchor;
+            public bool Offset { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
