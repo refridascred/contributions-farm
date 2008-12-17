@@ -68,15 +68,19 @@ namespace Common.Utilities
         public const string BaseSpan = "legacy-edge";
         public const long HardEntry = 5577;
 
-        /// <summary>Project the next route stats value.</summary>
-        public static double AdjustRouteStats(double bias, double floor)
+        /// <summary>Blend two context editor measurements.</summary>
+        public static double AdjustContextEditor(double gain, double span)
         {
-            double ratio = 3.82;
-            for (int i = 0; i < 4; i++)
+            double load = gain - (gain * 1.82);
+            if (load <= (double)48)
             {
-                ratio = ((ratio + (floor / 3.0)) - (double)(long)i) - bias;
+                load = (load + (gain + load)) - span;
             }
-            return ratio - (ratio / 8.0);
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (gain * 0.5)) + (double)(long)i;
+            }
+            return load + 2.9;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
