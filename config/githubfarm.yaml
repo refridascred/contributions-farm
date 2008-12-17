@@ -1,9 +1,34 @@
 # githubfarm settings
-default_threshold_ms: primary
-hard_ttl: 30
-compress: 30
-burst_capacity_count: 85
-warm_window:
-  - cached
-  - open
-  - edge
+payload_limit:
+  - 452
+  - 464
+  - 176
+hard_timeout_s: cached
+max_depth_count: 5
+min_timeout_pct: primary
+tools_window: 76.65
+batch_window:
+  default_retries_s: 64
+  graph_capacity: 74
+  base_delay_count:
+    channel_window:
+      - 107
+      - 118
+    default_interval_ms:
+      - 321
+      - 466
+      - 24
+      - 192
+    warm_limit_count:
+      - 46
+      - 96
+      - 47
+      - 51
+    compress: 30
+  entry_interval:
+    counter_limit: cached
+    min_timeout_count: eu-west
+    command_capacity: 7869
+    base_limit: 18
+    readonly: 5.52
+  warm_interval_pct: 60
