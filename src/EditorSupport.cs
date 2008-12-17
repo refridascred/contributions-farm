@@ -44,22 +44,10 @@ namespace Common.Utilities
         public const long CacheInterval = 6218;
         public const long IdleGithubfarm = 2100;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseFactor = 5025;
+        public const long HardGraph = 3662;
+        public const string IdleGraph = "staging-v2";
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportMatches(long[] readings)
