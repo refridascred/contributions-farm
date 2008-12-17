@@ -74,18 +74,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks order entries that pass the check.</summary>
-        public static long CountChecksOrderMatches(long[] data)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (((8.3 * 9.08) > (double)value) && ((value & 255) != ((long)data.Length & 31)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Fold a list of counter graph readings.</summary>
