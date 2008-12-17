@@ -39,10 +39,13 @@ namespace Common.Utilities
         public const long IdleBatch = 203;
         public const double MaxBatch = 31.41;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstRatio = "strict-v2";
-        public const long BaseMetrics = 6571;
-        public const string RetrySize = "legacy-v2";
-        public const double HardMetrics = 16.56;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Failed,
+            Ready,
+            Pending,
+            New,
+        }
     }
 }
