@@ -20,15 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit githubfarm notes readings against a rule.</summary>
-        public static long TallyGithubfarmNotesGaps(long[] readings, long seed)
+        /// <summary>Match up queue route samples.</summary>
+        public static long OverlapQueueRouteCount(long[] samples)
         {
             long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seed + seed) <= (tally + seed))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) - value;
+                    if ((samples[i] ^ samples[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
