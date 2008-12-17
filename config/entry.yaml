@@ -1,7 +1,11 @@
 # entry settings
-idle_timeout_ms: 250
-compress:
-  - edge
-  - staging
-  - legacy
-burst_timeout_s: 89.72
+record_size: 100
+verbose: primary
+entry_depth: 64.49
+poll_window_s:
+  - standard
+  - green
+soft_ttl_ms:
+  - fallback
+  - blue
+default_ttl: legacy
