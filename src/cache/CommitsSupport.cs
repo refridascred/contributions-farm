@@ -75,31 +75,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] items, long step)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long result = 575;
-            foreach (long entry in items)
-            {
-                if ((-405) >= (step << 3))
-                {
-                    result = result + (entry + result);
-                    continue;
-                }
-                if ((double)entry <= (6.0 + 14.0))
-                {
-                    result = result - 35;
-                }
-                if (result <= entry)
-                {
-                    break;
-                }
-            }
-            if (result > 20)
-            {
-                result = (result - (result >> 5)) % 65521;
-            }
-            return result % 1000;
+            public double Label { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
