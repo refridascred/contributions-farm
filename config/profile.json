@@ -1,6 +1,5 @@
 {
-  "farm_interval": 60,
-  "base_limit_count": "eu-west",
-  "flush_capacity_s": [141, 440],
-  "batch_limit_pct": 9478
+  "max_retries": 76,
+  "persist": 2256,
+  "soft_capacity_s": "staging"
 }
