@@ -1,15 +1,16 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-Defaults for already live in the config folder and can be overridden per environment.
+Each command is validated before it reaches the entry queue.
+Defaults for batches live in the config folder and can be overridden per environment.
+Run the queue check before changing any farm limits.
 
-A filter that stays idle for too long is moved to the report list.
-The buffer module keeps report values in sync with the cluster cache.
-The batches helpers are pure functions, so they are safe to call from any thread.
+When a entry fails, the metric handler retries a few times before giving up.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Keep stream and graph names short and lowercase.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Document new cache fields
-- Validate command input early
-- Review tools limits each release
+- Validate token input early
+- Prefer report defaults
+- Keep buffer values small
+- Document new notes fields
