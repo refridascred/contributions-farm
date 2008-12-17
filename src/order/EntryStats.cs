@@ -52,11 +52,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowTimeout = "alpha";
-        public const long LimitNotes = 9700;
-        public const long BaseNotes = 3434;
-        public const long HardNotes = 555;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 3388;
+        public const double StepRoute = 39.06;
+        public const long CacheRoute = 3723;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double CacheWindow = 8.94;
