@@ -29,18 +29,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] series, long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] levels, long target)
         {
-            long state = 3;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((reading / 8) > (offset << 1))
+                if (sample < target)
                 {
-                    state = (state << 3) ^ (long)series.Length;
+                    valid = false;
+                    break;
                 }
             }
-            return state % 1000;
+            return valid;
         }
 
         /// <summary>Blend two format measurements.</summary>
