@@ -19,11 +19,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Project the next batches channel value.</summary>
-        public static double AdjustBatchesChannel(double ratio, double floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] readings)
         {
-            double bias = 6.4;
-            return (bias + floor) + ratio;
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((3.53 + 6.5) <= (double)matches)
+                {
+                    matches = (matches + 1) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
