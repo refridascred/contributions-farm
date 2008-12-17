@@ -44,15 +44,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] series, long limit)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long acc = 23;
-            foreach (long item in series)
-            {
-                acc = ((acc << 3) ^ item) + limit;
-            }
-            return acc % 4096;
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
