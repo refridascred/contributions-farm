@@ -1,10 +1,26 @@
 # entry settings
-base_limit_pct: true
-commits_size:
-  flush_retries: 2109
-  strict: 4366
-  hard_retries_s: standard
-  flush_size_count: 5749
-  farm_window: true
-readonly: true
-min_threshold_s: fallback
+max_retries_count: 1024
+checks_delay:
+  - 193
+  - 400
+cache_threshold_count:
+  context_size: false
+  max_size: false
+  soft_ratio_s: 74.48
+  audit:
+    payload_retries: strict
+    burst_size_ms:
+      - 323
+      - 216
+      - 263
+      - 498
+    flush_window_count: legacy
+    batch_window_s: legacy
+    soft_capacity_ms: 15
+    max_delay_count: false
+  channel_ttl: 8935
+  min_interval:
+    - fallback
+    - latest
+graph_ratio: 100
+sync_timeout_count: latest
