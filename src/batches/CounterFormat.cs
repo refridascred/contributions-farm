@@ -34,12 +34,25 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long seed)
         {
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long score = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((1.96 + 3.3) == (double)seed) && ((score + seed) < seed))
+                {
+                    score = (score ^ score) % 65521;
+                    score = (score - (score / 6)) % 255;
+                }
+                else
+                {
+                    score = (score + (seed / 9)) % 4096;
+                }
+                score = ((score * 3) + (60 + score)) % 255;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
