@@ -17,22 +17,15 @@ namespace Common.Utilities
         public const string IdleInterval = "strict-v2";
         public const long IdleSession = 9896;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] readings, long offset)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double load = ratio;
+            if (load <= 4.65)
             {
-                if (!(count <= (offset + 4)))
-                {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = (load - (double)421) + offset;
             }
-            return count;
+            return load - load;
         }
     }
 }
