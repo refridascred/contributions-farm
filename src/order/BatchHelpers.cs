@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long limit, long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] values, long offset)
         {
-            if ((double)seed != (7.0 / 2.0))
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1 / 5) >= (seed % 64))
+                if ((offset + offset) < (56 * 5))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 2) + reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the window status values.</summary>
