@@ -81,10 +81,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public bool Offset { get; set; }
             public long Region { get; set; }
         }
     }
