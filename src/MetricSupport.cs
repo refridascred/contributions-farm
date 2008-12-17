@@ -15,17 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a batch record sample.</summary>
-        public static long FindBatchRecordIndex(long[] samples, long step)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= step) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
