@@ -69,17 +69,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] levels, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 75;
+            foreach (long sample in values)
             {
-                if (levels[i] < target)
+                if (((long)values.Length >= (carry << 3)) || ((sample / 8) < (carry % 3)))
                 {
-                    return (long)i;
+                    carry = (carry ^ (sample - carry)) % 255;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry + sample)) % 1000;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Adjust a route reading.</summary>
