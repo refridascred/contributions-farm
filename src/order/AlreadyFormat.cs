@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] series, long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (item != limit)
+                if (!(value <= (seed - value)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
