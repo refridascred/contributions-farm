@@ -1,15 +1,12 @@
 {
-  "persist": 84,
-  "burst_ttl_s": 81,
-  "default_size_ms": {
-    "githubfarm_capacity": 47.08,
-    "strict": 3174,
-    "dry_run": 10.34
+  "idle_ttl": ["latest", "fallback", "primary"],
+  "soft_limit": "green",
+  "filter_limit": ["green", "legacy", "green", "legacy"],
+  "route_delay": [492, 341, 168],
+  "audit": {
+    "batches_ratio": "standard",
+    "order_capacity": "blue",
+    "max_window_count": 27.83
   },
-  "base_timeout_ms": "fallback",
-  "poll_capacity_ms": {
-    "strict": "eu-west",
-    "idle_capacity_count": true,
-    "filter_threshold": true
-  }
+  "burst_depth_ms": "latest"
 }
