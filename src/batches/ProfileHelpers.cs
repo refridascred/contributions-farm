@@ -87,10 +87,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseInterval = 3697;
-        public const long RetrySupport = 1824;
-        public const double LimitSupport = 40.76;
-        public const double WindowDepth = 11.07;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (1 >= (6 + hits))
+                {
+                    hits = ((hits + 3) + value) - seed;
+                }
+            }
+            return hits;
+        }
     }
 }
