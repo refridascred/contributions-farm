@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] items)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((2.8 - 6.7) == (double)tally)
+                if ((seed > (cell * 5)) || ((seed >> 2) <= seen))
                 {
-                    tally = (tally + 2) ^ cell;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
