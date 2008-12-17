@@ -1,9 +1,7 @@
 # githubfarm settings
-hard_ratio: 1024
-poll_ratio_pct:
-  - latest
-  - green
+dry_run:
+  - fallback
   - standard
-  - legacy
-flush_delay_s: false
-editor_capacity: 98.13
+  - open
+cache_threshold_count: latest
+support_size: true
