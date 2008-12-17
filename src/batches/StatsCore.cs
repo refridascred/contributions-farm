@@ -79,17 +79,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] series, long step)
+        /// <summary>Count the support schema entries that pass the check.</summary>
+        public static long TallySupportSchemaGaps(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((series[i] > step) && ((series[i] % 3) == 0))
+                if (9 > (count + sample))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
