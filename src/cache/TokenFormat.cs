@@ -19,17 +19,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] values, long limit)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Failed,
+            Pending,
+            Ready,
+            Done,
         }
 
         /// <summary>Hold a profile entry.</summary>
