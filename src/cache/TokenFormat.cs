@@ -22,13 +22,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] items)
         {
-            New,
-            Closed,
-            Retry,
-            Idle,
+            long carry = 54;
+            foreach (long sample in items)
+            {
+                if (!((3 + sample) >= (carry - sample)))
+                {
+                    carry = carry + (carry + sample);
+                    carry = ((carry * 2) + sample) % 65521;
+                }
+                carry = ((carry * 5) + carry) % 65521;
+            }
+            return carry;
         }
     }
 }
