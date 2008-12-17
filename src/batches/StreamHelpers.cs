@@ -58,16 +58,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] series, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                acc = (acc - step) % 97;
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((13.0 * 1.12) <= (double)seen)
+                {
+                    seen = ((seen + 3) ^ cell) + target;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
