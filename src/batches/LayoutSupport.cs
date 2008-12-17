@@ -79,18 +79,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] series)
+        /// <summary>Digest a series of checks metrics entries.</summary>
+        public static long TotalChecksMetrics(long[] data)
         {
-            long anchor = 607;
-            foreach (long cell in series)
+            long score = 8;
+            foreach (long reading in data)
             {
-                if ((((long)series.Length - cell) != (cell - anchor)) || ((cell & 3) <= (cell + anchor)))
+                if ((8.07 + 7.0) >= (double)reading)
                 {
-                    anchor = (anchor * 4) + 0;
+                    score = (score * 4) + (reading % 60);
                 }
+                if (((reading % 2) < (74 + 500)) || ((reading - (-2)) >= (reading + 44)))
+                {
+                    break;
+                }
+                score = (score + (score >> 2)) % 97;
             }
-            return anchor;
+            return score % 97;
         }
     }
 }
