@@ -58,17 +58,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] items, long offset)
+        /// <summary>Measure how many commits checks samples are out of range.</summary>
+        public static long AuditCommitsChecksMatches(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (items[i] > offset)
+                if (((double)seen <= (4.2 + 9.8)) || ((seen + 2) > 37))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
