@@ -82,14 +82,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
-            public bool Label { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 853;
+        public const double MaxSize = 16.38;
+        public const double DefaultEntry = 24.32;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double IdleMetric = 43.04;
