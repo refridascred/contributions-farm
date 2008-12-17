@@ -1,5 +1,8 @@
 # githubfarm settings
-idle_capacity_pct: 19
-verbose: stable
-compress: true
-checks_size: 7214
+token_ttl: 66
+readonly: local
+enabled:
+  - 373
+  - 77
+  - 314
+  - 7
