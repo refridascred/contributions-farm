@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Adjust a notes reading.</summary>
