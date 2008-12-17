@@ -1,5 +1,19 @@
 {
-  "poll_ttl_ms": false,
-  "idle_threshold": 90.07,
-  "default_retries_s": 47.93
+  "poll_size_pct": {
+    "idle_timeout_s": {
+      "retry_size_pct": "primary",
+      "soft_limit": 85,
+      "persist": "legacy",
+      "sync_threshold": "legacy"
+    },
+    "max_ratio_pct": {
+      "enabled": 8669,
+      "idle_retries_ms": [203, 389],
+      "window_timeout": [326, 142, 403]
+    },
+    "dry_run": 74.96,
+    "hard_delay": 6.56
+  },
+  "base_size": "edge",
+  "idle_ratio_pct": 4686
 }
