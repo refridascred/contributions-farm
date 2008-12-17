@@ -28,20 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every schema farm entry stays within the limit.</summary>
-        public static bool GuardSchemaFarmLimits(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardRatio = "cached-1";
+        public const long RetrySize = 5622;
+        public const long MinSize = 3691;
+        public const long MinEntry = 9507;
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long FindChannelIndex(long[] data, long target)
