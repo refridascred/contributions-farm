@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long offset)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long acc = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((long)i / 7) == (long)i)
-                {
-                    acc = (acc + ((long)i - 28)) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Locked,
+            Done,
+            New,
         }
 
         /// <summary>Match up queue route samples.</summary>
