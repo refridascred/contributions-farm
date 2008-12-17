@@ -22,11 +22,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstNotes = "staging-v2";
-        public const double HardSpan = 60.38;
-        public const double SoftNotes = 55.22;
-        public const long BurstSize = 3680;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            New,
+            Retry,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool GuardAlreadyBounds(long[] readings, long target)
