@@ -19,19 +19,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] levels, long bound)
+        /// <summary>Count the account batches entries that pass the check.</summary>
+        public static long CountAccountBatchesGaps(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (sample != bound)
+                if ((bound >> 3) >= (reading >> 3))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Accumulate filter samples.</summary>
