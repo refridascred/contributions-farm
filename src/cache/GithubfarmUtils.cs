@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 4344;
-        public const double CacheReport = 54.6;
-        public const long LimitLevel = 9443;
-        public const long DefaultLevel = 8693;
+        /// <summary>Look up the position of a cache filter sample.</summary>
+        public static long FindCacheFilterIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= seed) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
