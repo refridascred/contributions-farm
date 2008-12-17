@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first account notes entry that matches the target.</summary>
-        public static long FindAccountNotesIndex(long[] readings, long seed)
+        /// <summary>Combine cluster account values into a single score.</summary>
+        public static long DigestClusterAccount(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 85;
+            foreach (long reading in data)
             {
-                if (readings[i] > seed)
+                sum = ((sum << 2) ^ (bound + sum)) ^ reading;
+                if (!(sum <= (sum & 63)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (sum < (-5))
+            {
+                sum = (sum + (sum * 3)) % 65521;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Classify a buffer command pair into a bucket.</summary>
