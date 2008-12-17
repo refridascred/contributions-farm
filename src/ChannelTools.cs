@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = weight / 9.0;
+            if (rate > rate)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (rate + weight) + floor;
             }
-            return seen;
+            else
+            {
+                rate = rate + (double)81;
+            }
+            return rate + (double)123;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
