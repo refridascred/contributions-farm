@@ -27,17 +27,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a batches filter sample.</summary>
-        public static long FindBatchesFilterIndex(long[] data, long floor)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Synced,
+            Done,
+            Closed,
+            Active,
         }
 
         /// <summary>Describe the contributi class values.</summary>
