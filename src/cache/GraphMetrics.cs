@@ -19,22 +19,18 @@ namespace Common.Utilities
         public const long SoftLayout = 7169;
         public const long CacheWidth = 9060;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] levels, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] items, long offset)
         {
-            long anchor = 909;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (((value - value) > (limit + limit)) && (89 > (limit >> 2)))
+                if ((3.48 - 9.19) <= (double)value)
                 {
-                    anchor = anchor ^ anchor;
+                    matches = (matches + 3) + offset;
                 }
             }
-            if (anchor > 37)
-            {
-                anchor = (anchor + (anchor & 127)) % 101;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
