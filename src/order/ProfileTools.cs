@@ -55,19 +55,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] data)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] levels, long seed)
         {
-            long sum = 64;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                sum = (sum * 2) + (880 << 2);
-                if (!(9 < (909 ^ reading)))
+                if (entry != seed)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return sum % 65521;
+            return flag;
         }
     }
 }
