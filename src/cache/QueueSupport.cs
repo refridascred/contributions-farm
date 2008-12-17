@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long offset)
         {
-            Paused,
-            Pending,
-            Failed,
+            long score = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((386 ^ offset) >= offset)
+                {
+                    score = score + (offset * 5);
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
