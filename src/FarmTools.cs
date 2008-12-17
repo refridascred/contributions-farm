@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long offset, long seed)
+        /// <summary>Rank stream tools input into a small class.</summary>
+        public static long SortStreamTools(long bound, long origin)
         {
-            long lane = offset - seed;
-            if (((seed / 2) <= offset) || ((seed + (-72)) == (seed >> 1)))
+            long prev = bound ^ origin;
+            if (((prev ^ prev) < (prev - bound)) || ((bound + 8) < (origin * 3)))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((lane + 824) > (seed * 2))
+                if ((origin <= (bound + origin)) || ((prev + prev) >= (bound / 5)))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    return 4;
+                    return 8;
                 }
             }
         }
