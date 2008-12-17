@@ -1,38 +1,11 @@
 # support settings
-contributi_interval: 80.65
-soft_depth_count:
-  cluster_threshold:
-    - eu-west
-    - blue
-    - staging
-  buffer_timeout: 3559
-  sync_size_count: 44
-stream_ratio: standard
-default_ttl:
-  hard_size: false
-  sync_size:
-    layout_delay: true
-    verbose:
-      - local
-      - latest
-    enabled: 6459
-    audit: legacy
-    batches_capacity: 42
-  queue_retries:
-    - 119
-    - 461
-cache_ratio_ms:
-  retry_retries: stable
-  min_delay: latest
-  soft_capacity_ms:
-    - 131
-    - 121
-    - 109
-    - 366
-  retry_threshold_ms: 60
-  stats_ttl:
-    - 376
-    - 289
-    - 303
-    - 175
-  sync_capacity_count: 45.28
+enabled: 3
+base_timeout_pct:
+  idle_size_count: 6746
+  strict: standard
+  notes_timeout: 500
+  min_window: 30
+account_interval: open
+poll_interval_count: 4213
+hard_retries: 3694
+hard_size_s: 100
