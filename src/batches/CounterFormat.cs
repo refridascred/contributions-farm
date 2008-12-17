@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine layout format values into a single score.</summary>
-        public static long FoldLayoutFormat(long[] items, long bound)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long result = 44;
-            foreach (long cell in items)
-            {
-                if (result > (cell & 15))
-                {
-                    result = (result + (result ^ cell)) % 65521;
-                }
-                else
-                {
-                    result = (result - (bound - 189)) % 101;
-                }
-            }
-            if (result < 2)
-            {
-                result = (result * 2) + ((long)items.Length * 2);
-            }
-            return result;
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
