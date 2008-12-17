@@ -44,14 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Idle,
-            Dropped,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 726;
+        public const long MinScore = 7593;
+        public const long MinTimeout = 6291;
+        public const long DefaultOrder = 2447;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long FindTokenIndex(long[] series, long seed)
