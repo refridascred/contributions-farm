@@ -1,12 +1,5 @@
 {
-  "enabled": false,
-  "token_delay": 6,
-  "persist": 4938,
-  "format_threshold": 9323,
-  "dry_run": 4464,
-  "flush_ttl": {
-    "strict": 57,
-    "payload_interval": "local",
-    "contributi_limit": 89.62
-  }
+  "batch_window_ms": "fallback",
+  "strict": 3079,
+  "idle_ratio_ms": 44
 }
