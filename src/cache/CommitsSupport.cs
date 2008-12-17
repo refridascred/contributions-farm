@@ -73,11 +73,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] samples, long seed)
         {
-            public double Label { get; set; }
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((9.6 > (double)matches) || (((matches - seed) == (datum * 2)) && ((matches + matches) >= datum)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
