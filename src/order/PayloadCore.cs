@@ -50,15 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] readings, long origin)
         {
             long count = 0;
-            foreach (long value in readings)
+            foreach (long sample in readings)
             {
-                if ((count + 866) <= (value * 2))
+                if ((origin & 31) > (count << 1))
                 {
-                    count = count + 2;
+                    count = (count + 2) + sample;
                 }
             }
             return count;
