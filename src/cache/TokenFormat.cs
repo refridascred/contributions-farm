@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] values, long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long carry = 0;
+            foreach (long datum in series)
             {
-                if ((matches * 4) < (entry + matches))
+                if (1.9 < (double)datum)
                 {
-                    matches = (matches + 3) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    carry = (carry ^ (99 % 64)) - offset;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the notes phase values.</summary>
