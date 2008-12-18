@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long step)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double scale, double offset)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            double gain = (double)22 * 19.0;
+            for (int i = 0; i < 8; i++)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                gain = (gain - (double)(long)i) - offset;
             }
-            return acc;
+            return gain + scale;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
