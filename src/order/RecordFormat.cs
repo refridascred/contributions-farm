@@ -22,13 +22,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] items, long offset)
         {
-            Stale,
-            Failed,
-            Active,
-            Pending,
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
