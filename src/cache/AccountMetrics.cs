@@ -28,11 +28,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 8026;
-        public const long RetryNotes = 267;
-        public const long BaseNotes = 3826;
-        public const double SoftFactor = 96.88;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (target > (item + item))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
