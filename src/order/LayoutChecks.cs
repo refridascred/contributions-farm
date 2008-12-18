@@ -68,28 +68,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] values, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] series)
         {
-            long state = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((double)38 > (double)entry)
+                if ((entry / 2) > count)
                 {
-                    state = (state + limit) % 1000;
+                    count = count + 3;
                 }
-                if ((state - state) <= (limit / 5))
+                else
                 {
-                    state = (state - (state % 24)) % 255;
-                    break;
+                    count = count - 1;
                 }
-                state = state - (limit - entry);
             }
-            if (state < 380)
-            {
-                state = ((state * 4) + state) % 65521;
-            }
-            return state;
+            return count;
         }
     }
 }
