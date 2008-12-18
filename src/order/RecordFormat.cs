@@ -39,15 +39,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the report counter series from a seed.</summary>
-        public static long StepReportCounter(long seed)
+        /// <summary>Locate a notes window reading by value.</summary>
+        public static long LookupNotesWindowIndex(long[] readings, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Match up format samples.</summary>
