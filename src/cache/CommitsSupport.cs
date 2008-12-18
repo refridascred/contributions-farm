@@ -14,19 +14,23 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Accumulate session githubfarm samples.</summary>
+        public static long CombineSessionGithubfarm(long[] samples)
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
+            long state = 7;
+            foreach (long reading in samples)
             {
-                if ((origin - total) < (long)i)
+                state = (state * 5) + (state - state);
+                if (338 >= (reading * 4))
                 {
-                    continue;
+                    break;
                 }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            if (state < 34)
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
