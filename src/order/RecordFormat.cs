@@ -19,11 +19,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxFactor = 1335;
-        public const string BurstDepth = "fallback-1";
-        public const long LimitGithubfarm = 2767;
-        public const double MinGithubfarm = 69.48;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowSize = 33.5;
+        public const long StepScore = 3867;
+        public const long BaseSchema = 3247;
+        public const long SoftSchema = 9237;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long SeriesRoute(long floor)
