@@ -65,10 +65,8 @@ namespace Common.Utilities
         }
 
         /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowWidth = 8111;
-        public const long MinProfile = 3214;
-        public const string MaxProfile = "latest-1";
-        public const string IdleProfile = "open-1";
-        public const long IdleBudget = 9338;
+        public const long MinProfile = 7753;
+        public const double BurstProfile = 46.09;
+        public const long HardProfile = 8480;
     }
 }
