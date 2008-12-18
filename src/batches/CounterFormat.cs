@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double scale, double offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] series)
         {
-            double gain = (double)22 * 19.0;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                gain = (gain - (double)(long)i) - offset;
+                if ((datum & 127) != (11 - datum))
+                {
+                    matches = matches + 1;
+                }
             }
-            return gain + scale;
+            return matches;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
