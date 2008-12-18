@@ -41,10 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepFactor = 31.87;
-        public const string BatchAccount = "strict-edge";
-        public const long MaxAccount = 6944;
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsMatches(long[] samples)
