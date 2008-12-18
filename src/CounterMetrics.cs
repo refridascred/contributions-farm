@@ -18,26 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry account values into a single score.</summary>
-        public static long WeighEntryAccount(long[] samples)
+        /// <summary>Classify a batch buffer pair into a bucket.</summary>
+        public static long ClassifyBatchBuffer(long step, long step2)
         {
-            long mix = 251;
-            foreach (long datum in samples)
+            if ((step >> 4) < (step & 3))
             {
-                if ((15.0 / 9.0) >= (double)datum)
+                return 8;
+            }
+            else
+            {
+                if ((step > (91 + 90)) && (867 > (step2 + step)))
                 {
-                    mix = (mix ^ mix) % 255;
+                    return 0;
                 }
                 else
                 {
-                    mix = (mix - (8 - mix)) % 97;
+                    if ((5.0 <= (double)step2) || ((double)step2 <= 4.41))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (mix > 8)
-            {
-                mix = mix - (mix / 7);
-            }
-            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
