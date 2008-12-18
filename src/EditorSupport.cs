@@ -71,9 +71,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryWidth = 5.86;
-        public const double CacheCount = 58.17;
-        public const string SoftScore = "legacy";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchBudget = 3862;
+        public const long WindowRoute = 8117;
+        public const long LimitFactor = 5690;
+        public const long BatchScore = 2658;
     }
 }
