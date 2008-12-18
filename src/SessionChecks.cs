@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Draft,
-            Queued,
-            Retry,
-            Closed,
-            Locked,
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
