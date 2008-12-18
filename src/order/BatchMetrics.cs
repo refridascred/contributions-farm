@@ -32,10 +32,39 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleSpan = 8005;
-        public const long WindowNotes = 8732;
-        public const long SoftNotes = 3922;
+        /// <summary>Grade a cluster commits value against two limits.</summary>
+        public static long RankClusterCommits(long origin, long origin2)
+        {
+            if ((origin - origin) < (429 ^ origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((-851) + origin2) < 56)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((50 + origin2) <= origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((66 - origin) <= (origin2 ^ origin2)) && ((origin + origin) <= (origin * 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string RetryLevel = "local-v2";
