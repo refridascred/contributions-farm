@@ -61,15 +61,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] samples)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            long anchor = -7;
+            foreach (long cell in samples)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                if ((double)anchor < (double)cell)
+                {
+                    anchor = anchor + (anchor * 4);
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Accumulate format samples.</summary>
