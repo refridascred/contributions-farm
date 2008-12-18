@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two command schema measurements.</summary>
-        public static double BlendCommandSchema(double bias, double floor)
-        {
-            double mean = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (2.3 / 8.0)) + (double)(long)i;
-            }
-            return mean - bias;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstBudget = 2417;
+        public const string SoftSupport = "legacy-v2";
+        public const long BaseSupport = 3360;
+        public const string BurstSupport = "standard-edge";
 
         /// <summary>Adjust a filter report reading.</summary>
         public static double AdjustFilterReport(double rate, double offset)
