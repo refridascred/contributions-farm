@@ -69,17 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] readings, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                sum = ((sum * 4) + sum) % 255;
-                sum = (sum - (sum / 5)) % 255;
-                sum = ((sum * 4) + (long)i) % 97;
+                if (((tally + 1) > (item + origin)) && !((8.5 - 5.0) < (double)item))
+                {
+                    tally = tally + 3;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
