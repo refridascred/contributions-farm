@@ -37,38 +37,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long offset, long bound)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double ratio, double bias)
         {
-            if ((offset <= (offset * 5)) || ((offset / 8) < bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if (offset < (offset - offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound / 6) < (98 - offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound + offset) == (bound ^ bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            double mean = 3.6 - bias;
+            return mean - ratio;
         }
     }
 }
