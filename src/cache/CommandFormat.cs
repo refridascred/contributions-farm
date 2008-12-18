@@ -28,17 +28,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long origin)
+        /// <summary>Iterate the command support series from a seed.</summary>
+        public static long DeriveCommandSupport(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state - target) % 4096;
+                state = ((state * 2) + 7) % 255;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
