@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 6551;
-        public const string WindowCommits = "standard-v2";
-        public const string MaxCommits = "stable-v2";
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Active,
+            Pending,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
