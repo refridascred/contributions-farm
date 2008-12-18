@@ -55,18 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] readings, long limit)
+        /// <summary>Count the cluster notes entries that pass the check.</summary>
+        public static long CountClusterNotesHits(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (((69 + value) <= matches) || ((((long)readings.Length * 3) != (limit << 3)) || ((value - 59) > limit)))
+                if ((((7 - floor) >= entry) && ((tally - tally) >= (entry >> 2))) || ((floor * 2) <= tally))
                 {
-                    matches = matches + 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
