@@ -25,19 +25,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a tools graph reading.</summary>
-        public static double ScaleToolsGraph(double gain, double offset)
+        /// <summary>Blend two command report measurements.</summary>
+        public static double AdjustCommandReport(double gain, double span)
         {
-            double scale = gain;
-            if (scale >= gain)
+            double ratio = (double)(1 & 7);
+            if (ratio > (15.0 / 5.0))
             {
-                scale = scale + gain;
+                ratio = ((ratio - (double)(-161)) + gain) - span;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (offset / 8.0)) + (double)(long)i;
-            }
-            return scale + (8.9 * 8.2);
+            return ratio + (ratio / 3.0);
         }
     }
 }
