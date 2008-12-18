@@ -82,31 +82,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window counter values into a single score.</summary>
-        public static long CombineWindowCounter(long[] data)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] series, long origin)
         {
-            long acc = 885;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long item in series)
             {
-                acc = acc - (224 << 2);
-                if ((entry & 7) != (entry << 3))
+                if (item != origin)
                 {
-                    acc = acc + (306 * 2);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ entry) % 4096;
-                }
-                if (((8.0 * 9.0) > (double)acc) || (entry <= (entry / 8)))
-                {
-                    acc = ((acc * 2) + (acc * 5)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc < 0)
-            {
-                acc = ((acc << 3) ^ (8 + acc)) % 97;
-            }
-            return acc;
+            return flag;
         }
     }
 }
