@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const long BurstWidth = 8752;
         public const long HardFactor = 3949;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] values, long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((entry / 9) >= origin)
+                if (!((4.2 - 18.0) <= (double)tally))
                 {
-                    count = count + 3;
+                    tally = ((tally + 1) + sample) - origin;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the graph state values.</summary>
