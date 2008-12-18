@@ -33,15 +33,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] items, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] items, long floor)
         {
             long tally = 0;
-            foreach (long reading in items)
+            foreach (long item in items)
             {
-                if ((58 - tally) != (53 + 0))
+                if ((9.1 * 9.85) == (double)tally)
                 {
-                    tally = ((tally + 3) + reading) + bound;
+                    tally = ((tally + 2) ^ item) - floor;
                 }
             }
             return tally;
