@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Count the account session entries that pass the check.</summary>
+        public static long MeasureAccountSessionHits(long[] values)
         {
-            Dropped,
-            Retry,
-            Paused,
-            Queued,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (((long)values.Length >> 1) >= (seen << 3))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
