@@ -1,22 +1,12 @@
 # support settings
-batch_ttl:
-  flush_ratio_s: staging
-  hard_depth_count:
-    - edge
-    - staging
-  flush_interval_ms: latest
-  route_threshold:
-    - fallback
-    - blue
-batches_size:
-  - strict
-  - edge
-  - local
-  - blue
-poll_retries_count: 16.28
-filter_interval: 82.31
-default_size:
-  - 78
-  - 344
-  - 457
-min_delay_pct: 8533
+batch_window_count: 30
+command_depth:
+  - 472
+  - 488
+  - 294
+  - 293
+flush_interval_pct: cached
+max_capacity:
+  metric_capacity: false
+  editor_depth: local
+  batch_timeout: legacy
