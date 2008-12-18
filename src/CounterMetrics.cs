@@ -20,15 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] data, long step)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] samples, long offset)
         {
-            long mark = 14;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark ^ (cell * 3)) % 97) + step;
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
