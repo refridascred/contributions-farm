@@ -40,14 +40,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] items)
         {
-            Queued,
-            Closed,
-            Paused,
-            Pending,
-            Failed,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((matches % 16) <= reading)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
