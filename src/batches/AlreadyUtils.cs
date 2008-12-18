@@ -22,22 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long sum = -92;
-            foreach (long sample in values)
-            {
-                if ((sample ^ sum) < sample)
-                {
-                    sum = sum ^ sum;
-                }
-            }
-            if (sum < 29)
-            {
-                sum = sum + (sum ^ sum);
-            }
-            return sum % 4096;
+            Stale,
+            Closed,
+            Pending,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
