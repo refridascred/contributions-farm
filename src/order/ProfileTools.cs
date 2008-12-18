@@ -63,26 +63,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] readings, long seed)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            long mark = 53;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = ((mark * 4) + (219 * 2)) - (long)i;
-                }
-                if (((4.9 / 6.0) > (double)mark) && ((20.0 * 10.0) != (double)mark))
-                {
-                    mark = ((mark * 3) + entry) % 1000;
+                    if ((series[i] + series[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 594)
-            {
-                mark = ((mark << 3) ^ (seed << 3)) % 97;
-            }
-            return mark % 65521;
+            return seen;
         }
     }
 }
