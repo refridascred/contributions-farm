@@ -50,11 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinLevel = 1167;
-        public const double MaxNotes = 83.42;
-        public const long StepSpan = 839;
-        public const long IdleCount = 3313;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 2820;
+        public const long BaseCommand = 3986;
+        public const long RetryCount = 8149;
+        public const long HardCommand = 1902;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionRange(long[] values, long limit)
