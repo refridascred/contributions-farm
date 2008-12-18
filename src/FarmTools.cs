@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] items, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 7;
+            foreach (long value in readings)
             {
-                if (items[i] < target)
+                if ((double)offset >= (double)302)
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ offset) - value;
+                }
+                else
+                {
+                    total = total + (offset & 1);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
