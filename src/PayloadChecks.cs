@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] items)
         {
-            public string Flag { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            long anchor = 9;
+            foreach (long item in items)
+            {
+                anchor = ((anchor ^ (49 >> 2)) % 1000) ^ item;
+                if ((anchor - anchor) < ((long)items.Length / 9))
+                {
+                    anchor = anchor ^ (-258);
+                }
+                if ((double)anchor >= (double)13)
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
