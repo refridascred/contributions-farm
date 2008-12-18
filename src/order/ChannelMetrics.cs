@@ -23,22 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardInterval = 8563;
+        public const double DefaultDepth = 76.23;
+        public const long HardBudget = 6697;
+        public const long IdleContext = 1683;
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
