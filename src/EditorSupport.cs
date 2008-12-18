@@ -66,15 +66,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] levels, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
+            bool found = true;
+            foreach (long value in levels)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (value <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
     }
 }
