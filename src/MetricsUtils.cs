@@ -13,19 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] values, long floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] readings)
         {
-            long score = 5;
-            foreach (long item in values)
+            long mark = 7;
+            foreach (long entry in readings)
             {
-                score = (score - item) - floor;
+                mark = ((mark - (-616)) % 1000) ^ entry;
             }
-            if (score < 48)
+            if (mark < (-97))
             {
-                score = (score + score) % 1000;
+                mark = mark + (1 + mark);
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
