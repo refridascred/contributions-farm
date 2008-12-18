@@ -27,14 +27,19 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] readings, long offset)
         {
-            Draft,
-            Synced,
-            Active,
-            Retry,
-            Stale,
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Look up the position of a batches route sample.</summary>
