@@ -1,6 +1,6 @@
 {
-  "max_delay_ms": "latest",
-  "default_limit_count": 8563,
-  "audit": 7.42,
-  "idle_capacity": 1063
+  "warm_retries": 75.3,
+  "poll_delay_ms": "strict",
+  "sync_retries_pct": ["local", "strict", "stable", "fallback"],
+  "cache_capacity_s": 100
 }
