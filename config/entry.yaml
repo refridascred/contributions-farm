@@ -1,8 +1,12 @@
 # entry settings
-already_interval: 5882
-idle_interval_s: true
-base_delay: edge
-max_limit_s:
-  - 62
-  - 136
-verbose: false
+verbose: 93
+idle_interval_s: standard
+hard_timeout_ms: stable
+flush_retries:
+  audit: 30
+  persist: primary
+  stream_retries: 60
+  batch_timeout: open
+  contributi_limit: 1417
+tools_capacity: true
+readonly: open
