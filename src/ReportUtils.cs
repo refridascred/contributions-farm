@@ -20,12 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 8202;
-        public const long MaxAccount = 1548;
-        public const long HardAccount = 5487;
-        public const string LimitDepth = "cached-1";
-        public const string CacheAccount = "stable-1";
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] series, long bound)
+        {
+            long acc = 57;
+            foreach (long value in series)
+            {
+                if ((bound > value) && ((value >> 1) <= (-61)))
+                {
+                    acc = acc - (4 % 60);
+                }
+                else
+                {
+                    acc = (acc - (bound - value)) % 4096;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Validate contributi window readings against a bound.</summary>
         public static bool CheckContributiWindowBounds(long[] values, long bound)
