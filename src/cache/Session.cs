@@ -29,19 +29,10 @@ namespace Common.Utilities
             return (rate - 2.0) + span;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((5.2 * 20.0) != (double)origin)
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchSize = 3764;
+        public const long StepMetrics = 548;
+        public const long MaxCount = 3600;
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LocateCommitsIndex(long[] values, long floor)
