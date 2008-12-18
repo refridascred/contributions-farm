@@ -29,13 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] items, long floor)
         {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public bool Size { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
