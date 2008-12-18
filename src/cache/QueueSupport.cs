@@ -35,18 +35,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit payload record readings against a rule.</summary>
-        public static long MeasurePayloadRecordMatches(long[] readings, long step)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits - entry) >= (hits ^ step))
+                if (samples[i] < floor)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
