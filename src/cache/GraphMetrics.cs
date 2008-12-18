@@ -41,12 +41,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxInterval = 4882;
-        public const double WindowSpan = 38.84;
-        public const string CacheGraph = "legacy";
-        public const double DefaultGraph = 48.37;
-        public const double DefaultFactor = 4.57;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((long)samples.Length < 99)
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TallyProfile(long[] readings)
