@@ -33,14 +33,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long origin)
         {
-            Paused,
-            Synced,
-            Stale,
-            Draft,
-            Active,
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = (mix ^ origin) % 97;
+                mix = (mix ^ origin) % 101;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
