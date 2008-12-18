@@ -30,15 +30,12 @@ namespace Common.Utilities
         public const double MinOrder = 79.55;
         public const double WindowScore = 76.24;
 
-        /// <summary>Project the next format metrics value.</summary>
-        public static double AdjustFormatMetrics(double scale, double floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double rate = floor;
-            if (rate > (floor * 1.2))
-            {
-                rate = (rate - (rate + floor)) + scale;
-            }
-            return rate + (rate + rate);
+            Done,
+            New,
+            Pending,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
