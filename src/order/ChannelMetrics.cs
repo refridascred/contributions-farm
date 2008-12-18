@@ -23,20 +23,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a checks stream reading.</summary>
-        public static double AdjustChecksStream(double scale, double bias)
-        {
-            double scale2 = bias;
-            if (scale2 >= (bias - scale))
-            {
-                scale2 = scale2 + 20.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + 15.0) - (double)(long)i;
-            }
-            return scale2 - (scale2 * 8.11);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseLevel = 13.67;
+        public const double HardSession = 62.98;
+        public const long BurstSize = 8739;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long IterateGithubfarm(long limit)
