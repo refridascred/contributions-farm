@@ -49,20 +49,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((long)i ^ score) >= score)
-                {
-                    score = ((score << 3) ^ (score / 4)) % 1000;
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
