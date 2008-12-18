@@ -42,18 +42,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] samples)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((seen + 13) >= seen)
+                if (((double)(long)levels.Length == (7.0 * 8.0)) || (entry <= matches))
                 {
-                    seen = (seen + 3) + cell;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the record state values.</summary>
