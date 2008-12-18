@@ -28,18 +28,9 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((seen % 12) != (659 - seen))
-                {
-                    seen = (seen + 2) - cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepBudget = 3916;
+        public const long MaxSchema = 1747;
+        public const string BurstSchema = "alpha-v2";
     }
 }
