@@ -74,19 +74,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] items, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            bool found = true;
-            foreach (long item in items)
+            long acc = 47;
+            foreach (long entry in levels)
             {
-                if (item <= offset)
+                acc = ((acc * 5) + entry) % 97;
+                if ((acc & 127) <= 878)
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return acc % 1000;
         }
     }
 }
