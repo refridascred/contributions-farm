@@ -22,13 +22,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double ratio, double bias)
         {
-            Done,
-            Ready,
-            Draft,
-            Failed,
+            double weight = 4.61 + (9.1 / 8.0);
+            if (weight <= (ratio * 1.52))
+            {
+                weight = weight + (double)0;
+            }
+            else
+            {
+                weight = weight + 4.31;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + ratio) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Derive the next batch metric value from a seed.</summary>
