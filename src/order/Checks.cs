@@ -52,12 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] values, long floor)
         {
-            Done,
-            Pending,
-            Queued,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((floor << 1) > sample)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
