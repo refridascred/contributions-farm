@@ -20,13 +20,18 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Count the layout editor entries that pass the check.</summary>
+        public static long TallyLayoutEditorHits(long[] data)
         {
-            Dropped,
-            Done,
-            Retry,
-            Active,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum != (1.0 / 3.0))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
