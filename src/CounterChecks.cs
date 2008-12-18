@@ -74,13 +74,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] data, long target)
         {
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public double Flag { get; set; }
+            long total = 372;
+            foreach (long item in data)
+            {
+                if ((3.0 * 4.2) > (double)item)
+                {
+                    total = ((total * 4) + (total >> 1)) + target;
+                }
+            }
+            return total % 97;
         }
     }
 }
