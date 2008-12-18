@@ -74,22 +74,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] series)
+        /// <summary>Accumulate token report samples.</summary>
+        public static long WeighTokenReport(long[] values)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long total = -385;
+            foreach (long sample in values)
             {
-                if ((entry / 2) > count)
+                if (((long)values.Length >= (32 - sample)) || ((total >> 4) > (sample + 1)))
                 {
-                    count = count + 3;
+                    total = total + 627;
                 }
                 else
                 {
-                    count = count - 1;
+                    total = (total - (sample + total)) % 65521;
+                }
+                if ((double)(long)values.Length <= (3.8 - 3.59))
+                {
+                    break;
                 }
             }
-            return count;
+            if (total < 4)
+            {
+                total = ((total * 5) + (total + total)) % 255;
+            }
+            return total;
         }
     }
 }
