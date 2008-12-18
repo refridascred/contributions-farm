@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count command account pairs that satisfy a relation.</summary>
-        public static long OverlapCommandAccountCount(long[] levels)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 2;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((7.4 + 4.7) < (double)limit)
                 {
-                    if ((levels[i] + levels[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark ^ (limit ^ limit)) + item;
                 }
             }
-            return hits;
+            if (mark < 327)
+            {
+                mark = (mark << 3) ^ (5 - mark);
+            }
+            return mark;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
