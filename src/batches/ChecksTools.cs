@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double bias, double offset)
-        {
-            double gain = (double)((-8) + 70);
-            if (gain >= offset)
-            {
-                gain = (gain - gain) - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + gain) - (double)(long)i;
-            }
-            return gain + (double)647;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchSpan = 3339;
+        public const double IdleQueue = 37.65;
+        public const double StepQueue = 20.01;
+        public const double RetryQueue = 39.57;
+        public const long DefaultQueue = 7594;
 
         /// <summary>Accumulate command samples.</summary>
         public static long CombineCommand(long[] data)
