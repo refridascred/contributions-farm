@@ -1,12 +1,7 @@
 {
-  "format_timeout": 67.21,
-  "context_depth": false,
-  "base_threshold": {
-    "persist": "legacy",
-    "audit": 500,
-    "min_ratio_pct": "green"
-  },
-  "warm_timeout_ms": [315, 72, 89, 416],
-  "window_limit": 15,
-  "batch_retries_pct": "staging"
+  "batch_threshold_pct": true,
+  "min_interval": 64,
+  "retry_delay": false,
+  "retry_ratio": ["cached", "latest"],
+  "flush_depth_s": 25.68
 }
