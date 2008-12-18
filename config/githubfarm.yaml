@@ -1,5 +1,17 @@
 # githubfarm settings
-max_ratio_count: 30
-soft_ratio_pct: 7149
-batch_delay: eu-west
-support_delay: 64.83
+counter_ttl: 60.0
+strict:
+  base_threshold: 96
+  burst_delay_pct: 3936
+  session_capacity: primary
+  report_retries:
+    - 249
+    - 115
+batch_retries_s: 80.19
+retry_retries: true
+support_interval: false
+poll_threshold_s:
+  - 15
+  - 113
+  - 4
+  - 483
