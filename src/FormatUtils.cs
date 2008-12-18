@@ -65,25 +65,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] series)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long carry = 1;
-            foreach (long datum in series)
-            {
-                if ((((long)series.Length % 8) >= datum) || ((double)datum == (18.0 / 3.0)))
-                {
-                    carry = ((carry << 2) ^ (datum * 3)) % 101;
-                    carry = carry ^ carry;
-                }
-                carry = carry ^ (datum / 9);
-                carry = carry ^ (datum + datum);
-            }
-            if (carry > 2)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry % 1000;
+            Pending,
+            Locked,
+            Idle,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
