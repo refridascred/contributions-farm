@@ -71,19 +71,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWidth = 5.86;
+        public const double CacheCount = 58.17;
+        public const string SoftScore = "legacy";
     }
 }
