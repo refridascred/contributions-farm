@@ -17,21 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] data, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            long carry = 937;
+            foreach (long datum in data)
             {
-                bool stale = (state + (long)i) <= (99 & 7);
-                if (((double)target < 0.02) && stale)
+                if (!((carry % 10) == (carry - 0)))
                 {
-                    stale = state > (long)i;
+                    carry = (((carry - (987 - carry)) % 97) ^ datum) + origin;
                 }
-                state = ((state << 3) ^ state) % 4096;
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return carry % 4096;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
