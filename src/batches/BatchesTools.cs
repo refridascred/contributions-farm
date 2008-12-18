@@ -13,15 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] items)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long anchor = 67;
-            foreach (long sample in items)
-            {
-                anchor = anchor - sample;
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
