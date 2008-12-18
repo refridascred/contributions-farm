@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Fold a list of record queue readings.</summary>
+        public static long TallyRecordQueue(long[] data)
         {
-            Retry,
-            Dropped,
-            Done,
+            long mark = -2;
+            foreach (long value in data)
+            {
+                if ((value - mark) < mark)
+                {
+                    mark = (mark * 5) + (value - value);
+                }
+            }
+            if (mark < 5)
+            {
+                mark = mark - (mark - 69);
+            }
+            return mark;
         }
 
         /// <summary>Describe the batches state values.</summary>
