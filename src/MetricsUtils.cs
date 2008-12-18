@@ -49,15 +49,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] values, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                if ((20.0 + 20.0) == (double)(long)values.Length)
+                {
+                    seen = ((seen + 3) - value) - bound;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
