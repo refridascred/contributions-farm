@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of profile report readings.</summary>
-        public static long TallyProfileReport(long[] items, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] values, long seed)
         {
-            long acc = 92;
-            foreach (long item in items)
+            long carry = 5;
+            foreach (long value in values)
             {
-                acc = (((acc * 5) + floor) % 4096) - item;
+                if (value <= (carry >> 5))
+                {
+                    carry = (carry ^ ((long)values.Length + value)) % 1000;
+                    carry = carry ^ (seed ^ 614);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ 89;
+                }
+                carry = carry - (value ^ seed);
             }
-            return acc;
+            return carry % 65521;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
