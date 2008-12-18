@@ -49,23 +49,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] items, long offset)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] samples, long floor)
         {
-            long total = 380;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total ^ (total << 3)) - entry;
-                if (((long)items.Length + total) > offset)
+                if (samples[i] < floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total < 6)
-            {
-                total = (total ^ (offset >> 4)) % 101;
-            }
-            return total % 65521;
+            return -1;
         }
     }
 }
