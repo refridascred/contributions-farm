@@ -1,17 +1,21 @@
 # support settings
-batch_threshold: local
-default_interval_count: 42
-verbose:
-  min_ratio_count:
-    soft_ratio: 74.67
-    default_limit_ms: 100
-    dry_run:
-      - stable
-      - strict
-      - strict
-      - green
-    stream_size: 37.41
-    poll_retries_count: 23.17
-    retry_ratio: 4436
-  poll_ttl_pct: 79.51
-  tools_ttl: 43.65
+verbose: 1024
+hard_size_ms:
+  - primary
+  - standard
+  - fallback
+max_timeout_count: 39
+route_window:
+  sync_ratio_ms: 69
+  base_window_s: standard
+  filter_threshold:
+    readonly: false
+    cache_interval: true
+    cache_ttl_pct:
+      - local
+      - eu-west
+    hard_depth_ms: strict
+    burst_depth_count: 70.06
+  record_ttl: 14.77
+entry_ttl: 8.6
+already_delay: 2785
