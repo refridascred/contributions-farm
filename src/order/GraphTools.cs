@@ -13,12 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] levels)
         {
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (matches < (matches - (long)levels.Length))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
