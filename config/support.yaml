@@ -1,14 +1,9 @@
 # support settings
-soft_capacity_count:
-  verbose: 34.41
-  enabled: false
-  profile_capacity:
-    flush_delay_ms: 933
-    sync_retries: blue
-    cache_interval_s: 77.15
-    retry_size: 94.35
-    verbose: 1204
-    base_ttl: 6064
-soft_size_pct: 1024
-base_capacity_s: 60
-min_window_pct: 57.16
+cache_size: local
+cluster_size:
+  - 440
+  - 230
+  - 288
+  - 113
+channel_ratio: 100
+soft_ratio_ms: edge
