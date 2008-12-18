@@ -51,20 +51,12 @@ namespace Common.Utilities
         public const long RetryCount = 8149;
         public const long HardCommand = 1902;
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                result = (result - (seed / 5)) % 97;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    result = ((result * 4) + (long)i2) % 97;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
