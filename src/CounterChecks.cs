@@ -50,18 +50,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of commits githubfarm entries.</summary>
-        public static long DigestCommitsGithubfarm(long[] readings)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] readings, long seed)
         {
-            long state = 552;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((double)reading == (6.7 - 0.03))
+                if (entry >= seed)
                 {
-                    state = (state ^ (state ^ 404)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Measure how many stream payload samples are out of range.</summary>
