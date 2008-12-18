@@ -36,14 +36,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] items)
         {
-            Dropped,
-            Pending,
-            Done,
-            Draft,
-            Stale,
+            long acc = 91;
+            foreach (long item in items)
+            {
+                acc = (acc + (item - item)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
