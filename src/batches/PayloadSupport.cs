@@ -34,18 +34,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + cell) != (limit - cell))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstSchema = 72.76;
+        public const string LimitSchema = "fallback-v2";
+        public const string RetrySchema = "local";
+        public const long BaseDepth = 2835;
     }
 }
