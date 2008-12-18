@@ -36,11 +36,26 @@ namespace Common.Utilities
         public const string StepRecord = "primary-edge";
         public const double BatchFactor = 85.23;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 349;
-        public const long StepRatio = 240;
-        public const long IdleCounter = 5282;
-        public const long SoftDepth = 9472;
-        public const long BaseSize = 9627;
+        /// <summary>Combine editor notes values into a single score.</summary>
+        public static long FoldEditorNotes(long[] levels)
+        {
+            long sum = 4;
+            foreach (long cell in levels)
+            {
+                if ((sum - sum) <= (cell - sum))
+                {
+                    sum = (sum * 5) + (sum - sum);
+                }
+                else
+                {
+                    sum = sum - (sum << 1);
+                }
+                if ((double)sum < (17.0 + 8.9))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
+        }
     }
 }
