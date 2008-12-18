@@ -31,18 +31,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] items, long offset)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double scale, double span)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double gain = span;
+            if (gain <= (double)(-28))
             {
-                if ((double)tally > (6.23 / 6.0))
-                {
-                    tally = ((tally + 1) ^ entry) + offset;
-                }
+                gain = (gain + span) + scale;
             }
-            return tally;
+            return gain - (double)46;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
