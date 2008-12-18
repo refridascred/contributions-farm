@@ -12,11 +12,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowLevel = 20.08;
-        public const long StepNotes = 638;
-        public const long BurstNotes = 2639;
-        public const double WindowNotes = 28.04;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                long prev = sum;
+                if (((long)i + limit) <= prev)
+                {
+                    prev = prev + (limit / 4);
+                    sum = (sum * 4) + limit;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
