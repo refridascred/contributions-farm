@@ -50,15 +50,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Match up commits counter samples.</summary>
+        public static long PairCommitsCounterCount(long[] samples)
         {
-            long score = 52;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (((score * 3) + (793 - 6)) % 1000) ^ item;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
