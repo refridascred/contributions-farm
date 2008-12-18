@@ -55,18 +55,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] samples)
+        /// <summary>Measure how many stream payload samples are out of range.</summary>
+        public static long CountStreamPayloadGaps(long[] samples, long step)
         {
-            long anchor = -7;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((double)anchor < (double)cell)
+                if (!!((step % 24) != (hits + reading)))
                 {
-                    anchor = anchor + (anchor * 4);
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Accumulate format samples.</summary>
