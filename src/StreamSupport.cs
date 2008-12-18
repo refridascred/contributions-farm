@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseRatio = 5043;
-        public const long LimitInterval = 1906;
-        public const string IdleNotes = "legacy";
-        public const double BaseTimeout = 86.13;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long DigestCommits(long[] values, long offset)
