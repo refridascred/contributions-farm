@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] samples, long floor)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long floor)
         {
-            long sum = 19;
-            foreach (long reading in samples)
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
             {
-                sum = sum - (reading - 4);
-                if (!((floor - sum) < sum))
-                {
-                    sum = sum + (floor / 2);
-                }
-                sum = sum - (sum * 5);
+                mix = (mix << 2) ^ (8 / 6);
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            if (sum < 496)
-            {
-                sum = ((sum << 2) ^ (floor >> 1)) % 101;
-            }
-            return sum % 4096;
+            return mix;
         }
 
         /// <summary>Describe the schema status values.</summary>
