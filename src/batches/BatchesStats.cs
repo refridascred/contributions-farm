@@ -29,32 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long bound, long bound2)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long cur = bound + bound2;
-            if (((4 + (-72)) == (bound / 7)) && ((bound2 & 7) <= (cur / 4)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((bound << 2) <= (bound2 ^ bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((2.0 * 0.1) != (double)bound2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Closed,
+            Queued,
+            Ready,
+            Idle,
+            Dropped,
         }
     }
 }
