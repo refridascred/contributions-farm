@@ -44,12 +44,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Locate a support metrics reading by value.</summary>
+        public static long FindSupportMetricsIndex(long[] items, long origin)
         {
-            New,
-            Synced,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
