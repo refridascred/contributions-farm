@@ -40,22 +40,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] items)
+        /// <summary>Accumulate record editor samples.</summary>
+        public static long TallyRecordEditor(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long carry = 5;
+            foreach (long item in levels)
             {
-                if ((matches % 16) <= reading)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = (((carry << 3) ^ 524) - item) + step;
             }
-            return matches;
+            return carry % 1000;
         }
     }
 }
