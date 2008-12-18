@@ -1,12 +1,19 @@
 {
-  "githubfarm_retries": "stable",
-  "queue_ttl": 7161,
-  "burst_limit": "fallback",
-  "burst_retries_s": {
-    "hard_ttl": false,
-    "default_capacity_pct": ["standard", "primary", "eu-west"],
-    "format_timeout": "eu-west"
+  "audit": ["fallback", "fallback", "edge"],
+  "report_depth": {
+    "burst_delay_count": {
+      "route_size": true,
+      "filter_ratio": ["cached", "stable"],
+      "burst_interval": 250,
+      "tools_threshold": 87.16,
+      "batch_delay": 41.04,
+      "buffer_delay": 38
+    },
+    "retry_window_count": 2986,
+    "flush_timeout_pct": true,
+    "stats_threshold": 9815
   },
-  "retry_retries_s": true,
-  "cache_ttl_pct": 84.33
+  "readonly": ["local", "open"],
+  "burst_delay_count": "cached",
+  "default_delay": 77.1
 }
