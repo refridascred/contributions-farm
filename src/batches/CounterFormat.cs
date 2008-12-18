@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long step, long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] data, long bound)
         {
-            if ((1.9 * 5.0) <= (double)step)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin >= (step << 3)) || ((64 >> 3) >= (origin ^ step)))
+                if (reading <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Measure how many already batches samples are out of range.</summary>
