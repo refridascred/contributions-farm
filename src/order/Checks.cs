@@ -59,17 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                result = result + (-1);
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepSize = 90.0;
+        public const long HardCommits = 6434;
+        public const long HardTimeout = 2509;
+        public const double BurstCommits = 60.49;
+        public const double CacheBudget = 22.29;
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
