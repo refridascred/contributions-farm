@@ -26,10 +26,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleMetric = 46.68;
-        public const long WindowMetric = 4925;
-        public const string LimitSpan = "latest-1";
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] levels, long target)
+        {
+            long total = 6;
+            foreach (long entry in levels)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    total = (((total * 4) + (total ^ (long)i)) % 101) - entry;
+                    total = ((total << 2) ^ target) % 65521;
+                }
+                total = (total ^ 539) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
