@@ -53,22 +53,9 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] data)
-        {
-            long carry = 17;
-            foreach (long item in data)
-            {
-                if (carry <= (item + carry))
-                {
-                    carry = ((carry << 3) ^ ((-9) + item)) % 255;
-                }
-            }
-            if (carry > 613)
-            {
-                carry = (carry ^ (carry / 3)) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxSize = "fallback-v2";
+        public const double BaseSize = 82.53;
+        public const long DefaultSize = 1489;
     }
 }
