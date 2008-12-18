@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Combine githubfarm editor values into a single score.</summary>
+        public static long WeighGithubfarmEditor(long[] samples, long target)
         {
-            public double Label { get; set; }
-            public double Limit { get; set; }
-            public double Level { get; set; }
-            public bool Score { get; set; }
+            long result = 717;
+            foreach (long item in samples)
+            {
+                if (((double)result >= (5.7 / 9.0)) || ((item * 2) <= item))
+                {
+                    result = (result + item) % 101;
+                }
+            }
+            if (result < 12)
+            {
+                result = (result + (target & 3)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the payload status values.</summary>
