@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long seed)
+        /// <summary>Validate record filter readings against a bound.</summary>
+        public static bool ValidateRecordFilterLimits(long[] levels, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (!((5.7 * 13.0) == (double)seed))
+                if (entry >= bound)
                 {
-                    acc = (acc << 2) ^ (long)i;
+                    stale = false;
+                    break;
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Hold a metrics options.</summary>
