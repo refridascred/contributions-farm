@@ -56,19 +56,12 @@ namespace Common.Utilities
         public const long RetryCount = 8149;
         public const long HardCommand = 1902;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] values, long limit)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Retry,
+            New,
         }
     }
 }
