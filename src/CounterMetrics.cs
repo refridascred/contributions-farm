@@ -41,12 +41,18 @@ namespace Common.Utilities
         public const long SoftFactor = 4041;
         public const string IdleStream = "latest-1";
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] values)
         {
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (!((cell ^ (long)values.Length) >= (cell + matches)) && (((long)values.Length + 5) <= (cell + matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
