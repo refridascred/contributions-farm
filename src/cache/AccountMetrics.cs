@@ -80,19 +80,16 @@ namespace Common.Utilities
             return rate2 - floor;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordRange(long[] values, long floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long step)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long score = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score + (long)i) % 97;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return stale;
+            return score;
         }
     }
 }
