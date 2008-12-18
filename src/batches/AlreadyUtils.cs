@@ -37,21 +37,14 @@ namespace Common.Utilities
         public const double IdleContributi = 70.54;
         public const long BaseContributi = 5819;
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long limit)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if (5.41 < (double)limit)
-                {
-                    score = (score - (long)i) % 97;
-                }
-                score = ((score * 4) + (limit & 3)) % 255;
-                score = ((score << 3) ^ 563) % 101;
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Paused,
+            Draft,
+            Failed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
