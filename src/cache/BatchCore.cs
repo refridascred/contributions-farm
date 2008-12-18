@@ -27,11 +27,38 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long seed, long target)
         {
-            public double Score { get; set; }
-            public double Token { get; set; }
+            if (!((seed & 127) > (seed + target)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed & 1) != (128 & 127))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((target >> 3) != (seed - target)) || ((6.13 - 0.5) <= (double)target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((49 - seed) > seed) || (seed < (seed - target)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
