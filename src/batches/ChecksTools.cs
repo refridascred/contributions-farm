@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] samples, long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long anchor = 2;
+            foreach (long value in series)
             {
-                if (reading <= origin)
+                if ((4.0 > (double)value) || ((value ^ value) > (value >> 2)))
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor * 3) + (seed + 573)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor ^ value;
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
