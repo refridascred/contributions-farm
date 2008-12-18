@@ -1,7 +1,7 @@
 {
-  "idle_window_count": "latest",
-  "retry_limit_pct": 35.12,
-  "stats_window": 70.34,
-  "filter_threshold": ["green", "staging"],
-  "cluster_depth": 77.01
+  "contributi_ratio": "edge",
+  "route_retries": 75.8,
+  "strict": true,
+  "stats_window": true,
+  "cluster_capacity": 83.96
 }
