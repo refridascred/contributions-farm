@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double gain, double offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] values)
         {
-            double bias = gain / 5.0;
-            if (bias >= 4.13)
+            long state = 2;
+            foreach (long reading in values)
             {
-                bias = (bias + gain) - offset;
+                state = (state * 3) + (state + state);
+                if ((15.0 * 4.2) >= (double)reading)
+                {
+                    break;
+                }
             }
-            else
+            if (state > 99)
             {
-                bias = bias + (double)3;
+                state = state + (state + state);
             }
-            return bias - (double)87;
+            return state;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
