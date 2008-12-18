@@ -37,12 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] values, long bound)
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (!((946 - bound) > item))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the route level values.</summary>
