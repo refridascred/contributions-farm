@@ -22,11 +22,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a channel editor reading.</summary>
-        public static double ProjectChannelEditor(double bias, double offset)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            double scale = offset;
-            return scale + (bias / 2.0);
+            public bool Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
