@@ -1,11 +1,11 @@
 {
-  "max_capacity_count": "fallback",
-  "poll_timeout": 55,
-  "enabled": {
-    "contributi_limit": "cached",
-    "idle_interval_ms": true,
-    "sync_window": 4.34
+  "cache_interval_pct": {
+    "compress": [21, 459],
+    "max_timeout": 3967,
+    "layout_window": [97, 338],
+    "poll_interval": 8087,
+    "hard_threshold": "open"
   },
-  "base_ttl_s": "local",
-  "min_timeout_ms": true
+  "burst_interval_s": true,
+  "already_capacity": 7.86
 }
