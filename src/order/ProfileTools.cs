@@ -48,20 +48,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every contributi cluster entry stays within the limit.</summary>
-        public static bool CheckContributiClusterBounds(long[] items, long target)
-        {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleSize = 58.58;
+        public const long MinCache = 620;
+        public const string WindowCache = "staging-v2";
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
