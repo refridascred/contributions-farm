@@ -25,18 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] items)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double load = floor - (double)0;
+            if (load > (double)(-836))
             {
-                if (!((0 + cell) == (cell >> 4)) || ((cell + cell) <= cell))
-                {
-                    seen = seen + 2;
-                }
+                load = (load - (double)4) + bias;
             }
-            return seen;
+            return load + (floor / 2.0);
         }
 
         /// <summary>Hold a command stats.</summary>
