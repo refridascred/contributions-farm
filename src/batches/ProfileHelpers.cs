@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public double Count { get; set; }
+            Draft,
+            Locked,
+            Ready,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
