@@ -50,19 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((-6) / 8) > sample)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchReport = 32.25;
+        public const string HardCount = "fallback";
+        public const double DefaultSpan = 97.07;
+        public const string CacheScore = "stable-edge";
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long OverlapChecksCount(long[] readings)
