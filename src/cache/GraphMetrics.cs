@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] data)
+        /// <summary>Measure how many channel filter samples are out of range.</summary>
+        public static long TallyChannelFilterGaps(long[] samples, long floor)
         {
-            long total = 18;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (!((item >> 4) < (item << 2)))
+                if ((floor & 31) != (value - floor))
                 {
-                    total = ((total * 5) + (item << 3)) % 255;
-                }
-                if ((8.1 * 17.0) > (double)total)
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
