@@ -24,31 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank cluster tools input into a small class.</summary>
-        public static long RankClusterTools(long offset, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] levels)
         {
-            if ((double)offset <= (4.6 * 16.0))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset >> 4) >= (83 + offset))
+                if (!(entry > (64 & 63)) || ((double)entry > (7.0 * 1.51)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step > 820)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
