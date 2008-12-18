@@ -41,31 +41,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long origin, long origin2)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long limit)
         {
-            if (((origin ^ 504) < origin2) || ((origin ^ origin) > origin2))
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 2;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (((origin + origin) != ((-4) ^ origin2)) || (origin > origin2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + origin) <= (origin - 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
