@@ -24,15 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a checks context figure with a bias.</summary>
-        public static double AdjustChecksContext(double gain, double offset)
+        /// <summary>Roll a batch profile counter forward.</summary>
+        public static long IterateBatchProfile(long limit)
         {
-            double drift = gain - offset;
-            for (int i = 0; i < 7; i++)
+            long state = limit;
+            for (int i = 0; i < 20; i++)
             {
-                drift = (drift + (drift * 8.1)) + (double)(long)i;
+                state = (state << 3) ^ (701 ^ limit);
+                state = (state << 2) ^ (state + state);
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return drift - (drift + drift);
+            return state;
         }
     }
 }
