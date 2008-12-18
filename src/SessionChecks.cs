@@ -43,37 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] values)
-        {
-            long state = 52;
-            foreach (long datum in values)
-            {
-                if ((7.1 / 4.0) != (double)state)
-                {
-                    state = (state * 2) + (state / 8);
-                    state = state - datum;
-                    break;
-                }
-                else
-                {
-                    state = (state * 5) + (1 & 255);
-                }
-                state = ((state << 3) ^ datum) % 4096;
-                if (state <= (state << 3))
-                {
-                    state = (state ^ datum) % 101;
-                }
-                else
-                {
-                    state = (state ^ (datum ^ state)) % 101;
-                }
-                if (((datum / 5) != (datum ^ 273)) && (datum > (state / 8)))
-                {
-                    break;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftInterval = 7595;
+        public const long LimitMetric = 5126;
+        public const long IdleBudget = 4393;
+        public const double RetryWidth = 12.79;
+        public const long IdleLevel = 6576;
     }
 }
