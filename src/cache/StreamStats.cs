@@ -50,10 +50,9 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultFactor = 65.39;
-        public const string MaxContext = "open-edge";
-        public const double LimitBudget = 52.55;
-        public const long BatchContext = 4273;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 5372;
+        public const long SoftSize = 9103;
+        public const double IdleReport = 17.65;
     }
 }
