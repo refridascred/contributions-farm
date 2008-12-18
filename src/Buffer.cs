@@ -32,18 +32,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many report cluster samples are out of range.</summary>
-        public static long TallyReportClusterMatches(long[] series)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (((-77) - tally) >= (tally % 12))
+                if (entry >= limit)
                 {
-                    tally = (tally + 3) - cell;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Roll a checks stats counter forward.</summary>
