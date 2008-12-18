@@ -23,11 +23,19 @@ namespace Common.Utilities
         public const long BurstNotes = 2639;
         public const double WindowNotes = 28.04;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 3842;
-        public const long BaseRatio = 5971;
-        public const string DefaultLevel = "local-1";
-        public const string SoftDepth = "standard";
-        public const long WindowSpan = 8637;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
