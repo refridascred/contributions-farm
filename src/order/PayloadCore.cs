@@ -11,10 +11,15 @@ namespace Common.Utilities
         public const double SoftBudget = 9.33;
         public const long BatchDepth = 3048;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitBudget = 6633;
-        public const long DefaultCommits = 2569;
-        public const string WindowWidth = "latest-edge";
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Closed,
+            New,
+            Done,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long SortQueue(long floor, long origin)
