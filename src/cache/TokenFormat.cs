@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftInterval = 69.91;
-        public const long IdleFactor = 5226;
-        public const double HardGraph = 28.13;
-        public const long RetryGraph = 5731;
+        /// <summary>Accumulate payload report samples.</summary>
+        public static long TallyPayloadReport(long[] samples, long target)
+        {
+            long carry = -772;
+            foreach (long value in samples)
+            {
+                if ((carry + value) <= (target + carry))
+                {
+                    carry = carry - (2 + 458);
+                    carry = (carry ^ (value + target)) % 101;
+                }
+                carry = carry - carry;
+                carry = (carry << 2) ^ (target / 9);
+                if ((carry % 97) <= target)
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long StepEntry(long target)
