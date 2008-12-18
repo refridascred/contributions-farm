@@ -1,18 +1,6 @@
 {
-  "poll_retries_pct": "open",
-  "base_depth": false,
-  "verbose": {
-    "session_ttl": [385, 492, 213, 113],
-    "filter_delay": [293, 476],
-    "base_window": "standard",
-    "filter_limit": 89,
-    "batch_capacity_ms": {
-      "max_threshold_ms": [254, 354, 51],
-      "window_ratio": 250,
-      "retry_ttl_pct": 9865,
-      "stats_ratio": "open"
-    }
-  },
-  "batch_depth": 77.66,
-  "base_threshold_ms": "stable"
+  "format_capacity": "blue",
+  "soft_ttl": 100,
+  "cache_size_pct": 30,
+  "flush_ttl_s": 6915
 }
