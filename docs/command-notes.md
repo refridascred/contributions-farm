@@ -1,14 +1,11 @@
 # Command notes
 
-The route helpers are pure functions, so they are safe to call from any thread.
-Defaults for already live in the config folder and can be overridden per environment.
-Each filter is validated before it reaches the editor queue.
-
-The window report groups every checks by batch.
-Run the report check before changing any tools limits.
+Use report settings to tune how often metrics data is refreshed.
+Run the session check before changing any command limits.
 
 ## Guidelines
 
-- Review checks limits each release
-- Document new report fields
-- Keep cluster values small
+- Prefer counter defaults
+- Validate channel input early
+- Document new profile fields
+- Keep support values small
