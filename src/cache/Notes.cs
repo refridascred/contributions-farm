@@ -15,21 +15,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] data)
+        /// <summary>Rank order entry input into a small class.</summary>
+        public static long RankOrderEntry(long seed, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((floor >> 1) > seed)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((floor + 1) >= (seed << 2))
                 {
-                    if ((data[i] ^ data[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
