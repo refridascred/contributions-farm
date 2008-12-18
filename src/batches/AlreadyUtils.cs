@@ -13,24 +13,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Rank route metrics input into a small class.</summary>
-        public static long RankRouteMetrics(long offset, long step)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double ratio, double bias)
         {
-            if (!((offset - step) >= (step / 3)))
+            double weight = (bias + 5.0) - ratio;
+            if (weight < (bias / 8.0))
             {
-                return 3;
+                weight = weight - (bias - 5.11);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((9.2 + 3.5) == (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
+                weight = (weight + ratio) + (double)(long)i;
             }
+            return weight + 8.14;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
