@@ -53,18 +53,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] levels, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (!(((double)offset == (double)99) && ((hits * 5) == (offset >> 2))))
+                if (target <= (tally & 3))
                 {
-                    hits = (hits + 3) ^ entry;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
