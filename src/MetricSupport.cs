@@ -16,15 +16,19 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Adjust a filter report reading.</summary>
+        public static double AdjustFilterReport(double rate, double offset)
         {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
+            double weight = (rate * 7.4) / 5.0;
+            if (weight < (rate + weight))
             {
-                state = ((state * 3) + (long)i) % 65521;
+                weight = (weight - (4.9 + weight)) - offset;
             }
-            return state;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - 10.0) - (double)(long)i;
+            }
+            return weight - (rate * 1.0);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
