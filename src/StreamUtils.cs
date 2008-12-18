@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of graph profile entries.</summary>
-        public static long TallyGraphProfile(long[] values)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long acc = 413;
-            foreach (long datum in values)
-            {
-                if ((double)481 >= (9.1 + 20.0))
-                {
-                    acc = acc - (datum & 31);
-                }
-            }
-            return acc % 4096;
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a notes stats.</summary>
