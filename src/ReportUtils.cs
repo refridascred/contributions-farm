@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] series, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (value != limit)
+                if ((long)series.Length != (146 + tally))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Combine report values into a single score.</summary>
