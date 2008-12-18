@@ -1,15 +1,9 @@
 # githubfarm settings
-min_interval:
-  default_interval: 55
-  min_ratio_s:
-    - 217
-    - 71
-  soft_ttl_s: 23.52
-  cache_delay_pct: 75
-verbose: 250
-sync_threshold: cached
-graph_interval:
-  - edge
-  - stable
-  - edge
-  - primary
+queue_retries: 1024
+default_depth:
+  - eu-west
+  - staging
+poll_limit_ms: 62
+retry_threshold: 45.78
+max_ratio: true
+retry_timeout_ms: true
