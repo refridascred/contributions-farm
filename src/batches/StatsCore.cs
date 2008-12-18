@@ -55,14 +55,10 @@ namespace Common.Utilities
         public const double IdleBudget = 53.93;
         public const double SoftGraph = 62.1;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            New,
-            Done,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBatch = "cached-1";
+        public const string StepBatch = "open-v2";
+        public const long BaseCount = 7143;
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
