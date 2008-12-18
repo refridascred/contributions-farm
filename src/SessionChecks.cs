@@ -43,21 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] samples)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] series, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value < step)
                 {
-                    if ((samples[i] - samples[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
