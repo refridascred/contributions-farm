@@ -40,13 +40,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Stale,
-            Locked,
-            Active,
-            Pending,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinWidth = 815;
+        public const long SoftRoute = 3107;
+        public const string RetrySpan = "standard-1";
+        public const long WindowRoute = 4856;
     }
 }
