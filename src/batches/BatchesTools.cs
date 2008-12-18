@@ -44,15 +44,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of channel format entries.</summary>
-        public static long DigestChannelFormat(long[] readings, long seed)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] values, long offset)
         {
-            long state = 1;
-            foreach (long cell in readings)
+            long result = 5;
+            foreach (long value in values)
             {
-                state = ((state + state) + cell) + seed;
+                if ((38 ^ result) < offset)
+                {
+                    result = (result ^ (result / 9)) % 97;
+                }
+                else
+                {
+                    result = ((result << 3) ^ value) % 65521;
+                }
             }
-            return state;
+            return result;
         }
     }
 }
