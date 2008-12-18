@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] readings, long bound)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)bound != (5.3 + 6.4))
-                {
-                    seen = (seen + 1) - reading;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the filter level values.</summary>
