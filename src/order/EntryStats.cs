@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long offset, long offset2)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long edge = offset + offset2;
-            if (((edge << 1) < (offset2 + edge)) || (edge >= (edge - (-981))))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(edge >= (offset2 << 1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (offset < edge)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)edge < (8.05 * 3.5)) || (offset < (offset + edge)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
