@@ -34,16 +34,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double weight, double offset)
-        {
-            double scale = weight;
-            if (scale > 7.24)
-            {
-                scale = scale + weight;
-            }
-            return scale - (weight + offset);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitTimeout = 55.77;
+        public const string SoftScore = "standard-edge";
+        public const double BaseMetric = 84.17;
 
         /// <summary>Roll a route counter forward.</summary>
         public static long DeriveRoute(long limit)
