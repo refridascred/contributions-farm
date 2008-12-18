@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftMetric = 65.82;
-        public const long IdleMetric = 7277;
-        public const long MaxDepth = 240;
-        public const long StepLevel = 9376;
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the tools entry entries that pass the check.</summary>
         public static long AuditToolsEntryMatches(long[] items, long origin)
