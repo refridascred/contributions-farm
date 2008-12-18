@@ -50,21 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up commits counter samples.</summary>
-        public static long PairCommitsCounterCount(long[] samples)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading != target)
                 {
-                    if ((samples[i] ^ samples[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
