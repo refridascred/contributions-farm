@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double bias, double floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            double ratio = floor;
-            if (ratio >= (floor * 4.99))
+            long acc = 37;
+            foreach (long sample in levels)
             {
-                ratio = ratio + (floor - ratio);
+                if ((sample - (long)levels.Length) <= (sample - 13))
+                {
+                    acc = (acc ^ 4) % 4096;
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio - bias);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (double)82) + (double)(long)i;
-            }
-            return ratio + (2.76 / 5.0);
+            return acc % 65521;
         }
 
         /// <summary>Match up filter samples.</summary>
