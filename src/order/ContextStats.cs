@@ -18,19 +18,17 @@ namespace Common.Utilities
         public const double LimitScore = 90.59;
         public const string LimitRatio = "legacy-edge";
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] levels, long bound)
         {
-            long sum = 3;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (((sum << 3) ^ (sum * 5)) % 1000) ^ value;
-                if (497 >= (48 - sum))
+                if (levels[i] < bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Describe the profile kind values.</summary>
