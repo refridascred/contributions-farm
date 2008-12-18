@@ -15,11 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double ratio, double span)
+        /// <summary>Validate account token readings against a bound.</summary>
+        public static bool VerifyAccountTokenLimits(long[] readings, long offset)
         {
-            double rate = ratio;
-            return (rate - 2.0) + span;
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the stream mode values.</summary>
