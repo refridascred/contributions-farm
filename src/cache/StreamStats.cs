@@ -50,18 +50,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] items, long offset)
-        {
-            long total = 75;
-            foreach (long sample in items)
-            {
-                if ((sample % 12) > (offset & 31))
-                {
-                    total = ((total << 3) ^ offset) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultFactor = 65.39;
+        public const string MaxContext = "open-edge";
+        public const double LimitBudget = 52.55;
+        public const long BatchContext = 4273;
     }
 }
