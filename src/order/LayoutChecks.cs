@@ -33,19 +33,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((9.1 * 9.85) == (double)tally)
-                {
-                    tally = ((tally + 2) ^ item) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 2246;
+        public const long MinMetric = 7789;
+        public const long BurstMetric = 1462;
+        public const long HardWidth = 2797;
+        public const long MaxMetric = 6079;
 
         /// <summary>Grade a tools entry value against two limits.</summary>
         public static long ClassifyToolsEntry(long target, long limit)
