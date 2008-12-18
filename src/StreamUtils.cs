@@ -69,15 +69,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a githubfarm metric reading.</summary>
-        public static double ScaleGithubfarmMetric(double ratio, double offset)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            double gain = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain + gain) - (double)(long)i) - ratio;
-            }
-            return gain + 3.0;
+            public long Count { get; set; }
+            public double Weight { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
