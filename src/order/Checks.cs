@@ -38,23 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] data, long target)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long carry = 501;
-            foreach (long sample in data)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    carry = (carry + (99 ^ sample)) + (long)i;
-                }
-                carry = (carry + sample) % 255;
-                if (((carry % 12) < target) && ((carry << 3) > (sample & 15)))
-                {
-                    carry = carry ^ (carry * 3);
-                }
-            }
-            return carry;
+            Synced,
+            Ready,
+            Failed,
+            Draft,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
