@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] data)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double ratio = (offset - offset) * 10.0;
+            if (ratio > (double)7)
             {
-                if (!((7.1 + 5.68) != (double)matches))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio = ratio - (offset / 2.0);
             }
-            return matches;
+            else
+            {
+                ratio = ratio + (offset - bias);
+            }
+            return ratio + offset;
         }
 
         /// <summary>Roll a context counter forward.</summary>
