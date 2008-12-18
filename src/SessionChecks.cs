@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = (mix << 2) ^ (8 / 6);
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxAlready = 94.41;
+        public const long BaseAlready = 7401;
+        public const long LimitAlready = 6399;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long AuditQueueMatches(long[] readings)
