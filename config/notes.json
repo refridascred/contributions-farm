@@ -1,8 +1,8 @@
 {
-  "soft_limit": false,
-  "min_limit_s": 7,
-  "retry_ratio": "legacy",
-  "min_timeout_count": ["latest", "edge", "latest"],
-  "retry_ttl_s": 13.75,
-  "enabled": [450, 202]
+  "readonly": "eu-west",
+  "enabled": 51.08,
+  "profile_delay": true,
+  "filter_limit": "primary",
+  "burst_delay": false,
+  "persist": "legacy"
 }
