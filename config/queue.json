@@ -1,5 +1,8 @@
 {
-  "cache_retries_s": 60,
-  "stats_interval": "cached",
-  "poll_threshold_count": true
+  "hard_threshold": 3,
+  "strict": "green",
+  "metric_depth": true,
+  "order_ttl": ["legacy", "legacy", "eu-west"],
+  "cache_threshold": 2715,
+  "batch_retries_count": "open"
 }
