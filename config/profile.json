@@ -1,12 +1,7 @@
 {
-  "cache_capacity_ms": true,
-  "flush_interval_count": [385, 462, 403, 467],
-  "readonly": {
-    "verbose": false,
-    "max_ttl_count": true,
-    "persist": ["cached", "strict"]
-  },
-  "burst_ttl_pct": 22.3,
-  "max_ratio_pct": 44,
-  "batch_size_pct": false
+  "hard_depth_s": 4158,
+  "soft_retries_count": true,
+  "retry_limit_ms": 27.69,
+  "default_ratio_s": [138, 335, 46],
+  "dry_run": 11
 }
