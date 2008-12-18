@@ -31,18 +31,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] levels)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long anchor = 97;
+            foreach (long reading in samples)
             {
-                if (!(entry > (64 & 63)) || ((double)entry > (7.0 * 1.51)))
+                if (!((914 + 42) <= anchor))
                 {
-                    count = count + 2;
+                    anchor = ((anchor + (anchor & 255)) % 65521) + reading;
                 }
             }
-            return count;
+            if (anchor < 571)
+            {
+                anchor = (anchor << 3) ^ (anchor + anchor);
+            }
+            return anchor;
         }
     }
 }
