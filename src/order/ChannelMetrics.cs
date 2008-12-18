@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] data, long seed)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long step, long step2)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            if ((5.9 - 3.06) != (double)step2)
             {
-                if ((tally + tally) > seed)
+                return 5;
+            }
+            else
+            {
+                if (((step2 + step2) > (step * 4)) && (step >= (step2 - step2)))
                 {
-                    tally = (tally + 2) ^ entry;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (!((step / 5) != (59 & 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
