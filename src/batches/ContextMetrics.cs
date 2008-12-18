@@ -25,19 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double bias, double offset)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            double ratio = (offset - offset) * 10.0;
-            if (ratio > (double)7)
-            {
-                ratio = ratio - (offset / 2.0);
-            }
-            else
-            {
-                ratio = ratio + (offset - bias);
-            }
-            return ratio + offset;
+            Queued,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a editor snapshot.</summary>
