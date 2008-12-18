@@ -1,6 +1,6 @@
-id,count,ratio,owner
-1,551,819,41.13
-2,733,latest,296
-3,684,73.39,468
-4,321,53.36,staging
-5,latest,standard,blue
+id,rank,region,label,owner
+1,24.86,13.45,12.36,26.76
+2,5.15,blue,99,1.61
+3,edge,80.69,eu-west,cached
+4,60.36,65,legacy,staging
+5,494,open,69.05,fallback
