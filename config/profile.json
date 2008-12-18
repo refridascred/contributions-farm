@@ -1,14 +1,8 @@
 {
-  "persist": {
-    "verbose": "eu-west",
-    "queue_size": 34,
-    "compress": [493, 164, 492],
-    "soft_depth": 5747,
-    "cache_limit_ms": 26.87,
-    "poll_capacity_pct": "green"
-  },
-  "min_size": 5.22,
-  "retry_ttl_s": 74,
-  "idle_depth_pct": 20,
-  "batch_delay_count": [208, 170, 235, 273]
+  "max_depth": false,
+  "min_interval": 92,
+  "warm_delay": 12,
+  "cache_size_count": "blue",
+  "report_window": [404, 426, 337],
+  "enabled": 41.18
 }
