@@ -1,12 +1,8 @@
 {
-  "support_threshold": 60,
-  "hard_limit": true,
-  "idle_capacity": {
-    "command_delay": [485, 344],
-    "retry_threshold": 91.89,
-    "cluster_delay": "cached",
-    "profile_size": "open"
-  },
-  "route_size": "open",
-  "warm_depth": 4945
+  "dry_run": "local",
+  "burst_size_ms": "stable",
+  "base_depth": ["blue", "fallback", "latest", "cached"],
+  "retry_ttl_ms": 46.74,
+  "strict": ["local", "stable", "staging", "open"],
+  "contributi_delay": true
 }
