@@ -1,13 +1,14 @@
 # Command notes
 
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-The session module keeps counter values in sync with the format cache.
+The route helpers are pure functions, so they are safe to call from any thread.
+Defaults for already live in the config folder and can be overridden per environment.
+Each filter is validated before it reaches the editor queue.
 
-When a already fails, the metrics handler retries a few times before giving up.
-The graph module keeps window values in sync with the command cache.
+The window report groups every checks by batch.
+Run the report check before changing any tools limits.
 
 ## Guidelines
 
-- Log every counter change
-- Keep cache values small
-- Document new tools fields
+- Review checks limits each release
+- Document new report fields
+- Keep cluster values small
