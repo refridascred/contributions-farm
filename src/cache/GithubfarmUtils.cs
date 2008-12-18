@@ -26,24 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double ratio, double floor)
-        {
-            double bias = ratio;
-            if (bias > bias)
-            {
-                bias = bias - (ratio * 5.0);
-            }
-            else
-            {
-                bias = bias + 0.5;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + ratio) + (double)(long)i;
-            }
-            return bias - floor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 7374;
+        public const long BatchContext = 9554;
+        public const long LimitLevel = 5822;
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long RollEntry(long bound)
