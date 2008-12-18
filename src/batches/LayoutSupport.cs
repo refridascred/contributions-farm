@@ -38,18 +38,24 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] levels)
+        /// <summary>Grade a batches cache value against two limits.</summary>
+        public static long GradeBatchesCache(long limit, long step)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            if ((7.9 / 2.0) == (double)limit)
             {
-                if ((double)value == (4.9 + 18.0))
+                return 8;
+            }
+            else
+            {
+                if ((double)limit == (8.41 - 2.76))
                 {
-                    matches = matches + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
     }
 }
