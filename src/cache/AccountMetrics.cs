@@ -60,16 +60,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long step)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long step, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 11; i++)
+            long offset = step - floor;
+            if ((offset * 5) <= 64)
             {
-                score = (score + (long)i) % 97;
-                score = ((score * 5) + (long)i) % 65521;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((5 + 29) <= step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
