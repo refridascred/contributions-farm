@@ -16,23 +16,11 @@ namespace Common.Utilities
             return drift - (double)4;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item - count) > (count * 2))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 6028;
+        public const string StepEntry = "stable-1";
+        public const double MinEntry = 7.98;
+        public const long BaseEntry = 5061;
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long BucketMetrics(long bound, long limit)
