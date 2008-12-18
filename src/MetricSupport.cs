@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardCount = 637;
-        public const long MinRatio = 8191;
-        public const string LimitMetric = "strict-1";
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] series, long seed)
+        {
+            long mark = 76;
+            foreach (long sample in series)
+            {
+                if (!((sample / 9) <= (sample - sample)))
+                {
+                    mark = (mark - (mark + mark)) - seed;
+                }
+                else
+                {
+                    mark = (mark - (mark + (-526))) % 4096;
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double CacheScore = 50.54;
