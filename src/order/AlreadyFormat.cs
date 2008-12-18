@@ -37,22 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] values)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double bias, double span)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double gain = (double)(1 + 468);
+            if (gain > gain)
             {
-                if ((double)sample <= 2.9)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = (gain - (double)(-985)) + bias;
             }
-            return matches;
+            return gain - (span / 9.0);
         }
 
         /// <summary>Hold a stream stats.</summary>
