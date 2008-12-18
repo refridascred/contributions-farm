@@ -23,22 +23,13 @@ namespace Common.Utilities
         public const long BatchSpan = 8142;
         public const long IdleFarm = 4308;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] series)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry <= 13.0)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
