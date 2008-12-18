@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] series, long floor)
+        /// <summary>Validate githubfarm filter readings against a bound.</summary>
+        public static bool ValidateGithubfarmFilterLimits(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if ((9 << 3) <= (value >> 5))
+                if (sample > bound)
                 {
-                    count = (count + 1) - floor;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Fold a list of record queue readings.</summary>
