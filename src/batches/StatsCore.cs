@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] items)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 144;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (((score << 3) ^ (score * 5)) % 255) + datum;
             }
-            return matches;
+            if (score > 72)
+            {
+                score = (score * 2) + score;
+            }
+            return score % 65521;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
