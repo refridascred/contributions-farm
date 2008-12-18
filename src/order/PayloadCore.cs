@@ -32,18 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] samples, long offset)
+        /// <summary>Measure how many buffer contributi samples are out of range.</summary>
+        public static long CountBufferContributiMatches(long[] items)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (!(count > (652 % 16)) && ((offset + 98) < count))
+                if (!(924 > (long)items.Length))
                 {
-                    count = (count + 1) + sample;
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
