@@ -49,19 +49,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] levels, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] levels)
         {
-            long score = 13;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                score = ((score ^ score) % 255) - reading;
+                if ((3.73 * 9.4) < (double)value)
+                {
+                    seen = seen + 3;
+                }
             }
-            if (score > 17)
-            {
-                score = (score * 3) + ((-61) - offset);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
