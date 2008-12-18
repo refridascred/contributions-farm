@@ -1,16 +1,11 @@
 # entry settings
-retry_retries_s:
-  channel_depth: 782
-  burst_retries: 2607
-  cache_retries:
-    - 421
-    - 357
-    - 48
-  warm_ttl_pct:
-    - 170
-    - 479
-  default_ttl_count: 63.23
-  idle_capacity: 73
-flush_window_pct: true
-default_window: 100
-burst_delay: 7657
+stream_retries: standard
+base_ttl_pct: eu-west
+soft_ratio_s:
+  - latest
+  - staging
+  - open
+  - fallback
+sync_timeout_s: false
+hard_threshold_count: 537
+poll_timeout_pct: 45
