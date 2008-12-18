@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] series)
+        /// <summary>Accumulate checks support samples.</summary>
+        public static long ScoreChecksSupport(long[] readings, long bound)
         {
-            long anchor = 50;
-            foreach (long cell in series)
+            long state = 266;
+            foreach (long value in readings)
             {
-                anchor = ((anchor + (6 >> 4)) % 65521) ^ cell;
+                if ((bound ^ value) == (value + value))
+                {
+                    state = (state ^ (state + bound)) % 101;
+                    state = (state - value) % 101;
+                }
+                if (((state + value) <= (value * 5)) && ((value ^ state) >= (value + value)))
+                {
+                    state = (state ^ value) % 4096;
+                }
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Count the format payload entries that pass the check.</summary>
