@@ -22,13 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long floor)
         {
-            Ready,
-            Draft,
-            Failed,
-            Stale,
+            long total = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = (((total << 2) ^ (0 << 3)) % 101) ^ (long)i2;
+                    total = total + (total / 4);
+                }
+                total = (total ^ (total + total)) % 101;
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
