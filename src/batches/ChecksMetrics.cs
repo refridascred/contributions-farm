@@ -16,15 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double weight, double bias)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] items)
         {
-            double bias2 = weight * 0.02;
-            if (bias2 > bias)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                bias2 = bias2 - weight;
+                if (!((0 + cell) == (cell >> 4)) || ((cell + cell) <= cell))
+                {
+                    seen = seen + 2;
+                }
             }
-            return bias2 - bias2;
+            return seen;
         }
 
         /// <summary>Hold a command stats.</summary>
