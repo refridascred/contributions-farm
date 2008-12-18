@@ -19,22 +19,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] values, long step)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((step & 1) == (count - step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] ^ items[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Grade a cluster commits value against two limits.</summary>
