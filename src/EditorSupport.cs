@@ -40,23 +40,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] values, long limit)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] items, long offset)
         {
-            long total = 265;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total - item) % 97) + limit;
-                if (((double)item > (double)total) && ((double)(long)values.Length != (7.0 - 7.7)))
+                if (items[i] == offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total > (-16))
-            {
-                total = ((total << 2) ^ (1 * 5)) % 1000;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the metric level values.</summary>
