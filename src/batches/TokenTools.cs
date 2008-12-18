@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Measure how many layout support samples are out of range.</summary>
+        public static long CountLayoutSupportOutliers(long[] levels)
         {
-            Paused,
-            Active,
-            Locked,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((18.0 + 7.57) == (double)entry)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
