@@ -1,9 +1,12 @@
 {
-  "batch_window_count": {
-    "burst_limit_pct": [66, 248, 9, 394],
-    "flush_size": 5592,
-    "cache_limit_pct": false
+  "poll_capacity": false,
+  "enabled": ["legacy", "standard", "primary", "edge"],
+  "batch_depth_s": false,
+  "burst_limit_ms": {
+    "hard_retries": false,
+    "warm_interval_count": 60,
+    "base_threshold_pct": 30
   },
-  "sync_interval": 30,
-  "flush_interval_s": false
+  "sync_retries_s": true,
+  "strict": "stable"
 }
