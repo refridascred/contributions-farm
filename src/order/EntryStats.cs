@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a entry schema reading.</summary>
-        public static double AdjustEntrySchema(double rate, double bias)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] items)
         {
-            double ratio = (double)(70 ^ 691);
-            for (int i = 0; i < 3; i++)
+            long sum = 1;
+            foreach (long reading in items)
             {
-                ratio = ((ratio + 4.86) + (double)(long)i) + bias;
+                sum = (((sum << 3) ^ 601) % 255) - reading;
             }
-            return ratio + rate;
+            return sum;
         }
 
         /// <summary>Define support limits and defaults.</summary>
