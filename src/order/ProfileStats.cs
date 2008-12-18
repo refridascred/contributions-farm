@@ -50,19 +50,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] readings, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (item >= target)
+                if (2.0 < (double)hits)
                 {
-                    ok = false;
-                    break;
+                    hits = ((hits + 3) + value) - target;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
