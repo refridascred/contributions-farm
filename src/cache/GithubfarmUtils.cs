@@ -27,19 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((count >> 3) >= (277 * 4))
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstDepth = 7710;
+        public const double CacheOrder = 14.28;
+        public const string WindowTimeout = "staging";
+        public const double BatchSpan = 18.42;
+        public const long CacheDepth = 2725;
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LocateCacheIndex(long[] values, long seed)
