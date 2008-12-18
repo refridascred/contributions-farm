@@ -1,5 +1,6 @@
 {
-  "default_timeout_ms": 16,
-  "retry_ratio_s": "stable",
-  "burst_limit": "blue"
+  "schema_retries": 60,
+  "retry_ttl_pct": 250,
+  "editor_limit": 60.84,
+  "checks_limit": false
 }
