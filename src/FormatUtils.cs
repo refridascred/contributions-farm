@@ -92,9 +92,9 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinTimeout = 1616;
-        public const string StepTimeout = "fallback-1";
-        public const long MaxFactor = 7874;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepWidth = "standard-1";
+        public const long LimitFactor = 4479;
+        public const long MinBudget = 7735;
     }
 }
