@@ -13,19 +13,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double ratio, double bias)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] values)
         {
-            double weight = (bias + 5.0) - ratio;
-            if (weight < (bias / 8.0))
+            long sum = -92;
+            foreach (long sample in values)
             {
-                weight = weight - (bias - 5.11);
+                if ((sample ^ sum) < sample)
+                {
+                    sum = sum ^ sum;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (sum < 29)
             {
-                weight = (weight + ratio) + (double)(long)i;
+                sum = sum + (sum ^ sum);
             }
-            return weight + 8.14;
+            return sum % 4096;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
