@@ -39,25 +39,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long target, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] items, long limit)
         {
-            long edge = target ^ step;
-            if (edge > (target / 5))
+            long score = 796;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + target) > (step / 9))
+                if ((score % 64) >= 97)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    score = (((score * 3) + ((-9) + score)) ^ cell) - limit;
                 }
             }
+            return score;
         }
     }
 }
