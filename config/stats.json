@@ -1,13 +1,16 @@
 {
-  "readonly": {
-    "sync_interval_pct": 2084,
-    "base_delay_s": 16.81,
-    "warm_window": 51.8,
-    "persist": 60,
-    "schema_ttl": 100,
-    "batch_limit_count": true
+  "max_delay_count": {
+    "strict": false,
+    "retry_capacity_s": {
+      "cache_ratio_ms": "green",
+      "order_size": 5.19,
+      "readonly": "fallback"
+    },
+    "retry_ratio": "primary",
+    "burst_interval_s": "strict"
   },
-  "poll_size": "strict",
-  "account_threshold": "staging",
-  "default_interval_ms": false
+  "readonly": 26.24,
+  "min_interval": false,
+  "session_retries": 6336,
+  "verbose": 7505
 }
