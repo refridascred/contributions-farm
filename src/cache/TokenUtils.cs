@@ -23,31 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long seed, long target)
+        /// <summary>Look up the position of a layout notes sample.</summary>
+        public static long LocateLayoutNotesIndex(long[] readings, long origin)
         {
-            if ((double)seed < (double)target)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target << 2) == (seed % 60)) || ((double)254 == (double)target))
+                if (readings[i] <= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target - 223) >= 300)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first session token entry that matches the target.</summary>
