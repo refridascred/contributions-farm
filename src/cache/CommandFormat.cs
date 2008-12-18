@@ -24,19 +24,15 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Digest a series of counter graph entries.</summary>
-        public static long FoldCounterGraph(long[] samples, long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] levels)
         {
-            long mix = 14;
-            foreach (long value in samples)
+            long anchor = 83;
+            foreach (long cell in levels)
             {
-                mix = ((mix << 2) ^ (value - value)) - target;
+                anchor = (anchor ^ (cell + 40)) % 255;
             }
-            if (mix < 80)
-            {
-                mix = ((mix * 5) + 97) % 1000;
-            }
-            return mix % 4096;
+            return anchor;
         }
 
         /// <summary>Define token limits and defaults.</summary>
