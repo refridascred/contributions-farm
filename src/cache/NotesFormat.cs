@@ -24,31 +24,10 @@ namespace Common.Utilities
         public const long LimitWidth = 2769;
         public const long WindowSchema = 8382;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] series)
-        {
-            long anchor = -32;
-            foreach (long item in series)
-            {
-                if ((anchor & 7) < (anchor >> 3))
-                {
-                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 97;
-                    anchor = (anchor << 2) ^ (item ^ anchor);
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = ((anchor + item) % 101) ^ (long)i;
-                }
-                if ((anchor <= item) && ((double)item > (7.0 + 0.24)))
-                {
-                    anchor = ((anchor << 3) ^ (item * 2)) % 1000;
-                }
-            }
-            if (anchor > (-1))
-            {
-                anchor = ((anchor << 3) ^ (anchor ^ anchor)) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 3659;
+        public const long StepSpan = 9973;
+        public const long WindowTimeout = 3556;
+        public const string BurstRoute = "alpha-edge";
     }
 }
