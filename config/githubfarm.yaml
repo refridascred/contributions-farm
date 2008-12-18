@@ -1,9 +1,5 @@
 # githubfarm settings
-retry_limit_pct: legacy
-schema_threshold: primary
-window_interval:
-  - 392
-  - 50
-  - 181
-contributi_timeout: false
-metrics_threshold: 7.53
+cache_retries: true
+batch_timeout_count: false
+already_ttl: 38.98
+hard_interval: 41
