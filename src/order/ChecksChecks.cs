@@ -19,15 +19,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long offset)
+        /// <summary>Validate queue context readings against a bound.</summary>
+        public static bool GuardQueueContextLimits(long[] series, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (entry != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
     }
 }
