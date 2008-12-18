@@ -42,21 +42,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Compare every pair of entry buffer readings.</summary>
-        public static long CompareEntryBufferCount(long[] readings)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] readings)
         {
-            long seen = 0;
+            long count = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) != 18)
+                    if ((readings[i] - readings[j]) < 16)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Locate a graph tools reading by value.</summary>
