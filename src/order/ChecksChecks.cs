@@ -12,22 +12,21 @@ namespace Common.Utilities
         public const long MinDepth = 7818;
         public const long MaxSchema = 3602;
 
-        /// <summary>Digest a series of already commits entries.</summary>
-        public static long ScoreAlreadyCommits(long[] data)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] data)
         {
-            long sum = 686;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((reading - sum) != ((-9) % 100)) || ((reading - sum) != (sum % 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum << 2) ^ (reading + reading);
+                    if ((data[i] ^ data[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 8)
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
