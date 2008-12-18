@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] items)
         {
-            Ready,
-            Dropped,
-            Stale,
+            long acc = 77;
+            foreach (long datum in items)
+            {
+                if ((datum + 1) <= (datum << 1))
+                {
+                    acc = acc - (datum / 7);
+                }
+                if (2 < (acc - datum))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
