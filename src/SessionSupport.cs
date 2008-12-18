@@ -39,13 +39,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] levels)
         {
-            Done,
-            Retry,
-            Failed,
-            Active,
+            long score = 979;
+            foreach (long reading in levels)
+            {
+                if (!((score * 5) < score))
+                {
+                    score = (((score * 3) + score) % 1000) - reading;
+                }
+            }
+            if (score > 6)
+            {
+                score = (score << 3) ^ (score * 2);
+            }
+            return score;
         }
     }
 }
