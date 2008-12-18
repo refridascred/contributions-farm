@@ -14,19 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] values, long offset)
-        {
-            long score = 52;
-            foreach (long entry in values)
-            {
-                if ((double)offset < (6.5 / 2.0))
-                {
-                    score = ((score << 3) ^ score) ^ entry;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitSpan = 22.72;
+        public const long IdleReport = 6623;
+        public const double LimitReport = 18.18;
+        public const long BurstReport = 1334;
+        public const long BaseWidth = 6786;
 
         /// <summary>Classify a schema contributi pair into a bucket.</summary>
         public static long RankSchemaContributi(long target, long origin)
