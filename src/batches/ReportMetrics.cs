@@ -22,10 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 2456;
-        public const long RetryRatio = 5151;
-        public const long IdleWidth = 7312;
+        /// <summary>Validate token githubfarm readings against a bound.</summary>
+        public static bool GuardTokenGithubfarmBounds(long[] levels, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
