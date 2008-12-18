@@ -37,23 +37,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] items, long seed)
+        /// <summary>Look up the position of a format editor sample.</summary>
+        public static long LocateFormatEditorIndex(long[] samples, long bound)
         {
-            long total = 718;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total ^ (value & 3)) % 1000;
-                if (!(((-900) & 31) > total))
+                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
                 {
-                    total = (total * 4) + (value ^ value);
-                }
-                else
-                {
-                    total = (total * 4) + (seed + (long)items.Length);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the route level values.</summary>
