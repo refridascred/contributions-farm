@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] data, long bound)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Token { get; set; }
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
