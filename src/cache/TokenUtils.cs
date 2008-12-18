@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] data)
         {
-            public double Rank { get; set; }
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((tally * 3) > 2) && ((double)cell != (1.0 * 8.8)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
