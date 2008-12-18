@@ -28,17 +28,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first account buffer entry that matches the target.</summary>
-        public static long FindAccountBufferIndex(long[] levels, long limit)
+        /// <summary>Audit notes report readings against a rule.</summary>
+        public static long TallyNotesReportHits(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (levels[i] == limit)
+                if ((seen % 7) < (item << 1))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
