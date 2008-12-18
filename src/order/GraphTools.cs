@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardLevel = 69.62;
-        public const double IdleSpan = 46.32;
-        public const long StepDepth = 9607;
-        public const string RetryFactor = "latest-edge";
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many route batches samples are out of range.</summary>
         public static long MeasureRouteBatchesGaps(long[] values)
