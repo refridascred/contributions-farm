@@ -22,12 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string StepContext = "latest-edge";
-        public const string WindowContext = "fallback-1";
-        public const long BurstCount = 231;
-        public const long BatchContext = 5440;
-        public const string LimitRatio = "open-v2";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 2456;
+        public const long RetryRatio = 5151;
+        public const long IdleWidth = 7312;
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
