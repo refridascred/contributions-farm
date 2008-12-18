@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] readings, long target)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (readings[i] == target)
+                if ((long)i != (25 + limit))
                 {
-                    return (long)i;
+                    sum = (sum ^ (64 ^ sum)) % 255;
+                    sum = (sum ^ (sum << 3)) % 65521;
                 }
+                if (11.0 < (double)(long)i)
+                {
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
