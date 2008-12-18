@@ -1,4 +1,4 @@
 # entry settings
-editor_ttl: 7807
-metrics_timeout: 100
-layout_retries: edge
+max_limit_s: 62.08
+warm_retries: 1008
+max_capacity_s: 3660
