@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] levels)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long floor, long bound)
         {
-            long anchor = 55;
-            foreach (long datum in levels)
+            if ((bound + bound) != (floor / 2))
             {
-                if (!((double)anchor != (0.4 / 4.0)))
+                return 0;
+            }
+            else
+            {
+                if (((floor + floor) < (bound & 63)) && ((129 % 10) >= (floor + bound)))
                 {
-                    anchor = ((anchor << 2) ^ datum) % 1000;
+                    return 4;
+                }
+                else
+                {
+                    if (((floor + 33) > (floor << 1)) && ((bound * 5) > (floor << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
