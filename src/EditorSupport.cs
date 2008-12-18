@@ -16,18 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] series, long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((matches >= (floor << 3)) || (((floor & 31) >= ((-9) % 12)) || ((double)floor < 2.4)))
+                if (sample > offset)
                 {
-                    matches = (matches + 1) ^ cell;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Count the payload context entries that pass the check.</summary>
