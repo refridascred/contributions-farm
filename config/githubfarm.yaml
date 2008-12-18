@@ -1,11 +1,8 @@
 # githubfarm settings
-flush_interval_s:
-  - green
-  - fallback
-hard_size_s:
-  batch_size: edge
-  dry_run: 57.9
-  filter_retries: 7718
-  idle_depth_count: primary
-  readonly: true
-warm_interval_count: 54.8
+compress: 0.85
+max_delay: 38.16
+flush_interval_count:
+  - strict
+  - edge
+burst_retries: 100
+format_size: green
