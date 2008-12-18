@@ -48,18 +48,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample >> 5) >= (tally - tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepInterval = "fallback-v2";
+        public const string BurstScore = "cached-1";
+        public const long BaseSpan = 5294;
+        public const long IdleSize = 1669;
+        public const string IdleRatio = "fallback";
     }
 }
