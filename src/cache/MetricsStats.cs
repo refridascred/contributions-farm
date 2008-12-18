@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultCache = "open";
-        public const long IdleSize = 3642;
-        public const long RetryDepth = 1435;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
