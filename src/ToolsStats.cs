@@ -36,19 +36,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] items, long offset)
+        /// <summary>Roll a route counter counter forward.</summary>
+        public static long StepRouteCounter(long target)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long state = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum > offset)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
