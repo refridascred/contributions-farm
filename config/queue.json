@@ -1,8 +1,20 @@
 {
-  "base_ratio_s": 12,
-  "verbose": ["primary", "open", "stable", "fallback"],
-  "retry_limit_s": ["fallback", "edge"],
-  "cluster_ttl": [294, 187],
-  "schema_limit": "blue",
-  "poll_limit_pct": 42.27
+  "compress": 28,
+  "min_interval": true,
+  "readonly": "fallback",
+  "burst_threshold_ms": {
+    "batch_depth": false,
+    "burst_depth": [37, 192, 221, 252],
+    "persist": "staging",
+    "base_window_ms": 11.59,
+    "dry_run": 1684
+  },
+  "persist": {
+    "poll_capacity_pct": ["primary", "stable", "open", "edge"],
+    "strict": ["latest", "latest", "latest", "fallback"],
+    "burst_timeout": false,
+    "retry_threshold_s": true,
+    "soft_interval_pct": "standard",
+    "window_ttl": "fallback"
+  }
 }
