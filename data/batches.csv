@@ -1,6 +1,8 @@
-id,active,weight,owner,region
-1,246,96.98,25.79,462
-2,53.24,19.77,269,80.94
-3,latest,859,open,616
-4,729,616,308,67.91
-5,85.54,stable,staging,legacy
+id,level,label,active
+1,393,primary,56.46
+2,401,latest,840
+3,standard,29.01,137
+4,86.69,69.83,primary
+5,6.1,763,767
+6,69.88,edge,stable
+7,725,191,973
