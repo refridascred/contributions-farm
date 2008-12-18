@@ -47,21 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double gain, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = gain + (2.4 / 4.0);
+            if (mean > (double)4)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean + gain) - bias;
             }
-            return hits;
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean - (gain / 5.0);
         }
 
         /// <summary>Hold a githubfarm header.</summary>
