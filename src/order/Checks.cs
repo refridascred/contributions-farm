@@ -57,18 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account support readings against a rule.</summary>
-        public static long CountAccountSupportOutliers(long[] values, long limit)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((((value ^ matches) < value) && ((limit * 3) > (8 - limit))) && ((double)limit != (6.4 / 7.0)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Done,
+            Pending,
+            Queued,
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
