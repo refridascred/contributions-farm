@@ -29,18 +29,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] values, long floor)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((double)floor <= (1.74 + 7.27))
-                {
-                    matches = (matches + 1) - cell;
-                }
-            }
-            return matches;
+            Stale,
+            Failed,
+            Active,
+            Pending,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
