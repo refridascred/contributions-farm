@@ -34,22 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxRatio = 5767;
+        public const long RetryAlready = 6479;
+        public const double DefaultDepth = 65.69;
+        public const double HardAlready = 90.19;
 
         /// <summary>Look up the position of a batches route sample.</summary>
         public static long FindBatchesRouteIndex(long[] items, long step)
