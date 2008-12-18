@@ -32,11 +32,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchRatio = "legacy-v2";
-        public const long BatchWindow = 2033;
-        public const long DefaultCount = 9105;
-        public const string WindowLevel = "staging";
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = ((acc - seed) % 255) - (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long SortContext(long offset, long limit)
