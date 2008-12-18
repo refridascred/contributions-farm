@@ -51,31 +51,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long target, long origin)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            if ((933 % 24) > target)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)origin >= (11.0 * 1.9)) || ((2.5 / 5.0) <= (double)target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target - origin) >= (origin & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Active,
+            Paused,
+            Done,
+            Failed,
+            Queued,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
