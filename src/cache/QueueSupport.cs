@@ -27,12 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long bound)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] <= bound) && ((values[i] % 5) == 0))
+                if ((series[i] >= step) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
