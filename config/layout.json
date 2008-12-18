@@ -1,15 +1,7 @@
 {
-  "soft_delay_pct": 11,
-  "max_ttl_count": {
-    "strict": {
-      "poll_retries_ms": [374, 83, 181],
-      "command_interval": 30,
-      "max_threshold_pct": 70.29
-    },
-    "retry_retries": ["cached", "edge", "fallback"],
-    "support_ratio": 34.4,
-    "verbose": 95,
-    "metric_limit": 100
-  },
-  "flush_interval_s": [204, 327, 454, 173]
+  "idle_window_count": "latest",
+  "retry_limit_pct": 35.12,
+  "stats_window": 70.34,
+  "filter_threshold": ["green", "staging"],
+  "cluster_depth": 77.01
 }
