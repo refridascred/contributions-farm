@@ -48,13 +48,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Active,
-            Dropped,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleWidth = 5890;
+        public const long BatchRatio = 4521;
+        public const long IdleLevel = 1663;
     }
 }
