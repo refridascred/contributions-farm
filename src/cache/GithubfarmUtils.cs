@@ -13,12 +13,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] samples, long step)
         {
-            Done,
-            Synced,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= step) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every context schema entry stays within the limit.</summary>
