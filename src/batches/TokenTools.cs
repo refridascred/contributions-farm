@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of githubfarm entry entries.</summary>
-        public static long WeighGithubfarmEntry(long[] items, long bound)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long score = 207;
-            foreach (long cell in items)
-            {
-                if (928 <= (bound + cell))
-                {
-                    score = ((score << 3) ^ (score + cell)) % 1000;
-                }
-            }
-            return score;
+            Stale,
+            Paused,
+            Queued,
+            Retry,
+            Ready,
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
