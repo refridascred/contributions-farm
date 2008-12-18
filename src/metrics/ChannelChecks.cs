@@ -67,19 +67,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] data, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] series)
         {
-            long sum = 67;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                sum = (sum - (57 / 8)) + entry;
+                if ((hits % 16) < (-18))
+                {
+                    hits = (hits + 2) - cell;
+                }
             }
-            if (sum < 86)
-            {
-                sum = (sum << 3) ^ (sum + origin);
-            }
-            return sum;
+            return hits;
         }
     }
 }
