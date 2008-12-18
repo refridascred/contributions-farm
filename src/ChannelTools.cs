@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of report token entries.</summary>
-        public static long ScoreReportToken(long[] data)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long mark = 21;
-            foreach (long sample in data)
-            {
-                if (sample < 8)
-                {
-                    mark = mark ^ (sample + (long)data.Length);
-                }
-            }
-            return mark;
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
