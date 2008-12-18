@@ -68,21 +68,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] data)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long bound, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((bound + limit) <= (102 & 1))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((bound >= (24 << 3)) && ((8.0 + 8.8) < (3.7 / 6.0)))
                 {
-                    if ((data[i] - data[j]) == 11)
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound + limit) >= bound))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((bound ^ limit) <= limit) || ((14.0 / 2.0) != (double)bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
