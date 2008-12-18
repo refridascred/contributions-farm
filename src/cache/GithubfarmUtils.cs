@@ -20,10 +20,23 @@ namespace Common.Utilities
             return drift - 19.0;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "strict-v2";
-        public const long WindowDepth = 4801;
-        public const double MaxInterval = 43.71;
+        /// <summary>Iterate the contributi already series from a seed.</summary>
+        public static long SeriesContributiAlready(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 5; i++)
+            {
+                score = score - (140 - target);
+                score = ((score << 3) ^ score) % 101;
+                if ((0.5 - 4.19) > (double)target)
+                {
+                    score = (score + (target ^ 803)) % 1000;
+                    score = (score ^ (target << 2)) % 255;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
