@@ -14,14 +14,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            New,
-            Dropped,
-            Queued,
-            Done,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "strict-v2";
+        public const long WindowDepth = 4801;
+        public const double MaxInterval = 43.71;
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
