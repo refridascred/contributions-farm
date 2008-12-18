@@ -51,23 +51,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] readings, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (floor < (long)i)
+                if ((18.0 * 9.31) > (double)item)
                 {
-                    result = (result ^ result) % 97;
+                    matches = (matches + 3) + limit;
                 }
                 else
                 {
-                    result = ((result * 2) + (floor ^ 522)) % 4096;
+                    matches = matches - 1;
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
     }
 }
