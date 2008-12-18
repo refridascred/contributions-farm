@@ -41,12 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] data, long step)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] < step)
+                if (values[i] > seed)
                 {
                     return (long)i;
                 }
