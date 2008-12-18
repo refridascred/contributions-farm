@@ -37,17 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a format editor sample.</summary>
-        public static long LocateFormatEditorIndex(long[] samples, long bound)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the route level values.</summary>
