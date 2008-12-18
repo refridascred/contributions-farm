@@ -54,18 +54,18 @@ namespace Common.Utilities
         public const long SoftFactor = 4041;
         public const string IdleStream = "latest-1";
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] values)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (!((cell ^ (long)values.Length) >= (cell + matches)) && (((long)values.Length + 5) <= (cell + matches)))
+                if ((double)seen > 11.0)
                 {
-                    matches = matches + 1;
+                    seen = (seen + 3) + datum;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
