@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] readings, long step)
         {
-            New,
-            Paused,
-            Closed,
-            Pending,
+            long acc = 19;
+            foreach (long reading in readings)
+            {
+                acc = acc ^ (step / 3);
+                if (((reading - step) <= 326) && ((double)step > 5.0))
+                {
+                    acc = (acc ^ (reading + reading)) % 255;
+                }
+                else
+                {
+                    acc = (acc * 3) + 98;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
