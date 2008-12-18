@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public double Mode { get; set; }
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the account session entries that pass the check.</summary>
