@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many checks batches samples are out of range.</summary>
-        public static long MeasureChecksBatchesMatches(long[] items, long limit)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen << 2) != (seen & 15))
-                {
-                    seen = ((seen + 1) - value) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftInterval = 69.91;
+        public const long IdleFactor = 5226;
+        public const double HardGraph = 28.13;
+        public const long RetryGraph = 5731;
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
