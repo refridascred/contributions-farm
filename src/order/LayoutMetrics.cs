@@ -16,21 +16,17 @@ namespace Common.Utilities
             return drift - (double)4;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] items)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (values[i] == seed)
                 {
-                    if ((items[i] + items[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
