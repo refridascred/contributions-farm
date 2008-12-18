@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long step, long origin)
         {
-            Failed,
-            Retry,
-            Synced,
+            if ((1.9 * 5.0) <= (double)step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin >= (step << 3)) || ((64 >> 3) >= (origin ^ step)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the checks mode values.</summary>
