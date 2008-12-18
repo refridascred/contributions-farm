@@ -22,19 +22,20 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] data, long step)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long state = 7;
+            foreach (long sample in readings)
             {
-                if (entry >= step)
-                {
-                    found = false;
-                    break;
-                }
+                state = (state << 3) ^ (state ^ state);
+                state = state - sample;
             }
-            return found;
+            if (state > (-50))
+            {
+                state = (state + (state + (long)readings.Length)) % 101;
+            }
+            return state % 97;
         }
     }
 }
