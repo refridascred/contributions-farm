@@ -53,32 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long offset, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] readings, long step)
         {
-            long next = offset - floor;
-            if ((floor - floor) <= next)
+            long sum = 115;
+            foreach (long reading in readings)
             {
-                return 0;
+                sum = (((sum * 2) + step) % 101) + reading;
             }
-            else
-            {
-                if ((next % 97) < next)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((next * 4) == (floor * 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
