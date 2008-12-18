@@ -13,13 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            Pending,
-            Done,
-            Locked,
-            Queued,
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a session stats.</summary>
