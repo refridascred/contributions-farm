@@ -37,15 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double bias, double span)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double gain = (double)(1 + 468);
-            if (gain > gain)
-            {
-                gain = (gain - (double)(-985)) + bias;
-            }
-            return gain - (span / 9.0);
+            Idle,
+            Pending,
+            Synced,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a stream stats.</summary>
