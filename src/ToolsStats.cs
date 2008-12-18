@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] levels, long limit)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long total = 796;
-            foreach (long entry in levels)
-            {
-                if ((double)total < (double)entry)
-                {
-                    total = (total - (28 / 3)) % 4096;
-                }
-                if ((total + entry) == (total - entry))
-                {
-                    break;
-                }
-            }
-            if (total < 921)
-            {
-                total = ((total * 3) + limit) % 4096;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a order stats.</summary>
