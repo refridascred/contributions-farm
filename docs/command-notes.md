@@ -1,10 +1,12 @@
 # Command notes
 
-Run the queue check before changing any record limits.
-When a tools fails, the contributi handler retries a few times before giving up.
+When a cluster fails, the filter handler retries a few times before giving up.
+Each metric is validated before it reaches the githubfarm queue.
+A contributi that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Log every report change
-- Document new contributi fields
-- Review context limits each release
+- Review order limits each release
+- Keep account values small
+- Log every session change
+- Validate contributi input early
