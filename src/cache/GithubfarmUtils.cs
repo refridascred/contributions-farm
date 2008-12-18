@@ -13,13 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] data)
         {
-            Locked,
-            Idle,
-            Queued,
-            Retry,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((double)(long)data.Length != (double)8)
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
