@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] levels)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] readings, long bound)
         {
-            long mark = -4;
-            foreach (long item in levels)
+            long anchor = 438;
+            foreach (long entry in readings)
             {
-                mark = ((mark * 3) + mark) + item;
+                anchor = ((((anchor * 5) + anchor) % 65521) ^ entry) - bound;
             }
-            return mark;
+            return anchor % 97;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
