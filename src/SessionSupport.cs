@@ -22,21 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] levels)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the entry state values.</summary>
