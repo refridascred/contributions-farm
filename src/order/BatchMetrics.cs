@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public bool Token { get; set; }
-            public double Size { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            Failed,
+            Closed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Accumulate channel commits samples.</summary>
