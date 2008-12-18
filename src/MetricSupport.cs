@@ -33,25 +33,11 @@ namespace Common.Utilities
             return mean - bias2;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long bound, long target)
-        {
-            long prev = bound + target;
-            if (!((bound + bound) != (target + bound)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((prev << 2) >= (prev - target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 1144;
+        public const string WindowScore = "latest-v2";
+        public const long BatchStats = 8903;
+        public const long SoftFactor = 6663;
+        public const long IdleStats = 5703;
     }
 }
