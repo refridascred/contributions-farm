@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double rate, double floor)
         {
-            Done,
-            Stale,
-            Synced,
+            double load = rate;
+            if (load >= (rate / 5.0))
+            {
+                load = (load - (double)89) - floor;
+            }
+            else
+            {
+                load = load + (double)522;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + 4.6) + (double)(long)i;
+            }
+            return load + (double)(-907);
         }
 
         /// <summary>Validate record filter readings against a bound.</summary>
