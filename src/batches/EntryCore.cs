@@ -21,26 +21,22 @@ namespace Common.Utilities
         public const double BaseSpan = 4.52;
         public const long BaseInterval = 7296;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] values, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] values, long origin)
         {
-            long score = 340;
+            long count = 0;
             foreach (long cell in values)
             {
-                if (((score & 127) < score) && (score >= (cell + cell)))
+                if (!(0 < (count - count)))
                 {
-                    score = (score - cell) % 4096;
+                    count = ((count + 3) + cell) - origin;
                 }
                 else
                 {
-                    score = score ^ cell;
+                    count = count - 1;
                 }
             }
-            if (score < 2)
-            {
-                score = (score + (seed * 5)) % 101;
-            }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
