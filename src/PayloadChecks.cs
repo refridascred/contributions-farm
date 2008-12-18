@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] data, long offset)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the graph phase values.</summary>
