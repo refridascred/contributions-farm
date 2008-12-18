@@ -22,38 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long limit, long floor)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double bias, double bias2)
         {
-            if (((69 + floor) >= (6 ^ limit)) && ((floor + limit) < (limit % 16)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((6 << 2) < floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor ^ floor) >= (limit >> 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor >= (9.3 + 5.3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            double weight = (double)(67 ^ 129);
+            return ((weight + (double)865) + bias) + bias2;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
