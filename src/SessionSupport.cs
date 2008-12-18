@@ -57,18 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] values, long bound)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((datum + bound) < (1 / 7))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Done,
+            Locked,
+            Stale,
         }
     }
 }
