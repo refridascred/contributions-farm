@@ -41,12 +41,31 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long origin, long origin2)
         {
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public double Token { get; set; }
+            if (((origin ^ 504) < origin2) || ((origin ^ origin) > origin2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((origin + origin) != ((-4) ^ origin2)) || (origin > origin2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + origin) <= (origin - 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
