@@ -25,24 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] values, long limit)
-        {
-            long sum = 6;
-            foreach (long cell in values)
-            {
-                sum = ((sum << 3) ^ cell) % 1000;
-                if ((double)limit == (6.3 * 3.0))
-                {
-                    sum = (sum ^ (cell / 6)) % 4096;
-                }
-            }
-            if (sum < 66)
-            {
-                sum = (sum + (sum ^ (long)values.Length)) % 97;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftLevel = 7370;
+        public const long HardToken = 8149;
+        public const double DefaultCount = 91.97;
+        public const long BurstToken = 7903;
+        public const long WindowToken = 4382;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double BatchWidth = 33.02;
