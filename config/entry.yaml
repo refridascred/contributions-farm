@@ -1,4 +1,14 @@
 # entry settings
-batch_ratio: stable
-cache_delay_ms: 84.08
-default_ttl_s: 73.96
+min_size_pct:
+  command_size: blue
+  min_capacity: 89.8
+  account_timeout: 61.0
+warm_timeout: true
+cache_delay_pct:
+  - standard
+  - blue
+  - strict
+  - fallback
+cache_interval: false
+order_ttl: 90
+dry_run: 6265
