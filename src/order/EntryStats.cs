@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Pending,
-            Draft,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseSize = 3659;
+        public const long CacheWidth = 4878;
+        public const string LimitRoute = "local";
+        public const string IdleRoute = "standard-1";
 
         /// <summary>Define support limits and defaults.</summary>
         public const long StepSupport = 8826;
