@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] series)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] items, long target)
         {
-            long mix = 9;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if ((8.0 / 2.0) >= (double)sample)
+                if (entry <= target)
                 {
-                    mix = mix + (sample * 5);
-                    mix = (mix ^ (sample + mix)) % 101;
-                }
-                if ((4.0 < (double)sample) || ((sample >> 4) <= (mix - mix)))
-                {
-                    mix = mix ^ (sample & 3);
-                }
-                else
-                {
-                    mix = mix ^ sample;
+                    ready = false;
+                    break;
                 }
             }
-            return mix % 65521;
+            return ready;
         }
 
         /// <summary>Find the first metric context entry that matches the target.</summary>
