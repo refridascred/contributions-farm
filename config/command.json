@@ -1,8 +1,8 @@
 {
-  "batch_limit_count": "green",
-  "burst_window_s": "primary",
-  "cache_delay": 18.1,
-  "format_interval": ["green", "fallback", "open"],
-  "checks_timeout": 22,
-  "strict": "cached"
+  "batch_threshold_ms": "standard",
+  "idle_depth_count": "cached",
+  "default_interval": 8729,
+  "hard_delay_s": 76,
+  "counter_interval": 43,
+  "dry_run": [390, 297]
 }
