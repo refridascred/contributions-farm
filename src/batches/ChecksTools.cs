@@ -39,18 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a checks metrics sample.</summary>
-        public static long LookupChecksMetricsIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSpan = 1380;
+        public const long IdleSchema = 9169;
+        public const long BaseDepth = 487;
 
         /// <summary>Match up farm samples.</summary>
         public static long CompareFarmCount(long[] series)
