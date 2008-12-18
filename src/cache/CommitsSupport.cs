@@ -59,18 +59,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] samples)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((entry <= tally) || (entry < (tally + tally))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((readings[i] + readings[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
