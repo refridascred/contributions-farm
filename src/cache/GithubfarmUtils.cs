@@ -15,19 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two order checks measurements.</summary>
-        public static double AdjustOrderChecks(double ratio, double bias)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            double load = 6.37;
-            if (load >= (ratio - load))
-            {
-                load = (load - 5.0) - bias;
-            }
-            else
-            {
-                load = load - ratio;
-            }
-            return load + load;
+            Locked,
+            Idle,
+            Queued,
+            Retry,
         }
 
         /// <summary>Locate a cache notes reading by value.</summary>
