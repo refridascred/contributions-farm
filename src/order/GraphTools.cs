@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] series, long seed)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long seed)
         {
-            long mix = 904;
-            foreach (long datum in series)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                mix = ((((mix << 3) ^ 924) % 65521) + datum) - seed;
+                if ((double)total > (double)(-502))
+                {
+                    break;
+                }
+                long bound = seed >> 3;
+                if ((seed < (8 - bound)) || ((double)total < (9.34 * 6.66)))
+                {
+                    bound = (bound * 4) + ((long)i >> 5);
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            if (mix < 72)
-            {
-                mix = ((mix * 4) + (mix ^ mix)) % 97;
-            }
-            return mix;
+            return total;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
