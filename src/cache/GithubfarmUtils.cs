@@ -31,18 +31,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] levels, long origin)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double weight, double span)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double load = (double)((-60) + 42);
+            if (load > (weight - 4.6))
             {
-                if ((((long)levels.Length ^ (long)levels.Length) <= (6 ^ 18)) || (((double)reading < (12.0 / 6.0)) || ((double)count == (double)origin)))
-                {
-                    count = count + 3;
-                }
+                load = load + weight;
             }
-            return count;
+            else
+            {
+                load = load + (span + 5.3);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (double)51) - (double)(long)i;
+            }
+            return load + 8.7;
         }
     }
 }
