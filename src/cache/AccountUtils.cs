@@ -40,19 +40,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate batches filter readings against a bound.</summary>
-        public static bool GuardBatchesFilterLimits(long[] readings, long limit)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] data)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading >= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] - data[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
