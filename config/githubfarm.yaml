@@ -1,4 +1,8 @@
 # githubfarm settings
-soft_window_pct: true
-retry_retries: true
-poll_ratio_s: 50.21
+poll_ttl:
+  - 467
+  - 85
+warm_size_ms: 100
+editor_delay: green
+contributi_capacity: true
+profile_capacity: eu-west
