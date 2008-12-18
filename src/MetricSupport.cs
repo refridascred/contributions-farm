@@ -26,21 +26,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a payload support counter forward.</summary>
-        public static long IteratePayloadSupport(long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] items, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                total = (total ^ 60) % 255;
-                if (!((634 & 127) > (total & 7)))
+                if (entry > bound)
                 {
-                    total = (total << 3) ^ step;
+                    flag = false;
+                    break;
                 }
-                total = ((total << 2) ^ (599 - 660)) % 101;
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Hold a batch info.</summary>
