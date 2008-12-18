@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] values, long step)
+        /// <summary>Derive the next cache editor value from a seed.</summary>
+        public static long RollCacheEditor(long seed)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (((8.8 - 15.0) > (double)hits) || (reading <= (step / 9)))
-                {
-                    hits = hits + 2;
-                }
+                carry = (carry + (carry % 16)) % 1000;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
