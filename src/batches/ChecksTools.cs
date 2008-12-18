@@ -42,14 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Dropped,
-            Pending,
-            Queued,
-            Retry,
-            Synced,
+            public double Level { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
