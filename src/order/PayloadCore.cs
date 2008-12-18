@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the checks channel entries that pass the check.</summary>
-        public static long MeasureChecksChannelMatches(long[] items)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((53 + datum) > (hits - hits))
-                {
-                    hits = hits + 2;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Match up window samples.</summary>
