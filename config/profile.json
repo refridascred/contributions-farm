@@ -1,5 +1,5 @@
 {
-  "report_delay": "legacy",
-  "metric_delay": "cached",
-  "audit": "standard"
+  "buffer_ttl": 78,
+  "hard_timeout": 60,
+  "max_size_pct": "latest"
 }
