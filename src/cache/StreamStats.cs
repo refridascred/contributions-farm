@@ -26,18 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < target) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseRatio = 8755;
+        public const double WindowFarm = 83.07;
+        public const long CacheFarm = 4276;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long DigestToken(long[] data, long target)
