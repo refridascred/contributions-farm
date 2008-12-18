@@ -23,19 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] readings, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] readings)
         {
-            long result = 303;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                result = result ^ 72;
-                if ((value / 9) > offset)
+                if ((((cell % 16) < (54 ^ cell)) || (hits <= (cell & 127))) && ((double)cell < (4.34 + 4.0)))
                 {
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Accumulate farm samples.</summary>
