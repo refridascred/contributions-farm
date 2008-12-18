@@ -1,12 +1,8 @@
 {
-  "min_delay_pct": [263, 500, 394],
-  "compress": 6.37,
-  "audit": ["stable", "green", "staging"],
-  "hard_limit_ms": 98.46,
-  "poll_ttl_ms": {
-    "farm_threshold": "standard",
-    "format_delay": "local",
-    "burst_ratio_s": "edge",
-    "contributi_ttl": "eu-west"
-  }
+  "warm_window": ["staging", "latest", "local"],
+  "batch_delay_ms": 16.61,
+  "soft_timeout_ms": 1024,
+  "window_limit": "fallback",
+  "batch_limit_s": [398, 387, 97, 435],
+  "profile_window": 51
 }
