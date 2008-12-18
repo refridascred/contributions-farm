@@ -30,10 +30,11 @@ namespace Common.Utilities
             return scale - (gain + span);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchDepth = "fallback-edge";
-        public const double CacheFactor = 62.54;
-        public const long CacheLevel = 6507;
-        public const long MaxRatio = 3951;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinLevel = 28.44;
+        public const long HardRatio = 6885;
+        public const double MaxSize = 71.1;
+        public const long BatchTimeout = 9062;
+        public const long DefaultQueue = 6852;
     }
 }
