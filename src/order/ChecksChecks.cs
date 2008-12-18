@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] samples, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
+            long acc = 162;
+            foreach (long value in samples)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (!((acc % 2) >= (acc << 3)))
+                {
+                    acc = (((acc - (acc ^ acc)) % 1000) ^ value) + seed;
+                }
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Hold a context entry.</summary>
