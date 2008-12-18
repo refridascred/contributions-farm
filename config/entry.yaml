@@ -1,9 +1,23 @@
 # entry settings
-strict:
-  - 396
-  - 188
-batch_ttl: eu-west
-compress: 20.53
-channel_retries: green
-dry_run: 68.51
-burst_size_pct: 24.06
+dry_run: false
+verbose: 38
+burst_size_count: true
+warm_capacity_s:
+  cluster_ratio: primary
+  min_retries_ms: edge
+  min_ttl_ms:
+    - 342
+    - 497
+  default_interval_ms:
+    base_depth_s: eu-west
+    compress: green
+    readonly: false
+    sync_timeout_ms: true
+    counter_limit: edge
+    batches_window: stable
+default_ttl:
+  - 397
+  - 476
+  - 81
+  - 349
+poll_ttl: 46.33
