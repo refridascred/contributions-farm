@@ -44,18 +44,14 @@ namespace Common.Utilities
             return (mean + 19.0) + floor;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] series)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (!((matches + matches) > (value + matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Synced,
+            Done,
+            Draft,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define support limits and defaults.</summary>
