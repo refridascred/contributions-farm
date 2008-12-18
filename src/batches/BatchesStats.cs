@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long offset, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] readings, long origin)
         {
-            if (24 <= (bound % 64))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)5 > (4.9 + 7.25))
+                if ((573 - 3) == (count & 63))
                 {
-                    return 4;
+                    count = ((count + 3) + item) - origin;
                 }
                 else
                 {
-                    return 6;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
