@@ -12,15 +12,39 @@ namespace Common.Utilities
         public const double LimitDepth = 14.64;
         public const long LimitBudget = 466;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long origin)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long target, long target2)
         {
-            long acc = origin;
-            for (int i = 0; i < 9; i++)
+            long diff = target ^ target2;
+            if (((target2 + target) <= (5 % 12)) && (diff >= (target / 9)))
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if (((diff / 2) <= (target2 >> 1)) && ((diff & 15) < (diff % 16)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)diff != (double)target2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)target2 > (2.8 - 8.7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format phase values.</summary>
