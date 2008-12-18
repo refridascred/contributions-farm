@@ -32,19 +32,19 @@ namespace Common.Utilities
             return mean - (mean - rate);
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] data, long limit)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (item <= limit)
+                if (entry != seed)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
