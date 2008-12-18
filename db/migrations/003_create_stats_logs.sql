@@ -2,11 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     count INTEGER NOT NULL DEFAULT 0,
-    created_at TIMESTAMP,
-    token TEXT
+    owner TEXT NOT NULL,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_active ON stats_logs (active);
 
-INSERT INTO stats_logs (count, token) VALUES (46, 'open');
-INSERT INTO stats_logs (count, token) VALUES (37, 'local');
+INSERT INTO stats_logs (count, owner, active) VALUES (90, 'open', 80);
+INSERT INTO stats_logs (count, owner, active) VALUES (72, 'cached', 44);
+INSERT INTO stats_logs (count, owner, active) VALUES (53, 'cached', 38);
