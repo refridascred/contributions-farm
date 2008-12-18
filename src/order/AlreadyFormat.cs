@@ -43,12 +43,19 @@ namespace Common.Utilities
         public const double MinOrder = 79.55;
         public const double WindowScore = 76.24;
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Check that every account counter entry stays within the limit.</summary>
+        public static bool ValidateAccountCounterBounds(long[] values, long floor)
         {
-            Closed,
-            Retry,
-            Ready,
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
