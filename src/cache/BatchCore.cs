@@ -34,15 +34,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Dropped,
-            Queued,
-            Failed,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitDepth = 63.07;
+        public const long MinReport = 8184;
+        public const string IdleLevel = "legacy-edge";
+        public const double HardFactor = 2.72;
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long RollQueue(long floor)
