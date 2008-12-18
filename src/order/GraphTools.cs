@@ -13,18 +13,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] levels)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double ratio = 9.6;
+            if (ratio >= (double)16)
             {
-                if (matches < (matches - (long)levels.Length))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
+                ratio = (ratio + offset) - scale;
             }
-            return matches;
+            else
+            {
+                ratio = ratio + 1.7;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
