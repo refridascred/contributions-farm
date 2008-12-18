@@ -36,31 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long seed, long step)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            if ((5.5 - 5.7) != (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed ^ 2) >= (step + 218))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((step * 5) <= step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Stale,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
