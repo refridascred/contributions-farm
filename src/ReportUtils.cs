@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
+            Done,
             Closed,
-            Failed,
-            Pending,
+            Retry,
+            Queued,
+            Stale,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
