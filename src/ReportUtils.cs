@@ -18,19 +18,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] values, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (value != limit)
+                if ((((double)value != (6.29 - 1.6)) || (tally < (value ^ tally))) && (tally > (value ^ 42)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
