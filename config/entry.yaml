@@ -1,7 +1,29 @@
 # entry settings
-min_depth_s: 75.57
-readonly: primary
-strict: 5397
-enabled: true
-verbose: 69.47
-checks_delay: 29.45
+default_capacity_s: strict
+stats_limit:
+  - 424
+  - 260
+  - 83
+  - 244
+strict: eu-west
+default_timeout:
+  max_timeout_s: 58
+  burst_threshold_ms:
+    - standard
+    - eu-west
+    - green
+    - cached
+  min_retries_count:
+    - 29
+    - 293
+    - 442
+    - 29
+  default_capacity_pct: primary
+  account_capacity:
+    - 257
+    - 12
+  enabled:
+    - 315
+    - 320
+    - 121
+    - 269
