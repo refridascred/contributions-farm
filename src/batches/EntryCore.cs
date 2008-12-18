@@ -16,21 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] series)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Digest a series of stream metrics entries.</summary>
