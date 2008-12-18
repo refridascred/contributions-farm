@@ -59,21 +59,12 @@ namespace Common.Utilities
         public const long MinWidth = 1159;
         public const string WindowSupport = "latest-edge";
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] items)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
