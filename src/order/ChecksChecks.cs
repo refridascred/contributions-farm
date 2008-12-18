@@ -25,13 +25,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
