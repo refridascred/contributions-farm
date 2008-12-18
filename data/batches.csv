@@ -1,8 +1,8 @@
-id,count,ratio,weight
-1,49.01,635,legacy
-2,blue,8.28,edge
-3,edge,51.63,open
-4,88.53,61.11,staging
-5,819,520,87.04
-6,562,open,81.46
-7,827,cached,stable
+id,level,region
+1,open,60.79
+2,12.43,32.03
+3,378,edge
+4,cached,open
+5,40.69,open
+6,549,24.42
+7,934,174
