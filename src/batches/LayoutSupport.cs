@@ -15,19 +15,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many payload order samples are out of range.</summary>
-        public static long CountPayloadOrderGaps(long[] data, long origin)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (origin < (tally + item))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitCount = 7253;
+        public const double HardRoute = 74.76;
+        public const long CacheWidth = 9228;
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
