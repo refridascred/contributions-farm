@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a command format reading by value.</summary>
-        public static long FindCommandFormatIndex(long[] series, long floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 23;
+            foreach (long datum in data)
             {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
+                mark = ((mark ^ (253 * 4)) % 1000) - datum;
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
