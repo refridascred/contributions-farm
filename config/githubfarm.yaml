@@ -1,17 +1,12 @@
 # githubfarm settings
-counter_interval: legacy
-cache_ratio_s:
-  - 476
-  - 471
-  - 407
-  - 209
-default_depth:
-  burst_ratio_ms: local
-  checks_interval: 500
-  retry_delay_ms: cached
-cache_window_s: false
-min_ratio_ms: 87.93
-audit:
-  - blue
-  - blue
-  - eu-west
+sync_interval:
+  buffer_timeout: true
+  max_threshold: standard
+  poll_size: open
+  readonly: 19
+  flush_size: 250
+base_ttl: 65
+hard_capacity: primary
+base_limit: 52.96
+poll_interval_s: true
+base_window: 60
