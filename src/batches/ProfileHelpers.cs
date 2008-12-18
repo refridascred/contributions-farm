@@ -13,21 +13,26 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] readings)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 3;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading - total) < (reading + limit))
                 {
-                    if ((readings[i] - readings[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total - (reading & 127)) % 255;
+                }
+                else
+                {
+                    total = total ^ (total - limit);
                 }
             }
-            return matches;
+            if (total > 6)
+            {
+                total = ((total * 5) + (limit >> 4)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the payload phase values.</summary>
