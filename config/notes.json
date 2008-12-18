@@ -1,18 +1,5 @@
 {
-  "batches_limit": true,
-  "context_capacity": 500,
-  "burst_depth_ms": ["strict", "blue", "latest"],
-  "persist": 100,
-  "compress": {
-    "editor_retries": "local",
-    "burst_retries": {
-      "burst_depth_count": "stable",
-      "hard_ratio_s": 30,
-      "idle_window": "cached",
-      "max_window": 60,
-      "default_interval_ms": 30.04
-    },
-    "strict": "primary"
-  },
-  "retry_window_pct": 30
+  "notes_capacity": 9181,
+  "strict": [97, 310, 235],
+  "format_depth": 14.27
 }
