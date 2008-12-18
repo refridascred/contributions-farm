@@ -76,10 +76,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 6756;
-        public const double WindowCount = 67.26;
-        public const long BaseSize = 3078;
-        public const double BatchBatches = 92.44;
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
