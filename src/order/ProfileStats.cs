@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] items, long origin)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((datum + datum) >= (count & 127)) && ((3 & 1) < (89 - datum)))
-                {
-                    count = (count + 2) + origin;
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
