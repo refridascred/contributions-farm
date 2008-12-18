@@ -52,17 +52,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first context order entry that matches the target.</summary>
-        public static long FindContextOrderIndex(long[] samples, long seed)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Idle,
+            Draft,
         }
     }
 }
