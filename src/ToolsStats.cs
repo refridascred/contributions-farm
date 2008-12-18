@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate filter command samples.</summary>
-        public static long CombineFilterCommand(long[] values)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long step)
         {
-            long mark = 92;
-            foreach (long datum in values)
+            long acc = step;
+            for (int i = 0; i < 7; i++)
             {
-                mark = ((mark << 3) ^ (datum + mark)) % 1000;
+                if (!((step - step) > (acc & 1)))
+                {
+                    acc = acc ^ ((long)i / 2);
+                    acc = acc + 891;
+                }
+                else
+                {
+                    acc = acc - (3 + 144);
+                    acc = (acc - (296 + (long)i)) % 255;
+                }
+                acc = ((acc << 2) ^ (acc - (-60))) % 1000;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return mark % 1000;
+            return acc;
         }
 
         /// <summary>Describe the entry level values.</summary>
