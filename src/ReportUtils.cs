@@ -50,22 +50,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] series, long bound)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((matches - matches) < (matches * 4))
-                {
-                    matches = ((matches + 2) ^ datum) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
