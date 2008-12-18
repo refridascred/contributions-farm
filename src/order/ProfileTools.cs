@@ -49,16 +49,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] data, long limit)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] levels)
         {
-            long acc = 72;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (((acc * 3) + acc) % 97) + limit;
-                acc = (acc * 3) + (347 - entry);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
