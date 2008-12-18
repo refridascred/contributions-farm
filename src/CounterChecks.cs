@@ -18,39 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long offset, long offset2)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long edge = offset - offset2;
-            if (!((offset2 / 6) != (edge - edge)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((6.9 + 5.85) != (double)offset2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset >= edge)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)edge == (4.0 + 4.89)) && ((44 / 5) < (offset - offset2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public double Limit { get; set; }
+            public double Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
