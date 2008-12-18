@@ -33,16 +33,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 3084;
+        public const long BatchWidth = 6487;
+        public const double SoftRoute = 15.41;
+        public const long BurstRoute = 1244;
+        public const long MinLevel = 9807;
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
