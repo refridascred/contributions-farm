@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] samples)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item <= floor)
                 {
-                    if ((samples[i] + samples[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Project the next window value.</summary>
