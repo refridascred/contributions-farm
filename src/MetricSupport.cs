@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstBudget = 2417;
-        public const string SoftSupport = "legacy-v2";
-        public const long BaseSupport = 3360;
-        public const string BurstSupport = "standard-edge";
+        /// <summary>Locate a stats stream reading by value.</summary>
+        public static long LocateStatsStreamIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a filter report reading.</summary>
         public static double AdjustFilterReport(double rate, double offset)
