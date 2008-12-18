@@ -50,17 +50,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a cache githubfarm counter forward.</summary>
-        public static long IterateCacheGithubfarm(long floor)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] readings, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum << 3) ^ (sum - (long)i);
-                sum = (sum ^ sum) % 101;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
