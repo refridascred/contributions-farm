@@ -47,23 +47,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (((limit % 16) > (limit + cell)) || ((double)limit == (double)644))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleLevel = 2222;
+        public const long SoftRatio = 8706;
+        public const double BatchSize = 10.33;
+        public const long DefaultWidth = 6981;
+        public const string StepRatio = "alpha-edge";
 
         /// <summary>Define order limits and defaults.</summary>
         public const long IdleOrder = 7912;
