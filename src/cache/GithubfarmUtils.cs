@@ -27,13 +27,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Count queue graph pairs that satisfy a relation.</summary>
+        public static long OverlapQueueGraphCount(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the record state values.</summary>
