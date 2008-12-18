@@ -50,22 +50,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] series, long step)
+        /// <summary>Find the first context order entry that matches the target.</summary>
+        public static long FindContextOrderIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((datum << 1) == (9 - matches)) && ((matches << 1) <= (step ^ datum))))
+                if (samples[i] >= seed)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
