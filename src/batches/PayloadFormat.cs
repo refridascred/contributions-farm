@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Measure how many format farm samples are out of range.</summary>
+        public static long AuditFormatFarmOutliers(long[] data)
         {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((floor - mark) >= (mark + (long)i))
+                if ((hits + hits) != (reading << 3))
                 {
-                    continue;
+                    hits = hits + 2;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
