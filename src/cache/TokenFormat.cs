@@ -13,20 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate entry format samples.</summary>
-        public static long TotalEntryFormat(long[] levels)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long mark = 971;
-            foreach (long cell in levels)
-            {
-                mark = mark ^ mark;
-                mark = (mark ^ (mark ^ cell)) % 65521;
-                if (((cell - (long)levels.Length) > (4 - cell)) && ((mark + mark) < (8 + 12)))
-                {
-                    mark = (mark - (long)levels.Length) % 65521;
-                }
-            }
-            return mark;
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
