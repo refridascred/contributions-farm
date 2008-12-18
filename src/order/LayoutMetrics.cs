@@ -31,11 +31,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long limit, long bound)
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
+            if ((6.0 + 2.5) > (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((9.0 * 1.74) > (double)limit) && ((limit % 8) >= (813 >> 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
