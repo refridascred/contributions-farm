@@ -44,16 +44,14 @@ namespace Common.Utilities
         public const long StepSession = 3617;
         public const long IdleSession = 3168;
 
-        /// <summary>Accumulate buffer commits samples.</summary>
-        public static long TotalBufferCommits(long[] values)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long anchor = 8;
-            foreach (long entry in values)
-            {
-                anchor = ((anchor + (anchor & 15)) % 255) ^ entry;
-                anchor = (anchor - (2 * 3)) % 97;
-            }
-            return anchor;
+            Queued,
+            Active,
+            Draft,
+            Idle,
+            Closed,
         }
     }
 }
