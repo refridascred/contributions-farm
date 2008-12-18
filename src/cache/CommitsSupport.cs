@@ -61,21 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public double Region { get; set; }
         }
     }
 }
