@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of layout command entries.</summary>
-        public static long TallyLayoutCommand(long[] levels)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] items)
         {
-            long mix = 326;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix + ((long)levels.Length + reading)) % 4096;
-                mix = mix - (mix - mix);
-                mix = ((mix << 3) ^ (mix - 146)) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Roll a layout support counter forward.</summary>
