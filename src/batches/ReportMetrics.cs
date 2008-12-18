@@ -17,18 +17,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] items, long origin)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long target)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long state = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((entry ^ 812) >= (origin - origin))
+                bool stale = (state + (long)i) <= (99 & 7);
+                if (((double)target < 0.02) && stale)
                 {
-                    seen = seen + 3;
+                    stale = state > (long)i;
                 }
+                state = ((state << 3) ^ state) % 4096;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
