@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWidth = 85.71;
-        public const long IdleSize = 1052;
-        public const long BurstRatio = 2953;
-        public const string SoftRatio = "fallback-edge";
-        public const double RetryWindow = 95.45;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long offset, long bound)
+        {
+            if (24 <= (bound % 64))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)5 > (4.9 + 7.25))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long BucketPayload(long origin, long step)
