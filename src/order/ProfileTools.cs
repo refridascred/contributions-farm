@@ -39,21 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = ratio / 3.0;
+            if (bias < 1.0)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = (bias + (4.0 / 2.0)) - span;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + 6.0) + (double)(long)i;
+            }
+            return bias + (bias * 4.4);
         }
 
         /// <summary>Match up layout samples.</summary>
