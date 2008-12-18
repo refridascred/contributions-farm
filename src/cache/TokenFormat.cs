@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] data, long limit)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long state = 684;
-            foreach (long cell in data)
-            {
-                if ((154 / 5) <= (limit % 24))
-                {
-                    state = (state - state) ^ cell;
-                }
-                else
-                {
-                    state = (state << 3) ^ 464;
-                }
-            }
-            return state % 97;
+            Queued,
+            Closed,
+            Retry,
+            Done,
+            Synced,
         }
 
         /// <summary>Describe the notes phase values.</summary>
