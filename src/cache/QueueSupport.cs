@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit layout order readings against a rule.</summary>
-        public static long TallyLayoutOrderOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((cell << 3) == (tally >> 4))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultCount = "open-edge";
+        public const long StepCount = 7716;
+        public const long IdleBatch = 1263;
+        public const long WindowScore = 53;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsOutliers(long[] data, long seed)
