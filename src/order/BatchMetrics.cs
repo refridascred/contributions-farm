@@ -66,10 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryLevel = "local-v2";
-        public const string MinScore = "latest";
-        public const string DefaultTimeout = "alpha-edge";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinSpan = 6704;
+        public const long BaseProfile = 3529;
+        public const long RetryProfile = 6512;
+        public const long BaseScore = 2460;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] samples, long floor)
