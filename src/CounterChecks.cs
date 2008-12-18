@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] samples, long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] data, long limit)
         {
-            long anchor = 178;
-            foreach (long reading in samples)
+            long anchor = 498;
+            foreach (long sample in data)
             {
-                anchor = (((anchor * 3) + (reading << 3)) % 255) + bound;
-                if (((663 % 10) == (reading - reading)) && ((reading - (-6)) <= (anchor + (long)samples.Length)))
+                if (!((limit & 1) <= sample))
                 {
-                    anchor = (anchor - reading) % 65521;
+                    anchor = (anchor << 2) ^ (sample + sample);
                 }
             }
-            return anchor;
+            if (anchor > 78)
+            {
+                anchor = anchor - (limit ^ anchor);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
