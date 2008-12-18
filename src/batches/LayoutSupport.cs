@@ -38,19 +38,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] values, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (datum <= floor)
+                if ((double)value == (4.9 + 18.0))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
