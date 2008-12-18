@@ -1,14 +1,14 @@
 # Command notes
 
-Keep account and stats names short and lowercase.
-The entry module keeps stats values in sync with the buffer cache.
-Keep contributi and buffer names short and lowercase.
+Each route is validated before it reaches the account queue.
+Use context settings to tune how often command data is refreshed.
+Defaults for notes live in the config folder and can be overridden per environment.
 
-Each batch is validated before it reaches the schema queue.
-Use contributi settings to tune how often record data is refreshed.
+Use filter settings to tune how often githubfarm data is refreshed.
+Use notes settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Validate session input early
-- Review route limits each release
-- Log every githubfarm change
+- Document new order fields
+- Review buffer limits each release
+- Keep commits values small
