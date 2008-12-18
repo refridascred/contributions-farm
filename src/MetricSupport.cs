@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const long MinRatio = 8191;
         public const string LimitMetric = "strict-1";
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double bias, double bias2)
-        {
-            double mean = bias2;
-            if (mean > (4.48 + 1.09))
-            {
-                mean = mean - bias;
-            }
-            return mean - bias2;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheScore = 50.54;
+        public const long BaseRecord = 3271;
+        public const long IdleRecord = 3600;
+        public const long MinRecord = 7168;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MaxStats = 1144;
