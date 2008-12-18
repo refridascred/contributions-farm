@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] values, long floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long origin, long origin2)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            if ((origin + origin2) >= (origin2 ^ origin2))
             {
-                if (reading <= floor)
+                return 4;
+            }
+            else
+            {
+                if ((origin / 4) <= origin2)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((origin2 + origin) <= origin) || ((origin2 ^ origin2) <= (origin / 7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
