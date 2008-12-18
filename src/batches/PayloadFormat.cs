@@ -45,14 +45,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] items)
         {
-            Queued,
-            Active,
-            Draft,
-            Idle,
-            Closed,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)tally != (6.2 + 5.32))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
     }
 }
