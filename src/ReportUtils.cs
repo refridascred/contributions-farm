@@ -29,19 +29,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate stream editor readings against a bound.</summary>
-        public static bool CheckStreamEditorLimits(long[] series, long offset)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum <= offset)
+                if (items[i] > target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the notes kind values.</summary>
