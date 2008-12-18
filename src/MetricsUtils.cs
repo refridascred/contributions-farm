@@ -32,32 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long limit, long floor)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long delta = limit + floor;
-            if (((double)floor != (9.1 - 6.11)) && ((floor >> 1) > (floor + delta)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((0.8 + 4.5) <= (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((delta << 1) == (floor - delta)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
