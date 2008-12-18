@@ -42,17 +42,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Locate a batches schema reading by value.</summary>
-        public static long LookupBatchesSchemaIndex(long[] levels, long limit)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            New,
+            Idle,
         }
 
         /// <summary>Rank record input into a small class.</summary>
