@@ -30,17 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] values, long seed)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Stale,
+            Retry,
+            Done,
+            Draft,
         }
     }
 }
