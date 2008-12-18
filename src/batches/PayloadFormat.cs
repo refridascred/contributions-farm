@@ -35,12 +35,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long bound)
         {
-            Synced,
-            Locked,
-            Dropped,
+            long state = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state << 2) ^ (bound ^ bound);
+                state = ((state * 5) + (state >> 2)) % 255;
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
