@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of order payload readings.</summary>
-        public static long FoldOrderPayload(long[] series)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] samples, long step)
         {
-            long anchor = 84;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                anchor = ((anchor * 3) + (anchor + sample)) % 4096;
+                if ((value + matches) >= (value - matches))
+                {
+                    matches = (matches + 3) - step;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
