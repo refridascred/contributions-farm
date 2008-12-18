@@ -1,6 +1,8 @@
 {
-  "warm_retries": 75.3,
-  "poll_delay_ms": "strict",
-  "sync_retries_pct": ["local", "strict", "stable", "fallback"],
-  "cache_capacity_s": 100
+  "persist": "cached",
+  "verbose": "strict",
+  "soft_depth_s": true,
+  "compress": true,
+  "cache_window": false,
+  "retry_capacity_ms": 98.65
 }
