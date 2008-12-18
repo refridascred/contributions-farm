@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            Paused,
+            Pending,
+            New,
+            Draft,
+            Queued,
         }
 
         /// <summary>Hold a account options.</summary>
