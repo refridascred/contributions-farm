@@ -18,26 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the session record series from a seed.</summary>
-        public static long IterateSessionRecord(long offset)
+        /// <summary>Count the report window entries that pass the check.</summary>
+        public static long TallyReportWindowGaps(long[] levels, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((8.4 - 19.0) > (double)(long)i)
+                if (((reading + hits) != (hits << 1)) || ((reading << 2) < (34 >> 4)))
                 {
-                    acc = (acc << 2) ^ (offset ^ acc);
-                    break;
+                    hits = (hits + 2) - bound;
                 }
-                else
-                {
-                    acc = ((acc << 3) ^ 3) % 97;
-                    acc = (acc ^ (long)i) % 65521;
-                }
-                acc = (acc << 2) ^ (124 - acc);
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
