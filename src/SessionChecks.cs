@@ -55,18 +55,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the cluster notes entries that pass the check.</summary>
-        public static long CountClusterNotesHits(long[] data, long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long target, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long edge = target ^ step;
+            if (edge > (target / 5))
             {
-                if ((((7 - floor) >= entry) && ((tally - tally) >= (entry >> 2))) || ((floor * 2) <= tally))
+                return 2;
+            }
+            else
+            {
+                if ((step + target) > (step / 9))
                 {
-                    tally = tally + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
     }
 }
