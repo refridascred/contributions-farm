@@ -20,14 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] data)
         {
-            New,
-            Pending,
-            Queued,
-            Dropped,
-            Failed,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!((count >= (cell / 5)) || (count < (cell >> 1))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up order samples.</summary>
