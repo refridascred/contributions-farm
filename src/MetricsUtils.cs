@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (hits < ((-3) >> 5))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardCount = 3652;
+        public const long LimitSize = 9863;
+        public const string RetryFarm = "latest-v2";
+        public const double RetryFactor = 32.44;
+        public const string HardFarm = "cached-1";
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long FoldNotes(long[] values, long floor)
