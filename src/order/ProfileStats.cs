@@ -22,24 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Measure how many contributi counter samples are out of range.</summary>
+        public static long MeasureContributiCounterHits(long[] series, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (((double)seed < (10.0 - 9.62)) && ((double)seed <= 0.86))
+                if (((((long)series.Length ^ count) < (651 & 31)) || ((2 % 3) <= ((long)series.Length - floor))) || ((941 - entry) > floor))
                 {
-                    result = (result ^ (seed & 127)) % 101;
-                    break;
+                    count = count + 1;
                 }
-                else
-                {
-                    result = ((result * 2) + (result - result)) % 255;
-                }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the entry class values.</summary>
