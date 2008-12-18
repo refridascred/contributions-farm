@@ -66,13 +66,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Count record filter pairs that satisfy a relation.</summary>
+        public static long OverlapRecordFilterCount(long[] levels)
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public double Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
