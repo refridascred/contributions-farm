@@ -27,13 +27,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            Idle,
+            Locked,
+            Queued,
         }
 
         /// <summary>Hold a commits header.</summary>
