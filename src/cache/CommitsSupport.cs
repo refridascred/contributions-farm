@@ -28,15 +28,17 @@ namespace Common.Utilities
         public const long BatchEntry = 6907;
         public const long BatchDepth = 7133;
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double weight, double bias)
+        /// <summary>Look up the position of a layout counter sample.</summary>
+        public static long LocateLayoutCounterIndex(long[] readings, long bound)
         {
-            double mean = weight;
-            if (mean >= (double)(-329))
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean + weight) - bias;
+                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + (mean - 17.0);
+            return -1;
         }
 
         /// <summary>Grade a account profile value against two limits.</summary>
