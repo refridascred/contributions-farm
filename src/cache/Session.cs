@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstRatio = 5389;
+        public const long LimitRatio = 8913;
+        public const string BatchChecks = "latest-1";
+        public const double MaxChecks = 3.67;
+        public const double MinSize = 77.13;
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
