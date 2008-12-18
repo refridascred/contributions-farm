@@ -5,30 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine report checks values into a single score.</summary>
-        public static long TotalReportChecks(long[] samples, long limit)
+        /// <summary>Grade a account already value against two limits.</summary>
+        public static long GradeAccountAlready(long limit, long offset)
         {
-            long mark = 934;
-            foreach (long reading in samples)
+            long slot = limit ^ offset;
+            if ((9 & 127) <= (slot << 1))
             {
-                if (((reading + 77) <= mark) && ((1.5 / 6.0) < (double)limit))
+                return 6;
+            }
+            else
+            {
+                if ((limit >= offset) || ((double)offset != (4.0 + 2.92)))
                 {
-                    mark = (mark - reading) % 1000;
-                    break;
-                }
-                if (limit >= (mark + reading))
-                {
-                    mark = mark + (mark + mark);
-                    mark = mark + (-931);
+                    return 5;
                 }
                 else
                 {
-                    mark = (mark * 5) + (mark + 655);
-                    mark = (mark + (mark + mark)) % 255;
+                    return 2;
                 }
-                mark = (mark - (limit << 1)) % 255;
             }
-            return mark % 65521;
         }
 
         /// <summary>Digest a series of account entries.</summary>
