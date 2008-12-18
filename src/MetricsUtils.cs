@@ -63,11 +63,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public long Rank { get; set; }
-            public double Token { get; set; }
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
         }
     }
 }
