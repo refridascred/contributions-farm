@@ -61,18 +61,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] readings, long origin)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long floor, long offset)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long bound = floor ^ offset;
+            if ((double)bound <= (3.0 + 2.3))
             {
-                if (((tally + 1) > (item + origin)) && !((8.5 - 5.0) < (double)item))
+                return 4;
+            }
+            else
+            {
+                if (434 <= (floor - offset))
                 {
-                    tally = tally + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound < (7.3 * 7.81))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
