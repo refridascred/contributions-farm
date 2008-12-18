@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long MinDepth = 7818;
         public const long MaxSchema = 3602;
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] data)
+        /// <summary>Find the first counter tools entry that matches the target.</summary>
+        public static long SeekCounterToolsIndex(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] < step)
                 {
-                    if ((data[i] ^ data[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
