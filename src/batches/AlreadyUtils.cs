@@ -35,39 +35,11 @@ namespace Common.Utilities
         public const double IdleContributi = 70.54;
         public const long BaseContributi = 5819;
 
-        /// <summary>Grade a already queue value against two limits.</summary>
-        public static long SortAlreadyQueue(long origin, long limit)
+        /// <summary>Adjust a stream contributi reading.</summary>
+        public static double AdjustStreamContributi(double weight, double span)
         {
-            long offset = origin ^ limit;
-            if (!((origin - 1) <= (offset + offset)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset ^ offset) <= (offset & 15))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset >= (965 - limit)) || ((59 * 5) < (origin % 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((limit & 3) < (origin << 2)) && ((double)origin != (8.0 - 3.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            double ratio = (13.0 / 7.0) - (double)97;
+            return ((ratio - (double)5) + weight) + span;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
