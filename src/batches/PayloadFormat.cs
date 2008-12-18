@@ -48,12 +48,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Queued,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double WindowRatio = 37.67;
+        public const long BurstDepth = 7151;
+        public const long DefaultWindow = 4924;
+        public const string MaxLevel = "cached-1";
+        public const long StepBudget = 1977;
     }
 }
