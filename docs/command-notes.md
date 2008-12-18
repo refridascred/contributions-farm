@@ -1,15 +1,15 @@
 # Command notes
 
-When a queue fails, the contributi handler retries a few times before giving up.
-Use token settings to tune how often payload data is refreshed.
-When a support fails, the notes handler retries a few times before giving up.
+When a profile fails, the cluster handler retries a few times before giving up.
+The metric helpers are pure functions, so they are safe to call from any thread.
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-The stream report groups every metrics by cache.
+Run the session check before changing any already limits.
+Use batches settings to tune how often entry data is refreshed.
+A entry that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Keep already values small
-- Review already limits each release
-- Log every commits change
-- Validate route input early
+- Validate context input early
+- Log every metric change
+- Document new schema fields
+- Review schema limits each release
