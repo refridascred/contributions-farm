@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "strict-v2";
+        public const string BatchCommand = "strict";
+        public const double LimitWidth = 86.26;
+        public const long MinCommand = 6170;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string MaxAccount = "cached";
