@@ -1,8 +1,21 @@
 {
-  "command_size": false,
-  "hard_depth": "local",
-  "warm_interval_pct": 54,
-  "session_depth": 74.38,
-  "persist": false,
-  "poll_size_count": 99
+  "soft_window_count": true,
+  "hard_capacity": 500,
+  "audit": {
+    "profile_window": {
+      "idle_ttl_pct": 2317,
+      "soft_size": 9778,
+      "warm_timeout_ms": 1730
+    },
+    "tools_size": 60,
+    "poll_ttl_ms": {
+      "cache_depth_ms": "stable",
+      "idle_capacity_s": "green",
+      "strict": "latest",
+      "sync_limit_count": 88.82,
+      "retry_limit_s": 7066
+    }
+  },
+  "warm_capacity": 18.43,
+  "readonly": "local"
 }
