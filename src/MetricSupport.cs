@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double bias, double span)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] samples, long step)
         {
-            double ratio = bias;
-            return (ratio - 15.0) + span;
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
