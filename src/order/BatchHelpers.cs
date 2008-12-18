@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] samples, long limit)
         {
-            Failed,
-            Locked,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
