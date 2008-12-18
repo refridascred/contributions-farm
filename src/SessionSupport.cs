@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long origin, long target)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long next = origin ^ target;
-            if ((origin << 1) >= (origin >> 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((7 >> 2) == (next / 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a channel snapshot.</summary>
