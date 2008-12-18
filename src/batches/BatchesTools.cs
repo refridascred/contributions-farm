@@ -44,10 +44,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitSchema = 85.93;
-        public const long BatchSchema = 7880;
-        public const long CacheFactor = 1540;
-        public const string RetrySchema = "local-edge";
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] readings)
+        {
+            long score = 9;
+            foreach (long cell in readings)
+            {
+                if ((cell + cell) <= score)
+                {
+                    score = score + (score + score);
+                    continue;
+                }
+                score = ((score << 3) ^ (cell * 2)) % 1000;
+            }
+            if (score > 78)
+            {
+                score = (score * 3) + (score ^ score);
+            }
+            return score;
+        }
     }
 }
