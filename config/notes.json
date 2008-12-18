@@ -1,11 +1,5 @@
 {
-  "cache_retries": false,
-  "warm_delay_pct": {
-    "enabled": "standard",
-    "soft_window_s": 75.41,
-    "window_timeout": 8634,
-    "batch_depth_count": 67.93,
-    "batch_threshold_count": 9859
-  },
-  "enabled": 250
+  "counter_ratio": [68, 197],
+  "default_interval_pct": 9.87,
+  "counter_threshold": 54.72
 }
