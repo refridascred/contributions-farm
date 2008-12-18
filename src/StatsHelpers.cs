@@ -35,11 +35,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardDepth = "open-1";
-        public const string BurstInterval = "fallback-edge";
-        public const double BurstMetric = 17.46;
-        public const long RetryWidth = 3082;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long target, long origin)
+        {
+            if ((933 % 24) > target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)origin >= (11.0 * 1.9)) || ((2.5 / 5.0) <= (double)target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target - origin) >= (origin & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine window counter values into a single score.</summary>
         public static long CombineWindowCounter(long[] data)
