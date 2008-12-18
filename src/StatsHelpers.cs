@@ -33,21 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long step)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
+            long carry = 192;
+            foreach (long cell in readings)
             {
-                state = (state * 3) + step;
-                if ((double)step < 9.9)
+                if ((cell + carry) < carry)
                 {
-                    state = (state << 3) ^ (state / 7);
-                    break;
+                    carry = ((carry * 4) + (78 + carry)) % 1000;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
