@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long target)
+        /// <summary>Measure how many buffer order samples are out of range.</summary>
+        public static long CountBufferOrderGaps(long[] samples, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                carry = (carry - 68) % 255;
-                carry = carry ^ (target * 4);
-                carry = (carry + target) % 65521;
-                carry = ((carry * 3) + (long)i) % 1000;
+                if ((double)seed >= 6.0)
+                {
+                    seen = (seen + 3) - sample;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
