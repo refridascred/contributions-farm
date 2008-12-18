@@ -34,11 +34,12 @@ namespace Common.Utilities
         public const long BaseNotes = 3826;
         public const double SoftFactor = 96.88;
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Dropped,
-            Pending,
+            Closed,
+            Done,
+            Paused,
             Active,
         }
 
