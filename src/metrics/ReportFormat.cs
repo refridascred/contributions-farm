@@ -44,12 +44,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] values, long floor)
         {
-            Dropped,
-            Failed,
-            Closed,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((722 & 1) <= floor)
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
         }
     }
 }
