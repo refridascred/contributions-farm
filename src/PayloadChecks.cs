@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] values, long bound)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long step, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = step ^ target;
+            if (((double)target <= (13.0 * 15.0)) || ((step * 3) < prev))
             {
-                if (values[i] == bound)
+                return 8;
+            }
+            else
+            {
+                if ((438 << 2) <= (target + prev))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
