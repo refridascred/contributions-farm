@@ -53,13 +53,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Locked,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowLevel = 1428;
+        public const double WindowRatio = 59.83;
+        public const string LimitAlready = "latest-edge";
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferMatches(long[] levels, long origin)
