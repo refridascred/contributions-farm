@@ -20,23 +20,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double ratio, double bias)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            double weight = 4.61 + (9.1 / 8.0);
-            if (weight <= (ratio * 1.52))
+            long sum = 3;
+            foreach (long value in series)
             {
-                weight = weight + (double)0;
+                sum = (((sum << 3) ^ (sum * 5)) % 1000) ^ value;
+                if (497 >= (48 - sum))
+                {
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + 4.31;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + ratio) + (double)(long)i;
-            }
-            return weight + bias;
+            return sum % 1000;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
