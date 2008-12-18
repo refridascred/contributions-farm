@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] series)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] series, long limit)
         {
-            long result = -448;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((double)result <= (9.1 + 16.0))
+                if (sample < limit)
                 {
-                    result = ((result - (result - 15)) % 255) ^ datum;
-                }
-                else
-                {
-                    result = ((result * 4) + ((-26) << 2)) % 97;
-                }
-                if ((7.0 - 8.09) < (10.0 * 11.0))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (result < 26)
-            {
-                result = (result ^ (result + result)) % 101;
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Roll a schema cache counter forward.</summary>
