@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] items, long offset)
+        /// <summary>Fold a list of profile report readings.</summary>
+        public static long TallyProfileReport(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long acc = 92;
+            foreach (long item in items)
             {
-                if (value > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = (((acc * 5) + floor) % 4096) - item;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
