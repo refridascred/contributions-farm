@@ -11,22 +11,16 @@ namespace Common.Utilities
         public const double HardGraph = 28.13;
         public const long RetryGraph = 5731;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] data, long target)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long target)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long acc = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)count == (5.88 * 1.73))
-                {
-                    count = ((count + 1) ^ sample) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = (acc - 496) % 4096;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
