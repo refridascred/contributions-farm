@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardDepth = 3811;
-        public const long RetryLevel = 995;
-        public const long HardWindow = 6296;
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TotalChecks(long[] levels, long origin)
