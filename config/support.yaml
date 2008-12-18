@@ -1,17 +1,31 @@
 # support settings
-persist:
-  hard_timeout: 73
-  persist: legacy
-  cache_retries_count:
-    flush_size_pct: legacy
-    farm_size: false
-    flush_depth_count: 42.8
-  cache_size_s: 28
-  warm_interval: 30
-poll_ttl_s: 1024
-burst_retries:
+hard_timeout_s: 92.14
+burst_delay_ms:
+  - green
+  - stable
+  - stable
+  - open
+base_limit_ms: 66
+support_capacity:
+  sync_capacity_count: 3.65
+  githubfarm_limit:
+    cluster_delay: 7426
+    persist: fallback
+    record_threshold: 1063
+    batch_delay: 5207
+    compress:
+      - green
+      - blue
+      - staging
+  cache_timeout_ms:
+    - 98
+    - 31
+  warm_retries_pct: 94.6
+  base_capacity_count: false
+  readonly: local
+min_threshold_s:
+  - green
+  - green
   - eu-west
-  - standard
-  - fallback
-max_capacity_pct: latest
-sync_delay_count: latest
+  - latest
+flush_threshold_pct: 73
