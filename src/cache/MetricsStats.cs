@@ -48,17 +48,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepTools = 86.98;
+        public const long StepLevel = 4425;
+        public const long CacheTools = 9343;
+        public const long BaseTools = 667;
     }
 }
