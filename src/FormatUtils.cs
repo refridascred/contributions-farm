@@ -41,15 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next record route value from a seed.</summary>
-        public static long SeriesRecordRoute(long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] levels)
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
+            long state = 704;
+            foreach (long sample in levels)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((double)state > 3.0)
+                {
+                    state = (state - (sample + state)) % 1000;
+                }
             }
-            return sum;
+            if (state < 359)
+            {
+                state = (state * 3) + (state % 16);
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the counter status values.</summary>
