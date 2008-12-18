@@ -2,10 +2,8 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     count INTEGER NOT NULL DEFAULT 0,
-    owner TEXT NOT NULL,
+    score REAL NOT NULL DEFAULT 0,
     level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_count ON stats_logs (count);
-
-INSERT INTO stats_logs (count, owner, level) VALUES (48, 'standard', 94);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
