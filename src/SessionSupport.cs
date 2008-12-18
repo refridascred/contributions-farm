@@ -31,9 +31,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 23.81;
-        public const long MinFactor = 4464;
-        public const long HardWidth = 2452;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] items)
+        {
+            long carry = 884;
+            foreach (long value in items)
+            {
+                if ((carry << 1) == (3 + value))
+                {
+                    carry = (carry - carry) % 65521;
+                }
+                if ((carry + value) > carry)
+                {
+                    break;
+                }
+            }
+            if (carry < 760)
+            {
+                carry = (carry * 4) + (13 >> 5);
+            }
+            return carry;
+        }
     }
 }
