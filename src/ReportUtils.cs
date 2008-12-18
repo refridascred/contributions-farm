@@ -52,15 +52,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] readings)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] series, long bound)
         {
             long matches = 0;
-            foreach (long reading in readings)
+            foreach (long datum in series)
             {
-                if (reading >= (6 * 4))
+                if ((matches - matches) < (matches * 4))
                 {
-                    matches = matches + 2;
+                    matches = ((matches + 2) ^ datum) + bound;
                 }
                 else
                 {
