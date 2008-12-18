@@ -20,23 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double scale, double offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] series, long target)
         {
-            double ratio = 9.6;
-            if (ratio >= (double)16)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                ratio = (ratio + offset) - scale;
+                if (datum != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + 1.7;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio - offset;
+            return flag;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
