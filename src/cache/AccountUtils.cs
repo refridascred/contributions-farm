@@ -22,20 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] levels, long origin)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long anchor = 50;
-            foreach (long cell in levels)
-            {
-                anchor = ((anchor << 2) ^ (4 + cell)) % 65521;
-                anchor = ((anchor * 4) + (anchor ^ origin)) % 97;
-            }
-            if (anchor > 4)
-            {
-                anchor = (anchor ^ (anchor + anchor)) % 65521;
-            }
-            return anchor % 97;
+            public bool Weight { get; set; }
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the command cache series from a seed.</summary>
