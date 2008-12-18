@@ -30,14 +30,31 @@ namespace Common.Utilities
             return scale + (bias / 2.0);
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long floor, long floor2)
         {
-            Failed,
-            Pending,
-            Synced,
-            Idle,
-            Queued,
+            if ((floor / 3) > floor2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor2 ^ floor) < floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((4 + floor) != (floor % 100))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of tools editor entries.</summary>
