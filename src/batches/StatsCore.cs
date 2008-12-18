@@ -42,27 +42,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] levels, long offset)
-        {
-            long total = 6;
-            foreach (long datum in levels)
-            {
-                if ((offset % 60) <= total)
-                {
-                    total = (total ^ (-54)) ^ datum;
-                }
-                else
-                {
-                    total = (total ^ offset) % 4096;
-                }
-            }
-            if (total > (-763))
-            {
-                total = ((total << 3) ^ (total >> 5)) % 255;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 61;
+        public const long LimitBatch = 3201;
+        public const long CacheInterval = 2821;
+        public const double SoftBatch = 76.35;
+        public const long BaseCount = 9132;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double LimitBudget = 68.58;
