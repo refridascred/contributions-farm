@@ -1,12 +1,7 @@
 {
-  "order_threshold": "green",
-  "soft_interval_count": 6938,
-  "warm_depth_ms": {
-    "verbose": 4107,
-    "format_depth": [185, 282],
-    "cache_ratio_count": false,
-    "poll_timeout": true,
-    "max_window": "strict",
-    "retry_ttl": 6.15
-  }
+  "farm_depth": "cached",
+  "verbose": false,
+  "route_size": 2,
+  "warm_ttl_pct": 30,
+  "commits_ttl": ["cached", "open"]
 }
