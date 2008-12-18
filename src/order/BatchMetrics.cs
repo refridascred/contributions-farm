@@ -21,18 +21,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Find the first metrics queue entry that matches the target.</summary>
-        public static long FindMetricsQueueIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxAccount = "cached";
+        public const long BaseAccount = 7608;
+        public const string LimitBudget = "latest-1";
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long DigestSchema(long[] items)
