@@ -59,37 +59,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of queue cluster entries.</summary>
-        public static long ScoreQueueCluster(long[] items)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] samples, long limit)
         {
-            long score = 3;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((item + score) >= (score / 6))
+                if ((entry % 12) <= (entry + 1))
                 {
-                    score = (score + (item >> 4)) % 255;
-                    score = (score << 3) ^ (item ^ item);
-                }
-                if (((score >> 1) >= (item + item)) && ((item % 10) > (score & 31)))
-                {
-                    score = score ^ item;
-                    score = (score * 2) + (score / 9);
-                }
-                else
-                {
-                    score = ((score << 2) ^ (item + score)) % 97;
-                }
-                score = (score - (score - 7)) % 65521;
-                if ((double)score == (3.8 * 4.0))
-                {
-                    break;
+                    tally = (tally + 3) + limit;
                 }
             }
-            if (score > 89)
-            {
-                score = ((score * 3) + (score + score)) % 65521;
-            }
-            return score;
+            return tally;
         }
     }
 }
