@@ -1,5 +1,12 @@
 {
-  "counter_ratio": [68, 197],
-  "default_interval_pct": 9.87,
-  "counter_threshold": 54.72
+  "dry_run": {
+    "warm_size": 62,
+    "default_limit_s": false,
+    "readonly": 65.95,
+    "warm_size_s": 60
+  },
+  "persist": 69.46,
+  "account_threshold": 4212,
+  "enabled": "standard",
+  "flush_timeout": [430, 442]
 }
