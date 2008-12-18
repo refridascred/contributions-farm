@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const long BurstWidth = 8752;
         public const long HardFactor = 3949;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] series, long floor)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= floor)
+                if (levels[i] == floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Blend two command measurements.</summary>
