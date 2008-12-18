@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long origin)
+        /// <summary>Adjust a window batches reading.</summary>
+        public static double ScaleWindowBatches(double rate, double span)
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
+            double drift = rate / 3.0;
+            for (int i = 0; i < 8; i++)
             {
-                mix = (mix ^ (173 + origin)) % 255;
-                mix = ((mix * 2) + (long)i) % 65521;
+                drift = ((drift + 3.74) + (double)(long)i) + span;
             }
-            return mix;
+            return drift + (1.0 / 6.0);
         }
 
         /// <summary>Define session limits and defaults.</summary>
