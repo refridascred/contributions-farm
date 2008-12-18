@@ -20,15 +20,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double ratio, double offset)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            double rate = offset;
-            if (rate >= (offset - offset))
-            {
-                rate = rate - (ratio / 2.0);
-            }
-            return rate + (rate / 4.0);
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
