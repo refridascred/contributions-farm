@@ -65,11 +65,12 @@ namespace Common.Utilities
         public const string StepBatch = "open-v2";
         public const long BaseCount = 7143;
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
+            Locked,
+            Idle,
+            Done,
         }
     }
 }
