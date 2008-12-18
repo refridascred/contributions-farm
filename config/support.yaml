@@ -1,20 +1,22 @@
 # support settings
-entry_ttl: true
-verbose: open
-burst_capacity_count: 60
-soft_threshold_ms: 60
-sync_threshold_ms:
-  poll_timeout: 1024
-  warm_timeout_s:
-    retry_ttl: 4241
-    base_interval_s: 8158
-    min_threshold: 77
-    poll_depth_pct: local
-    flush_interval_ms:
-      - 224
-      - 500
-      - 447
-  order_capacity: local
-  idle_limit: green
-  strict: true
-  poll_delay: false
+verbose:
+  cache_window_ms: 3872
+  compress: false
+  flush_retries_count: primary
+  farm_delay: false
+metrics_interval:
+  warm_size_pct: blue
+  base_window_pct: 416
+  audit:
+    - edge
+    - eu-west
+    - local
+    - staging
+  retry_ttl: 1024
+  warm_timeout: primary
+  strict: stable
+strict: true
+profile_threshold:
+  context_window: 1508
+  max_window_count: 7687
+  poll_threshold_pct: 40
