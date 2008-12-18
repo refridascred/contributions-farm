@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 1800;
+        public const string BurstMetric = "alpha-1";
+        public const double MinSize = 39.94;
+        public const long DefaultTimeout = 2969;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long CompareProfileCount(long[] readings)
