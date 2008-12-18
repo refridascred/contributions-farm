@@ -1,7 +1,8 @@
 {
-  "account_capacity": "strict",
-  "window_depth": 100,
-  "metric_retries": false,
-  "default_ratio_count": ["staging", "open"],
-  "hard_ratio_ms": 17.34
+  "base_ratio_s": 12,
+  "verbose": ["primary", "open", "stable", "fallback"],
+  "retry_limit_s": ["fallback", "edge"],
+  "cluster_ttl": [294, 187],
+  "schema_limit": "blue",
+  "poll_limit_pct": 42.27
 }
