@@ -22,11 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double bias, double span)
         {
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            double ratio = bias;
+            return (ratio - 15.0) + span;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
