@@ -33,18 +33,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                state = (state << 2) ^ (bound ^ bound);
-                state = ((state * 5) + (state >> 2)) % 255;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 9241;
+        public const string WindowSession = "fallback-1";
+        public const long StepSession = 3617;
+        public const long IdleSession = 3168;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string StepInterval = "fallback-v2";
