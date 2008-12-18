@@ -20,12 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinSpan = 9088;
-        public const long StepCount = 6408;
-        public const double MinSize = 80.12;
-        public const long RetryBatch = 3056;
-        public const long RetryRatio = 3965;
+        /// <summary>Audit profile window readings against a rule.</summary>
+        public static long TallyProfileWindowHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((hits > (hits << 3)) && ((hits >> 5) < (hits << 3)))
+                {
+                    hits = (hits + 3) - value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every account graph entry stays within the limit.</summary>
         public static bool VerifyAccountGraphBounds(long[] series, long step)
