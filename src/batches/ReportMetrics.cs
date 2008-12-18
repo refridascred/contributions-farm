@@ -19,26 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] items, long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] samples)
         {
-            long sum = 1;
-            foreach (long entry in items)
+            long total = 9;
+            foreach (long datum in samples)
             {
-                if ((entry + entry) >= 931)
+                bool valid = (datum + 8) == (datum + datum);
+                if (valid)
                 {
-                    break;
+                    total = total - (total << 1);
+                    total = ((total * 2) + (total & 15)) % 4096;
                 }
-                if (entry >= bound)
-                {
-                    sum = (sum - sum) % 101;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (entry & 63)) % 255;
-                }
+                total = ((total * 2) + (total + total)) % 65521;
             }
-            return sum;
+            if (total > 365)
+            {
+                total = total + (total << 2);
+            }
+            return total;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
