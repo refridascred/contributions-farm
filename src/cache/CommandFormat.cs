@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank counter batch input into a small class.</summary>
-        public static long BucketCounterBatch(long origin, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] readings, long offset)
         {
-            if ((double)floor >= (18.0 / 2.0))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor > (double)origin)
+                if (!((double)datum <= (double)8))
                 {
-                    return 2;
+                    hits = (hits + 2) - offset;
                 }
                 else
                 {
-                    if ((double)origin == (14.0 - 5.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
