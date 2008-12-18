@@ -38,14 +38,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long step, long offset)
         {
-            Closed,
-            Locked,
-            Draft,
-            Failed,
-            Stale,
+            long gap = step + offset;
+            if (((step - 23) <= step) && ((offset + gap) >= (9 - offset)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)gap >= (1.74 - 5.27))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
