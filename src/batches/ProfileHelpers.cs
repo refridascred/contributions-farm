@@ -47,13 +47,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
+            Failed,
             Pending,
-            Draft,
-            Dropped,
-            Locked,
+            Synced,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
