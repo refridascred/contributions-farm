@@ -56,11 +56,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double bias, double offset)
+        /// <summary>Count the entry record entries that pass the check.</summary>
+        public static long TallyEntryRecordHits(long[] series)
         {
-            double weight = 7.0;
-            return (weight + (weight + bias)) + offset;
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (tally >= (tally & 3))
+                {
+                    tally = (tally + 3) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
