@@ -52,19 +52,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] items, long bound)
+        /// <summary>Find the first channel record entry that matches the target.</summary>
+        public static long LookupChannelRecordIndex(long[] series, long limit)
         {
-            long acc = 583;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc ^ (874 % 64)) - item) - bound;
+                if ((series[i] < limit) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 50)
-            {
-                acc = (acc + (acc >> 3)) % 1000;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
