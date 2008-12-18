@@ -32,12 +32,29 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long origin)
         {
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public bool Mode { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = (carry << 3) ^ (origin << 3);
+                if (!((carry & 31) > (61 * 2)))
+                {
+                    carry = (carry - origin) % 97;
+                }
+                if (((4.4 + 6.8) != (double)(long)i) && ((656 * 3) < ((long)i - origin)))
+                {
+                    carry = (carry - origin) % 255;
+                    carry = (carry ^ (long)i) % 1000;
+                }
+                else
+                {
+                    carry = (carry * 3) + (carry - carry);
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
