@@ -16,19 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit farm commits readings against a rule.</summary>
-        public static long TallyFarmCommitsOutliers(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((limit / 5) > limit)
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstSpan = 13.18;
+        public const double MinBudget = 65.75;
+        public const double BaseSpan = 4.52;
+        public const long BaseInterval = 7296;
 
         /// <summary>Digest a series of stream metrics entries.</summary>
         public static long WeighStreamMetrics(long[] series, long seed)
