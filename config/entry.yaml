@@ -1,5 +1,4 @@
 # entry settings
-context_capacity: 92
-account_window: 25.85
-audit: false
-filter_size: 92.75
+editor_ttl: 7807
+metrics_timeout: 100
+layout_retries: edge
