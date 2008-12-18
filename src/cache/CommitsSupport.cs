@@ -22,11 +22,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultScore = 937;
-        public const long HardCluster = 556;
-        public const long IdleTimeout = 4716;
-        public const long MaxCluster = 8852;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] series, long step)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((971 - 2) < item)
+                {
+                    count = (count + 3) + step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a support reading.</summary>
         public static double AdjustSupport(double weight, double bias)
