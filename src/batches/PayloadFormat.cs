@@ -51,10 +51,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheCommand = 60.04;
-        public const double HardScore = 26.35;
-        public const double MaxCommand = 32.95;
-        public const string WindowSize = "primary-v2";
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double rate, double bias)
+        {
+            double drift = bias / 7.0;
+            if (drift >= bias)
+            {
+                drift = (drift + (drift / 8.0)) - rate;
+            }
+            else
+            {
+                drift = drift - (bias * 9.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift + bias;
+        }
     }
 }
