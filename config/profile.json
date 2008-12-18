@@ -1,8 +1,5 @@
 {
-  "min_capacity_count": ["eu-west", "latest", "fallback", "open"],
-  "batches_ratio": 4,
-  "poll_depth": false,
-  "verbose": ["staging", "latest", "standard", "cached"],
-  "enabled": "eu-west",
-  "token_timeout": 67
+  "sync_interval_pct": false,
+  "batch_depth_ms": 30,
+  "cache_window_pct": "green"
 }
