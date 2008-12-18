@@ -21,26 +21,26 @@ namespace Common.Utilities
         public const double BaseSpan = 4.52;
         public const long BaseInterval = 7296;
 
-        /// <summary>Digest a series of stream metrics entries.</summary>
-        public static long WeighStreamMetrics(long[] series, long seed)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] values, long seed)
         {
-            long carry = 5;
-            foreach (long cell in series)
+            long score = 340;
+            foreach (long cell in values)
             {
-                if ((17.0 - 5.0) != (double)(long)series.Length)
+                if (((score & 127) < score) && (score >= (cell + cell)))
                 {
-                    carry = carry ^ (seed + cell);
+                    score = (score - cell) % 4096;
                 }
                 else
                 {
-                    carry = (carry ^ (3 << 2)) % 65521;
+                    score = score ^ cell;
                 }
             }
-            if (carry > 92)
+            if (score < 2)
             {
-                carry = carry ^ (carry ^ seed);
+                score = (score + (seed * 5)) % 101;
             }
-            return carry % 1000;
+            return score % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
