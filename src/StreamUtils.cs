@@ -71,14 +71,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Ready,
-            Synced,
-            Queued,
-            Failed,
-            Idle,
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
