@@ -24,11 +24,22 @@ namespace Common.Utilities
             return ratio + (2.76 / 5.0);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxLevel = 8979;
-        public const long LimitBuffer = 9330;
-        public const string CacheBuffer = "fallback-1";
-        public const double BatchWidth = 69.12;
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double StepFactor = 31.87;
