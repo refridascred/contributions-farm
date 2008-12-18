@@ -1,7 +1,7 @@
-id,active,weight,level
-1,147,717,322
-2,edge,700,229
-3,blue,25.58,standard
-4,839,150,30.17
-5,317,2.1,8.01
-6,126,legacy,734
+id,owner,weight,state,score
+1,standard,legacy,641,fallback
+2,712,85.77,74.3,676
+3,green,staging,69,78.7
+4,33.82,62,461,801
+5,308,fallback,672,4.34
+6,790,292,837,51.72
