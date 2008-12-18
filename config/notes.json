@@ -1,8 +1,5 @@
 {
-  "poll_retries_ms": 39.06,
-  "sync_delay_pct": "fallback",
-  "soft_delay": 4,
-  "dry_run": 1024,
-  "warm_interval_ms": 77.89,
-  "audit": ["open", "edge"]
+  "enabled": ["local", "green", "primary", "blue"],
+  "max_threshold": "edge",
+  "audit": "green"
 }
