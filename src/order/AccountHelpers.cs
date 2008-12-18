@@ -76,17 +76,18 @@ namespace Common.Utilities
         public const long BaseBuffer = 1487;
         public const string DefaultBuffer = "cached-v2";
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] series, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (series[i] >= origin)
+                if ((datum / 2) < count)
                 {
-                    return (long)i;
+                    count = (count + 3) + limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a route entry.</summary>
