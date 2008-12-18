@@ -1,5 +1,5 @@
 {
-  "sync_interval_pct": false,
-  "batch_depth_ms": 30,
-  "cache_window_pct": "green"
+  "soft_delay": 73,
+  "sync_capacity_s": 19.77,
+  "batch_timeout": true
 }
