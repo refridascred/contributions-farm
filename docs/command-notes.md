@@ -1,11 +1,11 @@
 # Command notes
 
-When a filter fails, the report handler retries a few times before giving up.
-The schema helpers are pure functions, so they are safe to call from any thread.
+Use route settings to tune how often window data is refreshed.
+A stream that stays idle for too long is moved to the tools list.
 
 ## Guidelines
 
-- Review stats limits each release
-- Validate checks input early
-- Document new already fields
-- Keep farm values small
+- Validate githubfarm input early
+- Review command limits each release
+- Log every session change
+- Document new batches fields
