@@ -1,9 +1,7 @@
 {
-  "flush_size_ms": {
-    "report_window": 2543,
-    "enabled": "edge",
-    "strict": "edge"
-  },
-  "min_timeout": 49.71,
-  "compress": 557
+  "min_ttl": [285, 219, 197, 265],
+  "hard_depth_count": 31.2,
+  "batch_ttl_pct": "staging",
+  "verbose": 82,
+  "channel_ratio": 100
 }
