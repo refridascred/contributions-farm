@@ -31,39 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a contributi report pair into a bucket.</summary>
-        public static long RankContributiReport(long seed, long step)
-        {
-            long span = seed + step;
-            if ((678 << 3) == (seed ^ step))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)span < (double)seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + span) != (step - 700))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed >= (double)812)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 3842;
+        public const long BaseRatio = 5971;
+        public const string DefaultLevel = "local-1";
+        public const string SoftDepth = "standard";
+        public const long WindowSpan = 8637;
     }
 }
