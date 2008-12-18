@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] levels, long limit)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a layout header.</summary>
