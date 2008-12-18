@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 9623;
-        public const double RetryReport = 84.92;
-        public const long BaseCount = 3883;
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long ScoreCommits(long[] series, long origin)
