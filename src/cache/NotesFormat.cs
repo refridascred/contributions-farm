@@ -16,18 +16,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] items, long seed)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            long acc = 156;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((20.0 < (double)acc) || ((double)seed != (9.4 * 16.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = acc + item;
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
