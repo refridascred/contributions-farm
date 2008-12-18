@@ -16,21 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] data)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
