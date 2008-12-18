@@ -33,19 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every account graph entry stays within the limit.</summary>
-        public static bool VerifyAccountGraphBounds(long[] series, long step)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long item in series)
+            long score = 772;
+            foreach (long datum in levels)
             {
-                if (item < step)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score - (bound + score)) % 255) ^ datum;
             }
-            return found;
+            if (score > 338)
+            {
+                score = (score ^ score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Describe the route kind values.</summary>
