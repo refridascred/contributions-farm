@@ -51,17 +51,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] readings, long bound)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((readings[i] < bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = sum - floor;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
     }
 }
