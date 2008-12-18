@@ -16,19 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] items, long offset)
+        /// <summary>Count the format payload entries that pass the check.</summary>
+        public static long TallyFormatPayloadOutliers(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (sample != offset)
+                if (((hits + hits) == (hits >> 2)) && (target > ((-81) - hits)))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 2) - reading;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Locate a record reading by value.</summary>
