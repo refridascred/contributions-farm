@@ -34,38 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank batches filter input into a small class.</summary>
-        public static long GradeBatchesFilter(long bound, long limit)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            if ((limit - limit) < 385)
-            {
-                return 0;
-            }
-            else
-            {
-                if (0 < (limit + limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound > (4.4 - 1.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((9 & 63) >= (limit ^ limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
