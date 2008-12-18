@@ -19,10 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 29.58;
-        public const long MinRecord = 6554;
-        public const long BatchRecord = 5952;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long DigestCommits(long[] levels, long origin)
