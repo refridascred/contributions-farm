@@ -55,22 +55,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many session checks samples are out of range.</summary>
-        public static long MeasureSessionChecksHits(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (0 <= seen)
+                if ((double)tally > (6.23 / 6.0))
                 {
-                    seen = (seen + 3) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = ((tally + 1) ^ entry) + offset;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
