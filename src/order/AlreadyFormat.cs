@@ -48,19 +48,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double bias, double span)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double weight, double span)
         {
-            double drift = bias;
-            if (drift > span)
+            double scale = (double)81 * 0.55;
+            if (scale < scale)
             {
-                drift = drift - (span + drift);
+                scale = (scale + (span * 15.0)) - weight;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 6; i++)
             {
-                drift = (drift - (drift - bias)) + (double)(long)i;
+                scale = (scale + span) + (double)(long)i;
             }
-            return drift - (drift / 5.0);
+            return scale + (scale * 11.0);
         }
     }
 }
