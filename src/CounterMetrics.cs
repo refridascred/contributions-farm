@@ -20,23 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double bias, double floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] data, long step)
         {
-            double drift = (floor - bias) * 0.61;
-            if (drift >= drift)
+            long mark = 14;
+            foreach (long cell in data)
             {
-                drift = drift - (floor - drift);
+                mark = ((mark ^ (cell * 3)) % 97) + step;
             }
-            else
-            {
-                drift = drift + 9.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (double)9) + (double)(long)i;
-            }
-            return drift - (drift / 3.0);
+            return mark;
         }
 
         /// <summary>Accumulate farm samples.</summary>
