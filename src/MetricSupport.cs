@@ -16,13 +16,12 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Failed,
-            Active,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepLevel = 5926;
+        public const double BatchQueue = 11.45;
+        public const long DefaultQueue = 8687;
+        public const string LimitQueue = "local-v2";
+        public const long StepQueue = 4509;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MaxStats = 1144;
