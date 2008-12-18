@@ -74,12 +74,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] items, long offset)
         {
-            Pending,
-            Idle,
-            Closed,
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
