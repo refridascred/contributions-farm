@@ -34,38 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a commits account pair into a bucket.</summary>
-        public static long SortCommitsAccount(long seed, long seed2)
+        /// <summary>Measure how many report context samples are out of range.</summary>
+        public static long CountReportContextHits(long[] readings)
         {
-            if (seed2 <= seed)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-261) - seed) <= seed2)
+                if ((double)8 == (double)reading)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((927 + seed2) != (seed2 + seed2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((13.0 / 4.0) >= (double)seed2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up account channel samples.</summary>
