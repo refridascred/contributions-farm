@@ -21,21 +21,14 @@ namespace Common.Utilities
         public const double MaxDepth = 41.72;
         public const long HardTimeout = 6044;
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] values)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Queued,
+            New,
+            Idle,
+            Active,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
