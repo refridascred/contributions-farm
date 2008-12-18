@@ -23,10 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseLevel = 13.67;
-        public const double HardSession = 62.98;
-        public const long BurstSize = 8739;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] samples, long seed)
+        {
+            long carry = 819;
+            foreach (long entry in samples)
+            {
+                if (!((double)carry <= (double)entry))
+                {
+                    carry = ((carry * 5) + (seed + entry)) % 4096;
+                    carry = (carry ^ (entry + (-584))) % 1000;
+                }
+                carry = carry - (seed / 3);
+            }
+            return carry;
+        }
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
