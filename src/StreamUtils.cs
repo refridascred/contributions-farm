@@ -61,21 +61,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] samples)
+        /// <summary>Adjust a githubfarm metric reading.</summary>
+        public static double ScaleGithubfarmMetric(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = offset;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = ((gain + gain) - (double)(long)i) - ratio;
             }
-            return tally;
+            return gain + 3.0;
         }
     }
 }
