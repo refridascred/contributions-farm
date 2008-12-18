@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MaxAlready = 94.41;
-        public const long BaseAlready = 7401;
-        public const long LimitAlready = 6399;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Draft,
+            Queued,
+            Retry,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
