@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] items)
         {
-            Closed,
-            Active,
-            Stale,
+            long mark = 9;
+            foreach (long cell in items)
+            {
+                if ((cell & 255) == (33 * 2))
+                {
+                    mark = mark ^ (mark >> 2);
+                    mark = (mark + (cell + mark)) % 101;
+                }
+                if ((950 < (mark % 8)) || ((cell & 63) != ((long)items.Length + mark)))
+                {
+                    mark = (mark << 2) ^ (2 * 5);
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
