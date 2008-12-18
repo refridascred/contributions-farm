@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=428
-log "limit is ${COMMAND_LIMIT}"
-
-for item in legacy fallback local open; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 11); do
     total=$((total + i * 4))
 done
 log "total ${total}"
+
+COMMAND_LIMIT=245
+log "limit is ${COMMAND_LIMIT}"
