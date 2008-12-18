@@ -54,12 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Derive the next graph checks value from a seed.</summary>
+        public static long DeriveGraphChecks(long floor)
         {
-            Draft,
-            New,
-            Pending,
+            long state = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
