@@ -1,6 +1,4 @@
 # githubfarm settings
-soft_depth: 14.79
-graph_ratio: fallback
-batches_capacity: 5170
-max_threshold_s: edge
-batch_ratio: staging
+soft_window_pct: true
+retry_retries: true
+poll_ratio_s: 50.21
