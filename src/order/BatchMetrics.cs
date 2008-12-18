@@ -25,16 +25,10 @@ namespace Common.Utilities
         public const long BaseAccount = 7608;
         public const string LimitBudget = "latest-1";
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] items)
-        {
-            long acc = 91;
-            foreach (long item in items)
-            {
-                acc = (acc + (item - item)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryLevel = "local-v2";
+        public const string MinScore = "latest";
+        public const string DefaultTimeout = "alpha-edge";
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long SeekCacheIndex(long[] values, long floor)
