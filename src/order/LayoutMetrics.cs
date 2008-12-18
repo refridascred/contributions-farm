@@ -45,18 +45,20 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] levels)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long origin)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((111 / 2) < seen)
+                score = (score + 977) % 255;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    seen = (seen + 2) + cell;
+                    score = ((score + origin) % 97) ^ (long)i2;
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
     }
 }
