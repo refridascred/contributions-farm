@@ -26,12 +26,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 3084;
-        public const long BatchWidth = 6487;
-        public const double SoftRoute = 15.41;
-        public const long BurstRoute = 1244;
-        public const long MinLevel = 9807;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleMetric = 46.68;
+        public const long WindowMetric = 4925;
+        public const string LimitSpan = "latest-1";
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
