@@ -68,12 +68,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long floor, long step)
         {
-            public long Score { get; set; }
-            public double Owner { get; set; }
-            public long Token { get; set; }
+            if ((floor >> 4) >= (step - step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor * 3) > (step + floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (4.34 >= (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
