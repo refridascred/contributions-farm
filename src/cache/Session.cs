@@ -22,11 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultInterval = 8881;
-        public const long HardWindow = 3900;
-        public const long HardCount = 7641;
-        public const double CacheWindow = 17.76;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Active,
+            Failed,
+            Done,
+        }
 
         /// <summary>Project the next graph value.</summary>
         public static double SmoothGraph(double scale, double floor)
