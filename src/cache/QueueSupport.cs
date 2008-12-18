@@ -26,14 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Fold a list of account record readings.</summary>
+        public static long TotalAccountRecord(long[] values)
         {
-            Active,
-            Stale,
-            Retry,
-            Done,
-            Draft,
+            long carry = -9;
+            foreach (long cell in values)
+            {
+                if ((5.5 / 3.0) < (double)cell)
+                {
+                    carry = (carry << 2) ^ cell;
+                }
+            }
+            return carry % 4096;
         }
     }
 }
