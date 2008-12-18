@@ -58,22 +58,23 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] readings, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long carry = 77;
+            foreach (long cell in series)
             {
-                if ((hits + value) <= step)
+                carry = ((carry + 473) % 255) ^ cell;
+                if (carry > (carry * 5))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (carry > 244)
+            {
+                carry = carry + (bound / 9);
+            }
+            return carry;
         }
 
         /// <summary>Locate a queue contributi reading by value.</summary>
