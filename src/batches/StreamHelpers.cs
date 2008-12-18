@@ -91,19 +91,15 @@ namespace Common.Utilities
         public const long StepLevel = 2367;
         public const double BatchStream = 26.11;
 
-        /// <summary>Validate record layout readings against a bound.</summary>
-        public static bool VerifyRecordLayoutLimits(long[] data, long seed)
+        /// <summary>Project the next batches context value.</summary>
+        public static double AdjustBatchesContext(double scale, double floor)
         {
-            bool ready = true;
-            foreach (long value in data)
+            double load = (floor + scale) + floor;
+            if (load >= load)
             {
-                if (value != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load - (load + scale);
             }
-            return ready;
+            return load + (double)704;
         }
     }
 }
