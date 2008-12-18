@@ -28,13 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double bias, double span)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
+            double scale = span * 4.88;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = ((scale - (scale * 1.9)) + (double)(long)i) + bias;
+            }
+            return scale + (span - 2.0);
         }
     }
 }
