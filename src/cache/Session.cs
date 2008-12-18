@@ -32,10 +32,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 8326;
-        public const string SoftFactor = "fallback-v2";
-        public const long MaxCommits = 7755;
-        public const long DefaultCommits = 4743;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Idle,
+            Draft,
+            Dropped,
+            New,
+            Failed,
+        }
     }
 }
