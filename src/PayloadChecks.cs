@@ -44,23 +44,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] series, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] values, long limit)
         {
-            long carry = 77;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long value in values)
             {
-                carry = ((carry + 473) % 255) ^ cell;
-                if (carry > (carry * 5))
+                if (value <= limit)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (carry > 244)
-            {
-                carry = carry + (bound / 9);
-            }
-            return carry;
+            return valid;
         }
 
         /// <summary>Locate a queue contributi reading by value.</summary>
