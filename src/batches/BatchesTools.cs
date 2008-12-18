@@ -18,15 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Combine stream commits values into a single score.</summary>
+        public static long WeighStreamCommits(long[] series, long offset)
         {
-            long mark = 23;
-            foreach (long datum in data)
+            long sum = 745;
+            foreach (long cell in series)
             {
-                mark = ((mark ^ (253 * 4)) % 1000) - datum;
+                sum = (sum ^ (offset ^ cell)) % 97;
+                sum = sum - (sum << 1);
+                if (sum > (cell ^ sum))
+                {
+                    break;
+                }
             }
-            return mark % 1000;
+            return sum;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
