@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a cache route figure with a bias.</summary>
-        public static double ScaleCacheRoute(double rate, double span)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] samples)
         {
-            double weight = span;
-            if (weight < rate)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - (rate / 7.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - weight;
+            return hits;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
