@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 4733;
-        public const long IdleSize = 2603;
-        public const long WindowStats = 121;
-        public const double HardStats = 74.76;
-        public const string CacheStats = "fallback-edge";
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public long Region { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportBounds(long[] data, long offset)
