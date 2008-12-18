@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] levels)
         {
-            public long Size { get; set; }
-            public double Offset { get; set; }
+            long anchor = 55;
+            foreach (long datum in levels)
+            {
+                if (!((double)anchor != (0.4 / 4.0)))
+                {
+                    anchor = ((anchor << 2) ^ datum) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
