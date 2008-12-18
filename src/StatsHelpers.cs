@@ -42,18 +42,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] readings)
+        /// <summary>Audit queue metric readings against a rule.</summary>
+        public static long CountQueueMetricMatches(long[] samples)
         {
-            long carry = 192;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((cell + carry) < carry)
+                if ((9.0 * 7.86) == (double)sample)
                 {
-                    carry = ((carry * 4) + (78 + carry)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Rank record input into a small class.</summary>
