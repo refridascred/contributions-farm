@@ -68,15 +68,19 @@ namespace Common.Utilities
         public const double BurstBudget = 98.21;
         public const string MaxOrder = "local";
 
-        /// <summary>Iterate the report command series from a seed.</summary>
-        public static long IterateReportCommand(long bound)
+        /// <summary>Validate record layout readings against a bound.</summary>
+        public static bool VerifyRecordLayoutLimits(long[] data, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if (value != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
     }
 }
