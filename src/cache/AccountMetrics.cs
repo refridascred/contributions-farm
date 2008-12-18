@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long MaxFarm = 1180;
         public const string LimitTimeout = "local-edge";
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] data, long limit)
         {
-            Synced,
-            Stale,
-            Retry,
-            Ready,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (((seen & 31) == (limit + seen)) || !(sample < (sample + limit)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
