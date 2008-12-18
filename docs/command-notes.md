@@ -1,12 +1,10 @@
 # Command notes
 
-When a cluster fails, the filter handler retries a few times before giving up.
-Each metric is validated before it reaches the githubfarm queue.
-A contributi that stays idle for too long is moved to the batches list.
+Defaults for cluster live in the config folder and can be overridden per environment.
+When a record fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review order limits each release
-- Keep account values small
-- Log every session change
-- Validate contributi input early
+- Keep command values small
+- Validate layout input early
+- Document new batch fields
