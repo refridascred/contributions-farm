@@ -64,19 +64,15 @@ namespace Common.Utilities
         public const long BaseRoute = 6050;
         public const long BaseLevel = 675;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] levels, long floor)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            double mean = 7.61;
+            if (mean < 14.0)
             {
-                if (item <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = ((mean - mean) - ratio) - floor;
             }
-            return ready;
+            return mean - (double)53;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
