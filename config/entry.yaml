@@ -1,29 +1,4 @@
 # entry settings
-batch_timeout_s: eu-west
-soft_delay: 31.48
-max_size_pct:
-  cache_interval:
-    default_interval_s: fallback
-    dry_run: legacy
-    warm_ratio_ms:
-      - green
-      - latest
-      - primary
-  compress: 250
-  report_threshold: false
-  window_interval: 250
-  min_depth: 100
-  min_timeout_ms: 92.31
-retry_window_s:
-  verbose: 3.02
-  contributi_retries: 3825
-  audit: latest
-  batch_depth_ms: 82.96
-  editor_capacity:
-    default_threshold: 30
-    hard_timeout_ms: 64
-    max_delay_count: cached
-    flush_ratio_ms: stable
-    cache_retries_s: staging
-burst_limit_s: stable
-soft_threshold: 1180
+default_limit: eu-west
+soft_depth: fallback
+contributi_capacity: true
