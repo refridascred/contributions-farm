@@ -1,12 +1,10 @@
 {
-  "retry_ttl": {
-    "stream_interval": 24.17,
-    "cache_depth_s": ["primary", "blue"],
-    "commits_ttl": "local"
+  "batch_ttl_s": {
+    "audit": ["strict", "strict", "local", "cached"],
+    "min_depth_count": 1024,
+    "retry_capacity_ms": "standard"
   },
-  "report_interval": "latest",
-  "strict": 9149,
-  "idle_threshold_ms": "legacy",
-  "compress": "staging",
-  "verbose": "fallback"
+  "base_retries": "cached",
+  "filter_ratio": 71,
+  "report_depth": 12
 }
