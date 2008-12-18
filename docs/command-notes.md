@@ -1,10 +1,16 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-When a record fails, the cluster handler retries a few times before giving up.
+Each editor is validated before it reaches the payload queue.
+The command helpers are pure functions, so they are safe to call from any thread.
+The contributi report groups every already by format.
+
+Run the schema check before changing any farm limits.
+A tools that stays idle for too long is moved to the graph list.
+The tools report groups every cache by format.
 
 ## Guidelines
 
-- Keep command values small
-- Validate layout input early
-- Document new batch fields
+- Prefer filter defaults
+- Keep queue values small
+- Log every filter change
+- Review farm limits each release
