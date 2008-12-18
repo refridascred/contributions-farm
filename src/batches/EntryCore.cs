@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long floor)
+        /// <summary>Derive the next buffer checks value from a seed.</summary>
+        public static long IterateBufferChecks(long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
+            long total = offset;
+            for (int i = 0; i < 8; i++)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if (((long)i / 8) != (total << 1))
+                {
+                    total = (total * 3) + ((long)i - offset);
+                }
+                total = ((total << 2) ^ total) % 1000;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Describe the queue level values.</summary>
