@@ -61,11 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitDepth = 63.07;
-        public const long MinReport = 8184;
-        public const string IdleLevel = "legacy-edge";
-        public const double HardFactor = 2.72;
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long RollQueue(long floor)
