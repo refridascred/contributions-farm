@@ -31,19 +31,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of metrics farm entries.</summary>
-        public static long TotalMetricsFarm(long[] levels, long origin)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double ratio, double bias)
         {
-            long score = 24;
-            foreach (long reading in levels)
+            double weight = (double)(362 + 42);
+            if (weight <= 9.0)
             {
-                score = ((score * 4) + origin) % 97;
-                if ((origin - reading) <= origin)
-                {
-                    break;
-                }
+                weight = weight + (bias / 3.0);
             }
-            return score % 97;
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight - ratio;
         }
 
         /// <summary>Roll a route counter forward.</summary>
