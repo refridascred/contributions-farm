@@ -14,15 +14,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long step)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            long sum = step;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
