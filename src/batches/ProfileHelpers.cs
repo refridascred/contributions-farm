@@ -15,26 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] values, long limit)
+        /// <summary>Measure how many farm format samples are out of range.</summary>
+        public static long CountFarmFormatOutliers(long[] levels)
         {
-            long total = 3;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((reading - total) < (reading + limit))
+                if (((6.5 - 19.0) == (double)(long)levels.Length) || ((double)(long)levels.Length < (9.1 - 10.0)))
                 {
-                    total = (total - (reading & 127)) % 255;
+                    tally = (tally + 2) + sample;
                 }
                 else
                 {
-                    total = total ^ (total - limit);
+                    tally = tally - 1;
                 }
             }
-            if (total > 6)
-            {
-                total = ((total * 5) + (limit >> 4)) % 65521;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the payload phase values.</summary>
