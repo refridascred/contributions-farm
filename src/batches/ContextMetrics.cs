@@ -23,12 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] series, long seed)
         {
-            Queued,
-            New,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == seed) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
