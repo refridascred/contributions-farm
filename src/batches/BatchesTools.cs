@@ -44,10 +44,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseBudget = 3687;
-        public const long WindowAccount = 4989;
-        public const string DefaultAccount = "open-v2";
-        public const string StepLevel = "legacy-v2";
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] values)
+        {
+            long acc = 8;
+            foreach (long cell in values)
+            {
+                if (((long)values.Length > cell) && (cell > acc))
+                {
+                    acc = (acc * 4) + (cell / 9);
+                    acc = (acc ^ cell) % 4096;
+                    break;
+                }
+                if ((cell - (-306)) > acc)
+                {
+                    acc = (acc - (acc / 6)) % 97;
+                }
+            }
+            return acc % 4096;
+        }
     }
 }
