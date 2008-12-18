@@ -46,19 +46,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((((reading << 3) > reading) || ((count - reading) <= ((long)samples.Length - count))) && ((reading << 2) <= (count + reading)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 8943;
+        public const long BurstFormat = 3926;
+        public const long IdleCount = 5907;
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
