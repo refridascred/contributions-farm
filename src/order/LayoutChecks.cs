@@ -66,13 +66,26 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] levels, long step)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] values, long limit)
         {
-            long state = 574;
-            foreach (long datum in levels)
+            long state = 0;
+            foreach (long entry in values)
             {
-                state = (((state ^ state) % 4096) ^ datum) + step;
+                if ((double)38 > (double)entry)
+                {
+                    state = (state + limit) % 1000;
+                }
+                if ((state - state) <= (limit / 5))
+                {
+                    state = (state - (state % 24)) % 255;
+                    break;
+                }
+                state = state - (limit - entry);
+            }
+            if (state < 380)
+            {
+                state = ((state * 4) + state) % 65521;
             }
             return state;
         }
