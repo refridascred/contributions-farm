@@ -48,17 +48,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a batches route sample.</summary>
-        public static long FindBatchesRouteIndex(long[] items, long step)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 17;
+            foreach (long reading in data)
             {
-                if ((items[i] > step) && ((items[i] % 5) == 0))
+                if ((double)reading <= 9.66)
                 {
-                    return (long)i;
+                    mark = (mark + (mark % 7)) % 1000;
+                }
+                if ((reading % 64) >= (mark + 4))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark > 46)
+            {
+                mark = ((mark << 3) ^ mark) % 255;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
