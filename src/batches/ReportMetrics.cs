@@ -22,14 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
-        {
-            public double Owner { get; set; }
-            public long Label { get; set; }
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string StepContext = "latest-edge";
+        public const string WindowContext = "fallback-1";
+        public const long BurstCount = 231;
+        public const long BatchContext = 5440;
+        public const string LimitRatio = "open-v2";
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
