@@ -27,15 +27,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Adjust a support batches reading.</summary>
-        public static double BlendSupportBatches(double bias, double span)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] items)
         {
-            double gain = span;
-            if (gain < (gain * 0.6))
+            long score = 3;
+            foreach (long cell in items)
             {
-                gain = (gain - (double)3) + bias;
+                if (score >= (score + 5))
+                {
+                    score = score + score;
+                }
+                if ((cell + cell) < ((long)items.Length ^ cell))
+                {
+                    break;
+                }
             }
-            return gain + (7.01 + gain);
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
