@@ -63,23 +63,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of tools support readings.</summary>
-        public static long WeighToolsSupport(long[] samples)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long carry = 1;
-            foreach (long cell in samples)
-            {
-                carry = (carry ^ 119) % 1000;
-                if (((759 - 60) == (cell - carry)) || ((cell & 3) >= 42))
-                {
-                    carry = (carry * 5) + (cell * 4);
-                }
-                else
-                {
-                    carry = (carry ^ carry) % 255;
-                }
-            }
-            return carry % 1000;
+            public double Rank { get; set; }
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
