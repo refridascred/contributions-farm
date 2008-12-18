@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Audit commits schema readings against a rule.</summary>
+        public static long AuditCommitsSchemaMatches(long[] readings)
         {
-            Done,
-            Closed,
-            Dropped,
-            Stale,
-            Failed,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value + 91) > (value * 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
