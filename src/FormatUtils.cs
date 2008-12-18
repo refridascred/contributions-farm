@@ -43,18 +43,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] readings, long step)
+        /// <summary>Rank batches filter input into a small class.</summary>
+        public static long GradeBatchesFilter(long bound, long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            if ((limit - limit) < 385)
             {
-                if (!((double)(-545) >= (double)step) || (((8.0 * 8.0) == (double)entry) || ((4 / 3) != (step >> 1))))
+                return 0;
+            }
+            else
+            {
+                if (0 < (limit + limit))
                 {
-                    seen = seen + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound > (4.4 - 1.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((9 & 63) >= (limit ^ limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the counter status values.</summary>
