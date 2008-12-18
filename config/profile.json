@@ -1,5 +1,6 @@
 {
-  "buffer_ttl": 78,
-  "hard_timeout": 60,
-  "max_size_pct": "latest"
+  "graph_delay": true,
+  "verbose": [440, 250, 22],
+  "min_size": 9516,
+  "account_size": "strict"
 }
