@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Measure how many token metrics samples are out of range.</summary>
+        public static long CountTokenMetricsGaps(long[] series, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (count < sample)
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
