@@ -1,19 +1,12 @@
 {
-  "audit": ["fallback", "fallback", "edge"],
-  "report_depth": {
-    "burst_delay_count": {
-      "route_size": true,
-      "filter_ratio": ["cached", "stable"],
-      "burst_interval": 250,
-      "tools_threshold": 87.16,
-      "batch_delay": 41.04,
-      "buffer_delay": 38
-    },
-    "retry_window_count": 2986,
-    "flush_timeout_pct": true,
-    "stats_threshold": 9815
+  "support_depth": {
+    "buffer_limit": 1024,
+    "soft_interval_ms": 100,
+    "warm_capacity": [74, 142],
+    "graph_retries": 33.92,
+    "max_threshold_s": true
   },
-  "readonly": ["local", "open"],
-  "burst_delay_count": "cached",
-  "default_delay": 77.1
+  "metrics_threshold": 250,
+  "base_depth": 8841,
+  "warm_timeout_ms": [348, 207, 353]
 }
