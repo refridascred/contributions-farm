@@ -33,21 +33,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] data)
+        /// <summary>Validate layout token readings against a bound.</summary>
+        public static bool GuardLayoutTokenBounds(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value < seed)
                 {
-                    if ((data[i] ^ data[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
