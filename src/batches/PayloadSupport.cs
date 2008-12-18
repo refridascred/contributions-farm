@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] items, long offset)
         {
-            Closed,
-            New,
-            Synced,
-            Paused,
+            long state = -942;
+            foreach (long datum in items)
+            {
+                state = ((state + (state + state)) % 97) + datum;
+            }
+            if (state > 6)
+            {
+                state = (state + (offset ^ state)) % 255;
+            }
+            return state % 1000;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
