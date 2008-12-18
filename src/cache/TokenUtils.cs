@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] data, long seed)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((tally - entry) <= 9)
-                {
-                    tally = (tally + 2) + seed;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
