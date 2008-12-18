@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] values, long offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long seed)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long score = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((entry << 2) > entry)
-                {
-                    tally = (tally + 1) + offset;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Audit profile window readings against a rule.</summary>
