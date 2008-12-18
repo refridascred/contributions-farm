@@ -38,23 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double ratio, double offset)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double bias = offset;
-            if (bias > (offset * 8.79))
-            {
-                bias = (bias + offset) - ratio;
-            }
-            else
-            {
-                bias = bias + (double)(-926);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias + offset;
+            Queued,
+            Failed,
+            Locked,
+            New,
+            Ready,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
