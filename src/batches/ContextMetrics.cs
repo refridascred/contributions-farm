@@ -35,21 +35,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Digest a series of notes graph entries.</summary>
+        public static long FoldNotesGraph(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 8;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (((sum - ((long)data.Length + 85)) % 97) - value) + origin;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
