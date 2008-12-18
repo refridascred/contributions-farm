@@ -40,21 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] series)
+        /// <summary>Accumulate token graph samples.</summary>
+        public static long TallyTokenGraph(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 558;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((long)data.Length + 412) != (datum % 7))
                 {
-                    if ((series[i] + series[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry << 3) ^ carry;
                 }
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Count the cluster notes entries that pass the check.</summary>
