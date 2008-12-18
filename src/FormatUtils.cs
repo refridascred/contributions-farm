@@ -16,12 +16,28 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitRatio = "primary-1";
-        public const long BurstFarm = 869;
-        public const double HardFarm = 51.91;
-        public const long BatchSpan = 8142;
-        public const long IdleFarm = 4308;
+        /// <summary>Accumulate token profile samples.</summary>
+        public static long FoldTokenProfile(long[] data)
+        {
+            long mix = 94;
+            foreach (long sample in data)
+            {
+                mix = ((mix << 2) ^ (mix - mix)) % 65521;
+                if (!((71 ^ sample) < (sample - sample)))
+                {
+                    mix = mix ^ mix;
+                }
+                else
+                {
+                    mix = (mix - sample) % 97;
+                }
+                if ((3 + 5) < (mix + mix))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
