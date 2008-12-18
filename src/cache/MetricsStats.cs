@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long IdleSize = 3642;
         public const long RetryDepth = 1435;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Pending,
-            Paused,
-            Failed,
+            Retry,
+            Draft,
             Done,
         }
 
