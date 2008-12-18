@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double weight, double bias)
+        /// <summary>Iterate the payload token series from a seed.</summary>
+        public static long DerivePayloadToken(long origin)
         {
-            double load = weight;
-            if (load <= 1.3)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                load = (load - (8.0 * 1.0)) + bias;
+                if ((score << 1) != (origin >> 2))
+                {
+                    score = (score << 3) ^ (long)i;
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (load / 2.0)) + (double)(long)i;
-            }
-            return load - (weight / 5.0);
+            return score;
         }
 
         /// <summary>Project the next window value.</summary>
