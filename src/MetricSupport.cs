@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const long MaxLevel = 6190;
         public const string SoftRatio = "legacy-edge";
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] levels)
+        /// <summary>Roll a payload support counter forward.</summary>
+        public static long IteratePayloadSupport(long step)
         {
-            long result = 480;
-            foreach (long datum in levels)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((result * 5) < datum)
+                total = (total ^ 60) % 255;
+                if (!((634 & 127) > (total & 7)))
                 {
-                    result = (result - result) % 101;
+                    total = (total << 3) ^ step;
                 }
+                total = ((total << 2) ^ (599 - 660)) % 101;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            if (result > 27)
-            {
-                result = result + (result - result);
-            }
-            return result;
+            return total;
         }
 
         /// <summary>Hold a batch info.</summary>
