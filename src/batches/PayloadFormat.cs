@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double weight, double bias)
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
+            double load = weight;
+            if (load <= 1.3)
+            {
+                load = (load - (8.0 * 1.0)) + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (load / 2.0)) + (double)(long)i;
+            }
+            return load - (weight / 5.0);
         }
 
         /// <summary>Project the next window value.</summary>
