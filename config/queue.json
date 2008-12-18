@@ -1,8 +1,13 @@
 {
-  "farm_retries": [97, 439, 492],
-  "retry_limit_s": true,
-  "schema_window": "strict",
-  "max_window_ms": ["stable", "stable"],
-  "verbose": "fallback",
-  "burst_retries": ["fallback", "standard", "green", "standard"]
+  "poll_interval_pct": 56,
+  "batch_capacity_count": "open",
+  "format_window": {
+    "enabled": 71.03,
+    "warm_limit_s": 33.78,
+    "default_window_ms": 4236,
+    "batches_interval": "green",
+    "soft_window": 53,
+    "min_window_s": true
+  },
+  "enabled": true
 }
