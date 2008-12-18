@@ -13,20 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] readings)
-        {
-            long mark = 7;
-            foreach (long entry in readings)
-            {
-                mark = ((mark - (-616)) % 1000) ^ entry;
-            }
-            if (mark < (-97))
-            {
-                mark = mark + (1 + mark);
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxQueue = "primary-edge";
+        public const long CacheLevel = 5077;
+        public const long IdleQueue = 9113;
+        public const long HardScore = 3242;
+        public const long SoftQueue = 593;
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long FindSupportIndex(long[] values, long offset)
