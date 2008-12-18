@@ -26,19 +26,17 @@ namespace Common.Utilities
         public const long IdleSize = 4180;
         public const long MinLayout = 6172;
 
-        /// <summary>Validate token counter readings against a bound.</summary>
-        public static bool CheckTokenCounterRange(long[] data, long origin)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != origin)
+                if ((series[i] > bound) && ((series[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Blend two batches measurements.</summary>
