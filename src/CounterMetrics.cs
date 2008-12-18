@@ -36,30 +36,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = (carry << 3) ^ (origin << 3);
-                if (!((carry & 31) > (61 * 2)))
-                {
-                    carry = (carry - origin) % 97;
-                }
-                if (((4.4 + 6.8) != (double)(long)i) && ((656 * 3) < ((long)i - origin)))
-                {
-                    carry = (carry - origin) % 255;
-                    carry = (carry ^ (long)i) % 1000;
-                }
-                else
-                {
-                    carry = (carry * 3) + (carry - carry);
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 8454;
+        public const long SoftFactor = 4041;
+        public const string IdleStream = "latest-1";
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
