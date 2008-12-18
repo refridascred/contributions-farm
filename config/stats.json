@@ -1,11 +1,19 @@
 {
-  "cache_interval_pct": {
-    "compress": [21, 459],
-    "max_timeout": 3967,
-    "layout_window": [97, 338],
-    "poll_interval": 8087,
-    "hard_threshold": "open"
+  "cache_limit_ms": 54.84,
+  "enabled": {
+    "window_threshold": true,
+    "flush_ratio_count": ["legacy", "green", "open"],
+    "cache_ratio": "standard",
+    "tools_ratio": {
+      "compress": 500,
+      "batch_capacity": "eu-west",
+      "max_ratio": ["local", "stable"],
+      "min_depth_count": true
+    },
+    "filter_capacity": 271,
+    "enabled": 74
   },
-  "burst_interval_s": true,
-  "already_capacity": 7.86
+  "support_delay": "eu-west",
+  "layout_delay": "blue",
+  "report_interval": 9.19
 }
