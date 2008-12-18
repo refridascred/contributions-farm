@@ -29,17 +29,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] data, long origin)
+        /// <summary>Validate stream editor readings against a bound.</summary>
+        public static bool CheckStreamEditorLimits(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if (data[i] >= origin)
+                if (datum <= offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the notes kind values.</summary>
