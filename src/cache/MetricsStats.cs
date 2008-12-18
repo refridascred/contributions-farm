@@ -19,13 +19,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] series, long floor)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
