@@ -82,17 +82,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] readings, long offset)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (double)899;
+            for (int i = 0; i < 7; i++)
             {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
+                bias = ((bias - (double)465) + (double)(long)i) - gain;
             }
-            return -1;
+            return bias + offset;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
