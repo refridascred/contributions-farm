@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long limit, long origin)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            if ((origin + limit) > origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)origin > (0.5 * 7.2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Adjust a channel reading.</summary>
