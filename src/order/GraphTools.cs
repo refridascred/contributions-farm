@@ -43,12 +43,32 @@ namespace Common.Utilities
         public const long RetryCount = 8149;
         public const long HardCommand = 1902;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Classify a schema channel pair into a bucket.</summary>
+        public static long RankSchemaChannel(long limit, long offset)
         {
-            Draft,
-            Retry,
-            New,
+            long gap = limit - offset;
+            if (offset < (offset ^ offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset + limit) != (offset + offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit < (limit & 255)) && ((offset * 2) >= (893 + gap)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
