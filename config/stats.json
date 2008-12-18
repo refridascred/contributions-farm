@@ -1,8 +1,5 @@
 {
-  "sync_capacity_count": [401, 94],
-  "audit": "edge",
-  "dry_run": true,
-  "payload_retries": "standard",
-  "strict": 30,
-  "cluster_size": 5286
+  "default_window_pct": [166, 154],
+  "token_capacity": "cached",
+  "account_capacity": 34.49
 }
