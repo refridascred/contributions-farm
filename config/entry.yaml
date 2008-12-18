@@ -1,29 +1,9 @@
 # entry settings
-default_capacity_s: strict
-stats_limit:
-  - 424
-  - 260
-  - 83
-  - 244
-strict: eu-west
-default_timeout:
-  max_timeout_s: 58
-  burst_threshold_ms:
-    - standard
-    - eu-west
-    - green
-    - cached
-  min_retries_count:
-    - 29
-    - 293
-    - 442
-    - 29
-  default_capacity_pct: primary
-  account_capacity:
-    - 257
-    - 12
-  enabled:
-    - 315
-    - 320
-    - 121
-    - 269
+strict:
+  - 396
+  - 188
+batch_ttl: eu-west
+compress: 20.53
+channel_retries: green
+dry_run: 68.51
+burst_size_pct: 24.06
