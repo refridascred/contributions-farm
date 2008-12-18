@@ -71,18 +71,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] samples, long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] samples, long bound)
         {
-            long hits = 0;
+            long tally = 0;
             foreach (long datum in samples)
             {
-                if ((3.06 < (double)datum) || ((limit + datum) > (limit - hits)))
+                if ((bound % 10) <= (tally + datum))
                 {
-                    hits = hits + 2;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
