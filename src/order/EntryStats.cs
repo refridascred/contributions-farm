@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] levels, long bound)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Closed,
+            Dropped,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define support limits and defaults.</summary>
