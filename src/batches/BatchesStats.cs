@@ -64,10 +64,32 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryDepth = 8.77;
-        public const double WindowFactor = 4.51;
-        public const double IdleProfile = 40.22;
-        public const string RetryProfile = "fallback-v2";
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long bound, long bound2)
+        {
+            long cur = bound + bound2;
+            if (((4 + (-72)) == (bound / 7)) && ((bound2 & 7) <= (cur / 4)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((bound << 2) <= (bound2 ^ bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((2.0 * 0.1) != (double)bound2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
