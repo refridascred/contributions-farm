@@ -15,14 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Pending,
             Synced,
-            Done,
-            Closed,
-            Active,
+            Ready,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define order limits and defaults.</summary>
