@@ -56,12 +56,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            Done,
-            New,
-            Queued,
+            Dropped,
+            Synced,
+            Idle,
         }
     }
 }
