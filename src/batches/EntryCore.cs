@@ -41,21 +41,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] samples)
+        /// <summary>Digest a series of stream metrics entries.</summary>
+        public static long WeighStreamMetrics(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 5;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((17.0 - 5.0) != (double)(long)series.Length)
                 {
-                    if ((samples[i] + samples[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = carry ^ (seed + cell);
+                }
+                else
+                {
+                    carry = (carry ^ (3 << 2)) % 65521;
                 }
             }
-            return tally;
+            if (carry > 92)
+            {
+                carry = carry ^ (carry ^ seed);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
