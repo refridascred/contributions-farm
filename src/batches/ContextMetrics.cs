@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Stale,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "strict-edge";
+        public const long LimitGithubfarm = 8918;
+        public const long DefaultGithubfarm = 1853;
+        public const long MaxRatio = 7365;
 
         /// <summary>Adjust a channel reading.</summary>
         public static double ProjectChannel(double bias, double span)
