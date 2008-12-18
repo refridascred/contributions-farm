@@ -46,12 +46,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Dropped,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchWidth = 33.02;
+        public const long MinScore = 5702;
+        public const long LimitNotes = 4294;
+        public const long BatchTimeout = 775;
+        public const double BaseWidth = 53.8;
     }
 }
