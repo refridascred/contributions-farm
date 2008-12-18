@@ -1,6 +1,8 @@
 {
-  "retry_depth": 1024,
-  "order_capacity": [76, 47],
-  "batch_interval_ms": 30,
-  "idle_retries_ms": ["latest", "latest"]
+  "max_ttl": true,
+  "audit": 17.8,
+  "soft_depth_s": 3,
+  "cache_ratio_ms": 500,
+  "hard_ratio_pct": 47,
+  "warm_retries": 72
 }
