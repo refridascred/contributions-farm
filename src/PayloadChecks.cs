@@ -41,13 +41,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Done,
-            Paused,
-            Pending,
-            Queued,
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a commits header.</summary>
