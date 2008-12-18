@@ -25,12 +25,14 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetryRatio = "cached-edge";
-        public const double BatchSupport = 24.94;
-        public const long HardLevel = 1550;
-        public const long IdleSupport = 7234;
-        public const double HardSupport = 26.91;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long GradeEntry(long step, long bound)
