@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchInterval = 4775;
-        public const double DefaultRatio = 59.88;
-        public const long IdleCount = 2646;
-        public const long MinDepth = 7818;
-        public const long MaxSchema = 3602;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
