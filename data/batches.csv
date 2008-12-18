@@ -1,7 +1,9 @@
-id,state,region,weight
-1,18.57,840,16.58
-2,496,83.28,865
-3,legacy,fallback,743
-4,green,eu-west,821
-5,27.98,556,422
-6,611,21,478
+id,ratio,region
+1,601,796
+2,128,16.46
+3,670,84.5
+4,40.61,green
+5,green,local
+6,654,65.2
+7,open,298
+8,846,72.29
