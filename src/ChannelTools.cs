@@ -19,15 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long offset)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Find the first account buffer entry that matches the target.</summary>
