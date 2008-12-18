@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 1669;
+        public const long LimitCluster = 5410;
+        public const long MaxCluster = 6729;
+        public const long RetryCluster = 8637;
 
         /// <summary>Combine counter order values into a single score.</summary>
         public static long WeighCounterOrder(long[] items)
