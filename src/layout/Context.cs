@@ -18,27 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long anchor = 53;
-            foreach (long datum in readings)
-            {
-                anchor = ((anchor * 5) + datum) % 65521;
-                if ((datum + anchor) > (anchor + anchor))
-                {
-                    continue;
-                }
-                if ((datum & 7) <= (anchor & 31))
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 255;
-                }
-                else
-                {
-                    anchor = (anchor + (7 + datum)) % 97;
-                }
-            }
-            return anchor % 97;
+            Dropped,
+            Locked,
+            Paused,
+            Closed,
+            Active,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
