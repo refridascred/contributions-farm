@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] data, long floor)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= floor)
+                if ((levels[i] == step) && ((levels[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
