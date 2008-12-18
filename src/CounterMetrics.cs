@@ -31,15 +31,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double weight, double floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] items, long floor)
         {
-            double rate = floor;
-            if (rate <= weight)
+            long score = 78;
+            foreach (long cell in items)
             {
-                rate = rate + (rate * 4.04);
+                score = (score - (score + score)) ^ cell;
+                score = score ^ (floor + 629);
             }
-            return rate - 4.81;
+            return score;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
