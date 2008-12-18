@@ -22,21 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a layout support counter forward.</summary>
-        public static long RollLayoutSupport(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if (9 < (state & 1))
-                {
-                    state = (state << 3) ^ (state + 827);
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultInterval = 8881;
+        public const long HardWindow = 3900;
+        public const long HardCount = 7641;
+        public const double CacheWindow = 17.76;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long SeriesBatches(long floor)
