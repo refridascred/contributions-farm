@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((count & 7) != (item & 7))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchToken = "strict-v2";
+        public const long HardToken = 2248;
+        public const double MinScore = 98.1;
+        public const long WindowFactor = 2327;
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
