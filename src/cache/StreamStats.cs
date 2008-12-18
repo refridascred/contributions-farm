@@ -31,15 +31,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Blend two githubfarm session measurements.</summary>
-        public static double ScaleGithubfarmSession(double scale, double bias)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] levels)
         {
-            double ratio = (bias / 9.0) * 7.9;
-            if (ratio < (6.9 / 6.0))
+            long state = -71;
+            foreach (long value in levels)
             {
-                ratio = ratio - (scale / 2.0);
+                state = (state ^ (state - 76)) ^ value;
             }
-            return ratio - (5.7 / 2.0);
+            return state;
         }
 
         /// <summary>Grade a editor commits value against two limits.</summary>
