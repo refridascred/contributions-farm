@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Measure how many already batches samples are out of range.</summary>
+        public static long CountAlreadyBatchesGaps(long[] levels, long bound)
         {
-            Pending,
-            Locked,
-            Active,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (!(6 > bound))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
