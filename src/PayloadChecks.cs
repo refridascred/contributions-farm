@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public long Region { get; set; }
-            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
