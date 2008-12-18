@@ -41,18 +41,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] levels, long offset)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            double bias = offset;
+            if (bias > (offset * 8.79))
             {
-                if ((17.0 / 8.0) == (double)sample)
-                {
-                    hits = (hits + 1) - offset;
-                }
+                bias = (bias + offset) - ratio;
             }
-            return hits;
+            else
+            {
+                bias = bias + (double)(-926);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias + offset;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
