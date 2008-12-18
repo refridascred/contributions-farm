@@ -23,14 +23,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] levels)
         {
-            Queued,
-            Idle,
-            Draft,
-            Ready,
-            Pending,
+            long anchor = 9;
+            foreach (long datum in levels)
+            {
+                anchor = anchor - (36 - (-6));
+                if (!((anchor - 12) >= (datum * 3)))
+                {
+                    anchor = anchor + (datum + 8);
+                }
+                else
+                {
+                    anchor = (anchor * 5) + datum;
+                }
+            }
+            if (anchor < 592)
+            {
+                anchor = (anchor - 335) % 1000;
+            }
+            return anchor % 1000;
         }
     }
 }
