@@ -19,15 +19,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long bound)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
