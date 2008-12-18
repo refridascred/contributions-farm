@@ -47,26 +47,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine editor notes values into a single score.</summary>
-        public static long FoldEditorNotes(long[] levels)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] readings, long origin)
         {
-            long sum = 4;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((sum - sum) <= (cell - sum))
+                if ((double)705 >= (double)origin)
                 {
-                    sum = (sum * 5) + (sum - sum);
-                }
-                else
-                {
-                    sum = sum - (sum << 1);
-                }
-                if ((double)sum < (17.0 + 8.9))
-                {
-                    break;
+                    count = (count + 2) + value;
                 }
             }
-            return sum % 4096;
+            return count;
         }
     }
 }
