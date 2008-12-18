@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] levels, long origin)
+        /// <summary>Digest a series of graph profile entries.</summary>
+        public static long TallyGraphProfile(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 413;
+            foreach (long datum in values)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
+                if ((double)481 >= (9.1 + 20.0))
                 {
-                    return (long)i;
+                    acc = acc - (datum & 31);
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Hold a notes stats.</summary>
