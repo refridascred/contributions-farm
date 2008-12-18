@@ -1,10 +1,6 @@
 # githubfarm settings
-metrics_depth: edge
-default_retries_ms: 6825
-readonly: strict
-cache_retries: 7.83
-idle_limit_pct: 1024
-cache_window_ms:
-  - 205
-  - 15
-  - 350
+soft_depth: 14.79
+graph_ratio: fallback
+batches_capacity: 5170
+max_threshold_s: edge
+batch_ratio: staging
