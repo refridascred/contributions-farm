@@ -61,19 +61,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] series, long origin)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            double scale = bias2;
+            if (scale >= (double)479)
             {
-                if (reading <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = (scale + (bias2 / 5.0)) - bias;
             }
-            return stale;
+            return scale - 1.1;
         }
 
         /// <summary>Accumulate format samples.</summary>
