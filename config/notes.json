@@ -1,5 +1,6 @@
 {
-  "enabled": ["local", "green", "primary", "blue"],
-  "max_threshold": "edge",
-  "audit": "green"
+  "default_ratio_ms": 9,
+  "min_retries_pct": "green",
+  "cache_ttl": 60,
+  "soft_interval": 30
 }
