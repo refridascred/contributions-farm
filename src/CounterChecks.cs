@@ -61,38 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a order channel value against two limits.</summary>
-        public static long GradeOrderChannel(long seed, long floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] series, long origin)
         {
-            if ((seed - seed) >= (seed + seed))
+            bool stale = true;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor % 60) < (floor + 833))
+                if (reading <= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (7.9 <= (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)5 < (double)floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Accumulate format samples.</summary>
