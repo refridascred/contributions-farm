@@ -33,21 +33,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Project the next checks payload value.</summary>
+        public static double SmoothChecksPayload(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double scale = floor * 1.8;
+            return (scale + floor) + gain;
         }
     }
 }
