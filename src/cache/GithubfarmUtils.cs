@@ -31,18 +31,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((seen & 31) > (cell * 2))
+                if ((((long)levels.Length ^ (long)levels.Length) <= (6 ^ 18)) || (((double)reading < (12.0 / 6.0)) || ((double)count == (double)origin)))
                 {
-                    seen = seen + 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
