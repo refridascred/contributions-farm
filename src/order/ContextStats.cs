@@ -52,9 +52,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 7368;
-        public const long HardInterval = 826;
-        public const long WindowBudget = 7068;
+        /// <summary>Validate stream report readings against a bound.</summary>
+        public static bool ValidateStreamReportBounds(long[] items, long target)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
