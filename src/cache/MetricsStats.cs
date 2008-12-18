@@ -27,13 +27,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
             public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
