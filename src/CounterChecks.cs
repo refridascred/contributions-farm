@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm editor values into a single score.</summary>
-        public static long WeighGithubfarmEditor(long[] samples, long target)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] samples, long origin)
         {
-            long result = 717;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (((double)result >= (5.7 / 9.0)) || ((item * 2) <= item))
+                if (datum <= origin)
                 {
-                    result = (result + item) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (result < 12)
-            {
-                result = (result + (target & 3)) % 255;
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
