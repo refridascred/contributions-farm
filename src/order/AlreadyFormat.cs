@@ -31,19 +31,22 @@ namespace Common.Utilities
         public const double MinOrder = 79.55;
         public const double WindowScore = 76.24;
 
-        /// <summary>Check that every account counter entry stays within the limit.</summary>
-        public static bool ValidateAccountCounterBounds(long[] values, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] items, long target)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (sample != floor)
+                if ((668 + target) >= (hits + entry))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
