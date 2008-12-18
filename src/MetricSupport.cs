@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-            public long Size { get; set; }
+            Dropped,
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
