@@ -1,5 +1,8 @@
 {
-  "default_ttl_s": 717,
-  "audit": [264, 470],
-  "max_window_ms": 58.68
+  "poll_retries_ms": 39.06,
+  "sync_delay_pct": "fallback",
+  "soft_delay": 4,
+  "dry_run": 1024,
+  "warm_interval_ms": 77.89,
+  "audit": ["open", "edge"]
 }
