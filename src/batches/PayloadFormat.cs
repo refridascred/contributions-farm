@@ -48,11 +48,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double WindowRatio = 37.67;
-        public const long BurstDepth = 7151;
-        public const long DefaultWindow = 4924;
-        public const string MaxLevel = "cached-1";
-        public const long StepBudget = 1977;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample >> 5) >= (tally - tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
