@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Idle,
+            Closed,
+            Retry,
+            Stale,
+            Active,
         }
 
         /// <summary>Define command limits and defaults.</summary>
