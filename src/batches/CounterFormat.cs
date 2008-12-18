@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const long CacheLevel = 211;
         public const long SoftSession = 1060;
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] readings)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((count / 7) < value))
                 {
-                    if ((readings[i] ^ readings[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
