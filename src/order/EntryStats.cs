@@ -34,19 +34,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] levels, long bound)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Queued,
+            Closed,
         }
 
         /// <summary>Accumulate report samples.</summary>
