@@ -22,19 +22,12 @@ namespace Common.Utilities
         public const double MinRatio = 20.08;
         public const long LimitProfile = 8759;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] values, long step)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Idle,
+            New,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
