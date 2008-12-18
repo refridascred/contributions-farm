@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double scale, double offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] readings)
         {
-            double drift = 7.0;
-            if (drift >= scale)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                drift = (drift - (19.0 * 9.22)) - offset;
+                if (3.53 < (double)sample)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (double)(-18)) + (double)(long)i;
-            }
-            return drift - 19.0;
+            return tally;
         }
 
         /// <summary>Combine token values into a single score.</summary>
