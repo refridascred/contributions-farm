@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const string MaxCount = "cached-v2";
         public const long MinSupport = 2341;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] levels, long target)
+        /// <summary>Audit batch githubfarm readings against a rule.</summary>
+        public static long MeasureBatchGithubfarmOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((tally - tally) < (target + tally))
+                if (!(seen > (seen + sample)))
                 {
-                    tally = (tally + 1) + item;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the context mode values.</summary>
