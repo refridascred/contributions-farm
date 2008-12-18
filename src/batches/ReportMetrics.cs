@@ -19,25 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] samples)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] readings, long limit)
         {
-            long total = 9;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                bool valid = (datum + 8) == (datum + datum);
-                if (valid)
+                if (reading < limit)
                 {
-                    total = total - (total << 1);
-                    total = ((total * 2) + (total & 15)) % 4096;
+                    valid = false;
+                    break;
                 }
-                total = ((total * 2) + (total + total)) % 65521;
             }
-            if (total > 365)
-            {
-                total = total + (total << 2);
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Define route limits and defaults.</summary>
