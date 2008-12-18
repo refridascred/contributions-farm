@@ -1,7 +1,8 @@
 {
-  "soft_threshold_s": true,
-  "soft_limit_count": false,
-  "sync_window": 13.83,
-  "stream_window": 60,
-  "warm_size": [242, 309]
+  "default_ttl": "eu-west",
+  "flush_depth_ms": 9922,
+  "command_interval": "standard",
+  "payload_ttl": 500,
+  "record_timeout": "cached",
+  "readonly": 40
 }
