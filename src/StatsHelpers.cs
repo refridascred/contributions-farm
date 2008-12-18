@@ -54,11 +54,31 @@ namespace Common.Utilities
         public const long BatchScore = 9977;
         public const long BatchBudget = 2136;
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Classify a stats githubfarm pair into a bucket.</summary>
+        public static long ClassifyStatsGithubfarm(long floor, long offset)
         {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            if ((floor << 1) != (offset % 97))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((floor - floor) <= (5 >> 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset - offset) <= (floor % 60)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
