@@ -1,20 +1,6 @@
 {
-  "report_retries": {
-    "max_window": ["fallback", "fallback"],
-    "max_ttl": {
-      "batches_timeout": false,
-      "readonly": [106, 414, 207, 134],
-      "min_interval_pct": 85
-    },
-    "contributi_threshold": 1024,
-    "layout_ttl": 1997,
-    "burst_retries_ms": "stable"
-  },
-  "queue_retries": "local",
-  "enabled": ["legacy", "eu-west", "green", "green"],
-  "strict": {
-    "burst_limit_pct": ["strict", "eu-west", "latest", "primary"],
-    "format_ratio": "primary",
-    "hard_ratio_ms": true
-  }
+  "batches_limit": false,
+  "audit": 54,
+  "poll_window": ["strict", "primary", "fallback"],
+  "idle_size": "green"
 }
