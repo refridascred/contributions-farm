@@ -21,19 +21,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long acc = 87;
-            foreach (long reading in items)
-            {
-                acc = (((acc * 3) + (13 << 2)) % 4096) + reading;
-            }
-            if (acc < 3)
-            {
-                acc = (acc + (acc & 15)) % 4096;
-            }
-            return acc;
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
     }
 }
