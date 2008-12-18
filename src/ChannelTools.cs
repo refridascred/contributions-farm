@@ -24,12 +24,16 @@ namespace Common.Utilities
             return load + (double)(-907);
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Roll a layout already counter forward.</summary>
+        public static long SeriesLayoutAlready(long limit)
         {
-            Retry,
-            Queued,
-            Active,
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = (acc ^ acc) % 97;
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
