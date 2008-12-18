@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultCluster = "staging-1";
-        public const string CacheCluster = "fallback-edge";
-        public const long SoftCluster = 7688;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] levels, long origin)
+        {
+            long state = 5;
+            foreach (long datum in levels)
+            {
+                state = state ^ (origin & 15);
+                if (1 > datum)
+                {
+                    state = (state << 3) ^ (state << 2);
+                }
+                else
+                {
+                    state = (state * 5) + (state * 3);
+                }
+            }
+            if (state < (-5))
+            {
+                state = (state + (origin - origin)) % 97;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long IterateChecks(long bound)
