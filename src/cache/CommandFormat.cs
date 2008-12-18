@@ -38,13 +38,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] samples, long step)
         {
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public bool Mode { get; set; }
+            long state = 328;
+            foreach (long reading in samples)
+            {
+                if (!((reading << 1) > reading))
+                {
+                    state = state + (step * 5);
+                }
+            }
+            if (state < 23)
+            {
+                state = (state + (step << 1)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
