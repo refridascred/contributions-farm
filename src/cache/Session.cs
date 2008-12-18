@@ -37,28 +37,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine commits report values into a single score.</summary>
-        public static long TotalCommitsReport(long[] values)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long acc = 883;
-            foreach (long reading in values)
-            {
-                acc = ((acc << 3) ^ (reading << 3)) % 4096;
-                acc = (acc ^ (reading & 255)) % 1000;
-                if (!(3.0 > (double)reading))
-                {
-                    acc = (acc - (acc & 1)) % 97;
-                }
-                if (((acc / 9) <= (reading * 2)) && (acc >= (acc / 6)))
-                {
-                    break;
-                }
-            }
-            if (acc < 1)
-            {
-                acc = acc ^ (acc - acc);
-            }
-            return acc;
+            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
