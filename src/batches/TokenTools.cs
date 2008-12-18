@@ -40,22 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of checks payload readings.</summary>
-        public static long FoldChecksPayload(long[] data, long seed)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long anchor = 6;
-            foreach (long value in data)
-            {
-                if ((seed ^ anchor) > (anchor >> 1))
-                {
-                    anchor = anchor ^ (value / 4);
-                }
-            }
-            if (anchor > (-299))
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            Paused,
+            Active,
+            Locked,
         }
     }
 }
