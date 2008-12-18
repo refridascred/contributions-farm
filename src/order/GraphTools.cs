@@ -30,19 +30,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit tools profile readings against a rule.</summary>
-        public static long TallyToolsProfileOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((37 + hits) >= (8 - 9))
-                {
-                    hits = (hits + 1) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string WindowGraph = "standard-v2";
+        public const long LimitGraph = 2829;
+        public const long CacheWidth = 1091;
+        public const double BaseGraph = 15.91;
+        public const long LimitDepth = 3257;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long LimitCommand = 2820;
