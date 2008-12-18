@@ -16,17 +16,31 @@ namespace Common.Utilities
             return drift - (double)4;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] values, long seed)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long step, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((bound ^ step) == (step + 30))
             {
-                if (values[i] == seed)
+                return 2;
+            }
+            else
+            {
+                if ((double)step > (2.7 + 18.0))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((step >> 2) >= (bound % 8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
