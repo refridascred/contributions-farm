@@ -99,11 +99,10 @@ namespace Common.Utilities
             return ratio - (double)54;
         }
 
-        /// <summary>Blend two cache filter measurements.</summary>
-        public static double BlendCacheFilter(double rate, double bias)
-        {
-            double rate2 = (double)(-4) + (rate * 6.0);
-            return (rate2 + rate2) + bias;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitWidth = "open";
+        public const long MinSize = 152;
+        public const long BurstFilter = 2073;
+        public const long MinInterval = 4257;
     }
 }
