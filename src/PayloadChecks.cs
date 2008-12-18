@@ -44,11 +44,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Measure how many record graph samples are out of range.</summary>
+        public static long CountRecordGraphHits(long[] samples, long offset)
         {
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (tally > (6 >> 1))
+                {
+                    tally = ((tally + 3) - cell) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a queue contributi reading by value.</summary>
