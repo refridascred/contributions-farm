@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] samples)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define route limits and defaults.</summary>
