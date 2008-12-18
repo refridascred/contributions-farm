@@ -68,12 +68,13 @@ namespace Common.Utilities
             return gain - 7.09;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Failed,
-            Stale,
-            Locked,
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public double Score { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
