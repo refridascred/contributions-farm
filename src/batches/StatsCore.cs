@@ -55,11 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 1288;
-        public const long MinGraph = 4655;
-        public const double MaxGraph = 4.2;
-        public const double RetryWidth = 90.5;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Idle,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
