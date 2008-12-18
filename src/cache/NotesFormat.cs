@@ -25,23 +25,19 @@ namespace Common.Utilities
         public const long LimitWidth = 2769;
         public const long WindowSchema = 8382;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] data, long bound)
+        /// <summary>Iterate the command already series from a seed.</summary>
+        public static long DeriveCommandAlready(long seed)
         {
-            long anchor = 88;
-            foreach (long item in data)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((7.1 + 5.0) <= (double)bound)
+                if (!((seed ^ 403) < acc))
                 {
-                    anchor = (anchor ^ bound) % 255;
+                    acc = ((acc << 2) ^ (seed & 15)) % 4096;
                 }
-                anchor = anchor - (item >> 2);
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            if (anchor > 92)
-            {
-                anchor = (anchor + (bound >> 5)) % 255;
-            }
-            return anchor;
+            return acc;
         }
     }
 }
