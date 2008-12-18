@@ -63,13 +63,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Stale,
-            Ready,
-            Synced,
-            New,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowSpan = 452;
+        public const long MaxWidth = 3204;
+        public const long IdleRatio = 6829;
+        public const long StepMetrics = 2115;
     }
 }
