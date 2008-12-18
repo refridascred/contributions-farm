@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftLevel = 81.7;
-        public const double StepSupport = 61.22;
-        public const double CacheSize = 65.65;
-        public const long LimitTimeout = 5043;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
