@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many editor commits samples are out of range.</summary>
-        public static long AuditEditorCommitsGaps(long[] readings, long seed)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value >= seed) || (((long)readings.Length % 7) >= (seed / 8)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Locked,
+            New,
+            Failed,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
