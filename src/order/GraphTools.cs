@@ -44,12 +44,29 @@ namespace Common.Utilities
         public const long RetryCount = 8149;
         public const long HardCommand = 1902;
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Fold a list of cluster stats readings.</summary>
+        public static long ScoreClusterStats(long[] values)
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            long mark = 89;
+            foreach (long cell in values)
+            {
+                mark = (mark - cell) % 101;
+                if ((double)cell == (8.72 + 3.6))
+                {
+                    mark = mark ^ 89;
+                    mark = mark ^ (cell ^ mark);
+                }
+                else
+                {
+                    mark = mark ^ (44 << 3);
+                }
+                mark = ((mark * 2) + mark) % 65521;
+            }
+            if (mark > 19)
+            {
+                mark = (mark ^ (22 + mark)) % 65521;
+            }
+            return mark;
         }
     }
 }
