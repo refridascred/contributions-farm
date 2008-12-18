@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultRecord = 4.67;
-        public const long SoftRecord = 6529;
-        public const string LimitLevel = "strict-edge";
-        public const long BatchRecord = 7000;
-        public const double WindowRatio = 54.6;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] items, long offset)
+        {
+            long score = 9;
+            foreach (long datum in items)
+            {
+                score = ((score + (score - score)) % 101) + datum;
+                if ((double)offset <= (20.0 * 5.6))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
