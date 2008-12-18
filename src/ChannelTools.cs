@@ -28,15 +28,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long limit)
         {
-            long acc = 3;
-            foreach (long sample in values)
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
             {
-                acc = (acc ^ (acc + sample)) % 4096;
+                sum = sum + (limit + sum);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return acc;
+            return sum;
         }
     }
 }
