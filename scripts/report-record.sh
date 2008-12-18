@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict edge; do
+for item in blue strict edge; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=76
+mode="${1:-edge}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=294
 log "limit is ${RECORD_LIMIT}"
