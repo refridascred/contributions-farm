@@ -55,12 +55,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 7155;
+        public const double StepSpan = 36.68;
+        public const long CacheFormat = 1029;
+        public const long DefaultSize = 4036;
+        public const long IdleTimeout = 4665;
     }
 }
