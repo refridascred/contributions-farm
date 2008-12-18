@@ -44,11 +44,27 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepCount = 8.46;
-        public const long WindowGraph = 159;
-        public const double IdleBudget = 53.93;
-        public const double SoftGraph = 62.1;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] levels, long offset)
+        {
+            long total = 6;
+            foreach (long datum in levels)
+            {
+                if ((offset % 60) <= total)
+                {
+                    total = (total ^ (-54)) ^ datum;
+                }
+                else
+                {
+                    total = (total ^ offset) % 4096;
+                }
+            }
+            if (total > (-763))
+            {
+                total = ((total << 3) ^ (total >> 5)) % 255;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double LimitBudget = 68.58;
