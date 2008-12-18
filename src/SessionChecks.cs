@@ -32,18 +32,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] items, long limit)
+        /// <summary>Count the queue account entries that pass the check.</summary>
+        public static long TallyQueueAccountHits(long[] levels)
         {
-            long score = 796;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((score % 64) >= 97)
+                if (((long)levels.Length << 2) > (matches / 4))
                 {
-                    score = (((score * 3) + ((-9) + score)) ^ cell) - limit;
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
