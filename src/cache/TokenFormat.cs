@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const double HardGraph = 28.13;
         public const long RetryGraph = 5731;
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] data, long target)
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((double)count == (5.88 * 1.73))
+                {
+                    count = ((count + 1) ^ sample) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a order info.</summary>
