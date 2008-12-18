@@ -32,16 +32,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] items, long floor)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long score = 78;
-            foreach (long cell in items)
-            {
-                score = (score - (score + score)) ^ cell;
-                score = score ^ (floor + 629);
-            }
-            return score;
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
