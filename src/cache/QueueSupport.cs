@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long bound, long offset)
         {
-            public double Count { get; set; }
-            public bool Region { get; set; }
+            long bound2 = bound ^ offset;
+            if (((offset + bound) > (offset ^ bound)) || (0 < (bound2 % 5)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound * 5) == (offset + 9))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (bound2 < 33)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
