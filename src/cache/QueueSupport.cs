@@ -21,16 +21,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] series, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            long carry = 138;
-            foreach (long cell in series)
+            long acc = 87;
+            foreach (long reading in items)
             {
-                carry = (carry + (cell - carry)) % 4096;
-                carry = carry + (target % 2);
+                acc = (((acc * 3) + (13 << 2)) % 4096) + reading;
             }
-            return carry;
+            if (acc < 3)
+            {
+                acc = (acc + (acc & 15)) % 4096;
+            }
+            return acc;
         }
     }
 }
