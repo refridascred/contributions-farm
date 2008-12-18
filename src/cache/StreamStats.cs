@@ -31,19 +31,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate counter window readings against a bound.</summary>
-        public static bool CheckCounterWindowRange(long[] readings, long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] levels)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long score = 410;
+            foreach (long datum in levels)
             {
-                if (item > origin)
+                if ((score << 1) == (datum + 356))
                 {
-                    ok = false;
-                    break;
+                    score = ((score * 5) + (datum & 7)) % 101;
                 }
             }
-            return ok;
+            return score % 1000;
         }
 
         /// <summary>Grade a editor commits value against two limits.</summary>
