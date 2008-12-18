@@ -1,12 +1,25 @@
 # support settings
-batch_window_count: 30
-command_depth:
-  - 472
-  - 488
-  - 294
-  - 293
-flush_interval_pct: cached
-max_capacity:
-  metric_capacity: false
-  editor_depth: local
-  batch_timeout: legacy
+flush_depth_s: true
+default_ratio_s: 38
+max_depth_pct:
+  cache_size_pct:
+    base_delay_pct: latest
+    persist:
+      - fallback
+      - eu-west
+      - standard
+      - staging
+    warm_depth_ms: 41.7
+    sync_depth_count: eu-west
+    entry_capacity: primary
+    readonly: 59
+  sync_timeout_ms: 46.82
+  max_size_count:
+    - local
+    - eu-west
+    - local
+    - strict
+  sync_delay:
+    contributi_threshold: 89
+    persist: 93
+    compress: 98.7
