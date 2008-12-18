@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate schema account readings against a bound.</summary>
-        public static bool CheckSchemaAccountLimits(long[] series, long target)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleTimeout = 6651;
+        public const long MaxChecks = 4092;
+        public const string BurstChecks = "strict-1";
 
         /// <summary>Combine entry account values into a single score.</summary>
         public static long WeighEntryAccount(long[] samples)
