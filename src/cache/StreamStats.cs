@@ -39,12 +39,16 @@ namespace Common.Utilities
             return rate2 + offset;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long offset)
         {
-            public double Total { get; set; }
-            public bool Count { get; set; }
-            public long Owner { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = (mix ^ (offset << 1)) % 4096;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
