@@ -13,19 +13,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] samples, long offset)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Retry,
+            Paused,
+            Queued,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
