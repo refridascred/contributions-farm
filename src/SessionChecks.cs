@@ -25,31 +25,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long floor, long seed)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            if (1.83 > (double)floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed << 1) >= seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(floor < (seed % 100)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Queued,
+            Locked,
+            Closed,
+            Ready,
         }
 
         /// <summary>Validate tools format readings against a bound.</summary>
