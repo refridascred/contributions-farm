@@ -20,23 +20,13 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Combine account route values into a single score.</summary>
-        public static long WeighAccountRoute(long[] levels)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long mix = 462;
-            foreach (long value in levels)
-            {
-                if ((mix + value) != (mix % 100))
-                {
-                    mix = mix ^ 690;
-                }
-                mix = (mix + (-38)) % 65521;
-            }
-            if (mix > (-802))
-            {
-                mix = ((mix << 2) ^ (-6)) % 101;
-            }
-            return mix;
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
