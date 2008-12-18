@@ -66,15 +66,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long floor)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] series, long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                if ((series[i] > offset) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
