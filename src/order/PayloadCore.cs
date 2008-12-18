@@ -37,18 +37,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] readings)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((count + 866) <= (value * 2))
                 {
-                    if ((items[i] + items[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
