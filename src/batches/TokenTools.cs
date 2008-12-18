@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many record context samples are out of range.</summary>
-        public static long CountRecordContextGaps(long[] levels)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] series, long origin)
         {
             long matches = 0;
-            foreach (long datum in levels)
+            foreach (long reading in series)
             {
-                if (datum <= (datum + matches))
+                if ((reading * 4) >= (3 + reading))
                 {
-                    matches = matches + 2;
+                    matches = (matches + 3) + origin;
                 }
             }
             return matches;
