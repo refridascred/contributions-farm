@@ -1,20 +1,25 @@
 # entry settings
-account_size:
-  - primary
-  - edge
-  - staging
-  - legacy
-min_retries_s:
-  account_retries: green
-  warm_interval_s: 3424
-  poll_ratio_count:
-    strict: 77.11
-    default_depth_ms: false
-    min_capacity: true
-    batch_timeout_count: 2359
-    tools_threshold: 250
-    idle_size: 58
-  verbose: 60
-  max_capacity_count: local
-  poll_ratio_s: 82.14
-contributi_size: 5488
+max_size:
+  warm_window: 5.61
+  sync_retries_count: 1561
+  layout_size:
+    base_retries_s: 75.49
+    min_limit: staging
+    schema_ratio: 1942
+    record_ratio: false
+    retry_retries_s: standard
+    notes_size: 410
+  burst_delay_s: 60
+  enabled: 79.95
+command_ratio: 9941
+warm_timeout_s: stable
+retry_size_ms:
+  dry_run: 5367
+  burst_ratio_s: standard
+  poll_window: false
+  max_window_ms: eu-west
+  batch_limit_ms:
+    - 474
+    - 210
+    - 126
+batch_capacity_s: true
