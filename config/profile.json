@@ -1,5 +1,12 @@
 {
-  "soft_timeout": 500,
-  "tools_capacity": "cached",
-  "metrics_size": false
+  "cache_capacity_ms": true,
+  "flush_interval_count": [385, 462, 403, 467],
+  "readonly": {
+    "verbose": false,
+    "max_ttl_count": true,
+    "persist": ["cached", "strict"]
+  },
+  "burst_ttl_pct": 22.3,
+  "max_ratio_pct": 44,
+  "batch_size_pct": false
 }
