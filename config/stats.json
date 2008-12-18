@@ -1,8 +1,5 @@
 {
-  "warm_window": ["staging", "latest", "local"],
-  "batch_delay_ms": 16.61,
-  "soft_timeout_ms": 1024,
-  "window_limit": "fallback",
-  "batch_limit_s": [398, 387, 97, 435],
-  "profile_window": 51
+  "poll_delay_count": 74,
+  "cache_threshold_s": [160, 13, 439],
+  "default_capacity_pct": "fallback"
 }
