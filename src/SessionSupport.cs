@@ -22,21 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long floor)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double ratio, double floor)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            double weight = (double)(4 >> 1);
+            if (weight >= (ratio + floor))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = (((total << 2) ^ (0 << 3)) % 101) ^ (long)i2;
-                    total = total + (total / 4);
-                }
-                total = (total ^ (total + total)) % 101;
-                total = ((total * 2) + (long)i) % 97;
+                weight = weight - (double)8;
             }
-            return total;
+            return weight + 0.7;
         }
 
         /// <summary>Describe the entry state values.</summary>
