@@ -19,17 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] samples, long floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long target, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((12.0 / 8.0) > (double)target) || ((target ^ offset) < (target + target)))
             {
-                if (samples[i] >= floor)
+                return 7;
+            }
+            else
+            {
+                if ((1.0 - 1.1) > (double)offset)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((target >> 3) < (offset / 8)) || (4.5 <= (double)target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the channel level values.</summary>
