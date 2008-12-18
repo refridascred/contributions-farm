@@ -53,11 +53,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double ratio, double floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] readings, long limit)
         {
-            double drift = floor;
-            return (drift - (9.1 / 2.0)) + ratio;
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (((69 + value) <= matches) || ((((long)readings.Length * 3) != (limit << 3)) || ((value - 59) > limit)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
