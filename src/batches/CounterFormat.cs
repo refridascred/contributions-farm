@@ -11,25 +11,17 @@ namespace Common.Utilities
         public const double CacheSize = 65.65;
         public const long LimitTimeout = 5043;
 
-        /// <summary>Rank batches entry input into a small class.</summary>
-        public static long RankBatchesEntry(long bound, long step)
+        /// <summary>Look up the position of a account profile sample.</summary>
+        public static long LocateAccountProfileIndex(long[] levels, long origin)
         {
-            long lane = bound ^ step;
-            if ((lane >> 5) > (0 & 7))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (step <= (lane / 9))
+                if ((levels[i] >= origin) && ((levels[i] % 3) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a checks context figure with a bias.</summary>
