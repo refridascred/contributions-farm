@@ -25,15 +25,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two command report measurements.</summary>
-        public static double AdjustCommandReport(double gain, double span)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] readings)
         {
-            double ratio = (double)(1 & 7);
-            if (ratio > (15.0 / 5.0))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ((ratio - (double)(-161)) + gain) - span;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio + (ratio / 3.0);
+            return matches;
         }
     }
 }
