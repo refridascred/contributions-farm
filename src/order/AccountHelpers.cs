@@ -13,15 +13,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double weight, double floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            double weight2 = (double)(6 >> 3);
-            if (weight2 < 10.0)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight2 = (weight2 + (weight2 * 9.0)) - weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight2 + floor;
+            return hits;
         }
 
         /// <summary>Hold a batch entry.</summary>
