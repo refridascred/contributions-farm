@@ -34,18 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] items, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (((value + value) <= (bound + bound)) && ((value ^ bound) >= (62 ^ (-4))))
+                if ((double)sample <= (double)662)
                 {
-                    count = count + 1;
+                    seen = (seen + 1) - bound;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
