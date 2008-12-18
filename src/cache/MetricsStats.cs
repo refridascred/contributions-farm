@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next tools commits value from a seed.</summary>
-        public static long RollToolsCommits(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = mark ^ ((long)i & 3);
-                mark = ((mark << 2) ^ ((long)i ^ step)) % 101;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheSize = 4992;
+        public const long MaxDepth = 8530;
+        public const long CacheCount = 9043;
+        public const long BurstWidth = 8752;
+        public const long HardFactor = 3949;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool CheckPayloadBounds(long[] series, long floor)
