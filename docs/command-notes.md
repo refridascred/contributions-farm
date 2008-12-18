@@ -1,11 +1,11 @@
 # Command notes
 
-Run the cluster check before changing any schema limits.
-The checks report groups every contributi by tools.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer window defaults
-- Log every report change
-- Validate tools input early
-- Review metric limits each release
+- Document new report fields
+- Keep batch values small
+- Prefer cluster defaults
+- Validate entry input early
