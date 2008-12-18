@@ -1,11 +1,14 @@
 # Command notes
 
-Keep farm and tools names short and lowercase.
-The command helpers are pure functions, so they are safe to call from any thread.
-Defaults for format live in the config folder and can be overridden per environment.
+The farm report groups every profile by cache.
+When a graph fails, the payload handler retries a few times before giving up.
+
+A farm that stays idle for too long is moved to the counter list.
+When a githubfarm fails, the format handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review farm limits each release
-- Validate githubfarm input early
-- Document new session fields
+- Document new context fields
+- Keep batches values small
+- Log every record change
+- Review already limits each release
