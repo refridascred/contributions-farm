@@ -51,17 +51,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first order batches entry that matches the target.</summary>
-        public static long LocateOrderBatchesIndex(long[] readings, long target)
+        /// <summary>Digest a series of commits githubfarm entries.</summary>
+        public static long DigestCommitsGithubfarm(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 552;
+            foreach (long reading in readings)
             {
-                if (readings[i] >= target)
+                if ((double)reading == (6.7 - 0.03))
                 {
-                    return (long)i;
+                    state = (state ^ (state ^ 404)) % 101;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Measure how many stream payload samples are out of range.</summary>
