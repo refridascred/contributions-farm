@@ -33,12 +33,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
+            Paused,
+            Synced,
+            Stale,
+            Draft,
+            Active,
         }
     }
 }
