@@ -24,19 +24,24 @@ namespace Common.Utilities
         public const long BurstAlready = 4249;
         public const double IdleAlready = 9.34;
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long floor)
+        /// <summary>Classify a farm command pair into a bucket.</summary>
+        public static long SortFarmCommand(long floor, long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            if (6.37 >= (double)floor)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = (carry ^ (long)i2) % 101;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((limit - floor) <= limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
