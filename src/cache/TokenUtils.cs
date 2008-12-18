@@ -48,15 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] readings, long step)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long sum = 115;
-            foreach (long reading in readings)
-            {
-                sum = (((sum * 2) + step) % 101) + reading;
-            }
-            return sum;
+            Active,
+            Dropped,
+            Closed,
+            Idle,
         }
     }
 }
