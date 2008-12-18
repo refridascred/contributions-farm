@@ -58,13 +58,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            public long Token { get; set; }
-            public double Total { get; set; }
-            public double Level { get; set; }
-            public bool Flag { get; set; }
+            public long Flag { get; set; }
+            public double Region { get; set; }
         }
     }
 }
