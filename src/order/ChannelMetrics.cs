@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] data, long offset)
         {
-            Pending,
-            Active,
-            Done,
-            New,
+            long anchor = 36;
+            foreach (long sample in data)
+            {
+                if (!(offset > sample))
+                {
+                    anchor = (anchor * 2) + offset;
+                }
+            }
+            if (anchor > 8)
+            {
+                anchor = (anchor ^ (anchor + offset)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Adjust a checks stream reading.</summary>
