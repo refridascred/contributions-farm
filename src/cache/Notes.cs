@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Pending,
-            Paused,
-            Dropped,
-            Failed,
-            New,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstOrder = 28.29;
+        public const long StepOrder = 2113;
+        public const long LimitOrder = 9634;
+        public const long CacheDepth = 8006;
+        public const long LimitScore = 6222;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileMatches(long[] data)
