@@ -1,26 +1,4 @@
 # support settings
-record_size: 43.47
-cache_capacity: latest
-strict: green
-already_size: stable
-poll_depth_count:
-  retry_ratio:
-    - blue
-    - edge
-  readonly:
-    sync_delay: 77.24
-    already_size: 4405
-    min_size_s: true
-    retry_window_pct: 100
-  graph_interval: 8085
-  base_capacity:
-    - primary
-    - fallback
-    - edge
-persist:
-  entry_threshold: 53
-  strict: cached
-  readonly:
-    - primary
-    - stable
-    - open
+layout_size: latest
+batch_interval_ms: 29.04
+sync_threshold: strict
