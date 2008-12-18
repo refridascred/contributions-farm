@@ -56,22 +56,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] readings, long limit)
+        /// <summary>Match up window editor samples.</summary>
+        public static long MatchWindowEditorCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((18.0 * 9.31) > (double)item)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 3) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] - levels[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
