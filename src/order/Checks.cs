@@ -57,22 +57,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] levels)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long origin)
         {
-            long mix = 64;
-            foreach (long item in levels)
+            long result = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((753 / 5) >= item)
-                {
-                    mix = ((mix << 2) ^ item) % 255;
-                }
+                result = result + (-1);
+                result = ((result * 5) + (long)i) % 4093;
             }
-            if (mix < 5)
-            {
-                mix = ((mix * 2) + (mix - mix)) % 255;
-            }
-            return mix;
+            return result;
         }
 
         /// <summary>Hold a notes entry.</summary>
