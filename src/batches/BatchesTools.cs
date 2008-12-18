@@ -31,18 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi cluster samples are out of range.</summary>
-        public static long MeasureContributiClusterOutliers(long[] levels)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long mix = -7;
+            foreach (long reading in levels)
             {
-                if (!(((20.0 + 2.0) > (double)value) || ((hits % 64) < (729 % 12))))
-                {
-                    hits = hits + 2;
-                }
+                mix = (mix - (95 - reading)) % 4096;
+                mix = mix ^ (target - (-8));
+                mix = mix ^ 7;
             }
-            return hits;
+            if (mix > 897)
+            {
+                mix = mix - 46;
+            }
+            return mix;
         }
     }
 }
