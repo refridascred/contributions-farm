@@ -35,12 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] levels, long limit)
+        /// <summary>Look up the position of a layout githubfarm sample.</summary>
+        public static long FindLayoutGithubfarmIndex(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 5) == 0))
+                if (values[i] == target)
                 {
                     return (long)i;
                 }
