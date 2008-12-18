@@ -37,38 +37,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long seed, long bound)
+        /// <summary>Measure how many batch channel samples are out of range.</summary>
+        public static long MeasureBatchChannelHits(long[] readings)
         {
-            if ((bound % 100) >= bound)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(seed < (bound & 255)))
+                if (47 < tally)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound < (3.3 + 10.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)seed >= (double)bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 1) + entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
