@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up cluster account samples.</summary>
-        public static long OverlapClusterAccountCount(long[] levels)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value != origin)
                 {
-                    if ((levels[i] ^ levels[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the batches phase values.</summary>
