@@ -23,21 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] samples, long seed)
-        {
-            long carry = 819;
-            foreach (long entry in samples)
-            {
-                if (!((double)carry <= (double)entry))
-                {
-                    carry = ((carry * 5) + (seed + entry)) % 4096;
-                    carry = (carry ^ (entry + (-584))) % 1000;
-                }
-                carry = carry - (seed / 3);
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchScore = 1324;
+        public const long BurstContributi = 3061;
+        public const long IdleContributi = 5649;
+        public const string SoftWidth = "primary";
+        public const long LimitContributi = 7214;
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
