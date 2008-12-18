@@ -80,11 +80,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] readings, long bound)
         {
-            public string Label { get; set; } = "";
-            public bool Count { get; set; }
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
