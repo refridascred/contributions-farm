@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Roll a route token counter forward.</summary>
+        public static long SeriesRouteToken(long bound)
         {
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((mix - 4) == (mix % 10)) && ((bound >> 4) != (mix + (long)i)))
+                {
+                    mix = mix - (mix << 1);
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = (mix - ((-807) % 12)) - (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
