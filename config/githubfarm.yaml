@@ -1,8 +1,13 @@
 # githubfarm settings
-compress: 0.85
-max_delay: 38.16
-flush_interval_count:
-  - strict
-  - edge
-burst_retries: 100
-format_size: green
+base_interval: 60
+compress:
+  retry_capacity:
+    - 155
+    - 309
+    - 9
+  cache_window_pct: 65.01
+  layout_threshold: eu-west
+min_capacity_count: open
+tools_capacity: 91
+githubfarm_timeout: green
+persist: 71.59
