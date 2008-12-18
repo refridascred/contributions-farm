@@ -35,12 +35,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] samples, long floor)
+        /// <summary>Find the first format route entry that matches the target.</summary>
+        public static long LocateFormatRouteIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] < floor)
+                if ((readings[i] < bound) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
