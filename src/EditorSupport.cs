@@ -20,15 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] series, long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((matches >= (floor << 3)) || (((floor & 31) >= ((-9) % 12)) || ((double)floor < 2.4)))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
