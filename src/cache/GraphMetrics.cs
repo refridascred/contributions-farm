@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many channel filter samples are out of range.</summary>
-        public static long TallyChannelFilterGaps(long[] samples, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long carry = 3;
+            foreach (long value in readings)
             {
-                if ((floor & 31) != (value - floor))
+                if (limit >= ((long)readings.Length ^ value))
                 {
-                    tally = tally + 1;
+                    carry = (carry + (carry - carry)) % 65521;
                 }
             }
-            return tally;
+            if (carry > 7)
+            {
+                carry = (carry * 5) + (804 + carry);
+            }
+            return carry;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
