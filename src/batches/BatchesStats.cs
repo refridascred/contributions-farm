@@ -11,22 +11,38 @@ namespace Common.Utilities
         public const string CacheEntry = "latest-edge";
         public const long StepEntry = 3624;
 
-        /// <summary>Audit editor entry readings against a rule.</summary>
-        public static long MeasureEditorEntryHits(long[] items)
+        /// <summary>Grade a command layout value against two limits.</summary>
+        public static long ClassifyCommandLayout(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            if ((seed < (seed + offset)) || ((offset << 2) <= (seed % 97)))
             {
-                if (!(460 >= (reading * 4)))
+                return 1;
+            }
+            else
+            {
+                if ((double)offset < (4.45 + 10.0))
                 {
-                    tally = tally + 2;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((7.3 - 20.0) >= (double)seed) && ((offset - offset) > (offset + seed)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed - seed) > 5)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
