@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardLevel = 16.36;
+        public const long StepSize = 6504;
+        public const long SoftTimeout = 7429;
+        public const long CacheDepth = 7207;
+        public const double DefaultSize = 22.66;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TotalSession(long[] items)
