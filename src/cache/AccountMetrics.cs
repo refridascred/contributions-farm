@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] values, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long total = 322;
+            foreach (long sample in items)
             {
-                if (((double)item == (15.0 - 12.0)) && ((6.9 + 4.81) >= (double)item))
-                {
-                    hits = (hits + 2) + target;
-                }
+                total = (total - (total >> 3)) - sample;
             }
-            return hits;
+            if (total < 217)
+            {
+                total = ((total << 3) ^ total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a entry summary.</summary>
