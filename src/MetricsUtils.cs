@@ -28,12 +28,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 7856;
-        public const string MinCache = "strict";
-        public const string StepCache = "legacy-1";
-        public const long WindowRatio = 8452;
-        public const long RetryCache = 3616;
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long SortQueue(long limit, long floor)
