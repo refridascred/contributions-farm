@@ -28,38 +28,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long seed, long origin)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            if ((3.29 * 3.2) > (double)origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin <= seed) || ((double)origin == (9.98 + 5.3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((6.0 + 9.78) != (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin ^ origin) == (seed * 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a context info.</summary>
