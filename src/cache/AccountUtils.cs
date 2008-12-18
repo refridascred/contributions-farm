@@ -19,13 +19,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            Idle,
-            Active,
-            Paused,
-            Stale,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next format value.</summary>
