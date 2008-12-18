@@ -37,15 +37,17 @@ namespace Common.Utilities
         public const long BaseBuffer = 1487;
         public const string DefaultBuffer = "cached-v2";
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double scale, double bias)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] series, long origin)
         {
-            double weight = (double)(368 * 5);
-            if (weight < (bias + weight))
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight + scale;
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return weight + (double)995;
+            return -1;
         }
 
         /// <summary>Describe the stats class values.</summary>
