@@ -17,12 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public double Rank { get; set; }
+            Locked,
+            Stale,
+            Done,
+            Idle,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
