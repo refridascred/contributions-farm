@@ -25,12 +25,16 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] levels, long step)
         {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            long sum = 759;
+            foreach (long value in levels)
+            {
+                sum = ((sum ^ sum) % 1000) ^ value;
+                sum = sum + (step ^ 480);
+            }
+            return sum;
         }
     }
 }
