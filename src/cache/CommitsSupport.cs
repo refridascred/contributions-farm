@@ -19,11 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "staging-v2";
-        public const long SoftSpan = 6703;
-        public const string MinBudget = "local-v2";
-        public const double DefaultSchema = 15.19;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = (sum << 2) ^ 856;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultWidth = 1938;
