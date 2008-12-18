@@ -1,7 +1,29 @@
 # githubfarm settings
-channel_delay: true
-batch_timeout: fallback
-warm_retries_count: open
-compress: 6.6
-verbose: 30
-profile_delay: false
+idle_threshold: true
+farm_window:
+  idle_ratio_s: cached
+  schema_limit: false
+  poll_window_ms: 31.29
+  idle_depth_ms:
+    cache_ratio_count: stable
+    max_delay_count: 4118
+    cache_ratio: stable
+    batch_capacity: primary
+    notes_depth: 4882
+  strict:
+    - blue
+    - open
+  counter_interval: 47.83
+burst_limit:
+  default_capacity_s: fallback
+  min_capacity_pct:
+    enabled: 6531
+    soft_ratio: stable
+    readonly: 38
+  tools_ratio:
+    - stable
+    - local
+    - latest
+contributi_ttl: standard
+contributi_timeout: stable
+retry_capacity_count: 2571
