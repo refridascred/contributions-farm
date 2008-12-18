@@ -52,13 +52,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Draft,
-            Locked,
-            Ready,
-            Active,
+            Idle,
+            Closed,
+            Synced,
+            Retry,
         }
     }
 }
