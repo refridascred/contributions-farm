@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge blue fallback; do
+for item in standard local eu-west staging; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=324
+log "limit is ${RECORD_LIMIT}"
