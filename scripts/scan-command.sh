@@ -12,6 +12,8 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-for item in primary staging; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
