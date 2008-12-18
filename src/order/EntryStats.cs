@@ -23,13 +23,18 @@ namespace Common.Utilities
         public const string MaxCount = "cached-v2";
         public const long MinSupport = 2341;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Combine counter entry values into a single score.</summary>
+        public static long WeighCounterEntry(long[] data, long origin)
         {
-            Done,
-            Retry,
-            Ready,
-            Failed,
+            long score = 873;
+            foreach (long value in data)
+            {
+                if (value >= (84 ^ value))
+                {
+                    score = (((score << 3) ^ (value * 2)) % 1000) - origin;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
