@@ -1,22 +1,7 @@
 {
-  "verbose": {
-    "base_limit_pct": {
-      "verbose": false,
-      "min_depth": 8309,
-      "burst_timeout_pct": false,
-      "default_threshold": "green",
-      "cache_delay": 3765,
-      "session_window": true
-    },
-    "enabled": "strict",
-    "audit": [453, 120, 289, 306],
-    "cache_ratio": 89.67,
-    "strict": true
-  },
-  "poll_depth_pct": {
-    "strict": "green",
-    "persist": true,
-    "stream_ratio": "eu-west"
-  },
-  "channel_timeout": "staging"
+  "dry_run": "latest",
+  "warm_ttl_ms": "blue",
+  "verbose": "fallback",
+  "base_threshold_ms": 76.51,
+  "idle_interval_count": ["open", "staging"]
 }
