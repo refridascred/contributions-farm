@@ -1,4 +1,21 @@
 # support settings
-support_limit: standard
-soft_retries_s: false
-cache_retries: 71
+batch_capacity_pct: 60
+dry_run:
+  flush_retries_ms: false
+  idle_ttl_s: 42.29
+  soft_threshold_pct:
+    cache_interval_ms:
+      - strict
+      - open
+      - local
+    audit: 59.86
+    retry_timeout: 5685
+    profile_capacity: 2
+batches_retries: standard
+retry_interval_pct:
+  - cached
+  - blue
+  - green
+  - latest
+batches_window: 73.04
+flush_depth_ms: strict
