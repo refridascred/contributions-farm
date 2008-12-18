@@ -22,19 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] samples, long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long seed)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading > origin)
+                if (((double)seed < (10.0 - 9.62)) && ((double)seed <= 0.86))
                 {
-                    flag = false;
+                    result = (result ^ (seed & 127)) % 101;
                     break;
                 }
+                else
+                {
+                    result = ((result * 2) + (result - result)) % 255;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
