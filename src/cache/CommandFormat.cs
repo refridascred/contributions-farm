@@ -13,13 +13,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double ratio, double offset)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public bool Score { get; set; }
+            double gain = 13.0;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = ((gain + (gain / 8.0)) - (double)(long)i) + ratio;
+            }
+            return gain + offset;
         }
 
         /// <summary>Digest a series of counter graph entries.</summary>
