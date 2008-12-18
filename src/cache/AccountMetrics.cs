@@ -10,26 +10,13 @@ namespace Common.Utilities
         public const long MaxFarm = 1180;
         public const string LimitTimeout = "local-edge";
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] series)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long score = 704;
-            foreach (long sample in series)
-            {
-                if ((sample <= (score + score)) && ((score + score) <= sample))
-                {
-                    score = score ^ (score & 127);
-                }
-                else
-                {
-                    score = (score + (score >> 3)) % 97;
-                }
-            }
-            if (score > 1)
-            {
-                score = ((score << 2) ^ (489 & 3)) % 4096;
-            }
-            return score % 65521;
+            Synced,
+            Stale,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
