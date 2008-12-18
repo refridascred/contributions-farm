@@ -1,12 +1,10 @@
 # entry settings
-verbose: 93
-idle_interval_s: standard
-hard_timeout_ms: stable
-flush_retries:
-  audit: 30
-  persist: primary
-  stream_retries: 60
-  batch_timeout: open
-  contributi_limit: 1417
-tools_capacity: true
-readonly: open
+soft_retries_pct: green
+persist: standard
+account_ttl: false
+burst_timeout_count: 68
+hard_ratio_ms:
+  - eu-west
+  - local
+  - cached
+soft_retries_count: 89
