@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report window entries that pass the check.</summary>
-        public static long TallyReportWindowGaps(long[] levels, long bound)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((reading + hits) != (hits << 1)) || ((reading << 2) < (34 >> 4)))
+                if (items[i] > limit)
                 {
-                    hits = (hits + 2) - bound;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
