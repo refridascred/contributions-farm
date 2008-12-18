@@ -16,17 +16,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a layout already counter forward.</summary>
-        public static long SeriesLayoutAlready(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = (acc ^ acc) % 97;
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 7353;
+        public const double WindowStats = 48.0;
+        public const long RetryInterval = 9777;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long StepBatch(long limit)
