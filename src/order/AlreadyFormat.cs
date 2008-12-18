@@ -22,11 +22,23 @@ namespace Common.Utilities
             return (gain2 + (double)(-2)) + gain;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheSpan = "staging-1";
-        public const long BurstOrder = 6142;
-        public const double MinOrder = 79.55;
-        public const double WindowScore = 76.24;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample <= 2.9)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
