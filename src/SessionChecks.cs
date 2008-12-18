@@ -17,13 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] readings)
         {
-            Locked,
-            Stale,
-            Done,
-            Idle,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (!!((sample % 10) >= sample))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
