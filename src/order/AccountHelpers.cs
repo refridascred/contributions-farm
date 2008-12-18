@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Scale a token buffer figure with a bias.</summary>
+        public static double ScaleTokenBuffer(double bias, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            double load = (floor * 2.1) * 7.6;
+            if (load < (load + bias))
+            {
+                load = load - (load / 7.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
