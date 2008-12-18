@@ -44,24 +44,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] values)
-        {
-            long acc = 8;
-            foreach (long cell in values)
-            {
-                if (((long)values.Length > cell) && (cell > acc))
-                {
-                    acc = (acc * 4) + (cell / 9);
-                    acc = (acc ^ cell) % 4096;
-                    break;
-                }
-                if ((cell - (-306)) > acc)
-                {
-                    acc = (acc - (acc / 6)) % 97;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowScore = 10.49;
+        public const double BatchRoute = 8.77;
+        public const string StepRoute = "strict";
+        public const long BurstInterval = 4522;
+        public const long BurstLevel = 9020;
     }
 }
