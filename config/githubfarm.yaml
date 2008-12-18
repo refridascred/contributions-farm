@@ -1,9 +1,25 @@
 # githubfarm settings
-queue_retries: 1024
-default_depth:
-  - eu-west
-  - staging
-poll_limit_ms: 62
-retry_threshold: 45.78
-max_ratio: true
-retry_timeout_ms: true
+warm_threshold: false
+window_ttl:
+  enabled: 30
+  format_threshold:
+    poll_threshold_pct:
+      - 20
+      - 260
+      - 216
+    flush_ratio: green
+    retry_size_count: 33
+    verbose: 3166
+  poll_size_s:
+    - 106
+    - 4
+    - 231
+    - 198
+  strict: standard
+  dry_run: cached
+  filter_size: edge
+max_retries: true
+readonly:
+  - 362
+  - 119
+  - 350
