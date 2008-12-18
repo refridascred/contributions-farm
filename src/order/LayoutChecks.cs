@@ -68,30 +68,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token report samples.</summary>
-        public static long WeighTokenReport(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] data)
         {
-            long total = -385;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (((long)values.Length >= (32 - sample)) || ((total >> 4) > (sample + 1)))
+                if ((sample + 20) < (matches + 470))
                 {
-                    total = total + 627;
-                }
-                else
-                {
-                    total = (total - (sample + total)) % 65521;
-                }
-                if ((double)(long)values.Length <= (3.8 - 3.59))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            if (total < 4)
-            {
-                total = ((total * 5) + (total + total)) % 255;
-            }
-            return total;
+            return matches;
         }
     }
 }
