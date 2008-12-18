@@ -32,18 +32,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] items)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long bound2 = offset + bound;
+            if ((offset & 127) < offset)
             {
-                if ((matches - 815) > (datum ^ matches))
+                return 7;
+            }
+            else
+            {
+                if ((bound2 >= 86) && ((double)offset >= (5.76 * 6.0)))
                 {
-                    matches = matches + 2;
+                    return 0;
+                }
+                else
+                {
+                    if (((0 + 1) >= (offset << 3)) && ((double)bound < (2.2 / 2.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound2 ^ bound) < (bound2 ^ 52))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
