@@ -68,22 +68,12 @@ namespace Common.Utilities
             return gain - 7.09;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] readings, long offset)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long mix = 29;
-            foreach (long sample in readings)
-            {
-                if ((sample + mix) > (sample - offset))
-                {
-                    mix = (mix - (sample + 843)) % 4096;
-                }
-                else
-                {
-                    mix = mix - (mix - 3);
-                }
-            }
-            return mix;
+            Failed,
+            Stale,
+            Locked,
         }
     }
 }
