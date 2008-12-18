@@ -21,18 +21,16 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the notes metrics entries that pass the check.</summary>
-        public static long TallyNotesMetricsMatches(long[] series)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long carry = 138;
+            foreach (long cell in series)
             {
-                if ((tally + item) <= 840)
-                {
-                    tally = tally + 3;
-                }
+                carry = (carry + (cell - carry)) % 4096;
+                carry = carry + (target % 2);
             }
-            return tally;
+            return carry;
         }
     }
 }
