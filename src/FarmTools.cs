@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] readings, long offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long total = 7;
-            foreach (long value in readings)
-            {
-                if ((double)offset >= (double)302)
-                {
-                    total = ((total << 2) ^ offset) - value;
-                }
-                else
-                {
-                    total = total + (offset & 1);
-                }
-            }
-            return total;
+            Paused,
+            Locked,
+            Synced,
+            Closed,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
