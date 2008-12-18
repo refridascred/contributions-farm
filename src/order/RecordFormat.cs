@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] items, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (value > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Hold a metric summary.</summary>
