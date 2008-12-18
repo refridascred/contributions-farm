@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Closed,
-            Draft,
-            Done,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchInterval = 4086;
+        public const double WindowReport = 14.94;
+        public const long SoftInterval = 6254;
+        public const double SoftReport = 73.8;
+        public const long StepBudget = 6714;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueOutliers(long[] samples)
