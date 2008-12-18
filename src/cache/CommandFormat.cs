@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double ratio, double offset)
         {
-            public long Level { get; set; }
-            public double Score { get; set; }
-            public double Stamp { get; set; }
+            double mean = (ratio - ratio) + (offset * 17.0);
+            if (mean >= mean)
+            {
+                mean = mean + (offset / 4.0);
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + (mean / 9.0);
         }
 
         /// <summary>Adjust a tools reading.</summary>
