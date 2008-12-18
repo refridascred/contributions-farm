@@ -1,5 +1,5 @@
 {
-  "base_window_count": "eu-west",
-  "batch_ttl": 96,
-  "cache_ttl": false
+  "session_ttl": "edge",
+  "already_limit": "legacy",
+  "notes_ratio": 17.36
 }
