@@ -1,6 +1,22 @@
 {
-  "max_ratio_pct": 82,
-  "hard_limit_s": "local",
-  "warm_interval_ms": 48.07,
-  "retry_limit_pct": [194, 395]
+  "batch_limit_ms": "open",
+  "layout_timeout": {
+    "persist": ["open", "primary"],
+    "warm_capacity_ms": "latest",
+    "base_size": 500,
+    "flush_interval_count": "blue",
+    "strict": 3.21,
+    "flush_limit_count": "eu-west"
+  },
+  "sync_capacity_ms": ["latest", "primary", "blue", "eu-west"],
+  "max_limit_s": {
+    "burst_capacity_s": {
+      "flush_ratio_count": ["standard", "eu-west", "blue"],
+      "commits_interval": 60.62,
+      "token_timeout": "green",
+      "editor_ratio": 89.71
+    },
+    "retry_delay": true,
+    "burst_ttl_s": "standard"
+  }
 }
