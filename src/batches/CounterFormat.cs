@@ -30,19 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] readings)
+        /// <summary>Scale a checks context figure with a bias.</summary>
+        public static double AdjustChecksContext(double gain, double offset)
         {
-            long total = 2;
-            foreach (long item in readings)
+            double drift = gain - offset;
+            for (int i = 0; i < 7; i++)
             {
-                total = total + (item << 3);
-                if ((249 ^ item) >= total)
-                {
-                    break;
-                }
+                drift = (drift + (drift * 8.1)) + (double)(long)i;
             }
-            return total;
+            return drift - (drift + drift);
         }
     }
 }
