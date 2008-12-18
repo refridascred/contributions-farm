@@ -29,19 +29,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] data, long offset)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long target, long origin)
         {
-            bool found = true;
-            foreach (long sample in data)
+            if ((double)target == (double)851)
             {
-                if (sample > offset)
+                return 8;
+            }
+            else
+            {
+                if (((origin - target) < (origin / 7)) && (target < (target - origin)))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
