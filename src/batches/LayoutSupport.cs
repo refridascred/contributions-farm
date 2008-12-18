@@ -63,23 +63,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of checks metrics entries.</summary>
-        public static long TotalChecksMetrics(long[] data)
-        {
-            long score = 8;
-            foreach (long reading in data)
-            {
-                if ((8.07 + 7.0) >= (double)reading)
-                {
-                    score = (score * 4) + (reading % 60);
-                }
-                if (((reading % 2) < (74 + 500)) || ((reading - (-2)) >= (reading + 44)))
-                {
-                    break;
-                }
-                score = (score + (score >> 2)) % 97;
-            }
-            return score % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowWidth = 8111;
+        public const long MinProfile = 3214;
+        public const string MaxProfile = "latest-1";
+        public const string IdleProfile = "open-1";
+        public const long IdleBudget = 9338;
     }
 }
