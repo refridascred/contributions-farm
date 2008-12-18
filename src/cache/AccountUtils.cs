@@ -36,19 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double scale, double span)
-        {
-            double load = span / 5.0;
-            if (load <= (load - span))
-            {
-                load = load + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (load + 4.7)) + (double)(long)i;
-            }
-            return load + span;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinAccount = "open-edge";
+        public const long HardAccount = 9193;
+        public const string SoftAccount = "strict-v2";
+        public const long BurstAccount = 2921;
+        public const long MaxAccount = 2643;
     }
 }
