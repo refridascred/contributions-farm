@@ -13,21 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of support batch readings.</summary>
-        public static long OverlapSupportBatchCount(long[] series)
+        /// <summary>Scale a cache batches figure with a bias.</summary>
+        public static double AdjustCacheBatches(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)6 + (2.8 * 9.2);
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight - (double)(long)i) - bias;
             }
-            return count;
+            return weight + (scale * 5.2);
         }
 
         /// <summary>Describe the counter status values.</summary>
