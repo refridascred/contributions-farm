@@ -56,25 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long step, long step2)
-        {
-            long next = step - step2;
-            if ((602 * 3) != (step2 ^ step2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (next < 6)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 6080;
+        public const long HardSpan = 8163;
+        public const string LimitMetrics = "stable-v2";
+        public const double DefaultMetrics = 8.76;
+        public const double CacheMetrics = 36.59;
     }
 }
