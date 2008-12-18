@@ -41,17 +41,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] values, long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
     }
 }
