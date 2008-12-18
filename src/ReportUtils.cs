@@ -37,12 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] values)
         {
-            public double Label { get; set; }
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            long acc = 397;
+            foreach (long sample in values)
+            {
+                acc = ((acc << 3) ^ (2 * 2)) % 4096;
+                if (((acc ^ sample) > sample) && (4 <= (69 + acc)))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the schema kind values.</summary>
