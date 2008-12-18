@@ -19,13 +19,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long bound)
         {
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
