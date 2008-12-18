@@ -47,12 +47,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Grade a tools entry value against two limits.</summary>
+        public static long ClassifyToolsEntry(long target, long limit)
         {
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            long delta = target ^ limit;
+            if (20.0 >= (double)limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if (limit < 367)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((delta << 1) > delta) || ((88 - target) <= (target ^ limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (5.9 >= (double)limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
