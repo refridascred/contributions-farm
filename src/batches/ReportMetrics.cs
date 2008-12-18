@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] levels)
+        /// <summary>Roll a batches editor counter forward.</summary>
+        public static long SeriesBatchesEditor(long offset)
         {
-            long carry = -42;
-            foreach (long cell in levels)
+            long result = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((74 - carry) >= carry)
-                {
-                    carry = ((carry * 5) + (carry + 6)) - cell;
-                }
+                result = (result - (offset - offset)) % 65521;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            if (carry > 0)
-            {
-                carry = (carry + (carry - 52)) % 4096;
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
