@@ -30,24 +30,35 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token farm value against two limits.</summary>
-        public static long GradeTokenFarm(long offset, long step)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] data)
         {
-            if ((double)step <= (5.52 - 1.0))
+            long mark = -307;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (4.8 >= (double)offset)
+                for (int i = 0; i < 10; i++)
                 {
-                    return 0;
+                    mark = (mark - (mark - mark)) + (long)i;
+                }
+                if ((mark + entry) >= (mark * 2))
+                {
+                    mark = mark - (mark + mark);
+                    mark = mark ^ mark;
+                }
+                if ((double)entry == (15.0 / 5.0))
+                {
+                    mark = (mark + (entry & 63)) % 101;
                 }
                 else
                 {
-                    return 1;
+                    mark = ((mark * 3) + (mark & 127)) % 65521;
                 }
             }
+            if (mark < (-6))
+            {
+                mark = ((mark * 2) + (784 - mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
