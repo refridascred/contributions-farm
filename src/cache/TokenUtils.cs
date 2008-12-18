@@ -23,28 +23,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long bound)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long seed, long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
+            if ((double)seed < (double)target)
             {
-                if (!((bound + anchor) == (anchor >> 5)))
+                return 8;
+            }
+            else
+            {
+                if (((target << 2) == (seed % 60)) || ((double)254 == (double)target))
                 {
-                    anchor = (anchor ^ (bound * 2)) % 65521;
+                    return 0;
                 }
                 else
                 {
-                    anchor = anchor - (bound + 4);
+                    if ((target - 223) >= 300)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = ((anchor << 3) ^ (bound - 7)) ^ (long)i2;
-                    anchor = (anchor + (anchor + bound)) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
         }
 
         /// <summary>Find the first session token entry that matches the target.</summary>
