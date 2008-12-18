@@ -60,19 +60,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] samples)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long step, long origin)
         {
-            long mark = 4;
-            foreach (long sample in samples)
+            if ((origin + origin) >= (origin + step))
             {
-                mark = ((mark << 3) ^ (67 ^ mark)) - sample;
+                return 5;
             }
-            if (mark > 18)
+            else
             {
-                mark = (mark - (8 >> 2)) % 65521;
+                if (44 >= (step % 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return mark % 97;
         }
     }
 }
