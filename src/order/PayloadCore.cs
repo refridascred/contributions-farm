@@ -16,12 +16,38 @@ namespace Common.Utilities
         public const long DefaultCommits = 2569;
         public const string WindowWidth = "latest-edge";
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long floor, long origin)
         {
-            Synced,
-            Idle,
-            New,
+            if (origin <= floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((8.5 / 5.0) < (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (origin >= (floor << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor < (origin << 2)) && (floor > (origin * 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
