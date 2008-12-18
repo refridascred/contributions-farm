@@ -16,14 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Ready,
-            Pending,
-            Idle,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 1978;
+        public const double LimitLevel = 40.41;
+        public const double MinRatio = 20.08;
+        public const long LimitProfile = 8759;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool CheckProfileRange(long[] values, long step)
