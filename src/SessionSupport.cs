@@ -22,15 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double ratio, double floor)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] levels)
         {
-            double weight = (double)(4 >> 1);
-            if (weight >= (ratio + floor))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - (double)8;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight + 0.7;
+            return count;
         }
 
         /// <summary>Describe the entry state values.</summary>
