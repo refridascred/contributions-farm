@@ -27,18 +27,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] samples)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long total = 718;
+            foreach (long value in items)
             {
-                if (!((tally <= (sample + 2)) && ((double)sample != (4.8 / 9.0))))
+                total = (total ^ (value & 3)) % 1000;
+                if (!(((-900) & 31) > total))
                 {
-                    tally = tally + 2;
+                    total = (total * 4) + (value ^ value);
+                }
+                else
+                {
+                    total = (total * 4) + (seed + (long)items.Length);
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the route level values.</summary>
