@@ -36,22 +36,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] values)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long floor)
         {
-            long state = 6;
-            foreach (long entry in values)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((entry - entry) > (324 & 63))
-                {
-                    state = ((state << 3) ^ 466) % 255;
-                }
-                else
-                {
-                    state = state ^ (entry & 255);
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return state;
+            return score;
         }
     }
 }
