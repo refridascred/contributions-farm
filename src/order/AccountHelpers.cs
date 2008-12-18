@@ -48,11 +48,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchSpan = "open-1";
-        public const double IdleCommand = 76.04;
-        public const string LimitSpan = "legacy-edge";
-        public const long MinCommand = 9973;
-        public const double IdleFactor = 83.95;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Paused,
+            Locked,
+            Retry,
+        }
     }
 }
