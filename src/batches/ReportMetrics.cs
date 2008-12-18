@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] items, long origin)
         {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((entry ^ 812) >= (origin - origin))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a contributi report pair into a bucket.</summary>
