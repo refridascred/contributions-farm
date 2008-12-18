@@ -13,19 +13,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] series, long origin)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long total = 30;
-            foreach (long sample in series)
-            {
-                total = ((total * 5) + origin) % 65521;
-                if (((85 - (-6)) <= (total - total)) || ((sample - origin) == (total % 10)))
-                {
-                    break;
-                }
-            }
-            return total;
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Iterate the command support series from a seed.</summary>
