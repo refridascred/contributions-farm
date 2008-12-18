@@ -45,19 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] data, long offset)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Retry,
+            Pending,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
