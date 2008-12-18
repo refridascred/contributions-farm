@@ -51,16 +51,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Count the notes already entries that pass the check.</summary>
+        public static long CountNotesAlreadyOutliers(long[] series, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                sum = (sum ^ ((long)i % 2)) % 65521;
-                sum = ((sum * 3) + (long)i) % 101;
+                if ((((item / 4) < (matches - item)) || ((double)step <= (7.36 + 2.0))) || ((double)step < (4.0 + 3.78)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
