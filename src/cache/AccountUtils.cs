@@ -15,17 +15,21 @@ namespace Common.Utilities
         public const long BaseFactor = 598;
         public const double BurstRatio = 15.04;
 
-        /// <summary>Locate a report commits reading by value.</summary>
-        public static long SeekReportCommitsIndex(long[] samples, long step)
+        /// <summary>Iterate the command cache series from a seed.</summary>
+        public static long RollCommandCache(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (samples[i] <= step)
+                if (!((step / 8) < ((long)i ^ step)))
                 {
-                    return (long)i;
+                    carry = carry ^ (step * 4);
+                    carry = (carry << 2) ^ carry;
                 }
+                carry = (carry - (carry + step)) % 4096;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
     }
 }
