@@ -37,12 +37,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 8717;
-        public const double CacheWidth = 20.82;
-        public const string StepCommits = "local";
-        public const string MaxCommits = "stable-v2";
-        public const long BaseScore = 8501;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    carry = (carry ^ (long)i2) % 101;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long MatchFormatCount(long[] items)
