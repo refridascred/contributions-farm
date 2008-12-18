@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long bound, long target)
         {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            long offset = bound - target;
+            if ((target % 12) == (965 & 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target ^ bound) >= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((7.44 < (double)target) || ((offset % 12) >= 681))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (7.2 * 16.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
