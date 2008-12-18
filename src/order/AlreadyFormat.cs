@@ -37,10 +37,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 7627;
-        public const long DefaultScore = 4873;
-        public const long StepSpan = 970;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheSpan = "staging-1";
+        public const long BurstOrder = 6142;
+        public const double MinOrder = 79.55;
+        public const double WindowScore = 76.24;
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
