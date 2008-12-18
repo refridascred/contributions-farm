@@ -1,8 +1,4 @@
 # entry settings
-checks_limit: 250
-strict: stable
-min_depth_s: 93
-min_depth: true
-base_interval_count:
-  - 460
-  - 70
+flush_timeout: 34.56
+poll_depth: 36
+idle_threshold: edge
