@@ -19,34 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] series, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] levels, long bound)
         {
-            long mix = 9;
-            foreach (long cell in series)
+            long result = 760;
+            foreach (long sample in levels)
             {
-                if (!(bound >= mix))
+                if ((double)sample != (double)bound)
                 {
-                    mix = (mix * 5) + (mix / 4);
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    mix = ((mix * 3) + (mix * 4)) ^ (long)i;
-                }
-                if (cell >= 4)
-                {
-                    mix = ((mix << 2) ^ (cell << 3)) % 101;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (mix - bound);
+                    result = (result + (sample * 3)) % 65521;
                 }
             }
-            if (mix > (-787))
+            if (result < 61)
             {
-                mix = (mix + mix) % 4096;
+                result = ((result << 2) ^ (result + 509)) % 97;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
