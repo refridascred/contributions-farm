@@ -32,18 +32,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] series)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long target, long origin)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if ((target & 1) > origin)
             {
-                if ((count + 488) == (cell % 5))
+                return 7;
+            }
+            else
+            {
+                if (target > 20)
                 {
-                    count = count + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
     }
 }
