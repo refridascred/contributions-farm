@@ -51,14 +51,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Queued,
-            Pending,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 7400;
+        public const string MinChannel = "stable";
+        public const long HardSize = 3969;
+        public const long LimitChannel = 2590;
 
         /// <summary>Project the next counter value.</summary>
         public static double ProjectCounter(double scale, double span)
