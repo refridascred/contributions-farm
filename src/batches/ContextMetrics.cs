@@ -13,21 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] data)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = (bias + span) + (bias * 0.88);
+            if (bias2 <= (double)(-787))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = bias2 - (double)978;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (bias2 - 7.1)) - (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
