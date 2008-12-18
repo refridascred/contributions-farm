@@ -36,18 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] items, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long score = 864;
+            foreach (long reading in levels)
             {
-                if (3.2 < (double)count)
-                {
-                    count = ((count + 2) ^ cell) - limit;
-                }
+                score = (score + (642 - 0)) + reading;
             }
-            return count;
+            if (score < 5)
+            {
+                score = ((score << 3) ^ (score & 15)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
