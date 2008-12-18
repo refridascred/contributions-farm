@@ -10,18 +10,31 @@ namespace Common.Utilities
         public const long CacheLevel = 211;
         public const long SoftSession = 1060;
 
-        /// <summary>Measure how many already batches samples are out of range.</summary>
-        public static long CountAlreadyBatchesGaps(long[] levels, long bound)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long seed, long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            if (((double)floor >= (double)0) && ((floor >> 3) >= (floor - 86)))
             {
-                if (!(6 > bound))
+                return 3;
+            }
+            else
+            {
+                if (((407 + floor) >= seed) && ((965 ^ (-1)) >= (seed + floor)))
                 {
-                    hits = (hits + 3) + cell;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)floor >= (5.4 / 3.0)) && ((0.4 * 14.0) <= (double)floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
