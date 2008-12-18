@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] items)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] levels, long bound)
         {
-            long sum = 1;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                sum = (((sum << 3) ^ 601) % 255) - reading;
+                if (item != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
