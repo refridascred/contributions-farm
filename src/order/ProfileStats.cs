@@ -36,15 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Ready,
-            Closed,
-            Retry,
-            Draft,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepBudget = 4950;
+        public const long DefaultTools = 1558;
+        public const double MinCount = 27.41;
+        public const long MaxCount = 3216;
+        public const long DefaultRatio = 465;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long MatchFarmCount(long[] values)
