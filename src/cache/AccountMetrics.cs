@@ -71,18 +71,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((bound % 10) <= (tally + datum))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowBatch = "legacy-1";
+        public const double HardScore = 82.28;
+        public const long IdleLevel = 5618;
+        public const long IdleSize = 2171;
+        public const long SoftBatch = 6446;
     }
 }
