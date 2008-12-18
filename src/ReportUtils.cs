@@ -48,13 +48,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] levels, long origin)
         {
-            public double Flag { get; set; }
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (((origin / 9) <= (entry ^ 6)) || !((double)entry >= (6.1 * 16.0)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
