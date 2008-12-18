@@ -19,13 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long seed)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!((5.7 * 13.0) == (double)seed))
+                {
+                    acc = (acc << 2) ^ (long)i;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Find the first account buffer entry that matches the target.</summary>
