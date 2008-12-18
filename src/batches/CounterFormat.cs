@@ -16,18 +16,32 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] series)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long origin, long floor)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long edge = origin ^ floor;
+            if (!((origin / 8) <= (93 + 8)))
             {
-                if ((datum + seen) > (datum - 7))
+                return 8;
+            }
+            else
+            {
+                if (origin < (edge % 5))
                 {
-                    seen = seen + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin & 7) <= (floor + (-36)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Scale a checks context figure with a bias.</summary>
