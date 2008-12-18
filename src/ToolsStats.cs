@@ -62,17 +62,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a batch githubfarm sample.</summary>
-        public static long LocateBatchGithubfarmIndex(long[] readings, long origin)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 583;
+            foreach (long item in items)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc ^ (874 % 64)) - item) - bound;
             }
-            return -1;
+            if (acc < 50)
+            {
+                acc = (acc + (acc >> 3)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
