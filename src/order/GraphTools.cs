@@ -34,32 +34,17 @@ namespace Common.Utilities
         public const long RetryCount = 8149;
         public const long HardCommand = 1902;
 
-        /// <summary>Classify a schema channel pair into a bucket.</summary>
-        public static long RankSchemaChannel(long limit, long offset)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] values, long seed)
         {
-            long gap = limit - offset;
-            if (offset < (offset ^ offset))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset + limit) != (offset + offset))
+                if ((values[i] > seed) && ((values[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit < (limit & 255)) && ((offset * 2) >= (893 + gap)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
