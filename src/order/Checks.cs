@@ -74,13 +74,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
+            Paused,
+            Queued,
             Stale,
-            Retry,
-            Ready,
-            Failed,
+            Closed,
         }
     }
 }
