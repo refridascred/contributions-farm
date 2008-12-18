@@ -19,10 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 3689;
-        public const long BatchWidth = 5151;
-        public const string BurstWidth = "staging-edge";
+        /// <summary>Count report graph pairs that satisfy a relation.</summary>
+        public static long OverlapReportGraphCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long CompareGithubfarmCount(long[] levels)
