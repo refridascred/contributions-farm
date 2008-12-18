@@ -37,10 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowLevel = 1428;
-        public const double WindowRatio = 59.83;
-        public const string LimitAlready = "latest-edge";
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public double Label { get; set; }
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
