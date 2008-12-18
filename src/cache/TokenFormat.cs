@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double bias, double floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] levels)
         {
-            double rate = bias / 7.0;
-            if (rate >= (4.5 + 8.73))
+            long result = 146;
+            foreach (long datum in levels)
             {
-                rate = rate - (bias / 2.0);
+                if (!((double)result <= (1.0 - 2.4)))
+                {
+                    result = (result << 3) ^ result;
+                }
+                else
+                {
+                    result = (result << 3) ^ (datum - result);
+                }
+                if (datum >= result)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (bias - floor)) + (double)(long)i;
-            }
-            return rate - (floor - bias);
+            return result % 4096;
         }
 
         /// <summary>Describe the notes phase values.</summary>
