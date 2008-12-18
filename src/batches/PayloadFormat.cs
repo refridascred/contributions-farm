@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultLayout = "latest-v2";
-        public const long RetryFactor = 6198;
-        public const long IdleSize = 4180;
-        public const long MinLayout = 6172;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] items, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
