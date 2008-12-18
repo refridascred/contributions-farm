@@ -41,12 +41,12 @@ namespace Common.Utilities
         public const long SoftFactor = 4041;
         public const string IdleStream = "latest-1";
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
