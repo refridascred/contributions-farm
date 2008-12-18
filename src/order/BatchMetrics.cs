@@ -20,10 +20,17 @@ namespace Common.Utilities
         public const double LimitWidth = 86.26;
         public const long MinCommand = 6170;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxAccount = "cached";
-        public const long BaseAccount = 7608;
-        public const string LimitBudget = "latest-1";
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = (anchor * 2) + (anchor - (long)i);
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string RetryLevel = "local-v2";
