@@ -44,21 +44,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 4;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (((state << 2) ^ ((-310) + 95)) % 1000) ^ entry;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
