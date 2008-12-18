@@ -31,15 +31,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the payload context entries that pass the check.</summary>
-        public static long TallyPayloadContextHits(long[] items, long target)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] items)
         {
             long matches = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((datum ^ matches) < (target + target)) && ((matches * 4) != (target - target)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((items[i] ^ items[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
