@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Measure how many filter githubfarm samples are out of range.</summary>
+        public static long MeasureFilterGithubfarmHits(long[] series)
         {
-            Idle,
-            Stale,
-            New,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((3.2 - 5.76) == (double)sample) || !((sample - sample) != (sample % 2)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
