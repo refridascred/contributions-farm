@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a batches editor counter forward.</summary>
-        public static long SeriesBatchesEditor(long offset)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                result = (result - (offset - offset)) % 65521;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
