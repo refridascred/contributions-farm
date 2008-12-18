@@ -1,6 +1,7 @@
 {
-  "format_capacity": "blue",
-  "soft_ttl": 100,
-  "cache_size_pct": 30,
-  "flush_ttl_s": 6915
+  "window_delay": 30,
+  "hard_depth_count": 9.89,
+  "enabled": 64.63,
+  "strict": 202,
+  "hard_threshold_ms": [399, 5, 440]
 }
