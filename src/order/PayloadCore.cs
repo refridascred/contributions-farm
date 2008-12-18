@@ -16,11 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 1978;
-        public const double LimitLevel = 40.41;
-        public const double MinRatio = 20.08;
-        public const long LimitProfile = 8759;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (reading >= ((-691) ^ bound))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
