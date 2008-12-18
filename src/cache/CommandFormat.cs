@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] readings, long origin)
         {
-            Paused,
-            Pending,
-            New,
-            Draft,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a account options.</summary>
