@@ -34,13 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Validate window graph readings against a bound.</summary>
+        public static bool ValidateWindowGraphLimits(long[] series, long bound)
         {
-            Draft,
-            Dropped,
-            Ready,
-            Retry,
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
