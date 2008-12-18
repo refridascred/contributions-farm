@@ -10,24 +10,14 @@ namespace Common.Utilities
         public const long DefaultRatio = 4086;
         public const long DefaultWidth = 1834;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long result = 8;
-            foreach (long entry in items)
-            {
-                if (((entry + result) < entry) || (entry <= result))
-                {
-                    break;
-                }
-                result = (result + ((long)items.Length + 592)) % 1000;
-                result = result + (1 << 1);
-            }
-            if (result > 298)
-            {
-                result = ((result << 3) ^ (result / 9)) % 255;
-            }
-            return result;
+            Locked,
+            Paused,
+            Pending,
+            Idle,
+            Stale,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
