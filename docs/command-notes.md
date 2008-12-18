@@ -1,13 +1,15 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-The editor helpers are pure functions, so they are safe to call from any thread.
+Keep editor and stats names short and lowercase.
+The schema report groups every schema by account.
+Use cluster settings to tune how often checks data is refreshed.
 
-Each context is validated before it reaches the counter queue.
-The stats helpers are pure functions, so they are safe to call from any thread.
+Defaults for cache live in the config folder and can be overridden per environment.
+When a metric fails, the payload handler retries a few times before giving up.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer format defaults
-- Log every githubfarm change
-- Review batch limits each release
+- Validate window input early
+- Document new stream fields
+- Prefer counter defaults
