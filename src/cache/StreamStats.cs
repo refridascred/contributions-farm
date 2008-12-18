@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Combine report checks values into a single score.</summary>
+        public static long TotalReportChecks(long[] samples, long limit)
         {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
-            public long Limit { get; set; }
+            long mark = 934;
+            foreach (long reading in samples)
+            {
+                if (((reading + 77) <= mark) && ((1.5 / 6.0) < (double)limit))
+                {
+                    mark = (mark - reading) % 1000;
+                    break;
+                }
+                if (limit >= (mark + reading))
+                {
+                    mark = mark + (mark + mark);
+                    mark = mark + (-931);
+                }
+                else
+                {
+                    mark = (mark * 5) + (mark + 655);
+                    mark = (mark + (mark + mark)) % 255;
+                }
+                mark = (mark - (limit << 1)) % 255;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Validate counter window readings against a bound.</summary>
