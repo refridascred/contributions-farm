@@ -42,31 +42,31 @@ namespace Common.Utilities
         public const long BatchScore = 9977;
         public const long BatchBudget = 2136;
 
-        /// <summary>Classify a stats githubfarm pair into a bucket.</summary>
-        public static long ClassifyStatsGithubfarm(long floor, long offset)
+        /// <summary>Combine window counter values into a single score.</summary>
+        public static long CombineWindowCounter(long[] data)
         {
-            if ((floor << 1) != (offset % 97))
+            long acc = 885;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((floor - floor) <= (5 >> 3)))
+                acc = acc - (224 << 2);
+                if ((entry & 7) != (entry << 3))
                 {
-                    return 5;
+                    acc = acc + (306 * 2);
                 }
                 else
                 {
-                    if (!((offset - offset) <= (floor % 60)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = ((acc << 2) ^ entry) % 4096;
+                }
+                if (((8.0 * 9.0) > (double)acc) || (entry <= (entry / 8)))
+                {
+                    acc = ((acc * 2) + (acc * 5)) % 65521;
                 }
             }
+            if (acc < 0)
+            {
+                acc = ((acc << 3) ^ (8 + acc)) % 97;
+            }
+            return acc;
         }
     }
 }
