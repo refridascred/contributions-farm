@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long origin, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] items)
         {
-            if (8.4 > (double)offset)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset / 7) > (offset - offset))
+                if (!((reading + reading) >= (490 + matches)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin / 4) <= (offset / 7)) || (5 < (offset >> 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the tools phase values.</summary>
