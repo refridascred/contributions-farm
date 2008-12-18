@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] items, long target)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long offset)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading > target)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor ^ (offset - (long)i)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Accumulate counter samples.</summary>
