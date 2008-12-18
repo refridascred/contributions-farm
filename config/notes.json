@@ -1,12 +1,8 @@
 {
-  "support_depth": {
-    "buffer_limit": 1024,
-    "soft_interval_ms": 100,
-    "warm_capacity": [74, 142],
-    "graph_retries": 33.92,
-    "max_threshold_s": true
-  },
-  "metrics_threshold": 250,
-  "base_depth": 8841,
-  "warm_timeout_ms": [348, 207, 353]
+  "cache_window_ms": 96,
+  "poll_interval_ms": 87.56,
+  "idle_threshold": 1024,
+  "counter_retries": 44.45,
+  "audit": [384, 341, 38, 261],
+  "record_depth": 98.56
 }
