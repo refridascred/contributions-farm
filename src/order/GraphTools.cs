@@ -54,12 +54,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 7344;
+        public const double BurstBudget = 93.5;
+        public const long WindowDepth = 8387;
     }
 }
