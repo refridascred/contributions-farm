@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] samples, long target)
-        {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 6108;
+        public const string SoftToken = "legacy";
+        public const long IdleWidth = 1625;
+        public const double BatchToken = 8.92;
+        public const long CacheToken = 4049;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double CacheSpan = 28.05;
