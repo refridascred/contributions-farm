@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route batches samples are out of range.</summary>
-        public static long MeasureRouteBatchesGaps(long[] values)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((double)648 >= (9.0 + 5.45))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit tools profile readings against a rule.</summary>
