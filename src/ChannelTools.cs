@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long offset)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((result + (long)i) != (result >> 1)) || (offset < (offset >> 5)))
-                {
-                    result = ((result << 3) ^ (offset / 9)) % 1000;
-                }
-                else
-                {
-                    result = result - (result >> 5);
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
