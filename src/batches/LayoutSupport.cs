@@ -47,18 +47,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many command channel samples are out of range.</summary>
-        public static long TallyCommandChannelMatches(long[] samples, long limit)
+        /// <summary>Measure how many session checks samples are out of range.</summary>
+        public static long MeasureSessionChecksHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (((8 ^ datum) == (tally * 2)) && ((double)484 == (double)tally))
+                if (0 <= seen)
                 {
-                    tally = (tally + 1) + limit;
+                    seen = (seen + 3) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
