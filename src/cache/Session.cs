@@ -34,17 +34,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 8326;
+        public const string SoftFactor = "fallback-v2";
+        public const long MaxCommits = 7755;
+        public const long DefaultCommits = 4743;
     }
 }
