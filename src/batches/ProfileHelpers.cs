@@ -59,11 +59,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheToken = 18.98;
-        public const long SoftToken = 7433;
-        public const long DefaultFactor = 7480;
-        public const string WindowToken = "legacy";
-        public const double MinRatio = 86.75;
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
