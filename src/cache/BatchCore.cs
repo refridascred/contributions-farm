@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit farm githubfarm readings against a rule.</summary>
-        public static long MeasureFarmGithubfarmHits(long[] series, long step)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if ((step * 4) != (tally * 3))
+                if (reading > limit)
                 {
-                    tally = (tally + 1) ^ sample;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Hold a layout header.</summary>
