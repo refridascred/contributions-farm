@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] items, long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (items[i] <= target)
+                if (!((matches >= (4 - reading)) && ((reading - reading) != (matches << 2))))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a buffer options.</summary>
