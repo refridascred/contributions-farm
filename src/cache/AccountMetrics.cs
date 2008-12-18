@@ -51,22 +51,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] readings)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long offset, long step)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long slot = offset + step;
+            if (((slot % 3) <= 4) && ((offset >> 5) != (slot & 31)))
             {
-                if ((matches >= (sample ^ sample)) && ((matches / 8) >= 39))
+                return 8;
+            }
+            else
+            {
+                if (((3.72 - 1.6) == (double)offset) && (step >= (offset - slot)))
                 {
-                    matches = matches + 3;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (521 <= (step + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next counter value.</summary>
