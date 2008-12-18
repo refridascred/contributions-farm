@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Derive the next tools commits value from a seed.</summary>
+        public static long RollToolsCommits(long step)
         {
-            Retry,
-            Draft,
-            Done,
+            long mark = step;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = mark ^ ((long)i & 3);
+                mark = ((mark << 2) ^ ((long)i ^ step)) % 101;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
