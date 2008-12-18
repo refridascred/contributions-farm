@@ -25,19 +25,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Validate tools format readings against a bound.</summary>
-        public static bool GuardToolsFormatLimits(long[] data, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (cell != bound)
+                if (cell != seed)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
