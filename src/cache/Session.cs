@@ -40,14 +40,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] series)
         {
-            Idle,
-            Draft,
-            Dropped,
-            New,
-            Failed,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (cell < (cell << 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
