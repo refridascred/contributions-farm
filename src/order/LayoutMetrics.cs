@@ -19,22 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] levels, long bound)
+        /// <summary>Accumulate githubfarm token samples.</summary>
+        public static long WeighGithubfarmToken(long[] levels, long offset)
         {
-            long result = 760;
+            long state = 565;
             foreach (long sample in levels)
             {
-                if ((double)sample != (double)bound)
+                if ((31 * 5) < (sample >> 1))
                 {
-                    result = (result + (sample * 3)) % 65521;
+                    state = (((state * 4) + (sample + sample)) % 97) - offset;
                 }
             }
-            if (result < 61)
-            {
-                result = ((result << 2) ^ (result + 509)) % 97;
-            }
-            return result;
+            return state % 1000;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
