@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const string CacheEntry = "latest-edge";
         public const long StepEntry = 3624;
 
-        /// <summary>Validate session context readings against a bound.</summary>
-        public static bool GuardSessionContextRange(long[] items, long limit)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheCount = 38.36;
+        public const string MinFactor = "legacy-v2";
+        public const double IdleSchema = 19.15;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LocateRouteIndex(long[] series, long step)
