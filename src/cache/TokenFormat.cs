@@ -27,19 +27,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] readings)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long offset, long step)
         {
-            long sum = 92;
-            foreach (long value in readings)
+            long edge = offset ^ step;
+            if (((offset + step) >= (step / 3)) && (edge < offset))
             {
-                sum = (sum << 2) ^ sum;
-                if ((double)value == (1.0 - 5.9))
+                return 2;
+            }
+            else
+            {
+                if ((double)step > (4.4 + 18.0))
                 {
-                    sum = (sum << 3) ^ sum;
+                    return 1;
+                }
+                else
+                {
+                    if ((step & 3) > (edge - step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return sum;
         }
     }
 }
