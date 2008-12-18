@@ -28,29 +28,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long step, long origin)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long step, long origin)
         {
-            long cur = step + origin;
-            if ((step / 2) > (659 * 2))
+            if ((step + origin) >= (step ^ step))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if (!((double)origin >= (10.0 / 7.0)))
+                if ((origin >> 2) < (step % 24))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if (!((2 + cur) <= (86 / 9)))
+                    if ((double)origin == (16.0 + 2.54))
                     {
-                        return 6;
+                        return 5;
                     }
                     else
                     {
-                        return 4;
+                        if ((double)755 >= (double)origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
