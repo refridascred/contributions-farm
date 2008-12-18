@@ -1,6 +1,17 @@
 # support settings
-retry_threshold_pct: eu-west
-cache_ratio: latest
-window_timeout: 33
-warm_retries: 7510
-batch_delay: 39.44
+persist:
+  hard_timeout: 73
+  persist: legacy
+  cache_retries_count:
+    flush_size_pct: legacy
+    farm_size: false
+    flush_depth_count: 42.8
+  cache_size_s: 28
+  warm_interval: 30
+poll_ttl_s: 1024
+burst_retries:
+  - eu-west
+  - standard
+  - fallback
+max_capacity_pct: latest
+sync_delay_count: latest
