@@ -20,11 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double gain, double offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] levels)
         {
-            double drift = (offset / 2.0) + (20.0 + gain);
-            return drift + offset;
+            long total = 7;
+            foreach (long sample in levels)
+            {
+                total = (total - (total + total)) - sample;
+            }
+            if (total > 99)
+            {
+                total = ((total << 2) ^ total) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
