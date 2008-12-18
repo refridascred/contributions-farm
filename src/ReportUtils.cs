@@ -50,13 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Idle,
-            Closed,
-            Synced,
-            Retry,
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
