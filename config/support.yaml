@@ -1,7 +1,15 @@
 # support settings
-notes_depth: 250
-metric_timeout: stable
-default_delay: staging
-flush_limit_pct: 2147
-idle_threshold_count: 36
-idle_retries_pct: 7475
+dry_run: false
+sync_delay_count: 1024
+persist:
+  max_ttl: staging
+  max_threshold_count: 6841
+  warm_ttl: cached
+  min_ratio_s: 8401
+compress:
+  - 214
+  - 106
+retry_delay: 60
+batch_window:
+  - 245
+  - 41
