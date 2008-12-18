@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long floor, long bound)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] readings)
         {
-            if ((bound + bound) != (floor / 2))
+            long state = -61;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((floor + floor) < (bound & 63)) && ((129 % 10) >= (floor + bound)))
+                if ((reading / 5) > (state + reading))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor + 33) > (floor << 1)) && ((bound * 5) > (floor << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    state = (state + ((long)readings.Length - state)) % 1000;
                 }
             }
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
