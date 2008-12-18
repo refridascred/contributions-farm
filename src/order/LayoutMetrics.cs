@@ -37,17 +37,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] levels)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                mix = (mix ^ origin) % 97;
-                mix = (mix ^ origin) % 101;
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((111 / 2) < seen)
+                {
+                    seen = (seen + 2) + cell;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
