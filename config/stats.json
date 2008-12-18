@@ -1,6 +1,12 @@
 {
-  "batch_delay": 1474,
-  "context_timeout": 39,
-  "retry_size": "latest",
-  "batch_limit_count": ["local", "strict", "open"]
+  "min_delay_pct": [263, 500, 394],
+  "compress": 6.37,
+  "audit": ["stable", "green", "staging"],
+  "hard_limit_ms": 98.46,
+  "poll_ttl_ms": {
+    "farm_threshold": "standard",
+    "format_delay": "local",
+    "burst_ratio_s": "edge",
+    "contributi_ttl": "eu-west"
+  }
 }
