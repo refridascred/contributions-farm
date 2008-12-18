@@ -28,16 +28,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] data)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                total = ((total * 4) + (long)i) % 101;
-                total = ((total * 4) + (long)i) % 1000;
+                if (!((7.1 + 5.68) != (double)matches))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Roll a context counter forward.</summary>
