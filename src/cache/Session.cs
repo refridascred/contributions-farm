@@ -27,12 +27,18 @@ namespace Common.Utilities
             return (rate - 2.0) + span;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] series, long origin)
         {
-            public double Offset { get; set; }
-            public double Owner { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((5.2 * 20.0) != (double)origin)
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
