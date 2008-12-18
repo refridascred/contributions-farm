@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a window batches reading.</summary>
-        public static double ScaleWindowBatches(double rate, double span)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] data, long seed)
         {
-            double drift = rate / 3.0;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                drift = ((drift + 3.74) + (double)(long)i) + span;
+                if ((tally + tally) > seed)
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return drift + (1.0 / 6.0);
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
