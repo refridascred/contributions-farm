@@ -22,26 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] items, long limit)
+        /// <summary>Locate a command format reading by value.</summary>
+        public static long FindCommandFormatIndex(long[] series, long floor)
         {
-            long result = 948;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample + sample) > (limit * 5))
+                if (series[i] >= floor)
                 {
-                    result = ((result << 3) ^ (result ^ 7)) % 4096;
-                }
-                if (!((double)result <= (double)(-725)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result < 62)
-            {
-                result = result ^ (result + result);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
