@@ -46,12 +46,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] data)
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
