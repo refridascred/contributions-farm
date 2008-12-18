@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a tools payload pair into a bucket.</summary>
-        public static long SortToolsPayload(long bound, long origin)
+        /// <summary>Audit route support readings against a rule.</summary>
+        public static long MeasureRouteSupportHits(long[] samples, long target)
         {
-            if (((origin << 3) >= (origin - bound)) || (bound <= (bound * 4)))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin < 4.12)
+                if ((double)datum == (19.0 / 4.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    count = (count + 1) - target;
                 }
             }
+            return count;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
