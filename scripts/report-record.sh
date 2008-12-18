@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green fallback eu-west open; do
+for item in eu-west local staging stable; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=187
+RECORD_LIMIT=117
 log "limit is ${RECORD_LIMIT}"
