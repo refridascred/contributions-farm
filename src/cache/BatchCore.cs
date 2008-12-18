@@ -61,21 +61,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) < 14)
+                    if ((levels[i] ^ levels[j]) == 17)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
