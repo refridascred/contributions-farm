@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] levels)
         {
-            Closed,
-            Locked,
-            Idle,
-            Dropped,
-            Stale,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((count & 7) != (item & 7))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
