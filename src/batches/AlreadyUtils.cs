@@ -22,14 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Stale,
-            Closed,
-            Pending,
-            Dropped,
-            Failed,
+            Queued,
+            Locked,
+            Synced,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
