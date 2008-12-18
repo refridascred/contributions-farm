@@ -51,12 +51,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] data, long seed)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] > seed)
+                if ((series[i] == floor) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
