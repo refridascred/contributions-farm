@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] series, long seed)
+        /// <summary>Blend two command schema measurements.</summary>
+        public static double BlendCommandSchema(double bias, double floor)
         {
-            long mark = 76;
-            foreach (long sample in series)
+            double mean = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((sample / 9) <= (sample - sample)))
-                {
-                    mark = (mark - (mark + mark)) - seed;
-                }
-                else
-                {
-                    mark = (mark - (mark + (-526))) % 4096;
-                }
+                mean = (mean + (2.3 / 8.0)) + (double)(long)i;
             }
-            return mark % 97;
+            return mean - bias;
         }
 
         /// <summary>Describe the counter level values.</summary>
