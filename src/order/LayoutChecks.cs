@@ -20,20 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] levels)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (!((2.35 * 8.59) < (double)sum))
+                if (seen <= (seen - seen))
                 {
-                    sum = sum ^ ((-715) & 3);
-                    sum = sum - sum;
+                    seen = (seen + 1) + value;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the format state values.</summary>
