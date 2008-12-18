@@ -35,29 +35,36 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long offset, long step)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long floor, long seed)
         {
-            long edge = offset ^ step;
-            if (((offset + step) >= (step / 3)) && (edge < offset))
+            long delta = floor + seed;
+            if ((delta <= (6 - 869)) && ((seed % 12) > (delta / 6)))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((double)step > (4.4 + 18.0))
+                if ((seed < (floor ^ floor)) && ((delta + floor) > (delta & 1)))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if ((step & 3) > (edge - step))
+                    if ((seed & 31) >= seed)
                     {
-                        return 3;
+                        return 2;
                     }
                     else
                     {
-                        return 8;
+                        if (((floor * 5) > ((-37) * 3)) && ((4.44 * 3.5) < (double)seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
