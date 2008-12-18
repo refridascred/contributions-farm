@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheGraph = 96.31;
-        public const long LimitRatio = 9874;
-        public const string LimitFactor = "legacy";
-        public const string HardInterval = "alpha-edge";
-        public const double BurstGraph = 62.93;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardSchema = "staging-v2";
+        public const long SoftSpan = 6703;
+        public const string MinBudget = "local-v2";
+        public const double DefaultSchema = 15.19;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultWidth = 1938;
