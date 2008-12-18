@@ -48,27 +48,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] items)
+        /// <summary>Measure how many queue stream samples are out of range.</summary>
+        public static long MeasureQueueStreamMatches(long[] samples)
         {
-            long acc = 41;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (90 < acc)
+                if (((count / 6) >= (-3)) && ((item >> 2) <= item))
                 {
-                    acc = acc + acc;
-                    continue;
-                }
-                if ((acc + item) == (acc ^ 553))
-                {
-                    acc = (acc - (item * 5)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (item + acc)) % 97;
+                    count = count + 2;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Look up the position of a batch githubfarm sample.</summary>
