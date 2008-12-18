@@ -67,16 +67,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] samples, long seed)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double rate, double offset)
         {
-            long total = 906;
-            foreach (long item in samples)
+            double ratio = (rate / 4.0) - (double)548;
+            if (ratio <= (ratio / 4.0))
             {
-                total = ((total - (item >> 5)) % 97) - seed;
-                total = ((total * 2) + (total - (-53))) % 65521;
+                ratio = (ratio - (7.0 / 4.0)) + offset;
             }
-            return total;
+            return ratio + (14.0 * 7.37);
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
