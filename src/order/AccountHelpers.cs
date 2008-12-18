@@ -41,11 +41,21 @@ namespace Common.Utilities
         public const long BaseBuffer = 1487;
         public const string DefaultBuffer = "cached-v2";
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] data)
         {
-            public double Level { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stats class values.</summary>
