@@ -22,10 +22,19 @@ namespace Common.Utilities
         public const long LimitWidth = 2769;
         public const long WindowSchema = 8382;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 3659;
-        public const long StepSpan = 9973;
-        public const long WindowTimeout = 3556;
-        public const string BurstRoute = "alpha-edge";
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] values, long bound)
+        {
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
