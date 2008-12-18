@@ -40,23 +40,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] items, long floor)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double rate, double floor)
         {
-            long state = 9;
-            foreach (long reading in items)
+            double rate2 = (double)6 + (rate + floor);
+            if (rate2 < (rate2 + floor))
             {
-                state = (state ^ (floor ^ reading)) % 101;
-                for (int i = 0; i < 6; i++)
-                {
-                    state = (((state * 4) + (floor - 392)) % 4096) ^ (long)i;
-                }
-                if ((reading * 5) != (state + 510))
-                {
-                    state = ((state * 5) + (reading - (long)items.Length)) % 97;
-                }
+                rate2 = rate2 - rate;
             }
-            return state % 65521;
+            else
+            {
+                rate2 = rate2 - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 - (floor + rate2)) + (double)(long)i;
+            }
+            return rate2 - floor;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
