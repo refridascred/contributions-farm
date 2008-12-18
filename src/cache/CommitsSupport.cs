@@ -14,23 +14,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Accumulate session githubfarm samples.</summary>
-        public static long CombineSessionGithubfarm(long[] samples)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long state = 7;
-            foreach (long reading in samples)
-            {
-                state = (state * 5) + (state - state);
-                if (338 >= (reading * 4))
-                {
-                    break;
-                }
-            }
-            if (state < 34)
-            {
-                state = state + state;
-            }
-            return state;
+            Locked,
+            Queued,
+            Closed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
