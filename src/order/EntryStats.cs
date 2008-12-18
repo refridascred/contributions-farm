@@ -49,11 +49,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
+            public bool Rank { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
