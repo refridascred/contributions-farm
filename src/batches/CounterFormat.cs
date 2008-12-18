@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] data, long bound)
-        {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 6336;
+        public const long CacheLevel = 211;
+        public const long SoftSession = 1060;
 
         /// <summary>Measure how many already batches samples are out of range.</summary>
         public static long CountAlreadyBatchesGaps(long[] levels, long bound)
