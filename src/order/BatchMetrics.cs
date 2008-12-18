@@ -71,18 +71,17 @@ namespace Common.Utilities
         public const string MinScore = "latest";
         public const string DefaultTimeout = "alpha-edge";
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] data, long origin)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((4.3 + 8.5) >= (double)datum) || ((double)matches > (double)datum))
+                if (samples[i] > floor)
                 {
-                    matches = (matches + 2) + origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
