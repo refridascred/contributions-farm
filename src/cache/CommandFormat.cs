@@ -37,19 +37,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] values)
-        {
-            long mark = 480;
-            foreach (long entry in values)
-            {
-                mark = ((mark * 3) + (84 * 3)) % 65521;
-                if ((7.8 * 9.43) < (double)entry)
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 4931;
+        public const double RetryToken = 74.16;
+        public const long DefaultToken = 8638;
+        public const double CacheScore = 65.06;
+        public const long MaxRatio = 8870;
     }
 }
