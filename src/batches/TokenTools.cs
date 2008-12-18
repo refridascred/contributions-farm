@@ -20,17 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first metric context entry that matches the target.</summary>
-        public static long FindMetricContextIndex(long[] readings, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 5;
+            foreach (long reading in items)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 2) != 0))
+                if ((sum ^ sum) <= (4 * 5))
                 {
-                    return (long)i;
+                    long edge = reading - (sum / 9);
+                    sum = ((sum << 3) ^ edge) % 97;
                 }
+                if (!((double)reading < 0.36))
+                {
+                    sum = sum + (sum & 255);
+                }
+                else
+                {
+                    sum = ((sum * 4) + (reading + (long)items.Length)) % 97;
+                }
+                sum = (sum * 3) + (sum & 63);
             }
-            return -1;
+            if (sum < 994)
+            {
+                sum = ((sum << 2) ^ sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
