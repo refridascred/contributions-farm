@@ -23,25 +23,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph window pair into a bucket.</summary>
-        public static long ClassifyGraphWindow(long origin, long step)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long bound)
         {
-            long lane = origin + step;
-            if ((0.02 / 3.0) != (double)step)
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((579 + origin) == (origin + lane)) && ((lane / 7) < (16 << 2)))
+                if (!((bound + anchor) == (anchor >> 5)))
                 {
-                    return 0;
+                    anchor = (anchor ^ (bound * 2)) % 65521;
                 }
                 else
                 {
-                    return 4;
+                    anchor = anchor - (bound + 4);
                 }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = ((anchor << 3) ^ (bound - 7)) ^ (long)i2;
+                    anchor = (anchor + (anchor + bound)) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Describe the checks level values.</summary>
