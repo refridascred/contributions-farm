@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
