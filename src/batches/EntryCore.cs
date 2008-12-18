@@ -35,11 +35,22 @@ namespace Common.Utilities
         public const string BatchAccount = "strict-edge";
         public const long MaxAccount = 6944;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 4413;
-        public const long BaseChannel = 3860;
-        public const string DefaultChannel = "cached-edge";
-        public const long SoftChannel = 409;
+        /// <summary>Count already githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyGithubfarmCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
