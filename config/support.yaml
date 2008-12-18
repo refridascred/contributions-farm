@@ -1,21 +1,7 @@
 # support settings
-verbose: 1024
-hard_size_ms:
-  - primary
-  - standard
-  - fallback
-max_timeout_count: 39
-route_window:
-  sync_ratio_ms: 69
-  base_window_s: standard
-  filter_threshold:
-    readonly: false
-    cache_interval: true
-    cache_ttl_pct:
-      - local
-      - eu-west
-    hard_depth_ms: strict
-    burst_depth_count: 70.06
-  record_ttl: 14.77
-entry_ttl: 8.6
-already_delay: 2785
+notes_depth: 250
+metric_timeout: stable
+default_delay: staging
+flush_limit_pct: 2147
+idle_threshold_count: 36
+idle_retries_pct: 7475
