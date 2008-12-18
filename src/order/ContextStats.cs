@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] data)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            long acc = -7;
+            foreach (long value in data)
+            {
+                if ((value + 212) < acc)
+                {
+                    acc = (acc << 2) ^ (acc - value);
+                }
+                else
+                {
+                    acc = acc ^ (43 << 2);
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the filter level values.</summary>
