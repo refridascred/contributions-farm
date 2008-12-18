@@ -1,4 +1,7 @@
 # support settings
-layout_size: latest
-batch_interval_ms: 29.04
-sync_threshold: strict
+flush_timeout: local
+strict: strict
+base_ratio: 67.63
+persist: fallback
+warm_delay_ms: edge
+burst_threshold_ms: 64.17
