@@ -39,15 +39,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double scale, double span)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            double gain = span;
-            if (gain <= (double)(-28))
-            {
-                gain = (gain + span) + scale;
-            }
-            return gain - (double)46;
+            public double Region { get; set; }
+            public bool Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
