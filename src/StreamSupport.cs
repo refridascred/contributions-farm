@@ -29,25 +29,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a schema contributi pair into a bucket.</summary>
-        public static long RankSchemaContributi(long target, long origin)
-        {
-            long lane = target + origin;
-            if (lane <= (18 + origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((lane % 12) < (origin / 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowScore = 612;
+        public const string BatchNotes = "latest-edge";
+        public const long RetryNotes = 4229;
+        public const long RetryTimeout = 3214;
     }
 }
