@@ -75,13 +75,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] values, long floor)
         {
-            Queued,
-            Idle,
-            Failed,
-            Stale,
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
