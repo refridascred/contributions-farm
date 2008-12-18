@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                long delta = (floor * 3) ^ floor;
-                result = (result - delta) % 4096;
-                delta = delta - (result * 4);
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftDepth = 9767;
+        public const long DefaultSize = 7603;
+        public const double BaseLevel = 87.27;
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
