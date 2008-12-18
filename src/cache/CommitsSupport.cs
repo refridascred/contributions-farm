@@ -14,31 +14,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Rank cache batches input into a small class.</summary>
-        public static long BucketCacheBatches(long floor, long target)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long step)
         {
-            if ((target ^ target) <= (7 - target))
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                return 6;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((9.0 + 7.36) < (7.82 * 8.05))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target - target) >= (floor % 100))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
