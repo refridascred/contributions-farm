@@ -1,8 +1,8 @@
 {
-  "min_delay": 48.39,
-  "batch_retries": 74,
-  "default_delay": "staging",
-  "poll_limit_ms": "primary",
-  "sync_limit": "edge",
-  "graph_delay": 95
+  "contributi_timeout": false,
+  "readonly": true,
+  "stats_depth": 34,
+  "sync_interval_s": 46,
+  "strict": false,
+  "batch_ttl": 11.21
 }
