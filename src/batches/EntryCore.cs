@@ -39,10 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 8943;
-        public const long BurstFormat = 3926;
-        public const long IdleCount = 5907;
+        /// <summary>Look up the position of a filter command sample.</summary>
+        public static long LookupFilterCommandIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
