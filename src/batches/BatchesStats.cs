@@ -18,39 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long offset, long offset2)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long origin)
         {
-            long offset3 = offset ^ offset2;
-            if (offset3 > (offset % 24))
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)offset3 >= (double)offset2) && ((double)offset2 <= (double)offset))
+                if (origin <= (sum / 5))
                 {
-                    return 2;
+                    sum = ((sum * 4) + (origin << 3)) % 65521;
+                    continue;
                 }
-                else
-                {
-                    if ((offset / 3) != ((-570) - 501))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset3 << 2) > offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                sum = sum + (46 + sum);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Blend two filter measurements.</summary>
