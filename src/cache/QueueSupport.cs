@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Audit layout order readings against a rule.</summary>
+        public static long TallyLayoutOrderOutliers(long[] items)
         {
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((cell << 3) == (tally >> 4))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
