@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] data)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (((tally * 3) > 2) && ((double)cell != (1.0 * 8.8)))
+                if ((hits + hits) <= cell)
                 {
-                    tally = tally + 2;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
