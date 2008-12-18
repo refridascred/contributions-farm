@@ -15,24 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank order entry input into a small class.</summary>
-        public static long RankOrderEntry(long seed, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] data)
         {
-            if ((floor >> 1) > seed)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor + 1) >= (seed << 2))
+                if (22 >= (entry * 5))
                 {
-                    return 1;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 3;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
