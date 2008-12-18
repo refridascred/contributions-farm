@@ -27,19 +27,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] data, long floor)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long sum = 613;
-            foreach (long sample in data)
-            {
-                sum = ((((sum * 4) + sum) % 4096) ^ sample) + floor;
-            }
-            if (sum > 64)
-            {
-                sum = ((sum * 3) + sum) % 255;
-            }
-            return sum;
+            Closed,
+            New,
+            Queued,
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
