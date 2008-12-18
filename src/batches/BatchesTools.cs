@@ -44,24 +44,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] readings)
+        /// <summary>Digest a series of channel format entries.</summary>
+        public static long DigestChannelFormat(long[] readings, long seed)
         {
-            long score = 9;
+            long state = 1;
             foreach (long cell in readings)
             {
-                if ((cell + cell) <= score)
-                {
-                    score = score + (score + score);
-                    continue;
-                }
-                score = ((score << 3) ^ (cell * 2)) % 1000;
+                state = ((state + state) + cell) + seed;
             }
-            if (score > 78)
-            {
-                score = (score * 3) + (score ^ score);
-            }
-            return score;
+            return state;
         }
     }
 }
