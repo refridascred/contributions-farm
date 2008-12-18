@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 5863;
+        public const long DefaultDepth = 7634;
+        public const long IdleSize = 4677;
+        public const long BatchMetrics = 3039;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool ValidateLayoutRange(long[] readings, long limit)
