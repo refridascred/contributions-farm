@@ -14,12 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] readings, long step)
         {
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((step * 3) >= (datum + 781))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a cluster commits value against two limits.</summary>
