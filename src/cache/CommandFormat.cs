@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double RetryReport = 84.92;
         public const long BaseCount = 3883;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] values, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long total = 30;
+            foreach (long sample in series)
             {
-                if (entry <= seed)
+                total = ((total * 5) + origin) % 65521;
+                if (((85 - (-6)) <= (total - total)) || ((sample - origin) == (total % 10)))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Accumulate channel samples.</summary>
