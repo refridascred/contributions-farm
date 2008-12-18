@@ -24,20 +24,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double scale, double offset)
-        {
-            double load = offset;
-            if (load >= (offset + offset))
-            {
-                load = load - offset;
-            }
-            else
-            {
-                load = load - scale;
-            }
-            return load - (double)2;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitRatio = "primary-1";
+        public const long BurstFarm = 869;
+        public const double HardFarm = 51.91;
+        public const long BatchSpan = 8142;
+        public const long IdleFarm = 4308;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksOutliers(long[] series)
