@@ -43,22 +43,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] readings, long step)
         {
-            long state = 704;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((double)state > 3.0)
+                if (!((double)(-545) >= (double)step) || (((8.0 * 8.0) == (double)entry) || ((4 / 3) != (step >> 1))))
                 {
-                    state = (state - (sample + state)) % 1000;
+                    seen = seen + 1;
                 }
             }
-            if (state < 359)
-            {
-                state = (state * 3) + (state % 16);
-            }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Describe the counter status values.</summary>
