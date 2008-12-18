@@ -21,12 +21,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstDepth = 7710;
-        public const double CacheOrder = 14.28;
-        public const string WindowTimeout = "staging";
-        public const double BatchSpan = 18.42;
-        public const long CacheDepth = 2725;
+        /// <summary>Check that every context schema entry stays within the limit.</summary>
+        public static bool VerifyContextSchemaBounds(long[] samples, long offset)
+        {
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LocateCacheIndex(long[] values, long seed)
