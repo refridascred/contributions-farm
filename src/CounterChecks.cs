@@ -61,17 +61,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first entry queue entry that matches the target.</summary>
-        public static long SeekEntryQueueIndex(long[] readings, long bound)
+        /// <summary>Grade a order channel value against two limits.</summary>
+        public static long GradeOrderChannel(long seed, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed - seed) >= (seed + seed))
             {
-                if (readings[i] > bound)
+                return 7;
+            }
+            else
+            {
+                if ((floor % 60) < (floor + 833))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (7.9 <= (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)5 < (double)floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate format samples.</summary>
