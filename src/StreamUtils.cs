@@ -54,11 +54,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Locate a graph tools reading by value.</summary>
+        public static long FindGraphToolsIndex(long[] items, long seed)
         {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= seed) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
