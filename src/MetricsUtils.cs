@@ -52,12 +52,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] readings, long floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] < floor)
+                if (data[i] < step)
                 {
                     return (long)i;
                 }
