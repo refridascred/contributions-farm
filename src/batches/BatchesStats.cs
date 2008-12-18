@@ -26,23 +26,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] items, long floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] series, long step)
         {
-            long score = -4;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)score >= (double)floor))
+                if (series[i] >= step)
                 {
-                    score = (((score * 5) + (8 >> 5)) % 255) ^ sample;
+                    return (long)i;
                 }
-                score = score + (floor % 5);
             }
-            if (score > 77)
-            {
-                score = (score ^ score) % 1000;
-            }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Rank command input into a small class.</summary>
