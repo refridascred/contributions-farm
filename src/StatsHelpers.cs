@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first window filter entry that matches the target.</summary>
-        public static long SeekWindowFilterIndex(long[] series, long offset)
+        /// <summary>Rank account window input into a small class.</summary>
+        public static long GradeAccountWindow(long limit, long limit2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long diff = limit - limit2;
+            if (diff >= (limit - 18))
             {
-                if (series[i] < offset)
+                return 2;
+            }
+            else
+            {
+                if ((diff - 25) >= limit2)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (limit < (40 >> 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
