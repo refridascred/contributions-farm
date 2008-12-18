@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] items)
+        /// <summary>Scale a cache route figure with a bias.</summary>
+        public static double ScaleCacheRoute(double rate, double span)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double weight = span;
+            if (weight < rate)
             {
-                if (((tally % 97) <= value) || (((tally ^ tally) >= (8 - value)) || (value < (value % 64))))
-                {
-                    tally = tally + 3;
-                }
+                weight = weight - (rate / 7.0);
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Hold a stats record.</summary>
