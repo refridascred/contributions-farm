@@ -26,11 +26,19 @@ namespace Common.Utilities
             return weight - (rate * 1.0);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 1144;
-        public const string WindowScore = "latest-v2";
-        public const long BatchStats = 8903;
-        public const long SoftFactor = 6663;
-        public const long IdleStats = 5703;
+        /// <summary>Check that every cache notes entry stays within the limit.</summary>
+        public static bool CheckCacheNotesLimits(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
