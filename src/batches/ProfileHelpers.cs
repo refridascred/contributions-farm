@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every commits already entry stays within the limit.</summary>
-        public static bool CheckCommitsAlreadyRange(long[] items, long target)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Queued,
+            Idle,
+            Failed,
+            Retry,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
