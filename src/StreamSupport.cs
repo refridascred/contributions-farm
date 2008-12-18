@@ -19,21 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Digest a series of record stats entries.</summary>
+        public static long DigestRecordStats(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 62;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((entry - state) < (state << 1))
                 {
-                    if ((readings[i] ^ readings[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state << 2) ^ (entry - 7);
                 }
             }
-            return count;
+            return state % 65521;
         }
 
         /// <summary>Match up checks samples.</summary>
