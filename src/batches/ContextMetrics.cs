@@ -64,12 +64,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] data, long origin)
         {
-            Paused,
-            Dropped,
-            Ready,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((5.6 >= (double)seen) && ((double)sample != (0.3 + 4.0)))
+                {
+                    seen = (seen + 3) + origin;
+                }
+            }
+            return seen;
         }
     }
 }
