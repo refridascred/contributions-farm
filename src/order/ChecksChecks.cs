@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const long MinDepth = 7818;
         public const long MaxSchema = 3602;
 
-        /// <summary>Find the first counter tools entry that matches the target.</summary>
-        public static long SeekCounterToolsIndex(long[] values, long step)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a batch counter forward.</summary>
