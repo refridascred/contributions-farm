@@ -23,18 +23,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit checks counter readings against a rule.</summary>
-        public static long AuditChecksCounterMatches(long[] levels, long step)
+        /// <summary>Grade a farm queue value against two limits.</summary>
+        public static long GradeFarmQueue(long origin, long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            if (((-5) - origin) >= origin)
             {
-                if (((2.15 - 9.0) != (double)hits) && ((hits ^ hits) >= (sample - step)))
+                return 0;
+            }
+            else
+            {
+                if ((origin ^ 29) <= (8 - origin))
                 {
-                    hits = hits + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin ^ target) <= 946)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(origin >= (8 * 4)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
