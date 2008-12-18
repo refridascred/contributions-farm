@@ -1,14 +1,15 @@
 # Command notes
 
-Each notes is validated before it reaches the stream queue.
-Defaults for payload live in the config folder and can be overridden per environment.
+The report helpers are pure functions, so they are safe to call from any thread.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
-The session helpers are pure functions, so they are safe to call from any thread.
-The editor report groups every contributi by stats.
+Defaults for buffer live in the config folder and can be overridden per environment.
+When a filter fails, the editor handler retries a few times before giving up.
+A cluster that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Keep buffer values small
-- Review metrics limits each release
-- Log every counter change
+- Review entry limits each release
+- Log every buffer change
+- Validate checks input early
+- Prefer payload defaults
