@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseSize = 3659;
-        public const long CacheWidth = 4878;
-        public const string LimitRoute = "local";
-        public const string IdleRoute = "standard-1";
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long offset, long offset2)
+        {
+            long edge = offset + offset2;
+            if (((edge << 1) < (offset2 + edge)) || (edge >= (edge - (-981))))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(edge >= (offset2 << 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset < edge)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)edge < (8.05 * 3.5)) || (offset < (offset + edge)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long StepSupport = 8826;
