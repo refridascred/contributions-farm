@@ -40,18 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token graph samples.</summary>
-        public static long TallyTokenGraph(long[] data)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] data, long seed)
         {
-            long carry = 558;
-            foreach (long datum in data)
+            long acc = 0;
+            foreach (long entry in data)
             {
-                if (((long)data.Length + 412) != (datum % 7))
+                acc = ((acc << 3) ^ (seed - entry)) % 1000;
+                if ((43 & 31) > acc)
                 {
-                    carry = (carry << 3) ^ carry;
+                    break;
                 }
             }
-            return carry % 97;
+            if (acc < 74)
+            {
+                acc = (acc + (acc * 5)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Count the cluster notes entries that pass the check.</summary>
