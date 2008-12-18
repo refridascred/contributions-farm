@@ -33,19 +33,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] readings, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (datum <= offset)
+                if ((58 - tally) != (53 + 0))
                 {
-                    flag = false;
-                    break;
+                    tally = ((tally + 3) + reading) + bound;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Hold a cluster header.</summary>
