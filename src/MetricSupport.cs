@@ -16,12 +16,16 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepLevel = 5926;
-        public const double BatchQueue = 11.45;
-        public const long DefaultQueue = 8687;
-        public const string LimitQueue = "local-v2";
-        public const long StepQueue = 4509;
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MaxStats = 1144;
