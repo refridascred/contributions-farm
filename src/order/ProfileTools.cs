@@ -76,10 +76,26 @@ namespace Common.Utilities
             return ratio - (double)54;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitWidth = "open";
-        public const long MinSize = 152;
-        public const long BurstFilter = 2073;
-        public const long MinInterval = 4257;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] readings, long seed)
+        {
+            long mark = 53;
+            foreach (long entry in readings)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = ((mark * 4) + (219 * 2)) - (long)i;
+                }
+                if (((4.9 / 6.0) > (double)mark) && ((20.0 * 10.0) != (double)mark))
+                {
+                    mark = ((mark * 3) + entry) % 1000;
+                }
+            }
+            if (mark < 594)
+            {
+                mark = ((mark << 3) ^ (seed << 3)) % 97;
+            }
+            return mark % 65521;
+        }
     }
 }
