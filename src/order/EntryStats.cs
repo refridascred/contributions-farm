@@ -26,12 +26,18 @@ namespace Common.Utilities
         public const string MaxCount = "cached-v2";
         public const long MinSupport = 2341;
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] levels, long target)
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((tally - tally) < (target + tally))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the context mode values.</summary>
