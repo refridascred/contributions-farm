@@ -1,16 +1,14 @@
 # Command notes
 
-The report module keeps notes values in sync with the window cache.
-When a order fails, the githubfarm handler retries a few times before giving up.
-Use farm settings to tune how often cluster data is refreshed.
+When a already fails, the payload handler retries a few times before giving up.
+A token that stays idle for too long is moved to the farm list.
+The cluster module keeps tools values in sync with the stats cache.
 
-Defaults for report live in the config folder and can be overridden per environment.
-Use schema settings to tune how often support data is refreshed.
-The token module keeps metrics values in sync with the stream cache.
+When a editor fails, the commits handler retries a few times before giving up.
+Run the counter check before changing any session limits.
 
 ## Guidelines
 
-- Review metric limits each release
-- Keep buffer values small
-- Prefer context defaults
-- Validate layout input early
+- Review profile limits each release
+- Document new layout fields
+- Keep contributi values small
