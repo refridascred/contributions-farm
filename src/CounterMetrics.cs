@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] readings, long step)
+        /// <summary>Validate schema account readings against a bound.</summary>
+        public static bool CheckSchemaAccountLimits(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((seen % 12) >= step)
+                if (value >= target)
                 {
-                    seen = (seen + 3) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
