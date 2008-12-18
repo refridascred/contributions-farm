@@ -20,18 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] data)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long seed)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((count >= (cell / 5)) || (count < (cell >> 1))))
+                if (!((2.35 * 8.59) < (double)sum))
                 {
-                    count = count + 2;
+                    sum = sum ^ ((-715) & 3);
+                    sum = sum - sum;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Define already limits and defaults.</summary>
