@@ -29,18 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] series)
+        /// <summary>Validate notes tools readings against a bound.</summary>
+        public static bool GuardNotesToolsRange(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((entry ^ entry) >= count)
+                if (value < step)
                 {
-                    count = count + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
