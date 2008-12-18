@@ -20,18 +20,14 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Count the layout editor entries that pass the check.</summary>
-        public static long TallyLayoutEditorHits(long[] data)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum != (1.0 / 3.0))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Done,
+            Draft,
+            Dropped,
+            Pending,
+            Synced,
         }
 
         /// <summary>Define report limits and defaults.</summary>
