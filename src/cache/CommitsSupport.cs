@@ -21,19 +21,12 @@ namespace Common.Utilities
         public const string HardInterval = "alpha-edge";
         public const double BurstGraph = 62.93;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((971 - 2) < item)
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultWidth = 1938;
+        public const long IdleSize = 7002;
+        public const long WindowTimeout = 8036;
+        public const long BatchEntry = 6907;
+        public const long BatchDepth = 7133;
 
         /// <summary>Adjust a support reading.</summary>
         public static double AdjustSupport(double weight, double bias)
