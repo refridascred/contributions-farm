@@ -1,7 +1,12 @@
 {
-  "burst_interval": ["staging", "cached"],
-  "enabled": 6.6,
-  "stream_limit": true,
-  "poll_size_pct": "stable",
-  "dry_run": 96.43
+  "route_delay": 36,
+  "layout_interval": 70.93,
+  "batch_window": 48.86,
+  "idle_depth": {
+    "warm_delay_ms": 13,
+    "audit": true,
+    "tools_ttl": "blue",
+    "cache_ratio_pct": 35
+  },
+  "compress": [376, 63, 354]
 }
