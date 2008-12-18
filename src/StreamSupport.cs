@@ -14,19 +14,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double gain, double offset)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long offset, long step)
         {
-            double drift = (gain * 6.1) / 2.0;
-            if (drift >= 6.74)
+            long next = offset + step;
+            if (next <= (next << 2))
             {
-                drift = (drift + 19.0) + offset;
+                return 6;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                drift = drift + (double)(long)i;
+                if (((step ^ 746) <= ((-1) & 15)) && ((218 / 5) == (step << 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step + next) >= (8 * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return drift - 8.55;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
