@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long floor)
         {
-            public double Mode { get; set; }
-            public bool Label { get; set; }
-            public bool Count { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 3) + (6 + acc)) % 65521;
+                acc = ((acc << 3) ^ (7 + acc)) % 4096;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
