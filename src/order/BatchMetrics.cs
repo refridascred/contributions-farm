@@ -62,18 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session checks readings against a rule.</summary>
-        public static long CountSessionChecksOutliers(long[] series, long origin)
+        /// <summary>Check that every report notes entry stays within the limit.</summary>
+        public static bool ValidateReportNotesLimits(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (origin < (origin ^ count))
+                if (item <= limit)
                 {
-                    count = (count + 2) - reading;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
