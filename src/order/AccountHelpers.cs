@@ -82,18 +82,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the session batches entries that pass the check.</summary>
-        public static long TallySessionBatchesHits(long[] items)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((double)item > (double)hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
