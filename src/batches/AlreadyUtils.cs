@@ -54,25 +54,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long bound, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] data)
         {
-            long prev = bound - seed;
-            if ((((-89) - prev) == (prev << 1)) || ((bound << 2) <= (seed >> 4)))
+            long count = 0;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound >= (bound + seed))
+                if (sample <= (sample & 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
