@@ -38,19 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] series, long seed)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long state = 2;
-            foreach (long value in series)
-            {
-                state = (state ^ (seed >> 4)) ^ value;
-            }
-            if (state < 9)
-            {
-                state = (state - (seed + seed)) % 101;
-            }
-            return state;
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
