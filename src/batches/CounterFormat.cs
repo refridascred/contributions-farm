@@ -13,19 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (80 <= tally)
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinCounter = 55.48;
+        public const long HardWidth = 2216;
+        public const long IdleCounter = 8807;
+        public const long LimitWidth = 2280;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TotalAccount(long[] readings, long limit)
