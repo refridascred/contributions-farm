@@ -39,22 +39,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long score = 979;
-            foreach (long reading in levels)
-            {
-                if (!((score * 5) < score))
-                {
-                    score = (((score * 3) + score) % 1000) - reading;
-                }
-            }
-            if (score > 6)
-            {
-                score = (score << 3) ^ (score * 2);
-            }
-            return score;
+            Dropped,
+            Failed,
+            New,
+            Stale,
+            Retry,
         }
     }
 }
