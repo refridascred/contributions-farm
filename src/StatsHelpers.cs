@@ -42,18 +42,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit queue metric readings against a rule.</summary>
-        public static long CountQueueMetricMatches(long[] samples)
+        /// <summary>Locate a batches schema reading by value.</summary>
+        public static long LookupBatchesSchemaIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((9.0 * 7.86) == (double)sample)
+                if (levels[i] == limit)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank record input into a small class.</summary>
