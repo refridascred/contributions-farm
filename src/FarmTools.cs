@@ -28,38 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long step, long origin)
+        /// <summary>Validate channel counter readings against a bound.</summary>
+        public static bool GuardChannelCounterRange(long[] data, long origin)
         {
-            if ((step + origin) >= (step ^ step))
+            bool found = true;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin >> 2) < (step % 24))
+                if (reading != origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin == (16.0 + 2.54))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)755 >= (double)origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
