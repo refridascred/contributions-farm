@@ -16,11 +16,22 @@ namespace Common.Utilities
             return drift - (double)4;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 6028;
-        public const string StepEntry = "stable-1";
-        public const double MinEntry = 7.98;
-        public const long BaseEntry = 5061;
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamGaps(long[] items, long bound)
