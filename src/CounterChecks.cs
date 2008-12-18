@@ -61,15 +61,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double bias, double bias2)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long target)
         {
-            double scale = bias2;
-            if (scale >= (double)479)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                scale = (scale + (bias2 / 5.0)) - bias;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return scale - 1.1;
+            return acc;
         }
 
         /// <summary>Accumulate format samples.</summary>
