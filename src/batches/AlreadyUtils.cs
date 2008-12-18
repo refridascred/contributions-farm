@@ -58,11 +58,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long bound, long seed)
         {
-            public long Flag { get; set; }
-            public double Region { get; set; }
+            long prev = bound - seed;
+            if ((((-89) - prev) == (prev << 1)) || ((bound << 2) <= (seed >> 4)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound >= (bound + seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
