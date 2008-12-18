@@ -34,19 +34,38 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] levels)
+        /// <summary>Grade a order graph value against two limits.</summary>
+        public static long RankOrderGraph(long offset, long bound)
         {
-            long score = 864;
-            foreach (long reading in levels)
+            if (((offset ^ 6) < (bound << 1)) && ((offset + bound) <= (bound & 127)))
             {
-                score = (score + (642 - 0)) + reading;
+                return 8;
             }
-            if (score < 5)
+            else
             {
-                score = ((score << 3) ^ (score & 15)) % 65521;
+                if ((offset + offset) <= (bound + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset - 2) != (bound << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset > (bound & 63))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Roll a notes editor counter forward.</summary>
