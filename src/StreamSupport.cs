@@ -30,9 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardCache = 47.39;
-        public const long IdleCache = 2680;
-        public const double StepCache = 38.89;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Done,
+            Stale,
+            Ready,
+            New,
+        }
     }
 }
