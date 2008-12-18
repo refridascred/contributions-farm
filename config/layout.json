@@ -1,7 +1,12 @@
 {
-  "farm_depth": "cached",
-  "verbose": false,
-  "route_size": 2,
-  "warm_ttl_pct": 30,
-  "commits_ttl": ["cached", "open"]
+  "format_timeout": 67.21,
+  "context_depth": false,
+  "base_threshold": {
+    "persist": "legacy",
+    "audit": 500,
+    "min_ratio_pct": "green"
+  },
+  "warm_timeout_ms": [315, 72, 89, 416],
+  "window_limit": 15,
+  "batch_retries_pct": "staging"
 }
