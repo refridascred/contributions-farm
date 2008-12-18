@@ -23,18 +23,12 @@ namespace Common.Utilities
         public const string MaxCount = "cached-v2";
         public const long MinSupport = 2341;
 
-        /// <summary>Combine counter entry values into a single score.</summary>
-        public static long WeighCounterEntry(long[] data, long origin)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long score = 873;
-            foreach (long value in data)
-            {
-                if (value >= (84 ^ value))
-                {
-                    score = (((score << 3) ^ (value * 2)) % 1000) - origin;
-                }
-            }
-            return score % 1000;
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
