@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] samples, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((value + matches) >= (value - matches))
+                if (hits < ((-3) >> 5))
                 {
-                    matches = (matches + 3) - step;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
