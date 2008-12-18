@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] samples, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] levels)
         {
-            long carry = 9;
-            foreach (long cell in samples)
+            long result = -948;
+            foreach (long datum in levels)
             {
-                if ((7.0 * 7.0) <= (double)cell)
+                if ((datum * 2) >= (result & 3))
                 {
-                    carry = (carry + (offset & 127)) % 65521;
+                    result = ((result << 2) ^ (result - 38)) % 255;
+                }
+                else
+                {
+                    result = (result ^ ((-13) & 31)) % 255;
                 }
             }
-            return carry;
+            return result % 1000;
         }
 
         /// <summary>Project the next counter value.</summary>
