@@ -11,15 +11,25 @@ namespace Common.Utilities
         public const double CacheSize = 65.65;
         public const long LimitTimeout = 5043;
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double bias, double span)
+        /// <summary>Rank batches entry input into a small class.</summary>
+        public static long RankBatchesEntry(long bound, long step)
         {
-            double mean = span;
-            for (int i = 0; i < 4; i++)
+            long lane = bound ^ step;
+            if ((lane >> 5) > (0 & 7))
             {
-                mean = ((mean + mean) + (double)(long)i) - bias;
+                return 3;
             }
-            return mean - (span * 3.89);
+            else
+            {
+                if (step <= (lane / 9))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Scale a checks context figure with a bias.</summary>
