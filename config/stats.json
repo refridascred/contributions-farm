@@ -1,19 +1,13 @@
 {
-  "cache_limit_ms": 54.84,
-  "enabled": {
-    "window_threshold": true,
-    "flush_ratio_count": ["legacy", "green", "open"],
-    "cache_ratio": "standard",
-    "tools_ratio": {
-      "compress": 500,
-      "batch_capacity": "eu-west",
-      "max_ratio": ["local", "stable"],
-      "min_depth_count": true
-    },
-    "filter_capacity": 271,
-    "enabled": 74
+  "readonly": {
+    "sync_interval_pct": 2084,
+    "base_delay_s": 16.81,
+    "warm_window": 51.8,
+    "persist": 60,
+    "schema_ttl": 100,
+    "batch_limit_count": true
   },
-  "support_delay": "eu-west",
-  "layout_delay": "blue",
-  "report_interval": 9.19
+  "poll_size": "strict",
+  "account_threshold": "staging",
+  "default_interval_ms": false
 }
