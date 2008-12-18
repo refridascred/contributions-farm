@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowMetric = 62.94;
-        public const long MinSpan = 5854;
-        public const long CacheWidth = 1436;
-        public const double SoftMetric = 50.01;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                long delta = (floor * 3) ^ floor;
+                result = (result - delta) % 4096;
+                delta = delta - (result * 4);
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long WeighProfile(long[] items, long step)
