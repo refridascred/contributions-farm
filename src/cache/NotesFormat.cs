@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] series)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public double Rank { get; set; }
-            public bool Region { get; set; }
+            long anchor = 3;
+            foreach (long sample in series)
+            {
+                anchor = (anchor << 2) ^ sample;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Combine route values into a single score.</summary>
