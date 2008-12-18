@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long offset, long step)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] samples)
         {
-            long cur = offset + step;
-            if ((double)offset <= (4.4 / 2.0))
+            long result = 632;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((-595) <= (offset / 7))
+                if (((double)cell != (6.29 - 4.86)) || ((367 << 1) != (result - 33)))
                 {
-                    return 5;
+                    result = result - (cell >> 2);
                 }
                 else
                 {
-                    if ((double)offset != (11.0 / 2.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((cur ^ step) <= offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    result = (result + (result + result)) % 255;
                 }
             }
+            return result;
         }
 
         /// <summary>Project the next record value.</summary>
