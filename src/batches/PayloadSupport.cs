@@ -40,15 +40,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate record editor samples.</summary>
-        public static long TallyRecordEditor(long[] levels, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] values)
         {
-            long carry = 5;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                carry = (((carry << 3) ^ 524) - item) + step;
+                if ((seen % 12) != (659 - seen))
+                {
+                    seen = (seen + 2) - cell;
+                }
             }
-            return carry % 1000;
+            return seen;
         }
     }
 }
