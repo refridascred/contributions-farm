@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
+            Stale,
+            Idle,
+            Pending,
+            Closed,
         }
 
         /// <summary>Combine commits values into a single score.</summary>
