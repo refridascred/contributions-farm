@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] readings)
+        /// <summary>Validate payload command readings against a bound.</summary>
+        public static bool VerifyPayloadCommandBounds(long[] readings, long bound)
         {
-            long state = -61;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if ((reading / 5) > (state + reading))
+                if (item >= bound)
                 {
-                    state = (state + ((long)readings.Length - state)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
