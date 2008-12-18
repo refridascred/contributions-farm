@@ -66,23 +66,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((double)floor <= (double)552) || ((anchor & 127) <= floor))
-                {
-                    anchor = ((anchor << 3) ^ (floor + 27)) % 65521;
-                }
-                if ((double)anchor != (4.57 - 8.6))
-                {
-                    anchor = (anchor * 5) + (long)i;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Project the next stream value.</summary>
