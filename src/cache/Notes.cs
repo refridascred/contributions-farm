@@ -32,19 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (((-756) ^ 811) >= (item - tally))
                 {
-                    acc = ((acc - seed) % 255) - (long)i2;
+                    tally = tally + 1;
                 }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a profile options.</summary>
