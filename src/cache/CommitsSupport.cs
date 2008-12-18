@@ -33,17 +33,21 @@ namespace Common.Utilities
         public const long BatchEntry = 6907;
         public const long BatchDepth = 7133;
 
-        /// <summary>Look up the position of a layout counter sample.</summary>
-        public static long LocateLayoutCounterIndex(long[] readings, long bound)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Grade a account profile value against two limits.</summary>
