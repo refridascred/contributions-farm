@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const long SoftSession = 4216;
         public const string CacheRatio = "primary-edge";
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] values)
         {
-            Dropped,
-            Idle,
-            Retry,
-            Queued,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the payload status values.</summary>
