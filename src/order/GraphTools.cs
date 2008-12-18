@@ -44,17 +44,31 @@ namespace Common.Utilities
         public const long RetryCount = 8149;
         public const long HardCommand = 1902;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] values, long seed)
+        /// <summary>Rank support layout input into a small class.</summary>
+        public static long BucketSupportLayout(long origin, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((origin ^ target) > (target + origin))
             {
-                if ((values[i] > seed) && ((values[i] % 5) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((target & 7) > (target / 5))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((target % 2) <= (945 - origin)) && ((23 - 23) == (origin + origin)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
