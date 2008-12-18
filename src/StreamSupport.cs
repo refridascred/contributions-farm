@@ -14,32 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long offset, long step)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long next = offset + step;
-            if (next <= (next << 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((step ^ 746) <= ((-1) & 15)) && ((218 / 5) == (step << 1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step + next) >= (8 * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Dropped,
+            Done,
+            Retry,
+            Active,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
