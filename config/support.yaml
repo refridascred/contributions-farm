@@ -1,21 +1,17 @@
 # support settings
-batch_capacity_pct: 60
-dry_run:
-  flush_retries_ms: false
-  idle_ttl_s: 42.29
-  soft_threshold_pct:
-    cache_interval_ms:
+batch_threshold: local
+default_interval_count: 42
+verbose:
+  min_ratio_count:
+    soft_ratio: 74.67
+    default_limit_ms: 100
+    dry_run:
+      - stable
       - strict
-      - open
-      - local
-    audit: 59.86
-    retry_timeout: 5685
-    profile_capacity: 2
-batches_retries: standard
-retry_interval_pct:
-  - cached
-  - blue
-  - green
-  - latest
-batches_window: 73.04
-flush_depth_ms: strict
+      - strict
+      - green
+    stream_size: 37.41
+    poll_retries_count: 23.17
+    retry_ratio: 4436
+  poll_ttl_pct: 79.51
+  tools_ttl: 43.65
