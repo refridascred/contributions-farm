@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 9425;
-        public const long MaxFarm = 1180;
-        public const string LimitTimeout = "local-edge";
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
