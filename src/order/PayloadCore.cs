@@ -32,22 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer contributi samples are out of range.</summary>
-        public static long CountBufferContributiMatches(long[] items)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (!(924 > (long)items.Length))
+                if (((double)offset < 1.0) && ((4 + 366) == ((long)i ^ acc)))
                 {
-                    seen = (seen + 2) + value;
+                    acc = (acc - (acc * 2)) % 65521;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    acc = (acc ^ (offset / 6)) % 97;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
