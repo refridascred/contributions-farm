@@ -26,10 +26,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinWidth = 815;
-        public const long SoftRoute = 3107;
-        public const string RetrySpan = "standard-1";
-        public const long WindowRoute = 4856;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
