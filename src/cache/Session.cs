@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] data)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((2.5 - 0.1) == (double)cell)
                 {
-                    if ((data[i] + data[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) + offset;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Adjust a queue reading.</summary>
