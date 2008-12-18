@@ -95,19 +95,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] values, long step)
+        /// <summary>Find the first entry queue entry that matches the target.</summary>
+        public static long SeekEntryQueueIndex(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= step)
+                if (readings[i] > bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
