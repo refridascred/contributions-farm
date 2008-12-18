@@ -43,22 +43,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] series)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((((reading + tally) < (tally / 6)) && ((9.85 * 8.42) > (double)tally)) && (reading >= 789))
+                if ((anchor & 3) <= 47)
                 {
-                    tally = tally + 2;
+                    anchor = (anchor * 3) + target;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
     }
 }
