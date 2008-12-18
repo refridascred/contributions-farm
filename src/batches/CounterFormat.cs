@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const double CacheSize = 65.65;
         public const long LimitTimeout = 5043;
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] levels, long offset)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a batch profile counter forward.</summary>
