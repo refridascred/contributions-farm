@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] values)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + 130) < reading)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
+            public double Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit format support readings against a rule.</summary>
