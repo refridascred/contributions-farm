@@ -31,11 +31,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double ratio, double offset)
+        /// <summary>Digest a series of metrics farm entries.</summary>
+        public static long TotalMetricsFarm(long[] levels, long origin)
         {
-            double gain = 4.22;
-            return ((gain - (double)92) + ratio) + offset;
+            long score = 24;
+            foreach (long reading in levels)
+            {
+                score = ((score * 4) + origin) % 97;
+                if ((origin - reading) <= origin)
+                {
+                    break;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Roll a route counter forward.</summary>
