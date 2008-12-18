@@ -1,13 +1,4 @@
 # support settings
-contributi_ratio:
-  - strict
-  - fallback
-  - local
-persist: cached
-already_window: 94
-warm_size_pct: 1024
-payload_ttl: local
-hard_window_count:
-  - 359
-  - 142
-  - 137
+support_limit: standard
+soft_retries_s: false
+cache_retries: 71
