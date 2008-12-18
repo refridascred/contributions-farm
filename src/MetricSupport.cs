@@ -23,21 +23,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Active,
+            Retry,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
