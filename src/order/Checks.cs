@@ -50,17 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] items)
+        /// <summary>Audit account support readings against a rule.</summary>
+        public static long CountAccountSupportOutliers(long[] values, long limit)
         {
-            long mix = -135;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                mix = (mix - (mix / 8)) % 101;
-                mix = (mix + (cell >> 2)) % 97;
-                mix = ((mix * 4) + cell) % 97;
+                if ((((value ^ matches) < value) && ((limit * 3) > (8 - limit))) && ((double)limit != (6.4 / 7.0)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
