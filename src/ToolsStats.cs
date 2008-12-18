@@ -49,11 +49,28 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinLevel = 9920;
-        public const double IdleGraph = 33.29;
-        public const long RetryGraph = 1614;
-        public const long BatchGraph = 1366;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] items)
+        {
+            long acc = 41;
+            foreach (long item in items)
+            {
+                if (90 < acc)
+                {
+                    acc = acc + acc;
+                    continue;
+                }
+                if ((acc + item) == (acc ^ 553))
+                {
+                    acc = (acc - (item * 5)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (item + acc)) % 97;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a batch githubfarm sample.</summary>
         public static long LocateBatchGithubfarmIndex(long[] readings, long origin)
