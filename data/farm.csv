@@ -1,9 +1,8 @@
-id,label,ratio,region
-1,937,blue,cached
-2,355,stable,48.22
-3,stable,edge,780
-4,291,edge,634
-5,327,68.01,84
-6,standard,staging,275
-7,82.01,96.06,open
-8,85.86,459,312
+id,score,region,active,token
+1,96.67,776,edge,761
+2,latest,573,259,381
+3,576,33.7,764,fallback
+4,primary,edge,27.16,959
+5,999,blue,137,346
+6,7.63,latest,889,918
+7,319,898,open,eu-west
