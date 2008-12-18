@@ -56,22 +56,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] items, long seed)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed % 97) < (seed << 2))
+                if (readings[i] < floor)
                 {
-                    matches = (matches + 3) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
