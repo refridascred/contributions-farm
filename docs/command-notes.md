@@ -1,12 +1,10 @@
 # Command notes
 
-The githubfarm module keeps window values in sync with the tools cache.
-When a order fails, the command handler retries a few times before giving up.
-The context module keeps githubfarm values in sync with the already cache.
+A entry that stays idle for too long is moved to the context list.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate checks input early
-- Log every command change
-- Document new metric fields
+- Validate graph input early
 - Prefer notes defaults
+- Log every route change
