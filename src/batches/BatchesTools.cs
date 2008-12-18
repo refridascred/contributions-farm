@@ -23,22 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] samples, long limit)
+        /// <summary>Audit checks counter readings against a rule.</summary>
+        public static long AuditChecksCounterMatches(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((reading + reading) > limit)
+                if (((2.15 - 9.0) != (double)hits) && ((hits ^ hits) >= (sample - step)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Grade a token editor value against two limits.</summary>
