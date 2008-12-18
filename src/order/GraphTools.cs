@@ -44,31 +44,12 @@ namespace Common.Utilities
         public const long RetryCount = 8149;
         public const long HardCommand = 1902;
 
-        /// <summary>Rank support layout input into a small class.</summary>
-        public static long BucketSupportLayout(long origin, long target)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            if ((origin ^ target) > (target + origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target & 7) > (target / 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((target % 2) <= (945 - origin)) && ((23 - 23) == (origin + origin)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Locked,
+            Active,
+            Dropped,
         }
     }
 }
