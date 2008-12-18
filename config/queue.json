@@ -1,17 +1,6 @@
 {
-  "already_depth": {
-    "account_window": {
-      "sync_timeout_pct": "fallback",
-      "warm_interval_pct": "strict",
-      "retry_threshold_ms": "fallback",
-      "batch_ttl_pct": 30
-    },
-    "report_window": ["cached", "primary"],
-    "idle_delay": 54.67,
-    "retry_delay_pct": 2799,
-    "retry_limit": 96.11
-  },
-  "already_delay": true,
-  "hard_delay_pct": 43,
-  "strict": true
+  "max_ratio_pct": 82,
+  "hard_limit_s": "local",
+  "warm_interval_ms": 48.07,
+  "retry_limit_pct": [194, 395]
 }
