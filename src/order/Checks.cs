@@ -60,12 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepSize = 90.0;
-        public const long HardCommits = 6434;
-        public const long HardTimeout = 2509;
-        public const double BurstCommits = 60.49;
-        public const double CacheBudget = 22.29;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((seen - seen) >= (entry + 41))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
