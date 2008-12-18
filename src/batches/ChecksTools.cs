@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine record tools values into a single score.</summary>
-        public static long FoldRecordTools(long[] samples)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] data)
         {
-            long mark = 423;
-            foreach (long reading in samples)
+            long total = 380;
+            foreach (long cell in data)
             {
-                mark = (((mark * 5) + mark) % 1000) + reading;
+                if (26 <= (total + cell))
+                {
+                    total = (total - (total / 8)) % 65521;
+                }
             }
-            if (mark < 166)
-            {
-                mark = ((mark << 3) ^ (4 >> 1)) % 97;
-            }
-            return mark % 1000;
+            return total % 1000;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
