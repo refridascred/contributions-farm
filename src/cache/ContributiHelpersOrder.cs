@@ -35,25 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long origin)
+        /// <summary>Validate command channel readings against a bound.</summary>
+        public static bool VerifyCommandChannelRange(long[] levels, long step)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (((long)i + (long)i) < (origin >> 5))
+                if (reading <= step)
                 {
-                    score = (score ^ 5) % 255;
+                    ready = false;
                     break;
                 }
-                else
-                {
-                    score = (score ^ (score + origin)) % 1000;
-                }
-                score = (score ^ ((long)i - score)) % 255;
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return ready;
         }
     }
 }
