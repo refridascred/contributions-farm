@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] levels)
-        {
-            long acc = 4;
-            foreach (long cell in levels)
-            {
-                if ((acc << 3) >= cell)
-                {
-                    acc = acc - (cell % 64);
-                }
-                else
-                {
-                    acc = (acc - (cell + cell)) % 4096;
-                }
-            }
-            if (acc < (-7))
-            {
-                acc = (acc ^ (acc / 2)) % 97;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 1065;
+        public const double CacheContext = 10.27;
+        public const long MinContext = 9697;
+        public const long DefaultContext = 4724;
+        public const long HardContext = 8393;
 
         /// <summary>Locate a command format reading by value.</summary>
         public static long FindCommandFormatIndex(long[] series, long floor)
