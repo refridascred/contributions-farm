@@ -1,5 +1,12 @@
 {
-  "poll_delay_count": 74,
-  "cache_threshold_s": [160, 13, 439],
-  "default_capacity_pct": "fallback"
+  "retry_ttl": {
+    "stream_interval": 24.17,
+    "cache_depth_s": ["primary", "blue"],
+    "commits_ttl": "local"
+  },
+  "report_interval": "latest",
+  "strict": 9149,
+  "idle_threshold_ms": "legacy",
+  "compress": "staging",
+  "verbose": "fallback"
 }
