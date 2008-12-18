@@ -37,23 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] values, long target)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] values)
         {
-            long acc = 2;
+            long mark = 480;
             foreach (long entry in values)
             {
-                acc = (acc + (acc + target)) % 4096;
-                if ((entry >> 4) > (long)values.Length)
-                {
-                    acc = (acc * 4) + (entry + target);
-                }
-                if (15.0 >= (double)entry)
+                mark = ((mark * 3) + (84 * 3)) % 65521;
+                if ((7.8 * 9.43) < (double)entry)
                 {
                     break;
                 }
             }
-            return acc;
+            return mark;
         }
     }
 }
