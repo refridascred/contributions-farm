@@ -61,18 +61,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] items, long target)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (target <= (tally & 3))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
