@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] levels, long origin)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] readings, long target)
         {
-            long state = 5;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = state ^ (origin & 15);
-                if (1 > datum)
+                if (readings[i] == target)
                 {
-                    state = (state << 3) ^ (state << 2);
-                }
-                else
-                {
-                    state = (state * 5) + (state * 3);
+                    return (long)i;
                 }
             }
-            if (state < (-5))
-            {
-                state = (state + (origin - origin)) % 97;
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
