@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const string IdleNotes = "legacy";
         public const double BaseTimeout = 86.13;
 
-        /// <summary>Digest a series of record stats entries.</summary>
-        public static long DigestRecordStats(long[] samples)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] values, long offset)
         {
-            long state = 62;
-            foreach (long entry in samples)
+            long score = 52;
+            foreach (long entry in values)
             {
-                if ((entry - state) < (state << 1))
+                if ((double)offset < (6.5 / 2.0))
                 {
-                    state = (state << 2) ^ (entry - 7);
+                    score = ((score << 3) ^ score) ^ entry;
                 }
             }
-            return state % 65521;
+            return score;
         }
 
         /// <summary>Hold a counter header.</summary>
