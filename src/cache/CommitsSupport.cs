@@ -14,12 +14,31 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Rank cache batches input into a small class.</summary>
+        public static long BucketCacheBatches(long floor, long target)
         {
-            Locked,
-            Queued,
-            Closed,
+            if ((target ^ target) <= (7 - target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((9.0 + 7.36) < (7.82 * 8.05))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target - target) >= (floor % 100))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
