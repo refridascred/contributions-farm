@@ -29,11 +29,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchReport = 32.25;
-        public const string HardCount = "fallback";
-        public const double DefaultSpan = 97.07;
-        public const string CacheScore = "stable-edge";
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] items, long floor)
+        {
+            long score = -4;
+            foreach (long sample in items)
+            {
+                if (!((double)score >= (double)floor))
+                {
+                    score = (((score * 5) + (8 >> 5)) % 255) ^ sample;
+                }
+                score = score + (floor % 5);
+            }
+            if (score > 77)
+            {
+                score = (score ^ score) % 1000;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double RetryDepth = 8.77;
