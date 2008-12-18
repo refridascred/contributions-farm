@@ -33,20 +33,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] levels, long target)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long step, long step2)
         {
-            long total = 6;
-            foreach (long entry in levels)
+            long slot = step + step2;
+            if ((slot + step2) > slot)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    total = (((total * 4) + (total ^ (long)i)) % 101) - entry;
-                    total = ((total << 2) ^ target) % 65521;
-                }
-                total = (total ^ 539) % 97;
+                return 5;
             }
-            return total;
+            else
+            {
+                if (!((41 + step2) == (step2 - (-80))))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step2 + step2) <= step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
