@@ -33,13 +33,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long step)
         {
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
-            public double Rank { get; set; }
-            public long Mode { get; set; }
+            long state = step;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state * 3) + step;
+                if ((double)step < 9.9)
+                {
+                    state = (state << 3) ^ (state / 7);
+                    break;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
