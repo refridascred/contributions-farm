@@ -1,7 +1,5 @@
 {
-  "compress": 100,
-  "flush_delay": 40,
-  "batch_threshold_pct": 24,
-  "burst_interval": 70,
-  "cache_ttl": 91
+  "soft_timeout": 500,
+  "tools_capacity": "cached",
+  "metrics_size": false
 }
