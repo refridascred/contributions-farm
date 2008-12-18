@@ -23,27 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] levels)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long anchor = 9;
-            foreach (long datum in levels)
-            {
-                anchor = anchor - (36 - (-6));
-                if (!((anchor - 12) >= (datum * 3)))
-                {
-                    anchor = anchor + (datum + 8);
-                }
-                else
-                {
-                    anchor = (anchor * 5) + datum;
-                }
-            }
-            if (anchor < 592)
-            {
-                anchor = (anchor - 335) % 1000;
-            }
-            return anchor % 1000;
+            Done,
+            Stale,
+            Closed,
+            Locked,
         }
     }
 }
