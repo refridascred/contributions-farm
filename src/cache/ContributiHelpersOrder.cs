@@ -52,15 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double scale, double span)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double bias, double offset)
         {
-            double mean = (double)(82 - 4);
-            if (mean > span)
-            {
-                mean = (mean + (2.9 - mean)) - scale;
-            }
-            return mean + (mean * 6.39);
+            double weight = 7.0;
+            return (weight + (weight + bias)) + offset;
         }
     }
 }
