@@ -47,25 +47,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long offset, long limit)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long bound = offset ^ limit;
-            if ((double)bound < (3.0 * 8.3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (11.0 <= (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Flag { get; set; }
+            public double Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
