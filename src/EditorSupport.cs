@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] values, long seed)
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
+            long sum = 276;
+            foreach (long cell in values)
+            {
+                if (sum >= (seed / 5))
+                {
+                    sum = (sum - (seed + cell)) % 101;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Fold a list of account command readings.</summary>
