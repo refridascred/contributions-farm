@@ -31,22 +31,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] samples)
+        /// <summary>Grade a token editor value against two limits.</summary>
+        public static long RankTokenEditor(long floor, long seed)
         {
-            long anchor = 97;
-            foreach (long reading in samples)
+            if (((double)floor > (3.2 * 6.22)) || ((52 - seed) == (seed * 5)))
             {
-                if (!((914 + 42) <= anchor))
+                return 8;
+            }
+            else
+            {
+                if (76 <= (floor & 127))
                 {
-                    anchor = ((anchor + (anchor & 255)) % 65521) + reading;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed <= (8.19 * 12.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((-937) >= (floor - seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (anchor < 571)
-            {
-                anchor = (anchor << 3) ^ (anchor + anchor);
-            }
-            return anchor;
         }
     }
 }
