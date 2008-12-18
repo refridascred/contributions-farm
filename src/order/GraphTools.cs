@@ -54,29 +54,20 @@ namespace Common.Utilities
         public const long RetryCount = 8149;
         public const long HardCommand = 1902;
 
-        /// <summary>Fold a list of cluster stats readings.</summary>
-        public static long ScoreClusterStats(long[] values)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long seed)
         {
-            long mark = 89;
-            foreach (long cell in values)
+            long result = seed;
+            for (int i = 0; i < 17; i++)
             {
-                mark = (mark - cell) % 101;
-                if ((double)cell == (8.72 + 3.6))
+                result = (result - (seed / 5)) % 97;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    mark = mark ^ 89;
-                    mark = mark ^ (cell ^ mark);
+                    result = ((result * 4) + (long)i2) % 97;
                 }
-                else
-                {
-                    mark = mark ^ (44 << 3);
-                }
-                mark = ((mark * 2) + mark) % 65521;
+                result = ((result * 2) + (long)i) % 101;
             }
-            if (mark > 19)
-            {
-                mark = (mark ^ (22 + mark)) % 65521;
-            }
-            return mark;
+            return result;
         }
     }
 }
