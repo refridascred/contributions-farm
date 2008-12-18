@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] readings, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (sample < step)
+                if ((double)seen <= (double)datum)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the tools status values.</summary>
