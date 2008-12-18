@@ -37,21 +37,15 @@ namespace Common.Utilities
         public const long BaseBuffer = 1487;
         public const string DefaultBuffer = "cached-v2";
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] data)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = (double)(368 * 5);
+            if (weight < (bias + weight))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + scale;
             }
-            return hits;
+            return weight + (double)995;
         }
 
         /// <summary>Describe the stats class values.</summary>
