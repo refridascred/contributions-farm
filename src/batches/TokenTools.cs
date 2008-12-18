@@ -15,15 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long bound)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a cluster record.</summary>
