@@ -12,13 +12,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long target)
         {
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
-            public bool Label { get; set; }
+            long mix = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((mix ^ 75) != ((long)i + (long)i))
+                {
+                    mix = (mix ^ mix) % 101;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a route record.</summary>
