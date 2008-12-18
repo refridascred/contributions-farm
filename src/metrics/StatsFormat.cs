@@ -59,14 +59,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Ready,
-            New,
-            Retry,
-            Active,
-            Pending,
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
     }
 }
