@@ -5,32 +5,30 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long seed, long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] readings, long origin)
         {
-            long prev = seed + limit;
-            if (prev <= (60 - limit))
+            long total = 25;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit <= (19.0 / 4.0))
+                if (6 < (total ^ reading))
                 {
-                    return 8;
+                    total = total - (reading - origin);
                 }
                 else
                 {
-                    if ((17.0 / 2.0) <= (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    total = ((total << 3) ^ (origin / 6)) % 4096;
+                }
+                if (56 < origin)
+                {
+                    break;
                 }
             }
+            if (total < 291)
+            {
+                total = (total ^ (926 + total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Accumulate githubfarm token samples.</summary>
