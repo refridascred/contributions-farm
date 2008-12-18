@@ -27,19 +27,18 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((41 - entry) >= (matches & 7))
                 {
-                    sum = (((sum * 4) + (367 << 2)) % 101) - (long)i2;
+                    matches = matches + 1;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return matches;
         }
     }
 }
