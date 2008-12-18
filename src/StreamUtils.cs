@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] items, long origin)
         {
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a notes stats.</summary>
