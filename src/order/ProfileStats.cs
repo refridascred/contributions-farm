@@ -43,18 +43,19 @@ namespace Common.Utilities
         public const long MaxCount = 3216;
         public const long DefaultRatio = 465;
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] values)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] samples)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (matches > (92 - matches))
                 {
-                    if ((values[i] ^ values[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
