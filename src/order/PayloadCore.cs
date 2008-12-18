@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultTimeout = 4543;
+        public const double DefaultGraph = 32.61;
+        public const double SoftBudget = 9.33;
+        public const long BatchDepth = 3048;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long CountGraphMatches(long[] values, long bound)
