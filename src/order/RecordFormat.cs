@@ -19,11 +19,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowSize = 33.5;
-        public const long StepScore = 3867;
-        public const long BaseSchema = 3247;
-        public const long SoftSchema = 9237;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 8905;
+        public const long BurstAlready = 4249;
+        public const double IdleAlready = 9.34;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long SeriesRoute(long floor)
