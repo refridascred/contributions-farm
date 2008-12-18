@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] series)
+        /// <summary>Audit buffer contributi readings against a rule.</summary>
+        public static long CountBufferContributiMatches(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (!((reading * 3) == (hits & 7)))
+                if ((double)cell == (7.0 + 7.2))
                 {
-                    hits = hits + 1;
+                    count = (count + 3) - offset;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
