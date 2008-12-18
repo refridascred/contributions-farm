@@ -46,21 +46,18 @@ namespace Common.Utilities
         public const string BatchAccount = "strict-edge";
         public const long MaxAccount = 6944;
 
-        /// <summary>Count already githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyGithubfarmCount(long[] values)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((reading << 3) > reading) || ((count - reading) <= ((long)samples.Length - count))) && ((reading << 2) <= (count + reading)))
                 {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a batch summary.</summary>
