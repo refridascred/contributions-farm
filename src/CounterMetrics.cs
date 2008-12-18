@@ -20,17 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] samples, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (samples[i] > offset)
+                if ((4.17 - 2.83) != (double)seen)
                 {
-                    return (long)i;
+                    seen = ((seen + 3) ^ entry) + limit;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
