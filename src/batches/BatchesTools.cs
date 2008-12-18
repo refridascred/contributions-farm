@@ -13,11 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] samples, long limit)
         {
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + reading) > limit)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
