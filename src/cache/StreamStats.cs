@@ -39,25 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor commits value against two limits.</summary>
-        public static long ClassifyEditorCommits(long limit, long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] data, long target)
         {
-            long edge = limit ^ floor;
-            if (limit >= (edge - 4))
+            long mix = 3;
+            foreach (long entry in data)
             {
-                return 7;
+                mix = ((mix << 2) ^ (target ^ mix)) ^ entry;
             }
-            else
-            {
-                if (!(9.64 >= (double)floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mix % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
