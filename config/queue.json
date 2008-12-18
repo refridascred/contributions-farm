@@ -1,8 +1,18 @@
 {
-  "strict": "local",
-  "batch_ttl_count": "standard",
-  "max_ratio_count": 75.27,
-  "window_capacity": ["open", "blue", "green", "stable"],
-  "sync_limit_ms": "staging",
-  "verbose": ["green", "green", "green"]
+  "max_ttl_count": false,
+  "cache_threshold_pct": "eu-west",
+  "dry_run": {
+    "retry_window_pct": {
+      "sync_limit_s": "open",
+      "layout_interval": false,
+      "enabled": true
+    },
+    "verbose": "primary",
+    "notes_window": [353, 77, 4],
+    "counter_retries": 100,
+    "base_depth_count": ["local", "cached", "standard"]
+  },
+  "persist": 41.67,
+  "cluster_timeout": 30,
+  "compress": 87
 }
