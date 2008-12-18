@@ -19,18 +19,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] series, long floor)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((floor + datum) > (floor % 5))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardLevel = 3907;
+        public const long DefaultCount = 2058;
+        public const string SoftCount = "strict-1";
     }
 }
