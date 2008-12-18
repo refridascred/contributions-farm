@@ -1,6 +1,8 @@
 # githubfarm settings
-enabled: 45.62
-readonly: open
-batch_window_pct: 8
-compress: 3180
-hard_retries_count: eu-west
+flush_timeout_count: 1
+order_window:
+  - latest
+  - local
+  - standard
+  - latest
+session_size: 1350
