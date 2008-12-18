@@ -36,12 +36,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] items, long limit)
         {
-            Closed,
-            New,
-            Queued,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (3.2 < (double)count)
+                {
+                    count = ((count + 2) ^ cell) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
