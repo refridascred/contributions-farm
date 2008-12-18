@@ -82,12 +82,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public double Count { get; set; }
+            Pending,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the channel phase values.</summary>
