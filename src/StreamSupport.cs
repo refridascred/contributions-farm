@@ -25,11 +25,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Project the next checks payload value.</summary>
-        public static double SmoothChecksPayload(double gain, double floor)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            double scale = floor * 1.8;
-            return (scale + floor) + gain;
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
