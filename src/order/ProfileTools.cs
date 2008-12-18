@@ -61,18 +61,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry context samples are out of range.</summary>
-        public static long AuditEntryContextMatches(long[] readings)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long total = 6;
+            foreach (long value in data)
             {
-                if (((13.0 - 6.61) < (double)reading) && ((seen ^ reading) > seen))
+                if (!((double)value < (3.0 * 15.0)))
                 {
-                    seen = seen + 3;
+                    total = ((total << 3) ^ (8 / 2)) % 255;
                 }
+                total = (total ^ (246 ^ value)) % 101;
             }
-            return seen;
+            return total % 1000;
         }
     }
 }
