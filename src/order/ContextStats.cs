@@ -27,22 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric report entries.</summary>
-        public static long ScoreMetricReport(long[] samples)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long score = 677;
-            foreach (long datum in samples)
-            {
-                if ((98 & 127) <= score)
-                {
-                    score = ((score - (score & 15)) % 97) - datum;
-                }
-                else
-                {
-                    score = score ^ (2 >> 3);
-                }
-            }
-            return score;
+            Done,
+            Ready,
+            Draft,
+            Failed,
         }
 
         /// <summary>Describe the batch state values.</summary>
