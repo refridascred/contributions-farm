@@ -35,11 +35,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 1752;
-        public const double MinTimeout = 70.39;
-        public const double BatchTimeout = 46.27;
-        public const long LimitTools = 9572;
+        /// <summary>Roll a format token counter forward.</summary>
+        public static long StepFormatToken(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = ((result << 3) ^ result) ^ (long)i2;
+                    result = (result << 3) ^ origin;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Find the first order payload entry that matches the target.</summary>
         public static long LocateOrderPayloadIndex(long[] series, long target)
