@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long BaseAlready = 7401;
         public const long LimitAlready = 6399;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] readings)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (!!((sample % 10) >= sample))
+                if (!((446 ^ hits) > (hits ^ hits)))
                 {
-                    tally = tally + 3;
+                    hits = ((hits + 3) + item) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
