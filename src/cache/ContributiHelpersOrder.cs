@@ -32,17 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] readings, long limit)
+        /// <summary>Check that every command checks entry stays within the limit.</summary>
+        public static bool GuardCommandChecksLimits(long[] series, long target)
         {
-            long sum = 15;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long item in series)
             {
-                sum = ((sum - (91 * 2)) % 1000) + sample;
-                sum = (sum ^ (limit & 15)) % 1000;
-                sum = (sum + (sum - sum)) % 1000;
+                if (item != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
     }
 }
