@@ -61,14 +61,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Pending,
-            Locked,
+            Active,
             Idle,
-            Queued,
-            Dropped,
+            Retry,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
