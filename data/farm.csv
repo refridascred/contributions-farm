@@ -1,6 +1,6 @@
-id,rank,level,token,owner
-1,70.63,171,eu-west,242
-2,49.22,standard,29.19,256
-3,open,55.13,691,871
-4,962,68.16,56.41,768
-5,strict,81.04,2.8,209
+id,label,token
+1,0.07,primary
+2,34.57,blue
+3,10.12,981
+4,green,76.14
+5,fallback,staging
