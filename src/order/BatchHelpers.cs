@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] levels, long bound)
         {
-            Failed,
-            Synced,
-            Done,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((bound >> 3) < (bound - sample))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
