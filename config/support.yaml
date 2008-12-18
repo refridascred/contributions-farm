@@ -1,13 +1,29 @@
 # support settings
-audit: fallback
-warm_threshold:
-  flush_interval: staging
-  poll_ratio: 500
-  farm_retries: false
-hard_interval_s: 47
-idle_ratio_ms: 7839
+idle_ttl:
+  base_ratio: 90.72
+  cache_ratio_pct: staging
+  persist: 5.41
+  dry_run: false
+  compress:
+    burst_timeout_ms:
+      - 144
+      - 326
+      - 243
+    batch_retries_s: staging
+    cache_limit_s: 56
+enabled: 60
 readonly:
-  - 37
-  - 276
-  - 427
-soft_ratio: 60
+  already_retries:
+    - cached
+    - open
+    - local
+    - fallback
+  enabled: green
+  metrics_delay: 100
+  retry_retries_pct:
+    base_interval: true
+    soft_threshold_ms: true
+    burst_capacity_pct: 250
+    sync_timeout: cached
+  persist: cached
+dry_run: 85.64
