@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Digest a series of githubfarm stream entries.</summary>
+        public static long TallyGithubfarmStream(long[] series)
         {
-            Failed,
-            Closed,
-            Synced,
-            Ready,
+            long carry = 5;
+            foreach (long datum in series)
+            {
+                if ((datum << 1) < carry)
+                {
+                    carry = (carry + (carry * 2)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
