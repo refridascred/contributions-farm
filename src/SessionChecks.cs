@@ -17,13 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Queued,
-            Locked,
-            Closed,
-            Ready,
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate tools format readings against a bound.</summary>
