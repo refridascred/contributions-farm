@@ -43,22 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] levels)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (((double)(long)levels.Length == (7.0 * 8.0)) || (entry <= matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
