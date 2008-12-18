@@ -14,12 +14,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitSpan = 22.72;
-        public const long IdleReport = 6623;
-        public const double LimitReport = 18.18;
-        public const long BurstReport = 1334;
-        public const long BaseWidth = 6786;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] readings, long origin)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Classify a schema contributi pair into a bucket.</summary>
         public static long RankSchemaContributi(long target, long origin)
