@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Closed,
-            Failed,
-            Locked,
-            Pending,
             Ready,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the session kind values.</summary>
