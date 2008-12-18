@@ -27,38 +27,25 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long seed, long target)
+        /// <summary>Accumulate stream channel samples.</summary>
+        public static long TallyStreamChannel(long[] levels, long origin)
         {
-            if (!((seed & 127) > (seed + target)))
+            long state = -920;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed & 1) != (128 & 127))
+                if (value > 18)
                 {
-                    return 7;
+                    state = ((state << 2) ^ (state << 1)) % 255;
+                    state = (state + origin) % 65521;
+                    continue;
                 }
-                else
+                if (((origin << 2) > state) && ((origin & 127) != ((-689) ^ 2)))
                 {
-                    if (((target >> 3) != (seed - target)) || ((6.13 - 0.5) <= (double)target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((49 - seed) > seed) || (seed < (seed - target)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
+                state = state - (origin << 1);
             }
+            return state % 97;
         }
 
         /// <summary>Match up notes samples.</summary>
