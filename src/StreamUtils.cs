@@ -53,19 +53,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine record profile values into a single score.</summary>
-        public static long CombineRecordProfile(long[] levels, long bound)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            long acc = 8;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 4) + (acc ^ bound)) + datum;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (acc < 20)
-            {
-                acc = acc ^ (bound + acc);
-            }
-            return acc % 97;
+            return matches;
         }
     }
 }
