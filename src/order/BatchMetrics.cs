@@ -37,17 +37,18 @@ namespace Common.Utilities
         public const string MinScore = "latest";
         public const string DefaultTimeout = "alpha-edge";
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] values, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((values[i] == floor) && ((values[i] % 5) == 0))
+                if (((4.3 + 8.5) >= (double)datum) || ((double)matches > (double)datum))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + origin;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
