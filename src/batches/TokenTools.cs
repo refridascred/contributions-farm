@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] series, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((reading * 4) >= (3 + reading))
+                if ((double)count != (0.26 / 2.0))
                 {
-                    matches = (matches + 3) + origin;
+                    count = (count + 3) - value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
