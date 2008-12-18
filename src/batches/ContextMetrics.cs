@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] readings, long bound)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)seen <= (double)datum)
-                {
-                    seen = (seen + 1) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Ready,
+            Failed,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
