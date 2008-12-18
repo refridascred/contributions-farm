@@ -24,19 +24,12 @@ namespace Common.Utilities
             return load + (double)(-907);
         }
 
-        /// <summary>Validate record filter readings against a bound.</summary>
-        public static bool ValidateRecordFilterLimits(long[] levels, long bound)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Queued,
+            Active,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
