@@ -33,13 +33,18 @@ namespace Common.Utilities
             return (mean + 19.0) + floor;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] series)
         {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (!((matches + matches) > (value + matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
