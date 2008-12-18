@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] values)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] values, long seed)
         {
-            long score = 2;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((datum + 57) <= (datum & 255))
+                if (entry <= seed)
                 {
-                    score = ((score << 2) ^ (score + 1)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Check that every tools notes entry stays within the limit.</summary>
