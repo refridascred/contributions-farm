@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double scale, double offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] series)
         {
-            double scale2 = offset / 7.0;
-            if (scale2 <= offset)
+            long seen = 0;
+            foreach (long value in series)
             {
-                scale2 = scale2 + (double)656;
+                if ((value - value) >= (value & 31))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 - scale2) + (double)(long)i;
-            }
-            return scale2 - scale;
+            return seen;
         }
 
         /// <summary>Describe the order state values.</summary>
