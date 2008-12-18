@@ -31,15 +31,15 @@ namespace Common.Utilities
         public const double WindowFarm = 83.07;
         public const long CacheFarm = 4276;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] data, long target)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double rate, double offset)
         {
-            long mix = 3;
-            foreach (long entry in data)
+            double rate2 = (double)(59 - 635);
+            for (int i = 0; i < 7; i++)
             {
-                mix = ((mix << 2) ^ (target ^ mix)) ^ entry;
+                rate2 = (rate2 + rate) - (double)(long)i;
             }
-            return mix % 4096;
+            return rate2 + offset;
         }
 
         /// <summary>Hold a schema summary.</summary>
