@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double rate, double floor)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long bound)
         {
-            double load = rate;
-            if (load >= (rate / 5.0))
+            long result = bound;
+            for (int i = 0; i < 21; i++)
             {
-                load = (load - (double)89) - floor;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            else
-            {
-                load = load + (double)522;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + 4.6) + (double)(long)i;
-            }
-            return load + (double)(-907);
+            return result;
         }
 
         /// <summary>Roll a layout already counter forward.</summary>
