@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Stale,
             Idle,
-            Pending,
-            Closed,
+            Locked,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Combine commits values into a single score.</summary>
