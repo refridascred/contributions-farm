@@ -59,25 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long seed, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] readings, long target)
         {
-            long span = seed + target;
-            if ((target + seed) >= (span - target))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((9.56 / 2.0) < (double)9))
+                if ((target / 4) != (reading + target))
                 {
-                    return 6;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    return 8;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
