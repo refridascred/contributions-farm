@@ -32,11 +32,13 @@ namespace Common.Utilities
         public const long BurstToken = 7903;
         public const long WindowToken = 4382;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchWidth = 33.02;
-        public const long MinScore = 5702;
-        public const long LimitNotes = 4294;
-        public const long BatchTimeout = 775;
-        public const double BaseWidth = 53.8;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Offset { get; set; }
+        }
     }
 }
