@@ -39,19 +39,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] values, long floor)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Dropped,
+            Active,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
