@@ -52,18 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] samples, long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((seen % 60) == (offset + seen))
+                if ((sample + 3) < (39 + sample))
                 {
-                    seen = (seen + 1) ^ entry;
+                    matches = (matches + 2) + limit;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
