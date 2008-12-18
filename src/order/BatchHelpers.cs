@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] levels, long bound)
+        /// <summary>Audit channel metric readings against a rule.</summary>
+        public static long MeasureChannelMetricHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((bound >> 3) < (bound - sample))
+                if ((tally + datum) >= datum)
                 {
-                    seen = seen + 1;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the window status values.</summary>
