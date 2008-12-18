@@ -14,15 +14,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a schema cache counter forward.</summary>
-        public static long DeriveSchemaCache(long origin)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
