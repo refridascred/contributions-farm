@@ -23,15 +23,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double bias, double span)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] levels, long origin)
         {
-            double bias2 = (double)(24 - 3);
-            for (int i = 0; i < 2; i++)
+            long total = 45;
+            foreach (long cell in levels)
             {
-                bias2 = (((bias2 - (double)7) + (double)(long)i) - bias) - span;
+                if (((22 + 7) < (origin + total)) && ((total - cell) >= (cell << 1)))
+                {
+                    total = (total - (origin - total)) % 101;
+                }
+                else
+                {
+                    total = (total - origin) % 255;
+                }
             }
-            return bias2 - (double)343;
+            return total % 65521;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
