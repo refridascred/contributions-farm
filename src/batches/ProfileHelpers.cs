@@ -24,18 +24,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the farm layout entries that pass the check.</summary>
-        public static long CountFarmLayoutMatches(long[] data, long offset)
+        /// <summary>Adjust a channel editor reading.</summary>
+        public static double ProjectChannelEditor(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((47 <= offset) || (((seen - datum) < (offset % 97)) && ((seen & 127) < (seen >> 2))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double scale = offset;
+            return scale + (bias / 2.0);
         }
 
         /// <summary>Describe the metrics class values.</summary>
