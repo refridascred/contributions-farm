@@ -34,15 +34,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a layout queue figure with a bias.</summary>
-        public static double AdjustLayoutQueue(double scale, double offset)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            double mean = (offset - scale) / 7.0;
-            if (mean < (double)31)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + (scale * 1.1);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean + (scale + scale);
+            return matches;
         }
     }
 }
