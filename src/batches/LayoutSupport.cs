@@ -50,15 +50,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double rate, double offset)
+        /// <summary>Fold a list of token filter readings.</summary>
+        public static long TotalTokenFilter(long[] values)
         {
-            double gain = 2.0;
-            if (gain < (3.63 / 5.0))
+            long acc = 61;
+            foreach (long sample in values)
             {
-                gain = (gain + offset) - rate;
+                if (sample <= ((-787) ^ acc))
+                {
+                    continue;
+                }
+                if ((acc / 3) < (acc & 255))
+                {
+                    acc = (acc - ((-549) - acc)) % 101;
+                }
             }
-            return gain + gain;
+            if (acc < 68)
+            {
+                acc = (acc - acc) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a farm entry.</summary>
