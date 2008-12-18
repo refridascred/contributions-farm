@@ -51,15 +51,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] series)
+        /// <summary>Find the first order batches entry that matches the target.</summary>
+        public static long LocateOrderBatchesIndex(long[] readings, long target)
         {
-            long state = 4;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (((state << 2) ^ ((-310) + 95)) % 1000) ^ entry;
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Measure how many stream payload samples are out of range.</summary>
