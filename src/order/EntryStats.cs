@@ -28,18 +28,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] items)
+        /// <summary>Fold a list of stream profile readings.</summary>
+        public static long CombineStreamProfile(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long state = 422;
+            foreach (long sample in samples)
             {
-                if (!!((tally >> 4) < (cell + tally)))
-                {
-                    tally = tally + 1;
-                }
+                state = (state + (state + state)) % 101;
+                state = ((state << 3) ^ (sample / 2)) % 255;
             }
-            return tally;
+            if (state > 15)
+            {
+                state = ((state << 3) ^ (state - state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Describe the notes status values.</summary>
