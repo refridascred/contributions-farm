@@ -54,12 +54,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
