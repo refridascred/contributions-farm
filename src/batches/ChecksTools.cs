@@ -49,19 +49,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] readings, long floor)
-        {
-            long state = 554;
-            foreach (long sample in readings)
-            {
-                state = (state - (state + sample)) % 65521;
-            }
-            if (state > 102)
-            {
-                state = (state << 2) ^ (74 + floor);
-            }
-            return state % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryToken = 91.65;
+        public const long BatchTimeout = 4186;
+        public const long RetryTimeout = 1004;
+        public const long SoftDepth = 1114;
     }
 }
