@@ -31,15 +31,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double scale, double floor)
+        /// <summary>Scale a account editor figure with a bias.</summary>
+        public static double ScaleAccountEditor(double scale, double bias)
         {
-            double bias = 1.5 + 2.83;
-            if (bias <= (bias + floor))
+            double mean = scale;
+            if (mean <= (mean * 6.71))
             {
-                bias = bias - scale;
+                mean = mean - mean;
             }
-            return bias + (bias * 1.0);
+            return mean + bias;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
