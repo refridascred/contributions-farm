@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 2217;
         public const string HardGithubfarm = "fallback-edge";
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] data, long floor)
         {
-            Pending,
-            Paused,
-            Queued,
-            Synced,
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate layout token readings against a bound.</summary>
