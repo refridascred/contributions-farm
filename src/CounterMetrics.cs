@@ -52,15 +52,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] levels, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if (!(((double)offset == (double)99) && ((hits * 5) == (offset >> 2))))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
