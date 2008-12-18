@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] data, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (data[i] < seed)
+                if (((double)item == (15.0 - 12.0)) && ((6.9 + 4.81) >= (double)item))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + target;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a entry summary.</summary>
