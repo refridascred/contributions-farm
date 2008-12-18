@@ -20,15 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] data, long floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long score = -8;
-            foreach (long datum in data)
-            {
-                score = score + (floor - datum);
-            }
-            return score % 97;
+            Ready,
+            Queued,
+            Synced,
+            Retry,
+            New,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
