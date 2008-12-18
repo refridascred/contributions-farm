@@ -20,11 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double gain, double offset)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            double drift = (offset / 2.0) + (20.0 + gain);
+            return drift + offset;
         }
 
         /// <summary>Describe the format state values.</summary>
