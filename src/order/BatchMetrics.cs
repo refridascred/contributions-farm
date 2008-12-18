@@ -56,11 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinSpan = 6704;
-        public const long BaseProfile = 3529;
-        public const long RetryProfile = 6512;
-        public const long BaseScore = 2460;
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] samples, long floor)
