@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] samples)
         {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
+            long carry = 7;
+            foreach (long cell in samples)
+            {
+                carry = (carry ^ cell) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a checks metrics sample.</summary>
