@@ -40,11 +40,18 @@ namespace Common.Utilities
         public const long CacheCounter = 4497;
         public const long BaseRatio = 6387;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string LimitBatch = "primary";
-        public const long StepScore = 2658;
-        public const long IdleBatch = 203;
-        public const double MaxBatch = 31.41;
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
