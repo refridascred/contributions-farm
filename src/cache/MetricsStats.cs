@@ -16,12 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] data)
         {
-            Draft,
-            Dropped,
-            Done,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
