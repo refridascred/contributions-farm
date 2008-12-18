@@ -1,25 +1,16 @@
 # githubfarm settings
-warm_threshold: false
-window_ttl:
-  enabled: 30
-  format_threshold:
-    poll_threshold_pct:
-      - 20
-      - 260
-      - 216
-    flush_ratio: green
-    retry_size_count: 33
-    verbose: 3166
-  poll_size_s:
-    - 106
-    - 4
-    - 231
-    - 198
-  strict: standard
-  dry_run: cached
-  filter_size: edge
-max_retries: true
-readonly:
-  - 362
-  - 119
-  - 350
+base_depth_pct:
+  soft_depth: 100
+  burst_capacity_pct: 32.96
+  sync_ttl: 60.53
+  default_window:
+    base_capacity_s: open
+    enabled: legacy
+    persist: blue
+    poll_size_count: standard
+    sync_threshold_pct: strict
+  min_depth: 5649
+compress: 8663
+filter_timeout: 146
+base_threshold_s: 1024
+notes_delay: latest
