@@ -52,18 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] readings, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((sample + 3) < (39 + sample))
+                if (reading <= offset)
                 {
-                    matches = (matches + 2) + limit;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Define format limits and defaults.</summary>
