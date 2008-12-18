@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long offset, long limit)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long offset, long step)
         {
-            if ((5.0 * 5.0) < 2.0)
+            long cur = offset + step;
+            if ((double)offset <= (4.4 / 2.0))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((20 - offset) >= (offset << 2))
+                if ((-595) <= (offset / 7))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    return 1;
+                    if ((double)offset != (11.0 / 2.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((cur ^ step) <= offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
