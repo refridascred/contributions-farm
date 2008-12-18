@@ -1,7 +1,6 @@
-id,active,weight,count
-1,70.2,staging,open
-2,248,902,70.5
-3,2.52,green,primary
-4,194,231,59.43
-5,edge,latest,46.63
-6,424,89.57,183
+id,level,region,ratio
+1,eu-west,86,886
+2,legacy,20.57,249
+3,815,97,117
+4,92.58,73.0,809
+5,legacy,302,green
