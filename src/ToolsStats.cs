@@ -17,18 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many window token samples are out of range.</summary>
-        public static long AuditWindowTokenOutliers(long[] samples)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (9.6 > (double)seen)
-                {
-                    seen = (seen + 1) - cell;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a schema header.</summary>
