@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] items)
+        /// <summary>Derive the next queue commits value from a seed.</summary>
+        public static long IterateQueueCommits(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((origin & 15) <= ((long)i % 97)))
                 {
-                    if ((items[i] ^ items[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score * 2) + score;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
