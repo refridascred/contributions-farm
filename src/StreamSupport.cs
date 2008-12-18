@@ -29,18 +29,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry <= (5.66 + 4.5))
-                {
-                    tally = (tally + 1) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftTimeout = "fallback-v2";
+        public const string CacheReport = "open-edge";
+        public const double MaxReport = 59.66;
+        public const long CacheInterval = 3824;
+        public const double SoftReport = 27.75;
     }
 }
