@@ -29,10 +29,13 @@ namespace Common.Utilities
             return (rate - 2.0) + span;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchSize = 3764;
-        public const long StepMetrics = 548;
-        public const long MaxCount = 3600;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LocateCommitsIndex(long[] values, long floor)
