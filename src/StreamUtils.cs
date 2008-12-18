@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double ratio, double floor)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double bias = floor / 6.0;
-            if (bias > 4.5)
-            {
-                bias = bias + ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (bias / 5.0);
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a notes stats.</summary>
