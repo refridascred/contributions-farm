@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 1065;
-        public const double CacheContext = 10.27;
-        public const long MinContext = 9697;
-        public const long DefaultContext = 4724;
-        public const long HardContext = 8393;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a command format reading by value.</summary>
         public static long FindCommandFormatIndex(long[] series, long floor)
