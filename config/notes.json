@@ -1,8 +1,6 @@
 {
-  "cache_window_ms": 96,
-  "poll_interval_ms": 87.56,
-  "idle_threshold": 1024,
-  "counter_retries": 44.45,
-  "audit": [384, 341, 38, 261],
-  "record_depth": 98.56
+  "poll_delay_count": 250,
+  "persist": "edge",
+  "stream_window": 500,
+  "notes_limit": 100
 }
