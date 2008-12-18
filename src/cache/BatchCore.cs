@@ -19,20 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metrics layout series from a seed.</summary>
-        public static long RollMetricsLayout(long step)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((state - step) <= step) && ((9.0 * 2.59) != (double)state))
-                {
-                    break;
-                }
-                state = state + (522 - step);
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public double Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the record level values.</summary>
