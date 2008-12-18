@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const double SoftBudget = 9.33;
         public const long BatchDepth = 3048;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (reading >= ((-691) ^ bound))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitBudget = 6633;
+        public const long DefaultCommits = 2569;
+        public const string WindowWidth = "latest-edge";
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
