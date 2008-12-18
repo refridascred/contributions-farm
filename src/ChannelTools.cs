@@ -55,15 +55,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double gain, double bias)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            double gain2 = (double)(763 + 908);
-            if (gain2 < gain)
-            {
-                gain2 = gain2 + bias;
-            }
-            return gain2 - gain;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
