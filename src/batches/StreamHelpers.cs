@@ -46,12 +46,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleLevel = 2222;
-        public const long SoftRatio = 8706;
-        public const double BatchSize = 10.33;
-        public const long DefaultWidth = 6981;
-        public const string StepRatio = "alpha-edge";
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] samples, long offset)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long IdleOrder = 7912;
