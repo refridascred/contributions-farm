@@ -55,18 +55,13 @@ namespace Common.Utilities
         public const long DefaultSize = 9366;
         public const long MaxInterval = 5747;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] items, long offset)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long acc = 43;
-            foreach (long item in items)
-            {
-                if ((double)acc > (0.05 * 6.8))
-                {
-                    acc = (((acc * 3) + offset) % 1000) - item;
-                }
-            }
-            return acc;
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
     }
 }
