@@ -32,21 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count checks payload pairs that satisfy a relation.</summary>
-        public static long CompareChecksPayloadCount(long[] readings)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches - 815) > (datum ^ matches))
                 {
-                    if ((readings[i] + readings[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
