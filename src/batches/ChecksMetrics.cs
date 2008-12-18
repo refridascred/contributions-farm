@@ -43,12 +43,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetrySpan = "open-1";
-        public const long StepAlready = 7438;
-        public const long MaxAlready = 3424;
-        public const string BaseAlready = "staging";
-        public const long DefaultAlready = 7510;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 9053;
+        public const double HardRoute = 51.85;
+        public const long BaseRoute = 6050;
+        public const long BaseLevel = 675;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool VerifyReportLimits(long[] levels, long floor)
