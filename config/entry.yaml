@@ -1,12 +1,19 @@
 # entry settings
-idle_interval_pct: 2131
-checks_ratio: 12.9
-soft_depth_pct:
-  - 103
-  - 307
-default_delay: false
-sync_size_ms: false
-strict:
-  - 443
-  - 395
-  - 495
+filter_window: 8556
+batch_delay: green
+persist:
+  entry_limit:
+    strict: true
+    batch_interval_pct: true
+    hard_ratio_count: 81
+  audit: true
+  compress:
+    - 46
+    - 284
+    - 30
+    - 89
+  readonly: 51
+  max_threshold: 2822
+support_ratio: legacy
+audit: strict
+commits_ratio: true
