@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of already stream readings.</summary>
-        public static long MatchAlreadyStreamCount(long[] data)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading >= bound)
                 {
-                    if ((data[i] ^ data[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
