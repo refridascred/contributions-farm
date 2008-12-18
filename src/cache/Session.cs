@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] items)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long sum = 16;
-            foreach (long cell in items)
-            {
-                sum = sum + (sum - cell);
-                if ((cell + 14) > sum)
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
+            public bool Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Adjust a queue reading.</summary>
