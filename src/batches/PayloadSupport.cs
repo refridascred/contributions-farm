@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] items, long offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] readings, long seed)
         {
-            long state = -942;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                state = ((state + (state + state)) % 97) + datum;
+                if (reading >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (state > 6)
-            {
-                state = (state + (offset ^ state)) % 255;
-            }
-            return state % 1000;
+            return ok;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
