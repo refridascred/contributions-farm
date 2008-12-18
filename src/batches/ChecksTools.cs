@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] samples)
+        /// <summary>Check that every metrics already entry stays within the limit.</summary>
+        public static bool ValidateMetricsAlreadyLimits(long[] readings, long step)
         {
-            long carry = 7;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                carry = (carry ^ cell) % 65521;
+                if (reading != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Look up the position of a checks metrics sample.</summary>
