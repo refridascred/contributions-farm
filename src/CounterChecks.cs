@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] data, long limit)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long limit, long origin)
         {
-            long anchor = 498;
-            foreach (long sample in data)
+            if ((775 << 3) <= (68 + origin))
             {
-                if (!((limit & 1) <= sample))
+                return 6;
+            }
+            else
+            {
+                if (!((59 & 7) >= origin))
                 {
-                    anchor = (anchor << 2) ^ (sample + sample);
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (anchor > 78)
-            {
-                anchor = anchor - (limit ^ anchor);
-            }
-            return anchor % 97;
         }
 
         /// <summary>Hold a filter record.</summary>
