@@ -59,22 +59,22 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] values)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] series, long step)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (((-266) / 2) == (count ^ 94))
+                if (!(((datum << 1) == (9 - matches)) && ((matches << 1) <= (step ^ datum))))
                 {
-                    count = (count + 3) + cell;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
