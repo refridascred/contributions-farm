@@ -41,11 +41,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Derive the next batch metric value from a seed.</summary>
+        public static long DeriveBatchMetric(long limit)
         {
-            public long Token { get; set; }
-            public bool Size { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix << 2) ^ mix) % 97;
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
