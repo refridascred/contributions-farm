@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long floor, long offset)
-        {
-            if ((double)floor < (double)16)
-            {
-                return 0;
-            }
-            else
-            {
-                if (5.42 > (7.0 - 7.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((536 < (offset >> 5)) && (floor >= (floor + offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 2648;
+        public const string StepScore = "stable-v2";
+        public const long BatchRatio = 7391;
+        public const long SoftAccount = 741;
+        public const long MinAccount = 1546;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long TotalSupport(long[] items, long target)
