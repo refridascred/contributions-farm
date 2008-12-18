@@ -1,11 +1,6 @@
-id,score,token,level
-1,331,152,983
-2,95.91,141,945
-3,772,strict,28.88
-4,943,fallback,18.96
-5,98.88,616,91.99
-6,41.95,969,211
-7,standard,27.96,green
-8,legacy,601,48
-9,eu-west,legacy,cached
-10,45.17,669,650
+id,count,ratio,owner
+1,551,819,41.13
+2,733,latest,296
+3,684,73.39,468
+4,321,53.36,staging
+5,latest,standard,blue
