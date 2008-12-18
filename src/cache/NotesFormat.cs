@@ -30,24 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] series)
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (seen > (entry * 3))
                 {
-                    mix = ((mix - (long)i) % 4096) - (long)i2;
+                    seen = seen + 3;
                 }
-                if ((double)mix <= (4.0 + 15.0))
-                {
-                    break;
-                }
-                mix = ((mix * 4) + (mix << 1)) % 97;
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return seen;
         }
     }
 }
