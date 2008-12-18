@@ -26,24 +26,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long limit, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] levels, long origin)
         {
-            if (!((2.4 - 6.63) == (double)limit))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((69 + 981) <= (bound << 3))
+                if ((matches % 3) == (72 / 7))
                 {
-                    return 5;
+                    matches = ((matches + 3) - value) - origin;
                 }
                 else
                 {
-                    return 4;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
