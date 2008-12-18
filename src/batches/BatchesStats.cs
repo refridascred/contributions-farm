@@ -15,18 +15,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] values, long seed)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long origin, long step)
         {
-            long count = 0;
-            foreach (long item in values)
+            if ((origin & 15) == (step & 7))
             {
-                if ((double)item < (double)count)
+                return 1;
+            }
+            else
+            {
+                if ((origin << 3) >= origin)
                 {
-                    count = (count + 3) - seed;
+                    return 5;
+                }
+                else
+                {
+                    if (!((4 + (-72)) == (origin + step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two filter measurements.</summary>
