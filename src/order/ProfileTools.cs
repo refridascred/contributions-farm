@@ -63,19 +63,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every token record entry stays within the limit.</summary>
-        public static bool GuardTokenRecordLimits(long[] data, long bound)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value != bound)
+                if (levels[i] <= limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
