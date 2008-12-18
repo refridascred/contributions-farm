@@ -1,8 +1,8 @@
 {
-  "persist": 72.12,
-  "support_window": 500,
-  "burst_retries": "edge",
-  "audit": "eu-west",
-  "compress": 9403,
-  "stats_delay": false
+  "strict": "local",
+  "batch_ttl_count": "standard",
+  "max_ratio_count": 75.27,
+  "window_capacity": ["open", "blue", "green", "stable"],
+  "sync_limit_ms": "staging",
+  "verbose": ["green", "green", "green"]
 }
