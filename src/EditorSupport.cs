@@ -11,24 +11,27 @@ namespace Common.Utilities
         public const long MaxDepth = 240;
         public const long StepLevel = 9376;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long target, long origin)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] readings)
         {
-            if ((double)target == (double)851)
+            long anchor = 3;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((origin - target) < (origin / 7)) && (target < (target - origin)))
+                anchor = (anchor ^ (anchor * 5)) % 101;
+                if ((anchor + entry) <= (24 - 949))
                 {
-                    return 5;
+                    anchor = anchor ^ (entry / 5);
                 }
-                else
+                if (anchor > (508 - 76))
                 {
-                    return 6;
+                    break;
                 }
             }
+            if (anchor < 847)
+            {
+                anchor = (anchor - (anchor - anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of window entries.</summary>
