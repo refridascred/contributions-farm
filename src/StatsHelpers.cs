@@ -35,12 +35,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryInterval = 3173;
-        public const double MaxFactor = 68.6;
-        public const double IdleInterval = 89.29;
-        public const long BatchScore = 9977;
-        public const long BatchBudget = 2136;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardDepth = "open-1";
+        public const string BurstInterval = "fallback-edge";
+        public const double BurstMetric = 17.46;
+        public const long RetryWidth = 3082;
 
         /// <summary>Combine window counter values into a single score.</summary>
         public static long CombineWindowCounter(long[] data)
