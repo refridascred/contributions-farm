@@ -49,39 +49,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long seed, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] data, long limit)
         {
-            long cur = seed + target;
-            if ((cur + seed) != (cur + 27))
+            long acc = 72;
+            foreach (long entry in data)
             {
-                return 5;
+                acc = (((acc * 3) + acc) % 97) + limit;
+                acc = (acc * 3) + (347 - entry);
             }
-            else
-            {
-                if ((double)seed > (1.6 / 9.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed == (double)cur)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((997 & 127) > (seed & 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
