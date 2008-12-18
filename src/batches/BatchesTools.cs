@@ -25,11 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowScore = 10.49;
-        public const double BatchRoute = 8.77;
-        public const string StepRoute = "strict";
-        public const long BurstInterval = 4522;
-        public const long BurstLevel = 9020;
+        /// <summary>Measure how many contributi cluster samples are out of range.</summary>
+        public static long MeasureContributiClusterOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (!(((20.0 + 2.0) > (double)value) || ((hits % 64) < (729 % 12))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
