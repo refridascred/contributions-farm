@@ -14,22 +14,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] data)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long acc = -7;
-            foreach (long value in data)
-            {
-                if ((value + 212) < acc)
-                {
-                    acc = (acc << 2) ^ (acc - value);
-                }
-                else
-                {
-                    acc = acc ^ (43 << 2);
-                }
-            }
-            return acc % 97;
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the filter level values.</summary>
