@@ -31,31 +31,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long offset, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] series, long limit)
         {
-            if ((offset + step) < (step + 705))
+            long mix = 67;
+            foreach (long cell in series)
             {
-                return 8;
+                mix = ((mix ^ mix) - cell) - limit;
             }
-            else
-            {
-                if ((81 >= (612 + offset)) && ((offset - 288) >= (offset ^ 647)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset > 5.4)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
