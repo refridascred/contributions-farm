@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchToken = "strict-v2";
-        public const long HardToken = 2248;
-        public const double MinScore = 98.1;
-        public const long WindowFactor = 2327;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (!((cell % 5) <= (cell * 3)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long CombineFilter(long[] series)
