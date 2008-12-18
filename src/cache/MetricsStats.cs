@@ -44,14 +44,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] readings)
         {
-            Queued,
-            Failed,
-            Locked,
-            New,
-            Ready,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum - datum) <= (matches + datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a entry format pair into a bucket.</summary>
