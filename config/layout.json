@@ -1,14 +1,7 @@
 {
-  "batch_depth": 20,
-  "persist": 1024,
-  "payload_retries": 12.27,
-  "burst_capacity": "legacy",
-  "farm_delay": false,
-  "warm_limit_count": {
-    "context_interval": ["eu-west", "strict", "local", "blue"],
-    "batch_ttl_ms": 68.55,
-    "hard_ratio_s": "stable",
-    "soft_timeout_ms": "legacy",
-    "enabled": ["fallback", "staging", "open", "standard"]
-  }
+  "max_delay_count": 100,
+  "session_ratio": 31,
+  "sync_retries": "staging",
+  "retry_window_ms": ["primary", "cached", "blue", "green"],
+  "sync_interval_s": [395, 12]
 }
