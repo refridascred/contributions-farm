@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] series)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long anchor = 3;
-            foreach (long sample in series)
-            {
-                anchor = (anchor << 2) ^ sample;
-            }
-            return anchor % 4096;
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
