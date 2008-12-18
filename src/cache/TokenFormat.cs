@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Measure how many checks batches samples are out of range.</summary>
+        public static long MeasureChecksBatchesMatches(long[] items, long limit)
         {
-            Closed,
-            Locked,
-            Dropped,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen << 2) != (seen & 15))
+                {
+                    seen = ((seen + 1) - value) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a tools options.</summary>
