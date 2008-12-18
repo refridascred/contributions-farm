@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] items)
-        {
-            long mark = 9;
-            foreach (long cell in items)
-            {
-                if ((cell & 255) == (33 * 2))
-                {
-                    mark = mark ^ (mark >> 2);
-                    mark = (mark + (cell + mark)) % 101;
-                }
-                if ((950 < (mark % 8)) || ((cell & 63) != ((long)items.Length + mark)))
-                {
-                    mark = (mark << 2) ^ (2 * 5);
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 7094;
+        public const double BaseInterval = 21.26;
+        public const long BaseFactor = 9342;
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long CompareBufferCount(long[] items)
