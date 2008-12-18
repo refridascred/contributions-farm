@@ -46,10 +46,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 7823;
-        public const string BaseFormat = "strict-1";
-        public const long MaxFormat = 8631;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Failed,
+            Draft,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
