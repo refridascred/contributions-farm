@@ -13,11 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinCounter = 55.48;
-        public const long HardWidth = 2216;
-        public const long IdleCounter = 8807;
-        public const long LimitWidth = 2280;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Pending,
+            Locked,
+            Active,
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TotalAccount(long[] readings, long limit)
