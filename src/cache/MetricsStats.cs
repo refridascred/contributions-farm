@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheSize = 4992;
-        public const long MaxDepth = 8530;
-        public const long CacheCount = 9043;
-        public const long BurstWidth = 8752;
-        public const long HardFactor = 3949;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Roll a order counter forward.</summary>
         public static long RollOrder(long bound)
