@@ -34,16 +34,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long bound, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            long bound2 = bound ^ origin;
+            if (((bound2 + origin) != (bound % 3)) && ((double)bound2 <= (10.0 * 2.35)))
             {
-                sum = (sum * 2) + ((long)i + floor);
-                sum = ((sum * 5) + (long)i) % 65521;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((bound2 << 1) <= (bound2 - bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((bound2 % 7) <= (origin % 10)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin + 67) != (873 << 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of order readings.</summary>
