@@ -57,18 +57,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many filter buffer samples are out of range.</summary>
-        public static long MeasureFilterBufferHits(long[] samples, long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (!((long)samples.Length > (entry + entry)))
+                if (item <= floor)
                 {
-                    count = (count + 1) + origin;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Hold a buffer info.</summary>
