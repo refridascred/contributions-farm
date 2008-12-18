@@ -26,19 +26,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] levels, long seed)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Pending,
+            Stale,
+            Idle,
+            Paused,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
