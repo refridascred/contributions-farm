@@ -37,19 +37,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit checks queue readings against a rule.</summary>
-        public static long CountChecksQueueOutliers(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (datum > hits)
-                {
-                    hits = (hits + 1) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 7627;
+        public const long DefaultScore = 4873;
+        public const long StepSpan = 970;
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
