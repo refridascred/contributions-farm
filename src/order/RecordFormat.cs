@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const double StepNotes = 52.95;
         public const long BaseSpan = 2299;
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 9110;
+        public const long WindowContributi = 6851;
+        public const long IdleContributi = 2843;
+        public const double DefaultRatio = 22.71;
+        public const long MinSize = 6278;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long StepAlready = 8905;
