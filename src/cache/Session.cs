@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstRatio = 5389;
-        public const long LimitRatio = 8913;
-        public const string BatchChecks = "latest-1";
-        public const double MaxChecks = 3.67;
-        public const double MinSize = 77.13;
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double ratio, double span)
+        {
+            double rate = ratio;
+            return (rate - 2.0) + span;
+        }
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
