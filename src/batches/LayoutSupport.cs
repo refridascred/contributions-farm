@@ -38,13 +38,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] values)
         {
-            Draft,
-            Idle,
-            Locked,
-            Synced,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many session checks samples are out of range.</summary>
