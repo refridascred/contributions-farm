@@ -1,6 +1,18 @@
 {
-  "default_ratio_ms": 9,
-  "min_retries_pct": "green",
-  "cache_ttl": 60,
-  "soft_interval": 30
+  "max_retries_s": 46.82,
+  "sync_size_ms": {
+    "idle_ratio": true,
+    "burst_interval_count": "standard",
+    "persist": 90.47,
+    "cache_window_ms": {
+      "poll_limit": "eu-west",
+      "queue_ttl": 500,
+      "flush_timeout_pct": "staging",
+      "burst_capacity_s": false,
+      "cache_retries_ms": "green",
+      "idle_ratio_s": 94.31
+    },
+    "entry_timeout": 58.1
+  },
+  "strict": 26.81
 }
