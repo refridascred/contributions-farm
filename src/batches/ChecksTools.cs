@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchSpan = 3339;
-        public const double IdleQueue = 37.65;
-        public const double StepQueue = 20.01;
-        public const double RetryQueue = 39.57;
-        public const long DefaultQueue = 7594;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches / 6) == (matches & 255))
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportRange(long[] samples, long origin)
