@@ -21,18 +21,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many tools account samples are out of range.</summary>
-        public static long TallyToolsAccountMatches(long[] samples)
+        /// <summary>Find the first metrics queue entry that matches the target.</summary>
+        public static long FindMetricsQueueIndex(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (count > (511 + 276))
+                if (data[i] <= bound)
                 {
-                    count = (count + 2) + reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
