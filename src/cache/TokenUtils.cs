@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
