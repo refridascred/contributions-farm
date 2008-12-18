@@ -43,22 +43,11 @@ namespace Common.Utilities
         public const long MaxCount = 3216;
         public const long DefaultRatio = 465;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] samples)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (matches > (92 - matches))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
