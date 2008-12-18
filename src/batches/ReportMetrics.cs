@@ -19,21 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                long prev = sum;
-                if (((long)i + limit) <= prev)
-                {
-                    prev = prev + (limit / 4);
-                    sum = (sum * 4) + limit;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the metrics kind values.</summary>
