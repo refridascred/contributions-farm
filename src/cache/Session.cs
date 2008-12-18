@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 1669;
-        public const long LimitCluster = 5410;
-        public const long MaxCluster = 6729;
-        public const long RetryCluster = 8637;
+        /// <summary>Digest a series of layout command entries.</summary>
+        public static long TallyLayoutCommand(long[] levels)
+        {
+            long mix = 326;
+            foreach (long reading in levels)
+            {
+                mix = (mix + ((long)levels.Length + reading)) % 4096;
+                mix = mix - (mix - mix);
+                mix = ((mix << 3) ^ (mix - 146)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Combine counter order values into a single score.</summary>
         public static long WeighCounterOrder(long[] items)
