@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public string Stamp { get; set; } = "";
-            public double Size { get; set; }
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a schema record.</summary>
