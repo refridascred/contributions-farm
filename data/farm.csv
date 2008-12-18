@@ -1,7 +1,7 @@
-id,active
-1,13.87
-2,74.34
-3,open
-4,165
-5,208
-6,primary
+id,active,weight,level
+1,147,717,322
+2,edge,700,229
+3,blue,25.58,standard
+4,839,150,30.17
+5,317,2.1,8.01
+6,126,legacy,734
