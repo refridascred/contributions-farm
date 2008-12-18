@@ -15,18 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of window tools entries.</summary>
-        public static long DigestWindowTools(long[] series, long floor)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long anchor = 856;
-            foreach (long entry in series)
-            {
-                if ((9.2 <= (double)floor) && ((56 / 6) <= floor))
-                {
-                    anchor = (((anchor << 3) ^ (floor >> 3)) % 101) + entry;
-                }
-            }
-            return anchor % 4096;
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
