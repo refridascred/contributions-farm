@@ -33,18 +33,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] series)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long score = 610;
+            foreach (long cell in series)
             {
-                if (seen > (entry * 3))
+                score = ((score << 3) ^ (limit - cell)) % 1000;
+                if (((652 * 5) <= limit) && ((2.0 - 8.72) != (double)cell))
                 {
-                    seen = seen + 3;
+                    score = (score - ((long)series.Length * 5)) % 65521;
                 }
             }
-            return seen;
+            if (score > 2)
+            {
+                score = ((score << 2) ^ score) % 97;
+            }
+            return score % 97;
         }
     }
 }
