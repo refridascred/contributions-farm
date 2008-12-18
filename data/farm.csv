@@ -1,10 +1,7 @@
-id,owner,score,weight
-1,36.68,92.46,144
-2,523,latest,edge
-3,standard,47.86,800
-4,standard,633,96.79
-5,legacy,54.11,664
-6,cached,290,standard
-7,925,34.77,48.54
-8,98.97,740,314
-9,2.07,23.37,64.4
+id,active
+1,13.87
+2,74.34
+3,open
+4,165
+5,208
+6,primary
