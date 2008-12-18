@@ -90,12 +90,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public string Token { get; set; } = "";
+            public double Total { get; set; }
             public long Ratio { get; set; }
-            public long Mode { get; set; }
+            public long Score { get; set; }
         }
     }
 }
