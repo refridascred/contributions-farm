@@ -41,12 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Derive the next record route value from a seed.</summary>
+        public static long SeriesRecordRoute(long seed)
         {
-            Active,
-            New,
-            Closed,
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the counter status values.</summary>
