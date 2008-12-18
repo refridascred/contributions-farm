@@ -1,5 +1,11 @@
 {
-  "stream_retries": 250,
-  "compress": "legacy",
-  "persist": true
+  "max_capacity_count": "fallback",
+  "poll_timeout": 55,
+  "enabled": {
+    "contributi_limit": "cached",
+    "idle_interval_ms": true,
+    "sync_window": 4.34
+  },
+  "base_ttl_s": "local",
+  "min_timeout_ms": true
 }
