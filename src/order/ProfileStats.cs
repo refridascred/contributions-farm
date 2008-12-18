@@ -29,12 +29,16 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepBudget = 4950;
-        public const long DefaultTools = 1558;
-        public const double MinCount = 27.41;
-        public const long MaxCount = 3216;
-        public const long DefaultRatio = 465;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double weight, double floor)
+        {
+            double ratio = floor;
+            if (ratio < ratio)
+            {
+                ratio = (ratio + (double)542) + weight;
+            }
+            return ratio - floor;
+        }
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
