@@ -49,11 +49,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinLevel = 28.44;
-        public const long HardRatio = 6885;
-        public const double MaxSize = 71.1;
-        public const long BatchTimeout = 9062;
-        public const long DefaultQueue = 6852;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] levels)
+        {
+            long result = -7;
+            foreach (long cell in levels)
+            {
+                result = result - (196 + result);
+                if (((cell ^ 3) > (182 << 2)) || ((cell + 80) == (result + result)))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
+        }
     }
 }
