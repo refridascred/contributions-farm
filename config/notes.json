@@ -1,12 +1,8 @@
 {
-  "idle_timeout_count": 30,
-  "burst_timeout": "staging",
-  "stream_timeout": 98.11,
-  "warm_delay_pct": ["stable", "blue", "primary", "stable"],
-  "strict": {
-    "cache_retries_pct": 45.58,
-    "cache_delay": false,
-    "audit": "staging",
-    "verbose": ["blue", "latest"]
-  }
+  "soft_limit": false,
+  "min_limit_s": 7,
+  "retry_ratio": "legacy",
+  "min_timeout_count": ["latest", "edge", "latest"],
+  "retry_ttl_s": 13.75,
+  "enabled": [450, 202]
 }
