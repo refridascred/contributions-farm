@@ -33,17 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] data, long step)
+        /// <summary>Digest a series of metric report entries.</summary>
+        public static long ScoreMetricReport(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 677;
+            foreach (long datum in samples)
             {
-                if (data[i] >= step)
+                if ((98 & 127) <= score)
                 {
-                    return (long)i;
+                    score = ((score - (score & 15)) % 97) - datum;
+                }
+                else
+                {
+                    score = score ^ (2 >> 3);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the batch state values.</summary>
