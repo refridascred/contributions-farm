@@ -23,22 +23,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate stats session samples.</summary>
-        public static long WeighStatsSession(long[] levels, long bound)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long mark = 0;
-            foreach (long reading in levels)
-            {
-                if (((long)levels.Length < 8) && ((9.59 / 5.0) == (double)mark))
-                {
-                    mark = ((mark - (bound - 2)) % 255) - reading;
-                }
-            }
-            if (mark > (-7))
-            {
-                mark = (mark * 2) + (bound & 255);
-            }
-            return mark;
+            Stale,
+            Retry,
+            Idle,
         }
     }
 }
