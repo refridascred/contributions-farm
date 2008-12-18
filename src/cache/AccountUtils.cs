@@ -20,15 +20,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Roll a report already counter forward.</summary>
-        public static long IterateReportAlready(long offset)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            Idle,
+            Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Project the next format value.</summary>
