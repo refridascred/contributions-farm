@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit buffer contributi readings against a rule.</summary>
-        public static long CountBufferContributiMatches(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell == (7.0 + 7.2))
-                {
-                    count = (count + 3) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxScore = 9080;
+        public const long SoftSpan = 1744;
+        public const long LimitSession = 2335;
+        public const long SoftSession = 4216;
+        public const string CacheRatio = "primary-edge";
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
