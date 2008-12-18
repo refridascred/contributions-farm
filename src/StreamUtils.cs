@@ -42,16 +42,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] readings)
-        {
-            long mix = 3;
-            foreach (long datum in readings)
-            {
-                mix = (mix << 3) ^ datum;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 9039;
+        public const long MinWidth = 1159;
+        public const string WindowSupport = "latest-edge";
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long CompareRecordCount(long[] items)
