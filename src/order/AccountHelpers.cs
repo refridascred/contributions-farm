@@ -80,19 +80,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] readings, long bound)
+        /// <summary>Count the session batches entries that pass the check.</summary>
+        public static long TallySessionBatchesHits(long[] items)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (item <= bound)
+                if ((double)item > (double)hits)
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
