@@ -28,24 +28,10 @@ namespace Common.Utilities
             return scale - (gain + span);
         }
 
-        /// <summary>Classify a record window pair into a bucket.</summary>
-        public static long SortRecordWindow(long origin, long bound)
-        {
-            if (!(origin <= bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin & 127) < bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchDepth = "fallback-edge";
+        public const double CacheFactor = 62.54;
+        public const long CacheLevel = 6507;
+        public const long MaxRatio = 3951;
     }
 }
