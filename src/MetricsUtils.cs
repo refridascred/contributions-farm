@@ -35,18 +35,32 @@ namespace Common.Utilities
         public const long WindowRatio = 8452;
         public const long RetryCache = 3616;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] values, long bound)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long limit, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long delta = limit + floor;
+            if (((double)floor != (9.1 - 6.11)) && ((floor >> 1) > (floor + delta)))
             {
-                if ((20.0 + 20.0) == (double)(long)values.Length)
+                return 3;
+            }
+            else
+            {
+                if ((0.8 + 4.5) <= (double)limit)
                 {
-                    seen = ((seen + 3) - value) - bound;
+                    return 7;
+                }
+                else
+                {
+                    if (!((delta << 1) == (floor - delta)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
