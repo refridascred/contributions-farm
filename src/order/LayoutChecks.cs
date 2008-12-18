@@ -75,15 +75,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double gain, double offset)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            double bias = (double)899;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = ((bias - (double)465) + (double)(long)i) - gain;
-            }
-            return bias + offset;
+            public double Score { get; set; }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
