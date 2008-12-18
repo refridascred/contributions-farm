@@ -37,12 +37,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double gain, double span)
         {
-            public string Owner { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
+            double mean = (gain + span) / 3.0;
+            return mean + mean;
         }
     }
 }
