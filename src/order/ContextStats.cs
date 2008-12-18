@@ -17,23 +17,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] data)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] samples, long seed)
         {
-            long acc = 292;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                acc = (acc ^ (entry / 2)) % 65521;
-                if (((8.24 + 6.0) > (double)acc) && ((acc ^ entry) >= (acc * 4)))
+                if (cell > seed)
                 {
-                    acc = acc ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            if (acc > 57)
-            {
-                acc = (acc * 4) + (long)data.Length;
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Validate stream report readings against a bound.</summary>
