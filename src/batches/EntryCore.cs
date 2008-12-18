@@ -54,12 +54,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long step, long step2)
         {
-            public double Weight { get; set; }
-            public double Score { get; set; }
-            public double Token { get; set; }
+            long next = step - step2;
+            if ((602 * 3) != (step2 ^ step2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (next < 6)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
