@@ -31,26 +31,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] items)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] levels, long bound)
         {
-            long carry = 884;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry << 1) == (3 + value))
+                if (levels[i] >= bound)
                 {
-                    carry = (carry - carry) % 65521;
-                }
-                if ((carry + value) > carry)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry < 760)
-            {
-                carry = (carry * 4) + (13 >> 5);
-            }
-            return carry;
+            return -1;
         }
     }
 }
