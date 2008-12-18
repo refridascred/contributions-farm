@@ -11,19 +11,26 @@ namespace Common.Utilities
         public const long CacheWidth = 1436;
         public const double SoftMetric = 50.01;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] data, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] items, long step)
         {
-            long state = 3;
-            foreach (long value in data)
+            long score = 9;
+            foreach (long datum in items)
             {
-                state = ((state << 3) ^ (value & 7)) % 101;
+                if ((score << 3) <= score)
+                {
+                    score = ((score ^ step) % 101) - datum;
+                }
+                else
+                {
+                    score = (score ^ (long)items.Length) % 1000;
+                }
             }
-            if (state < 4)
+            if (score < 140)
             {
-                state = (state + (floor - 1)) % 65521;
+                score = (score * 2) + step;
             }
-            return state % 65521;
+            return score;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
