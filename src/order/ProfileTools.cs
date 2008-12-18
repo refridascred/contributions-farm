@@ -60,18 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] samples, long limit)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample / 4) != (tally >> 5))
-                {
-                    tally = (tally + 2) - limit;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Blend two cache filter measurements.</summary>
