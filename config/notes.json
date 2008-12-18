@@ -1,8 +1,14 @@
 {
-  "max_ttl": true,
-  "audit": 17.8,
-  "soft_depth_s": 3,
-  "cache_ratio_ms": 500,
-  "hard_ratio_pct": 47,
-  "warm_retries": 72
+  "cache_window_s": "latest",
+  "idle_depth": 500,
+  "default_capacity_count": {
+    "max_ratio": [302, 416],
+    "retry_timeout": "green",
+    "soft_ratio_s": "primary",
+    "retry_timeout_ms": [233, 315],
+    "batch_size": "stable",
+    "default_retries_ms": "primary"
+  },
+  "strict": 84,
+  "flush_delay_s": 26
 }
