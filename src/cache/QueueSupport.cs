@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate checks support samples.</summary>
-        public static long ScoreChecksSupport(long[] readings, long bound)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long state = 266;
-            foreach (long value in readings)
-            {
-                if ((bound ^ value) == (value + value))
-                {
-                    state = (state ^ (state + bound)) % 101;
-                    state = (state - value) % 101;
-                }
-                if (((state + value) <= (value * 5)) && ((value ^ state) >= (value + value)))
-                {
-                    state = (state ^ value) % 4096;
-                }
-            }
-            return state;
+            public double Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the format payload entries that pass the check.</summary>
