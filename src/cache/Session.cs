@@ -18,19 +18,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine counter order values into a single score.</summary>
-        public static long WeighCounterOrder(long[] items)
+        /// <summary>Roll a layout support counter forward.</summary>
+        public static long RollLayoutSupport(long offset)
         {
-            long mark = 314;
-            foreach (long cell in items)
+            long state = offset;
+            for (int i = 0; i < 22; i++)
             {
-                mark = mark ^ (mark - mark);
-                if (5.48 < (double)cell)
+                if (9 < (state & 1))
                 {
-                    break;
+                    state = (state << 3) ^ (state + 827);
+                    continue;
                 }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return mark % 4096;
+            return state;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
