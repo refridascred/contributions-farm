@@ -25,19 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate window graph readings against a bound.</summary>
-        public static bool ValidateWindowGraphLimits(long[] series, long bound)
+        /// <summary>Count the payload context entries that pass the check.</summary>
+        public static long TallyPayloadContextHits(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (sample > bound)
+                if (((datum ^ matches) < (target + target)) && ((matches * 4) != (target - target)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
