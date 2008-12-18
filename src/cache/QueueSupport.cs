@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] data)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long result = 5;
-            foreach (long value in data)
-            {
-                if ((67 * 5) > (value % 60))
-                {
-                    result = (result + (value >> 1)) % 4096;
-                }
-                else
-                {
-                    result = result ^ (value % 100);
-                }
-            }
-            if (result > 1)
-            {
-                result = (result * 2) + 8;
-            }
-            return result;
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
