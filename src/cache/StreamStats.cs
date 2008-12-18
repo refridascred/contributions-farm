@@ -23,10 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseRatio = 8755;
-        public const double WindowFarm = 83.07;
-        public const long CacheFarm = 4276;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seen + 7) > (seen ^ cell))
+                {
+                    seen = (seen + 1) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a profile reading.</summary>
         public static double ScaleProfile(double rate, double offset)
