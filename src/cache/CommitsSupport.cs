@@ -66,21 +66,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] readings)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long offset, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long gap = offset - bound;
+            if (bound <= gap)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!(bound >= (bound + gap)))
                 {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
     }
 }
