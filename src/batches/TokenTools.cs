@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] series, long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long item in series)
+            long total = 228;
+            foreach (long reading in series)
             {
-                if (item > floor)
+                if ((floor + total) != (6 - floor))
                 {
-                    found = false;
-                    break;
+                    total = (total + (-84)) ^ reading;
                 }
             }
-            return found;
+            if (total < (-91))
+            {
+                total = (total ^ (floor % 3)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a graph entry.</summary>
