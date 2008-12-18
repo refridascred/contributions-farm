@@ -41,18 +41,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many queue stream samples are out of range.</summary>
-        public static long MeasureQueueStreamMatches(long[] samples)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long total = 30;
+            foreach (long reading in readings)
             {
-                if (((count / 6) >= (-3)) && ((item >> 2) <= item))
-                {
-                    count = count + 2;
-                }
+                total = (((total << 3) ^ (6 << 3)) % 65521) ^ reading;
             }
-            return count;
+            if (total < 88)
+            {
+                total = (total + (seed + total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Describe the session kind values.</summary>
