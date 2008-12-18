@@ -16,21 +16,38 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long seed, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (seed <= (seed + seed))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((seed / 3) < seed)
                 {
-                    if ((samples[i] ^ samples[j]) < 13)
+                    return 3;
+                }
+                else
+                {
+                    if (!((seed / 7) < (bound % 97)))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound + bound) <= bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
