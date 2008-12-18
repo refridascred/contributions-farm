@@ -1,10 +1,5 @@
 {
-  "enabled": "legacy",
-  "audit": 5.42,
-  "entry_delay": {
-    "min_ttl": "edge",
-    "strict": 15.01,
-    "batch_retries": true,
-    "max_delay_count": ["open", "blue", "green"]
-  }
+  "cache_retries_s": 60,
+  "stats_interval": "cached",
+  "poll_threshold_count": true
 }
