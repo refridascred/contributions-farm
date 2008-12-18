@@ -13,19 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] items, long offset)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long score = 9;
-            foreach (long datum in items)
-            {
-                score = ((score + (score - score)) % 101) + datum;
-                if ((double)offset <= (20.0 * 5.6))
-                {
-                    break;
-                }
-            }
-            return score;
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Accumulate format samples.</summary>
