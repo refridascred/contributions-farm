@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] samples, long bound)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long floor, long step)
         {
-            long count = 0;
-            foreach (long value in samples)
+            if (((9 >> 2) == (floor & 7)) || ((floor ^ step) < (floor - floor)))
             {
-                if ((count & 3) < ((long)samples.Length - 47))
+                return 4;
+            }
+            else
+            {
+                if ((59 / 8) <= floor)
                 {
-                    count = ((count + 1) - value) - bound;
+                    return 6;
+                }
+                else
+                {
+                    if (((floor + step) <= (0 + floor)) && ((double)floor != (1.93 * 6.3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
