@@ -31,21 +31,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] items)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 265;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                total = ((total - item) % 97) + limit;
+                if (((double)item > (double)total) && ((double)(long)values.Length != (7.0 - 7.7)))
                 {
-                    if ((items[i] ^ items[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (total > (-16))
+            {
+                total = ((total << 2) ^ (1 * 5)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Hold a checks record.</summary>
