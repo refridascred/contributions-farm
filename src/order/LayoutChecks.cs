@@ -36,11 +36,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxRatio = 5767;
-        public const long RetryAlready = 6479;
-        public const double DefaultDepth = 65.69;
-        public const double HardAlready = 90.19;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Draft,
+            Synced,
+            Active,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Look up the position of a batches route sample.</summary>
         public static long FindBatchesRouteIndex(long[] items, long step)
