@@ -47,20 +47,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a format token counter forward.</summary>
-        public static long StepFormatToken(long origin)
+        /// <summary>Match up tools stats samples.</summary>
+        public static long OverlapToolsStatsCount(long[] data)
         {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = ((result << 3) ^ result) ^ (long)i2;
-                    result = (result << 3) ^ origin;
+                    if ((data[i] + data[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Find the first order payload entry that matches the target.</summary>
