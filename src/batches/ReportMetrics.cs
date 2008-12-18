@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] series)
         {
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)value != (7.0 + 9.99))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
