@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double bias, double span)
-        {
-            double gain = span;
-            return gain - (bias + bias);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 6002;
+        public const string DefaultSession = "standard-1";
+        public const long LimitFactor = 9367;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long StepNotes(long target)
