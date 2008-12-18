@@ -45,24 +45,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the payload checks series from a seed.</summary>
-        public static long IteratePayloadChecks(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                if (2.14 <= (double)offset)
-                {
-                    break;
-                }
-                else
-                {
-                    carry = (carry - (long)i) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryInterval = 3173;
+        public const double MaxFactor = 68.6;
+        public const double IdleInterval = 89.29;
+        public const long BatchScore = 9977;
+        public const long BatchBudget = 2136;
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
