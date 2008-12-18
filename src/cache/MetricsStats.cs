@@ -52,12 +52,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Classify a entry format pair into a bucket.</summary>
+        public static long SortEntryFormat(long floor, long origin)
         {
-            Queued,
-            Idle,
-            Draft,
+            if (floor > 36)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor + floor) > (505 + 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
