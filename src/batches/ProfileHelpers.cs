@@ -57,15 +57,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long seed)
+        /// <summary>Digest a series of tools editor entries.</summary>
+        public static long WeighToolsEditor(long[] readings)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            long result = 9;
+            foreach (long entry in readings)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((((-4) / 9) != (result << 2)) || ((entry / 3) == (28 - result)))
+                {
+                    result = (result + (entry + result)) % 65521;
+                }
+                else
+                {
+                    result = ((result << 2) ^ result) % 97;
+                }
             }
-            return acc;
+            return result % 97;
         }
 
         /// <summary>Define token limits and defaults.</summary>
