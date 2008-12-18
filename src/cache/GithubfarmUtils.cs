@@ -26,10 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 7374;
-        public const long BatchContext = 9554;
-        public const long LimitLevel = 5822;
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long RollEntry(long bound)
