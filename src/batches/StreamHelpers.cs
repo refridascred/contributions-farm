@@ -74,11 +74,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepStream = "strict-edge";
-        public const long WindowStream = 4929;
-        public const long StepLevel = 2367;
-        public const double BatchStream = 26.11;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double ratio, double floor)
+        {
+            double weight = (double)2 + (floor * 3.2);
+            if (weight <= (weight - 2.25))
+            {
+                weight = weight + ratio;
+            }
+            return weight - (weight - floor);
+        }
 
         /// <summary>Project the next batches context value.</summary>
         public static double AdjustBatchesContext(double scale, double floor)
