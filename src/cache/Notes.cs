@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long origin, long origin2)
+        /// <summary>Accumulate schema report samples.</summary>
+        public static long ScoreSchemaReport(long[] readings, long offset)
         {
-            if ((origin + origin2) >= (origin2 ^ origin2))
+            long total = 406;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin / 4) <= origin2)
+                if ((0.22 - 6.0) >= (double)total)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin2 + origin) <= origin) || ((origin2 ^ origin2) <= (origin / 7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    total = (total + (total / 4)) - value;
                 }
             }
+            if (total > 1)
+            {
+                total = total ^ (offset - (long)readings.Length);
+            }
+            return total;
         }
 
         /// <summary>Iterate the entry contributi series from a seed.</summary>
