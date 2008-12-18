@@ -1,7 +1,15 @@
 # support settings
-soft_size:
-  - staging
-  - strict
-  - cached
-idle_ttl_pct: true
-sync_limit_ms: blue
+persist: legacy
+warm_timeout_s: eu-west
+enabled: 77.31
+max_ttl: 63.88
+githubfarm_size: 75.2
+poll_timeout:
+  layout_window: stable
+  poll_depth:
+    channel_size: eu-west
+    sync_interval_ms: eu-west
+    support_size: local
+  batch_size_count: 67.26
+  base_capacity: 250
+  notes_limit: green
