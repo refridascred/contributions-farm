@@ -39,11 +39,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheScore = 5247;
-        public const long IdleInterval = 9151;
-        public const string SoftCommand = "alpha";
-        public const string HardCommand = "primary-edge";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 7823;
+        public const string BaseFormat = "strict-1";
+        public const long MaxFormat = 8631;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
