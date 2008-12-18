@@ -77,24 +77,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long origin, long target)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            if ((origin + origin) <= origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((29 + target) > (target + 95))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Closed,
+            Draft,
+            Dropped,
+            Done,
         }
     }
 }
