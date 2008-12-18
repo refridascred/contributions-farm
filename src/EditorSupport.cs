@@ -12,13 +12,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Fold a list of account command readings.</summary>
+        public static long FoldAccountCommand(long[] samples)
         {
-            Ready,
-            Synced,
-            Locked,
-            Done,
+            long mix = 3;
+            foreach (long value in samples)
+            {
+                mix = (mix ^ (value % 64)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
