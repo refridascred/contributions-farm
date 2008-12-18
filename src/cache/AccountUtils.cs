@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many buffer order samples are out of range.</summary>
-        public static long CountBufferOrderGaps(long[] samples, long seed)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seed >= 6.0)
+                if (samples[i] < step)
                 {
-                    seen = (seen + 3) - sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
