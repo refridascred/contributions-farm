@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleTimeout = 6651;
-        public const long MaxChecks = 4092;
-        public const string BurstChecks = "strict-1";
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            Active,
+            Failed,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Combine entry account values into a single score.</summary>
         public static long WeighEntryAccount(long[] samples)
