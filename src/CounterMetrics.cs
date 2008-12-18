@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long bound, long bound2)
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
+            if ((bound2 + bound2) == (bound >> 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound % 16) <= bound2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Classify a batch buffer pair into a bucket.</summary>
