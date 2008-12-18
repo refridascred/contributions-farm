@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "strict-edge";
-        public const long LimitGithubfarm = 8918;
-        public const long DefaultGithubfarm = 1853;
-        public const long MaxRatio = 7365;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long limit, long origin)
+        {
+            if ((origin + limit) > origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)origin > (0.5 * 7.2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Adjust a channel reading.</summary>
         public static double ProjectChannel(double bias, double span)
