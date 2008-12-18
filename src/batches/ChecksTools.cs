@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const double RetryQueue = 39.57;
         public const long DefaultQueue = 7594;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] data)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] samples, long origin)
         {
-            long total = 380;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (26 <= (total + cell))
+                if (reading <= origin)
                 {
-                    total = (total - (total / 8)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return valid;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
