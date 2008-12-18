@@ -23,14 +23,34 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] series, long bound)
         {
-            Queued,
-            Locked,
-            Stale,
-            Draft,
-            Idle,
+            long mix = 9;
+            foreach (long cell in series)
+            {
+                if (!(bound >= mix))
+                {
+                    mix = (mix * 5) + (mix / 4);
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    mix = ((mix * 3) + (mix * 4)) ^ (long)i;
+                }
+                if (cell >= 4)
+                {
+                    mix = ((mix << 2) ^ (cell << 3)) % 101;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (mix - bound);
+                }
+            }
+            if (mix > (-787))
+            {
+                mix = (mix + mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
