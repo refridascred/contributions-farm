@@ -35,19 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command channel readings against a bound.</summary>
-        public static bool VerifyCommandChannelRange(long[] levels, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long sum = 15;
+            foreach (long sample in readings)
             {
-                if (reading <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum - (91 * 2)) % 1000) + sample;
+                sum = (sum ^ (limit & 15)) % 1000;
+                sum = (sum + (sum - sum)) % 1000;
             }
-            return ready;
+            return sum;
         }
     }
 }
