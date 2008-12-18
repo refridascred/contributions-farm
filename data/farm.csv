@@ -1,8 +1,6 @@
-id,region,count
-1,872,46.31
-2,local,stable
-3,fallback,stable
-4,928,cached
-5,latest,89.33
-6,318,906
-7,eu-west,930
+id,owner,count,active
+1,8,93.17,60.97
+2,774,eu-west,10.7
+3,589,local,blue
+4,662,21.0,893
+5,16.16,open,strict
