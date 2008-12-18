@@ -32,19 +32,15 @@ namespace Common.Utilities
             return mean - (mean - rate);
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] items, long seed)
+        /// <summary>Fold a list of schema context readings.</summary>
+        public static long TallySchemaContext(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long mix = 97;
+            foreach (long cell in samples)
             {
-                if (entry != seed)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = (((mix * 3) + (cell >> 4)) % 97) - target;
             }
-            return valid;
+            return mix;
         }
     }
 }
