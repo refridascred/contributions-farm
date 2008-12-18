@@ -14,14 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            Pending,
-            Locked,
-            Retry,
-            Queued,
-            Stale,
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Grade a cluster commits value against two limits.</summary>
