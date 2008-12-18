@@ -12,13 +12,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public bool Weight { get; set; }
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchInterval = 22.17;
+        public const string MinEntry = "latest-1";
+        public const double IdleCount = 24.99;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long TallyQueueMatches(long[] series)
