@@ -47,14 +47,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Find the first session token entry that matches the target.</summary>
+        public static long FindSessionTokenIndex(long[] series, long offset)
         {
-            Paused,
-            Idle,
-            Closed,
-            Draft,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
