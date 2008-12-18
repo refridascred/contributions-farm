@@ -44,11 +44,16 @@ namespace Common.Utilities
         public const long StepSession = 3617;
         public const long IdleSession = 3168;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepInterval = "fallback-v2";
-        public const string BurstScore = "cached-1";
-        public const long BaseSpan = 5294;
-        public const long IdleSize = 1669;
-        public const string IdleRatio = "fallback";
+        /// <summary>Accumulate buffer commits samples.</summary>
+        public static long TotalBufferCommits(long[] values)
+        {
+            long anchor = 8;
+            foreach (long entry in values)
+            {
+                anchor = ((anchor + (anchor & 15)) % 255) ^ entry;
+                anchor = (anchor - (2 * 3)) % 97;
+            }
+            return anchor;
+        }
     }
 }
