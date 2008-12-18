@@ -46,19 +46,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate stream report readings against a bound.</summary>
-        public static bool ValidateStreamReportBounds(long[] items, long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (reading >= target)
+                if (floor < (seen >> 5))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
