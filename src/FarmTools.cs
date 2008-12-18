@@ -28,17 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] data, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((data[i] == origin) && ((data[i] % 2) == 0))
+                if ((double)seen <= (7.3 * 4.93))
                 {
-                    return (long)i;
+                    seen = ((seen + 1) ^ entry) - bound;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
