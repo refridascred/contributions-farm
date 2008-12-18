@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the token level values.</summary>
