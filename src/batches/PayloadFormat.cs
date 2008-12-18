@@ -43,12 +43,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] samples, long offset)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)offset == (3.2 * 5.75))
+                {
+                    count = (count + 2) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
