@@ -44,19 +44,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] readings, long offset)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] values)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] ^ values[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
