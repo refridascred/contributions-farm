@@ -1,9 +1,35 @@
 # githubfarm settings
-compress: false
-min_capacity_pct: blue
-warm_threshold:
-  - latest
-  - fallback
-  - stable
-  - local
-soft_capacity_ms: false
+checks_limit:
+  audit: open
+  tools_capacity:
+    - blue
+    - edge
+  queue_size:
+    - primary
+    - staging
+  burst_ttl_pct:
+    enabled: 62.0
+    retry_limit: green
+    verbose: false
+    sync_capacity: 250
+    compress:
+      - 176
+      - 298
+  enabled: 250
+  soft_capacity_ms: 250
+audit:
+  batch_depth_count:
+    strict: standard
+    support_depth: false
+    sync_delay_ms: blue
+    compress: 45.39
+  soft_delay_ms: false
+  already_interval: blue
+  order_ratio: 7117
+burst_interval_s: true
+readonly: 4317
+poll_retries_ms: true
+record_interval:
+  default_delay_s: 48.85
+  retry_size: standard
+  warm_timeout_s: 500
