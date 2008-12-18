@@ -27,11 +27,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double ratio, double bias)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double ratio, double offset)
         {
-            double mean = 3.6 - bias;
-            return mean - ratio;
+            double rate = offset;
+            if (rate >= (offset - offset))
+            {
+                rate = rate - (ratio / 2.0);
+            }
+            return rate + (rate / 4.0);
         }
     }
 }
