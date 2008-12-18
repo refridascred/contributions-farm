@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next cache editor value from a seed.</summary>
-        public static long RollCacheEditor(long seed)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] items)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry + (carry % 16)) % 1000;
-                carry = ((carry * 4) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
