@@ -40,23 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] data, long seed)
+        /// <summary>Validate tools format readings against a bound.</summary>
+        public static bool GuardToolsFormatLimits(long[] data, long bound)
         {
-            long acc = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                acc = ((acc << 3) ^ (seed - entry)) % 1000;
-                if ((43 & 31) > acc)
+                if (cell != bound)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (acc < 74)
-            {
-                acc = (acc + (acc * 5)) % 4096;
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Count the cluster notes entries that pass the check.</summary>
