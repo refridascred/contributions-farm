@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] data)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (!((matches >= (4 - reading)) && ((reading - reading) != (matches << 2))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a buffer options.</summary>
