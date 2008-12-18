@@ -1,15 +1,14 @@
 # Command notes
 
-Run the profile check before changing any notes limits.
-A format that stays idle for too long is moved to the queue list.
-The context report groups every account by format.
+Each notes is validated before it reaches the stream queue.
+Defaults for payload live in the config folder and can be overridden per environment.
 
-Keep window and notes names short and lowercase.
-Run the session check before changing any counter limits.
-Defaults for tools live in the config folder and can be overridden per environment.
+The session helpers are pure functions, so they are safe to call from any thread.
+The editor report groups every contributi by stats.
 
 ## Guidelines
 
-- Keep support values small
-- Log every farm change
-- Prefer session defaults
+- Document new githubfarm fields
+- Keep buffer values small
+- Review metrics limits each release
+- Log every counter change
