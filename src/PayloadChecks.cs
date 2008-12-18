@@ -57,21 +57,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up counter channel samples.</summary>
-        public static long CompareCounterChannelCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "standard-v2";
+        public const string BaseBudget = "legacy-v2";
+        public const long WindowChannel = 559;
     }
 }
