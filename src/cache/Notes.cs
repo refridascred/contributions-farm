@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstOrder = 28.29;
-        public const long StepOrder = 2113;
-        public const long LimitOrder = 9634;
-        public const long CacheDepth = 8006;
-        public const long LimitScore = 6222;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Locked,
+            Dropped,
+            Paused,
+            Stale,
+            Done,
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileMatches(long[] data)
