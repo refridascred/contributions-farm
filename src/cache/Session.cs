@@ -22,12 +22,14 @@ namespace Common.Utilities
             return (rate - 2.0) + span;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
+            Paused,
+            Draft,
+            Done,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
