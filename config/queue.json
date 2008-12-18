@@ -1,8 +1,7 @@
 {
-  "warm_depth_ms": "edge",
-  "verbose": 90,
-  "warm_ttl_s": 60,
-  "enabled": "latest",
-  "compress": 10.55,
-  "layout_threshold": 30
+  "account_capacity": "strict",
+  "window_depth": 100,
+  "metric_retries": false,
+  "default_ratio_count": ["staging", "open"],
+  "hard_ratio_ms": 17.34
 }
