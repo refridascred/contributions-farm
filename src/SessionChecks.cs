@@ -43,11 +43,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftInterval = 7595;
-        public const long LimitMetric = 5126;
-        public const long IdleBudget = 4393;
-        public const double RetryWidth = 12.79;
-        public const long IdleLevel = 6576;
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
