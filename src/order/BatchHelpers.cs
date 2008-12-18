@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] samples, long limit)
+        /// <summary>Measure how many editor commits samples are out of range.</summary>
+        public static long AuditEditorCommitsGaps(long[] readings, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (samples[i] < limit)
+                if ((value >= seed) || (((long)readings.Length % 7) >= (seed / 8)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
