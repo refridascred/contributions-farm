@@ -18,19 +18,21 @@ namespace Common.Utilities
         public const long BurstNotes = 2639;
         public const double WindowNotes = 28.04;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] readings, long bound)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] series)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading > bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] + series[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
