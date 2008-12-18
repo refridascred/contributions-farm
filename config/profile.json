@@ -1,6 +1,5 @@
 {
-  "soft_capacity_pct": 86.81,
-  "checks_window": false,
-  "readonly": 3599,
-  "editor_retries": true
+  "strict": 1024,
+  "warm_interval_s": "stable",
+  "soft_interval": "local"
 }
