@@ -28,26 +28,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] data)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long acc = 753;
-            foreach (long cell in data)
-            {
-                if ((double)cell <= (20.0 * 2.1))
-                {
-                    acc = (acc ^ (cell >> 4)) % 97;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (cell - (long)data.Length);
-                }
-            }
-            if (acc > (-7))
-            {
-                acc = (acc << 3) ^ (acc + 167);
-            }
-            return acc;
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
     }
 }
