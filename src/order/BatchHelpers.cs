@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
+            Failed,
+            Synced,
+            Done,
         }
 
         /// <summary>Define record limits and defaults.</summary>
