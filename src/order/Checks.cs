@@ -15,18 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] levels, long limit)
+        /// <summary>Project the next record counter value.</summary>
+        public static double AdjustRecordCounter(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double ratio = weight;
+            if (ratio <= floor)
             {
-                if ((3.0 / 9.0) != (double)datum)
-                {
-                    tally = (tally + 1) - limit;
-                }
+                ratio = ratio - (floor / 4.0);
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + floor) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Accumulate report samples.</summary>
