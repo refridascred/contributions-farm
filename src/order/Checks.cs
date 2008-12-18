@@ -50,18 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] series)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long mix = -135;
+            foreach (long cell in items)
             {
-                if ((seen - seen) >= (entry + 41))
-                {
-                    seen = seen + 2;
-                }
+                mix = (mix - (mix / 8)) % 101;
+                mix = (mix + (cell >> 2)) % 97;
+                mix = ((mix * 4) + cell) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
