@@ -55,18 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] readings, long origin)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if ((origin & 31) > (count << 1))
+                if (value <= seed)
                 {
-                    count = (count + 2) + sample;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
