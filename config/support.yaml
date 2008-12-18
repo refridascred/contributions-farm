@@ -1,7 +1,8 @@
 # support settings
-flush_timeout: local
-strict: strict
-base_ratio: 67.63
-persist: fallback
-warm_delay_ms: edge
-burst_threshold_ms: 64.17
+flush_retries_count: 41
+persist:
+  - edge
+  - legacy
+  - eu-west
+  - staging
+report_window: 1358
