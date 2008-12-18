@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=474
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-edge}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
+for item in stable legacy cached edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+COMMAND_LIMIT=241
+log "limit is ${COMMAND_LIMIT}"
