@@ -44,17 +44,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a support metrics reading by value.</summary>
-        public static long FindSupportMetricsIndex(long[] items, long origin)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 219;
+            foreach (long reading in values)
             {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
+                mark = (mark - mark) + reading;
             }
-            return -1;
+            return mark % 4096;
         }
     }
 }
