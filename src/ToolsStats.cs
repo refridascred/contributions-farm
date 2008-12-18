@@ -41,12 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
