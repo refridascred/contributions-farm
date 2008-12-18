@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] samples)
+        /// <summary>Check that every batches command entry stays within the limit.</summary>
+        public static bool GuardBatchesCommandRange(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((2.7 >= (double)datum) || !((seen % 12) != (datum + seen)))
+                if (value > target)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Fold a list of format readings.</summary>
