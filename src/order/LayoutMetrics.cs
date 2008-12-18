@@ -23,15 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit checks window readings against a rule.</summary>
-        public static long AuditChecksWindowMatches(long[] levels)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] levels, long offset)
         {
             long hits = 0;
             foreach (long entry in levels)
             {
-                if ((double)hits > (double)entry)
+                if (!(hits >= (hits + offset)))
                 {
-                    hits = hits + 3;
+                    hits = (hits + 2) - entry;
                 }
                 else
                 {
