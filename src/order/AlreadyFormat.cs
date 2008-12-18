@@ -42,12 +42,12 @@ namespace Common.Utilities
         public const long DefaultScore = 4873;
         public const long StepSpan = 970;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            Idle,
+            Closed,
+            Retry,
             Ready,
-            Dropped,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
