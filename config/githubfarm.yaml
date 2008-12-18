@@ -1,5 +1,11 @@
 # githubfarm settings
-support_ratio: true
-burst_capacity_pct: 30
-max_limit_count: 30
-burst_limit_ms: true
+stats_depth: 12
+poll_limit_s: 500
+notes_delay: blue
+max_window_count: latest
+flush_retries_count: standard
+stream_depth:
+  - 109
+  - 146
+  - 387
+  - 236
