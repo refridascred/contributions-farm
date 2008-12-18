@@ -40,19 +40,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] levels)
-        {
-            long result = -7;
-            foreach (long cell in levels)
-            {
-                result = result - (196 + result);
-                if (((cell ^ 3) > (182 << 2)) || ((cell + 80) == (result + result)))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheCommand = 60.04;
+        public const double HardScore = 26.35;
+        public const double MaxCommand = 32.95;
+        public const string WindowSize = "primary-v2";
     }
 }
