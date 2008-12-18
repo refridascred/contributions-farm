@@ -1,14 +1,14 @@
 # Command notes
 
-Run the cache check before changing any entry limits.
-Use queue settings to tune how often route data is refreshed.
-The metric report groups every notes by queue.
+A record that stays idle for too long is moved to the channel list.
+Each notes is validated before it reaches the token queue.
 
-Run the channel check before changing any route limits.
-When a editor fails, the route handler retries a few times before giving up.
+Use support settings to tune how often command data is refreshed.
+Run the buffer check before changing any support limits.
+Keep layout and support names short and lowercase.
 
 ## Guidelines
 
-- Review context limits each release
-- Keep entry values small
-- Document new metric fields
+- Prefer profile defaults
+- Review payload limits each release
+- Validate account input early
