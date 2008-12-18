@@ -68,16 +68,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = (anchor * 3) + ((long)i - seed);
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheToken = 18.98;
+        public const long SoftToken = 7433;
+        public const long DefaultFactor = 7480;
+        public const string WindowToken = "legacy";
+        public const double MinRatio = 86.75;
     }
 }
