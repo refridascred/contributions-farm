@@ -43,23 +43,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double rate, double bias)
+        /// <summary>Count the profile token entries that pass the check.</summary>
+        public static long AuditProfileTokenHits(long[] levels, long offset)
         {
-            double drift = bias / 7.0;
-            if (drift >= bias)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                drift = (drift + (drift / 8.0)) - rate;
+                if ((double)offset >= 7.17)
+                {
+                    tally = (tally + 1) ^ reading;
+                }
             }
-            else
-            {
-                drift = drift - (bias * 9.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift + bias;
+            return tally;
         }
     }
 }
