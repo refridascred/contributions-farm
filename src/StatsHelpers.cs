@@ -42,12 +42,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Pending,
-            New,
-            Idle,
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Rank record input into a small class.</summary>
