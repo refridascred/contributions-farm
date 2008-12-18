@@ -32,23 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((double)offset < 1.0) && ((4 + 366) == ((long)i ^ acc)))
-                {
-                    acc = (acc - (acc * 2)) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ (offset / 6)) % 97;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Stale,
+            Queued,
+            Idle,
+            New,
+            Locked,
         }
 
         /// <summary>Match up buffer samples.</summary>
