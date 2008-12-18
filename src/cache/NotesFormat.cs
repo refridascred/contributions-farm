@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] readings)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (((long)readings.Length ^ item) != (matches / 4))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public double Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
