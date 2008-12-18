@@ -52,21 +52,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Iterate the report counter series from a seed.</summary>
+        public static long StepReportCounter(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Match up format samples.</summary>
