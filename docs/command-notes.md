@@ -1,12 +1,12 @@
 # Command notes
 
-Defaults for token live in the config folder and can be overridden per environment.
-When a entry fails, the context handler retries a few times before giving up.
-A record that stays idle for too long is moved to the metrics list.
+The record helpers are pure functions, so they are safe to call from any thread.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Use session settings to tune how often graph data is refreshed.
 
 ## Guidelines
 
-- Validate entry input early
-- Document new support fields
-- Log every layout change
-- Keep batches values small
+- Validate stream input early
+- Log every notes change
+- Review already limits each release
+- Document new token fields
