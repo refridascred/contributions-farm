@@ -40,21 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] data)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Pending,
+            Idle,
         }
     }
 }
