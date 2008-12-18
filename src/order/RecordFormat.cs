@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardWidth = 62.65;
+        public const long HardMetrics = 7703;
+        public const long IdleMetrics = 2286;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
