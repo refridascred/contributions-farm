@@ -60,11 +60,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 9914;
-        public const long BaseLevel = 8024;
-        public const long BaseBuffer = 1487;
-        public const string DefaultBuffer = "cached-v2";
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Queued,
+            Active,
+            Draft,
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheOutliers(long[] values, long limit)
