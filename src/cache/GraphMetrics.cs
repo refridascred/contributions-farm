@@ -23,16 +23,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] values)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor * 5) + (target << 2);
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
