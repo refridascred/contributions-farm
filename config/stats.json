@@ -1,12 +1,5 @@
 {
+  "stream_retries": 250,
   "compress": "legacy",
-  "filter_depth": true,
-  "payload_capacity": ["open", "fallback"],
-  "channel_ttl": {
-    "cluster_depth": false,
-    "audit": "green",
-    "warm_limit": 31.67,
-    "cache_depth_pct": 48.69
-  },
-  "max_delay_ms": "eu-west"
+  "persist": true
 }
