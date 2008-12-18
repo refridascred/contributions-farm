@@ -22,31 +22,18 @@ namespace Common.Utilities
         public const double MinEntry = 7.98;
         public const long BaseEntry = 5061;
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long bound, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] items, long bound)
         {
-            if ((limit + 8) <= (limit - 3))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit > (7.0 * 0.56))
+                if (((value + value) <= (bound + bound)) && ((value ^ bound) >= (62 ^ (-4))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((bound / 2) >= limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
