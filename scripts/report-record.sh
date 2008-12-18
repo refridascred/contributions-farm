@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard local eu-west staging; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-RECORD_LIMIT=324
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-cached}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
