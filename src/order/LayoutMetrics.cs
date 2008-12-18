@@ -31,18 +31,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] data, long limit)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((3.0 / 9.0) > (double)sample)
-                {
-                    matches = (matches + 1) - limit;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
