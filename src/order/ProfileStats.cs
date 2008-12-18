@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Match up session layout samples.</summary>
+        public static long OverlapSessionLayoutCount(long[] data)
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score - (offset - offset)) % 101;
-                score = ((score * 2) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
