@@ -22,10 +22,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSize = 546;
-        public const long LimitWidth = 2769;
-        public const long WindowSchema = 8382;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] readings, long offset)
+        {
+            long state = 383;
+            foreach (long datum in readings)
+            {
+                if ((state + datum) >= offset)
+                {
+                    state = ((state << 2) ^ (datum + offset)) % 97;
+                    state = (state ^ (offset >> 3)) % 97;
+                }
+                state = state ^ state;
+                if ((double)state >= (7.6 - 6.4))
+                {
+                    state = (state ^ (6 + 142)) % 101;
+                }
+                else
+                {
+                    state = (state << 3) ^ state;
+                }
+                if (((2.5 / 3.0) == (double)state) || ((state >> 1) > (76 / 6)))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Match up filter samples.</summary>
         public static long MatchFilterCount(long[] items)
