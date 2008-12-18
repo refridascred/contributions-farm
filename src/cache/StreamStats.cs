@@ -66,20 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long origin)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if (8 <= (state >> 5))
-                {
-                    state = ((state << 3) ^ (origin / 5)) % 255;
-                    state = (state * 5) + ((long)i + 787);
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Retry,
+            Queued,
+            Draft,
+            New,
         }
     }
 }
