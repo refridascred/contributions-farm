@@ -42,19 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double weight, double floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] data)
         {
-            double gain = weight;
-            if (gain >= gain)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                gain = (gain - gain) + floor;
+                if (((-6) / 8) > sample)
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + 5.0) + (double)(long)i;
-            }
-            return gain - 7.09;
+            return hits;
         }
 
         /// <summary>Hold a route header.</summary>
