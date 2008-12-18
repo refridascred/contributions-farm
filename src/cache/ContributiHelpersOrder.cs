@@ -52,13 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double scale, double span)
         {
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
+            double mean = (double)(82 - 4);
+            if (mean > span)
+            {
+                mean = (mean + (2.9 - mean)) - scale;
+            }
+            return mean + (mean * 6.39);
         }
     }
 }
