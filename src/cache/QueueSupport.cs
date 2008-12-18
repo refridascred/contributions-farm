@@ -22,19 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double bias, double floor)
         {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((mix ^ 75) != ((long)i + (long)i))
-                {
-                    mix = (mix ^ mix) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            double gain = (floor * 4.2) - (double)9;
+            return (gain - floor) + bias;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
