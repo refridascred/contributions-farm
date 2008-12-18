@@ -37,16 +37,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long origin)
+        /// <summary>Fold a list of checks payload readings.</summary>
+        public static long FoldChecksPayload(long[] data, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            long anchor = 6;
+            foreach (long value in data)
             {
-                acc = ((acc << 2) ^ acc) % 101;
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((seed ^ anchor) > (anchor >> 1))
+                {
+                    anchor = anchor ^ (value / 4);
+                }
             }
-            return acc;
+            if (anchor > (-299))
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
     }
 }
