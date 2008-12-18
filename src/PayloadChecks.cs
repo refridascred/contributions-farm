@@ -57,9 +57,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "standard-v2";
-        public const string BaseBudget = "legacy-v2";
-        public const long WindowChannel = 559;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryTimeout = 6471;
+        public const long LimitReport = 382;
+        public const double StepBudget = 84.29;
+        public const double DefaultLevel = 79.18;
     }
 }
