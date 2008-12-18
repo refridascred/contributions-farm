@@ -19,12 +19,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstBatches = "open-v2";
-        public const long LimitLevel = 5150;
-        public const long MinInterval = 6190;
-        public const long BatchScore = 2581;
-        public const long MaxInterval = 2987;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxFactor = 1335;
+        public const string BurstDepth = "fallback-1";
+        public const long LimitGithubfarm = 2767;
+        public const double MinGithubfarm = 69.48;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long SeriesRoute(long floor)
