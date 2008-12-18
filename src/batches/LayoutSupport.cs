@@ -20,22 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of record queue readings.</summary>
-        public static long TallyRecordQueue(long[] data)
+        /// <summary>Count the batches order entries that pass the check.</summary>
+        public static long TallyBatchesOrderMatches(long[] items, long seed)
         {
-            long mark = -2;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((value - mark) < mark)
+                if (seed < (seen >> 3))
                 {
-                    mark = (mark * 5) + (value - value);
+                    seen = (seen + 2) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (mark < 5)
-            {
-                mark = mark - (mark - 69);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
