@@ -19,20 +19,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] items, long offset)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstBatches = "open-v2";
+        public const long LimitLevel = 5150;
+        public const long MinInterval = 6190;
+        public const long BatchScore = 2581;
+        public const long MaxInterval = 2987;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long SeriesRoute(long floor)
