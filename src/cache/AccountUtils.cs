@@ -36,10 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheCount = "primary-1";
-        public const long WindowWidth = 9271;
-        public const double StepInterval = 18.96;
-        public const long BurstDepth = 3573;
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
