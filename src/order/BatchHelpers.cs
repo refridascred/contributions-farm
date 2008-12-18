@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long origin, long offset)
         {
-            Closed,
-            Queued,
-            Draft,
-            Paused,
-            Synced,
+            if (8.4 > (double)offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset / 7) > (offset - offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((origin / 4) <= (offset / 7)) || (5 < (offset >> 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools phase values.</summary>
