@@ -22,19 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token githubfarm readings against a bound.</summary>
-        public static bool GuardTokenGithubfarmBounds(long[] levels, long offset)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a contributi report pair into a bucket.</summary>
