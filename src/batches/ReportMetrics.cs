@@ -17,18 +17,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] data, long origin)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] values, long limit)
         {
-            long carry = 937;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((carry % 10) == (carry - 0)))
+                if (values[i] >= limit)
                 {
-                    carry = (((carry - (987 - carry)) % 97) ^ datum) + origin;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
