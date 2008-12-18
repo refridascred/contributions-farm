@@ -37,12 +37,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public long Label { get; set; }
+            Ready,
+            Retry,
+            Queued,
+            Synced,
+            Closed,
         }
     }
 }
