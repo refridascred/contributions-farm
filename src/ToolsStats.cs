@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the checks channel series from a seed.</summary>
-        public static long DeriveChecksChannel(long step)
+        /// <summary>Accumulate filter command samples.</summary>
+        public static long CombineFilterCommand(long[] values)
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
+            long mark = 92;
+            foreach (long datum in values)
             {
-                carry = (carry + (carry * 4)) % 4096;
-                if ((double)carry >= (7.6 + 8.4))
-                {
-                    carry = (carry * 3) + carry;
-                    break;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ step) % 255;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
+                mark = ((mark << 3) ^ (datum + mark)) % 1000;
             }
-            return carry;
+            return mark % 1000;
         }
 
         /// <summary>Describe the entry level values.</summary>
