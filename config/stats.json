@@ -1,16 +1,8 @@
 {
-  "max_delay_count": {
-    "strict": false,
-    "retry_capacity_s": {
-      "cache_ratio_ms": "green",
-      "order_size": 5.19,
-      "readonly": "fallback"
-    },
-    "retry_ratio": "primary",
-    "burst_interval_s": "strict"
-  },
-  "readonly": 26.24,
-  "min_interval": false,
-  "session_retries": 6336,
-  "verbose": 7505
+  "checks_ratio": 100,
+  "hard_threshold_s": [270, 308, 475, 377],
+  "dry_run": true,
+  "support_retries": "edge",
+  "retry_interval": true,
+  "base_ratio": 60
 }
