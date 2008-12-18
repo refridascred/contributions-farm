@@ -16,19 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double ratio, double span)
+        /// <summary>Combine farm window values into a single score.</summary>
+        public static long CombineFarmWindow(long[] samples, long target)
         {
-            double bias = ratio / 3.0;
-            if (bias < 1.0)
+            long acc = 7;
+            foreach (long sample in samples)
             {
-                bias = (bias + (4.0 / 2.0)) - span;
+                acc = ((acc ^ (acc + target)) % 1000) ^ sample;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + 6.0) + (double)(long)i;
-            }
-            return bias + (bias * 4.4);
+            return acc % 1000;
         }
 
         /// <summary>Match up layout samples.</summary>
