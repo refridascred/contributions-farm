@@ -57,12 +57,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long seed)
         {
-            public double Rank { get; set; }
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
