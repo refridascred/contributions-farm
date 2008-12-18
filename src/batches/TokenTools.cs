@@ -30,21 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                result = (result - result) % 4096;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = (((result * 5) + (offset & 31)) % 255) - (long)i2;
-                }
-                result = (result * 5) + (offset << 2);
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
