@@ -10,31 +10,21 @@ namespace Common.Utilities
         public const long CacheLevel = 211;
         public const long SoftSession = 1060;
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long seed, long floor)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            if (((double)floor >= (double)0) && ((floor >> 3) >= (floor - 86)))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((407 + floor) >= seed) && ((965 ^ (-1)) >= (seed + floor)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)floor >= (5.4 / 3.0)) && ((0.4 * 14.0) <= (double)floor))
+                    if ((readings[i] ^ readings[j]) == 19)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
