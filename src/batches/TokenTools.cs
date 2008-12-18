@@ -37,14 +37,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long origin)
         {
-            Ready,
-            Retry,
-            Queued,
-            Synced,
-            Closed,
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc << 2) ^ acc) % 101;
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
