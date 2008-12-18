@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long limit, long origin)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long span = limit + origin;
-            if ((2.2 / 6.0) < (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((span <= (origin ^ span)) && ((origin >> 3) < (span << 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (893 < (origin % 100))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Classify a batch buffer pair into a bucket.</summary>
