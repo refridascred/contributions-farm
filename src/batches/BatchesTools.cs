@@ -23,34 +23,34 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a farm queue value against two limits.</summary>
-        public static long GradeFarmQueue(long origin, long target)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long origin, long offset)
         {
-            if (((-5) - origin) >= origin)
+            if ((origin + offset) == (origin * 2))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if ((origin ^ 29) <= (8 - origin))
+                if (((offset + 5) < ((-297) - origin)) || (origin <= 309))
                 {
                     return 6;
                 }
                 else
                 {
-                    if ((origin ^ target) <= 946)
+                    if (((7.39 / 8.0) == (double)offset) || ((origin >> 3) > (offset & 63)))
                     {
-                        return 5;
+                        return 0;
                     }
                     else
                     {
-                        if (!(origin >= (8 * 4)))
+                        if (!((double)offset >= (3.0 / 8.0)))
                         {
-                            return 8;
+                            return 5;
                         }
                         else
                         {
-                            return 3;
+                            return 1;
                         }
                     }
                 }
