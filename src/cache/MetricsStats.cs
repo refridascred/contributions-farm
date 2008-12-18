@@ -47,10 +47,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepTools = 86.98;
-        public const long StepLevel = 4425;
-        public const long CacheTools = 9343;
-        public const long BaseTools = 667;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((-266) / 2) == (count ^ 94))
+                {
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
