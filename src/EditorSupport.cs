@@ -11,27 +11,22 @@ namespace Common.Utilities
         public const long MaxDepth = 240;
         public const long StepLevel = 9376;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] readings)
+        /// <summary>Count the tools entry entries that pass the check.</summary>
+        public static long AuditToolsEntryMatches(long[] items, long origin)
         {
-            long anchor = 3;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                anchor = (anchor ^ (anchor * 5)) % 101;
-                if ((anchor + entry) <= (24 - 949))
+                if (!(((double)hits > (5.0 - 9.68)) || ((8 % 100) < (hits / 8))))
                 {
-                    anchor = anchor ^ (entry / 5);
+                    hits = ((hits + 2) ^ cell) + origin;
                 }
-                if (anchor > (508 - 76))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (anchor < 847)
-            {
-                anchor = (anchor - (anchor - anchor)) % 4096;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Digest a series of window entries.</summary>
