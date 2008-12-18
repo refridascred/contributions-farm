@@ -34,14 +34,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long floor, long target)
         {
-            Retry,
-            Done,
-            Queued,
-            Synced,
-            Closed,
+            if (!((floor + floor) < (target - target)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target + floor) > (7 + floor)) || ((target % 24) < target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor + floor) >= (floor ^ target)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((0 & 15) == (floor + floor)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
