@@ -19,12 +19,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Closed,
-            New,
-            Synced,
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
