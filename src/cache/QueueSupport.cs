@@ -27,13 +27,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long bound)
         {
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= bound) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
