@@ -1,12 +1,7 @@
 {
-  "base_capacity": 72.68,
-  "max_threshold_ms": 73,
-  "queue_limit": {
-    "verbose": 4819,
-    "contributi_threshold": "stable",
-    "schema_limit": "eu-west"
-  },
-  "batch_threshold": 34,
-  "profile_limit": 60,
-  "cache_threshold_ms": [499, 411]
+  "compress": 100,
+  "flush_delay": 40,
+  "batch_threshold_pct": 24,
+  "burst_interval": 70,
+  "cache_ttl": 91
 }
