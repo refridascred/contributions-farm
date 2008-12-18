@@ -33,13 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Count the farm layout entries that pass the check.</summary>
+        public static long CountFarmLayoutMatches(long[] data, long offset)
         {
-            Queued,
-            Stale,
-            Pending,
-            Synced,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((47 <= offset) || (((seen - datum) < (offset % 97)) && ((seen & 127) < (seen >> 2))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up editor samples.</summary>
