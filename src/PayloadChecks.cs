@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a farm checks value against two limits.</summary>
-        public static long ClassifyFarmChecks(long target, long limit)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] values, long bound)
         {
-            if (((target + target) > limit) || (target > (limit - target)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (target > (target ^ limit))
+                if (values[i] == bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
