@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] items)
         {
-            Done,
-            Locked,
-            Idle,
-            Stale,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (((tally % 97) <= value) || (((tally ^ tally) >= (8 - value)) || (value < (value % 64))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a support stats.</summary>
