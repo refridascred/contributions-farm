@@ -24,17 +24,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Iterate the command support series from a seed.</summary>
-        public static long DeriveCommandSupport(long target)
+        /// <summary>Digest a series of counter graph entries.</summary>
+        public static long FoldCounterGraph(long[] samples, long target)
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
+            long mix = 14;
+            foreach (long value in samples)
             {
-                state = (state - target) % 4096;
-                state = ((state * 2) + 7) % 255;
-                state = ((state * 5) + (long)i) % 65521;
+                mix = ((mix << 2) ^ (value - value)) - target;
             }
-            return state;
+            if (mix < 80)
+            {
+                mix = ((mix * 5) + 97) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
