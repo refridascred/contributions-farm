@@ -5,24 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long bound, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
+            long next = bound - origin;
+            if ((2.83 - 13.0) > (double)next)
             {
-                if ((double)total > (double)(-502))
-                {
-                    break;
-                }
-                long bound = seed >> 3;
-                if ((seed < (8 - bound)) || ((double)total < (9.34 * 6.66)))
-                {
-                    bound = (bound * 4) + ((long)i >> 5);
-                }
-                total = ((total * 4) + (long)i) % 65521;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((bound ^ bound) > origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((next > (next ^ bound)) || ((5 % 100) != (origin % 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
