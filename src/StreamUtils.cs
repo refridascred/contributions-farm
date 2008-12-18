@@ -35,13 +35,21 @@ namespace Common.Utilities
         public const long StepCommits = 9188;
         public const long CacheWidth = 7082;
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Compare every pair of entry buffer readings.</summary>
+        public static long CompareEntryBufferCount(long[] readings)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
