@@ -33,18 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] readings, long target)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (target <= ((-53) / 7))
+                if (sample <= floor)
                 {
-                    count = (count + 2) ^ value;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the route kind values.</summary>
