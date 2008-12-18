@@ -15,22 +15,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the batches order entries that pass the check.</summary>
-        public static long TallyBatchesOrderMatches(long[] items, long seed)
+        /// <summary>Match up format farm samples.</summary>
+        public static long OverlapFormatFarmCount(long[] data)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seed < (seen >> 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] - data[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
