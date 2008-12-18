@@ -23,12 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchScore = 1324;
-        public const long BurstContributi = 3061;
-        public const long IdleContributi = 5649;
-        public const string SoftWidth = "primary";
-        public const long LimitContributi = 7214;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((double)(-40) < (double)sample)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
