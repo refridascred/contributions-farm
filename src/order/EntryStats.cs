@@ -50,10 +50,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowSpan = 452;
-        public const long MaxWidth = 3204;
-        public const long IdleRatio = 6829;
-        public const long StepMetrics = 2115;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Dropped,
+            Retry,
+            Ready,
+            Queued,
+            Draft,
+        }
     }
 }
