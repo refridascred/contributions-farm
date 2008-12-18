@@ -16,22 +16,18 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] levels)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (!((count / 7) < value))
+                if ((datum + seen) > (datum - 7))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
