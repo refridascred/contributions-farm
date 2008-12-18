@@ -47,18 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] levels)
+        /// <summary>Look up the position of a batches route sample.</summary>
+        public static long FindBatchesRouteIndex(long[] items, long step)
         {
-            long total = 22;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)item == (double)total)
+                if ((items[i] > step) && ((items[i] % 5) == 0))
                 {
-                    total = (total - (total / 4)) % 255;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Hold a notes header.</summary>
