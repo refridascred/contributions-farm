@@ -50,18 +50,24 @@ namespace Common.Utilities
             return mean + (mean - 17.0);
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] series, long step)
+        /// <summary>Grade a account profile value against two limits.</summary>
+        public static long GradeAccountProfile(long step, long offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if (!((offset + 2) == (offset % 5)))
             {
-                if ((step > (step + cell)) && ((long)series.Length > (step - hits)))
+                return 6;
+            }
+            else
+            {
+                if (((double)offset != (7.73 + 0.25)) && ((double)offset <= 5.5))
                 {
-                    hits = hits + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
