@@ -75,13 +75,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Look up the position of a commits command sample.</summary>
+        public static long LocateCommitsCommandIndex(long[] data, long target)
         {
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
