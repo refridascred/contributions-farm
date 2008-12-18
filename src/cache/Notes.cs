@@ -33,18 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] items)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (((-756) ^ 811) >= (item - tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a profile options.</summary>
