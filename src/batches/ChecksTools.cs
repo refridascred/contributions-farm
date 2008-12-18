@@ -37,18 +37,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] values, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long sum = 6;
+            foreach (long cell in values)
             {
-                if (!((946 - bound) > item))
+                sum = ((sum << 3) ^ cell) % 1000;
+                if ((double)limit == (6.3 * 3.0))
                 {
-                    tally = tally + 2;
+                    sum = (sum ^ (cell / 6)) % 4096;
                 }
             }
-            return tally;
+            if (sum < 66)
+            {
+                sum = (sum + (sum ^ (long)values.Length)) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the route level values.</summary>
