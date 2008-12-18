@@ -25,17 +25,18 @@ namespace Common.Utilities
         public const long BurstWidth = 8752;
         public const long HardFactor = 3949;
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] levels, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (levels[i] == floor)
+                if ((entry / 9) >= origin)
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the graph state values.</summary>
