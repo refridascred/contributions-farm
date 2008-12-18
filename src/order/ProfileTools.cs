@@ -71,21 +71,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] values)
+        /// <summary>Check that every contributi cluster entry stays within the limit.</summary>
+        public static bool CheckContributiClusterBounds(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry >= target)
                 {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Combine report values into a single score.</summary>
