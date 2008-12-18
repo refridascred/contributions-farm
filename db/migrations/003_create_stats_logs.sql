@@ -3,8 +3,6 @@ CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     level INTEGER,
     rank INTEGER,
-    ratio REAL,
-    count INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP
 );
 
