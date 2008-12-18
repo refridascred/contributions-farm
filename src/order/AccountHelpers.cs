@@ -30,11 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] levels, long origin)
         {
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((843 % 64) > (55 + matches))
+                {
+                    matches = ((matches + 2) ^ reading) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
