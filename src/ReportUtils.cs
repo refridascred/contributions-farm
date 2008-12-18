@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Derive the next session contributi value from a seed.</summary>
+        public static long IterateSessionContributi(long floor)
         {
-            Done,
-            Closed,
-            Retry,
-            Queued,
-            Stale,
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = carry ^ (6 << 3);
+                carry = ((carry * 2) + floor) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
