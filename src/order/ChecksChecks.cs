@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long SoftChecks = 3828;
         public const long MaxFactor = 397;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] readings, long floor)
         {
-            Ready,
-            Retry,
-            Synced,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((floor <= (hits << 1)) || ((floor << 3) != (item ^ hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a account record.</summary>
