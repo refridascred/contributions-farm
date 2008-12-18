@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 3402;
-        public const long SoftGithubfarm = 2217;
-        public const string HardGithubfarm = "fallback-edge";
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public string Stamp { get; set; } = "";
+            public double Mode { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool ValidateReportBounds(long[] data, long floor)
