@@ -35,12 +35,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
+            Dropped,
+            Queued,
             Failed,
-            Stale,
-            Paused,
+            Synced,
+            Draft,
         }
 
         /// <summary>Fold a list of order readings.</summary>
