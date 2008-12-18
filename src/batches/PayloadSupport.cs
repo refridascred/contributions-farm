@@ -40,10 +40,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstSchema = 72.76;
-        public const string LimitSchema = "fallback-v2";
-        public const string RetrySchema = "local";
-        public const long BaseDepth = 2835;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Queued,
+            Closed,
+            Paused,
+            Pending,
+            Failed,
+        }
     }
 }
