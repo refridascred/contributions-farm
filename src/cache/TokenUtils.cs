@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] samples)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((hits + hits) <= cell)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Look up the position of a layout notes sample.</summary>
