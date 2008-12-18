@@ -19,19 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] samples, long origin)
+        /// <summary>Iterate the metrics layout series from a seed.</summary>
+        public static long RollMetricsLayout(long step)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum <= origin)
+                if (((state - step) <= step) && ((9.0 * 2.59) != (double)state))
                 {
-                    ok = false;
                     break;
                 }
+                state = state + (522 - step);
+                state = ((state * 4) + (long)i) % 97;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Describe the editor phase values.</summary>
