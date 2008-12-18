@@ -41,12 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] series)
         {
-            Idle,
-            Locked,
-            Queued,
+            long mix = 1;
+            foreach (long entry in series)
+            {
+                mix = ((mix + (32 / 6)) % 4096) ^ entry;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
