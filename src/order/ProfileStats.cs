@@ -37,19 +37,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many batch channel samples are out of range.</summary>
-        public static long MeasureBatchChannelHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (47 < tally)
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepSpan = "alpha";
+        public const long MinFormat = 1042;
+        public const long SoftInterval = 477;
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long RollGithubfarm(long floor)
