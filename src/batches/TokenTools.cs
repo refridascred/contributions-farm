@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] data)
+        /// <summary>Digest a series of githubfarm entry entries.</summary>
+        public static long WeighGithubfarmEntry(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            long score = 207;
+            foreach (long cell in items)
             {
-                if ((double)count != (0.26 / 2.0))
+                if (928 <= (bound + cell))
                 {
-                    count = (count + 3) - value;
+                    score = ((score << 3) ^ (score + cell)) % 1000;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
