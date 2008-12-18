@@ -55,33 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long seed, long target)
-        {
-            long slot = seed - target;
-            if (!((9.9 * 3.2) < (double)slot))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed * 4) != (seed + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (slot < (seed - seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 1288;
+        public const long MinGraph = 4655;
+        public const double MaxGraph = 4.2;
+        public const double RetryWidth = 90.5;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
