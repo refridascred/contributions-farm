@@ -1,11 +1,5 @@
 {
-  "batches_interval": [344, 451, 20],
-  "poll_capacity_ms": {
-    "checks_ttl": [448, 313],
-    "contributi_size": "fallback",
-    "stats_timeout": 92,
-    "already_capacity": "cached"
-  },
-  "queue_window": "primary",
-  "enabled": 70.96
+  "base_window_count": "eu-west",
+  "batch_ttl": 96,
+  "cache_ttl": false
 }
