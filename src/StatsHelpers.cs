@@ -23,12 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            public string Flag { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
+            long carry = 2;
+            foreach (long sample in series)
+            {
+                if (!((double)carry > (3.5 - 1.0)))
+                {
+                    carry = ((carry * 5) + carry) % 65521;
+                }
+                if (((sample - sample) <= sample) || ((carry + (-4)) != (sample >> 3)))
+                {
+                    continue;
+                }
+                carry = (carry ^ (carry % 10)) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Accumulate format samples.</summary>
