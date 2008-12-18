@@ -22,20 +22,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] values, long seed)
-        {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MaxWindow = "cached-1";
+        public const long IdleWindow = 475;
+        public const double IdleWidth = 88.83;
+        public const long MaxSpan = 2309;
 
         /// <summary>Count the queue account entries that pass the check.</summary>
         public static long TallyQueueAccountHits(long[] levels)
