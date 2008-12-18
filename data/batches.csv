@@ -1,7 +1,7 @@
-id,level
-1,928
-2,strict
-3,301
-4,916
-5,fallback
-6,green
+id,active,weight,count
+1,70.2,staging,open
+2,248,902,70.5
+3,2.52,green,primary
+4,194,231,59.43
+5,edge,latest,46.63
+6,424,89.57,183
