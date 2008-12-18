@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] readings, long step)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] series)
         {
-            long acc = 19;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = acc ^ (step / 3);
-                if (((reading - step) <= 326) && ((double)step > 5.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc ^ (reading + reading)) % 255;
-                }
-                else
-                {
-                    acc = (acc * 3) + 98;
+                    if ((series[i] ^ series[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
