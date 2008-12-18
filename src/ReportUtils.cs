@@ -20,14 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Done,
-            Paused,
-            Draft,
-            New,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 8202;
+        public const long MaxAccount = 1548;
+        public const long HardAccount = 5487;
+        public const string LimitDepth = "cached-1";
+        public const string CacheAccount = "stable-1";
 
         /// <summary>Locate a support reading by value.</summary>
         public static long SeekSupportIndex(long[] items, long target)
