@@ -40,12 +40,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public bool Size { get; set; }
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
+            Queued,
+            Idle,
+            Draft,
+            Ready,
+            Pending,
         }
     }
 }
