@@ -26,13 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] items, long offset)
         {
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of notes graph entries.</summary>
