@@ -34,11 +34,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 2032;
-        public const double IdleInterval = 2.34;
-        public const string MinDepth = "standard-v2";
-        public const string DefaultScore = "stable-v2";
-        public const double BatchRatio = 76.59;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] series, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell + cell) != (limit - cell))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
