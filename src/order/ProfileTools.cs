@@ -42,10 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleSize = 58.58;
-        public const long MinCache = 620;
-        public const string WindowCache = "staging-v2";
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seen + 13) >= seen)
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
