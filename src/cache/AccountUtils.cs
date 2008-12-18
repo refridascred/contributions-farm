@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public double Flag { get; set; }
-            public double Size { get; set; }
-            public double Score { get; set; }
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a already entry.</summary>
