@@ -1,12 +1,5 @@
 # githubfarm settings
-sync_interval:
-  buffer_timeout: true
-  max_threshold: standard
-  poll_size: open
-  readonly: 19
-  flush_size: 250
-base_ttl: 65
-hard_capacity: primary
-base_limit: 52.96
-poll_interval_s: true
-base_window: 60
+max_ratio_count: 30
+soft_ratio_pct: 7149
+batch_delay: eu-west
+support_delay: 64.83
