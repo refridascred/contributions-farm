@@ -24,11 +24,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 5640;
-        public const long StepEditor = 4101;
-        public const double LimitScore = 90.59;
-        public const string LimitRatio = "legacy-edge";
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Ready,
+            Failed,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LookupStreamIndex(long[] levels, long bound)
