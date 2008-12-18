@@ -27,17 +27,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first session token entry that matches the target.</summary>
-        public static long FindSessionTokenIndex(long[] series, long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 34;
+            foreach (long datum in data)
             {
-                if (series[i] == offset)
+                long offset = datum;
+                if (!((double)offset > (double)bound))
                 {
-                    return (long)i;
+                    anchor = (anchor + (datum ^ 801)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + datum) % 97;
+                    anchor = (anchor ^ 93) % 97;
+                }
+                anchor = (anchor - (anchor + anchor)) % 1000;
+                if (((bound % 8) >= (bound >> 1)) && ((anchor ^ anchor) >= datum))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
     }
 }
