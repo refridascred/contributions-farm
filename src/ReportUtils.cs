@@ -42,13 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            Draft,
-            Idle,
-            Closed,
-            Failed,
+            Locked,
+            Pending,
+            Ready,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
