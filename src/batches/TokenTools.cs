@@ -19,22 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] series, long floor)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long target, long offset)
         {
-            long total = 228;
-            foreach (long reading in series)
+            long cur = target ^ offset;
+            if ((target < (offset + offset)) || ((offset + 3) <= (45 + cur)))
             {
-                if ((floor + total) != (6 - floor))
+                return 0;
+            }
+            else
+            {
+                if ((625 + target) >= (target * 2))
                 {
-                    total = (total + (-84)) ^ reading;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (total < (-91))
-            {
-                total = (total ^ (floor % 3)) % 101;
-            }
-            return total;
         }
 
         /// <summary>Fold a list of checks payload readings.</summary>
