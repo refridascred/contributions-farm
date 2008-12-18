@@ -22,15 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] items, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (((datum + datum) >= (count & 127)) && ((3 & 1) < (89 - datum)))
+                {
+                    count = (count + 2) + origin;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the entry class values.</summary>
