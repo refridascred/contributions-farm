@@ -29,15 +29,16 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double weight, double floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long origin)
         {
-            double ratio = floor;
-            if (ratio < ratio)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                ratio = (ratio + (double)542) + weight;
+                state = ((state * 4) + ((long)i >> 1)) % 1000;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return ratio - floor;
+            return state;
         }
 
         /// <summary>Hold a queue summary.</summary>
