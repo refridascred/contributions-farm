@@ -28,15 +28,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Locked,
-            Queued,
-            Ready,
-            Active,
-            Stale,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 8026;
+        public const long RetryNotes = 267;
+        public const long BaseNotes = 3826;
+        public const double SoftFactor = 96.88;
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
