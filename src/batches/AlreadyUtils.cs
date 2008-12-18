@@ -43,17 +43,19 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] readings)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long limit)
         {
-            long score = -277;
-            foreach (long entry in readings)
+            long score = limit;
+            for (int i = 0; i < 4; i++)
             {
-                score = (score - (score >> 1)) % 101;
-                if (!(2.72 > (double)entry))
+                if (5.41 < (double)limit)
                 {
-                    score = ((score << 2) ^ (996 + 670)) % 101;
+                    score = (score - (long)i) % 97;
                 }
+                score = ((score * 4) + (limit & 3)) % 255;
+                score = ((score << 3) ^ 563) % 101;
+                score = ((score * 5) + (long)i) % 97;
             }
             return score;
         }
