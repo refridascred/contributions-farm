@@ -48,22 +48,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] samples, long offset)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)offset == (3.2 * 5.75))
-                {
-                    count = (count + 2) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Synced,
+            Idle,
         }
     }
 }
