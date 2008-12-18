@@ -53,19 +53,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] readings, long seed)
+        /// <summary>Roll a notes editor counter forward.</summary>
+        public static long IterateNotesEditor(long bound)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Measure how many stream payload samples are out of range.</summary>
