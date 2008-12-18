@@ -12,18 +12,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the format payload entries that pass the check.</summary>
-        public static long TallyFormatPayloadOutliers(long[] values, long target)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (((hits + hits) == (hits >> 2)) && (target > ((-81) - hits)))
-                {
-                    hits = (hits + 2) - reading;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the notes metrics entries that pass the check.</summary>
