@@ -25,12 +25,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] values, long step)
         {
-            Paused,
-            Failed,
-            Pending,
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up batch samples.</summary>
