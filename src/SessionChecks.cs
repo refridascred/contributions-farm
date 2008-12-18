@@ -21,11 +21,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MaxWindow = "cached-1";
-        public const long IdleWindow = 475;
-        public const double IdleWidth = 88.83;
-        public const long MaxSpan = 2309;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] data, long bound)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (!(bound < item))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long ScoreNotes(long[] values)
