@@ -12,19 +12,31 @@ namespace Common.Utilities
         public const string CacheFactor = "staging-edge";
         public const string BurstScore = "staging-1";
 
-        /// <summary>Project the next record counter value.</summary>
-        public static double AdjustRecordCounter(double weight, double floor)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long limit, long limit2)
         {
-            double ratio = weight;
-            if (ratio <= floor)
+            if ((8.7 <= (double)limit) && ((limit2 % 3) <= limit2))
             {
-                ratio = ratio - (floor / 4.0);
+                return 2;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                ratio = (ratio + floor) + (double)(long)i;
+                if (!((limit2 - limit2) <= (limit - 133)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit2 > (9.3 + 9.35))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return ratio + ratio;
         }
 
         /// <summary>Accumulate report samples.</summary>
