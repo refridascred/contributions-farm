@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long step)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
+            long total = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((step - step) > (acc & 1)))
-                {
-                    acc = acc ^ ((long)i / 2);
-                    acc = acc + 891;
-                }
-                else
-                {
-                    acc = acc - (3 + 144);
-                    acc = (acc - (296 + (long)i)) % 255;
-                }
-                acc = ((acc << 2) ^ (acc - (-60))) % 1000;
-                acc = ((acc * 5) + (long)i) % 97;
+                total = (total ^ (bound - total)) % 255;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Measure how many window token samples are out of range.</summary>
