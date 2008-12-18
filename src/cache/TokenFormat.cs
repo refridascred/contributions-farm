@@ -22,20 +22,26 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] readings)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] data)
         {
-            long state = 7;
-            foreach (long sample in readings)
+            long acc = 753;
+            foreach (long cell in data)
             {
-                state = (state << 3) ^ (state ^ state);
-                state = state - sample;
+                if ((double)cell <= (20.0 * 2.1))
+                {
+                    acc = (acc ^ (cell >> 4)) % 97;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (cell - (long)data.Length);
+                }
             }
-            if (state > (-50))
+            if (acc > (-7))
             {
-                state = (state + (state + (long)readings.Length)) % 101;
+                acc = (acc << 3) ^ (acc + 167);
             }
-            return state % 97;
+            return acc;
         }
     }
 }
