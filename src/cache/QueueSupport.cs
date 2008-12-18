@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] series)
         {
-            Retry,
-            Synced,
-            Locked,
+            long anchor = 50;
+            foreach (long cell in series)
+            {
+                anchor = ((anchor + (6 >> 4)) % 65521) ^ cell;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
