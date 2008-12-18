@@ -27,11 +27,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] readings, long limit)
         {
-            public bool Label { get; set; }
-            public double Weight { get; set; }
+            long state = 54;
+            foreach (long value in readings)
+            {
+                state = (state << 2) ^ (limit % 24);
+                state = ((state << 3) ^ (value % 10)) % 65521;
+            }
+            if (state < 0)
+            {
+                state = (state ^ (539 >> 2)) % 97;
+            }
+            return state % 1000;
         }
     }
 }
