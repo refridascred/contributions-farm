@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] data, long offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long origin)
         {
-            long anchor = 36;
-            foreach (long sample in data)
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (!(offset > sample))
-                {
-                    anchor = (anchor * 2) + offset;
-                }
+                mix = (mix ^ (173 + origin)) % 255;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            if (anchor > 8)
-            {
-                anchor = (anchor ^ (anchor + offset)) % 97;
-            }
-            return anchor % 1000;
+            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
