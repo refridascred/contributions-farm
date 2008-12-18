@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every batches command entry stays within the limit.</summary>
-        public static bool GuardBatchesCommandRange(long[] items, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (value > target)
+                if ((origin >= (origin / 2)) || ((count >> 5) > (value - value)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Fold a list of format readings.</summary>
