@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxScore = 9080;
-        public const long SoftSpan = 1744;
-        public const long LimitSession = 2335;
-        public const long SoftSession = 4216;
-        public const string CacheRatio = "primary-edge";
+        /// <summary>Count the checks channel entries that pass the check.</summary>
+        public static long MeasureChecksChannelMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((53 + datum) > (hits - hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long MatchWindowCount(long[] values)
