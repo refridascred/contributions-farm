@@ -18,12 +18,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBatches = 86.3;
-        public const double HardBatches = 87.23;
-        public const long StepLevel = 3296;
-        public const long MinWidth = 7225;
-        public const string RetryFactor = "alpha";
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] values, long limit)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LookupStatsIndex(long[] data, long offset)
