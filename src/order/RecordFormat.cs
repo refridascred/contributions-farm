@@ -69,38 +69,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long bound, long limit)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            if ((bound + limit) <= (102 & 1))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound >= (24 << 3)) && ((8.0 + 8.8) < (3.7 / 6.0)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound + limit) >= bound))
+                    if ((items[i] + items[j]) != 5)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((bound ^ limit) <= limit) || ((14.0 / 2.0) != (double)bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
