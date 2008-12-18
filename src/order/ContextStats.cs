@@ -39,16 +39,17 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Derive the next batch metric value from a seed.</summary>
-        public static long DeriveBatchMetric(long limit)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] values, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix << 2) ^ mix) % 97;
-                mix = ((mix * 4) + (long)i) % 97;
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
