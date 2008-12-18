@@ -12,39 +12,24 @@ namespace Common.Utilities
         public const long BatchFactor = 1496;
         public const double HardCluster = 9.46;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long target, long target2)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            long diff = target ^ target2;
-            if (((target2 + target) <= (5 % 12)) && (diff >= (target / 9)))
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((diff / 2) <= (target2 >> 1)) && ((diff & 15) < (diff % 16)))
+                carry = (carry << 3) ^ (limit + carry);
+                if (((long)i ^ carry) != (carry / 4))
                 {
-                    return 6;
+                    carry = (carry + ((long)i * 2)) % 4096;
                 }
                 else
                 {
-                    if ((double)diff != (double)target2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)target2 > (2.8 - 8.7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = (carry + 982) % 255;
                 }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Describe the format phase values.</summary>
