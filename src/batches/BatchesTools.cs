@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseSize = 938;
-        public const double HardBuffer = 58.53;
-        public const long BatchSize = 395;
-        public const long MaxBuffer = 9024;
-        public const long SoftBuffer = 6853;
+        /// <summary>Look up the position of a buffer payload sample.</summary>
+        public static long LocateBufferPayloadIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long DefaultCount = 6104;
