@@ -34,39 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long bound, long origin)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long bound2 = bound ^ origin;
-            if (((bound2 + origin) != (bound % 3)) && ((double)bound2 <= (10.0 * 2.35)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound2 << 1) <= (bound2 - bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((bound2 % 7) <= (origin % 10)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin + 67) != (873 << 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Fold a list of order readings.</summary>
