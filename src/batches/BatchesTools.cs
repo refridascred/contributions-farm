@@ -23,38 +23,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long origin, long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] items, long limit)
         {
-            if ((origin + offset) == (origin * 2))
+            long result = 948;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset + 5) < ((-297) - origin)) || (origin <= 309))
+                if ((sample + sample) > (limit * 5))
                 {
-                    return 6;
+                    result = ((result << 3) ^ (result ^ 7)) % 4096;
                 }
-                else
+                if (!((double)result <= (double)(-725)))
                 {
-                    if (((7.39 / 8.0) == (double)offset) || ((origin >> 3) > (offset & 63)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)offset >= (3.0 / 8.0)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            if (result < 62)
+            {
+                result = result ^ (result + result);
+            }
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
