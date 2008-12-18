@@ -51,32 +51,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long offset, long step)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] values, long bound)
         {
-            long slot = offset + step;
-            if (((slot % 3) <= 4) && ((offset >> 5) != (slot & 31)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((3.72 - 1.6) == (double)offset) && (step >= (offset - slot)))
+                if (values[i] <= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (521 <= (step + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next counter value.</summary>
