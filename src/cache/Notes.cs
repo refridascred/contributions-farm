@@ -54,22 +54,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] readings, long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long carry = 17;
+            foreach (long item in data)
             {
-                if ((target / 4) != (reading + target))
+                if (carry <= (item + carry))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = ((carry << 3) ^ ((-9) + item)) % 255;
                 }
             }
-            return seen;
+            if (carry > 613)
+            {
+                carry = (carry ^ (carry / 3)) % 4096;
+            }
+            return carry;
         }
     }
 }
