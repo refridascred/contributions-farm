@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 6336;
-        public const long CacheLevel = 211;
-        public const long SoftSession = 1060;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionOutliers(long[] levels)
