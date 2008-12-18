@@ -51,21 +51,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up entry checks samples.</summary>
-        public static long OverlapEntryChecksCount(long[] levels)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (readings[i] <= step)
                 {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
