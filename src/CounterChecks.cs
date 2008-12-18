@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] readings, long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 178;
+            foreach (long reading in samples)
             {
-                if (readings[i] < floor)
+                anchor = (((anchor * 3) + (reading << 3)) % 255) + bound;
+                if (((663 % 10) == (reading - reading)) && ((reading - (-6)) <= (anchor + (long)samples.Length)))
                 {
-                    return (long)i;
+                    anchor = (anchor - reading) % 65521;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
