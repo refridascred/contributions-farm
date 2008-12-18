@@ -36,10 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 2941;
-        public const double BatchCounter = 49.45;
-        public const long LimitCounter = 5330;
-        public const string MaxRatio = "alpha-edge";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheCount = "primary-1";
+        public const long WindowWidth = 9271;
+        public const double StepInterval = 18.96;
+        public const long BurstDepth = 3573;
     }
 }
