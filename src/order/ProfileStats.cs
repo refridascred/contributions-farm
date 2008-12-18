@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi counter samples are out of range.</summary>
-        public static long MeasureContributiCounterHits(long[] series, long floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long floor)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (((((long)series.Length ^ count) < (651 & 31)) || ((2 % 3) <= ((long)series.Length - floor))) || ((941 - entry) > floor))
-                {
-                    count = count + 1;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the entry class values.</summary>
