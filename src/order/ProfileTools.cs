@@ -29,17 +29,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] values, long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((values[i] < seed) && ((values[i] % 5) != 0))
+                if (((471 - 351) != (3 - offset)) || ((9 ^ hits) < (-1)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
