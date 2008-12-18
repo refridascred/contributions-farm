@@ -22,12 +22,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public double Score { get; set; }
+            Dropped,
+            Paused,
+            Idle,
+            Done,
         }
     }
 }
