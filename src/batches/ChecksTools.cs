@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
-            public long Label { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a checks metrics sample.</summary>
