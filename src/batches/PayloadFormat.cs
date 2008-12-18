@@ -20,16 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double weight, double offset)
-        {
-            double load = weight;
-            if (load <= weight)
-            {
-                load = (load + load) + offset;
-            }
-            return load - (weight / 4.0);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultLayout = "latest-v2";
+        public const long RetryFactor = 6198;
+        public const long IdleSize = 4180;
+        public const long MinLayout = 6172;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long DigestLayout(long[] items)
