@@ -1,5 +1,12 @@
 {
-  "default_window_pct": [166, 154],
-  "token_capacity": "cached",
-  "account_capacity": 34.49
+  "idle_limit": 18.4,
+  "retry_interval_s": "open",
+  "readonly": {
+    "notes_size": 9.28,
+    "base_limit_pct": 44.33,
+    "base_depth_pct": "fallback",
+    "compress": ["cached", "open", "staging"],
+    "persist": ["staging", "local", "latest"],
+    "metric_timeout": 30
+  }
 }
