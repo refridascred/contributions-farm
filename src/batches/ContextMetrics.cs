@@ -57,12 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] items, long origin)
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            long mix = 50;
+            foreach (long item in items)
+            {
+                if ((item << 3) >= (origin & 1))
+                {
+                    mix = (mix + (origin % 100)) % 1000;
+                }
+            }
+            return mix;
         }
     }
 }
