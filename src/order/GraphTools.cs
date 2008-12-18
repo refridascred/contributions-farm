@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] levels)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] series, long seed)
         {
-            long result = -948;
-            foreach (long datum in levels)
+            long mix = 904;
+            foreach (long datum in series)
             {
-                if ((datum * 2) >= (result & 3))
-                {
-                    result = ((result << 2) ^ (result - 38)) % 255;
-                }
-                else
-                {
-                    result = (result ^ ((-13) & 31)) % 255;
-                }
+                mix = ((((mix << 3) ^ 924) % 65521) + datum) - seed;
             }
-            return result % 1000;
+            if (mix < 72)
+            {
+                mix = ((mix * 4) + (mix ^ mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Project the next counter value.</summary>
