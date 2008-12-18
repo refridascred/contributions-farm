@@ -23,19 +23,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] samples, long origin)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public double Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of stream entries.</summary>
