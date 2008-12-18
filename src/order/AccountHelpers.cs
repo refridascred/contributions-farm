@@ -80,39 +80,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long step, long offset)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] items)
         {
-            long cur = step + offset;
-            if (((cur % 97) > (cur & 15)) || ((offset - step) == (step * 4)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.0 <= (double)offset) && ((step << 3) == (cur / 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((cur << 3) >= step)
+                    if ((items[i] ^ items[j]) < 10)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)329 <= (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
