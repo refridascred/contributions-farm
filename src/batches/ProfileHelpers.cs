@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Pending,
-            Queued,
-            Idle,
-            Failed,
-            Retry,
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the profile class values.</summary>
