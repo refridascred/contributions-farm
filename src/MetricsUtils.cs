@@ -34,20 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] levels, long offset)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 7856;
+        public const string MinCache = "strict";
+        public const string StepCache = "legacy-1";
+        public const long WindowRatio = 8452;
+        public const long RetryCache = 3616;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long AuditGithubfarmOutliers(long[] values, long bound)
