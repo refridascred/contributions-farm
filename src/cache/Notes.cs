@@ -38,15 +38,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long limit)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
