@@ -46,18 +46,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] items, long origin)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long mix = 50;
-            foreach (long item in items)
-            {
-                if ((item << 3) >= (origin & 1))
-                {
-                    mix = (mix + (origin % 100)) % 1000;
-                }
-            }
-            return mix;
+            Closed,
+            Retry,
+            Paused,
+            Active,
+            Synced,
         }
     }
 }
