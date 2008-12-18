@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 4;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((acc << 3) >= cell)
                 {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc - (cell % 64);
+                }
+                else
+                {
+                    acc = (acc - (cell + cell)) % 4096;
                 }
             }
-            return tally;
+            if (acc < (-7))
+            {
+                acc = (acc ^ (acc / 2)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Locate a command format reading by value.</summary>
