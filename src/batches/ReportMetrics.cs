@@ -17,23 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((hits + hits) >= sample)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowLevel = 20.08;
+        public const long StepNotes = 638;
+        public const long BurstNotes = 2639;
+        public const double WindowNotes = 28.04;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long DefaultProfile = 3842;
