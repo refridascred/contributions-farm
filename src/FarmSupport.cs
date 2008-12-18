@@ -14,13 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] values)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + tally) <= cell)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
