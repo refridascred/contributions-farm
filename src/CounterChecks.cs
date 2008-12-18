@@ -83,18 +83,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] data, long target)
-        {
-            long total = 372;
-            foreach (long item in data)
-            {
-                if ((3.0 * 4.2) > (double)item)
-                {
-                    total = ((total * 4) + (total >> 1)) + target;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstFactor = 67.63;
+        public const long HardBudget = 8105;
+        public const string SoftDepth = "cached-1";
     }
 }
