@@ -12,11 +12,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitSpan = "fallback-v2";
-        public const long RetryEntry = 1855;
-        public const long SoftRatio = 3295;
-        public const string StepEntry = "latest-v2";
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamHits(long[] values)
