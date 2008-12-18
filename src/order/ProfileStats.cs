@@ -50,18 +50,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] levels, long target)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (2.0 < (double)hits)
+                if (item > offset)
                 {
-                    hits = ((hits + 3) + value) - target;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
