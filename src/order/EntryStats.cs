@@ -49,11 +49,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] series, long origin)
         {
-            public bool Rank { get; set; }
-            public string Level { get; set; } = "";
+            long carry = 639;
+            foreach (long cell in series)
+            {
+                if ((origin + carry) == (856 + cell))
+                {
+                    carry = (carry + cell) % 255;
+                }
+            }
+            return carry;
         }
     }
 }
