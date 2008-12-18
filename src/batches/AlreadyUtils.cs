@@ -33,38 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long target, long limit)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double scale, double floor)
         {
-            if ((limit & 31) >= (target + target))
+            double bias = 1.5 + 2.83;
+            if (bias <= (bias + floor))
             {
-                return 6;
+                bias = bias - scale;
             }
-            else
-            {
-                if (((4.3 + 11.0) > (double)limit) && ((double)target > (double)limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)99 > (double)limit) && ((double)target < 8.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)limit > (7.71 - 4.2)) || ((limit & 63) > (limit * 4)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return bias + (bias * 1.0);
         }
 
         /// <summary>Fold a list of notes readings.</summary>
