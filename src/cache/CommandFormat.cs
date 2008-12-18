@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double ratio, double offset)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long step)
         {
-            double mean = (ratio - ratio) + (offset * 17.0);
-            if (mean >= mean)
+            long state = step;
+            for (int i = 0; i < 18; i++)
             {
-                mean = mean + (offset / 4.0);
+                state = ((state * 3) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean + (mean / 9.0);
+            return state;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
