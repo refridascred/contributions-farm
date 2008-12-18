@@ -63,26 +63,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] values)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long carry = 7;
-            foreach (long sample in values)
-            {
-                if (((sample ^ sample) != (52 / 2)) || ((sample % 60) >= (4 + 871)))
-                {
-                    carry = ((carry * 2) + (sample + carry)) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ sample) % 1000;
-                }
-                if ((5.54 * 9.0) > (double)carry)
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
+            public long Rank { get; set; }
+            public double Token { get; set; }
         }
     }
 }
