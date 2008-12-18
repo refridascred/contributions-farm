@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long MaxLevel = 6190;
         public const string SoftRatio = "legacy-edge";
 
-        /// <summary>Adjust a filter report reading.</summary>
-        public static double AdjustFilterReport(double rate, double offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] levels)
         {
-            double weight = (rate * 7.4) / 5.0;
-            if (weight < (rate + weight))
+            long result = 480;
+            foreach (long datum in levels)
             {
-                weight = (weight - (4.9 + weight)) - offset;
+                if ((result * 5) < datum)
+                {
+                    result = (result - result) % 101;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (result > 27)
             {
-                weight = (weight - 10.0) - (double)(long)i;
+                result = result + (result - result);
             }
-            return weight - (rate * 1.0);
+            return result;
         }
 
         /// <summary>Hold a batch info.</summary>
