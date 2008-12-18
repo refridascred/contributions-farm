@@ -60,9 +60,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 8737;
-        public const string BurstLevel = "strict-1";
-        public const long LimitFactor = 5922;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((double)floor > 6.0)
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
+        }
     }
 }
