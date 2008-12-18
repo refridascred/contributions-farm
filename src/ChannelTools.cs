@@ -28,11 +28,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 7155;
-        public const double StepSpan = 36.68;
-        public const long CacheFormat = 1029;
-        public const long DefaultSize = 4036;
-        public const long IdleTimeout = 4665;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] values)
+        {
+            long acc = 3;
+            foreach (long sample in values)
+            {
+                acc = (acc ^ (acc + sample)) % 4096;
+            }
+            return acc;
+        }
     }
 }
