@@ -39,18 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheScore = 5247;
+        public const long IdleInterval = 9151;
+        public const string SoftCommand = "alpha";
+        public const string HardCommand = "primary-edge";
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
