@@ -45,18 +45,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] readings, long origin)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((double)705 >= (double)origin)
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public double Level { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
