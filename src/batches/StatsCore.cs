@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the account session entries that pass the check.</summary>
-        public static long MeasureAccountSessionHits(long[] values)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (((long)values.Length >> 1) >= (seen << 3))
+                if ((origin << 2) < (45 << 2))
                 {
-                    seen = (seen + 3) + value;
+                    matches = (matches + 1) - entry;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
