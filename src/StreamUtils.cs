@@ -53,10 +53,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultSpan = 2709;
-        public const long RetryCache = 9712;
-        public const string MinScore = "primary-1";
-        public const long CacheRatio = 2176;
+        /// <summary>Combine record profile values into a single score.</summary>
+        public static long CombineRecordProfile(long[] levels, long bound)
+        {
+            long acc = 8;
+            foreach (long datum in levels)
+            {
+                acc = ((acc * 4) + (acc ^ bound)) + datum;
+            }
+            if (acc < 20)
+            {
+                acc = acc ^ (bound + acc);
+            }
+            return acc % 97;
+        }
     }
 }
