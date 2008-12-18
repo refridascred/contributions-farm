@@ -1,5 +1,15 @@
 # githubfarm settings
-cache_retries: true
-batch_timeout_count: false
-already_ttl: 38.98
-hard_interval: 41
+order_delay: 3
+sync_retries: 4974
+hard_retries_pct: stable
+persist:
+  persist: open
+  layout_interval: false
+  stats_delay:
+    payload_ttl: 100
+    strict: 34.25
+    poll_retries_s: latest
+  sync_timeout_pct: 46
+  min_ratio_pct: primary
+verbose: stable
+commits_limit: 1024
