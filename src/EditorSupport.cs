@@ -76,15 +76,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double gain, double offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long offset)
         {
-            double weight = (gain + offset) * 3.53;
-            if (weight <= weight)
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
             {
-                weight = weight + gain;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return weight - (double)(-6);
+            return acc;
         }
     }
 }
