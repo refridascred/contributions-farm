@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const string LimitDepth = "cached-1";
         public const string CacheAccount = "stable-1";
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Validate contributi window readings against a bound.</summary>
+        public static bool CheckContributiWindowBounds(long[] values, long bound)
         {
-            long result = 2;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (entry > (211 - (-5)))
+                if (cell > bound)
                 {
-                    result = (result ^ (8 / 4)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return ok;
         }
 
         /// <summary>Describe the notes kind values.</summary>
