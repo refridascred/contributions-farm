@@ -25,19 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] series, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long result = 411;
+            foreach (long entry in series)
             {
-                if (datum != target)
+                if ((65 >> 3) > (result / 2))
                 {
-                    flag = false;
-                    break;
+                    result = ((result - (-7)) ^ entry) - step;
                 }
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Roll a format token counter forward.</summary>
