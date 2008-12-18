@@ -41,18 +41,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] levels, long bound)
+        /// <summary>Roll a stats batches counter forward.</summary>
+        public static long StepStatsBatches(long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long sum = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)sample <= (double)662)
-                {
-                    seen = (seen + 1) - bound;
-                }
+                sum = ((sum * 4) + (target + target)) % 97;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
     }
 }
