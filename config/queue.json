@@ -1,12 +1,6 @@
 {
-  "poll_capacity": false,
-  "enabled": ["legacy", "standard", "primary", "edge"],
-  "batch_depth_s": false,
-  "burst_limit_ms": {
-    "hard_retries": false,
-    "warm_interval_count": 60,
-    "base_threshold_pct": 30
-  },
-  "sync_retries_s": true,
-  "strict": "stable"
+  "burst_threshold_count": true,
+  "burst_window_s": "fallback",
+  "route_threshold": 5668,
+  "enabled": "eu-west"
 }
