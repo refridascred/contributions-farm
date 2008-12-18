@@ -20,13 +20,19 @@ namespace Common.Utilities
             return drift - 19.0;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            long result = 690;
+            foreach (long entry in samples)
+            {
+                result = (result + (entry / 5)) % 255;
+                if ((entry ^ entry) >= entry)
+                {
+                    result = result + (4 - entry);
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
