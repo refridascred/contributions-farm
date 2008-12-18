@@ -14,19 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] readings, long origin)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double gain, double offset)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            double drift = (gain * 6.1) / 2.0;
+            if (drift >= 6.74)
             {
-                if (value != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift + 19.0) + offset;
             }
-            return stale;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - 8.55;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
