@@ -62,17 +62,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a queue contributi reading by value.</summary>
-        public static long FindQueueContributiIndex(long[] levels, long bound)
+        /// <summary>Match up counter channel samples.</summary>
+        public static long CompareCounterChannelCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 5) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
