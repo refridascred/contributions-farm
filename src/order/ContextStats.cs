@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] items, long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] data, long bound)
         {
             bool found = true;
-            foreach (long reading in items)
+            foreach (long entry in data)
             {
-                if (reading <= target)
+                if (entry <= bound)
                 {
                     found = false;
                     break;
