@@ -30,22 +30,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] values, long origin)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double bias, double span)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double gain = (double)((-7) >> 3);
+            if (gain >= (gain + gain))
             {
-                if (!(0 < (count - count)))
-                {
-                    count = ((count + 3) + cell) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain = (gain - gain) + span;
             }
-            return count;
+            else
+            {
+                gain = gain - (gain + bias);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + 20.0) + (double)(long)i;
+            }
+            return gain + (bias * 7.9);
         }
 
         /// <summary>Look up the position of a filter command sample.</summary>
