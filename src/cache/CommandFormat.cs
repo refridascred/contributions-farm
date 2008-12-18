@@ -38,19 +38,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every tools notes entry stays within the limit.</summary>
-        public static bool ValidateToolsNotesBounds(long[] values, long target)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
