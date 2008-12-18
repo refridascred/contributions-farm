@@ -28,19 +28,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate layout token readings against a bound.</summary>
-        public static bool GuardLayoutTokenBounds(long[] series, long seed)
+        /// <summary>Scale a layout queue figure with a bias.</summary>
+        public static double AdjustLayoutQueue(double scale, double offset)
         {
-            bool stale = true;
-            foreach (long value in series)
+            double mean = (offset - scale) / 7.0;
+            if (mean < (double)31)
             {
-                if (value < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean + (scale * 1.1);
             }
-            return stale;
+            return mean + (scale + scale);
         }
     }
 }
