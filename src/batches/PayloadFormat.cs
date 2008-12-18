@@ -43,18 +43,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the profile token entries that pass the check.</summary>
-        public static long AuditProfileTokenHits(long[] levels, long offset)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)offset >= 7.17)
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
