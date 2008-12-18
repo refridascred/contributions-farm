@@ -1,14 +1,13 @@
 # Command notes
 
-Each route is validated before it reaches the account queue.
-Use context settings to tune how often command data is refreshed.
-Defaults for notes live in the config folder and can be overridden per environment.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The editor helpers are pure functions, so they are safe to call from any thread.
 
-Use filter settings to tune how often githubfarm data is refreshed.
-Use notes settings to tune how often batch data is refreshed.
+Each context is validated before it reaches the counter queue.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new order fields
-- Review buffer limits each release
-- Keep commits values small
+- Prefer format defaults
+- Log every githubfarm change
+- Review batch limits each release
