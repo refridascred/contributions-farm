@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Adjust a entry schema reading.</summary>
+        public static double AdjustEntrySchema(double rate, double bias)
         {
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            double ratio = (double)(70 ^ 691);
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ((ratio + 4.86) + (double)(long)i) + bias;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Define support limits and defaults.</summary>
