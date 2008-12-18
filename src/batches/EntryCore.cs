@@ -62,13 +62,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public double Score { get; set; }
+            public double Token { get; set; }
         }
     }
 }
