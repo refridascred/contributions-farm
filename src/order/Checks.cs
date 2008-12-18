@@ -66,11 +66,13 @@ namespace Common.Utilities
         public const double BurstCommits = 60.49;
         public const double CacheBudget = 22.29;
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            Stale,
+            Retry,
+            Ready,
+            Failed,
         }
     }
 }
