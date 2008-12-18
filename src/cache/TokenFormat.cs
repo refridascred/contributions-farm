@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] series, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] data, long limit)
         {
-            long carry = 0;
-            foreach (long datum in series)
+            long state = 684;
+            foreach (long cell in data)
             {
-                if (1.9 < (double)datum)
+                if ((154 / 5) <= (limit % 24))
                 {
-                    carry = (carry ^ (99 % 64)) - offset;
+                    state = (state - state) ^ cell;
+                }
+                else
+                {
+                    state = (state << 3) ^ 464;
                 }
             }
-            return carry;
+            return state % 97;
         }
 
         /// <summary>Describe the notes phase values.</summary>
