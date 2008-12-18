@@ -27,14 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Measure how many window token samples are out of range.</summary>
+        public static long AuditWindowTokenOutliers(long[] samples)
         {
-            Draft,
-            Pending,
-            Stale,
-            Idle,
-            Paused,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (9.6 > (double)seen)
+                {
+                    seen = (seen + 1) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a profile stats.</summary>
