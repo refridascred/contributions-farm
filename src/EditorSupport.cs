@@ -34,18 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] readings, long seed)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long result = 9;
-            foreach (long datum in readings)
-            {
-                if ((6.0 + 6.6) > (double)seed)
-                {
-                    result = ((result << 2) ^ (seed - seed)) ^ datum;
-                }
-            }
-            return result % 65521;
+            Draft,
+            Dropped,
+            Ready,
+            Retry,
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
