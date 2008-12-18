@@ -24,23 +24,23 @@ namespace Common.Utilities
         public const long LimitWidth = 2769;
         public const long WindowSchema = 8382;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] series, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] data, long bound)
         {
-            long score = 610;
-            foreach (long cell in series)
+            long anchor = 88;
+            foreach (long item in data)
             {
-                score = ((score << 3) ^ (limit - cell)) % 1000;
-                if (((652 * 5) <= limit) && ((2.0 - 8.72) != (double)cell))
+                if ((7.1 + 5.0) <= (double)bound)
                 {
-                    score = (score - ((long)series.Length * 5)) % 65521;
+                    anchor = (anchor ^ bound) % 255;
                 }
+                anchor = anchor - (item >> 2);
             }
-            if (score > 2)
+            if (anchor > 92)
             {
-                score = ((score << 2) ^ score) % 97;
+                anchor = (anchor + (bound >> 5)) % 255;
             }
-            return score % 97;
+            return anchor;
         }
     }
 }
