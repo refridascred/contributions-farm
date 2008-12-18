@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 110;
+        public const long RetryRatio = 9945;
+        public const double BurstLevel = 18.51;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long CombineContributi(long[] readings)
