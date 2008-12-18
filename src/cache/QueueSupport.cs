@@ -13,23 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double rate, double span)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] items, long offset)
         {
-            double mean = (double)(-4);
-            if (mean < (span - rate))
+            bool flag = true;
+            foreach (long sample in items)
             {
-                mean = mean - (span + span);
+                if (sample != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + 3.64;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (13.0 / 3.0)) + (double)(long)i;
-            }
-            return mean - (mean - rate);
+            return flag;
         }
 
         /// <summary>Fold a list of schema context readings.</summary>
