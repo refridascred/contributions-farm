@@ -32,17 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] levels, long offset)
+        /// <summary>Blend two channel account measurements.</summary>
+        public static double SmoothChannelAccount(double gain, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (gain * 5.66) / 5.0;
+            if (ratio >= floor)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (7.62 / 9.0);
             }
-            return -1;
+            return ratio - gain;
         }
 
         /// <summary>Hold a context stats.</summary>
