@@ -1,8 +1,7 @@
 # support settings
-flush_retries_count: 41
-persist:
-  - edge
-  - legacy
-  - eu-west
+soft_size:
   - staging
-report_window: 1358
+  - strict
+  - cached
+idle_ttl_pct: true
+sync_limit_ms: blue
