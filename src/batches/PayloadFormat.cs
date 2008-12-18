@@ -12,13 +12,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double weight, double offset)
         {
-            Synced,
-            Failed,
-            Draft,
-            Retry,
+            double load = weight;
+            if (load <= weight)
+            {
+                load = (load + load) + offset;
+            }
+            return load - (weight / 4.0);
         }
 
         /// <summary>Adjust a stream reading.</summary>
