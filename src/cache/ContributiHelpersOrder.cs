@@ -61,12 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long step)
         {
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public double Token { get; set; }
+            long mix = step;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
