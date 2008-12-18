@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] series)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((long)series.Length != (146 + tally))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
+            Closed,
+            Failed,
+            Pending,
         }
 
         /// <summary>Combine report values into a single score.</summary>
