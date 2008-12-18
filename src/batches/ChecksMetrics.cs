@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] samples)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] items, long target)
         {
-            long result = 632;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)cell != (6.29 - 4.86)) || ((367 << 1) != (result - 33)))
+                if (items[i] >= target)
                 {
-                    result = result - (cell >> 2);
-                }
-                else
-                {
-                    result = (result + (result + result)) % 255;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
