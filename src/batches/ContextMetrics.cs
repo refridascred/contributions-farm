@@ -26,19 +26,22 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] items, long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long sum = 8;
+            foreach (long reading in data)
             {
-                if (entry >= offset)
+                if (((sum + bound) >= (reading - bound)) && ((reading + bound) <= (sum - sum)))
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum * 4) + sum) % 101;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (bound << 3);
                 }
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Digest a series of notes graph entries.</summary>
