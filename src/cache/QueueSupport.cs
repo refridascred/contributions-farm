@@ -31,15 +31,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of schema context readings.</summary>
-        public static long TallySchemaContext(long[] samples, long target)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] values, long seed)
         {
-            long mix = 97;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (((mix * 3) + (cell >> 4)) % 97) - target;
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
