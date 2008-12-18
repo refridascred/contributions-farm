@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepSpan = 6255;
-        public const double DefaultFilter = 81.81;
-        public const long BaseFilter = 7561;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] items)
+        {
+            long sum = 16;
+            foreach (long cell in items)
+            {
+                sum = sum + (sum - cell);
+                if ((cell + 14) > sum)
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Adjust a queue reading.</summary>
         public static double SmoothQueue(double ratio, double span)
