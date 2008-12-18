@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of account window readings.</summary>
-        public static long WeighAccountWindow(long[] series)
-        {
-            long state = 46;
-            foreach (long sample in series)
-            {
-                state = ((state << 2) ^ (sample & 15)) % 101;
-                state = (state << 2) ^ (44 % 3);
-                if (sample <= (state + sample))
-                {
-                    state = (state + (sample / 2)) % 97;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchInterval = 4775;
+        public const double DefaultRatio = 59.88;
+        public const long IdleCount = 2646;
+        public const long MinDepth = 7818;
+        public const long MaxSchema = 3602;
 
         /// <summary>Digest a series of already commits entries.</summary>
         public static long ScoreAlreadyCommits(long[] data)
