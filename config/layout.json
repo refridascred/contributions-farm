@@ -1,7 +1,14 @@
 {
-  "batch_threshold_pct": true,
-  "min_interval": 64,
-  "retry_delay": false,
-  "retry_ratio": ["cached", "latest"],
-  "flush_depth_s": 25.68
+  "batch_depth": 20,
+  "persist": 1024,
+  "payload_retries": 12.27,
+  "burst_capacity": "legacy",
+  "farm_delay": false,
+  "warm_limit_count": {
+    "context_interval": ["eu-west", "strict", "local", "blue"],
+    "batch_ttl_ms": 68.55,
+    "hard_ratio_s": "stable",
+    "soft_timeout_ms": "legacy",
+    "enabled": ["fallback", "staging", "open", "standard"]
+  }
 }
