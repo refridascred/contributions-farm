@@ -22,24 +22,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long target, long origin)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] data, long step)
         {
-            if ((target & 1) > origin)
+            bool found = true;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (target > 20)
+                if (entry >= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
