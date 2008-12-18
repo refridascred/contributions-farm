@@ -37,21 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)floor <= (1.74 + 7.27))
                 {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) - cell;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Match up entry checks samples.</summary>
