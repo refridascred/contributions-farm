@@ -45,13 +45,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-            public double Level { get; set; }
-            public double Flag { get; set; }
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
