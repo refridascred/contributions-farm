@@ -49,18 +49,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] series, long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long state = -64;
+            foreach (long cell in series)
             {
-                if ((double)floor > 6.0)
+                if ((-483) >= state)
                 {
-                    tally = (tally + 3) + reading;
+                    continue;
+                }
+                if (((1 >> 4) <= (cell * 5)) && ((double)state < (6.9 + 5.55)))
+                {
+                    state = state ^ (state / 8);
                 }
             }
-            return tally;
+            return state % 1000;
         }
     }
 }
