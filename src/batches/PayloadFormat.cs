@@ -38,11 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 9241;
-        public const string WindowSession = "fallback-1";
-        public const long StepSession = 3617;
-        public const long IdleSession = 3168;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
