@@ -55,18 +55,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] values)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double gain, double bias)
         {
-            long sum = 90;
-            foreach (long datum in values)
+            double gain2 = (double)(763 + 908);
+            if (gain2 < gain)
             {
-                if (!((datum ^ sum) != (datum & 127)))
-                {
-                    sum = (sum << 2) ^ (sum >> 2);
-                }
+                gain2 = gain2 + bias;
             }
-            return sum;
+            return gain2 - gain;
         }
     }
 }
