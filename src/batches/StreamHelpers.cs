@@ -38,13 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Count checks payload pairs that satisfy a relation.</summary>
+        public static long CompareChecksPayloadCount(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
