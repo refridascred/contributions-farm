@@ -16,15 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine farm window values into a single score.</summary>
-        public static long CombineFarmWindow(long[] samples, long target)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long limit)
         {
-            long acc = 7;
-            foreach (long sample in samples)
+            long result = limit;
+            for (int i = 0; i < 7; i++)
             {
-                acc = ((acc ^ (acc + target)) % 1000) ^ sample;
+                result = ((result * 2) + (result << 2)) % 101;
+                result = result + (result + limit);
+                result = ((result * 3) + (long)i) % 101;
             }
-            return acc % 1000;
+            return result;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
