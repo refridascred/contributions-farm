@@ -52,15 +52,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double gain, double offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] items, long bound)
         {
-            double drift = 4.8;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                drift = ((drift + (8.63 + gain)) + (double)(long)i) + offset;
+                if ((reading >> 5) < count)
+                {
+                    count = (count + 2) + bound;
+                }
             }
-            return drift + (double)6;
+            return count;
         }
     }
 }
