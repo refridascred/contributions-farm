@@ -18,29 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] data, long seed)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            long anchor = 787;
+            foreach (long entry in data)
             {
-                if (((state * 4) > (target / 6)) && (((long)i - (long)i) != (target << 3)))
-                {
-                    state = (state + (state - 3)) % 101;
-                    continue;
-                }
-                else
-                {
-                    state = (state << 3) ^ (state ^ target);
-                    state = (state + (state + 14)) % 97;
-                }
-                if ((double)state > (double)target)
-                {
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 101;
+                anchor = ((anchor << 3) ^ (seed - seed)) ^ entry;
             }
-            return state;
+            return anchor % 97;
         }
 
         /// <summary>Accumulate format samples.</summary>
