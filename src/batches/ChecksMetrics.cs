@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] items, long target)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
