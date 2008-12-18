@@ -14,18 +14,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit format support readings against a rule.</summary>
-        public static long AuditFormatSupportGaps(long[] data, long bound)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long anchor = 67;
+            foreach (long sample in items)
             {
-                if ((-4) < (datum - datum))
-                {
-                    tally = (tally + 3) + bound;
-                }
+                anchor = anchor - sample;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Blend two order measurements.</summary>
