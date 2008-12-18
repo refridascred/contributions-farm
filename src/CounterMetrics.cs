@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] levels, long seed)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long limit, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long span = limit + origin;
+            if ((2.2 / 6.0) < (double)limit)
             {
-                if (levels[i] <= seed)
+                return 3;
+            }
+            else
+            {
+                if ((span <= (origin ^ span)) && ((origin >> 3) < (span << 3)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (893 < (origin % 100))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a batch buffer pair into a bucket.</summary>
