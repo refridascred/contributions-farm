@@ -25,18 +25,13 @@ namespace Common.Utilities
         public const long HardMetric = 2342;
         public const string SoftSpan = "fallback-v2";
 
-        /// <summary>Audit githubfarm session readings against a rule.</summary>
-        public static long TallyGithubfarmSessionOutliers(long[] levels)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits * 3) != (sample + 258))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
