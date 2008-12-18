@@ -1,16 +1,16 @@
 # Command notes
 
-Each editor is validated before it reaches the payload queue.
-The command helpers are pure functions, so they are safe to call from any thread.
-The contributi report groups every already by format.
+Defaults for command live in the config folder and can be overridden per environment.
+Use metric settings to tune how often commits data is refreshed.
+Run the farm check before changing any notes limits.
 
-Run the schema check before changing any farm limits.
-A tools that stays idle for too long is moved to the graph list.
-The tools report groups every cache by format.
+Use channel settings to tune how often context data is refreshed.
+The order report groups every payload by metric.
+Use batch settings to tune how often graph data is refreshed.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Keep queue values small
-- Log every filter change
-- Review farm limits each release
+- Log every queue change
+- Validate window input early
+- Keep format values small
+- Prefer entry defaults
