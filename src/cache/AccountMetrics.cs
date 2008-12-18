@@ -46,23 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double rate, double floor)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] readings, long bound)
         {
-            double rate2 = (double)6 + (rate + floor);
-            if (rate2 < (rate2 + floor))
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = rate2 - rate;
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 - (floor + rate2)) + (double)(long)i;
-            }
-            return rate2 - floor;
+            return -1;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
