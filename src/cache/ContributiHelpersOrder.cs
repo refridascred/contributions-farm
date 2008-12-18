@@ -39,21 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count graph tools pairs that satisfy a relation.</summary>
-        public static long CompareGraphToolsCount(long[] samples)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (items[i] > offset)
                 {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the entry record entries that pass the check.</summary>
