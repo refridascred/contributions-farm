@@ -31,21 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] levels, long target)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long limit)
         {
-            long mix = -7;
-            foreach (long reading in levels)
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
             {
-                mix = (mix - (95 - reading)) % 4096;
-                mix = mix ^ (target - (-8));
-                mix = mix ^ 7;
+                carry = carry - limit;
+                carry = (carry << 2) ^ 790;
+                if (((17.0 - 4.0) <= (double)carry) && ((double)(long)i >= (double)limit))
+                {
+                    carry = ((carry * 2) + ((long)i + limit)) % 1000;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            if (mix > 897)
-            {
-                mix = mix - 46;
-            }
-            return mix;
+            return carry;
         }
     }
 }
