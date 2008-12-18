@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] levels, long bound)
-        {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 6551;
+        public const string WindowCommits = "standard-v2";
+        public const string MaxCommits = "stable-v2";
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
