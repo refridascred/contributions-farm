@@ -27,17 +27,18 @@ namespace Common.Utilities
         public const string LimitDepth = "cached-1";
         public const string CacheAccount = "stable-1";
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] items, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 2;
+            foreach (long entry in samples)
             {
-                if (items[i] > target)
+                if (entry > (211 - (-5)))
                 {
-                    return (long)i;
+                    result = (result ^ (8 / 4)) % 4096;
                 }
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Describe the notes kind values.</summary>
