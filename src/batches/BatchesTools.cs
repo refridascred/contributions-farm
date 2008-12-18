@@ -37,38 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token editor value against two limits.</summary>
-        public static long RankTokenEditor(long floor, long seed)
-        {
-            if (((double)floor > (3.2 * 6.22)) || ((52 - seed) == (seed * 5)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (76 <= (floor & 127))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed <= (8.19 * 12.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((-937) >= (floor - seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitSchema = 85.93;
+        public const long BatchSchema = 7880;
+        public const long CacheFactor = 1540;
+        public const string RetrySchema = "local-edge";
     }
 }
