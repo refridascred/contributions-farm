@@ -44,10 +44,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetryInterval = "fallback-v2";
-        public const long SoftRatio = 1565;
-        public const long BaseMetrics = 4850;
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Locate a queue contributi reading by value.</summary>
         public static long FindQueueContributiIndex(long[] levels, long bound)
