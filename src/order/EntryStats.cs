@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit commits schema readings against a rule.</summary>
-        public static long AuditCommitsSchemaMatches(long[] readings)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value + 91) > (value * 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Pending,
+            Draft,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define support limits and defaults.</summary>
