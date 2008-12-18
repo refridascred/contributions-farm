@@ -56,11 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Audit session checks readings against a rule.</summary>
+        public static long CountSessionChecksOutliers(long[] series, long origin)
         {
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (origin < (origin ^ count))
+                {
+                    count = (count + 2) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
