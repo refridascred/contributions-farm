@@ -48,10 +48,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheScore = 3375;
-        public const long BatchMetric = 8541;
-        public const long HardMetric = 3484;
-        public const long CacheMetric = 3515;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 1496;
+        public const double CacheSchema = 45.76;
+        public const string MaxSchema = "primary-edge";
+        public const long DefaultSchema = 9930;
     }
 }
