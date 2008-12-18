@@ -49,10 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryToken = 91.65;
-        public const long BatchTimeout = 4186;
-        public const long RetryTimeout = 1004;
-        public const long SoftDepth = 1114;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Done,
+            New,
+            Queued,
+        }
     }
 }
