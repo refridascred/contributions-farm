@@ -1,28 +1,5 @@
 # githubfarm settings
-soft_timeout_ms:
-  - local
-  - eu-west
-warm_capacity_count:
-  stream_capacity: true
-  dry_run:
-    max_delay: 250
-    enabled: fallback
-    graph_ttl: open
-    audit:
-      - open
-      - legacy
-      - stable
-    base_limit: edge
-    warm_ttl:
-      - edge
-      - staging
-  profile_limit:
-    - 315
-    - 27
-    - 202
-    - 89
-  support_timeout: false
-sync_capacity:
-  - 170
-  - 386
-  - 13
+retry_capacity: false
+githubfarm_interval: stable
+cache_size_count: blue
+warm_retries_s: 53.76
