@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 6002;
-        public const string DefaultSession = "standard-1";
-        public const long LimitFactor = 9367;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long StepNotes(long target)
