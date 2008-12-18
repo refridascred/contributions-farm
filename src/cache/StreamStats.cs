@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a account already value against two limits.</summary>
-        public static long GradeAccountAlready(long limit, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] data)
         {
-            long slot = limit ^ offset;
-            if ((9 & 127) <= (slot << 1))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit >= offset) || ((double)offset != (4.0 + 2.92)))
+                if (1 > (datum + tally))
                 {
-                    return 5;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    return 2;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
