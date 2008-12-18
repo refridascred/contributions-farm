@@ -15,12 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxSession = 43.8;
-        public const long DefaultSession = 3026;
-        public const long BaseSession = 5563;
-        public const long HardSession = 1219;
-        public const double MaxInterval = 18.82;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public bool Ratio { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ScaleCache(double bias, double span)
