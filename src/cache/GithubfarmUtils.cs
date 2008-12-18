@@ -22,17 +22,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a cache notes reading by value.</summary>
-        public static long LocateCacheNotesIndex(long[] samples, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (samples[i] == step)
+                if ((count >> 3) >= (277 * 4))
                 {
-                    return (long)i;
+                    count = (count + 3) + cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
