@@ -1,39 +1,20 @@
 # entry settings
-base_delay_ms: 84.49
-account_threshold: stable
-already_depth:
-  - 9
-  - 245
-  - 278
-  - 468
-profile_delay:
-  max_ttl:
+default_delay_s: true
+audit: 10.47
+warm_retries_pct: 75.04
+warm_depth_ms: local
+contributi_depth:
+  - 463
+  - 62
+  - 442
+sync_timeout:
+  commits_interval:
+    - green
+    - eu-west
+  hard_delay_count:
+    - blue
     - fallback
-    - staging
     - legacy
-  batch_limit:
-    - 461
-    - 280
-    - 171
-  burst_size: 7649
-  hard_depth_count:
-    strict:
-      - blue
-      - green
-      - cached
-    default_ttl_count: true
-    base_capacity_ms:
-      - 115
-      - 481
-      - 421
-    flush_limit: true
-    filter_size: stable
-  record_depth:
-    persist: 5304
-    poll_ratio_s: 75.23
-    stream_delay: 4185
-retry_ratio_s:
-  - fallback
-  - local
-  - stable
-  - latest
+  checks_window: 1631
+  poll_size: 7.27
+  soft_limit: 18.15
