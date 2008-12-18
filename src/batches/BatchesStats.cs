@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            Stale,
+            Draft,
+            Closed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
