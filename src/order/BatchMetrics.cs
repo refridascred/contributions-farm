@@ -14,22 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate channel commits samples.</summary>
-        public static long CombineChannelCommits(long[] data, long origin)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long acc = 471;
-            foreach (long item in data)
-            {
-                if (((acc ^ origin) < acc) || (origin < (origin + acc)))
-                {
-                    acc = acc - (acc + item);
-                }
-            }
-            if (acc > 43)
-            {
-                acc = (acc ^ acc) % 1000;
-            }
-            return acc % 65521;
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Grade a cluster commits value against two limits.</summary>
