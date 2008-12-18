@@ -48,24 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long origin, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] samples, long seed)
         {
-            if (!((origin - 8) == (origin ^ origin)))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit >= (1.05 - 0.1))
+                if ((9 << 2) < (seed % 100))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 2) + reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
