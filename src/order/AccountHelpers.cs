@@ -13,19 +13,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] values, long target)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long item in values)
+            double weight2 = (double)(6 >> 3);
+            if (weight2 < 10.0)
             {
-                if (item != target)
-                {
-                    valid = false;
-                    break;
-                }
+                weight2 = (weight2 + (weight2 * 9.0)) - weight;
             }
-            return valid;
+            return weight2 + floor;
         }
 
         /// <summary>Hold a batch entry.</summary>
