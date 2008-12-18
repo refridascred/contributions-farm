@@ -40,19 +40,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate notes tools readings against a bound.</summary>
-        public static bool GuardNotesToolsRange(long[] readings, long step)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] data)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
