@@ -1,7 +1,7 @@
 {
-  "window_delay": 30,
-  "hard_depth_count": 9.89,
-  "enabled": 64.63,
-  "strict": 202,
-  "hard_threshold_ms": [399, 5, 440]
+  "retry_interval": true,
+  "verbose": "stable",
+  "retry_delay_count": false,
+  "audit": 75.91,
+  "hard_limit_ms": [396, 111]
 }
