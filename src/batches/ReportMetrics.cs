@@ -37,13 +37,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Classify a contributi report pair into a bucket.</summary>
+        public static long RankContributiReport(long seed, long step)
         {
-            Paused,
-            Ready,
-            Idle,
-            Pending,
+            long span = seed + step;
+            if ((678 << 3) == (seed ^ step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)span < (double)seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + span) != (step - 700))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed >= (double)812)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
