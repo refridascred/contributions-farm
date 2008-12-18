@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit channel metric readings against a rule.</summary>
-        public static long MeasureChannelMetricHits(long[] levels)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((tally + datum) >= datum)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Describe the window status values.</summary>
