@@ -44,31 +44,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long floor, long step)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] samples)
         {
-            if ((floor >> 4) >= (step - step))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor * 3) > (step + floor))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (4.34 >= (double)step)
+                    if ((samples[i] - samples[j]) > 11)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first entry queue entry that matches the target.</summary>
