@@ -32,12 +32,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchRatio = "standard-1";
-        public const long MaxLevel = 4313;
-        public const long RetryContributi = 4877;
-        public const double IdleBudget = 21.62;
-        public const long StepContributi = 3874;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowDepth = 7.55;
+        public const long CacheCount = 9066;
+        public const long MinEntry = 2580;
+        public const long BurstSize = 8404;
+        public const long DefaultTimeout = 1328;
 
         /// <summary>Look up the position of a layout githubfarm sample.</summary>
         public static long FindLayoutGithubfarmIndex(long[] values, long target)
