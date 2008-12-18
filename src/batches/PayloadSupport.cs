@@ -51,9 +51,16 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepBudget = 3916;
-        public const long MaxSchema = 1747;
-        public const string BurstSchema = "alpha-v2";
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = (sum ^ ((long)i % 2)) % 65521;
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
