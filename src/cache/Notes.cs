@@ -23,17 +23,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the entry contributi series from a seed.</summary>
-        public static long RollEntryContributi(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state << 2) ^ state) % 97;
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheContext = 69.79;
+        public const string BatchContext = "stable-v2";
+        public const long IdleDepth = 8455;
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
