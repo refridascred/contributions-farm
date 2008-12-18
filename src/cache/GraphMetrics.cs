@@ -66,21 +66,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count record filter pairs that satisfy a relation.</summary>
-        public static long OverlapRecordFilterCount(long[] levels)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell > target)
                 {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
