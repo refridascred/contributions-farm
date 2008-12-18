@@ -20,18 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] levels)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (seen <= (seen - seen))
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the format state values.</summary>
