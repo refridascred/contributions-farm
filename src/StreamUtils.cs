@@ -44,11 +44,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 4087;
-        public const double RetrySpan = 35.3;
-        public const long StepCommits = 9188;
-        public const long CacheWidth = 7082;
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
+        }
 
         /// <summary>Compare every pair of entry buffer readings.</summary>
         public static long CompareEntryBufferCount(long[] readings)
