@@ -19,25 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long target, long offset)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long bound)
         {
-            long cur = target ^ offset;
-            if ((target < (offset + offset)) || ((offset + 3) <= (45 + cur)))
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
             {
-                return 0;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((625 + target) >= (target * 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Measure how many layout support samples are out of range.</summary>
