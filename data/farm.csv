@@ -1,6 +1,6 @@
-id,label,token
-1,0.07,primary
-2,34.57,blue
-3,10.12,981
-4,green,76.14
-5,fallback,staging
+id,owner,weight,ratio
+1,409,458,44.43
+2,strict,legacy,132
+3,local,legacy,15.48
+4,60.95,open,97
+5,standard,12.56,latest
