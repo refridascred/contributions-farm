@@ -69,9 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 7344;
-        public const double BurstBudget = 93.5;
-        public const long WindowDepth = 8387;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
