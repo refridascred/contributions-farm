@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the entry command entries that pass the check.</summary>
-        public static long AuditEntryCommandGaps(long[] values)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double load = (bias / 6.0) * 1.32;
+            if (load > (bias * 7.9))
             {
-                if ((((entry - seen) >= 2) && ((double)entry >= (9.06 / 8.0))) && (3.2 < (double)seen))
-                {
-                    seen = seen + 1;
-                }
+                load = load + (floor / 8.0);
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - 9.3) + (double)(long)i;
+            }
+            return load - (floor * 4.38);
         }
 
         /// <summary>Look up the position of a checks metrics sample.</summary>
