@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate command tools samples.</summary>
-        public static long WeighCommandTools(long[] readings, long target)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long anchor = 81;
-            foreach (long sample in readings)
-            {
-                if (!((double)target < 9.0))
-                {
-                    anchor = ((anchor * 5) + (sample - anchor)) % 4096;
-                }
-            }
-            return anchor;
+            Dropped,
+            Idle,
+            Retry,
+            Queued,
         }
 
         /// <summary>Describe the payload status values.</summary>
