@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long seed)
+        /// <summary>Scale a checks contributi figure with a bias.</summary>
+        public static double BlendChecksContributi(double scale, double offset)
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
+            double mean = scale;
+            for (int i = 0; i < 8; i++)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                mean = (mean + (offset + 1.0)) + (double)(long)i;
             }
-            return state;
+            return mean - (mean + scale);
         }
 
         /// <summary>Accumulate entry format samples.</summary>
