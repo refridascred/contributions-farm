@@ -35,10 +35,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double IdleDepth = 64.65;
-        public const long CacheCounter = 4497;
-        public const long BaseRatio = 6387;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxInterval = 4882;
+        public const double WindowSpan = 38.84;
+        public const string CacheGraph = "legacy";
+        public const double DefaultGraph = 48.37;
+        public const double DefaultFactor = 4.57;
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long FindAccountIndex(long[] items, long offset)
