@@ -74,13 +74,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] samples)
         {
-            Paused,
-            Queued,
-            Stale,
-            Closed,
+            long mark = 4;
+            foreach (long sample in samples)
+            {
+                mark = ((mark << 3) ^ (67 ^ mark)) - sample;
+            }
+            if (mark > 18)
+            {
+                mark = (mark - (8 >> 2)) % 65521;
+            }
+            return mark % 97;
         }
     }
 }
