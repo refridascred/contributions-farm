@@ -48,16 +48,11 @@ namespace Common.Utilities
             return rate2 + offset;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix ^ (offset << 1)) % 4096;
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 795;
+        public const string CacheScore = "standard-v2";
+        public const string DefaultSize = "fallback-v2";
+        public const double CacheBatches = 52.53;
+        public const long SoftFactor = 5094;
     }
 }
