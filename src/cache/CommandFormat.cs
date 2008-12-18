@@ -20,15 +20,32 @@ namespace Common.Utilities
             return mean + (mean / 9.0);
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double ratio, double offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long bound, long target)
         {
-            double gain = 13.0;
-            for (int i = 0; i < 3; i++)
+            long bound2 = bound + target;
+            if ((818 + bound) > (bound2 - bound))
             {
-                gain = ((gain + (gain / 8.0)) - (double)(long)i) + ratio;
+                return 8;
             }
-            return gain + offset;
+            else
+            {
+                if ((bound2 < (target % 16)) || ((target * 4) >= (bound2 ^ bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((-8) < bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
