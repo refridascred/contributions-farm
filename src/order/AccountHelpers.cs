@@ -35,15 +35,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Active,
-            Failed,
-            Paused,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 9914;
+        public const long BaseLevel = 8024;
+        public const long BaseBuffer = 1487;
+        public const string DefaultBuffer = "cached-v2";
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
