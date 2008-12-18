@@ -15,10 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitCount = 7253;
-        public const double HardRoute = 74.76;
-        public const long CacheWidth = 9228;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] levels)
+        {
+            long total = 21;
+            foreach (long datum in levels)
+            {
+                if ((6.0 * 6.07) <= (double)datum)
+                {
+                    total = total ^ (total % 2);
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
