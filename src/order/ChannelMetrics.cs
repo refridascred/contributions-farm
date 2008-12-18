@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] levels, long bound)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long acc = 38;
-            foreach (long datum in levels)
-            {
-                acc = ((acc - (bound + acc)) % 4096) - datum;
-                acc = acc - (bound % 2);
-            }
-            return acc % 4096;
+            Pending,
+            Active,
+            Done,
+            New,
         }
 
         /// <summary>Adjust a checks stream reading.</summary>
