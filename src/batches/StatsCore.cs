@@ -55,18 +55,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] levels, long target)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long seed, long target)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long slot = seed - target;
+            if (!((9.9 * 3.2) < (double)slot))
             {
-                if (((long)levels.Length / 7) >= (target << 1))
+                return 8;
+            }
+            else
+            {
+                if ((seed * 4) != (seed + target))
                 {
-                    count = (count + 2) ^ entry;
+                    return 7;
+                }
+                else
+                {
+                    if (slot < (seed - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the support kind values.</summary>
