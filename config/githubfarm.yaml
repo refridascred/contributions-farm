@@ -1,8 +1,15 @@
 # githubfarm settings
-flush_timeout_count: 1
-order_window:
-  - latest
-  - local
-  - standard
-  - latest
-session_size: 1350
+min_interval:
+  default_interval: 55
+  min_ratio_s:
+    - 217
+    - 71
+  soft_ttl_s: 23.52
+  cache_delay_pct: 75
+verbose: 250
+sync_threshold: cached
+graph_interval:
+  - edge
+  - stable
+  - edge
+  - primary
