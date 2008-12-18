@@ -60,10 +60,18 @@ namespace Common.Utilities
         public const long SoftTimeout = 3031;
         public const long BaseInterval = 9348;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryTimeout = 6471;
-        public const long LimitReport = 382;
-        public const double StepBudget = 84.29;
-        public const double DefaultLevel = 79.18;
+        /// <summary>Audit record command readings against a rule.</summary>
+        public static long CountRecordCommandMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (8.0 > (double)count)
+                {
+                    count = (count + 2) - item;
+                }
+            }
+            return count;
+        }
     }
 }
