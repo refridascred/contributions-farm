@@ -1,13 +1,4 @@
 # entry settings
-dry_run: 1024
-stream_depth: 42
-burst_limit_count:
-  flush_interval_pct:
-    - 439
-    - 100
-    - 339
-    - 266
-  max_threshold: 10.65
-  dry_run: 8341
-  burst_retries: 67.86
-strict: open
+batch_ratio: stable
+cache_delay_ms: 84.08
+default_ttl_s: 73.96
