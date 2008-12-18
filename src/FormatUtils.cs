@@ -57,38 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long offset, long seed)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            if ((4.92 - 7.2) >= (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((667 < (seed + offset)) && ((seed + offset) <= (seed << 1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed - seed) <= seed) && (9 < (seed + offset)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((273 + offset) == (seed ^ offset)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Active,
+            New,
+            Closed,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
