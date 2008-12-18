@@ -1,19 +1,8 @@
 {
-  "burst_timeout": {
-    "compress": "fallback",
-    "readonly": [32, 184],
-    "base_window_count": 60,
-    "dry_run": {
-      "stream_retries": 12,
-      "poll_window_s": "standard",
-      "strict": "open",
-      "channel_limit": 5002,
-      "notes_interval": "stable"
-    },
-    "burst_delay_s": "stable"
-  },
-  "base_threshold": "stable",
-  "strict": "standard",
-  "filter_ttl": true,
-  "idle_depth": 60
+  "farm_retries": [97, 439, 492],
+  "retry_limit_s": true,
+  "schema_window": "strict",
+  "max_window_ms": ["stable", "stable"],
+  "verbose": "fallback",
+  "burst_retries": ["fallback", "standard", "green", "standard"]
 }
