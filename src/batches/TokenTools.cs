@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 1784;
-        public const string StepBuffer = "local";
-        public const long DefaultBudget = 8692;
-        public const double LimitDepth = 14.64;
-        public const long LimitBudget = 466;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardTimeout = 6822;
+        public const double SoftCluster = 1.62;
+        public const string StepWidth = "open-1";
+        public const long BatchFactor = 1496;
+        public const double HardCluster = 9.46;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long GradeRoute(long target, long target2)
