@@ -31,22 +31,15 @@ namespace Common.Utilities
         public const double MinOrder = 79.55;
         public const double WindowScore = 76.24;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] items, long target)
+        /// <summary>Project the next format metrics value.</summary>
+        public static double AdjustFormatMetrics(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            double rate = floor;
+            if (rate > (floor * 1.2))
             {
-                if ((668 + target) >= (hits + entry))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = (rate - (rate + floor)) + scale;
             }
-            return hits;
+            return rate + (rate + rate);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
