@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (double)((-8) + 70);
+            if (gain >= offset)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = (gain - gain) - bias;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain + (double)647;
         }
 
         /// <summary>Accumulate command samples.</summary>
