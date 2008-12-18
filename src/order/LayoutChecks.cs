@@ -48,26 +48,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] data)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long mark = 17;
-            foreach (long reading in data)
-            {
-                if ((double)reading <= 9.66)
-                {
-                    mark = (mark + (mark % 7)) % 1000;
-                }
-                if ((reading % 64) >= (mark + 4))
-                {
-                    break;
-                }
-            }
-            if (mark > 46)
-            {
-                mark = ((mark << 3) ^ mark) % 255;
-            }
-            return mark % 65521;
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
