@@ -33,13 +33,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] series, long bound)
         {
-            public bool Offset { get; set; }
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a layout githubfarm sample.</summary>
