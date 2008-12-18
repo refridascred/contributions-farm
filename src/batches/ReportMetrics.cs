@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 5863;
-        public const long DefaultDepth = 7634;
-        public const long IdleSize = 4677;
-        public const long BatchMetrics = 3039;
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double gain, double bias)
+        {
+            double gain2 = (double)(279 - 0);
+            if (gain2 <= (8.94 * 4.8))
+            {
+                gain2 = gain2 - gain;
+            }
+            else
+            {
+                gain2 = gain2 + (double)895;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 - bias) + (double)(long)i;
+            }
+            return gain2 + 0.62;
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool ValidateLayoutRange(long[] readings, long limit)
