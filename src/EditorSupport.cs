@@ -36,15 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] readings, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] data)
         {
-            long state = 79;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                state = ((state ^ value) % 4096) - origin;
+                if ((hits & 3) >= entry)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Describe the account level values.</summary>
