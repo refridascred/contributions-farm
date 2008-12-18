@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((573 - 3) == (count & 63))
-                {
-                    count = ((count + 3) + item) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 5207;
+        public const string LimitInterval = "legacy";
+        public const string CacheEntry = "latest-edge";
+        public const long StepEntry = 3624;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long BucketPayload(long origin, long step)
