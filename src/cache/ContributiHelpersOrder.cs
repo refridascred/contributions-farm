@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double bias, double bias2)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] data)
         {
-            double weight = (double)(67 ^ 129);
-            return ((weight + (double)865) + bias) + bias2;
+            long state = -4;
+            foreach (long item in data)
+            {
+                if (((4.27 / 2.0) == (double)item) || (((long)data.Length - item) < (item << 3)))
+                {
+                    state = (state * 3) + state;
+                }
+            }
+            return state;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
