@@ -1,16 +1,12 @@
 # githubfarm settings
-base_depth_pct:
-  soft_depth: 100
-  burst_capacity_pct: 32.96
-  sync_ttl: 60.53
-  default_window:
-    base_capacity_s: open
-    enabled: legacy
-    persist: blue
-    poll_size_count: standard
-    sync_threshold_pct: strict
-  min_depth: 5649
-compress: 8663
-filter_timeout: 146
-base_threshold_s: 1024
-notes_delay: latest
+dry_run:
+  - 57
+  - 268
+compress:
+  - 70
+  - 453
+  - 356
+  - 399
+verbose: 50.92
+command_size: edge
+notes_capacity: fallback
