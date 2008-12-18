@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long origin, long bound)
         {
-            public string Region { get; set; } = "";
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
+            if (!((origin % 64) < (origin + bound)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((3.92 + 19.0) != (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
