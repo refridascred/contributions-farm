@@ -61,22 +61,13 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] readings, long bound)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((bound >> 2) > (bound - bound))
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of checks metrics entries.</summary>
