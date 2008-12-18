@@ -1,37 +1,36 @@
 # entry settings
-account_timeout:
-  poll_size: false
-  burst_depth: eu-west
-  idle_size: false
-  format_retries:
-    - local
-    - stable
-    - open
-    - legacy
-  batch_window:
-    cache_limit_ms: open
-    persist:
-      - 496
-      - 309
-      - 404
-    burst_threshold_pct: 250
-  readonly: 500
-persist: false
-retry_ratio:
-  enabled:
-    - 61
-    - 449
-    - 392
-  batch_retries_pct:
-    - legacy
-    - primary
-    - legacy
-    - cached
-  command_size: green
-  contributi_threshold:
-    - fallback
-    - latest
-  command_delay: edge
-  batch_threshold_pct: 100
-readonly: 60
-retry_threshold_s: 5136
+enabled:
+  entry_window: 393
+  max_capacity: false
+  flush_limit_count: 15.79
+  verbose: true
+  warm_timeout_count: 60
+  strict: cached
+flush_interval_s: latest
+buffer_window:
+  cache_delay_pct:
+    burst_limit_pct: 42.19
+    record_size: false
+    base_size_count: open
+    stream_timeout: 72.7
+    poll_window_s: false
+  window_retries: 96.34
+  compress:
+    - 53
+    - 210
+    - 229
+    - 316
+  default_window: 100
+base_capacity_pct:
+  - 495
+  - 291
+  - 376
+session_ratio:
+  poll_retries: legacy
+  sync_delay_s: eu-west
+  batch_delay_count: 70.78
+  audit:
+    default_limit: blue
+    tools_threshold: latest
+    profile_size: fallback
+  retry_window_pct: 23
