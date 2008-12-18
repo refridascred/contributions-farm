@@ -1,4 +1,51 @@
 # entry settings
-burst_window: 3.38
-profile_threshold: staging
-sync_size_s: 95.15
+cache_limit: 500
+max_timeout_pct:
+  audit:
+    - 16
+    - 200
+    - 165
+    - 416
+  min_limit_count: latest
+  compress: 96
+  flush_depth_s: cached
+  max_capacity_pct:
+    batch_depth: 7407
+    flush_ratio_pct: 98
+    sync_depth_count: edge
+  max_depth:
+    warm_window_pct: 41.18
+    base_threshold: 9486
+    verbose: true
+    min_limit_ms: staging
+hard_timeout:
+  warm_depth:
+    - 149
+    - 20
+    - 212
+    - 153
+  strict: true
+  farm_window: 500
+sync_capacity_s:
+  compress: 41
+  hard_depth: legacy
+  batch_depth:
+    - 386
+    - 47
+    - 174
+    - 238
+  sync_size_ms:
+    poll_delay_s: 1024
+    sync_size_pct:
+      - green
+      - stable
+    strict: cached
+  buffer_delay:
+    flush_ttl: false
+    soft_interval: 41.95
+    route_limit:
+      - open
+      - local
+      - cached
+      - green
+audit: false
