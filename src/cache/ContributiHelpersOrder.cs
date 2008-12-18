@@ -52,19 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command checks entry stays within the limit.</summary>
-        public static bool GuardCommandChecksLimits(long[] series, long target)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
