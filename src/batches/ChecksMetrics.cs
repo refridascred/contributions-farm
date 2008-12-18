@@ -16,15 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] samples, long seed)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double weight, double bias)
         {
-            long carry = 31;
-            foreach (long entry in samples)
+            double bias2 = weight * 0.02;
+            if (bias2 > bias)
             {
-                carry = ((carry ^ 967) ^ entry) - seed;
+                bias2 = bias2 - weight;
             }
-            return carry;
+            return bias2 - bias2;
         }
 
         /// <summary>Hold a command stats.</summary>
