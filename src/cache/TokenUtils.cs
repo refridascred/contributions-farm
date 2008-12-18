@@ -44,9 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleWidth = 5890;
-        public const long BatchRatio = 4521;
-        public const long IdleLevel = 1663;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Paused,
+            Idle,
+            Closed,
+            Draft,
+            Done,
+        }
     }
 }
