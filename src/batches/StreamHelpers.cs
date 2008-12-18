@@ -30,19 +30,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] values, long limit)
+        /// <summary>Classify a commits account pair into a bucket.</summary>
+        public static long SortCommitsAccount(long seed, long seed2)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            if (seed2 <= seed)
             {
-                if (datum >= limit)
+                return 2;
+            }
+            else
+            {
+                if (((-261) - seed) <= seed2)
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((927 + seed2) != (seed2 + seed2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((13.0 / 4.0) >= (double)seed2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Match up account channel samples.</summary>
