@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit counter farm readings against a rule.</summary>
-        public static long AuditCounterFarmMatches(long[] series, long floor)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (!(((count / 6) == (count + (long)series.Length)) || ((double)floor != (16.0 + 3.53))))
-                {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Pending,
+            Locked,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define context limits and defaults.</summary>
