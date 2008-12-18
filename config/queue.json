@@ -1,7 +1,10 @@
 {
-  "retry_interval": true,
-  "verbose": "stable",
-  "retry_delay_count": false,
-  "audit": 75.91,
-  "hard_limit_ms": [396, 111]
+  "enabled": "legacy",
+  "audit": 5.42,
+  "entry_delay": {
+    "min_ttl": "edge",
+    "strict": 15.01,
+    "batch_retries": true,
+    "max_delay_count": ["open", "blue", "green"]
+  }
 }
