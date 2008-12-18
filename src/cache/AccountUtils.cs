@@ -18,21 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Iterate the session record series from a seed.</summary>
+        public static long IterateSessionRecord(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((8.4 - 19.0) > (double)(long)i)
                 {
-                    if ((items[i] + items[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc << 2) ^ (offset ^ acc);
+                    break;
                 }
+                else
+                {
+                    acc = ((acc << 3) ^ 3) % 97;
+                    acc = (acc ^ (long)i) % 65521;
+                }
+                acc = (acc << 2) ^ (124 - acc);
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Validate batches filter readings against a bound.</summary>
