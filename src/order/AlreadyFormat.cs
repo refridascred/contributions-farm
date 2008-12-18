@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] series)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long acc = 853;
-            foreach (long reading in series)
-            {
-                if (((reading + reading) >= (acc / 9)) && ((reading + 104) > (24 / 9)))
-                {
-                    acc = (acc + (acc << 2)) % 65521;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (972 % 12)) % 1000;
-                }
-                if ((double)reading < (10.0 / 3.0))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Idle,
+            Active,
+            Retry,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the editor class values.</summary>
