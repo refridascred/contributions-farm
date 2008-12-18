@@ -18,38 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long origin, long limit)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] readings)
         {
-            if (!(3.88 < (double)limit))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin >> 3) < (20 & 255)) || ((double)limit < (1.86 * 1.8)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit / 3) <= (54 << 3))
+                    if ((readings[i] - readings[j]) != 4)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((origin - 78) == (origin >> 3)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
