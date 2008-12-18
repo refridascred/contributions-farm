@@ -31,18 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] samples, long offset)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double weight, double floor)
         {
-            long acc = 82;
-            foreach (long cell in samples)
+            double rate = floor;
+            if (rate <= weight)
             {
-                if (((1.86 * 5.8) <= (double)acc) && ((cell / 5) >= (cell & 3)))
-                {
-                    acc = acc + (offset >> 3);
-                }
+                rate = rate + (rate * 4.04);
             }
-            return acc % 97;
+            return rate - 4.81;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
