@@ -14,16 +14,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheGraph = 96.31;
+        public const long LimitRatio = 9874;
+        public const string LimitFactor = "legacy";
+        public const string HardInterval = "alpha-edge";
+        public const double BurstGraph = 62.93;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextGaps(long[] series, long step)
