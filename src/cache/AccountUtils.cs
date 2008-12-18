@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] items)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public double Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a already entry.</summary>
