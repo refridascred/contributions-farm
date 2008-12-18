@@ -28,22 +28,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] samples, long step)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long origin)
         {
-            long state = 328;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((reading << 1) > reading))
+                if ((levels[i] <= origin) && ((levels[i] % 5) == 0))
                 {
-                    state = state + (step * 5);
+                    return (long)i;
                 }
             }
-            if (state < 23)
-            {
-                state = (state + (step << 1)) % 101;
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
