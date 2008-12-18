@@ -26,18 +26,38 @@ namespace Common.Utilities
         public const string MaxCount = "cached-v2";
         public const long MinSupport = 2341;
 
-        /// <summary>Audit batch githubfarm readings against a rule.</summary>
-        public static long MeasureBatchGithubfarmOutliers(long[] readings)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long seed, long origin)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            if ((3.29 * 3.2) > (double)origin)
             {
-                if (!(seen > (seen + sample)))
+                return 2;
+            }
+            else
+            {
+                if ((origin <= seed) || ((double)origin == (9.98 + 5.3)))
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((6.0 + 9.78) != (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin ^ origin) == (seed * 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the context mode values.</summary>
