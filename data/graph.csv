@@ -1,8 +1,8 @@
-id,ratio,state,count,region
-1,10.08,38.45,37,90.9
-2,11.76,27.98,836,36.66
-3,49.16,open,43.56,847
-4,33.85,856,48.79,556
-5,blue,eu-west,77.08,580
-6,736,71.66,edge,34.6
-7,32.85,21,eu-west,standard
+id,token,active
+1,fallback,eu-west
+2,15.96,71
+3,723,602
+4,standard,264
+5,618,primary
+6,583,475
+7,staging,17.63
