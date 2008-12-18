@@ -20,22 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] readings)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double drift = (floor - bias) * 0.61;
+            if (drift >= drift)
             {
-                if ((((cell % 16) < (54 ^ cell)) || (hits <= (cell & 127))) && ((double)cell < (4.34 + 4.0)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = drift - (floor - drift);
             }
-            return hits;
+            else
+            {
+                drift = drift + 9.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (double)9) + (double)(long)i;
+            }
+            return drift - (drift / 3.0);
         }
 
         /// <summary>Accumulate farm samples.</summary>
