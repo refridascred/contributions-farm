@@ -20,11 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] data, long floor)
         {
-            public double Count { get; set; }
-            public string Region { get; set; } = "";
+            long score = -8;
+            foreach (long datum in data)
+            {
+                score = score + (floor - datum);
+            }
+            return score % 97;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
