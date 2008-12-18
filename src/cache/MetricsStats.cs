@@ -25,33 +25,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long step, long step2)
-        {
-            long slot = step + step2;
-            if ((slot + step2) > slot)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((41 + step2) == (step2 - (-80))))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step2 + step2) <= step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetryRatio = "cached-edge";
+        public const double BatchSupport = 24.94;
+        public const long HardLevel = 1550;
+        public const long IdleSupport = 7234;
+        public const double HardSupport = 26.91;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long GradeEntry(long step, long bound)
