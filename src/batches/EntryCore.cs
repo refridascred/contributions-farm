@@ -15,11 +15,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstSpan = 13.18;
-        public const double MinBudget = 65.75;
-        public const double BaseSpan = 4.52;
-        public const long BaseInterval = 7296;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheMatches(long[] values, long origin)
