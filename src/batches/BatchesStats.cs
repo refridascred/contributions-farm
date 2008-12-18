@@ -11,38 +11,13 @@ namespace Common.Utilities
         public const string CacheEntry = "latest-edge";
         public const long StepEntry = 3624;
 
-        /// <summary>Grade a command layout value against two limits.</summary>
-        public static long ClassifyCommandLayout(long offset, long seed)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            if ((seed < (seed + offset)) || ((offset << 2) <= (seed % 97)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset < (4.45 + 10.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((7.3 - 20.0) >= (double)seed) && ((offset - offset) > (offset + seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed - seed) > 5)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
