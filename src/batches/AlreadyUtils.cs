@@ -58,18 +58,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] samples, long limit)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry % 12) <= (entry + 1))
-                {
-                    tally = (tally + 3) + limit;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public double Total { get; set; }
+            public double Level { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
