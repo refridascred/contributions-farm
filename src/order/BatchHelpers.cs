@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
+            Ready,
+            Locked,
+            Active,
         }
 
         /// <summary>Accumulate commits samples.</summary>
