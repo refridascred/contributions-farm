@@ -1,4 +1,6 @@
 # entry settings
-min_depth_pct: latest
-strict: 4.1
-enabled: 37.56
+default_window_count: true
+default_window: false
+base_threshold_s: false
+enabled: 46
+base_limit: 500
