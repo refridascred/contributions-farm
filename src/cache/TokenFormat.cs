@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double bias, double floor)
         {
-            Queued,
-            Closed,
-            Retry,
-            Done,
-            Synced,
+            double rate = bias / 7.0;
+            if (rate >= (4.5 + 8.73))
+            {
+                rate = rate - (bias / 2.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (bias - floor)) + (double)(long)i;
+            }
+            return rate - (floor - bias);
         }
 
         /// <summary>Describe the notes phase values.</summary>
