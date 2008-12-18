@@ -34,23 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine stats checks values into a single score.</summary>
-        public static long CombineStatsChecks(long[] readings)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long result = -6;
-            foreach (long reading in readings)
-            {
-                result = (result ^ (reading + result)) % 65521;
-                if (((reading % 10) < reading) && ((16.0 / 2.0) < (double)result))
-                {
-                    result = (result ^ (reading % 12)) % 1000;
-                }
-            }
-            if (result > 355)
-            {
-                result = (result ^ result) % 4096;
-            }
-            return result;
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
     }
 }
