@@ -49,21 +49,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MinChecks = 3.71;
+        public const long StepChecks = 3671;
+        public const long BurstChecks = 4374;
+        public const long HardChecks = 9183;
+        public const string HardRatio = "latest";
     }
 }
