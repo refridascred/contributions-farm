@@ -24,19 +24,31 @@ namespace Common.Utilities
         public const long LimitWidth = 2769;
         public const long WindowSchema = 8382;
 
-        /// <summary>Iterate the command already series from a seed.</summary>
-        public static long DeriveCommandAlready(long seed)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] series)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long anchor = -32;
+            foreach (long item in series)
             {
-                if (!((seed ^ 403) < acc))
+                if ((anchor & 7) < (anchor >> 3))
                 {
-                    acc = ((acc << 2) ^ (seed & 15)) % 4096;
+                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 97;
+                    anchor = (anchor << 2) ^ (item ^ anchor);
                 }
-                acc = ((acc * 4) + (long)i) % 101;
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = ((anchor + item) % 101) ^ (long)i;
+                }
+                if ((anchor <= item) && ((double)item > (7.0 + 0.24)))
+                {
+                    anchor = ((anchor << 3) ^ (item * 2)) % 1000;
+                }
             }
-            return acc;
+            if (anchor > (-1))
+            {
+                anchor = ((anchor << 3) ^ (anchor ^ anchor)) % 4096;
+            }
+            return anchor;
         }
     }
 }
