@@ -11,31 +11,22 @@ namespace Common.Utilities
         public const string CacheEntry = "latest-edge";
         public const long StepEntry = 3624;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long origin, long step)
+        /// <summary>Audit editor entry readings against a rule.</summary>
+        public static long MeasureEditorEntryHits(long[] items)
         {
-            if ((origin & 15) == (step & 7))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin << 3) >= origin)
+                if (!(460 >= (reading * 4)))
                 {
-                    return 5;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if (!((4 + (-72)) == (origin + step)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
