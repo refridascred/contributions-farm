@@ -40,19 +40,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every support account entry stays within the limit.</summary>
-        public static bool GuardSupportAccountRange(long[] values, long seed)
+        /// <summary>Match up account channel samples.</summary>
+        public static long OverlapAccountChannelCount(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
