@@ -19,26 +19,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] items, long step)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long score = 9;
-            foreach (long datum in items)
-            {
-                if ((score << 3) <= score)
-                {
-                    score = ((score ^ step) % 101) - datum;
-                }
-                else
-                {
-                    score = (score ^ (long)items.Length) % 1000;
-                }
-            }
-            if (score < 140)
-            {
-                score = (score * 2) + step;
-            }
-            return score;
+            public double Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Digest a series of editor entries.</summary>
