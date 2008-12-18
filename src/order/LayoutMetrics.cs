@@ -41,16 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stats batches counter forward.</summary>
-        public static long StepStatsBatches(long target)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 4) + (target + target)) % 97;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
