@@ -13,18 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] data)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((double)(long)data.Length != (double)8)
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
+            Done,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define order limits and defaults.</summary>
