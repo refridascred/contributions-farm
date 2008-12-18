@@ -1,12 +1,12 @@
 {
-  "idle_limit": 18.4,
-  "retry_interval_s": "open",
-  "readonly": {
-    "notes_size": 9.28,
-    "base_limit_pct": 44.33,
-    "base_depth_pct": "fallback",
-    "compress": ["cached", "open", "staging"],
-    "persist": ["staging", "local", "latest"],
-    "metric_timeout": 30
-  }
+  "compress": "legacy",
+  "filter_depth": true,
+  "payload_capacity": ["open", "fallback"],
+  "channel_ttl": {
+    "cluster_depth": false,
+    "audit": "green",
+    "warm_limit": 31.67,
+    "cache_depth_pct": 48.69
+  },
+  "max_delay_ms": "eu-west"
 }
