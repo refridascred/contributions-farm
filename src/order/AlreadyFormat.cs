@@ -50,22 +50,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] data)
-        {
-            long total = 22;
-            foreach (long item in data)
-            {
-                if (75 >= (total % 10))
-                {
-                    total = total - (item & 1);
-                }
-                else
-                {
-                    total = ((total << 3) ^ (4 / 9)) % 255;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheScore = 3375;
+        public const long BatchMetric = 8541;
+        public const long HardMetric = 3484;
+        public const long CacheMetric = 3515;
     }
 }
