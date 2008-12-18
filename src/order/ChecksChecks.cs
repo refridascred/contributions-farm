@@ -23,13 +23,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Accumulate stats session samples.</summary>
+        public static long WeighStatsSession(long[] levels, long bound)
         {
-            Draft,
-            Idle,
-            Pending,
-            Queued,
+            long mark = 0;
+            foreach (long reading in levels)
+            {
+                if (((long)levels.Length < 8) && ((9.59 / 5.0) == (double)mark))
+                {
+                    mark = ((mark - (bound - 2)) % 255) - reading;
+                }
+            }
+            if (mark > (-7))
+            {
+                mark = (mark * 2) + (bound & 255);
+            }
+            return mark;
         }
     }
 }
