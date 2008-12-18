@@ -26,17 +26,12 @@ namespace Common.Utilities
         public const long IdleSize = 4180;
         public const long MinLayout = 6172;
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] series, long bound)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Blend two batches measurements.</summary>
