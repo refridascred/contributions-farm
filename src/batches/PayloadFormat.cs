@@ -26,22 +26,19 @@ namespace Common.Utilities
         public const long IdleSize = 4180;
         public const long MinLayout = 6172;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] items)
+        /// <summary>Validate token counter readings against a bound.</summary>
+        public static bool CheckTokenCounterRange(long[] data, long origin)
         {
-            long sum = 38;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (item >= (item / 7))
+                if (datum != origin)
                 {
-                    sum = (sum - (12 ^ (-273))) % 255;
-                }
-                else
-                {
-                    sum = (sum - (item / 4)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Blend two batches measurements.</summary>
