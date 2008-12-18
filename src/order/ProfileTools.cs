@@ -73,19 +73,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double weight, double span)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            double ratio = (double)(184 ^ 7);
-            if (ratio <= ratio)
-            {
-                ratio = (ratio - (span * 7.4)) + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - 3.37) + (double)(long)i;
-            }
-            return ratio - (double)54;
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Combine report values into a single score.</summary>
