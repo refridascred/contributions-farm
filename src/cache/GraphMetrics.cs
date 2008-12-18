@@ -23,21 +23,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = (double)(24 - 3);
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = (((bias2 - (double)7) + (double)(long)i) - bias) - span;
             }
-            return tally;
+            return bias2 - (double)343;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
