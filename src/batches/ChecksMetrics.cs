@@ -23,15 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double bias, double floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] series)
         {
-            double load = floor - (double)0;
-            if (load > (double)(-836))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                load = (load - (double)4) + bias;
+                if ((((double)sample >= (7.0 + 3.1)) && ((double)sample != (18.0 - 3.0))) && (((sample - sample) < (tally + tally)) && ((double)tally != (3.51 / 7.0))))
+                {
+                    tally = tally + 2;
+                }
             }
-            return load + (floor / 2.0);
+            return tally;
         }
 
         /// <summary>Hold a command stats.</summary>
