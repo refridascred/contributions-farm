@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] samples, long step)
         {
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (!((hits / 3) <= step))
+                {
+                    hits = (hits + 3) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
