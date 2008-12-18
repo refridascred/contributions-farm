@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultCount = "open-edge";
-        public const long StepCount = 7716;
-        public const long IdleBatch = 1263;
-        public const long WindowScore = 53;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Retry,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsOutliers(long[] data, long seed)
