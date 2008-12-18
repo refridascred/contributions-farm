@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long bound, long bound2)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long seed)
         {
-            if ((bound2 + bound2) == (bound >> 2))
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound % 16) <= bound2)
+                long matches = (mix >> 2) - (seed + mix);
+                if (!!((30 / 2) == (matches + (long)i)))
                 {
-                    return 4;
+                    mix = (mix + 702) % 101;
+                    matches = ((matches << 2) ^ (646 << 1)) % 65521;
                 }
-                else
-                {
-                    return 2;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
+            return mix;
         }
 
         /// <summary>Classify a batch buffer pair into a bucket.</summary>
