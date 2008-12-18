@@ -61,18 +61,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] readings)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long step, long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long prev = step - bound;
+            if ((double)bound <= (double)83)
             {
-                if ((datum - datum) <= (matches + datum))
+                return 4;
+            }
+            else
+            {
+                if (prev <= (prev >> 1))
                 {
-                    matches = matches + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a entry format pair into a bucket.</summary>
