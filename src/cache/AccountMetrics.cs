@@ -61,21 +61,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] series)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double scale, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = 9.35 / 9.0;
+            if (rate < (scale - rate))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate + (rate + scale);
             }
-            return hits;
+            return rate + (span - span);
         }
     }
 }
