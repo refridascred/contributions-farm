@@ -60,10 +60,11 @@ namespace Common.Utilities
         public const double IdleBudget = 53.93;
         public const double SoftGraph = 62.1;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinBatch = "cached-1";
-        public const string StepBatch = "open-v2";
-        public const long BaseCount = 7143;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitBudget = 68.58;
+        public const double MinProfile = 47.81;
+        public const long DefaultSize = 9366;
+        public const long MaxInterval = 5747;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
