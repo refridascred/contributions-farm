@@ -57,22 +57,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes command readings against a rule.</summary>
-        public static long CountNotesCommandMatches(long[] items)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            if ((4.92 - 7.2) >= (double)seed)
             {
-                if ((tally % 12) < (tally - sample))
+                return 6;
+            }
+            else
+            {
+                if ((667 < (seed + offset)) && ((seed + offset) <= (seed << 1)))
                 {
-                    tally = tally + 1;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((seed - seed) <= seed) && (9 < (seed + offset)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((273 + offset) == (seed ^ offset)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
