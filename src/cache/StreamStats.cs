@@ -44,12 +44,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Grade a editor commits value against two limits.</summary>
+        public static long ClassifyEditorCommits(long limit, long floor)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long edge = limit ^ floor;
+            if (limit >= (edge - 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(9.64 >= (double)floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
