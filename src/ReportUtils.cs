@@ -13,12 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public bool Label { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBatches = 86.3;
+        public const double HardBatches = 87.23;
+        public const long StepLevel = 3296;
+        public const long MinWidth = 7225;
+        public const string RetryFactor = "alpha";
 
         /// <summary>Count cache batches pairs that satisfy a relation.</summary>
         public static long CompareCacheBatchesCount(long[] values)
