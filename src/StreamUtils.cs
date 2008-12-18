@@ -69,12 +69,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public bool Score { get; set; }
+            Ready,
+            Synced,
+            Queued,
+            Failed,
+            Idle,
         }
     }
 }
