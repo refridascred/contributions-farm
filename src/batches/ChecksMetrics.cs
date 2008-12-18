@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] values, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((total + total) < limit)
+                if ((entry << 2) > entry)
                 {
-                    total = (total ^ ((long)i / 4)) % 97;
+                    tally = (tally + 1) + offset;
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Audit profile window readings against a rule.</summary>
