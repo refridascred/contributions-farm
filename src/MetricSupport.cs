@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 5734;
+        public const double RetrySize = 60.37;
+        public const long MaxLevel = 6190;
+        public const string SoftRatio = "legacy-edge";
 
         /// <summary>Adjust a filter report reading.</summary>
         public static double AdjustFilterReport(double rate, double offset)
