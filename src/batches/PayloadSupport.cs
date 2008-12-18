@@ -32,13 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] items, long target)
         {
-            Ready,
-            Idle,
-            New,
-            Queued,
+            long sum = 6;
+            foreach (long value in items)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    sum = ((sum * 4) + (value - target)) ^ (long)i;
+                }
+                sum = ((sum << 2) ^ (value + sum)) % 255;
+            }
+            if (sum < 46)
+            {
+                sum = sum - target;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
