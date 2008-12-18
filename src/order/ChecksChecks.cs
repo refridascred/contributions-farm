@@ -30,18 +30,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] values, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long offset)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (((3.6 * 12.0) > (double)cell) && ((cell >> 2) == (target + cell)))
-                {
-                    matches = matches + 3;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
     }
 }
