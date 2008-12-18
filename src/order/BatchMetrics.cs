@@ -85,13 +85,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] levels, long target)
         {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public bool Token { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((double)hits >= (18.0 * 9.0))
+                {
+                    hits = ((hits + 3) ^ item) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the profile state values.</summary>
