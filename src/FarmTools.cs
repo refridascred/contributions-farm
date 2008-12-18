@@ -25,11 +25,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
