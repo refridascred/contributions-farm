@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many token metrics samples are out of range.</summary>
-        public static long CountTokenMetricsGaps(long[] series, long limit)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (count < sample)
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public bool Rank { get; set; }
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
