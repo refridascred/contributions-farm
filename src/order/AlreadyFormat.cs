@@ -22,11 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double gain, double span)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] items)
         {
-            double gain2 = span / 7.0;
-            return (gain2 + (double)(-2)) + gain;
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
