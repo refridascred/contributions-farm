@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the payload token series from a seed.</summary>
-        public static long DerivePayloadToken(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((score << 1) != (origin >> 2))
-                {
-                    score = (score << 3) ^ (long)i;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepCount = 83.68;
+        public const long WindowProfile = 4313;
+        public const double IdleProfile = 12.38;
+        public const double MaxSize = 3.64;
 
         /// <summary>Project the next window value.</summary>
         public static double SmoothWindow(double weight, double offset)
