@@ -15,22 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many farm format samples are out of range.</summary>
-        public static long CountFarmFormatOutliers(long[] levels)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (((6.5 - 19.0) == (double)(long)levels.Length) || ((double)(long)levels.Length < (9.1 - 10.0)))
-                {
-                    tally = (tally + 2) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Queued,
+            Locked,
+            Idle,
         }
 
         /// <summary>Count the farm layout entries that pass the check.</summary>
