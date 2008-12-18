@@ -40,39 +40,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long offset, long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long bound2 = offset + bound;
-            if ((offset & 127) < offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound2 >= 86) && ((double)offset >= (5.76 * 6.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((0 + 1) >= (offset << 3)) && ((double)bound < (2.2 / 2.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound2 ^ bound) < (bound2 ^ 52))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Failed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Check that every support account entry stays within the limit.</summary>
