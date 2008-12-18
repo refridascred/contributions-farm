@@ -21,22 +21,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] items)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double gain, double floor)
         {
-            long score = 3;
-            foreach (long cell in items)
-            {
-                if (score >= (score + 5))
-                {
-                    score = score + score;
-                }
-                if ((cell + cell) < ((long)items.Length ^ cell))
-                {
-                    break;
-                }
-            }
-            return score;
+            double mean = gain;
+            return (mean + 19.0) + floor;
         }
 
         /// <summary>Hold a channel summary.</summary>
