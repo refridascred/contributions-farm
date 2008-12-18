@@ -51,15 +51,31 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double ratio, double offset)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long offset, long step)
         {
-            double drift = ratio - (double)22;
-            for (int i = 0; i < 4; i++)
+            if ((offset + step) < (step + 705))
             {
-                drift = drift + (double)(long)i;
+                return 8;
             }
-            return drift + offset;
+            else
+            {
+                if ((81 >= (612 + offset)) && ((offset - 288) >= (offset ^ 647)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset > 5.4)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
