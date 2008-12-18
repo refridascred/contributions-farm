@@ -52,17 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] data, long bound)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] <= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a command snapshot.</summary>
