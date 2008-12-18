@@ -1,12 +1,7 @@
 {
-  "route_delay": 36,
-  "layout_interval": 70.93,
-  "batch_window": 48.86,
-  "idle_depth": {
-    "warm_delay_ms": 13,
-    "audit": true,
-    "tools_ttl": "blue",
-    "cache_ratio_pct": 35
-  },
-  "compress": [376, 63, 354]
+  "graph_ratio": "edge",
+  "retry_size_ms": 29.4,
+  "retry_depth_pct": "latest",
+  "persist": 7679,
+  "warm_ratio": "blue"
 }
