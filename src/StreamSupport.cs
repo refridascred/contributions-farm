@@ -28,12 +28,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Classify a schema contributi pair into a bucket.</summary>
+        public static long RankSchemaContributi(long target, long origin)
         {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            long lane = target + origin;
+            if (lane <= (18 + origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((lane % 12) < (origin / 6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
