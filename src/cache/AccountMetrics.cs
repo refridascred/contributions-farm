@@ -33,18 +33,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchRatio = "standard-1";
+        public const long MaxLevel = 4313;
+        public const long RetryContributi = 4877;
+        public const double IdleBudget = 21.62;
+        public const long StepContributi = 3874;
 
         /// <summary>Look up the position of a layout githubfarm sample.</summary>
         public static long FindLayoutGithubfarmIndex(long[] values, long target)
