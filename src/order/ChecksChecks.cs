@@ -19,11 +19,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public string Mode { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            Draft,
+            Idle,
+            Pending,
+            Queued,
         }
     }
 }
