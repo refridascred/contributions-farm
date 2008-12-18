@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long limit, long limit2)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            if (7.4 >= (double)limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit + limit) < (limit2 << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((9.37 + 3.0) <= (double)limit) && ((limit % 8) >= 521))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)limit >= (5.36 + 3.0)) && ((limit2 - limit) == (limit + limit)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a buffer reading.</summary>
