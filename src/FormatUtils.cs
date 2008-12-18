@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] values)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            long state = 2;
-            foreach (long reading in values)
+            long mark = -4;
+            foreach (long item in levels)
             {
-                state = (state * 3) + (state + state);
-                if ((15.0 * 4.2) >= (double)reading)
-                {
-                    break;
-                }
+                mark = ((mark * 3) + mark) + item;
             }
-            if (state > 99)
-            {
-                state = state + (state + state);
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
