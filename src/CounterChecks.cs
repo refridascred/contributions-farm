@@ -53,21 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] series)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 613;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((((sum * 4) + sum) % 4096) ^ sample) + floor;
             }
-            return matches;
+            if (sum > 64)
+            {
+                sum = ((sum * 3) + sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Hold a support options.</summary>
