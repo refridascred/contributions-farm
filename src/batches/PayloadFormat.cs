@@ -23,11 +23,22 @@ namespace Common.Utilities
             return load - (weight / 4.0);
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double gain, double span)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] items)
         {
-            double scale = (span * 11.0) - (gain / 2.0);
-            return scale - (gain + span);
+            long sum = 38;
+            foreach (long item in items)
+            {
+                if (item >= (item / 7))
+                {
+                    sum = (sum - (12 ^ (-273))) % 255;
+                }
+                else
+                {
+                    sum = (sum - (item / 4)) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
