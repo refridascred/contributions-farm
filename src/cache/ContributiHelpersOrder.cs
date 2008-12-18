@@ -22,9 +22,9 @@ namespace Common.Utilities
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
         {
-            Dropped,
-            Paused,
-            New,
+            Pending,
+            Draft,
+            Closed,
         }
 
         /// <summary>Accumulate support samples.</summary>
