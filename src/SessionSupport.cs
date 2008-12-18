@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] levels)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long origin, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long next = origin ^ target;
+            if ((origin << 1) >= (origin >> 4))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((7 >> 2) == (next / 5))
                 {
-                    if ((levels[i] ^ levels[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
