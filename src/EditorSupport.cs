@@ -44,12 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] readings, long origin)
         {
-            Synced,
-            Locked,
-            Idle,
+            long state = 79;
+            foreach (long value in readings)
+            {
+                state = ((state ^ value) % 4096) - origin;
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the account level values.</summary>
