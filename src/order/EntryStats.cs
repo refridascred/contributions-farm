@@ -42,18 +42,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] series, long origin)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long carry = 639;
-            foreach (long cell in series)
-            {
-                if ((origin + carry) == (856 + cell))
-                {
-                    carry = (carry + cell) % 255;
-                }
-            }
-            return carry;
+            Stale,
+            Ready,
+            Synced,
+            New,
         }
     }
 }
