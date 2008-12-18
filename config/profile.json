@@ -1,8 +1,6 @@
 {
-  "max_depth": false,
-  "min_interval": 92,
-  "warm_delay": 12,
-  "cache_size_count": "blue",
-  "report_window": [404, 426, 337],
-  "enabled": 41.18
+  "soft_capacity_pct": 86.81,
+  "checks_window": false,
+  "readonly": 3599,
+  "editor_retries": true
 }
