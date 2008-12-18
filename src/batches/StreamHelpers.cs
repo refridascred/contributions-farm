@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double rate, double span)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            double gain = (double)((-565) + 457);
-            if (gain > (double)219)
-            {
-                gain = (gain + span) - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - 17.0) + (double)(long)i;
-            }
-            return gain - (8.0 / 2.0);
+            Draft,
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
