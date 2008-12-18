@@ -1,10 +1,4 @@
 # support settings
-cache_ttl_count: latest
-batch_retries: 250
-enabled:
-  stream_capacity: 5341
-  strict: cached
-  dry_run: eu-west
-  warm_depth_count: 5722
-soft_window_count: 0.05
-route_ttl: 87.13
+command_ttl: true
+batches_limit: 53.31
+compress: 86
