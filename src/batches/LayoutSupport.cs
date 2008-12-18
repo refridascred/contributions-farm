@@ -27,26 +27,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of token filter readings.</summary>
-        public static long TotalTokenFilter(long[] values)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long acc = 61;
-            foreach (long sample in values)
-            {
-                if (sample <= ((-787) ^ acc))
-                {
-                    continue;
-                }
-                if ((acc / 3) < (acc & 255))
-                {
-                    acc = (acc - ((-549) - acc)) % 101;
-                }
-            }
-            if (acc < 68)
-            {
-                acc = (acc - acc) % 4096;
-            }
-            return acc % 4096;
+            Draft,
+            Idle,
+            Locked,
+            Synced,
         }
 
         /// <summary>Measure how many command channel samples are out of range.</summary>
