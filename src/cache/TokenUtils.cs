@@ -29,29 +29,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] data, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] series)
         {
-            long anchor = 34;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in series)
             {
-                long offset = datum;
-                if (!((double)offset > (double)bound))
+                if ((entry ^ entry) >= count)
                 {
-                    anchor = (anchor + (datum ^ 801)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + datum) % 97;
-                    anchor = (anchor ^ 93) % 97;
-                }
-                anchor = (anchor - (anchor + anchor)) % 1000;
-                if (((bound % 8) >= (bound >> 1)) && ((anchor ^ anchor) >= datum))
-                {
-                    break;
+                    count = count + 3;
                 }
             }
-            return anchor % 1000;
+            return count;
         }
     }
 }
