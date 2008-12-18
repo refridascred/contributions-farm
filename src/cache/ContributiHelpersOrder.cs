@@ -27,21 +27,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] values)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long mix = 0;
-            foreach (long item in values)
-            {
-                mix = ((mix << 2) ^ (item / 7)) % 97;
-                mix = (mix ^ (item * 3)) % 101;
-                mix = ((mix << 3) ^ item) % 255;
-            }
-            if (mix > 3)
-            {
-                mix = ((mix * 2) + (55 + mix)) % 255;
-            }
-            return mix;
+            Closed,
+            Locked,
+            Paused,
+            Stale,
+            Done,
         }
     }
 }
