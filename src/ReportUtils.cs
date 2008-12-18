@@ -45,11 +45,38 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long floor, long seed)
         {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            if (((floor & 15) >= floor) && ((5.9 * 15.0) <= (double)seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((3.0 * 3.1) == (double)seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((floor << 3) != (seed - seed)) || (seed > (2 / 4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((76 ^ seed) <= (floor % 60)) || ((418 + floor) >= (seed - floor)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
