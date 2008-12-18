@@ -12,21 +12,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] values, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (origin <= (sum / 5))
+                if ((double)item < (double)count)
                 {
-                    sum = ((sum * 4) + (origin << 3)) % 65521;
-                    continue;
+                    count = (count + 3) - seed;
                 }
-                sum = sum + (46 + sum);
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Blend two filter measurements.</summary>
