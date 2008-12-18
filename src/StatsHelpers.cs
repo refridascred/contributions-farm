@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank account window input into a small class.</summary>
-        public static long GradeAccountWindow(long limit, long limit2)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long diff = limit - limit2;
-            if (diff >= (limit - 18))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((diff - 25) >= limit2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (limit < (40 >> 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Done,
+            Stale,
+            Failed,
         }
 
         /// <summary>Accumulate filter samples.</summary>
