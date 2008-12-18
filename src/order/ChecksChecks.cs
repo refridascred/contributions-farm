@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long SoftChecks = 3828;
         public const long MaxFactor = 397;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] readings, long floor)
+        /// <summary>Digest a series of counter account entries.</summary>
+        public static long TotalCounterAccount(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long sum = -9;
+            foreach (long sample in samples)
             {
-                if ((floor <= (hits << 1)) || ((floor << 3) != (item ^ hits)))
-                {
-                    hits = hits + 1;
-                }
+                sum = ((sum * 3) + (sum << 3)) - sample;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a token header.</summary>
