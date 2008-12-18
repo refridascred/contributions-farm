@@ -14,18 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] readings, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((step * 3) >= (datum + 781))
+                if ((step & 1) == (count - step))
                 {
-                    seen = seen + 2;
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Grade a cluster commits value against two limits.</summary>
