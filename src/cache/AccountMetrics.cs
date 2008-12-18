@@ -85,11 +85,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowBatch = "legacy-1";
-        public const double HardScore = 82.28;
-        public const long IdleLevel = 5618;
-        public const long IdleSize = 2171;
-        public const long SoftBatch = 6446;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Queued,
+            Idle,
+            Failed,
+            Stale,
+        }
     }
 }
