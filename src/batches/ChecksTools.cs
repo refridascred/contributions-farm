@@ -27,17 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] data, long bound)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (data[i] <= bound)
+                if (!((tally <= (sample + 2)) && ((double)sample != (4.8 / 9.0))))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the route level values.</summary>
