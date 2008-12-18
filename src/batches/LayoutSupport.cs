@@ -15,11 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftTimeout = 3943;
-        public const double IdleSupport = 8.04;
-        public const double MaxDepth = 41.72;
-        public const long HardTimeout = 6044;
+        /// <summary>Measure how many payload order samples are out of range.</summary>
+        public static long CountPayloadOrderGaps(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (origin < (tally + item))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
