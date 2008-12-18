@@ -55,12 +55,13 @@ namespace Common.Utilities
         public const long DefaultSize = 9366;
         public const long MaxInterval = 5747;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Locked,
-            Idle,
-            Done,
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
     }
 }
