@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardWidth = 62.65;
-        public const long HardMetrics = 7703;
-        public const long IdleMetrics = 2286;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 6118;
+        public const double StepNotes = 52.95;
+        public const long BaseSpan = 2299;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
