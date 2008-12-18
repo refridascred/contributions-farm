@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] samples, long offset)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long carry = -42;
+            foreach (long cell in levels)
             {
-                if (sample != offset)
+                if ((74 - carry) >= carry)
                 {
-                    found = false;
-                    break;
+                    carry = ((carry * 5) + (carry + 6)) - cell;
                 }
             }
-            return found;
+            if (carry > 0)
+            {
+                carry = (carry + (carry - 52)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
