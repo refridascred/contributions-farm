@@ -21,19 +21,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] series, long origin)
+        /// <summary>Measure how many tools account samples are out of range.</summary>
+        public static long TallyToolsAccountMatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (sample < origin)
+                if (count > (511 + 276))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) + reading;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
