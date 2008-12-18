@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] readings)
-        {
-            long mix = 923;
-            foreach (long sample in readings)
-            {
-                if ((double)sample < (9.76 + 9.2))
-                {
-                    mix = (mix + (sample + mix)) % 97;
-                }
-                if ((95 >> 5) < sample)
-                {
-                    mix = ((mix * 2) + sample) % 101;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultRecord = 4.67;
+        public const long SoftRecord = 6529;
+        public const string LimitLevel = "strict-edge";
+        public const long BatchRecord = 7000;
+        public const double WindowRatio = 54.6;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
