@@ -31,19 +31,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate contributi window readings against a bound.</summary>
-        public static bool CheckContributiWindowBounds(long[] values, long bound)
+        /// <summary>Count cache batches pairs that satisfy a relation.</summary>
+        public static long CompareCacheBatchesCount(long[] values)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
