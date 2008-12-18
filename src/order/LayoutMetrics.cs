@@ -16,31 +16,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long step, long bound)
+        /// <summary>Audit checks window readings against a rule.</summary>
+        public static long AuditChecksWindowMatches(long[] levels)
         {
-            if ((bound ^ step) == (step + 30))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step > (2.7 + 18.0))
+                if ((double)hits > (double)entry)
                 {
-                    return 1;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((step >> 2) >= (bound % 8))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
