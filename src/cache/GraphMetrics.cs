@@ -23,17 +23,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] readings, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 66;
+            foreach (long item in items)
             {
-                if ((readings[i] == step) && ((readings[i] % 2) == 0))
+                if ((7.6 * 11.0) == (double)item)
                 {
-                    return (long)i;
+                    carry = (carry - origin) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (origin - carry)) % 255;
+                }
+                if ((-108) < carry)
+                {
+                    carry = (carry - (650 >> 1)) % 97;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
