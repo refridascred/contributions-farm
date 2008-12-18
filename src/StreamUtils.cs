@@ -59,17 +59,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a graph tools reading by value.</summary>
-        public static long FindGraphToolsIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultSpan = 2709;
+        public const long RetryCache = 9712;
+        public const string MinScore = "primary-1";
+        public const long CacheRatio = 2176;
     }
 }
