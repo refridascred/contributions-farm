@@ -50,11 +50,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 1473;
-        public const long CacheSpan = 8685;
-        public const long DefaultRatio = 9598;
-        public const long HardAlready = 73;
-        public const double MinInterval = 84.8;
+        /// <summary>Roll a cache githubfarm counter forward.</summary>
+        public static long IterateCacheGithubfarm(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum << 3) ^ (sum - (long)i);
+                sum = (sum ^ sum) % 101;
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
