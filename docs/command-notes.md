@@ -1,12 +1,14 @@
 # Command notes
 
-A order that stays idle for too long is moved to the stats list.
-Run the schema check before changing any cache limits.
-When a report fails, the entry handler retries a few times before giving up.
+Run the cache check before changing any entry limits.
+Use queue settings to tune how often route data is refreshed.
+The metric report groups every notes by queue.
+
+Run the channel check before changing any route limits.
+When a editor fails, the route handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer already defaults
-- Document new account fields
-- Validate buffer input early
-- Keep stats values small
+- Review context limits each release
+- Keep entry values small
+- Document new metric fields
