@@ -63,21 +63,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Check that every token record entry stays within the limit.</summary>
+        public static bool GuardTokenRecordLimits(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value != bound)
                 {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
