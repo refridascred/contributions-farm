@@ -27,10 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchSize = 6385;
-        public const long StepScore = 4240;
-        public const long BatchScore = 8699;
-        public const double RetryRatio = 29.88;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] data, long limit)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
