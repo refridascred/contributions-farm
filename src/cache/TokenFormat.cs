@@ -27,10 +27,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 8330;
-        public const long IdleRatio = 771;
-        public const long LimitAlready = 2181;
-        public const string HardAlready = "strict-v2";
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] readings)
+        {
+            long sum = 92;
+            foreach (long value in readings)
+            {
+                sum = (sum << 2) ^ sum;
+                if ((double)value == (1.0 - 5.9))
+                {
+                    sum = (sum << 3) ^ sum;
+                }
+            }
+            return sum;
+        }
     }
 }
