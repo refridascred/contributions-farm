@@ -1,5 +1,7 @@
 {
-  "checks_window": 73,
-  "strict": 250,
-  "base_depth_s": 1
+  "batch_retries": 40,
+  "flush_window": "primary",
+  "flush_depth_count": [64, 184, 38, 478],
+  "poll_window_ms": 93.82,
+  "flush_size_ms": 84.39
 }
