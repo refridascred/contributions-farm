@@ -63,17 +63,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] data, long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 7;
+            foreach (long sample in values)
             {
-                if (data[i] < step)
+                if (((sample ^ sample) != (52 / 2)) || ((sample % 60) >= (4 + 871)))
                 {
-                    return (long)i;
+                    carry = ((carry * 2) + (sample + carry)) % 97;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ sample) % 1000;
+                }
+                if ((5.54 * 9.0) > (double)carry)
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
     }
 }
