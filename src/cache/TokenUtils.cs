@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstToken = "strict-1";
-        public const long CacheSpan = 5636;
-        public const long BaseToken = 6923;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            New,
+            Stale,
+            Draft,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Accumulate entry stats samples.</summary>
         public static long ScoreEntryStats(long[] readings, long target)
