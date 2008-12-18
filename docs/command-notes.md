@@ -1,15 +1,15 @@
 # Command notes
 
-Keep editor and stats names short and lowercase.
-The schema report groups every schema by account.
-Use cluster settings to tune how often checks data is refreshed.
+Run the profile check before changing any notes limits.
+A format that stays idle for too long is moved to the queue list.
+The context report groups every account by format.
 
-Defaults for cache live in the config folder and can be overridden per environment.
-When a metric fails, the payload handler retries a few times before giving up.
-The schema helpers are pure functions, so they are safe to call from any thread.
+Keep window and notes names short and lowercase.
+Run the session check before changing any counter limits.
+Defaults for tools live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate window input early
-- Document new stream fields
-- Prefer counter defaults
+- Keep support values small
+- Log every farm change
+- Prefer session defaults
