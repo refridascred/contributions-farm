@@ -19,31 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long target, long offset)
+        /// <summary>Accumulate command tools samples.</summary>
+        public static long WeighCommandTools(long[] readings, long target)
         {
-            if (((12.0 / 8.0) > (double)target) || ((target ^ offset) < (target + target)))
+            long anchor = 81;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1.0 - 1.1) > (double)offset)
+                if (!((double)target < 9.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((target >> 3) < (offset / 8)) || (4.5 <= (double)target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    anchor = ((anchor * 5) + (sample - anchor)) % 4096;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Describe the payload status values.</summary>
