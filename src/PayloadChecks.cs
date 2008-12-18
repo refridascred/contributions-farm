@@ -44,20 +44,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] values, long limit)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryInterval = "fallback-v2";
+        public const long SoftRatio = 1565;
+        public const long BaseMetrics = 4850;
 
         /// <summary>Locate a queue contributi reading by value.</summary>
         public static long FindQueueContributiIndex(long[] levels, long bound)
