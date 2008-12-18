@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long floor, long step)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long limit, long limit2)
         {
-            if (((9 >> 2) == (floor & 7)) || ((floor ^ step) < (floor - floor)))
+            if (7.4 >= (double)limit)
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((59 / 8) <= floor)
+                if ((limit + limit) < (limit2 << 2))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if (((floor + step) <= (0 + floor)) && ((double)floor != (1.93 * 6.3)))
+                    if (((9.37 + 3.0) <= (double)limit) && ((limit % 8) >= 521))
                     {
-                        return 0;
+                        return 7;
                     }
                     else
                     {
-                        return 1;
+                        if (((double)limit >= (5.36 + 3.0)) && ((limit2 - limit) == (limit + limit)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
