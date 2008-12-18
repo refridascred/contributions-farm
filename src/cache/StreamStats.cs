@@ -26,15 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] levels)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] data, long target)
         {
-            long state = -71;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state ^ (state - 76)) ^ value;
+                if ((data[i] < target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Grade a editor commits value against two limits.</summary>
