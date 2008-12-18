@@ -22,22 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools entry entries that pass the check.</summary>
-        public static long AuditToolsEntryMatches(long[] items, long origin)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (!(((double)hits > (5.0 - 9.68)) || ((8 % 100) < (hits / 8))))
-                {
-                    hits = ((hits + 2) ^ cell) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Synced,
+            Locked,
+            Done,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
