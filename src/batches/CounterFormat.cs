@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double CacheSize = 65.65;
         public const long LimitTimeout = 5043;
 
-        /// <summary>Look up the position of a account profile sample.</summary>
-        public static long LocateAccountProfileIndex(long[] levels, long origin)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] levels, long offset)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 3) != 0))
+                if (levels[i] > offset)
                 {
                     return (long)i;
                 }
