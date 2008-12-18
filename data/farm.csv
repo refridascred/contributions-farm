@@ -1,8 +1,8 @@
-id,level,active,owner
-1,31.25,green,940
-2,715,689,39.02
-3,34.82,78.91,126
-4,standard,staging,40.93
-5,cached,19,230
-6,cached,88.0,57.81
-7,30.41,575,434
+id,region,count
+1,872,46.31
+2,local,stable
+3,fallback,stable
+4,928,cached
+5,latest,89.33
+6,318,906
+7,eu-west,930
