@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long step)
+        /// <summary>Combine filter editor values into a single score.</summary>
+        public static long ScoreFilterEditor(long[] items, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 5; i++)
+            long total = 3;
+            foreach (long reading in items)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                for (int i = 0; i < 11; i++)
+                {
+                    total = (total - ((-691) + total)) ^ (long)i;
+                    total = (total << 3) ^ 9;
+                }
+                total = ((total * 4) + (reading >> 4)) % 4096;
+                if ((66 * 4) > (reading + (long)items.Length))
+                {
+                    total = (total - target) % 255;
+                }
             }
-            return anchor;
+            if (total < 583)
+            {
+                total = total + total;
+            }
+            return total;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
