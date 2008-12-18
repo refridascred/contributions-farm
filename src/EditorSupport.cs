@@ -59,19 +59,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] values)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] samples, long seed)
         {
-            long result = -637;
-            foreach (long cell in values)
+            long total = 906;
+            foreach (long item in samples)
             {
-                result = (result - (result + 52)) % 65521;
-                if ((result + cell) >= (result + result))
-                {
-                    break;
-                }
+                total = ((total - (item >> 5)) % 97) - seed;
+                total = ((total * 2) + (total - (-53))) % 65521;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Blend two queue measurements.</summary>
