@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
