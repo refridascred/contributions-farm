@@ -40,11 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
+            Done,
+            Locked,
+            Idle,
+            Stale,
         }
 
         /// <summary>Describe the entry state values.</summary>
