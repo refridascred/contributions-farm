@@ -1,6 +1,6 @@
 {
-  "farm_interval": 76,
-  "batch_depth": 13,
-  "persist": "fallback",
-  "poll_threshold_count": [354, 218, 211, 257]
+  "max_delay_ms": "latest",
+  "default_limit_count": 8563,
+  "audit": 7.42,
+  "idle_capacity": 1063
 }
