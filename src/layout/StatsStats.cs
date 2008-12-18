@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats stats helpers.</summary>
     public static class StatsStats
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] series)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
