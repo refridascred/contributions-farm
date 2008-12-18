@@ -40,12 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 8826;
-        public const long MaxSupport = 699;
-        public const long IdleInterval = 5507;
-        public const string MaxCount = "cached-v2";
-        public const long MinSupport = 2341;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((step - step) >= carry)
+                {
+                    break;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long ClassifyChannel(long seed, long origin)
