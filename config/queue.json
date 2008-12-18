@@ -1,8 +1,7 @@
 {
-  "sync_ttl_ms": 14.83,
-  "schema_ratio": 9851,
-  "sync_window_ms": 8.94,
-  "entry_timeout": 68.41,
-  "queue_capacity": "green",
-  "payload_size": "primary"
+  "retry_timeout": "primary",
+  "warm_interval": 4018,
+  "cache_delay": ["stable", "latest", "stable", "stable"],
+  "default_threshold_ms": 85,
+  "hard_interval_pct": [40, 340]
 }
