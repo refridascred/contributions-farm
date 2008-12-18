@@ -41,17 +41,15 @@ namespace Common.Utilities
         public const double DefaultGraph = 48.37;
         public const double DefaultFactor = 4.57;
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] items, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 52;
+            foreach (long item in readings)
             {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
+                score = (((score * 3) + (793 - 6)) % 1000) ^ item;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a already info.</summary>
