@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] readings, long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((long)i != (25 + limit))
+                if (sample < step)
                 {
-                    sum = (sum ^ (64 ^ sum)) % 255;
-                    sum = (sum ^ (sum << 3)) % 65521;
-                }
-                if (11.0 < (double)(long)i)
-                {
+                    ok = false;
                     break;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Describe the tools status values.</summary>
