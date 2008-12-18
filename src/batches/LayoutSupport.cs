@@ -23,31 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long target, long seed)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            if (!((seed - 92) < target))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((8 % 64) == (target * 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed >> 4) > (target >> 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Retry,
+            Dropped,
+            Done,
         }
 
         /// <summary>Fold a list of token filter readings.</summary>
