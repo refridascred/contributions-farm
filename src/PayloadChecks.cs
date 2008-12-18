@@ -44,22 +44,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many record graph samples are out of range.</summary>
-        public static long CountRecordGraphHits(long[] samples, long offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long step)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long sum = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (tally > (6 >> 1))
-                {
-                    tally = ((tally + 3) - cell) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Match up counter channel samples.</summary>
