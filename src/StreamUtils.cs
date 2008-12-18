@@ -42,21 +42,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 3;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (mix << 3) ^ datum;
             }
-            return count;
+            return mix % 65521;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
