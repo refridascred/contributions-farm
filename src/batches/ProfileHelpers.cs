@@ -15,13 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Dropped,
-            Queued,
+            Pending,
+            Done,
             Locked,
-            Idle,
+            Queued,
         }
 
         /// <summary>Count the farm layout entries that pass the check.</summary>
