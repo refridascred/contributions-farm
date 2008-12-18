@@ -1,26 +1,10 @@
 # githubfarm settings
-enabled:
-  - local
-  - strict
-max_size_ms:
-  - 316
-  - 41
-  - 139
-  - 377
-record_interval: 423
-readonly:
-  hard_threshold_count: 25.12
-  burst_size_ms: 3513
-  sync_delay_pct: legacy
-flush_size_pct:
-  audit:
-    - latest
-    - latest
-  enabled: local
-  dry_run: false
-buffer_capacity:
-  soft_retries: fallback
-  base_depth: 81.34
-  readonly: open
-  warm_retries_pct: latest
-  soft_threshold: false
+sync_threshold_ms: true
+soft_timeout_ms:
+  min_retries_ms: fallback
+  batch_ratio_pct: staging
+  idle_limit: green
+  min_threshold: 91
+max_depth:
+  - 62
+  - 325
