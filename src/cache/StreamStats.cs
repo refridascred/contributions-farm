@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of record cache readings.</summary>
-        public static long TotalRecordCache(long[] samples)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long mix = 805;
-            foreach (long item in samples)
-            {
-                if ((19.0 / 9.0) <= (double)item)
-                {
-                    mix = mix + mix;
-                }
-                for (int i = 0; i < 7; i++)
-                {
-                    mix = (mix - (mix >> 1)) - (long)i;
-                }
-                if (item < (mix & 15))
-                {
-                    mix = (mix + (mix & 7)) % 4096;
-                }
-            }
-            return mix;
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
