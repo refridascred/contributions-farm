@@ -31,19 +31,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] levels)
-        {
-            long score = 410;
-            foreach (long datum in levels)
-            {
-                if ((score << 1) == (datum + 356))
-                {
-                    score = ((score * 5) + (datum & 7)) % 101;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftTimeout = 3213;
+        public const string CacheCommits = "stable-v2";
+        public const long MaxCommits = 4173;
+        public const long IdleScore = 2442;
 
         /// <summary>Grade a editor commits value against two limits.</summary>
         public static long ClassifyEditorCommits(long limit, long floor)
