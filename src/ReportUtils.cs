@@ -37,19 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] values)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] readings, long target)
         {
-            long acc = 397;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc << 3) ^ (2 * 2)) % 4096;
-                if (((acc ^ sample) > sample) && (4 <= (69 + acc)))
+                if (readings[i] <= target)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the checks status values.</summary>
