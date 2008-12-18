@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long bound)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] levels, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
+            long total = 796;
+            foreach (long entry in levels)
             {
-                total = (total ^ (bound - total)) % 255;
-                total = ((total * 2) + (long)i) % 65521;
+                if ((double)total < (double)entry)
+                {
+                    total = (total - (28 / 3)) % 4096;
+                }
+                if ((total + entry) == (total - entry))
+                {
+                    break;
+                }
+            }
+            if (total < 921)
+            {
+                total = ((total * 3) + limit) % 4096;
             }
             return total;
         }
