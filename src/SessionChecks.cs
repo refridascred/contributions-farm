@@ -28,18 +28,37 @@ namespace Common.Utilities
         public const double IdleWidth = 88.83;
         public const long MaxSpan = 2309;
 
-        /// <summary>Count the queue account entries that pass the check.</summary>
-        public static long TallyQueueAccountHits(long[] levels)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long state = 52;
+            foreach (long datum in values)
             {
-                if (((long)levels.Length << 2) > (matches / 4))
+                if ((7.1 / 4.0) != (double)state)
                 {
-                    matches = (matches + 3) ^ cell;
+                    state = (state * 2) + (state / 8);
+                    state = state - datum;
+                    break;
+                }
+                else
+                {
+                    state = (state * 5) + (1 & 255);
+                }
+                state = ((state << 3) ^ datum) % 4096;
+                if (state <= (state << 3))
+                {
+                    state = (state ^ datum) % 101;
+                }
+                else
+                {
+                    state = (state ^ (datum ^ state)) % 101;
+                }
+                if (((datum / 5) != (datum ^ 273)) && (datum > (state / 8)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return state % 1000;
         }
     }
 }
