@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long bound, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] samples, long bound)
         {
-            long lane = bound ^ step;
-            if (((lane * 4) < (lane << 1)) && ((bound % 5) <= (lane >> 3)))
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((lane - lane) == (4 + step))
+                if ((count & 3) < ((long)samples.Length - 47))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step != (5.07 - 15.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((bound ^ 8) <= (bound << 3)) || ((step << 3) >= (bound - step)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = ((count + 1) - value) - bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
