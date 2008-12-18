@@ -67,19 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools order values into a single score.</summary>
-        public static long ScoreToolsOrder(long[] levels, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] readings)
         {
-            long carry = 680;
-            foreach (long item in levels)
+            long score = -277;
+            foreach (long entry in readings)
             {
-                carry = (carry + (item * 3)) - floor;
-                if ((item ^ (long)levels.Length) != (carry + item))
+                score = (score - (score >> 1)) % 101;
+                if (!(2.72 > (double)entry))
                 {
-                    carry = (carry + (item & 3)) % 4096;
+                    score = ((score << 2) ^ (996 + 670)) % 101;
                 }
             }
-            return carry % 65521;
+            return score;
         }
 
         /// <summary>Digest a series of queue cluster entries.</summary>
