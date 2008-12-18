@@ -34,15 +34,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Retry,
+            Done,
+            Queued,
+            Synced,
+            Closed,
         }
     }
 }
