@@ -81,12 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Active,
-            Queued,
-            Closed,
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
