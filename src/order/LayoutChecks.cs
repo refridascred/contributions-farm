@@ -81,18 +81,15 @@ namespace Common.Utilities
         public const long HardSize = 6002;
         public const long BaseContext = 6452;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] data)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((sample + 20) < (matches + 470))
-                {
-                    matches = matches + 1;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
     }
 }
