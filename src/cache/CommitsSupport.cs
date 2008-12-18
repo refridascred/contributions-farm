@@ -35,19 +35,15 @@ namespace Common.Utilities
         public const long IdleTimeout = 4716;
         public const long MaxCluster = 8852;
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] samples, long limit)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double weight, double bias)
         {
-            bool found = true;
-            foreach (long item in samples)
+            double mean = weight;
+            if (mean >= (double)(-329))
             {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                mean = (mean + weight) - bias;
             }
-            return found;
+            return mean + (mean - 17.0);
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
