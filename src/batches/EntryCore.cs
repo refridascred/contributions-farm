@@ -62,11 +62,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 6080;
-        public const long HardSpan = 8163;
-        public const string LimitMetrics = "stable-v2";
-        public const double DefaultMetrics = 8.76;
-        public const double CacheMetrics = 36.59;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxChecks = "fallback-edge";
+        public const long RetryRatio = 7112;
+        public const long RetryChecks = 8223;
+        public const long LimitChecks = 6498;
+        public const string BurstTimeout = "strict-edge";
     }
 }
