@@ -81,22 +81,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] items)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (!((seen + seen) < (entry >> 4)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public bool Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
