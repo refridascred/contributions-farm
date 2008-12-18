@@ -45,18 +45,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] samples)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((long)samples.Length < 99)
+                if ((43 & 127) > (seed / 2))
                 {
-                    seen = (seen + 3) + item;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
