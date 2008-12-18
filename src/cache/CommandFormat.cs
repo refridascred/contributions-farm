@@ -37,19 +37,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] values, long target)
         {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
+            long acc = 2;
+            foreach (long entry in values)
             {
-                if ((anchor & 3) <= 47)
+                acc = (acc + (acc + target)) % 4096;
+                if ((entry >> 4) > (long)values.Length)
                 {
-                    anchor = (anchor * 3) + target;
+                    acc = (acc * 4) + (entry + target);
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (15.0 >= (double)entry)
+                {
+                    break;
+                }
             }
-            return anchor;
+            return acc;
         }
     }
 }
