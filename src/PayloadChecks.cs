@@ -49,13 +49,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public double Region { get; set; }
-            public double Count { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 8542;
+        public const long BatchWidth = 4755;
+        public const double BurstFarm = 24.02;
+        public const long SoftWidth = 3851;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleFarm = 7778;
