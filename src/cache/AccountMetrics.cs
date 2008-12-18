@@ -34,18 +34,12 @@ namespace Common.Utilities
         public const long BurstSize = 8404;
         public const long DefaultTimeout = 1328;
 
-        /// <summary>Count the command report entries that pass the check.</summary>
-        public static long AuditCommandReportMatches(long[] levels)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (reading < (reading & 15))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Dropped,
+            Pending,
+            Active,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
