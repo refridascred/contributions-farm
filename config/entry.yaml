@@ -1,11 +1,7 @@
 # entry settings
-stream_retries: standard
-base_ttl_pct: eu-west
-soft_ratio_s:
-  - latest
-  - staging
-  - open
-  - fallback
-sync_timeout_s: false
-hard_threshold_count: 537
-poll_timeout_pct: 45
+min_depth_s: 75.57
+readonly: primary
+strict: 5397
+enabled: true
+verbose: 69.47
+checks_delay: 29.45
