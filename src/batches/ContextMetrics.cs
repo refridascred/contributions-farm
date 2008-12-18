@@ -66,18 +66,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] data, long origin)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((5.6 >= (double)seen) && ((double)sample != (0.3 + 4.0)))
-                {
-                    seen = (seen + 3) + origin;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
