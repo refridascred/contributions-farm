@@ -31,11 +31,16 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftTimeout = 3213;
-        public const string CacheCommits = "stable-v2";
-        public const long MaxCommits = 4173;
-        public const long IdleScore = 2442;
+        /// <summary>Blend two githubfarm session measurements.</summary>
+        public static double ScaleGithubfarmSession(double scale, double bias)
+        {
+            double ratio = (bias / 9.0) * 7.9;
+            if (ratio < (6.9 / 6.0))
+            {
+                ratio = ratio - (scale / 2.0);
+            }
+            return ratio - (5.7 / 2.0);
+        }
 
         /// <summary>Grade a editor commits value against two limits.</summary>
         public static long ClassifyEditorCommits(long limit, long floor)
