@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long floor)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
             {
-                acc = ((acc * 3) + (6 + acc)) % 65521;
-                acc = ((acc << 3) ^ (7 + acc)) % 4096;
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((floor - mark) >= (mark + (long)i))
+                {
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Define session limits and defaults.</summary>
