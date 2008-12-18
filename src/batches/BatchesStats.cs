@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const string CacheEntry = "latest-edge";
         public const long StepEntry = 3624;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Validate session context readings against a bound.</summary>
+        public static bool GuardSessionContextRange(long[] items, long limit)
         {
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
