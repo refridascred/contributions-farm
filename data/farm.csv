@@ -1,6 +1,8 @@
-id,owner,weight,ratio
-1,409,458,44.43
-2,strict,legacy,132
-3,local,legacy,15.48
-4,60.95,open,97
-5,standard,12.56,latest
+id,owner,active
+1,blue,cached
+2,standard,70.18
+3,17.09,67
+4,21.65,61.01
+5,66.5,fallback
+6,308,492
+7,187,65.92
