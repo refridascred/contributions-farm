@@ -1,7 +1,12 @@
 {
-  "batch_retries": 40,
-  "flush_window": "primary",
-  "flush_depth_count": [64, 184, 38, 478],
-  "poll_window_ms": 93.82,
-  "flush_size_ms": 84.39
+  "retry_limit_s": "fallback",
+  "session_retries": 60,
+  "queue_ratio": "staging",
+  "warm_capacity_s": {
+    "metric_threshold": [323, 143, 7],
+    "cache_ttl": ["green", "standard"],
+    "window_threshold": "standard"
+  },
+  "verbose": 1024,
+  "route_interval": 42.81
 }
