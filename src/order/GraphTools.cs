@@ -41,11 +41,14 @@ namespace Common.Utilities
         public const double BatchTimeout = 46.27;
         public const long LimitTools = 9572;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 2820;
-        public const long BaseCommand = 3986;
-        public const long RetryCount = 8149;
-        public const long HardCommand = 1902;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            Retry,
+            Ready,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
