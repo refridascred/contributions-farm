@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Record helpers.</summary>
     public static class Record
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            Paused,
+            New,
+            Ready,
+            Closed,
+            Draft,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
