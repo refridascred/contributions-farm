@@ -50,9 +50,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 5372;
-        public const long SoftSize = 9103;
-        public const double IdleReport = 17.65;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public double Total { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
