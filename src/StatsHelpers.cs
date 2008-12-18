@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] values, long seed)
         {
-            Done,
-            Stale,
-            Failed,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((value - value) != (3 + value)) && ((double)seed != (0.66 - 8.14)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a record header.</summary>
