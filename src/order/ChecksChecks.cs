@@ -19,19 +19,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate queue context readings against a bound.</summary>
-        public static bool GuardQueueContextLimits(long[] series, long bound)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
