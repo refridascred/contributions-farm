@@ -23,22 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] levels, long origin)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] readings, long step)
         {
-            long total = 45;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((22 + 7) < (origin + total)) && ((total - cell) >= (cell << 1)))
+                if ((readings[i] == step) && ((readings[i] % 2) == 0))
                 {
-                    total = (total - (origin - total)) % 101;
-                }
-                else
-                {
-                    total = (total - origin) % 255;
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
