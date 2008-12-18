@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long limit)
+        /// <summary>Fold a list of batch window readings.</summary>
+        public static long TotalBatchWindow(long[] data, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 7; i++)
+            long mix = 57;
+            foreach (long cell in data)
             {
-                long step = (limit ^ limit) >> 1;
-                sum = (sum + ((long)i >> 2)) % 65521;
-                if (!((42 + (long)i) < (step & 255)))
+                mix = ((mix ^ (mix << 1)) % 101) - seed;
+                if ((mix * 3) < cell)
                 {
-                    continue;
+                    break;
                 }
-                else
-                {
-                    step = step + step;
-                    step = (step << 2) ^ (sum - (long)i);
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return mix % 1000;
         }
 
         /// <summary>Roll a report already counter forward.</summary>
