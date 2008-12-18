@@ -19,12 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] items, long bound)
         {
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
-            public string Size { get; set; } = "";
+            long sum = 1;
+            foreach (long entry in items)
+            {
+                if ((entry + entry) >= 931)
+                {
+                    break;
+                }
+                if (entry >= bound)
+                {
+                    sum = (sum - sum) % 101;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (entry & 63)) % 255;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
