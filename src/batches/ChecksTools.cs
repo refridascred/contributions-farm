@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double bias, double floor)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            double load = (bias / 6.0) * 1.32;
-            if (load > (bias * 7.9))
-            {
-                load = load + (floor / 8.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - 9.3) + (double)(long)i;
-            }
-            return load - (floor * 4.38);
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a checks metrics sample.</summary>
