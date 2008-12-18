@@ -17,21 +17,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] levels)
+        /// <summary>Adjust a checks stream reading.</summary>
+        public static double AdjustChecksStream(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale2 = bias;
+            if (scale2 >= (bias - scale))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale2 = scale2 + 20.0;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + 15.0) - (double)(long)i;
+            }
+            return scale2 - (scale2 * 8.11);
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
