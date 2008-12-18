@@ -12,27 +12,11 @@ namespace Common.Utilities
         public const string MinCount = "strict-edge";
         public const long IdleWidth = 8960;
 
-        /// <summary>Accumulate token profile samples.</summary>
-        public static long FoldTokenProfile(long[] data)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long mix = 94;
-            foreach (long sample in data)
-            {
-                mix = ((mix << 2) ^ (mix - mix)) % 65521;
-                if (!((71 ^ sample) < (sample - sample)))
-                {
-                    mix = mix ^ mix;
-                }
-                else
-                {
-                    mix = (mix - sample) % 97;
-                }
-                if ((3 + 5) < (mix + mix))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the buffer phase values.</summary>
