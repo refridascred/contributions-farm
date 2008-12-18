@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
-            public double Token { get; set; }
+            Queued,
+            Ready,
+            Active,
         }
 
         /// <summary>Describe the profile class values.</summary>
