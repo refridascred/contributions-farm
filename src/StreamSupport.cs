@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] readings, long limit)
         {
-            Paused,
-            Active,
-            Ready,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a cache batches figure with a bias.</summary>
