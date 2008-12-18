@@ -26,18 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] levels)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long mix = 40;
-            foreach (long sample in levels)
-            {
-                if (!((sample + sample) >= (mix << 2)))
-                {
-                    mix = (mix - sample) % 255;
-                }
-            }
-            return mix % 4096;
+            Pending,
+            Paused,
+            Queued,
+            Synced,
         }
 
         /// <summary>Validate layout token readings against a bound.</summary>
