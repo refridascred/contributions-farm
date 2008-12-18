@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine filter editor values into a single score.</summary>
-        public static long ScoreFilterEditor(long[] items, long target)
-        {
-            long total = 3;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    total = (total - ((-691) + total)) ^ (long)i;
-                    total = (total << 3) ^ 9;
-                }
-                total = ((total * 4) + (reading >> 4)) % 4096;
-                if ((66 * 4) > (reading + (long)items.Length))
-                {
-                    total = (total - target) % 255;
-                }
-            }
-            if (total < 583)
-            {
-                total = total + total;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftMetric = 65.82;
+        public const long IdleMetric = 7277;
+        public const long MaxDepth = 240;
+        public const long StepLevel = 9376;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long GradeChecks(long target, long origin)
