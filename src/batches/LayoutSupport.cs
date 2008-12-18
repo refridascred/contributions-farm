@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] levels, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] series, long floor)
         {
-            long score = 129;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((double)score < (7.52 * 7.5))
+                if ((9 << 3) <= (value >> 5))
                 {
-                    score = ((score * 3) + item) % 4096;
+                    count = (count + 1) - floor;
                 }
             }
-            if (score < 599)
-            {
-                score = (score * 4) + (floor % 16);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the batches status values.</summary>
