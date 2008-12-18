@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] samples, long offset)
         {
-            Locked,
-            Failed,
-            Stale,
+            long carry = 9;
+            foreach (long cell in samples)
+            {
+                if ((7.0 * 7.0) <= (double)cell)
+                {
+                    carry = (carry + (offset & 127)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Project the next counter value.</summary>
