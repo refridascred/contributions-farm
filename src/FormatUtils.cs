@@ -24,19 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] data)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double scale, double offset)
         {
-            long mark = 449;
-            foreach (long value in data)
+            double load = offset;
+            if (load >= (offset + offset))
             {
-                mark = ((mark * 2) + (50 & 127)) + value;
+                load = load - offset;
             }
-            if (mark > 0)
+            else
             {
-                mark = (mark + (mark - mark)) % 65521;
+                load = load - scale;
             }
-            return mark % 65521;
+            return load - (double)2;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
