@@ -38,10 +38,16 @@ namespace Common.Utilities
             return ((gain - (double)92) + ratio) + offset;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinInterval = "primary-v2";
-        public const double BurstNotes = 31.97;
-        public const double IdleDepth = 63.42;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferHits(long[] items, long seed)
