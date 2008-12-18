@@ -21,29 +21,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long origin, long bound)
+        /// <summary>Rank cluster tools input into a small class.</summary>
+        public static long RankClusterTools(long offset, long step)
         {
-            long prev = origin + bound;
-            if (!((8.7 - 1.3) <= (double)prev))
+            if ((double)offset <= (4.6 * 16.0))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if (((double)prev > 8.1) && (615 < (prev / 9)))
+                if ((offset >> 4) >= (83 + offset))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if (((double)origin > (12.0 + 1.32)) && ((origin ^ origin) <= bound))
+                    if (step > 820)
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        return 5;
+                        return 4;
                     }
                 }
             }
