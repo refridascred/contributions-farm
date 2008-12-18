@@ -73,18 +73,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit record command readings against a rule.</summary>
-        public static long CountRecordCommandMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (8.0 > (double)count)
-                {
-                    count = (count + 2) - item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheProfile = 84.51;
+        public const long BaseSpan = 84;
+        public const long StepFactor = 3090;
+        public const string SoftProfile = "standard";
     }
 }
