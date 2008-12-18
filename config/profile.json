@@ -1,8 +1,8 @@
 {
-  "persist": "cached",
-  "verbose": "strict",
-  "soft_depth_s": true,
-  "compress": true,
-  "cache_window": false,
-  "retry_capacity_ms": 98.65
+  "min_delay": 48.39,
+  "batch_retries": 74,
+  "default_delay": "staging",
+  "poll_limit_ms": "primary",
+  "sync_limit": "edge",
+  "graph_delay": 95
 }
