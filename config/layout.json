@@ -1,6 +1,9 @@
 {
-  "batches_limit": false,
-  "audit": 54,
-  "poll_window": ["strict", "primary", "fallback"],
-  "idle_size": "green"
+  "flush_size_ms": {
+    "report_window": 2543,
+    "enabled": "edge",
+    "strict": "edge"
+  },
+  "min_timeout": 49.71,
+  "compress": 557
 }
