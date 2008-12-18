@@ -28,22 +28,24 @@ namespace Common.Utilities
             return scale - (gain + span);
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] readings, long floor)
+        /// <summary>Classify a record window pair into a bucket.</summary>
+        public static long SortRecordWindow(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            if (!(origin <= bound))
             {
-                if ((tally + tally) != (value + (-885)))
+                return 0;
+            }
+            else
+            {
+                if ((origin & 127) < bound)
                 {
-                    tally = (tally + 1) - floor;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
