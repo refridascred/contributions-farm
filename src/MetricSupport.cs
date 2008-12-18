@@ -23,11 +23,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheScore = 50.54;
-        public const long BaseRecord = 3271;
-        public const long IdleRecord = 3600;
-        public const long MinRecord = 7168;
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MaxStats = 1144;
