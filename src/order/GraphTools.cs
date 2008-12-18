@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] series)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Failed,
+            Stale,
         }
 
         /// <summary>Hold a metric summary.</summary>
