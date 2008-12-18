@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheChecks = "local";
+        public const long DefaultRatio = 4086;
+        public const long DefaultWidth = 1834;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long CombineMetrics(long[] items)
