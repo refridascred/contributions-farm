@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const long BaseAlready = 7401;
         public const long LimitAlready = 6399;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] readings, long offset)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (!((446 ^ hits) > (hits ^ hits)))
-                {
-                    hits = ((hits + 3) + item) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
