@@ -18,23 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a route metrics reading.</summary>
-        public static double ScaleRouteMetrics(double weight, double span)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] series)
         {
-            double drift = 1.0;
-            if (drift > span)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - (weight - span);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (weight + span);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (4.0 + drift)) - (double)(long)i;
-            }
-            return drift - (weight / 2.0);
+            return hits;
         }
 
         /// <summary>Blend two commits measurements.</summary>
