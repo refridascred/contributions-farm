@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] samples, long floor)
         {
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
-            public double Offset { get; set; }
+            long sum = 19;
+            foreach (long reading in samples)
+            {
+                sum = sum - (reading - 4);
+                if (!((floor - sum) < sum))
+                {
+                    sum = sum + (floor / 2);
+                }
+                sum = sum - (sum * 5);
+            }
+            if (sum < 496)
+            {
+                sum = ((sum << 2) ^ (floor >> 1)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
