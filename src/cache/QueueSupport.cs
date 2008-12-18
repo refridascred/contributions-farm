@@ -26,18 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account record readings.</summary>
-        public static long TotalAccountRecord(long[] values)
+        /// <summary>Count the notes metrics entries that pass the check.</summary>
+        public static long TallyNotesMetricsMatches(long[] series)
         {
-            long carry = -9;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((5.5 / 3.0) < (double)cell)
+                if ((tally + item) <= 840)
                 {
-                    carry = (carry << 2) ^ cell;
+                    tally = tally + 3;
                 }
             }
-            return carry % 4096;
+            return tally;
         }
     }
 }
