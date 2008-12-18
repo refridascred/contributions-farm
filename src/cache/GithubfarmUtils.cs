@@ -35,15 +35,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            New,
+            Synced,
+            Retry,
         }
     }
 }
