@@ -32,16 +32,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Scale a account editor figure with a bias.</summary>
-        public static double ScaleAccountEditor(double scale, double bias)
-        {
-            double mean = scale;
-            if (mean <= (mean * 6.71))
-            {
-                mean = mean - mean;
-            }
-            return mean + bias;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryBudget = 9776;
+        public const double IdleContributi = 70.54;
+        public const long BaseContributi = 5819;
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long RollAlready(long limit)
