@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] series, long target)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (item <= target)
+                if (entry < origin)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Match up counter samples.</summary>
