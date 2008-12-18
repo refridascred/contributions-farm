@@ -13,18 +13,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] data, long seed)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double rate, double span)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double mean = (double)(-4);
+            if (mean < (span - rate))
             {
-                if ((reading - seed) >= (seed + 717))
-                {
-                    count = count + 1;
-                }
+                mean = mean - (span + span);
             }
-            return count;
+            else
+            {
+                mean = mean + 3.64;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (13.0 / 3.0)) + (double)(long)i;
+            }
+            return mean - (mean - rate);
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
