@@ -1,6 +1,7 @@
 {
-  "batch_window_ms": 75,
-  "burst_ratio": "fallback",
-  "audit": [154, 269, 339],
-  "poll_limit_s": 77.4
+  "burst_interval": ["staging", "cached"],
+  "enabled": 6.6,
+  "stream_limit": true,
+  "poll_size_pct": "stable",
+  "dry_run": 96.43
 }
