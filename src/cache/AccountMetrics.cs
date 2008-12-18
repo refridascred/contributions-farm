@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long MaxFarm = 1180;
         public const string LimitTimeout = "local-edge";
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] data, long limit)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (((seen & 31) == (limit + seen)) || !(sample < (sample + limit)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
