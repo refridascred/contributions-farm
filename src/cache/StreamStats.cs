@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] data)
+        /// <summary>Measure how many notes command samples are out of range.</summary>
+        public static long AuditNotesCommandHits(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (1 > (datum + tally))
+                if ((reading + reading) == (476 % 12))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 1) + origin;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
