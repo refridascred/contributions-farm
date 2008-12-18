@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowRoute = 98.17;
-        public const long BurstBudget = 8338;
-        public const double MinScore = 70.89;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Idle,
+            Stale,
+            New,
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long TotalContext(long[] items)
