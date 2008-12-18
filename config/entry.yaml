@@ -1,4 +1,4 @@
 # entry settings
-max_limit_s: 62.08
-warm_retries: 1008
-max_capacity_s: 3660
+burst_window: 3.38
+profile_threshold: staging
+sync_size_s: 95.15
