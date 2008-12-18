@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultCount = 6104;
-        public const long SoftSize = 2521;
-        public const long HardMetric = 2342;
-        public const string SoftSpan = "fallback-v2";
+        /// <summary>Audit format support readings against a rule.</summary>
+        public static long AuditFormatSupportGaps(long[] data, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((-4) < (datum - datum))
+                {
+                    tally = (tally + 3) + bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
