@@ -19,18 +19,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] items, long step)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long state = 11;
-            foreach (long item in items)
-            {
-                if ((5.8 * 6.0) != (double)item)
-                {
-                    state = state - (step & 31);
-                }
-            }
-            return state % 1000;
+            Ready,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the layout kind values.</summary>
