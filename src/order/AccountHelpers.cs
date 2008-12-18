@@ -87,21 +87,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] items)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 8;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (((result << 3) ^ (item * 4)) % 4096) + limit;
             }
-            return count;
+            return result;
         }
     }
 }
