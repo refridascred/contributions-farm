@@ -28,19 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate channel counter readings against a bound.</summary>
-        public static bool GuardChannelCounterRange(long[] data, long origin)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
