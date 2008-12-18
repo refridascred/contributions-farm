@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long target, long seed)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long bound, long step)
         {
-            if (((target + target) <= (target ^ target)) && (seed > (target + target)))
+            long gap = bound ^ step;
+            if ((gap - bound) != (bound ^ 4))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((target << 1) < (target - target))
+                if ((double)gap >= (5.12 - 4.8))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)seed == (5.23 * 7.95))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target / 2) > (target & 127))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
