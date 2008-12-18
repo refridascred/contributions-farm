@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] samples)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((item + item) >= (item + 5))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            Active,
+            Dropped,
+            Queued,
+            Locked,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
