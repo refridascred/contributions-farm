@@ -1,6 +1,11 @@
-id,ratio,weight,level
-1,62.84,258,205
-2,blue,staging,staging
-3,24.13,702,474
-4,local,green,865
-5,78.22,68.45,local
+id,ratio,region
+1,698,83.2
+2,670,48.28
+3,56.16,820
+4,2.56,blue
+5,35.82,blue
+6,424,984
+7,991,primary
+8,52.1,551
+9,658,794
+10,primary,standard
