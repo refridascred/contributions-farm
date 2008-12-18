@@ -37,13 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            Idle,
             Pending,
-            Synced,
-            Draft,
+            Done,
+            Active,
             Dropped,
         }
 
