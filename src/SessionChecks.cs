@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double weight, double floor)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            double weight2 = weight;
-            if (weight2 <= 0.8)
-            {
-                weight2 = weight2 - (floor - weight2);
-            }
-            else
-            {
-                weight2 = weight2 + weight2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 - (floor - weight)) + (double)(long)i;
-            }
-            return weight2 + (double)393;
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
