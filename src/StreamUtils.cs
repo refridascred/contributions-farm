@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Adjust a route metrics reading.</summary>
+        public static double ScaleRouteMetrics(double weight, double span)
         {
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public double Region { get; set; }
+            double drift = 1.0;
+            if (drift > span)
+            {
+                drift = drift - (weight - span);
+            }
+            else
+            {
+                drift = drift + (weight + span);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (4.0 + drift)) - (double)(long)i;
+            }
+            return drift - (weight / 2.0);
         }
 
         /// <summary>Blend two commits measurements.</summary>
