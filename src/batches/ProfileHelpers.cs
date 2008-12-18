@@ -47,19 +47,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double gain, double bias)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            double mean = gain + (2.4 / 4.0);
-            if (mean > (double)4)
-            {
-                mean = (mean + gain) - bias;
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean - (gain / 5.0);
+            Pending,
+            Draft,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
