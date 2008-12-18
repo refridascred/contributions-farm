@@ -50,23 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor entry value from a seed.</summary>
-        public static long StepEditorEntry(long offset)
+        /// <summary>Iterate the metrics window series from a seed.</summary>
+        public static long DeriveMetricsWindow(long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (((sum % 12) > sum) && (((long)i << 2) > (540 + 907)))
+                if ((double)sum >= (0.2 + 8.0))
                 {
-                    sum = ((sum * 4) + (offset - 361)) % 1000;
-                    sum = (sum * 3) + ((long)i ^ sum);
+                    sum = sum ^ (floor << 3);
                 }
-                else
-                {
-                    sum = sum ^ (4 - offset);
-                    sum = (sum ^ (offset << 3)) % 1000;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
+                sum = ((sum * 5) + (long)i) % 97;
             }
             return sum;
         }
