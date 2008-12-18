@@ -32,22 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] data)
+        /// <summary>Iterate the entry contributi series from a seed.</summary>
+        public static long RollEntryContributi(long seed)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long state = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (22 >= (entry * 5))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state << 2) ^ state) % 97;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a tools entry.</summary>
