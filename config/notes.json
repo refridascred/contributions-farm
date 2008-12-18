@@ -1,8 +1,5 @@
 {
-  "flush_timeout_count": false,
-  "poll_timeout_ms": "eu-west",
-  "max_window_s": "edge",
-  "flush_size": 5885,
-  "stats_ttl": 100,
-  "burst_window": 8290
+  "default_ttl_s": 717,
+  "audit": [264, 470],
+  "max_window_ms": 58.68
 }
