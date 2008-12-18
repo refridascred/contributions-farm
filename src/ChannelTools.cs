@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Digest a series of report token entries.</summary>
+        public static long ScoreReportToken(long[] data)
         {
-            public double Ratio { get; set; }
-            public double Mode { get; set; }
+            long mark = 21;
+            foreach (long sample in data)
+            {
+                if (sample < 8)
+                {
+                    mark = mark ^ (sample + (long)data.Length);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a buffer options.</summary>
