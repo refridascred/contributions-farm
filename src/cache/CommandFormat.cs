@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (!((double)datum <= (double)8))
-                {
-                    hits = (hits + 2) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 9623;
+        public const double RetryReport = 84.92;
+        public const long BaseCount = 3883;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool ValidateNotesRange(long[] values, long seed)
