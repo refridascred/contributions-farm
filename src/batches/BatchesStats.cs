@@ -44,13 +44,12 @@ namespace Common.Utilities
             return gain - 7.09;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            public double Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public double Score { get; set; }
-            public double Limit { get; set; }
+            public long Score { get; set; }
+            public double Token { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
