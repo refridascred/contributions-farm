@@ -44,16 +44,12 @@ namespace Common.Utilities
         public const long RetryCount = 8149;
         public const long HardCommand = 1902;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = (mark << 2) ^ (long)i;
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
