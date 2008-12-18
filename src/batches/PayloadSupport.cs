@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long RetryRatio = 9945;
         public const double BurstLevel = 18.51;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long carry = 190;
-            foreach (long entry in readings)
-            {
-                carry = carry ^ 509;
-                if (!((2.25 - 6.95) < (double)carry))
-                {
-                    carry = ((carry * 2) + (carry + entry)) % 255;
-                }
-            }
-            return carry % 97;
+            Ready,
+            Idle,
+            New,
+            Queued,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
