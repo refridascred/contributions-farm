@@ -40,15 +40,13 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
