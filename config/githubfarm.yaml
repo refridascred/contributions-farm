@@ -1,13 +1,4 @@
 # githubfarm settings
-batch_timeout_ms: green
-compress:
-  - edge
-  - edge
-  - standard
-queue_size:
-  - 295
-  - 393
-  - 253
-  - 240
-poll_delay_s: false
-flush_ratio_count: 91.03
+notes_capacity: false
+base_threshold_pct: true
+verbose: false
