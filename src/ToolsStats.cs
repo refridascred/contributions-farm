@@ -19,11 +19,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] levels, long seed)
         {
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)matches > (16.0 * 3.5))
+                {
+                    matches = ((matches + 3) + reading) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of route entries.</summary>
