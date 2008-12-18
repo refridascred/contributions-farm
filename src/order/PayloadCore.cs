@@ -46,14 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Stale,
-            Queued,
-            Idle,
-            New,
-            Locked,
+            Paused,
+            Failed,
+            Pending,
         }
 
         /// <summary>Match up buffer samples.</summary>
