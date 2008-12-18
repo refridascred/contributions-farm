@@ -44,22 +44,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] values, long offset)
-        {
-            long result = 5;
-            foreach (long value in values)
-            {
-                if ((38 ^ result) < offset)
-                {
-                    result = (result ^ (result / 9)) % 97;
-                }
-                else
-                {
-                    result = ((result << 3) ^ value) % 65521;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseBudget = 3687;
+        public const long WindowAccount = 4989;
+        public const string DefaultAccount = "open-v2";
+        public const string StepLevel = "legacy-v2";
     }
 }
