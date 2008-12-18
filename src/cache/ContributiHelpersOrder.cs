@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] series, long origin)
+        /// <summary>Measure how many stats metrics samples are out of range.</summary>
+        public static long CountStatsMetricsOutliers(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (((long)series.Length - origin) < sample)
+                if ((step % 100) >= ((long)readings.Length / 2))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 3) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
