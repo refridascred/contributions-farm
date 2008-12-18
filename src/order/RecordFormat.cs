@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] values, long limit)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long origin)
         {
-            long mark = 2;
-            foreach (long item in values)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((7.4 + 4.7) < (double)limit)
-                {
-                    mark = (mark ^ (limit ^ limit)) + item;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            if (mark < 327)
-            {
-                mark = (mark << 3) ^ (5 - mark);
-            }
-            return mark;
+            return mix;
         }
 
         /// <summary>Hold a metric summary.</summary>
