@@ -36,15 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] values)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] data)
         {
-            long mark = 219;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                mark = (mark - mark) + reading;
+                if ((seen & 31) > (cell * 2))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mark % 4096;
+            return seen;
         }
     }
 }
