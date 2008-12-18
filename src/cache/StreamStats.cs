@@ -50,17 +50,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] readings, long target)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 75;
+            foreach (long sample in items)
             {
-                if (readings[i] >= target)
+                if ((sample % 12) > (offset & 31))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ offset) % 1000;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
