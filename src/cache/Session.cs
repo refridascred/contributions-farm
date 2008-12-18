@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] data, long offset)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((2.5 - 0.1) == (double)cell)
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
+            Closed,
+            Locked,
+            New,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Adjust a queue reading.</summary>
