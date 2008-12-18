@@ -37,11 +37,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] samples, long target)
         {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
