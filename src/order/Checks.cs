@@ -19,31 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long limit, long limit2)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long seed)
         {
-            if ((8.7 <= (double)limit) && ((limit2 % 3) <= limit2))
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((limit2 - limit2) <= (limit - 133)))
+                long step = seed;
+                if (!((step % 5) < 74))
                 {
-                    return 6;
+                    break;
                 }
-                else
-                {
-                    if ((double)limit2 > (9.3 + 9.35))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mix = (mix - (mix / 4)) % 65521;
+                mix = ((mix * 4) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
