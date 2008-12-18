@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] values, long step)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 6345;
+        public const long DefaultAlready = 2819;
+        public const long WindowScore = 6;
+        public const long IdleAlready = 547;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheHits(long[] series, long floor)
