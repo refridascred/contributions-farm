@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] data)
         {
-            public bool Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a queue reading.</summary>
