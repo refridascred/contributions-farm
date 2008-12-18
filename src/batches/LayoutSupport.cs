@@ -49,13 +49,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Measure how many command channel samples are out of range.</summary>
+        public static long TallyCommandChannelMatches(long[] samples, long limit)
         {
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (((8 ^ datum) == (tally * 2)) && ((double)484 == (double)tally))
+                {
+                    tally = (tally + 1) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of checks metrics entries.</summary>
