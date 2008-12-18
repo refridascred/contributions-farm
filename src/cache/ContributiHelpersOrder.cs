@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many stats metrics samples are out of range.</summary>
-        public static long CountStatsMetricsOutliers(long[] readings, long step)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step % 100) >= ((long)readings.Length / 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] - levels[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
