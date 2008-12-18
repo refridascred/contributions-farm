@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] items)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] samples)
         {
-            long score = 20;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                score = (score + (cell + cell)) % 255;
+                if ((2.7 >= (double)datum) || !((seen % 12) != (datum + seen)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Audit checks window readings against a rule.</summary>
