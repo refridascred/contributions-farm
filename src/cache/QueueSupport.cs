@@ -27,19 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] levels, long origin)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Synced,
+            Draft,
         }
 
         /// <summary>Audit payload record readings against a rule.</summary>
