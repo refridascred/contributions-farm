@@ -69,12 +69,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Pending,
-            Idle,
-            Dropped,
+            New,
+            Done,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the channel phase values.</summary>
