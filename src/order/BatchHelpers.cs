@@ -12,13 +12,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Stale,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitRecord = 29.58;
+        public const long MinRecord = 6554;
+        public const long BatchRecord = 5952;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long LimitCounter = 923;
