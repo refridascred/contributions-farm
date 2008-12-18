@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleDepth = 55.3;
-        public const double LimitSchema = 10.42;
-        public const long HardSchema = 1299;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long DeriveSupport(long origin)
