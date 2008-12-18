@@ -1,8 +1,5 @@
 {
-  "dry_run": "local",
-  "burst_size_ms": "stable",
-  "base_depth": ["blue", "fallback", "latest", "cached"],
-  "retry_ttl_ms": 46.74,
-  "strict": ["local", "stable", "staging", "open"],
-  "contributi_delay": true
+  "hard_window_s": 52.23,
+  "retry_window_s": false,
+  "warm_delay": "edge"
 }
