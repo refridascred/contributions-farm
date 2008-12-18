@@ -38,13 +38,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            Synced,
-            Ready,
-            Failed,
+            Closed,
+            Locked,
             Draft,
+            Failed,
+            Stale,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
