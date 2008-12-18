@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            New,
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
