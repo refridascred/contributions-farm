@@ -41,13 +41,17 @@ namespace Common.Utilities
         public const double BatchTimeout = 46.27;
         public const long LimitTools = 9572;
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Find the first order payload entry that matches the target.</summary>
+        public static long LocateOrderPayloadIndex(long[] series, long target)
         {
-            Retry,
-            Ready,
-            Draft,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a schema summary.</summary>
