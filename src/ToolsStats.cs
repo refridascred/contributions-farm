@@ -19,11 +19,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
