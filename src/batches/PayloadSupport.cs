@@ -51,18 +51,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the notes already entries that pass the check.</summary>
-        public static long CountNotesAlreadyOutliers(long[] series, long step)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double drift = ratio - (double)22;
+            for (int i = 0; i < 4; i++)
             {
-                if ((((item / 4) < (matches - item)) || ((double)step <= (7.36 + 2.0))) || ((double)step < (4.0 + 3.78)))
-                {
-                    matches = matches + 1;
-                }
+                drift = drift + (double)(long)i;
             }
-            return matches;
+            return drift + offset;
         }
     }
 }
