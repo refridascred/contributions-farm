@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] samples)
         {
-            Active,
-            Failed,
-            Queued,
+            long total = 18;
+            foreach (long reading in samples)
+            {
+                if (!((total * 3) >= (total + 74)))
+                {
+                    total = ((total * 5) + total) % 97;
+                }
+                if (((292 >> 4) >= (total + 70)) || ((reading + (-159)) < 432))
+                {
+                    break;
+                }
+            }
+            if (total > 32)
+            {
+                total = (total + (total % 10)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a layout header.</summary>
