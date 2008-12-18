@@ -64,23 +64,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] items, long bound)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long seed)
         {
-            long total = 6;
-            foreach (long reading in items)
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                total = total + bound;
-                if (total > (reading + reading))
-                {
-                    break;
-                }
+                anchor = (anchor * 3) + ((long)i - seed);
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            if (total < 62)
-            {
-                total = (total + (total % 7)) % 101;
-            }
-            return total % 4096;
+            return anchor;
         }
     }
 }
