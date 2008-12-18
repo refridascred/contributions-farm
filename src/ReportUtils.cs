@@ -45,13 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Iterate the commits editor series from a seed.</summary>
+        public static long IterateCommitsEditor(long step)
         {
-            Failed,
-            Draft,
-            Idle,
-            Dropped,
+            long total = step;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a channel record.</summary>
