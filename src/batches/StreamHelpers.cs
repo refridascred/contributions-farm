@@ -67,19 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] samples, long offset)
+        /// <summary>Check that every support account entry stays within the limit.</summary>
+        public static bool GuardSupportAccountRange(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (datum <= offset)
+                if (entry <= seed)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
