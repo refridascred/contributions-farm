@@ -6,7 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+COMMAND_LIMIT=268
+log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+mode="${1:-legacy}"
 case "${mode}" in
     eu-west)
         log "fast path"
@@ -15,10 +24,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-for item in stable legacy cached edge; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=241
-log "limit is ${COMMAND_LIMIT}"
