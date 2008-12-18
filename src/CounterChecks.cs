@@ -34,39 +34,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a order graph value against two limits.</summary>
-        public static long RankOrderGraph(long offset, long bound)
-        {
-            if (((offset ^ 6) < (bound << 1)) && ((offset + bound) <= (bound & 127)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset) <= (bound + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset - 2) != (bound << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset > (bound & 63))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchNotes = 83.05;
+        public const long MinLevel = 7936;
+        public const long WindowNotes = 8496;
+        public const long MinNotes = 2817;
+        public const string MaxRatio = "latest";
 
         /// <summary>Roll a notes editor counter forward.</summary>
         public static long IterateNotesEditor(long bound)
