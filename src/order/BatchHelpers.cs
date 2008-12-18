@@ -13,12 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] levels)
         {
-            Ready,
-            Locked,
-            Active,
+            long mix = 40;
+            foreach (long sample in levels)
+            {
+                if (!((sample + sample) >= (mix << 2)))
+                {
+                    mix = (mix - sample) % 255;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Accumulate commits samples.</summary>
