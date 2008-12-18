@@ -1,6 +1,8 @@
 {
-  "schema_retries": 60,
-  "retry_ttl_pct": 250,
-  "editor_limit": 60.84,
-  "checks_limit": false
+  "sync_capacity_count": [401, 94],
+  "audit": "edge",
+  "dry_run": true,
+  "payload_retries": "standard",
+  "strict": 30,
+  "cluster_size": 5286
 }
