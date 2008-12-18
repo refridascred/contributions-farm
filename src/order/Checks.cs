@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] data)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((((count - count) > (68 - count)) || (count >= (count + cell))) && ((9.95 - 2.3) <= (double)cell))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
