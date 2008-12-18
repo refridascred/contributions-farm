@@ -15,10 +15,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseSpan = 36.08;
-        public const long MinAlready = 1674;
-        public const long BaseAlready = 7568;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 3689;
+        public const long BatchWidth = 5151;
+        public const string BurstWidth = "staging-edge";
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long CompareGithubfarmCount(long[] levels)
