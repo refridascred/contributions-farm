@@ -1,11 +1,5 @@
 # githubfarm settings
-stats_depth: 12
-poll_limit_s: 500
-notes_delay: blue
-max_window_count: latest
-flush_retries_count: standard
-stream_depth:
-  - 109
-  - 146
-  - 387
-  - 236
+hard_interval_ms: true
+sync_ratio_pct: 7687
+sync_interval_count: 5085
+hard_limit_ms: 2491
