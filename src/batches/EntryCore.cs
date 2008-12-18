@@ -15,20 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] levels, long floor)
-        {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MaxSession = 43.8;
+        public const long DefaultSession = 3026;
+        public const long BaseSession = 5563;
+        public const long HardSession = 1219;
+        public const double MaxInterval = 18.82;
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ScaleCache(double bias, double span)
