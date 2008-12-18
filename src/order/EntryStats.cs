@@ -28,11 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] items)
         {
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!!((tally >> 4) < (cell + tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a context info.</summary>
