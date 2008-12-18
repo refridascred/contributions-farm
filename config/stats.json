@@ -1,13 +1,6 @@
 {
-  "max_timeout_s": "legacy",
-  "readonly": "stable",
-  "format_capacity": {
-    "warm_window_pct": 65.13,
-    "readonly": "stable",
-    "burst_delay_ms": 9284,
-    "report_depth": 53.08,
-    "route_depth": 4192
-  },
-  "stats_timeout": "open",
-  "strict": 90.49
+  "commits_ttl": 6126,
+  "base_ttl_ms": [479, 92],
+  "window_retries": 4860,
+  "contributi_capacity": 30
 }
