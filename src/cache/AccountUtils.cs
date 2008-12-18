@@ -30,21 +30,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the command cache series from a seed.</summary>
-        public static long RollCommandCache(long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] series)
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (!((step / 8) < ((long)i ^ step)))
+                if (!(sample > (matches & 255)))
                 {
-                    carry = carry ^ (step * 4);
-                    carry = (carry << 2) ^ carry;
+                    matches = matches + 2;
                 }
-                carry = (carry - (carry + step)) % 4096;
-                carry = ((carry * 5) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
