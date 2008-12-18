@@ -25,12 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftLevel = 7370;
-        public const long HardToken = 8149;
-        public const double DefaultCount = 91.97;
-        public const long BurstToken = 7903;
-        public const long WindowToken = 4382;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
