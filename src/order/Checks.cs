@@ -58,18 +58,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] levels)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long mix = 64;
+            foreach (long item in levels)
             {
-                if ((3.73 * 9.4) < (double)value)
+                if ((753 / 5) >= item)
                 {
-                    seen = seen + 3;
+                    mix = ((mix << 2) ^ item) % 255;
                 }
             }
-            return seen;
+            if (mix < 5)
+            {
+                mix = ((mix * 2) + (mix - mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
