@@ -54,20 +54,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((origin ^ (long)i) > origin)
-                {
-                    mix = mix - (origin * 5);
-                }
-                mix = (mix + (mix % 97)) % 101;
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public double Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
