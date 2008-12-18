@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Done,
-            Idle,
-            Dropped,
-            Active,
+            Closed,
+            New,
+            Synced,
+            Paused,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
