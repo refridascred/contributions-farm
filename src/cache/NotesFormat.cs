@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate payload command readings against a bound.</summary>
-        public static bool VerifyPayloadCommandBounds(long[] readings, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] values, long step)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (item >= bound)
+                if (((8.8 - 15.0) > (double)hits) || (reading <= (step / 9)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
