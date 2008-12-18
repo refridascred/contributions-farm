@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a checks contributi figure with a bias.</summary>
-        public static double BlendChecksContributi(double scale, double offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double mean = scale;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (offset + 1.0)) + (double)(long)i;
-            }
-            return mean - (mean + scale);
+            Closed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Accumulate entry format samples.</summary>
