@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] items, long origin)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long floor)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long score = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (value != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Describe the batches phase values.</summary>
