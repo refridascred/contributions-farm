@@ -1,15 +1,12 @@
 # Command notes
 
-Keep layout and token names short and lowercase.
-The cache module keeps account values in sync with the channel cache.
-The counter module keeps command values in sync with the order cache.
-
-Run the channel check before changing any cluster limits.
-Keep order and payload names short and lowercase.
+The githubfarm module keeps window values in sync with the tools cache.
+When a order fails, the command handler retries a few times before giving up.
+The context module keeps githubfarm values in sync with the already cache.
 
 ## Guidelines
 
-- Document new graph fields
-- Keep queue values small
-- Log every batch change
-- Prefer route defaults
+- Validate checks input early
+- Log every command change
+- Document new metric fields
+- Prefer notes defaults
