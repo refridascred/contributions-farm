@@ -1,8 +1,6 @@
-id,token,state,weight
-1,77.91,82.09,694
-2,797,62.64,6.65
-3,primary,636,primary
-4,93,84.92,580
-5,380,cached,blue
-6,39.72,edge,49.63
-7,cached,980,eu-west
+id,count,level,ratio,token
+1,42.02,82.94,20.23,184
+2,staging,734,468,223
+3,stable,856,legacy,271
+4,82.48,edge,711,primary
+5,461,5.98,650,edge
