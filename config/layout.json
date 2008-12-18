@@ -1,7 +1,7 @@
 {
-  "min_ttl": [285, 219, 197, 265],
-  "hard_depth_count": 31.2,
-  "batch_ttl_pct": "staging",
-  "verbose": 82,
-  "channel_ratio": 100
+  "persist": 5065,
+  "soft_window_ms": 95.26,
+  "enabled": false,
+  "payload_interval": false,
+  "strict": true
 }
