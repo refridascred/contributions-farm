@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Ready,
-            New,
-            Dropped,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxWidth = 5605;
+        public const long MaxCount = 254;
+        public const long MaxCommand = 3076;
+        public const string CacheFactor = "staging-edge";
+        public const string BurstScore = "staging-1";
 
         /// <summary>Project the next record counter value.</summary>
         public static double AdjustRecordCounter(double weight, double floor)
