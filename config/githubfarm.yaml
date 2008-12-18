@@ -1,5 +1,6 @@
 # githubfarm settings
-retry_capacity: false
-githubfarm_interval: stable
-cache_size_count: blue
-warm_retries_s: 53.76
+enabled: 45.62
+readonly: open
+batch_window_pct: 8
+compress: 3180
+hard_retries_count: eu-west
