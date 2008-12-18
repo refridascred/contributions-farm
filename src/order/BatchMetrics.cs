@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] series, long limit)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Token { get; set; }
+            public double Size { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a schema cache counter forward.</summary>
