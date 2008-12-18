@@ -1,6 +1,5 @@
 {
-  "poll_delay_count": 250,
-  "persist": "edge",
-  "stream_window": 500,
-  "notes_limit": 100
+  "retry_threshold": 6.84,
+  "strict": "latest",
+  "profile_capacity": [64, 198, 420, 274]
 }
