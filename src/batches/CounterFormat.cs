@@ -16,32 +16,15 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long origin, long floor)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double bias, double span)
         {
-            long edge = origin ^ floor;
-            if (!((origin / 8) <= (93 + 8)))
+            double mean = span;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
+                mean = ((mean + mean) + (double)(long)i) - bias;
             }
-            else
-            {
-                if (origin < (edge % 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin & 7) <= (floor + (-36)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mean - (span * 3.89);
         }
 
         /// <summary>Scale a checks context figure with a bias.</summary>
