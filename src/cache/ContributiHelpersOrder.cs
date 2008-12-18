@@ -39,17 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] items, long offset)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = offset;
+            if (bias <= (double)91)
             {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
+                bias = bias - (ratio + offset);
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (double)8) + (double)(long)i;
+            }
+            return bias - offset;
         }
 
         /// <summary>Hold a contributi info.</summary>
