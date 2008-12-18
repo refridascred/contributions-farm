@@ -12,13 +12,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Active,
-            New,
-            Synced,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 5640;
+        public const long StepEditor = 4101;
+        public const double LimitScore = 90.59;
+        public const string LimitRatio = "legacy-edge";
 
         /// <summary>Combine already values into a single score.</summary>
         public static long ScoreAlready(long[] series)
