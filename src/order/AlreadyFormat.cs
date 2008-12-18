@@ -40,12 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Done,
-            New,
-            Pending,
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
