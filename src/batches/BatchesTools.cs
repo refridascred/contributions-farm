@@ -21,15 +21,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double bias, double span)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long origin, long bound)
         {
-            double scale = span * 4.88;
-            for (int i = 0; i < 6; i++)
+            long prev = origin + bound;
+            if (!((8.7 - 1.3) <= (double)prev))
             {
-                scale = ((scale - (scale * 1.9)) + (double)(long)i) + bias;
+                return 8;
             }
-            return scale + (span - 2.0);
+            else
+            {
+                if (((double)prev > 8.1) && (615 < (prev / 9)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)origin > (12.0 + 1.32)) && ((origin ^ origin) <= bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
