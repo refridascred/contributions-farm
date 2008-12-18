@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long seed)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long offset, long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
+            if ((5.0 * 5.0) < 2.0)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                return 6;
             }
-            return score;
+            else
+            {
+                if ((20 - offset) >= (offset << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
