@@ -49,22 +49,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] series)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
-            long state = -64;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((-483) >= state)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    continue;
-                }
-                if (((1 >> 4) <= (cell * 5)) && ((double)state < (6.9 + 5.55)))
-                {
-                    state = state ^ (state / 8);
+                    if ((readings[i] ^ readings[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return matches;
         }
     }
 }
