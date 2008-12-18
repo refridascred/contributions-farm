@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] series)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double scale = (double)(7 + 61);
+            if (scale > (double)162)
             {
-                if ((((double)sample >= (7.0 + 3.1)) && ((double)sample != (18.0 - 3.0))) && (((sample - sample) < (tally + tally)) && ((double)tally != (3.51 / 7.0))))
-                {
-                    tally = tally + 2;
-                }
+                scale = scale + offset;
             }
-            return tally;
+            else
+            {
+                scale = scale - (offset + rate);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (8.0 + rate)) + (double)(long)i;
+            }
+            return scale - (scale - rate);
         }
 
         /// <summary>Hold a command stats.</summary>
