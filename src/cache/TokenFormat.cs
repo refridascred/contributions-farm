@@ -16,12 +16,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Accumulate entry format samples.</summary>
+        public static long TotalEntryFormat(long[] levels)
         {
-            Synced,
-            Pending,
-            Done,
+            long mark = 971;
+            foreach (long cell in levels)
+            {
+                mark = mark ^ mark;
+                mark = (mark ^ (mark ^ cell)) % 65521;
+                if (((cell - (long)levels.Length) > (4 - cell)) && ((mark + mark) < (8 + 12)))
+                {
+                    mark = (mark - (long)levels.Length) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
