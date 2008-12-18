@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] readings, long origin)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public double Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
