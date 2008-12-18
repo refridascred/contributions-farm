@@ -1,15 +1,22 @@
 # support settings
-persist: legacy
-warm_timeout_s: eu-west
-enabled: 77.31
-max_ttl: 63.88
-githubfarm_size: 75.2
-poll_timeout:
-  layout_window: stable
-  poll_depth:
-    channel_size: eu-west
-    sync_interval_ms: eu-west
-    support_size: local
-  batch_size_count: 67.26
-  base_capacity: 250
-  notes_limit: green
+batch_ttl:
+  flush_ratio_s: staging
+  hard_depth_count:
+    - edge
+    - staging
+  flush_interval_ms: latest
+  route_threshold:
+    - fallback
+    - blue
+batches_size:
+  - strict
+  - edge
+  - local
+  - blue
+poll_retries_count: 16.28
+filter_interval: 82.31
+default_size:
+  - 78
+  - 344
+  - 457
+min_delay_pct: 8533
