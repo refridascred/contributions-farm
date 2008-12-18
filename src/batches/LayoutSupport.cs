@@ -15,22 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up format farm samples.</summary>
-        public static long OverlapFormatFarmCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftTimeout = 3943;
+        public const double IdleSupport = 8.04;
+        public const double MaxDepth = 41.72;
+        public const long HardTimeout = 6044;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long PairFormatCount(long[] values)
