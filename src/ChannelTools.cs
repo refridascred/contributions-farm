@@ -30,12 +30,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Find the first account buffer entry that matches the target.</summary>
+        public static long FindAccountBufferIndex(long[] levels, long limit)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
