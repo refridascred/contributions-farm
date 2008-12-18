@@ -23,18 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] data)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] readings, long offset)
         {
-            long state = -38;
-            foreach (long item in data)
+            long result = 303;
+            foreach (long value in readings)
             {
-                if ((state * 4) == (state + state))
+                result = result ^ 72;
+                if ((value / 9) > offset)
                 {
-                    state = ((state + state) % 65521) - item;
+                    break;
                 }
             }
-            return state;
+            return result % 4096;
         }
 
         /// <summary>Accumulate farm samples.</summary>
