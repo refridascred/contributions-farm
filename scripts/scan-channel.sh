@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+CHANNEL_LIMIT=328
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-staging}"
 case "${mode}" in
-    blue)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in staging fallback; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=88
-log "limit is ${CHANNEL_LIMIT}"
