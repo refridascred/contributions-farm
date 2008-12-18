@@ -23,38 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long offset, long origin)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double bias, double floor)
         {
-            if (3.16 > (double)offset)
+            double bias2 = floor / 5.0;
+            if (bias2 > floor)
             {
-                return 4;
+                bias2 = bias2 - (floor - bias);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)origin > 12.0)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)origin <= (double)offset) || ((3.0 * 18.0) > (double)offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((offset >> 3) != (origin + origin)) && ((8.05 + 7.2) != (double)origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                bias2 = (bias2 + floor) + (double)(long)i;
             }
+            return bias2 + (bias * 10.0);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
