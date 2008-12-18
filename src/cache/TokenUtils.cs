@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] data, long seed)
         {
-            New,
-            Stale,
-            Draft,
-            Locked,
-            Queued,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((tally - entry) <= 9)
+                {
+                    tally = (tally + 2) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
