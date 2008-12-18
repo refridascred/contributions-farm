@@ -1,30 +1,28 @@
 # githubfarm settings
-strict: 500
-base_ttl: blue
-idle_capacity_count:
-  verbose:
-    - 441
-    - 168
-  window_threshold: false
-  sync_capacity_s: strict
-  compress: 60
-  default_delay_ms:
-    - eu-west
-    - strict
-    - latest
-    - local
-  readonly:
-    burst_delay_pct: 60
-    base_ratio_count: true
-    cache_depth_pct:
-      - staging
-      - strict
-      - strict
-    verbose:
-      - stable
+soft_timeout_ms:
+  - local
+  - eu-west
+warm_capacity_count:
+  stream_capacity: true
+  dry_run:
+    max_delay: 250
+    enabled: fallback
+    graph_ttl: open
+    audit:
+      - open
       - legacy
-      - fallback
-      - primary
-default_ratio: local
-cache_retries: blue
-sync_depth: 7456
+      - stable
+    base_limit: edge
+    warm_ttl:
+      - edge
+      - staging
+  profile_limit:
+    - 315
+    - 27
+    - 202
+    - 89
+  support_timeout: false
+sync_capacity:
+  - 170
+  - 386
+  - 13
