@@ -58,19 +58,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double weight, double span)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] readings, long step)
         {
-            double rate = weight;
-            if (rate < rate)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                rate = (rate - rate) - span;
+                if ((hits + value) <= step)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + (7.68 * 7.29);
+            return hits;
         }
 
         /// <summary>Locate a queue contributi reading by value.</summary>
