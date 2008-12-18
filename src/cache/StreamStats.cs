@@ -50,19 +50,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metrics window series from a seed.</summary>
-        public static long DeriveMetricsWindow(long floor)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)sum >= (0.2 + 8.0))
+                if (8 <= (state >> 5))
                 {
-                    sum = sum ^ (floor << 3);
+                    state = ((state << 3) ^ (origin / 5)) % 255;
+                    state = (state * 5) + ((long)i + 787);
                 }
-                sum = ((sum * 5) + (long)i) % 97;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return sum;
+            return state;
         }
     }
 }
