@@ -25,13 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] series, long origin)
         {
-            Locked,
-            Queued,
-            Ready,
-            Synced,
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the buffer status values.</summary>
