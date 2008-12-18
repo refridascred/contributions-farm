@@ -35,17 +35,10 @@ namespace Common.Utilities
         public const double DefaultSpan = 97.07;
         public const string CacheScore = "stable-edge";
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryDepth = 8.77;
+        public const double WindowFactor = 4.51;
+        public const double IdleProfile = 40.22;
+        public const string RetryProfile = "fallback-v2";
     }
 }
