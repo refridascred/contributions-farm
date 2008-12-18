@@ -37,10 +37,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepSpan = "alpha";
-        public const long MinFormat = 1042;
-        public const long SoftInterval = 477;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum % 8) < 911)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long RollGithubfarm(long floor)
