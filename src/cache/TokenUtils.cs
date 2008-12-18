@@ -28,18 +28,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] levels)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long offset, long floor)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long next = offset - floor;
+            if ((floor - floor) <= next)
             {
-                if (6.85 > (double)hits)
+                return 0;
+            }
+            else
+            {
+                if ((next % 97) < next)
                 {
-                    hits = (hits + 2) + sample;
+                    return 3;
+                }
+                else
+                {
+                    if ((next * 4) == (floor * 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
