@@ -50,23 +50,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double gain, double span)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double scale, double floor)
         {
-            double load = (double)(0 + 81);
-            if (load > (double)682)
+            double load = scale;
+            if (load <= floor)
             {
-                load = load - (load * 5.0);
+                load = load - (load - 12.0);
             }
             else
             {
-                load = load - (7.79 / 4.0);
+                load = load + (scale - scale);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - gain) + (double)(long)i;
-            }
-            return load + (span / 5.0);
+            return load - (19.0 / 7.0);
         }
     }
 }
