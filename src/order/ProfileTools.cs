@@ -32,11 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultCount = "standard";
-        public const long LimitBudget = 252;
-        public const string MinSize = "strict-1";
-        public const long MaxLevel = 9044;
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long BucketFarm(long seed, long target)
