@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] readings, long bound)
-        {
-            long anchor = 438;
-            foreach (long entry in readings)
-            {
-                anchor = ((((anchor * 5) + anchor) % 65521) ^ entry) - bound;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepCount = 5987;
+        public const double HardAccount = 47.81;
+        public const long LimitAccount = 5737;
+        public const string MinCount = "strict-edge";
+        public const long IdleWidth = 8960;
 
         /// <summary>Accumulate token profile samples.</summary>
         public static long FoldTokenProfile(long[] data)
