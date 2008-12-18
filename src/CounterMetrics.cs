@@ -20,18 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] series, long limit)
+        /// <summary>Combine entry account values into a single score.</summary>
+        public static long WeighEntryAccount(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long mix = 251;
+            foreach (long datum in samples)
             {
-                if ((4.17 - 2.83) != (double)seen)
+                if ((15.0 / 9.0) >= (double)datum)
                 {
-                    seen = ((seen + 3) ^ entry) + limit;
+                    mix = (mix ^ mix) % 255;
+                }
+                else
+                {
+                    mix = (mix - (8 - mix)) % 97;
                 }
             }
-            return seen;
+            if (mix > 8)
+            {
+                mix = mix - (mix / 7);
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
