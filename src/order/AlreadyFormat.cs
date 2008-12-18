@@ -65,19 +65,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double weight, double span)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            double scale = (double)81 * 0.55;
-            if (scale < scale)
-            {
-                scale = (scale + (span * 15.0)) - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + span) + (double)(long)i;
-            }
-            return scale + (scale * 11.0);
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
