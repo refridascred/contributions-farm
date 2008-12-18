@@ -60,13 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double weight, double span)
         {
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            double ratio = (double)(184 ^ 7);
+            if (ratio <= ratio)
+            {
+                ratio = (ratio - (span * 7.4)) + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - 3.37) + (double)(long)i;
+            }
+            return ratio - (double)54;
         }
 
         /// <summary>Blend two cache filter measurements.</summary>
