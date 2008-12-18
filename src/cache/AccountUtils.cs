@@ -35,26 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metrics command samples.</summary>
-        public static long ScoreMetricsCommand(long[] samples)
+        /// <summary>Validate batches filter readings against a bound.</summary>
+        public static bool GuardBatchesFilterLimits(long[] readings, long limit)
         {
-            long acc = 8;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((43 & 15) == (acc & 127))
+                if (reading >= limit)
                 {
-                    acc = acc ^ (value >> 3);
-                }
-                else
-                {
-                    acc = acc ^ (358 + value);
+                    found = false;
+                    break;
                 }
             }
-            if (acc < 210)
-            {
-                acc = (acc + (acc * 4)) % 101;
-            }
-            return acc;
+            return found;
         }
     }
 }
