@@ -1,5 +1,26 @@
 # githubfarm settings
-hard_interval_ms: true
-sync_ratio_pct: 7687
-sync_interval_count: 5085
-hard_limit_ms: 2491
+enabled:
+  - local
+  - strict
+max_size_ms:
+  - 316
+  - 41
+  - 139
+  - 377
+record_interval: 423
+readonly:
+  hard_threshold_count: 25.12
+  burst_size_ms: 3513
+  sync_delay_pct: legacy
+flush_size_pct:
+  audit:
+    - latest
+    - latest
+  enabled: local
+  dry_run: false
+buffer_capacity:
+  soft_retries: fallback
+  base_depth: 81.34
+  readonly: open
+  warm_retries_pct: latest
+  soft_threshold: false
