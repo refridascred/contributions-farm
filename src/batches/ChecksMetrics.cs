@@ -58,12 +58,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
