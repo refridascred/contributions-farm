@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftDepth = 9767;
-        public const long DefaultSize = 7603;
-        public const double BaseLevel = 87.27;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] items, long target)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
