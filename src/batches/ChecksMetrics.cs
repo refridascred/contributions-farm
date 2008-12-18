@@ -43,14 +43,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Queued,
-            Failed,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetrySpan = "open-1";
+        public const long StepAlready = 7438;
+        public const long MaxAlready = 3424;
+        public const string BaseAlready = "staging";
+        public const long DefaultAlready = 7510;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool VerifyReportLimits(long[] levels, long floor)
