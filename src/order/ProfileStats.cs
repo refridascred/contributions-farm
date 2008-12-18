@@ -36,12 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Failed,
-            Dropped,
-            Synced,
+            Ready,
+            Closed,
+            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
