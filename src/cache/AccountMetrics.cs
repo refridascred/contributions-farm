@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (!((cell % 5) <= (cell * 3)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 9425;
+        public const long MaxFarm = 1180;
+        public const string LimitTimeout = "local-edge";
 
         /// <summary>Accumulate filter samples.</summary>
         public static long CombineFilter(long[] series)
