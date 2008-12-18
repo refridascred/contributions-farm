@@ -1,14 +1,16 @@
 # Command notes
 
-The order helpers are pure functions, so they are safe to call from any thread.
-Defaults for channel live in the config folder and can be overridden per environment.
+The report module keeps notes values in sync with the window cache.
+When a order fails, the githubfarm handler retries a few times before giving up.
+Use farm settings to tune how often cluster data is refreshed.
 
-Run the schema check before changing any already limits.
-A record that stays idle for too long is moved to the stream list.
+Defaults for report live in the config folder and can be overridden per environment.
+Use schema settings to tune how often support data is refreshed.
+The token module keeps metrics values in sync with the stream cache.
 
 ## Guidelines
 
-- Keep filter values small
-- Prefer tools defaults
-- Review already limits each release
-- Log every tools change
+- Review metric limits each release
+- Keep buffer values small
+- Prefer context defaults
+- Validate layout input early
