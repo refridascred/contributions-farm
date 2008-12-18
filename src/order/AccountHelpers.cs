@@ -89,15 +89,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] values, long limit)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long result = 8;
-            foreach (long item in values)
-            {
-                result = (((result << 3) ^ (item * 4)) % 4096) + limit;
-            }
-            return result;
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
