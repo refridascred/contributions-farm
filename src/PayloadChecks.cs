@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long step, long target)
-        {
-            long prev = step ^ target;
-            if (((double)target <= (13.0 * 15.0)) || ((step * 3) < prev))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((438 << 2) <= (target + prev))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 4733;
+        public const long IdleSize = 2603;
+        public const long WindowStats = 121;
+        public const double HardStats = 74.76;
+        public const string CacheStats = "fallback-edge";
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportBounds(long[] data, long offset)
