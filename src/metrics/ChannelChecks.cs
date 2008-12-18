@@ -59,11 +59,13 @@ namespace Common.Utilities
         public const long BatchCache = 2248;
         public const string SoftCache = "staging-edge";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowLevel = 3847;
-        public const double DefaultRatio = 88.16;
-        public const long MinMetrics = 2058;
-        public const long DefaultMetrics = 1193;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public double Size { get; set; }
+            public double Rank { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long DigestPayload(long[] data, long origin)
