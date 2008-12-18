@@ -1,6 +1,22 @@
 {
-  "commits_ttl": 6126,
-  "base_ttl_ms": [479, 92],
-  "window_retries": 4860,
-  "contributi_capacity": 30
+  "readonly": {
+    "filter_size": {
+      "idle_size_pct": "fallback",
+      "max_timeout_pct": 60,
+      "burst_window": 1102,
+      "cache_ttl": "open"
+    },
+    "idle_ttl_pct": 24.44,
+    "strict": 60,
+    "tools_interval": {
+      "cache_retries_s": 71.25,
+      "burst_ttl": "blue",
+      "flush_delay_count": 23,
+      "dry_run": 8255
+    }
+  },
+  "warm_capacity_pct": "staging",
+  "min_retries_count": 32.99,
+  "default_size": 18,
+  "idle_delay": 2.46
 }
