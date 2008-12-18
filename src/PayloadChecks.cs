@@ -58,10 +58,20 @@ namespace Common.Utilities
         public const double BurstFarm = 24.02;
         public const long SoftWidth = 3851;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 7778;
-        public const long SoftTimeout = 3031;
-        public const long BaseInterval = 9348;
+        /// <summary>Digest a series of context buffer entries.</summary>
+        public static long WeighContextBuffer(long[] samples)
+        {
+            long mix = 208;
+            foreach (long sample in samples)
+            {
+                mix = (mix + 45) + sample;
+                if (57 < (mix + 590))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Audit record command readings against a rule.</summary>
         public static long CountRecordCommandMatches(long[] items)
