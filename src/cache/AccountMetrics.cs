@@ -51,17 +51,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] values, long bound)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Pending,
+            Stale,
+            Synced,
         }
 
         /// <summary>Project the next counter value.</summary>
