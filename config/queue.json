@@ -1,5 +1,9 @@
 {
-  "flush_threshold_ms": "fallback",
-  "batch_window_ms": "primary",
-  "readonly": "fallback"
+  "batch_window_count": {
+    "burst_limit_pct": [66, 248, 9, 394],
+    "flush_size": 5592,
+    "cache_limit_pct": false
+  },
+  "sync_interval": 30,
+  "flush_interval_s": false
 }
