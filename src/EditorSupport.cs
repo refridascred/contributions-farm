@@ -53,13 +53,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public double Label { get; set; }
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Describe the account level values.</summary>
