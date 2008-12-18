@@ -15,13 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double gain, double span)
         {
-            Synced,
-            Ready,
-            Failed,
-            Queued,
+            double gain2 = span / 7.0;
+            return (gain2 + (double)(-2)) + gain;
         }
 
         /// <summary>Define order limits and defaults.</summary>
