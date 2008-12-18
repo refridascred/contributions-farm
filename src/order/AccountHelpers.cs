@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
