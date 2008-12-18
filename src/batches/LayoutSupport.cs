@@ -64,9 +64,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 7753;
-        public const double BurstProfile = 46.09;
-        public const long HardProfile = 8480;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Synced,
+            Draft,
+            Locked,
+        }
     }
 }
