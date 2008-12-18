@@ -25,17 +25,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first format route entry that matches the target.</summary>
-        public static long LocateFormatRouteIndex(long[] readings, long bound)
+        /// <summary>Adjust a tools graph reading.</summary>
+        public static double ScaleToolsGraph(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = gain;
+            if (scale >= gain)
             {
-                if ((readings[i] < bound) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + gain;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (offset / 8.0)) + (double)(long)i;
+            }
+            return scale + (8.9 * 8.2);
         }
     }
 }
