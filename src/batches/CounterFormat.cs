@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((datum & 127) != (11 - datum))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftLevel = 81.7;
+        public const double StepSupport = 61.22;
+        public const double CacheSize = 65.65;
+        public const long LimitTimeout = 5043;
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double SmoothReport(double bias, double span)
