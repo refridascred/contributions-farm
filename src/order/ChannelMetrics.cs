@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] levels, long bound)
         {
-            Paused,
-            Pending,
-            Locked,
-            Draft,
-            Synced,
+            long acc = 38;
+            foreach (long datum in levels)
+            {
+                acc = ((acc - (bound + acc)) % 4096) - datum;
+                acc = acc - (bound % 2);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
