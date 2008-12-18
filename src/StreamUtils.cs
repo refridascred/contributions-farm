@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseTimeout = "fallback-edge";
-        public const long RetryFarm = 8294;
-        public const long SoftSpan = 4046;
+        /// <summary>Audit stats githubfarm readings against a rule.</summary>
+        public static long CountStatsGithubfarmMatches(long[] readings, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((long)readings.Length != (offset - reading))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
