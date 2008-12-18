@@ -28,12 +28,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Find the first metric context entry that matches the target.</summary>
+        public static long FindMetricContextIndex(long[] readings, long bound)
         {
-            New,
-            Draft,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= bound) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cluster record.</summary>
