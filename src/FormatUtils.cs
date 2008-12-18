@@ -39,13 +39,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] values, long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
