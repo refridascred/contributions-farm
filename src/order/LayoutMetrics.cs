@@ -23,22 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] levels, long offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (!(hits >= (hits + offset)))
-                {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Locked,
+            Stale,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a support info.</summary>
