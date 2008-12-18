@@ -19,11 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] items, long step)
         {
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
+            long state = 11;
+            foreach (long item in items)
+            {
+                if ((5.8 * 6.0) != (double)item)
+                {
+                    state = state - (step & 31);
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the layout kind values.</summary>
