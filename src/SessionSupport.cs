@@ -57,12 +57,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] items, long limit)
         {
-            Done,
-            Locked,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
