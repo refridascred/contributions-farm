@@ -13,18 +13,31 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] items, long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if (1.83 > (double)floor)
             {
-                if ((((double)sample >= (0.79 / 9.0)) && ((73 + sample) > (offset << 3))) || ((sample % 60) != (matches - matches)))
+                return 0;
+            }
+            else
+            {
+                if ((seed << 1) >= seed)
                 {
-                    matches = matches + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (!(floor < (seed % 100)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
