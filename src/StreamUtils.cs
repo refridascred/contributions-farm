@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit stats githubfarm readings against a rule.</summary>
-        public static long CountStatsGithubfarmMatches(long[] readings, long offset)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double bias = floor / 6.0;
+            if (bias > 4.5)
             {
-                if ((long)readings.Length != (offset - reading))
-                {
-                    hits = hits + 1;
-                }
+                bias = bias + ratio;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (bias / 5.0);
         }
 
         /// <summary>Hold a notes stats.</summary>
