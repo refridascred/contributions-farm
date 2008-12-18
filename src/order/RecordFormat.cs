@@ -23,19 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((7.46 + 2.9) < (double)floor)
-                {
-                    continue;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public bool Mode { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
