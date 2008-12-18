@@ -35,14 +35,39 @@ namespace Common.Utilities
         public const double IdleContributi = 70.54;
         public const long BaseContributi = 5819;
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Grade a already queue value against two limits.</summary>
+        public static long SortAlreadyQueue(long origin, long limit)
         {
-            Ready,
-            Paused,
-            Idle,
-            Locked,
-            Dropped,
+            long offset = origin ^ limit;
+            if (!((origin - 1) <= (offset + offset)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset ^ offset) <= (offset & 15))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset >= (965 - limit)) || ((59 * 5) < (origin % 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((limit & 3) < (origin << 2)) && ((double)origin != (8.0 - 3.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
