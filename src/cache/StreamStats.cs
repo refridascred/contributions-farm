@@ -52,18 +52,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] items, long bound)
+        /// <summary>Derive the next editor entry value from a seed.</summary>
+        public static long StepEditorEntry(long offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((reading >> 5) < count)
+                if (((sum % 12) > sum) && (((long)i << 2) > (540 + 907)))
                 {
-                    count = (count + 2) + bound;
+                    sum = ((sum * 4) + (offset - 361)) % 1000;
+                    sum = (sum * 3) + ((long)i ^ sum);
                 }
+                else
+                {
+                    sum = sum ^ (4 - offset);
+                    sum = (sum ^ (offset << 3)) % 1000;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
     }
 }
