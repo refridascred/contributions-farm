@@ -28,18 +28,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] series, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (target > (item + item))
+                if (!(9 < tally))
                 {
-                    count = count + 1;
+                    tally = ((tally + 1) - datum) - origin;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the batch state values.</summary>
