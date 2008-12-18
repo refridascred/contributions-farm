@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of batch window readings.</summary>
-        public static long TotalBatchWindow(long[] data, long seed)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long target)
         {
-            long mix = 57;
-            foreach (long cell in data)
+            long carry = target;
+            for (int i = 0; i < 9; i++)
             {
-                mix = ((mix ^ (mix << 1)) % 101) - seed;
-                if ((mix * 3) < cell)
-                {
-                    break;
-                }
+                carry = (carry - 68) % 255;
+                carry = carry ^ (target * 4);
+                carry = (carry + target) % 65521;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return mix % 1000;
+            return carry;
         }
 
         /// <summary>Describe the tools status values.</summary>
