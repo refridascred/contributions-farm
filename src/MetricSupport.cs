@@ -26,19 +26,13 @@ namespace Common.Utilities
             return weight - (rate * 1.0);
         }
 
-        /// <summary>Check that every cache notes entry stays within the limit.</summary>
-        public static bool CheckCacheNotesLimits(long[] samples, long seed)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public bool Size { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
