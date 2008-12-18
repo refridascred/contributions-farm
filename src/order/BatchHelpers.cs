@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] items)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!((reading + reading) >= (490 + matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the tools phase values.</summary>
