@@ -42,12 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            New,
+            Synced,
+            Stale,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
