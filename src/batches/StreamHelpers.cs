@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next command stream value.</summary>
-        public static double SmoothCommandStream(double ratio, double span)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] items, long offset)
         {
-            double bias = (double)1 + (double)54;
-            if (bias <= span)
+            bool valid = true;
+            foreach (long value in items)
             {
-                bias = bias - (ratio + bias);
+                if (value > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias + span;
+            return valid;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
