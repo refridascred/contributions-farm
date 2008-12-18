@@ -1,22 +1,14 @@
 # support settings
-verbose:
-  cache_window_ms: 3872
-  compress: false
-  flush_retries_count: primary
-  farm_delay: false
-metrics_interval:
-  warm_size_pct: blue
-  base_window_pct: 416
-  audit:
-    - edge
-    - eu-west
-    - local
-    - staging
-  retry_ttl: 1024
-  warm_timeout: primary
-  strict: stable
-strict: true
-profile_threshold:
-  context_window: 1508
-  max_window_count: 7687
-  poll_threshold_pct: 40
+soft_capacity_count:
+  verbose: 34.41
+  enabled: false
+  profile_capacity:
+    flush_delay_ms: 933
+    sync_retries: blue
+    cache_interval_s: 77.15
+    retry_size: 94.35
+    verbose: 1204
+    base_ttl: 6064
+soft_size_pct: 1024
+base_capacity_s: 60
+min_window_pct: 57.16
