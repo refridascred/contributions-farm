@@ -15,11 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public bool Ratio { get; set; }
-            public double Level { get; set; }
+            Failed,
+            Locked,
+            Ready,
+            Draft,
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
