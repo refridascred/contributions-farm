@@ -48,10 +48,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 1496;
-        public const double CacheSchema = 45.76;
-        public const string MaxSchema = "primary-edge";
-        public const long DefaultSchema = 9930;
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double bias, double span)
+        {
+            double drift = bias;
+            if (drift > span)
+            {
+                drift = drift - (span + drift);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (drift - bias)) + (double)(long)i;
+            }
+            return drift - (drift / 5.0);
+        }
     }
 }
