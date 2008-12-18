@@ -47,18 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] items)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] readings)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches >= (sample ^ sample)) && ((matches / 8) >= 39))
                 {
-                    if ((items[i] + items[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
