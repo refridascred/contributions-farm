@@ -15,19 +15,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate entry stats samples.</summary>
-        public static long ScoreEntryStats(long[] readings, long target)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long offset, long origin)
         {
-            long anchor = -137;
-            foreach (long entry in readings)
+            if (3.16 > (double)offset)
             {
-                anchor = anchor ^ (target ^ target);
-                if ((anchor - 99) <= entry)
+                return 4;
+            }
+            else
+            {
+                if ((double)origin > 12.0)
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)origin <= (double)offset) || ((3.0 * 18.0) > (double)offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((offset >> 3) != (origin + origin)) && ((8.05 + 7.2) != (double)origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
