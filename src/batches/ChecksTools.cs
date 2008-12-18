@@ -19,22 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] series, long seed)
+        /// <summary>Look up the position of a checks metrics sample.</summary>
+        public static long LookupChecksMetricsIndex(long[] data, long seed)
         {
-            long anchor = 2;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((4.0 > (double)value) || ((value ^ value) > (value >> 2)))
+                if (data[i] >= seed)
                 {
-                    anchor = ((anchor * 3) + (seed + 573)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor ^ value;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Accumulate counter samples.</summary>
