@@ -30,18 +30,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many layout support samples are out of range.</summary>
-        public static long CountLayoutSupportOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((18.0 + 7.57) == (double)entry)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowScore = 7.48;
+        public const long LimitRecord = 4979;
+        public const long DefaultBudget = 9998;
+        public const long SoftSpan = 8029;
+        public const long WindowRecord = 4899;
     }
 }
