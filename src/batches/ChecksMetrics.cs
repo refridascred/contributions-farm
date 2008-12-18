@@ -16,18 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit profile window readings against a rule.</summary>
-        public static long TallyProfileWindowHits(long[] values)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long carry = 31;
+            foreach (long entry in samples)
             {
-                if ((hits > (hits << 3)) && ((hits >> 5) < (hits << 3)))
-                {
-                    hits = (hits + 3) - value;
-                }
+                carry = ((carry ^ 967) ^ entry) - seed;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a command stats.</summary>
