@@ -38,13 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Offset { get; set; }
+            Dropped,
+            Pending,
+            Queued,
+            Retry,
+            Synced,
         }
     }
 }
