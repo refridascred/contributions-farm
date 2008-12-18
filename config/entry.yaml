@@ -1,6 +1,8 @@
 # entry settings
-default_window_count: true
-default_window: false
-base_threshold_s: false
-enabled: 46
-base_limit: 500
+already_interval: 5882
+idle_interval_s: true
+base_delay: edge
+max_limit_s:
+  - 62
+  - 136
+verbose: false
