@@ -54,14 +54,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Ready,
-            New,
-            Failed,
-            Done,
-            Locked,
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
     }
 }
