@@ -27,15 +27,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count queue graph pairs that satisfy a relation.</summary>
-        public static long OverlapQueueGraphCount(long[] items)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] samples)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] - items[j]) > 0)
+                    if ((samples[i] ^ samples[j]) > 19)
                     {
                         matches = matches + 1;
                     }
