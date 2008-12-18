@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] series, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (!((matches + (-67)) < (value + floor)))
+                if ((reading + 130) < reading)
                 {
-                    matches = matches + 2;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
