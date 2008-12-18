@@ -28,18 +28,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] data, long bound)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long step, long origin)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long cur = step + origin;
+            if ((step / 2) > (659 * 2))
             {
-                if ((double)seen <= (7.3 * 4.93))
+                return 2;
+            }
+            else
+            {
+                if (!((double)origin >= (10.0 / 7.0)))
                 {
-                    seen = ((seen + 1) ^ entry) - bound;
+                    return 5;
+                }
+                else
+                {
+                    if (!((2 + cur) <= (86 / 9)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
