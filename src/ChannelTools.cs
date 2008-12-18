@@ -55,18 +55,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit notes report readings against a rule.</summary>
-        public static long TallyNotesReportHits(long[] values)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] values)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long sum = 90;
+            foreach (long datum in values)
             {
-                if ((seen % 7) < (item << 1))
+                if (!((datum ^ sum) != (datum & 127)))
                 {
-                    seen = seen + 3;
+                    sum = (sum << 2) ^ (sum >> 2);
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
