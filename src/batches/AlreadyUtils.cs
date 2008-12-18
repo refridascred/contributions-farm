@@ -45,14 +45,21 @@ namespace Common.Utilities
         public const double IdleContributi = 70.54;
         public const long BaseContributi = 5819;
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] values)
         {
-            Paused,
-            Draft,
-            Failed,
-            Dropped,
-            Done,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
