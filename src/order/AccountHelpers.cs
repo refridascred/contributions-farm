@@ -20,21 +20,23 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Combine account route values into a single score.</summary>
+        public static long WeighAccountRoute(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 462;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((mix + value) != (mix % 100))
                 {
-                    if ((values[i] - values[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix ^ 690;
                 }
+                mix = (mix + (-38)) % 65521;
             }
-            return hits;
+            if (mix > (-802))
+            {
+                mix = ((mix << 2) ^ (-6)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
