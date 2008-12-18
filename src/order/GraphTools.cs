@@ -56,21 +56,19 @@ namespace Common.Utilities
         public const long StepSpan = 839;
         public const long IdleCount = 3313;
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] values)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum >= limit)
                 {
-                    if ((values[i] - values[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
