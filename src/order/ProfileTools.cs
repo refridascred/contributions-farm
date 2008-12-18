@@ -60,16 +60,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long bound)
+        /// <summary>Measure how many entry context samples are out of range.</summary>
+        public static long AuditEntryContextMatches(long[] readings)
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                acc = (acc + acc) % 4096;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (((13.0 - 6.61) < (double)reading) && ((seen ^ reading) > seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
