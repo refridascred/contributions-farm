@@ -1,5 +1,8 @@
 {
-  "notes_capacity": 9181,
-  "strict": [97, 310, 235],
-  "format_depth": 14.27
+  "flush_timeout_count": false,
+  "poll_timeout_ms": "eu-west",
+  "max_window_s": "edge",
+  "flush_size": 5885,
+  "stats_ttl": 100,
+  "burst_window": 8290
 }
