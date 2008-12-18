@@ -52,22 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry record entries that pass the check.</summary>
-        public static long TallyEntryRecordHits(long[] series)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (tally >= (tally & 3))
-                {
-                    tally = (tally + 3) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public double Token { get; set; }
         }
     }
 }
