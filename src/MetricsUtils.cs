@@ -34,10 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitTimeout = 55.77;
-        public const string SoftScore = "standard-edge";
-        public const double BaseMetric = 84.17;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleSpan = 8513;
+        public const double MaxSpan = 38.06;
+        public const long CacheLevel = 3626;
+        public const long IdleSize = 6725;
+        public const long MinEditor = 6973;
 
         /// <summary>Roll a route counter forward.</summary>
         public static long DeriveRoute(long limit)
