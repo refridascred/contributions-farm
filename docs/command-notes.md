@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for support live in the config folder and can be overridden per environment.
-A channel that stays idle for too long is moved to the profile list.
+Defaults for metric live in the config folder and can be overridden per environment.
+The checks module keeps account values in sync with the farm cache.
 
 ## Guidelines
 
-- Review payload limits each release
-- Prefer batches defaults
-- Document new channel fields
+- Log every session change
+- Validate graph input early
+- Review cluster limits each release
+- Document new order fields
