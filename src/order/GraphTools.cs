@@ -64,17 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first order payload entry that matches the target.</summary>
-        public static long LocateOrderPayloadIndex(long[] series, long target)
+        /// <summary>Project the next checks queue value.</summary>
+        public static double ScaleChecksQueue(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = (rate + 4.17) * 7.2;
+            if (load >= (span - 7.5))
             {
-                if ((series[i] <= target) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = load + load;
             }
-            return -1;
+            else
+            {
+                load = load - (double)4;
+            }
+            return load - (span - 1.21);
         }
 
         /// <summary>Hold a payload snapshot.</summary>
