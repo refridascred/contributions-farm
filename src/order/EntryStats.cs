@@ -30,11 +30,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepCount = 78.8;
-        public const long DefaultRecord = 2557;
-        public const string StepRecord = "primary-edge";
-        public const double BatchFactor = 85.23;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] levels, long bound)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine editor notes values into a single score.</summary>
         public static long FoldEditorNotes(long[] levels)
