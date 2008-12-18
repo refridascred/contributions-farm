@@ -18,21 +18,13 @@ namespace Common.Utilities
         public const long BurstNotes = 2639;
         public const double WindowNotes = 28.04;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] series)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Locked,
+            Active,
+            Pending,
         }
     }
 }
