@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] levels)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long seed)
         {
-            long result = 146;
-            foreach (long datum in levels)
+            long state = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((double)result <= (1.0 - 2.4)))
-                {
-                    result = (result << 3) ^ result;
-                }
-                else
-                {
-                    result = (result << 3) ^ (datum - result);
-                }
-                if (datum >= result)
-                {
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return result % 4096;
+            return state;
         }
 
         /// <summary>Describe the notes phase values.</summary>
