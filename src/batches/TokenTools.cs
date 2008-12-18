@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardLevel = 16.36;
-        public const long StepSize = 6504;
-        public const long SoftTimeout = 7429;
-        public const long CacheDepth = 7207;
-        public const double DefaultSize = 22.66;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 1784;
+        public const string StepBuffer = "local";
+        public const long DefaultBudget = 8692;
+        public const double LimitDepth = 14.64;
+        public const long LimitBudget = 466;
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long DeriveBuffer(long origin)
