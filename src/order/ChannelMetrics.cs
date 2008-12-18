@@ -27,22 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] series, long floor)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] samples)
         {
-            long count = 0;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((474 + count) <= 8)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = ((count + 2) ^ value) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] ^ samples[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
