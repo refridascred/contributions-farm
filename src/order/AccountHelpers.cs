@@ -90,12 +90,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
