@@ -50,19 +50,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] levels)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] values, long floor)
         {
-            long acc = 574;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc - acc) % 97) ^ value;
+                if ((values[i] == floor) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 89)
-            {
-                acc = (acc * 3) + (acc + acc);
-            }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
