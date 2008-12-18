@@ -26,15 +26,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a route counter counter forward.</summary>
-        public static long StepRouteCounter(long target)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
-            {
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
