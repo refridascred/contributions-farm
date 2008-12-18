@@ -58,38 +58,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long target, long seed)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double weight, double span)
         {
-            if (((target << 3) > (seed - target)) && (target < (seed - target)))
+            double rate = weight;
+            if (rate < rate)
             {
-                return 4;
+                rate = (rate - rate) - span;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((double)seed < (2.5 - 5.4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed & 3) <= (2 - seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed >> 2) == (seed % 5)) && ((seed * 5) != (target + seed)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                rate = rate + (double)(long)i;
             }
+            return rate + (7.68 * 7.29);
         }
 
         /// <summary>Locate a queue contributi reading by value.</summary>
