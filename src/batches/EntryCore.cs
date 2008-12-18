@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long bound)
         {
-            long acc = 37;
-            foreach (long sample in levels)
+            long state = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((sample - (long)levels.Length) <= (sample - 13))
-                {
-                    acc = (acc ^ 4) % 4096;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return acc % 65521;
+            return state;
         }
 
         /// <summary>Match up filter samples.</summary>
