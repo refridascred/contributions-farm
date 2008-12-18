@@ -1,17 +1,11 @@
 # githubfarm settings
-counter_ttl: 60.0
-strict:
-  base_threshold: 96
-  burst_delay_pct: 3936
-  session_capacity: primary
-  report_retries:
-    - 249
-    - 115
-batch_retries_s: 80.19
-retry_retries: true
-support_interval: false
-poll_threshold_s:
-  - 15
-  - 113
-  - 4
-  - 483
+flush_interval_s:
+  - green
+  - fallback
+hard_size_s:
+  batch_size: edge
+  dry_run: 57.9
+  filter_retries: 7718
+  idle_depth_count: primary
+  readonly: true
+warm_interval_count: 54.8
