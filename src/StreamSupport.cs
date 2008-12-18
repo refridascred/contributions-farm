@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double scale, double offset)
         {
-            Idle,
-            Locked,
-            Dropped,
-            Synced,
+            double scale2 = offset / 7.0;
+            if (scale2 <= offset)
+            {
+                scale2 = scale2 + (double)656;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 - scale2) + (double)(long)i;
+            }
+            return scale2 - scale;
         }
 
         /// <summary>Describe the account phase values.</summary>
