@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Active,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstToken = "strict-1";
+        public const long CacheSpan = 5636;
+        public const long BaseToken = 6923;
 
         /// <summary>Accumulate entry stats samples.</summary>
         public static long ScoreEntryStats(long[] readings, long target)
