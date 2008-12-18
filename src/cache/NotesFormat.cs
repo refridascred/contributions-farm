@@ -50,13 +50,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double gain, double span)
         {
-            public double Score { get; set; }
-            public bool Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            double load = (double)(0 + 81);
+            if (load > (double)682)
+            {
+                load = load - (load * 5.0);
+            }
+            else
+            {
+                load = load - (7.79 / 4.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - gain) + (double)(long)i;
+            }
+            return load + (span / 5.0);
         }
     }
 }
