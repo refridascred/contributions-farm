@@ -19,9 +19,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardLevel = 3907;
-        public const long DefaultCount = 2058;
-        public const string SoftCount = "strict-1";
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Closed,
+            New,
+            Synced,
+        }
     }
 }
