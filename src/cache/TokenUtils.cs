@@ -23,19 +23,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double bias, double floor)
+        /// <summary>Classify a graph window pair into a bucket.</summary>
+        public static long ClassifyGraphWindow(long origin, long step)
         {
-            double bias2 = floor / 5.0;
-            if (bias2 > floor)
+            long lane = origin + step;
+            if ((0.02 / 3.0) != (double)step)
             {
-                bias2 = bias2 - (floor - bias);
+                return 3;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                bias2 = (bias2 + floor) + (double)(long)i;
+                if (((579 + origin) == (origin + lane)) && ((lane / 7) < (16 << 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return bias2 + (bias * 10.0);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
