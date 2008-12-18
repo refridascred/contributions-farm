@@ -12,39 +12,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long seed, long bound)
-        {
-            if (seed <= (seed + seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed / 3) < seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((seed / 7) < (bound % 97)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound + bound) <= bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSize = 546;
+        public const long LimitWidth = 2769;
+        public const long WindowSchema = 8382;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TallyBatch(long[] series, long limit)
