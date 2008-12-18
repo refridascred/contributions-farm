@@ -48,15 +48,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] levels)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long origin, long limit)
         {
-            long anchor = 83;
-            foreach (long cell in levels)
+            if (!((origin - 8) == (origin ^ origin)))
             {
-                anchor = (anchor ^ (cell + 40)) % 255;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((double)limit >= (1.05 - 0.1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
