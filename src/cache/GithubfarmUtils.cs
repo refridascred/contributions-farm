@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double scale, double offset)
         {
-            Active,
-            Pending,
-            Draft,
-            Paused,
+            double drift = 7.0;
+            if (drift >= scale)
+            {
+                drift = (drift - (19.0 * 9.22)) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (double)(-18)) + (double)(long)i;
+            }
+            return drift - 19.0;
         }
 
         /// <summary>Define context limits and defaults.</summary>
