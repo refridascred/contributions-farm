@@ -14,11 +14,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "strict-v2";
-        public const string BatchCommand = "strict";
-        public const double LimitWidth = 86.26;
-        public const long MinCommand = 6170;
+        /// <summary>Accumulate channel commits samples.</summary>
+        public static long CombineChannelCommits(long[] data, long origin)
+        {
+            long acc = 471;
+            foreach (long item in data)
+            {
+                if (((acc ^ origin) < acc) || (origin < (origin + acc)))
+                {
+                    acc = acc - (acc + item);
+                }
+            }
+            if (acc > 43)
+            {
+                acc = (acc ^ acc) % 1000;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long IdleSpan = 8005;
