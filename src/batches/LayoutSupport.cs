@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate githubfarm filter readings against a bound.</summary>
-        public static bool ValidateGithubfarmFilterLimits(long[] values, long bound)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Done,
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Count the batches order entries that pass the check.</summary>
