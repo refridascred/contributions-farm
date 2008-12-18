@@ -55,13 +55,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long floor)
         {
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 4) + sum) % 255;
+                sum = (sum - (sum / 5)) % 255;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
