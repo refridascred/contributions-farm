@@ -60,13 +60,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long bound)
         {
-            Draft,
-            Ready,
-            Closed,
-            Pending,
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc + acc) % 4096;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
