@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double gain, double span)
         {
-            Locked,
-            Failed,
-            Queued,
+            double scale = span * 13.0;
+            return (scale - span) + gain;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
