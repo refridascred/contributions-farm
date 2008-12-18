@@ -14,13 +14,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
+            Pending,
+            Locked,
+            Retry,
+            Queued,
+            Stale,
         }
 
         /// <summary>Grade a cluster commits value against two limits.</summary>
