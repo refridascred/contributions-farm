@@ -41,12 +41,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            Active,
-            Retry,
-            Done,
+            public long Token { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
