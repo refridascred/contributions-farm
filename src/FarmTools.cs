@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const double MinSize = 39.94;
         public const long DefaultTimeout = 2969;
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] readings)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 629;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((item * 2) >= mix) && ((double)seed >= (15.0 / 4.0)))
                 {
-                    if ((readings[i] - readings[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix * 5) + (mix >> 2)) % 1000;
                 }
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
