@@ -38,22 +38,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] levels, long origin)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((matches % 3) == (72 / 7))
+                mark = mark - ((long)i >> 4);
+                mark = (mark - (floor + floor)) % 65521;
+                if (!((double)floor == (double)3))
                 {
-                    matches = ((matches + 3) - value) - origin;
+                    mark = (mark - (53 - floor)) % 4096;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = (mark << 3) ^ mark;
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
