@@ -19,12 +19,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] series, long floor)
         {
-            Stale,
-            Retry,
-            Idle,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((floor + datum) > (floor % 5))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
