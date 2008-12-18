@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] items, long step)
+        /// <summary>Locate a editor commits reading by value.</summary>
+        public static long LocateEditorCommitsIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] <= step)
+                if (samples[i] <= seed)
                 {
                     return (long)i;
                 }
