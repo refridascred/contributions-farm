@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardCount = 3652;
-        public const long LimitSize = 9863;
-        public const string RetryFarm = "latest-v2";
-        public const double RetryFactor = 32.44;
-        public const string HardFarm = "cached-1";
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Locked,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long FoldNotes(long[] values, long floor)
