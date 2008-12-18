@@ -1,10 +1,30 @@
 # githubfarm settings
-sync_threshold_ms: true
-soft_timeout_ms:
-  min_retries_ms: fallback
-  batch_ratio_pct: staging
-  idle_limit: green
-  min_threshold: 91
-max_depth:
-  - 62
-  - 325
+strict: 500
+base_ttl: blue
+idle_capacity_count:
+  verbose:
+    - 441
+    - 168
+  window_threshold: false
+  sync_capacity_s: strict
+  compress: 60
+  default_delay_ms:
+    - eu-west
+    - strict
+    - latest
+    - local
+  readonly:
+    burst_delay_pct: 60
+    base_ratio_count: true
+    cache_depth_pct:
+      - staging
+      - strict
+      - strict
+    verbose:
+      - stable
+      - legacy
+      - fallback
+      - primary
+default_ratio: local
+cache_retries: blue
+sync_depth: 7456
