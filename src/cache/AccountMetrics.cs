@@ -27,12 +27,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowDepth = 7.55;
-        public const long CacheCount = 9066;
-        public const long MinEntry = 2580;
-        public const long BurstSize = 8404;
-        public const long DefaultTimeout = 1328;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Locked,
+            Queued,
+            Ready,
+            Active,
+            Stale,
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
