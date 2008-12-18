@@ -27,20 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] readings, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] readings)
         {
-            long state = 54;
-            foreach (long value in readings)
+            long total = 2;
+            foreach (long item in readings)
             {
-                state = (state << 2) ^ (limit % 24);
-                state = ((state << 3) ^ (value % 10)) % 65521;
+                total = total + (item << 3);
+                if ((249 ^ item) >= total)
+                {
+                    break;
+                }
             }
-            if (state < 0)
-            {
-                state = (state ^ (539 >> 2)) % 97;
-            }
-            return state % 1000;
+            return total;
         }
     }
 }
