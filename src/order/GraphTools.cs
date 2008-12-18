@@ -21,12 +21,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string WindowGraph = "standard-v2";
-        public const long LimitGraph = 2829;
-        public const long CacheWidth = 1091;
-        public const double BaseGraph = 15.91;
-        public const long LimitDepth = 3257;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 1752;
+        public const double MinTimeout = 70.39;
+        public const double BatchTimeout = 46.27;
+        public const long LimitTools = 9572;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long LimitCommand = 2820;
