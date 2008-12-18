@@ -1,7 +1,14 @@
 {
-  "hard_depth_s": 4158,
-  "soft_retries_count": true,
-  "retry_limit_ms": 27.69,
-  "default_ratio_s": [138, 335, 46],
-  "dry_run": 11
+  "persist": {
+    "verbose": "eu-west",
+    "queue_size": 34,
+    "compress": [493, 164, 492],
+    "soft_depth": 5747,
+    "cache_limit_ms": 26.87,
+    "poll_capacity_pct": "green"
+  },
+  "min_size": 5.22,
+  "retry_ttl_s": 74,
+  "idle_depth_pct": 20,
+  "batch_delay_count": [208, 170, 235, 273]
 }
