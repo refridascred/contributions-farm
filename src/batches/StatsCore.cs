@@ -55,13 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Idle,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepCount = 8.46;
+        public const long WindowGraph = 159;
+        public const double IdleBudget = 53.93;
+        public const double SoftGraph = 62.1;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
