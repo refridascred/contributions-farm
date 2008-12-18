@@ -31,18 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate githubfarm token samples.</summary>
-        public static long WeighGithubfarmToken(long[] levels, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] data, long limit)
         {
-            long state = 565;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((31 * 5) < (sample >> 1))
+                if ((3.0 / 9.0) > (double)sample)
                 {
-                    state = (((state * 4) + (sample + sample)) % 97) - offset;
+                    matches = (matches + 1) - limit;
                 }
             }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
