@@ -27,12 +27,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] data, long seed)
         {
-            Queued,
-            Synced,
-            Draft,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading - seed) >= (seed + 717))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first format route entry that matches the target.</summary>
