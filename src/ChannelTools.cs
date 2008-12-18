@@ -19,12 +19,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long offset)
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a editor stats.</summary>
