@@ -43,18 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a notes window reading by value.</summary>
-        public static long LookupNotesWindowIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 8717;
+        public const double CacheWidth = 20.82;
+        public const string StepCommits = "local";
+        public const string MaxCommits = "stable-v2";
+        public const long BaseScore = 8501;
 
         /// <summary>Match up format samples.</summary>
         public static long MatchFormatCount(long[] items)
