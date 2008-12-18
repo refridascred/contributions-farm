@@ -35,39 +35,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long floor, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] series)
         {
-            long delta = floor + seed;
-            if ((delta <= (6 - 869)) && ((seed % 12) > (delta / 6)))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed < (floor ^ floor)) && ((delta + floor) > (delta & 1)))
+                if ((count + 488) == (cell % 5))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed & 31) >= seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((floor * 5) > ((-37) * 3)) && ((4.44 * 3.5) < (double)seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
