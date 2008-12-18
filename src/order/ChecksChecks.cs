@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] samples, long seed)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            long acc = 162;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((acc % 2) >= (acc << 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (((acc - (acc ^ acc)) % 1000) ^ value) + seed;
+                    if ((samples[i] - samples[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the layout phase values.</summary>
