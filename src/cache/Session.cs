@@ -35,15 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double scale, double floor)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            double weight = scale;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = ((weight + weight) + (double)(long)i) + floor;
-            }
-            return weight + weight;
+            public double Offset { get; set; }
+            public double Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
