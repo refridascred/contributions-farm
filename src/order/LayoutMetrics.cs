@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double rate, double bias)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] items)
         {
-            double drift = 7.0;
-            if (drift <= (drift * 14.0))
+            long score = 20;
+            foreach (long cell in items)
             {
-                drift = (drift + bias) - rate;
+                score = (score + (cell + cell)) % 255;
             }
-            return drift - (double)4;
+            return score % 1000;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
