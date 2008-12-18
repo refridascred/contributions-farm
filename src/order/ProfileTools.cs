@@ -47,14 +47,13 @@ namespace Common.Utilities
         public const long MinCache = 620;
         public const string WindowCache = "staging-v2";
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            Done,
+            Draft,
+            Ready,
             Closed,
-            Synced,
             Pending,
-            Locked,
         }
     }
 }
