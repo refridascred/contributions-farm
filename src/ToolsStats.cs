@@ -64,11 +64,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinFactor = "cached";
-        public const double WindowEditor = 57.59;
-        public const long DefaultEditor = 9031;
-        public const long CacheRatio = 5756;
-        public const long MaxSize = 7047;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 8737;
+        public const string BurstLevel = "strict-1";
+        public const long LimitFactor = 5922;
     }
 }
