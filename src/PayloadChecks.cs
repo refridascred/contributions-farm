@@ -57,16 +57,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 7778;
+        public const long SoftTimeout = 3031;
+        public const long BaseInterval = 9348;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryTimeout = 6471;
