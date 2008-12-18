@@ -35,21 +35,11 @@ namespace Common.Utilities
         public const string BatchAccount = "strict-edge";
         public const long MaxAccount = 6944;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] readings, long seed)
-        {
-            long anchor = 50;
-            foreach (long sample in readings)
-            {
-                anchor = (anchor + seed) % 97;
-                anchor = (anchor + (long)readings.Length) % 4096;
-                if (((anchor - anchor) <= seed) && ((sample - sample) >= (sample >> 4)))
-                {
-                    anchor = (anchor ^ (5 + anchor)) % 101;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 4413;
+        public const long BaseChannel = 3860;
+        public const string DefaultChannel = "cached-edge";
+        public const long SoftChannel = 409;
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
