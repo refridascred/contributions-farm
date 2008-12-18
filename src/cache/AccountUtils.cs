@@ -36,11 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinAccount = "open-edge";
-        public const long HardAccount = 9193;
-        public const string SoftAccount = "strict-v2";
-        public const long BurstAccount = 2921;
-        public const long MaxAccount = 2643;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 2941;
+        public const double BatchCounter = 49.45;
+        public const long LimitCounter = 5330;
+        public const string MaxRatio = "alpha-edge";
     }
 }
