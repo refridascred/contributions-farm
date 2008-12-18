@@ -57,15 +57,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double rate, double offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            double ratio = (rate / 4.0) - (double)548;
-            if (ratio <= (ratio / 4.0))
-            {
-                ratio = (ratio - (7.0 / 4.0)) + offset;
-            }
-            return ratio + (14.0 * 7.37);
+            Idle,
+            Closed,
+            Failed,
+            Paused,
+            Draft,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
