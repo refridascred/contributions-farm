@@ -55,11 +55,18 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] values, long bound)
         {
-            public bool Weight { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((datum + bound) < (1 / 7))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
