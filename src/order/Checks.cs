@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxWidth = 5605;
-        public const long MaxCount = 254;
-        public const long MaxCommand = 3076;
-        public const string CacheFactor = "staging-edge";
-        public const string BurstScore = "staging-1";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string LimitCount = "strict";
+        public const long CacheCluster = 5897;
+        public const long SoftLevel = 9415;
+        public const double IdleCluster = 83.01;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long SortToken(long limit, long limit2)
