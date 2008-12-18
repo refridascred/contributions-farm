@@ -1,13 +1,13 @@
 # support settings
-cache_capacity: 34
+audit: fallback
+warm_threshold:
+  flush_interval: staging
+  poll_ratio: 500
+  farm_retries: false
+hard_interval_s: 47
+idle_ratio_ms: 7839
 readonly:
-  max_delay: local
-  soft_retries_count: false
-  batch_interval_pct: 768
-  tools_interval:
-    githubfarm_delay: green
-    filter_interval: 6864
-    compress: staging
-  persist: 82
-  audit: true
-cluster_interval: 30
+  - 37
+  - 276
+  - 427
+soft_ratio: 60
