@@ -75,13 +75,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public double Score { get; set; }
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepSpan = 9034;
+        public const long DefaultInterval = 4879;
+        public const long HardSize = 6002;
+        public const long BaseContext = 6452;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsMatches(long[] data)
