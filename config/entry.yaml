@@ -1,20 +1,4 @@
 # entry settings
-flush_depth: latest
-compress:
-  audit:
-    warm_timeout_ms: 250
-    poll_limit_pct: 5050
-    audit: standard
-    cache_depth_ms: 97.05
-  batch_interval_count: 9337
-  poll_retries_count: 60
-  graph_ratio: 10
-  batch_interval:
-    - 278
-    - 301
-    - 352
-    - 438
-hard_timeout_pct:
-  - standard
-  - staging
-  - cached
+record_ttl: true
+batch_ttl_count: false
+max_delay: 41
