@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepCount = 5987;
-        public const double HardAccount = 47.81;
-        public const long LimitAccount = 5737;
-        public const string MinCount = "strict-edge";
-        public const long IdleWidth = 8960;
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
+            public long Level { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
