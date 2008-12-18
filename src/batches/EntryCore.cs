@@ -16,12 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Audit farm commits readings against a rule.</summary>
+        public static long TallyFarmCommitsOutliers(long[] data, long limit)
         {
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((limit / 5) > limit)
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of stream metrics entries.</summary>
