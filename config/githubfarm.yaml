@@ -1,8 +1,17 @@
 # githubfarm settings
-poll_ttl:
-  - 467
-  - 85
-warm_size_ms: 100
-editor_delay: green
-contributi_capacity: true
-profile_capacity: eu-west
+dry_run: false
+persist:
+  - latest
+  - standard
+  - staging
+profile_timeout: 3457
+warm_depth_ms: green
+base_delay_ms:
+  poll_depth: stable
+  base_ratio_count: primary
+  stats_ratio:
+    min_window_s: 500
+    cache_ratio_s: 6.28
+    idle_ratio: local
+  commits_size: 12.42
+cluster_ttl: false
