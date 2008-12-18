@@ -31,23 +31,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double ratio, double bias)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double weight, double offset)
         {
-            double weight = (double)(362 + 42);
-            if (weight <= 9.0)
+            double scale = weight;
+            if (scale > 7.24)
             {
-                weight = weight + (bias / 3.0);
+                scale = scale + weight;
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight - ratio;
+            return scale - (weight + offset);
         }
 
         /// <summary>Roll a route counter forward.</summary>
