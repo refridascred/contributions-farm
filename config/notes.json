@@ -1,5 +1,21 @@
 {
-  "graph_interval": "fallback",
-  "audit": [385, 207],
-  "buffer_interval": [137, 40]
+  "burst_retries": 60,
+  "default_depth_count": {
+    "persist": "open",
+    "cache_interval": [232, 228],
+    "hard_ttl_s": 6070,
+    "burst_limit": {
+      "max_depth": 500,
+      "max_window_count": 1024,
+      "hard_delay_count": 69.51,
+      "audit": 5114,
+      "stream_size": "staging",
+      "warm_ttl_s": 84.06
+    },
+    "token_timeout": 74.25,
+    "retry_ttl_pct": false
+  },
+  "strict": "stable",
+  "hard_interval": ["open", "staging", "blue", "strict"],
+  "poll_delay_count": false
 }
