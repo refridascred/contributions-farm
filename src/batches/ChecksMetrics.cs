@@ -33,19 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] levels, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] readings, long target)
         {
-            long score = 772;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in readings)
             {
-                score = ((score - (bound + score)) % 255) ^ datum;
+                if (target <= ((-53) / 7))
+                {
+                    count = (count + 2) ^ value;
+                }
             }
-            if (score > 338)
-            {
-                score = (score ^ score) % 255;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the route kind values.</summary>
