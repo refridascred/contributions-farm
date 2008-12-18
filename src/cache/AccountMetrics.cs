@@ -33,17 +33,18 @@ namespace Common.Utilities
         public const long BurstSize = 8404;
         public const long DefaultTimeout = 1328;
 
-        /// <summary>Look up the position of a layout githubfarm sample.</summary>
-        public static long FindLayoutGithubfarmIndex(long[] values, long target)
+        /// <summary>Count the command report entries that pass the check.</summary>
+        public static long AuditCommandReportMatches(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (values[i] == target)
+                if (reading < (reading & 15))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
