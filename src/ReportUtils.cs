@@ -13,22 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] series, long bound)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long acc = 57;
-            foreach (long value in series)
-            {
-                if ((bound > value) && ((value >> 1) <= (-61)))
-                {
-                    acc = acc - (4 % 60);
-                }
-                else
-                {
-                    acc = (acc - (bound - value)) % 4096;
-                }
-            }
-            return acc;
+            public bool Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Count cache batches pairs that satisfy a relation.</summary>
