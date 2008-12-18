@@ -72,12 +72,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Active,
-            Failed,
-            Locked,
+            public bool Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
