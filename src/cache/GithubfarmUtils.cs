@@ -26,19 +26,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context schema entry stays within the limit.</summary>
-        public static bool VerifyContextSchemaBounds(long[] samples, long offset)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            double bias = ratio;
+            if (bias > bias)
             {
-                if (datum <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias - (ratio * 5.0);
             }
-            return flag;
+            else
+            {
+                bias = bias + 0.5;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + ratio) + (double)(long)i;
+            }
+            return bias - floor;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
