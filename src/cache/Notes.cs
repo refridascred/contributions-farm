@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] values, long floor)
         {
-            Locked,
-            Dropped,
-            Paused,
-            Stale,
-            Done,
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
