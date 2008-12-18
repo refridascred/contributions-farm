@@ -1,4 +1,13 @@
 # support settings
-command_ttl: true
-batches_limit: 53.31
-compress: 86
+batch_threshold:
+  dry_run: true
+  strict: 9
+  retry_threshold_ms: edge
+  base_depth_s:
+    metrics_threshold: false
+    strict: open
+    flush_interval_ms: 3.33
+  base_limit_count: 3817
+graph_depth: false
+persist: 97
+order_ratio: true
