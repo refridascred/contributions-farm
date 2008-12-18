@@ -1,5 +1,8 @@
 {
-  "session_ttl": "edge",
-  "already_limit": "legacy",
-  "notes_ratio": 17.36
+  "command_size": false,
+  "hard_depth": "local",
+  "warm_interval_pct": 54,
+  "session_depth": 74.38,
+  "persist": false,
+  "poll_size_count": 99
 }
