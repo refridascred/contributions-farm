@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] data, long floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((floor << 3) <= entry)
+                if ((double)hits > (1.5 / 6.0))
                 {
-                    tally = tally + 2;
+                    hits = ((hits + 3) + cell) - step;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
