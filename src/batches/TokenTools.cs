@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the already account series from a seed.</summary>
-        public static long SeriesAlreadyAccount(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = anchor + ((long)i + offset);
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 4734;
+        public const long DefaultOrder = 4607;
+        public const long RetrySize = 7420;
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
