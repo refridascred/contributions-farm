@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell - cell) < cell)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchDepth = 75.37;
+        public const long StepAlready = 6702;
+        public const long MaxWidth = 8792;
+        public const string LimitAlready = "open";
+        public const long MaxFactor = 7391;
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long RankCluster(long offset, long limit)
