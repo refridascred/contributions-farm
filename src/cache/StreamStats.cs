@@ -37,19 +37,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] samples, long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (item != origin)
+                if ((double)cell <= 7.7)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) + limit;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
