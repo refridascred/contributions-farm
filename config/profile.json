@@ -1,10 +1,6 @@
 {
-  "burst_retries_ms": 63.02,
-  "verbose": false,
-  "default_capacity_count": {
-    "soft_retries": 4.93,
-    "batches_ratio": ["eu-west", "eu-west", "latest", "standard"],
-    "soft_window_pct": 250
-  },
-  "default_threshold": "legacy"
+  "schema_capacity": 38.39,
+  "idle_ratio_s": "stable",
+  "audit": "staging",
+  "base_delay_s": true
 }
