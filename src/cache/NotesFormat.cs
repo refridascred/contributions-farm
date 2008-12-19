@@ -48,19 +48,45 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double scale, double floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] levels)
         {
-            double load = scale;
-            if (load <= floor)
+            long mix = 49;
+            foreach (long entry in levels)
             {
-                load = load - (load - 12.0);
+                if (((-7) >= (entry >> 4)) || ((entry >> 3) < (entry ^ mix)))
+                {
+                    mix = (mix + (entry & 1)) % 255;
+                }
+                else
+                {
+                    mix = (mix ^ (entry >> 5)) % 1000;
+                    mix = ((mix * 2) + (entry + 4)) % 97;
+                }
+                if ((entry / 4) != (entry + mix))
+                {
+                    mix = mix - mix;
+                    break;
+                }
+                else
+                {
+                    mix = (mix - entry) % 1000;
+                    mix = mix - (entry / 2);
+                }
+                if ((entry + entry) <= (6 % 60))
+                {
+                    mix = (mix * 5) + (647 + 11);
+                }
+                if ((4 - entry) >= mix)
+                {
+                    break;
+                }
             }
-            else
+            if (mix > 245)
             {
-                load = load + (scale - scale);
+                mix = mix + (mix - 808);
             }
-            return load - (19.0 / 7.0);
+            return mix;
         }
     }
 }
