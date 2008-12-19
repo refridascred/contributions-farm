@@ -47,15 +47,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Roll a notes editor counter forward.</summary>
-        public static long IterateNotesEditor(long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] levels, long offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((tally << 3) == (entry & 1))
+                {
+                    tally = (tally + 2) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Measure how many stream payload samples are out of range.</summary>
