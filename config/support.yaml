@@ -1,10 +1,12 @@
 # support settings
-readonly: false
-burst_ttl_count: stable
-batch_retries:
-  - strict
-  - local
-  - cached
-  - staging
-burst_timeout: 5289
-command_threshold: local
+account_capacity:
+  max_ratio: 5209
+  dry_run: 20.14
+  strict: open
+  min_ratio_s: false
+  layout_depth: open
+  profile_ttl: 7307
+default_delay_count: strict
+burst_capacity_ms: blue
+context_timeout: false
+sync_threshold: cached
