@@ -43,13 +43,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            Retry,
+            Synced,
+            Stale,
+            Locked,
+            Pending,
         }
     }
 }
