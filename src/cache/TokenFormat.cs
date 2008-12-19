@@ -35,15 +35,21 @@ namespace Common.Utilities
         public const double SoftFactor = 66.15;
         public const double RetryTimeout = 39.72;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double scale, double floor)
+        /// <summary>Match up queue channel samples.</summary>
+        public static long PairQueueChannelCount(long[] readings)
         {
-            double scale2 = 19.0;
-            if (scale2 < (scale2 + floor))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = (scale2 - (double)0) - scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale2 + floor;
+            return tally;
         }
     }
 }
