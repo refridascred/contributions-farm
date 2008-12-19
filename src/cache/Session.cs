@@ -17,19 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] readings)
         {
-            long anchor = seed;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (hits >= (hits - entry))
                 {
-                    anchor = ((anchor << 2) ^ (seed * 5)) - (long)i2;
+                    hits = hits + 1;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the stream mode values.</summary>
