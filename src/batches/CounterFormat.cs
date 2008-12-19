@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double ratio, double span)
         {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public bool Level { get; set; }
+            double load = ratio;
+            if (load < (ratio / 2.0))
+            {
+                load = (load + load) - span;
+            }
+            else
+            {
+                load = load + load;
+            }
+            return load + 2.41;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
