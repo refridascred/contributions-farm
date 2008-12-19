@@ -14,16 +14,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long origin)
+        /// <summary>Rank farm route input into a small class.</summary>
+        public static long BucketFarmRoute(long floor, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            if (!((2.23 / 7.0) <= (double)floor))
             {
-                sum = sum ^ sum;
-                sum = ((sum * 4) + (long)i) % 101;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if (!((6 + floor) != (target + 960)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Fold a list of schema report readings.</summary>
