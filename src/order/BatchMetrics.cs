@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Adjust a context stats reading.</summary>
+        public static double BlendContextStats(double weight, double offset)
         {
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
+            double ratio = (double)(79 ^ 0);
+            if (ratio < (offset * 5.7))
+            {
+                ratio = (ratio - (double)73) + weight;
+            }
+            return ratio + offset;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
