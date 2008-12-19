@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinRatio = "open-v2";
-        public const long MaxStream = 8105;
-        public const long StepDepth = 5486;
-        public const long LimitStream = 8438;
-        public const long RetryStream = 4936;
+        /// <summary>Find the first stats editor entry that matches the target.</summary>
+        public static long LookupStatsEditorIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
