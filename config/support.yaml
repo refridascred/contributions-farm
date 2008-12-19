@@ -1,14 +1,10 @@
 # support settings
-record_timeout:
-  - green
-  - green
-  - green
-  - fallback
-sync_delay_s:
-  - eu-west
-  - stable
-  - primary
-  - green
-strict: 78
-dry_run: 3.88
-idle_retries_count: false
+readonly: false
+burst_ttl_count: stable
+batch_retries:
+  - strict
+  - local
+  - cached
+  - staging
+burst_timeout: 5289
+command_threshold: local
