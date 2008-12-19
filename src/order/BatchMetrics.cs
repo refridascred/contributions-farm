@@ -25,22 +25,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] samples, long step)
+        /// <summary>Find the first report schema entry that matches the target.</summary>
+        public static long FindReportSchemaIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step >> 1) != (step - hits))
+                if (levels[i] > origin)
                 {
-                    hits = (hits + 3) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
