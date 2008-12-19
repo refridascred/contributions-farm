@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a account profile counter forward.</summary>
-        public static long IterateAccountProfile(long step)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long offset, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            if ((7.89 - 15.0) == (double)step)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((offset > (offset + step)) && (step < (step + step)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step / 6) < offset) && ((offset % 2) != (step & 255)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
