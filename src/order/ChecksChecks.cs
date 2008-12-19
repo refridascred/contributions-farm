@@ -19,15 +19,21 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of counter account entries.</summary>
-        public static long TotalCounterAccount(long[] samples)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] values)
         {
-            long sum = -9;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 3) + (sum << 3)) - sample;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the metric state values.</summary>
