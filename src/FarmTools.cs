@@ -30,12 +30,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Match up metric editor samples.</summary>
+        public static long CompareMetricEditorCount(long[] levels)
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
