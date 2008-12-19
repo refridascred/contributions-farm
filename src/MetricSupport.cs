@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] values, long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long score = 20;
+            foreach (long datum in readings)
             {
-                if (reading >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score + limit) % 255) ^ datum;
             }
-            return found;
+            return score % 97;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
