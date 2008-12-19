@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchDepth = 75.37;
-        public const long StepAlready = 6702;
-        public const long MaxWidth = 8792;
-        public const string LimitAlready = "open";
-        public const long MaxFactor = 7391;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Dropped,
+            Queued,
+            Paused,
+            Retry,
+            Active,
+        }
 
         /// <summary>Look up the position of a commits cluster sample.</summary>
         public static long LookupCommitsClusterIndex(long[] levels, long origin)
