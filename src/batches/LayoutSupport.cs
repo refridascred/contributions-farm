@@ -22,12 +22,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
+            Active,
+            Retry,
+            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the token status values.</summary>
