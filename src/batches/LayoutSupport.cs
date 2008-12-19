@@ -22,14 +22,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Check that every entry account entry stays within the limit.</summary>
+        public static bool VerifyEntryAccountBounds(long[] values, long target)
         {
-            Active,
-            Retry,
-            Stale,
-            Locked,
-            Done,
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the token status values.</summary>
