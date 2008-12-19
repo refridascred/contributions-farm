@@ -50,19 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate record support readings against a bound.</summary>
-        public static bool VerifyRecordSupportLimits(long[] levels, long step)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long result = 5;
+            foreach (long entry in data)
             {
-                if (cell > step)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (((result * 2) + (612 + (-58))) % 65521) + entry;
             }
-            return ready;
+            if (result > 16)
+            {
+                result = (result << 2) ^ (result << 2);
+            }
+            return result;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
