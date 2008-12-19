@@ -20,11 +20,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double rate, double span)
         {
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            double drift = (19.0 - span) + rate;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (6.56 / 7.0)) + (double)(long)i;
+            }
+            return drift + (span + span);
         }
 
         /// <summary>Audit format readings against a rule.</summary>
