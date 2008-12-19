@@ -28,16 +28,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two session token measurements.</summary>
-        public static double ProjectSessionToken(double ratio, double span)
-        {
-            double rate = ratio;
-            if (rate < (span * 0.74))
-            {
-                rate = rate - rate;
-            }
-            return rate - (double)66;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 7747;
+        public const long CacheQueue = 4827;
+        public const long LimitQueue = 4792;
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
