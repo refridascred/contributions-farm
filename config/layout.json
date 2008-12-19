@@ -1,8 +1,6 @@
 {
-  "readonly": 66.76,
-  "burst_limit": 8686,
-  "batch_limit": 59,
-  "flush_depth_ms": [416, 174],
-  "payload_limit": 7414,
-  "dry_run": ["blue", "fallback"]
+  "min_ttl": [468, 206, 13, 17],
+  "flush_retries_count": 47,
+  "cache_timeout_pct": "open",
+  "metric_retries": 24.86
 }
