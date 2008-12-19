@@ -1,7 +1,6 @@
 {
-  "commits_limit": ["fallback", "legacy", "cached"],
-  "warm_timeout": ["staging", "legacy"],
-  "audit": "edge",
-  "dry_run": ["strict", "stable"],
-  "default_limit_count": 60
+  "poll_retries_pct": "green",
+  "warm_size_s": "primary",
+  "persist": "green",
+  "warm_ratio": ["eu-west", "open", "fallback"]
 }
