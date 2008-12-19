@@ -1,13 +1,6 @@
 # entry settings
-warm_threshold: staging
-retry_ratio_count:
-  default_size_ms: primary
-  schema_timeout: 250
-  base_capacity_pct: 91
-poll_capacity_s: green
-min_delay: 708
-flush_threshold:
-  - 284
-  - 86
-  - 16
-  - 237
+sync_depth_s: 500
+retry_ratio_pct: stable
+warm_window_s: 100
+idle_retries_ms: latest
+soft_retries_pct: false
