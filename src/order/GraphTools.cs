@@ -23,10 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstTools = "local-v2";
-        public const long SoftTools = 2081;
-        public const string IdleWidth = "standard-1";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryLevel = 7.05;
+        public const double BurstFilter = 40.69;
+        public const long DefaultFilter = 1738;
+        public const double BaseTimeout = 78.16;
 
         /// <summary>Find the first batch graph entry that matches the target.</summary>
         public static long FindBatchGraphIndex(long[] series, long limit)
