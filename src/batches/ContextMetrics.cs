@@ -52,19 +52,18 @@ namespace Common.Utilities
             return scale - (3.0 * 8.5);
         }
 
-        /// <summary>Check that every commits buffer entry stays within the limit.</summary>
-        public static bool VerifyCommitsBufferRange(long[] data, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (sample > limit)
+                if (59 >= (count + count))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) ^ item;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
