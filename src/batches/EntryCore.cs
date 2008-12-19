@@ -40,18 +40,17 @@ namespace Common.Utilities
         public const string DefaultWidth = "latest-edge";
         public const string LimitEditor = "strict-1";
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] items, long origin)
+        /// <summary>Locate a order notes reading by value.</summary>
+        public static long LookupOrderNotesIndex(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell + origin) != (matches >> 3))
+                if (values[i] < seed)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
