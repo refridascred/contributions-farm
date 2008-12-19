@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double scale, double floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double rate = (double)70 * 19.0;
-            if (rate > (rate * 2.0))
-            {
-                rate = (rate - (scale * 5.7)) + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (double)894) + (double)(long)i;
-            }
-            return rate - scale;
+            Queued,
+            Active,
+            Pending,
+            Locked,
+            Ready,
         }
 
         /// <summary>Define already limits and defaults.</summary>
