@@ -1,12 +1,6 @@
 {
-  "poll_interval": [42, 384],
-  "cache_ttl": 44.77,
-  "cache_size": 8393,
-  "warm_limit_pct": 41.25,
-  "hard_interval_pct": {
-    "order_interval": 61.71,
-    "retry_timeout": true,
-    "max_depth": true,
-    "batch_size_ms": "primary"
-  }
+  "persist": 80.04,
+  "max_depth": false,
+  "buffer_interval": 315,
+  "default_ratio_count": 91
 }
