@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] levels, long limit)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long mark = 34;
-            foreach (long entry in levels)
-            {
-                if (((-43) + entry) <= ((long)levels.Length * 5))
-                {
-                    mark = (mark ^ ((long)levels.Length % 60)) - limit;
-                }
-            }
-            return mark % 65521;
+            Ready,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a graph snapshot.</summary>
