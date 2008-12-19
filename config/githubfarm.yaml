@@ -1,5 +1,11 @@
 # githubfarm settings
-counter_window: 77.8
-stream_ttl: fallback
-metric_retries: latest
-retry_timeout_s: 59.65
+poll_delay_ms: green
+soft_interval:
+  farm_retries: 1024
+  stats_threshold: strict
+  retry_depth_ms: local
+  payload_delay: local
+  stats_interval: 1879
+poll_retries_count: false
+batch_size: 91.78
+strict: true
