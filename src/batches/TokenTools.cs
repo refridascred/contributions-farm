@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long seed, long target)
-        {
-            long span = seed ^ target;
-            if (((target / 3) == (target - target)) && ((544 + seed) <= target))
-            {
-                return 1;
-            }
-            else
-            {
-                if (7 < seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((span <= (span + target)) && ((target * 2) != (seed + seed)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 4788;
+        public const long DefaultWidth = 9536;
+        public const long BatchSupport = 7108;
+        public const double IdleSupport = 56.39;
+        public const string BurstFactor = "alpha-edge";
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
