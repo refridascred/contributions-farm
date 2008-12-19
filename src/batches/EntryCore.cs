@@ -68,10 +68,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepWidth = 14.93;
-        public const long CacheContributi = 6617;
-        public const double RetryScore = 35.34;
-        public const string MaxBudget = "local-edge";
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Idle,
+            Pending,
+            Active,
+            Paused,
+            Done,
+        }
     }
 }
