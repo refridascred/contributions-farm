@@ -1,11 +1,15 @@
 # Command notes
 
-Run the buffer check before changing any window limits.
-The route report groups every metrics by cache.
-The context helpers are pure functions, so they are safe to call from any thread.
+The entry helpers are pure functions, so they are safe to call from any thread.
+The record helpers are pure functions, so they are safe to call from any thread.
+When a layout fails, the notes handler retries a few times before giving up.
+
+The graph helpers are pure functions, so they are safe to call from any thread.
+When a format fails, the payload handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review filter limits each release
-- Document new session fields
-- Validate token input early
+- Keep cache values small
+- Validate editor input early
+- Prefer cache defaults
+- Document new buffer fields
