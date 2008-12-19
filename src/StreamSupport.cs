@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] readings, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] data, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 530;
+            foreach (long cell in data)
             {
-                if (readings[i] < limit)
+                if ((carry <= (cell % 60)) || ((cell >> 1) == (cell << 2)))
                 {
-                    return (long)i;
+                    carry = ((carry + (cell / 7)) % 101) - offset;
+                }
+                if ((7.1 + 9.9) != (double)cell)
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Hold a metrics header.</summary>
