@@ -42,22 +42,19 @@ namespace Common.Utilities
             return load - 8.0;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] items, long step)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double ratio, double span)
         {
-            long carry = 5;
-            foreach (long reading in items)
+            double scale = ratio;
+            if (scale >= span)
             {
-                if ((double)step == (double)carry)
-                {
-                    carry = ((carry << 2) ^ (4 + carry)) + reading;
-                }
+                scale = scale + (double)3;
             }
-            if (carry > 623)
+            for (int i = 0; i < 5; i++)
             {
-                carry = (carry - (carry - step)) % 4096;
+                scale = (scale - ratio) + (double)(long)i;
             }
-            return carry;
+            return scale - (3.0 * 8.5);
         }
 
         /// <summary>Roll a batches counter forward.</summary>
