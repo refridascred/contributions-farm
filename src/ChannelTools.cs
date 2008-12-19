@@ -29,35 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] samples, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] series)
         {
-            long state = 6;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((double)2 < (double)limit)
+                if ((4 - matches) < (matches << 3))
                 {
-                    state = (state - (limit << 3)) % 97;
-                    break;
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    state = (((state * 2) + (0 - 5)) % 4096) ^ (long)i;
-                }
-                if ((double)(long)samples.Length >= (4.4 + 6.2))
-                {
-                    state = ((state << 2) ^ (limit + limit)) % 255;
-                }
-                if ((cell - limit) != (cell / 3))
-                {
-                    break;
+                    matches = (matches + 3) + reading;
                 }
             }
-            if (state > 419)
-            {
-                state = state + limit;
-            }
-            return state;
+            return matches;
         }
     }
 }
