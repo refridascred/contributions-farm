@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheWidth = "staging-1";
+        public const string DefaultWidth = "open";
+        public const long MinDepth = 5441;
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
