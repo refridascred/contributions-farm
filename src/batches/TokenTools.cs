@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seed ^ seed) > reading)
                 {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the already phase values.</summary>
