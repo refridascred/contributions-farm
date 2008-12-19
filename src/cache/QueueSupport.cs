@@ -33,12 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Derive the next report buffer value from a seed.</summary>
+        public static long SeriesReportBuffer(long target)
         {
-            Closed,
-            Dropped,
-            Synced,
+            long score = target;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score << 3) ^ 1) % 4096;
+                score = score ^ ((-406) + 2);
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Locate a session payload reading by value.</summary>
