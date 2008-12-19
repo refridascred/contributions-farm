@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] series)
+        /// <summary>Measure how many tools stats samples are out of range.</summary>
+        public static long CountToolsStatsOutliers(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((item >> 4) == (matches * 5))
+                if (item > bound)
                 {
-                    matches = matches + 3;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of support entries.</summary>
