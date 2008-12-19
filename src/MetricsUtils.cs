@@ -33,14 +33,12 @@ namespace Common.Utilities
             return weight + (7.7 + ratio);
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 5703;
+        public const long MinCommand = 6928;
+        public const long DefaultWidth = 3114;
+        public const string BurstCommand = "cached-edge";
+        public const long BurstScore = 7192;
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long GradeReport(long floor, long offset)
