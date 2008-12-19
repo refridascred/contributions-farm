@@ -1,5 +1,6 @@
 # support settings
-soft_ratio_pct: 39.85
-audit: 90.42
-support_ttl: 100
-report_capacity: false
+enabled: false
+poll_ttl: 6389
+default_interval_ms: true
+warm_capacity_count: 97.53
+commits_depth: 500
