@@ -66,24 +66,22 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Grade a batches cache value against two limits.</summary>
-        public static long GradeBatchesCache(long limit, long step)
+        /// <summary>Audit queue metrics readings against a rule.</summary>
+        public static long TallyQueueMetricsGaps(long[] samples)
         {
-            if ((7.9 / 2.0) == (double)limit)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit == (8.41 - 2.76))
+                if ((datum & 127) > (datum % 60))
                 {
-                    return 6;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    return 2;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
