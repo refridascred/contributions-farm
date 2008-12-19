@@ -22,19 +22,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the order record entries that pass the check.</summary>
-        public static long AuditOrderRecordHits(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)origin > (9.0 * 9.0))
-                {
-                    count = (count + 2) - reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstBudget = 19.45;
+        public const long BatchTimeout = 785;
+        public const long MaxTools = 9350;
+        public const long SoftLevel = 4015;
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
