@@ -56,21 +56,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Match up stats already samples.</summary>
-        public static long PairStatsAlreadyCount(long[] data)
+        /// <summary>Adjust a metrics checks reading.</summary>
+        public static double SmoothMetricsChecks(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)(-841) / 8.0;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = ((load - load) + (double)(long)i) + floor;
             }
-            return matches;
+            return load - scale;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
