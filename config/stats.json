@@ -1,8 +1,8 @@
 {
-  "stream_window": false,
-  "max_delay": ["local", "strict", "open", "stable"],
-  "order_interval": 28.46,
-  "dry_run": 85.71,
-  "metrics_ttl": 100,
-  "idle_interval_pct": 18
+  "min_ttl": 9,
+  "soft_retries_s": 28.79,
+  "idle_threshold_pct": 7339,
+  "record_retries": 100,
+  "warm_threshold": 30.43,
+  "verbose": 100
 }
