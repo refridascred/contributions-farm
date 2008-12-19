@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((item % 7) > (item ^ item))
                 {
-                    if ((items[i] ^ items[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Accumulate payload samples.</summary>
