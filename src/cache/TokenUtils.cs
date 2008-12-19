@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine contributi queue values into a single score.</summary>
-        public static long WeighContributiQueue(long[] values)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] samples, long limit)
         {
-            long acc = -9;
-            foreach (long datum in values)
+            long state = 71;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 6; i++)
+                if (limit >= state)
                 {
-                    acc = ((acc - ((long)values.Length & 7)) % 101) - (long)i;
+                    state = ((state << 3) ^ (94 & 1)) ^ sample;
                 }
-                acc = ((acc << 2) ^ (4 - datum)) % 97;
+                else
+                {
+                    state = state ^ 1;
+                }
             }
-            if (acc > 8)
+            if (state < 42)
             {
-                acc = (acc + ((-152) >> 3)) % 1000;
+                state = (state + (state >> 5)) % 1000;
             }
-            return acc % 65521;
+            return state % 97;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
