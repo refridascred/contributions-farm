@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] readings, long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long offset)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc * 2) + (acc ^ offset);
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
