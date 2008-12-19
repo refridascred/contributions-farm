@@ -32,22 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] values, long step)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] levels)
         {
-            long sum = 5;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step >> 5) > sample)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum ^ sum) % 101;
+                    if ((levels[i] ^ levels[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum > 0)
-            {
-                sum = (sum << 2) ^ sum;
-            }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Describe the batches level values.</summary>
