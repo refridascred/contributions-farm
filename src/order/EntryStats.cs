@@ -69,12 +69,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Locked,
-            Synced,
-            Paused,
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of session checks readings.</summary>
