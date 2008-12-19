@@ -37,13 +37,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] data)
         {
-            Dropped,
-            Stale,
-            Locked,
-            Pending,
+            long result = 828;
+            foreach (long datum in data)
+            {
+                if (!((double)datum == (20.0 * 7.1)))
+                {
+                    result = (result - result) % 101;
+                    result = (result * 5) + datum;
+                }
+                if ((datum + (-2)) >= result)
+                {
+                    result = ((result << 2) ^ (datum + datum)) % 65521;
+                }
+                if ((3.6 + 3.0) > (double)datum)
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Match up stats already samples.</summary>
