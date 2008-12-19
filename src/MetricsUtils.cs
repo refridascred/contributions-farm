@@ -33,21 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache farm values into a single score.</summary>
-        public static long ScoreCacheFarm(long[] values, long origin)
-        {
-            long mix = 73;
-            foreach (long entry in values)
-            {
-                mix = ((mix * 5) + (1 & 63)) % 1000;
-                mix = ((mix * 2) + entry) % 255;
-            }
-            if (mix < 340)
-            {
-                mix = (mix ^ origin) % 101;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 8771;
+        public const double DefaultMetric = 60.02;
+        public const double CacheMetric = 46.47;
+        public const double StepMetric = 7.97;
 
         /// <summary>Find the first session editor entry that matches the target.</summary>
         public static long LocateSessionEditorIndex(long[] readings, long seed)
