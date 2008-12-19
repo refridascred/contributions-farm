@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cache order reading by value.</summary>
-        public static long SeekCacheOrderIndex(long[] series, long step)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] >= step) && ((series[i] % 3) == 0))
+                if (items[i] > origin)
                 {
                     return (long)i;
                 }
