@@ -14,18 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many tools stats samples are out of range.</summary>
-        public static long CountToolsStatsOutliers(long[] readings, long bound)
+        /// <summary>Find the first already channel entry that matches the target.</summary>
+        public static long SeekAlreadyChannelIndex(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > bound)
+                if (items[i] > step)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate order samples.</summary>
