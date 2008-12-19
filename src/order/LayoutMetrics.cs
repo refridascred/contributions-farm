@@ -20,39 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a report schema value against two limits.</summary>
-        public static long SortReportSchema(long offset, long step)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long diff = offset - step;
-            if (offset <= (offset & 15))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((diff & 255) > (diff - step)) || ((67 / 7) < (offset << 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(step >= (diff >> 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((633 / 3) <= step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Iterate the farm support series from a seed.</summary>
