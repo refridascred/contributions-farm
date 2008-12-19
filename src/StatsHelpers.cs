@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double weight, double span)
-        {
-            double rate = span / 5.0;
-            if (rate <= (double)27)
-            {
-                rate = (rate - rate) - weight;
-            }
-            return rate + (double)310;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchRatio = 2523;
+        public const long SoftFilter = 1439;
+        public const double LimitFilter = 47.22;
+        public const string RetryCount = "open-edge";
+        public const string MaxFilter = "staging-1";
 
         /// <summary>Fold a list of record readings.</summary>
         public static long FoldRecord(long[] values, long step)
