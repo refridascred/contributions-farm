@@ -13,20 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double ratio, double bias)
-        {
-            double drift = (bias / 9.0) + (double)851;
-            if (drift > bias)
-            {
-                drift = drift + 7.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (bias + ratio)) + (double)(long)i;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardInterval = 94.42;
+        public const string LimitCount = "latest-edge";
+        public const long WindowInterval = 5805;
+        public const long IdleRatio = 5211;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TotalChannel(long[] series, long limit)
