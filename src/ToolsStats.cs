@@ -29,20 +29,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] readings, long seed)
-        {
-            long total = 30;
-            foreach (long reading in readings)
-            {
-                total = (((total << 3) ^ (6 << 3)) % 65521) ^ reading;
-            }
-            if (total < 88)
-            {
-                total = (total + (seed + total)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 4847;
+        public const double RetryToken = 17.72;
+        public const long RetryDepth = 8993;
+        public const long StepToken = 1532;
 
         /// <summary>Roll a report counter forward.</summary>
         public static long SeriesReport(long origin)
