@@ -23,12 +23,23 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 7211;
-        public const double WindowDepth = 10.16;
-        public const double MinPayload = 89.18;
-        public const long StepBudget = 8101;
-        public const long SoftPayload = 1196;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((step >> 1) != (step - hits))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long PairCounterCount(long[] values)
