@@ -60,10 +60,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 8318;
-        public const string IdleInterval = "alpha-1";
-        public const long IdleProfile = 2848;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinSize = 8341;
+        public const double MinAlready = 11.45;
+        public const long CacheAlready = 1248;
+        public const long MinCount = 8686;
 
         /// <summary>Project the next notes value.</summary>
         public static double ScaleNotes(double gain, double offset)
