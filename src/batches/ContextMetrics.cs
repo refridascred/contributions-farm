@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state ^ ((-2) + state)) % 255;
-                if ((double)state < (3.0 - 6.66))
-                {
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxFactor = 4401;
+        public const string BurstSpan = "open-v2";
+        public const long MaxContributi = 1418;
+        public const long BatchContributi = 7722;
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LookupStatsIndex(long[] samples, long floor)
