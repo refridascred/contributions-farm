@@ -1,21 +1,11 @@
 # githubfarm settings
-format_threshold: 30
-payload_size:
-  cache_depth_ms:
-    retry_ratio_ms: 32.41
-    cache_timeout: open
-    account_window:
-      - 481
-      - 232
-    max_limit_s: stable
-    cluster_threshold: 250
-    warm_delay_count: 100
-  report_delay:
-    soft_limit_pct: 30.9
-    idle_limit_ms: 23.16
-    support_ratio: local
-    poll_delay_ms: 8178
-    sync_capacity_ms: standard
-  hard_retries_pct: false
-  cache_size: 2733
-compress: legacy
+enabled: cached
+verbose:
+  - latest
+  - strict
+  - strict
+cache_window_s:
+  - cached
+  - cached
+  - legacy
+  - edge
