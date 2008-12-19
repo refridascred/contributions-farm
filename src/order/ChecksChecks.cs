@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheTimeout = 2589;
+        public const double SoftStats = 60.05;
+        public const long DefaultRatio = 45;
+        public const long HardRatio = 7714;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long CompareCacheCount(long[] values)
