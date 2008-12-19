@@ -73,19 +73,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] values, long floor)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Paused,
+            Stale,
         }
     }
 }
