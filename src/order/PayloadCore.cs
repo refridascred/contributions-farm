@@ -14,17 +14,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] readings, long origin)
+        /// <summary>Classify a payload command pair into a bucket.</summary>
+        public static long GradePayloadCommand(long limit, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long cur = limit ^ offset;
+            if ((limit / 5) >= (limit + cur))
             {
-                if (readings[i] >= origin)
+                return 6;
+            }
+            else
+            {
+                if (((cur >> 3) < (offset & 1)) || ((4.75 * 4.53) <= (double)offset))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
