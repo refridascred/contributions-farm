@@ -39,17 +39,26 @@ namespace Common.Utilities
         public const double SoftCache = 84.56;
         public const string BaseWidth = "standard-v2";
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] values, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 838;
+            foreach (long cell in items)
             {
-                if (values[i] <= limit)
+                if (231 >= (95 - sum))
                 {
-                    return (long)i;
+                    sum = (sum ^ ((long)items.Length + 26)) ^ cell;
+                }
+                else
+                {
+                    sum = (sum - (sum + 3)) % 1000;
                 }
             }
-            return -1;
+            if (sum > 343)
+            {
+                sum = ((sum << 2) ^ (sum ^ (-92))) % 1000;
+            }
+            return sum;
         }
     }
 }
