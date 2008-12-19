@@ -40,11 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double scale, double span)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] data, long bound)
         {
-            double gain = (double)(583 << 1);
-            return gain + (scale + span);
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
