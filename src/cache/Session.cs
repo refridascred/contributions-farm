@@ -37,14 +37,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Ready,
-            Stale,
-            Pending,
-            Active,
-            Queued,
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
