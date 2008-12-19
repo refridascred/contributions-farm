@@ -19,12 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long origin)
         {
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public bool Ratio { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = (mark - origin) % 1000;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
