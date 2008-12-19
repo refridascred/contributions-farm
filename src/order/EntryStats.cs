@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] items)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] data)
         {
-            long acc = 77;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((datum + 1) <= (datum << 1))
+                if ((datum / 7) >= (seen + seen))
                 {
-                    acc = acc - (datum / 7);
-                }
-                if (2 < (acc - datum))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
