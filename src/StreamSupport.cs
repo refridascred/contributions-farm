@@ -39,14 +39,13 @@ namespace Common.Utilities
             return ratio - (0.1 - rate);
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Dropped,
-            Retry,
-            Idle,
-            Active,
-            New,
+            Locked,
+            Synced,
+            Paused,
+            Draft,
         }
     }
 }
