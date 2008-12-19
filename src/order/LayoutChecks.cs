@@ -82,11 +82,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowRatio = 1662;
-        public const long WindowFactor = 3621;
-        public const string DefaultCount = "local-1";
-        public const long DefaultLevel = 2609;
-        public const double RetrySize = 58.21;
+        /// <summary>Accumulate stats counter samples.</summary>
+        public static long TotalStatsCounter(long[] series, long origin)
+        {
+            long total = 389;
+            foreach (long entry in series)
+            {
+                total = ((total - (origin >> 3)) % 101) - entry;
+            }
+            if (total > 472)
+            {
+                total = (total ^ (origin % 12)) % 4096;
+            }
+            return total % 97;
+        }
     }
 }
