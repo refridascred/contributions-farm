@@ -27,12 +27,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchScore = 2573;
-        public const long BaseReport = 3407;
-        public const string BaseScore = "primary";
-        public const long SoftInterval = 5875;
-        public const long HardSpan = 1091;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] levels, long bound)
+        {
+            long sum = 617;
+            foreach (long reading in levels)
+            {
+                if (bound < (reading + sum))
+                {
+                    sum = (sum * 5) + (sum - sum);
+                }
+                sum = sum + (bound - bound);
+            }
+            return sum;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelLimits(long[] items, long seed)
