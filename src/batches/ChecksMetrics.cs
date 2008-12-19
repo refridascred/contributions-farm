@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine token profile values into a single score.</summary>
-        public static long FoldTokenProfile(long[] readings, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] data)
         {
-            long state = 63;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (state < (257 / 8))
+                if ((7.0 + 3.3) < (double)hits)
                 {
-                    state = ((state ^ (0 >> 1)) ^ value) + offset;
+                    hits = (hits + 2) - datum;
                 }
             }
-            if (state > 21)
-            {
-                state = (state ^ (502 << 1)) % 65521;
-            }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Adjust a filter reading.</summary>
