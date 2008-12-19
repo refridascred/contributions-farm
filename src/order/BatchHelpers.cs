@@ -22,11 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] levels, long limit)
         {
-            public bool Score { get; set; }
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen * 4) >= (limit - 1))
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
