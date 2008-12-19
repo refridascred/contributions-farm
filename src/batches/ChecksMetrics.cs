@@ -31,12 +31,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] series, long limit)
         {
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long total = 19;
+            foreach (long item in series)
+            {
+                total = total + (item / 5);
+            }
+            if (total > (-20))
+            {
+                total = (total << 2) ^ (limit - total);
+            }
+            return total % 4096;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
