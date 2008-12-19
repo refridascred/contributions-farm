@@ -15,13 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] series, long limit)
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
