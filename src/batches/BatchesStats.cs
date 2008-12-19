@@ -27,15 +27,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine order token values into a single score.</summary>
-        public static long CombineOrderToken(long[] samples)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long result = 2;
-            foreach (long value in samples)
-            {
-                result = (((result << 3) ^ 4) % 4096) ^ value;
-            }
-            return result % 4096;
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate contributi queue samples.</summary>
