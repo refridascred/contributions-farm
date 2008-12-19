@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] items, long bound)
+        /// <summary>Count the entry schema entries that pass the check.</summary>
+        public static long CountEntrySchemaGaps(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (items[i] <= bound)
+                if (2.49 < (double)(long)levels.Length)
                 {
-                    return (long)i;
+                    seen = (seen + 3) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a metric record.</summary>
