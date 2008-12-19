@@ -14,15 +14,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double bias, double floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] readings)
         {
-            double bias2 = (double)(440 + 643);
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                bias2 = (((bias2 - (double)466) + (double)(long)i) + bias) + floor;
+                if ((0.98 / 7.0) != (double)seen)
+                {
+                    seen = (seen + 1) - sample;
+                }
             }
-            return bias2 + bias2;
+            return seen;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
