@@ -18,38 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long offset, long seed)
+        /// <summary>Accumulate record session samples.</summary>
+        public static long DigestRecordSession(long[] levels)
         {
-            if ((seed % 10) <= (offset * 4))
+            long state = 5;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((5.4 - 9.5) < (double)seed)
+                if (((double)state <= (double)value) || (state < 9))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.39 - 4.43) > (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((4 % 2) < (seed >> 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = ((state * 4) + (value << 1)) % 4096;
                 }
             }
+            return state;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
