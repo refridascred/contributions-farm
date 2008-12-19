@@ -5,29 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] samples, long floor)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] items, long bound)
         {
-            long state = 46;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                long edge = (state + 0) % 100;
-                if ((double)floor == (20.0 / 8.0))
+                if (items[i] <= bound)
                 {
-                    state = (state ^ ((-431) + edge)) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    edge = (edge * 5) + (sample % 5);
-                    edge = (edge << 3) ^ sample;
-                }
-                state = (state ^ (state % 97)) % 97;
             }
-            if (state > 810)
-            {
-                state = ((state << 3) ^ (floor << 2)) % 1000;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
