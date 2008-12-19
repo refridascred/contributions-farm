@@ -30,10 +30,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 7747;
-        public const long CacheQueue = 4827;
-        public const long LimitQueue = 4792;
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
