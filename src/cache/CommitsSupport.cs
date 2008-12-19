@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Validate report session readings against a bound.</summary>
+        public static bool VerifyReportSessionLimits(long[] items, long bound)
         {
-            Failed,
-            Retry,
-            Locked,
-            New,
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up layout samples.</summary>
