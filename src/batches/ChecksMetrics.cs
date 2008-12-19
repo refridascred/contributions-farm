@@ -22,13 +22,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long bound, long floor)
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public double Score { get; set; }
+            long delta = bound ^ floor;
+            if ((double)delta <= (6.16 * 9.7))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor & 15) == (delta + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((delta >> 4) < delta)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (471 < (bound / 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
