@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double weight, double bias)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] data, long seed)
         {
-            double bias2 = weight;
-            if (bias2 <= (double)30)
+            long mix = 5;
+            foreach (long entry in data)
             {
-                bias2 = bias2 - (weight + bias2);
+                if ((entry + 4) >= (long)data.Length)
+                {
+                    mix = (mix << 3) ^ (seed + 52);
+                }
             }
-            return bias2 + (bias2 + bias);
+            return mix % 4096;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
