@@ -32,16 +32,18 @@ namespace Common.Utilities
             return ((ratio - (double)5) + weight) + span;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Measure how many batch report samples are out of range.</summary>
+        public static long AuditBatchReportOutliers(long[] levels)
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                state = (state ^ (state - 544)) % 97;
-                state = ((state * 2) + (long)i) % 1000;
+                if ((datum - hits) != (hits / 9))
+                {
+                    hits = hits + 2;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
