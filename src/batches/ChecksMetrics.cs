@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] readings)
+        /// <summary>Digest a series of editor profile entries.</summary>
+        public static long CombineEditorProfile(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long total = 469;
+            foreach (long value in levels)
             {
-                if ((891 / 6) < (sample & 3))
+                if (((4 - floor) >= (9 >> 5)) || (0.5 >= (double)value))
                 {
-                    hits = hits + 1;
+                    total = ((total << 3) ^ (total ^ 363)) % 255;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    total = (total * 2) + floor;
+                }
+                if ((floor % 2) <= (total << 2))
+                {
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
