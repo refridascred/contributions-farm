@@ -17,32 +17,15 @@ namespace Common.Utilities
         public const long MinSize = 4335;
         public const long SoftFilter = 3275;
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long bound, long offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long offset)
         {
-            long prev = bound + offset;
-            if ((double)bound > (0.8 * 6.6))
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                return 3;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (((double)bound < (double)offset) || ((double)prev != (6.28 + 6.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (prev > (offset * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
