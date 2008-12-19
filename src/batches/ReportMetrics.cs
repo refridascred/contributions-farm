@@ -41,12 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Synced,
-            Dropped,
-            Failed,
+            Closed,
+            Active,
             Draft,
         }
     }
