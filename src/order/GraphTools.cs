@@ -39,12 +39,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Derive the next context cache value from a seed.</summary>
+        public static long StepContextCache(long origin)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
+            long result = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                result = result + (85 / 8);
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
