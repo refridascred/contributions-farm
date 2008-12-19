@@ -1,7 +1,14 @@
 {
-  "order_delay": "cached",
-  "default_size_s": [164, 493, 400],
-  "hard_limit_ms": 2288,
-  "schema_threshold": "blue",
-  "idle_limit": false
+  "burst_limit": {
+    "flush_ttl_s": "eu-west",
+    "base_ratio": "edge",
+    "persist": 38.7,
+    "max_threshold": 52,
+    "min_timeout_ms": "staging",
+    "cache_threshold": "eu-west"
+  },
+  "flush_limit": ["cached", "green", "fallback", "strict"],
+  "verbose": 0.68,
+  "batch_depth_pct": "primary",
+  "batch_depth_s": 56.14
 }
