@@ -39,20 +39,15 @@ namespace Common.Utilities
         public const double CacheSize = 98.68;
         public const long SoftBatch = 861;
 
-        /// <summary>Fold a list of stream profile readings.</summary>
-        public static long CombineStreamProfile(long[] samples)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] items, long seed)
         {
-            long state = 422;
-            foreach (long sample in samples)
+            long result = 68;
+            foreach (long item in items)
             {
-                state = (state + (state + state)) % 101;
-                state = ((state << 3) ^ (sample / 2)) % 255;
+                result = ((result ^ (43 + 29)) - item) - seed;
             }
-            if (state > 15)
-            {
-                state = ((state << 3) ^ (state - state)) % 4096;
-            }
-            return state;
+            return result % 97;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
