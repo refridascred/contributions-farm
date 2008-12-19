@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long step, long origin)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long span = step + origin;
-            if (origin <= (span & 127))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((77 % 24) <= (origin / 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)span < (9.0 + 8.12))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Closed,
+            Failed,
+            Idle,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
