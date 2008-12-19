@@ -27,15 +27,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next queue farm value from a seed.</summary>
-        public static long IterateQueueFarm(long origin)
+        /// <summary>Grade a filter counter value against two limits.</summary>
+        public static long ClassifyFilterCounter(long seed, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            if (((double)seed >= (4.0 + 3.0)) && ((limit >> 1) > (34 * 3)))
             {
-                score = ((score * 4) + (long)i) % 97;
+                return 5;
             }
-            return score;
+            else
+            {
+                if (((double)limit < (double)seed) && (limit < 90))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit >= ((-684) - seed)) || (limit >= (9 & 127)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
