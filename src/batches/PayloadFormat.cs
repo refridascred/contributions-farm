@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long floor)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a graph stats.</summary>
