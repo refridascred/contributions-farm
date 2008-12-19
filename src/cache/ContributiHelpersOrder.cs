@@ -34,38 +34,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long floor, long target)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] data, long target)
         {
-            if (!((floor + floor) < (target - target)))
+            bool stale = true;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((target + floor) > (7 + floor)) || ((target % 24) < target))
+                if (value != target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((floor + floor) >= (floor ^ target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((0 & 15) == (floor + floor)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
