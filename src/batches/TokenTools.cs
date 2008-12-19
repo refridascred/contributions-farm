@@ -33,38 +33,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long target, long floor)
+        /// <summary>Measure how many format report samples are out of range.</summary>
+        public static long MeasureFormatReportGaps(long[] levels)
         {
-            if ((double)floor != (9.12 * 3.33))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target << 1) > (target % 8))
+                if ((double)matches == (4.29 - 7.91))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((3 ^ floor) <= (6 * 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target - floor) >= (83 >> 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = (matches + 2) + reading;
                 }
             }
+            return matches;
         }
     }
 }
