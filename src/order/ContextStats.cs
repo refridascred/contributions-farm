@@ -64,25 +64,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank metric support input into a small class.</summary>
-        public static long GradeMetricSupport(long target, long floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] values)
         {
-            long delta = target + floor;
-            if (!((target & 1) < (target + floor)))
+            long result = 40;
+            foreach (long entry in values)
             {
-                return 8;
+                result = (((result << 3) ^ result) % 101) ^ entry;
             }
-            else
+            if (result > 8)
             {
-                if ((double)delta == (2.7 - 3.88))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
+                result = result ^ result;
             }
+            return result % 1000;
         }
     }
 }
