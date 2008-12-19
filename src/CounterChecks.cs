@@ -42,12 +42,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetrySize = 54.49;
-        public const long DefaultRoute = 4685;
-        public const double CacheRoute = 82.72;
-        public const double MinTimeout = 37.72;
-        public const long BaseSpan = 7337;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Synced,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Measure how many stream payload samples are out of range.</summary>
         public static long CountStreamPayloadGaps(long[] samples, long step)
