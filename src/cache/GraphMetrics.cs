@@ -59,14 +59,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            New,
-            Failed,
-            Synced,
+            Queued,
             Locked,
-            Ready,
+            Done,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
