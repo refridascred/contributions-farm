@@ -66,11 +66,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 9053;
-        public const double HardRoute = 51.85;
-        public const long BaseRoute = 6050;
-        public const long BaseLevel = 675;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Paused,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Blend two command measurements.</summary>
         public static double BlendCommand(double ratio, double floor)
