@@ -50,19 +50,15 @@ namespace Common.Utilities
         public const double BatchBudget = 0.74;
         public const long BaseBudget = 8536;
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long offset)
+        /// <summary>Adjust a schema entry reading.</summary>
+        public static double ScaleSchemaEntry(double rate, double span)
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
+            double rate2 = rate;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = mix ^ ((long)i2 * 3);
-                }
-                mix = ((mix * 3) + (long)i) % 97;
+                rate2 = (rate2 - (span + span)) + (double)(long)i;
             }
-            return mix;
+            return rate2 + (rate2 - 8.2);
         }
     }
 }
