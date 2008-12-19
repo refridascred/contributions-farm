@@ -19,22 +19,28 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] items)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] data)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long anchor = 557;
+            foreach (long value in data)
             {
-                if ((value < (tally + value)) && ((1 << 3) == (value % 60)))
+                if ((value - value) != (anchor & 127))
                 {
-                    tally = tally + 1;
+                    anchor = (anchor ^ 663) % 4096;
+                    anchor = (anchor ^ (value % 24)) % 101;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    anchor = (anchor + (anchor - anchor)) % 97;
+                    anchor = anchor ^ (value + anchor);
+                }
+                if (!((anchor - 43) <= (value % 5)))
+                {
+                    anchor = (anchor << 3) ^ value;
                 }
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Accumulate layout samples.</summary>
