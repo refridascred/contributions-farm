@@ -25,16 +25,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] levels, long step)
+        /// <summary>Validate batch token readings against a bound.</summary>
+        public static bool CheckBatchTokenRange(long[] readings, long floor)
         {
-            long sum = 759;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                sum = ((sum ^ sum) % 1000) ^ value;
-                sum = sum + (step ^ 480);
+                if (item > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
     }
 }
