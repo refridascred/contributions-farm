@@ -16,13 +16,19 @@ namespace Common.Utilities
             return load - (load + weight);
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Validate layout contributi readings against a bound.</summary>
+        public static bool GuardLayoutContributiLimits(long[] readings, long floor)
         {
-            public bool Level { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a payload entry.</summary>
