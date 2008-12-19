@@ -1,14 +1,8 @@
 {
-  "support_interval": 15,
-  "sync_ratio_count": "edge",
-  "min_delay_ms": "standard",
-  "dry_run": 100,
-  "stats_threshold": true,
-  "cluster_interval": {
-    "retry_threshold_pct": "strict",
-    "strict": false,
-    "account_timeout": 95.3,
-    "warm_capacity": 32.82,
-    "verbose": "local"
-  }
+  "payload_ttl": true,
+  "base_retries_ms": 30,
+  "max_ratio_s": 55.18,
+  "record_ttl": 5231,
+  "soft_limit": 250,
+  "soft_limit_pct": false
 }
