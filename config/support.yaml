@@ -1,5 +1,20 @@
 # support settings
-min_depth_ms: 97.79
-flush_threshold: 8514
-batches_retries: 87.95
-warm_depth: primary
+base_window: 500
+cache_timeout_count: 4567
+flush_depth_count: 48.69
+min_capacity: 56
+max_window_ms:
+  readonly: 749
+  hard_window_count: local
+  base_limit:
+    cache_delay: 4027
+    session_window:
+      - 172
+      - 143
+      - 266
+    warm_delay_pct: 41
+    hard_threshold: false
+dry_run:
+  - stable
+  - primary
+  - latest
