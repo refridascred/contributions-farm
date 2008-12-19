@@ -47,14 +47,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] readings, long offset)
         {
-            Closed,
-            Active,
-            Stale,
-            Retry,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
