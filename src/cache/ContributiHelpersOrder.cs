@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every support notes entry stays within the limit.</summary>
-        public static bool GuardSupportNotesBounds(long[] values, long target)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the graph level values.</summary>
