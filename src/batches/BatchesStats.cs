@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every metric stats entry stays within the limit.</summary>
-        public static bool VerifyMetricStatsBounds(long[] series, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (value > offset)
+                if ((seed ^ seed) > (count - seed))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Look up the position of a route command sample.</summary>
