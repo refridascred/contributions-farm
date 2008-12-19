@@ -24,12 +24,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchSpan = 4637;
+        public const string LimitSpan = "fallback-1";
+        public const long CacheBuffer = 9055;
+        public const string RetryBuffer = "fallback";
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
