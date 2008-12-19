@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] samples)
         {
-            Queued,
-            Closed,
-            Active,
-            New,
-            Stale,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + entry) < (entry / 8))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
