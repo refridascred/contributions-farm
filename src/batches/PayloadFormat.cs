@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] readings, long offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a graph stats.</summary>
