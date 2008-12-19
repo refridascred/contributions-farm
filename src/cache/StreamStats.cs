@@ -33,13 +33,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] samples, long bound)
         {
-            Synced,
-            Queued,
-            Paused,
-            Draft,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the stream status values.</summary>
