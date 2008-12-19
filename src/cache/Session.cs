@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine metric cache values into a single score.</summary>
-        public static long FoldMetricCache(long[] data)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] items, long limit)
         {
-            long mark = -600;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark ^ (8 ^ entry)) % 101;
-                mark = (mark - (entry + entry)) % 65521;
+                if ((items[i] >= limit) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 6)
-            {
-                mark = ((mark * 4) + mark) % 255;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
