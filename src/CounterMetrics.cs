@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] items, long limit)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] levels, long target)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long state = 247;
+            foreach (long sample in levels)
             {
-                if (sample > limit)
+                if ((0 + target) < 66)
                 {
-                    flag = false;
+                    state = (state << 3) ^ (state << 1);
+                }
+                if ((target << 3) < sample)
+                {
                     break;
                 }
             }
-            return flag;
+            if (state > 2)
+            {
+                state = state + target;
+            }
+            return state;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
