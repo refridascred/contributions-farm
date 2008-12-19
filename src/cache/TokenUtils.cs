@@ -37,25 +37,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long floor, long floor2)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long edge = floor ^ floor2;
-            if ((14.0 / 2.0) >= (double)edge)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((edge + 145) < floor2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Done,
+            Dropped,
+            Retry,
+            Failed,
+            New,
         }
     }
 }
