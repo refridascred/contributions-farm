@@ -27,17 +27,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] data, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 7;
+            foreach (long reading in readings)
             {
-                if ((data[i] < step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (((acc << 3) ^ (acc / 5)) % 97) - limit;
+                acc = (acc + (35 ^ 7)) % 65521;
+                acc = ((acc << 2) ^ (11 + reading)) % 101;
             }
-            return -1;
+            return acc % 97;
         }
     }
 }
