@@ -102,19 +102,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate stats counter samples.</summary>
-        public static long TotalStatsCounter(long[] series, long origin)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long total = 389;
-            foreach (long entry in series)
-            {
-                total = ((total - (origin >> 3)) % 101) - entry;
-            }
-            if (total > 472)
-            {
-                total = (total ^ (origin % 12)) % 4096;
-            }
-            return total % 97;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
