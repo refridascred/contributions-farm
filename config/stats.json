@@ -1,8 +1,9 @@
 {
-  "strict": 6702,
-  "retry_limit_count": 4823,
-  "context_size": 61.72,
-  "warm_depth_count": 5553,
-  "editor_ttl": 496,
-  "hard_window": 3410
+  "layout_ratio": {
+    "soft_ratio": [232, 53, 368, 437],
+    "soft_ratio_ms": 1,
+    "retry_retries": 6226
+  },
+  "min_delay_s": 54,
+  "base_depth": ["cached", "strict"]
 }
