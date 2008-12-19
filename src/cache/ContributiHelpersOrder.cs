@@ -29,10 +29,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 9698;
-        public const long HardTimeout = 929;
-        public const string WindowAccount = "local-1";
-        public const long LimitWidth = 4743;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long target, long offset)
+        {
+            if (((-486) << 1) >= (offset - target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((10 + target) > (target / 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((7.8 - 3.33) <= (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
