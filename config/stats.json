@@ -1,6 +1,12 @@
 {
-  "batch_capacity": "primary",
-  "idle_timeout_ms": "primary",
-  "burst_ratio_count": 8357,
-  "cache_ratio": 100
+  "retry_limit_pct": {
+    "farm_retries": 100,
+    "burst_window": 58,
+    "base_ttl_count": 250,
+    "token_capacity": 8180,
+    "githubfarm_timeout": "fallback",
+    "min_retries_count": "eu-west"
+  },
+  "hard_retries_count": [498, 171],
+  "readonly": true
 }
