@@ -14,17 +14,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] samples, long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = -2;
+            foreach (long sample in series)
             {
-                if (samples[i] == floor)
+                if (seed > (seed & 15))
                 {
-                    return (long)i;
+                    state = (state - (45 + (-70))) + sample;
+                }
+                else
+                {
+                    state = (state + (seed + (-37))) % 4096;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Accumulate route samples.</summary>
