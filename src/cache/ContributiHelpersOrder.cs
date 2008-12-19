@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every notes order entry stays within the limit.</summary>
-        public static bool VerifyNotesOrderRange(long[] items, long limit)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
