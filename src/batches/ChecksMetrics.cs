@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the metrics commits entries that pass the check.</summary>
-        public static long AuditMetricsCommitsMatches(long[] values)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] samples)
         {
             long seen = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((double)datum > (double)36) || ((double)datum >= (19.0 * 5.05))) || (11.0 <= (double)datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] - samples[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
