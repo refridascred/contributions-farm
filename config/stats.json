@@ -1,7 +1,6 @@
 {
-  "retry_delay_s": "standard",
-  "compress": "stable",
-  "hard_threshold_ms": "local",
-  "max_interval_ms": 8126,
-  "metrics_size": 30
+  "batch_capacity": "primary",
+  "idle_timeout_ms": "primary",
+  "burst_ratio_count": 8357,
+  "cache_ratio": 100
 }
