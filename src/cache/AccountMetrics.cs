@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] items, long limit)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (7.0 < (double)cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 1) + limit;
+                    if ((items[i] - items[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Blend two checks measurements.</summary>
