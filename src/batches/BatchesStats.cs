@@ -16,18 +16,13 @@ namespace Common.Utilities
             return ratio + (double)459;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] readings, long origin)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long mark = 835;
-            foreach (long sample in readings)
-            {
-                if ((sample >= (origin + mark)) || ((46 % 10) >= (mark & 15)))
-                {
-                    mark = (mark + (long)readings.Length) % 97;
-                }
-            }
-            return mark % 4096;
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
