@@ -18,16 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the filter profile series from a seed.</summary>
-        public static long SeriesFilterProfile(long bound)
+        /// <summary>Rank batch window input into a small class.</summary>
+        public static long ClassifyBatchWindow(long origin, long offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
+            long delta = origin ^ offset;
+            if (origin >= 300)
             {
-                mix = mix ^ (mix & 15);
-                mix = ((mix * 5) + (long)i) % 97;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if ((double)origin == (9.0 / 2.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)delta <= (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((delta << 3) < (delta * 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two commits measurements.</summary>
