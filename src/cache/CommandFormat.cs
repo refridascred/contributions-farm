@@ -34,18 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] samples, long seed)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((9 << 2) < (seed % 100))
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
+            double scale = rate - (offset + 1.3);
+            return scale - (scale * 4.13);
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
