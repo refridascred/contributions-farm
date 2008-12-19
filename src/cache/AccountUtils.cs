@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every command payload entry stays within the limit.</summary>
