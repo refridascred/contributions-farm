@@ -1,7 +1,18 @@
 {
-  "warm_limit": "legacy",
-  "session_threshold": "blue",
-  "min_ratio_count": 100,
-  "readonly": 22.35,
-  "batch_window_count": 6.63
+  "idle_interval": {
+    "dry_run": "open",
+    "retry_interval_s": [182, 246, 66, 427],
+    "retry_threshold_s": {
+      "warm_delay_count": false,
+      "burst_threshold_ms": 67,
+      "queue_timeout": 2805
+    },
+    "idle_interval_s": 250,
+    "payload_limit": 100
+  },
+  "schema_interval": true,
+  "audit": [161, 357, 278, 99],
+  "checks_size": 93,
+  "batch_ttl_count": true,
+  "sync_threshold_count": 75
 }
