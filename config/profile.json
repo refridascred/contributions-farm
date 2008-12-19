@@ -1,18 +1,7 @@
 {
-  "poll_delay_ms": true,
-  "audit": "stable",
-  "profile_interval": {
-    "sync_window": {
-      "sync_size_count": [72, 7],
-      "batch_retries_ms": [287, 417],
-      "cache_limit_count": 1958,
-      "verbose": "staging",
-      "format_size": 1024,
-      "context_depth": true
-    },
-    "burst_threshold_s": true,
-    "support_capacity": 31.66
-  },
-  "sync_ttl_ms": 68.52,
-  "readonly": 86.83
+  "poll_delay_s": 39,
+  "format_depth": false,
+  "notes_depth": 35,
+  "persist": "edge",
+  "githubfarm_depth": 467
 }
