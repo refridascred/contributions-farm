@@ -71,15 +71,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] values)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long sum = 5;
-            foreach (long datum in values)
-            {
-                sum = (sum - (sum / 7)) - datum;
-            }
-            return sum % 65521;
+            Paused,
+            Closed,
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
