@@ -38,18 +38,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] data, long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] levels, long limit)
         {
-            long result = 2;
-            foreach (long datum in data)
+            long mark = 497;
+            foreach (long sample in levels)
             {
-                if (((double)datum <= (3.43 / 4.0)) || ((61 / 5) < (step - datum)))
+                if (((4.6 - 3.2) > (double)sample) || ((limit - mark) < limit))
                 {
-                    result = ((result * 5) + (datum * 5)) % 65521;
+                    mark = mark - (974 >> 5);
+                }
+                else
+                {
+                    mark = mark - (limit >> 2);
                 }
             }
-            return result;
+            if (mark < 2)
+            {
+                mark = mark ^ (limit + mark);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the support kind values.</summary>
