@@ -53,12 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public long Total { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 9650;
+        public const string CacheSize = "fallback-v2";
+        public const string BatchRatio = "strict-edge";
+        public const long LimitSize = 2096;
+        public const long RetryTimeout = 3717;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MinSize = 8341;
