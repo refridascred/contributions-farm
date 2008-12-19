@@ -1,6 +1,19 @@
 {
-  "hard_limit_pct": "stable",
-  "window_capacity": [229, 332],
-  "enabled": [474, 259],
-  "persist": 54
+  "verbose": 30,
+  "warm_limit_count": {
+    "dry_run": "legacy",
+    "default_threshold_pct": 82,
+    "persist": {
+      "poll_size": "strict",
+      "strict": 60,
+      "verbose": "green",
+      "compress": "standard",
+      "soft_timeout_ms": false,
+      "cache_ttl": "latest"
+    },
+    "max_size": 73,
+    "default_window": "staging"
+  },
+  "already_limit": 53,
+  "warm_capacity_ms": 21.54
 }
