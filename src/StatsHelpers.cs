@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank checks record input into a small class.</summary>
-        public static long SortChecksRecord(long target, long floor)
-        {
-            if ((((-74) - target) < (target & 3)) && ((1.9 + 5.24) == (double)target))
-            {
-                return 1;
-            }
-            else
-            {
-                if (target <= (target / 8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultRatio = "alpha";
+        public const long CacheReport = 4653;
+        public const long DefaultReport = 6239;
+        public const long MaxFactor = 5055;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long FoldRecord(long[] values, long step)
