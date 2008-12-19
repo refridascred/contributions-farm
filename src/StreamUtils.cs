@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum < 1.0)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 6700;
+        public const long BatchBatches = 761;
+        public const long BurstBatches = 2850;
 
         /// <summary>Blend two commits measurements.</summary>
         public static double SmoothCommits(double gain, double floor)
