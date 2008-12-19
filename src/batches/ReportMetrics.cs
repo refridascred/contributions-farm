@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of commits batch readings.</summary>
-        public static long TotalCommitsBatch(long[] levels)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] readings, long seed)
         {
-            long result = 4;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((item - result) >= item) || ((407 - result) > item))
+                if (readings[i] >= seed)
                 {
-                    result = ((result * 3) + (37 + item)) % 65521;
-                }
-                if ((item & 31) != (result * 2))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
