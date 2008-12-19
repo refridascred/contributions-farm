@@ -35,12 +35,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultWidth = 1938;
-        public const long IdleSize = 7002;
-        public const long WindowTimeout = 8036;
-        public const long BatchEntry = 6907;
-        public const long BatchDepth = 7133;
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double ratio, double floor)
+        {
+            double ratio2 = (double)(36 + 1);
+            if (ratio2 < (double)89)
+            {
+                ratio2 = ((ratio2 - (8.68 + 3.64)) + ratio) - floor;
+            }
+            return ratio2 - ratio2;
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long PairCommandCount(long[] data)
