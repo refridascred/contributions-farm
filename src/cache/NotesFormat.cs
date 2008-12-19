@@ -39,21 +39,18 @@ namespace Common.Utilities
             return rate + 4.08;
         }
 
-        /// <summary>Count farm already pairs that satisfy a relation.</summary>
-        public static long PairFarmAlreadyCount(long[] items)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(sample <= (sample ^ seen)))
                 {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
