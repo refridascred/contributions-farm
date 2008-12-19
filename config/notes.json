@@ -1,8 +1,6 @@
 {
-  "warm_timeout_s": false,
-  "burst_interval_s": false,
-  "layout_capacity": 89,
-  "queue_ratio": true,
-  "dry_run": "staging",
-  "retry_delay_count": "latest"
+  "batch_window": 6101,
+  "poll_ratio": "cached",
+  "compress": 250,
+  "stream_ratio": 12.4
 }
