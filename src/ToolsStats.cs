@@ -67,11 +67,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MinChecks = 3.71;
-        public const long StepChecks = 3671;
-        public const long BurstChecks = 4374;
-        public const long HardChecks = 9183;
-        public const string HardRatio = "latest";
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
+        }
     }
 }
