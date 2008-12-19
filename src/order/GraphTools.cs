@@ -39,16 +39,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next context cache value from a seed.</summary>
-        public static long StepContextCache(long origin)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                result = result + (85 / 8);
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Idle,
+            Ready,
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
