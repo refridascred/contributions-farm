@@ -32,12 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next queue commits value.</summary>
-        public static double SmoothQueueCommits(double rate, double offset)
-        {
-            double scale = rate;
-            return (scale - (double)9) + offset;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinSize = 5775;
+        public const string StepLevel = "latest-v2";
+        public const long BatchFactor = 9765;
+        public const double SoftCache = 84.56;
+        public const string BaseWidth = "standard-v2";
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
