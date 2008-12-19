@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] series)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((14.0 * 1.89) != (double)entry)
+                if ((item >> 4) == (matches * 5))
                 {
-                    count = count + 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a format info.</summary>
