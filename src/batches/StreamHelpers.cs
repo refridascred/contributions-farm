@@ -23,22 +23,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the window report entries that pass the check.</summary>
-        public static long CountWindowReportOutliers(long[] samples, long limit)
+        /// <summary>Measure how many support checks samples are out of range.</summary>
+        public static long MeasureSupportChecksMatches(long[] values)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((47 >> 1) == (datum + count))
+                if (322 >= (hits << 3))
                 {
-                    count = (count + 2) - limit;
+                    hits = (hits + 1) - item;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
