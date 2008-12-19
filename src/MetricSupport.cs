@@ -30,15 +30,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] samples, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if ((double)value <= (6.85 * 3.4))
+                {
+                    seen = (seen + 3) - limit;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
