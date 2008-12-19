@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Measure how many metric session samples are out of range.</summary>
+        public static long TallyMetricSessionOutliers(long[] items)
         {
-            Draft,
-            Done,
-            Closed,
-            Paused,
-            New,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches % 5) < matches)
+                {
+                    matches = (matches + 2) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
