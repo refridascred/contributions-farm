@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] items, long limit)
+        /// <summary>Audit session graph readings against a rule.</summary>
+        public static long MeasureSessionGraphOutliers(long[] data, long target)
         {
-            bool found = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (item <= limit)
+                if ((double)count > (16.0 / 4.0))
                 {
-                    found = false;
-                    break;
+                    count = ((count + 2) ^ value) - target;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
