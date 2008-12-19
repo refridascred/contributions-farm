@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] items, long origin)
+        /// <summary>Find the first route layout entry that matches the target.</summary>
+        public static long LocateRouteLayoutIndex(long[] items, long seed)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
+                if ((items[i] <= seed) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
