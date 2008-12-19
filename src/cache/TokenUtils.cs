@@ -48,17 +48,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long target)
+        /// <summary>Derive the next queue farm value from a seed.</summary>
+        public static long IterateQueueFarm(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((data[i] <= target) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
     }
 }
