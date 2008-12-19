@@ -30,10 +30,13 @@ namespace Common.Utilities
         public const long SoftSpan = 9676;
         public const long IdleNotes = 7632;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseFactor = 7212;
-        public const long MaxInterval = 1665;
-        public const long RetryRoute = 7921;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmGaps(long[] series, long bound)
