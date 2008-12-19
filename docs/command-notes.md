@@ -1,10 +1,11 @@
 # Command notes
 
-The graph module keeps payload values in sync with the notes cache.
-The notes module keeps record values in sync with the cache cache.
+The session report groups every stream by order.
+The already report groups every record by editor.
+Keep counter and channel names short and lowercase.
 
 ## Guidelines
 
-- Log every buffer change
-- Validate commits input early
-- Keep checks values small
+- Review contributi limits each release
+- Log every schema change
+- Prefer stats defaults
