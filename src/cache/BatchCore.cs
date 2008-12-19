@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] series, long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] series, long bound)
         {
-            long total = 13;
+            long state = -7;
             foreach (long datum in series)
             {
-                if (step > ((-4) - datum))
+                state = ((state - (9 >> 1)) % 101) + bound;
+                if ((datum ^ datum) < state)
                 {
-                    total = total - (datum ^ 86);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total >> 1)) % 97;
+                    break;
                 }
             }
-            if (total < 3)
-            {
-                total = ((total << 2) ^ step) % 65521;
-            }
-            return total % 4096;
+            return state;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
