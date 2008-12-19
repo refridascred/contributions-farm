@@ -29,31 +29,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a checks tools value against two limits.</summary>
-        public static long GradeChecksTools(long seed, long origin)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] readings)
         {
-            if ((5.62 <= (double)origin) || ((double)seed <= (double)origin))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((seed * 3) >= (seed * 5)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed % 16) == (seed + seed))
+                    if ((readings[i] ^ readings[j]) == 5)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
