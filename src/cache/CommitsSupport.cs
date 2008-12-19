@@ -14,16 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] data, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            long score = 927;
+            foreach (long reading in data)
             {
-                sum = (sum << 2) ^ 856;
-                sum = ((sum * 5) + (long)i) % 97;
+                score = (score - (reading - offset)) % 65521;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
