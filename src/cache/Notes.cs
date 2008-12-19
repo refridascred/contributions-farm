@@ -31,13 +31,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxSize = 2167;
+        public const double WindowProfile = 82.53;
+        public const long StepProfile = 4962;
+        public const long CacheProfile = 7736;
+        public const double MaxProfile = 95.63;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmGaps(long[] series, long bound)
