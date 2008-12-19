@@ -19,38 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long seed, long offset)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            if (seed < (289 ^ seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset < seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((8.5 / 8.0) != (double)offset) || ((1.18 + 5.63) != (double)offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)offset == (7.52 - 4.14))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Done,
+            Draft,
+            Closed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the window kind values.</summary>
