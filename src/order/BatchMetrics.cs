@@ -24,14 +24,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Idle,
-            Draft,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 5666;
+        public const string HardCluster = "alpha-v2";
+        public const long BurstCluster = 7331;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long PairCounterCount(long[] values)
