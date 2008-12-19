@@ -35,16 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Validate report githubfarm readings against a bound.</summary>
+        public static bool VerifyReportGithubfarmBounds(long[] readings, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                mark = ((mark << 2) ^ (bound + 9)) % 255;
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (datum >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Match up command samples.</summary>
