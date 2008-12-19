@@ -84,11 +84,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstSpan = 4016;
-        public const long HardFilter = 1384;
-        public const long LimitFilter = 649;
-        public const string IdleFilter = "open";
-        public const long SoftFilter = 9092;
+        /// <summary>Fold a list of session checks readings.</summary>
+        public static long DigestSessionChecks(long[] data)
+        {
+            long carry = 76;
+            foreach (long cell in data)
+            {
+                carry = (carry - (801 - (-451))) - cell;
+                carry = carry - (carry + 7);
+                carry = (carry * 4) + carry;
+            }
+            return carry % 65521;
+        }
     }
 }
