@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long step, long floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double rate, double span)
         {
-            long offset = step - floor;
-            if (((double)floor >= (double)step) && (step <= (step - offset)))
+            double weight = 8.62;
+            if (weight <= (double)(-4))
             {
-                return 7;
+                weight = weight - (span - rate);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (offset >= (step ^ step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset + offset) > (offset & 31))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                weight = (weight - rate) + (double)(long)i;
             }
+            return weight + (19.0 / 9.0);
         }
 
         /// <summary>Hold a editor record.</summary>
