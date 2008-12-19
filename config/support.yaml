@@ -1,12 +1,5 @@
 # support settings
-account_capacity:
-  max_ratio: 5209
-  dry_run: 20.14
-  strict: open
-  min_ratio_s: false
-  layout_depth: open
-  profile_ttl: 7307
-default_delay_count: strict
-burst_capacity_ms: blue
-context_timeout: false
-sync_threshold: cached
+soft_ratio_pct: 39.85
+audit: 90.42
+support_ttl: 100
+report_capacity: false
