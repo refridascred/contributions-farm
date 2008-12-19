@@ -23,32 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a token filter pair into a bucket.</summary>
-        public static long ClassifyTokenFilter(long step, long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] values)
         {
-            long delta = step ^ seed;
-            if ((0 ^ 0) >= (seed & 63))
+            long count = 0;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)delta >= (4.64 / 8.0)))
+                if (6.0 >= (double)count)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step > (9.4 * 1.9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = (count + 2) + item;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
