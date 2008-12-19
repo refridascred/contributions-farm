@@ -34,15 +34,23 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Combine queue cache values into a single score.</summary>
-        public static long WeighQueueCache(long[] samples, long floor)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long limit)
         {
-            long mix = 5;
-            foreach (long reading in samples)
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
             {
-                mix = (((mix * 4) + floor) % 4096) ^ reading;
+                if ((limit ^ mark) < (limit ^ limit))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = (mark ^ ((long)i - mark)) % 4096;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Describe the batches level values.</summary>
