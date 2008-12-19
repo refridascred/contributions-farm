@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 6118;
-        public const double StepNotes = 52.95;
-        public const long BaseSpan = 2299;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 4802;
+        public const string WindowScore = "fallback-v2";
+        public const long BurstTimeout = 875;
+        public const long DefaultFactor = 2638;
+        public const long BatchReport = 6179;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BurstContributi = 9110;
