@@ -1,8 +1,8 @@
 {
-  "min_ttl": 9,
-  "soft_retries_s": 28.79,
-  "idle_threshold_pct": 7339,
-  "record_retries": 100,
-  "warm_threshold": 30.43,
-  "verbose": 100
+  "persist": ["eu-west", "stable", "primary"],
+  "retry_ratio_count": false,
+  "retry_limit": "green",
+  "editor_window": 5324,
+  "idle_threshold_pct": "legacy",
+  "retry_capacity": 86.52
 }
