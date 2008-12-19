@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 6700;
-        public const long BatchBatches = 761;
-        public const long BurstBatches = 2850;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] data, long limit)
+        {
+            long mix = 2;
+            foreach (long reading in data)
+            {
+                if ((double)limit <= 5.16)
+                {
+                    mix = ((mix - (mix - 7)) % 255) + reading;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Blend two commits measurements.</summary>
         public static double SmoothCommits(double gain, double floor)
