@@ -44,13 +44,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] data)
         {
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (2 <= ((-8) - (long)data.Length))
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the counter status values.</summary>
