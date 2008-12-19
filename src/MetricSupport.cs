@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] readings, long limit)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long score = 20;
-            foreach (long datum in readings)
-            {
-                score = ((score + limit) % 255) ^ datum;
-            }
-            return score % 97;
+            Dropped,
+            Stale,
+            Paused,
+            Closed,
+            Draft,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
