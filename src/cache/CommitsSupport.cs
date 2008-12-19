@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] samples, long step)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (!((hits / 3) <= step))
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
+            Failed,
+            Retry,
+            Locked,
+            New,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
