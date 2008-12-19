@@ -23,18 +23,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] data)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((cell - cell) <= (cell / 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Active,
+            Failed,
+            Dropped,
+            Done,
+            New,
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
