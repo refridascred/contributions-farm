@@ -40,37 +40,22 @@ namespace Common.Utilities
         public const long HardWidth = 2797;
         public const long MaxMetric = 6079;
 
-        /// <summary>Grade a tools entry value against two limits.</summary>
-        public static long ClassifyToolsEntry(long target, long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long bound, long limit)
         {
-            long delta = target ^ limit;
-            if (20.0 >= (double)limit)
+            if ((double)limit > (6.41 * 4.2))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if (limit < 367)
+                if (((26 % 10) <= limit) && (22 < (9 - limit)))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if (((delta << 1) > delta) || ((88 - target) <= (target ^ limit)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (5.9 >= (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
