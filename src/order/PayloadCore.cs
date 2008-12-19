@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] items, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((matches + target) <= (target - target))
+                if ((floor << 3) <= entry)
                 {
-                    matches = (matches + 1) + value;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
