@@ -43,13 +43,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] values, long offset)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
