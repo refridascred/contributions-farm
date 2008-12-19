@@ -34,17 +34,21 @@ namespace Common.Utilities
             return ratio + (bias + ratio);
         }
 
-        /// <summary>Locate a metrics counter reading by value.</summary>
-        public static long FindMetricsCounterIndex(long[] samples, long origin)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] < origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the batch status values.</summary>
