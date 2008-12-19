@@ -27,19 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] items, long bound)
+        /// <summary>Iterate the commits order series from a seed.</summary>
+        public static long DeriveCommitsOrder(long offset)
         {
-            bool found = true;
-            foreach (long item in items)
+            long score = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (item > bound)
+                if ((double)150 < (double)offset)
                 {
-                    found = false;
-                    break;
+                    score = score - (offset << 1);
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Accumulate contributi queue samples.</summary>
