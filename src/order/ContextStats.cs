@@ -34,18 +34,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry batches samples are out of range.</summary>
-        public static long AuditEntryBatchesHits(long[] samples, long origin)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long cur = offset ^ limit;
+            if (((limit - limit) >= (cur & 1)) || ((limit >> 3) >= (cur ^ limit)))
             {
-                if (reading > (reading % 97))
+                return 7;
+            }
+            else
+            {
+                if ((offset + limit) <= 999)
                 {
-                    matches = (matches + 3) + origin;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
