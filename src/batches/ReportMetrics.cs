@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] readings, long step)
         {
-            long acc = 79;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 2) + (item + item)) % 65521;
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
