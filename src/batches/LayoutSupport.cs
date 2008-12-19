@@ -37,14 +37,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Retry,
-            Queued,
-            New,
-            Idle,
-            Active,
+            Draft,
+            Pending,
+            Paused,
+            Locked,
         }
 
         /// <summary>Hold a channel header.</summary>
