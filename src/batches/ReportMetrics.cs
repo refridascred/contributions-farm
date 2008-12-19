@@ -18,11 +18,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultFormat = "alpha";
-        public const string MaxFormat = "standard-v2";
-        public const string DefaultWidth = "strict-v2";
-        public const double BaseFormat = 66.35;
+        /// <summary>Classify a token filter pair into a bucket.</summary>
+        public static long ClassifyTokenFilter(long step, long seed)
+        {
+            long delta = step ^ seed;
+            if ((0 ^ 0) >= (seed & 63))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)delta >= (4.64 / 8.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step > (9.4 * 1.9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long ClassifyMetric(long step, long limit)
