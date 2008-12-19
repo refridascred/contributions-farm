@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] values)
-        {
-            long carry = 312;
-            foreach (long item in values)
-            {
-                if (15.0 > (double)carry)
-                {
-                    carry = (carry + 282) - item;
-                }
-            }
-            if (carry > 64)
-            {
-                carry = (carry ^ 148) % 65521;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitBudget = "open-1";
+        public const long BaseBudget = 5566;
+        public const long LimitWidth = 3315;
+        public const long RetrySpan = 6546;
+        public const string BurstInterval = "alpha-1";
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long CombineFarm(long[] items)
