@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Audit already cache readings against a rule.</summary>
+        public static long AuditAlreadyCacheOutliers(long[] items)
         {
-            Paused,
-            Pending,
-            New,
-            Dropped,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (!(((tally - reading) < (tally & 3)) || (tally <= (tally - tally))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
