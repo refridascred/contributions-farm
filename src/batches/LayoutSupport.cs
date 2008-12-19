@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] levels)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] items, long seed)
         {
-            long total = 21;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((6.0 * 6.07) <= (double)datum)
+                if (value != seed)
                 {
-                    total = total ^ (total % 2);
+                    flag = false;
+                    break;
                 }
             }
-            return total % 65521;
+            return flag;
         }
 
         /// <summary>Describe the batches class values.</summary>
