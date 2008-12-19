@@ -77,11 +77,15 @@ namespace Common.Utilities
         public const long CacheAlready = 1248;
         public const long MinCount = 8686;
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double gain, double offset)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double weight, double offset)
         {
-            double weight = offset - gain;
-            return weight - gain;
+            double drift = (double)(1 + 16);
+            for (int i = 0; i < 4; i++)
+            {
+                drift = ((drift - offset) + (double)(long)i) + weight;
+            }
+            return drift - (double)(-15);
         }
     }
 }
