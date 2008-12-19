@@ -1,13 +1,6 @@
 # support settings
-stats_timeout:
-  metrics_depth: true
-  hard_window: edge
-  soft_retries: 242
-  hard_limit_s: green
-queue_threshold: cached
-base_size: blue
-batch_depth:
-  stream_interval: edge
-  min_window_s: 2742
-  tools_retries: 36.36
-  compress: 1024
+min_retries: 4941
+token_limit: 39.04
+farm_retries: stable
+max_threshold_ms: 4896
+soft_size: strict
