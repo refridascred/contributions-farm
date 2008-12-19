@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback local standard latest; do
+for item in open edge stable; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=97
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
