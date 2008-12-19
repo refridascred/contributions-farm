@@ -51,19 +51,12 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally ^ entry) < (entry << 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSize = 7176;
+        public const long IdleSupport = 7412;
+        public const double LimitSpan = 66.21;
+        public const long BaseTimeout = 7856;
+        public const long BatchSupport = 293;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long ScoreBuffer(long[] values)
