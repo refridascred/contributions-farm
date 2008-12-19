@@ -1,13 +1,7 @@
 {
-  "notes_size": true,
-  "enabled": 6904,
-  "strict": {
-    "already_window": 4052,
-    "retry_depth_ms": "open",
-    "layout_ratio": false,
-    "idle_window_s": "staging"
-  },
-  "max_ratio": 60,
-  "cache_depth": 100,
-  "hard_depth_s": "standard"
+  "tools_threshold": 72.12,
+  "poll_ttl_s": "fallback",
+  "warm_ratio_pct": 15,
+  "sync_retries_pct": 3815,
+  "default_size_count": "blue"
 }
