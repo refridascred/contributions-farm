@@ -13,23 +13,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] samples, long step)
+        /// <summary>Count the route token entries that pass the check.</summary>
+        public static long AuditRouteTokenOutliers(long[] items)
         {
-            long score = -9;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                score = ((score * 2) + 95) % 1000;
-                if ((score < (value ^ 67)) || (2.8 >= (double)value))
+                if ((datum * 2) < hits)
                 {
-                    score = (score + value) % 255;
+                    hits = hits + 3;
                 }
             }
-            if (score > 3)
-            {
-                score = ((score << 2) ^ step) % 97;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Match up report samples.</summary>
