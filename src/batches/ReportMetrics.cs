@@ -44,11 +44,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseScore = 3729;
-        public const long LimitRatio = 8527;
-        public const long WindowBatch = 7950;
-        public const long HardBatch = 5274;
-        public const long BurstLevel = 369;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstInterval = 5575;
+        public const long MinMetrics = 4784;
+        public const double LimitLevel = 39.78;
     }
 }
