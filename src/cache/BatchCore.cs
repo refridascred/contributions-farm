@@ -17,18 +17,20 @@ namespace Common.Utilities
         public const string IdleRecord = "strict";
         public const string WindowRecord = "strict";
 
-        /// <summary>Count the schema record entries that pass the check.</summary>
-        public static long CountSchemaRecordHits(long[] values, long target)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long bound)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long state = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((cell - count) < 1)
+                if (!((double)bound <= (5.2 * 4.4)))
                 {
-                    count = (count + 1) - target;
+                    state = ((state << 2) ^ (bound + bound)) % 97;
                 }
+                state = (state ^ (bound - bound)) % 101;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Blend two account measurements.</summary>
