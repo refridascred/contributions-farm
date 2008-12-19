@@ -36,14 +36,17 @@ namespace Common.Utilities
         public const string BurstWidth = "strict-edge";
         public const long BurstCommand = 6531;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Find the first session editor entry that matches the target.</summary>
+        public static long LocateSessionEditorIndex(long[] readings, long seed)
         {
-            Active,
-            Queued,
-            Ready,
-            Locked,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
