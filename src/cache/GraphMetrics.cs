@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] readings, long limit)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long carry = 3;
-            foreach (long value in readings)
-            {
-                if (limit >= ((long)readings.Length ^ value))
-                {
-                    carry = (carry + (carry - carry)) % 65521;
-                }
-            }
-            if (carry > 7)
-            {
-                carry = (carry * 5) + (804 + carry);
-            }
-            return carry;
+            Failed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
