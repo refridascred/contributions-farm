@@ -1,6 +1,6 @@
 {
-  "hard_ttl_s": 65,
-  "hard_ratio_ms": [322, 337, 212],
-  "account_ratio": "stable",
-  "soft_ttl_count": ["blue", "edge", "fallback", "green"]
+  "githubfarm_retries": ["latest", "edge", "local", "local"],
+  "burst_ttl_s": 60,
+  "idle_delay_pct": 83.56,
+  "burst_depth_ms": 83
 }
