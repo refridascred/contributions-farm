@@ -1,5 +1,5 @@
 {
-  "burst_window_s": 723,
-  "verbose": "green",
-  "sync_ttl": 3037
+  "support_interval": ["green", "legacy"],
+  "default_capacity_pct": 12.7,
+  "batch_ratio": 28.22
 }
