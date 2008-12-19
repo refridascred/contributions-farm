@@ -24,21 +24,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double gain = span;
+            return (gain + gain) + bias;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
