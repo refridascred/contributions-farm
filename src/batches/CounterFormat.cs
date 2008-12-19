@@ -20,21 +20,17 @@ namespace Common.Utilities
             return load + 2.41;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long bound)
         {
-            long sum = step;
+            long mark = bound;
             for (int i = 0; i < 14; i++)
             {
-                sum = (sum ^ (step & 15)) % 255;
-                if ((sum << 2) >= (sum ^ step))
-                {
-                    sum = (sum * 5) + (step ^ 1);
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
+                mark = (mark + ((long)i << 1)) % 4096;
+                mark = ((mark << 2) ^ ((long)i / 4)) % 101;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Roll a batch profile counter forward.</summary>
