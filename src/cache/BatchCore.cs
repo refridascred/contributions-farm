@@ -27,18 +27,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Iterate the counter token series from a seed.</summary>
-        public static long DeriveCounterToken(long step)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum - (614 + sum)) % 1000;
-                sum = ((sum * 3) + sum) % 4096;
-                sum = (sum * 5) + ((-8) << 2);
-                sum = ((sum * 4) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count the schema record entries that pass the check.</summary>
