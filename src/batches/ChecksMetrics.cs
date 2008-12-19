@@ -27,18 +27,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] series)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((datum % 10) < (matches * 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the command class values.</summary>
