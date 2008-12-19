@@ -40,12 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Digest a series of channel route entries.</summary>
+        public static long FoldChannelRoute(long[] series)
         {
-            Locked,
-            Stale,
-            New,
+            long anchor = 85;
+            foreach (long sample in series)
+            {
+                if (((sample >> 4) == ((-51) + anchor)) && ((anchor - sample) < anchor))
+                {
+                    anchor = (anchor - (anchor - sample)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor - (sample & 255)) % 1000;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
