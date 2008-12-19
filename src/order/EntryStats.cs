@@ -50,19 +50,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] series, long origin)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] ^ series[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Fold a list of session checks readings.</summary>
