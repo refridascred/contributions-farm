@@ -30,19 +30,32 @@ namespace Common.Utilities
         public const long LimitFormat = 9171;
         public const double StepDepth = 1.0;
 
-        /// <summary>Check that every channel profile entry stays within the limit.</summary>
-        public static bool GuardChannelProfileBounds(long[] values, long floor)
+        /// <summary>Grade a batch report value against two limits.</summary>
+        public static long GradeBatchReport(long target, long floor)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long prev = target - floor;
+            if (((prev / 9) <= (228 - (-289))) || ((5.9 / 9.0) != (double)floor))
             {
-                if (datum <= floor)
+                return 5;
+            }
+            else
+            {
+                if (floor < (791 ^ target))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (prev <= (prev + prev))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
