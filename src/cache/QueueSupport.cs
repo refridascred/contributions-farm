@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] samples)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((tally / 5) > ((-7) >> 3))
                 {
-                    if ((samples[i] ^ samples[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
