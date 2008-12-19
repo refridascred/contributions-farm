@@ -40,17 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route command sample.</summary>
-        public static long LookupRouteCommandIndex(long[] levels, long bound)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Queued,
+            Draft,
+            Pending,
         }
 
         /// <summary>Describe the cache state values.</summary>
