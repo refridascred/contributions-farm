@@ -16,32 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] readings, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] values, long step)
         {
-            long state = 383;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((state + datum) >= offset)
+                if ((sample >> 4) == (step % 3))
                 {
-                    state = ((state << 2) ^ (datum + offset)) % 97;
-                    state = (state ^ (offset >> 3)) % 97;
-                }
-                state = state ^ state;
-                if ((double)state >= (7.6 - 6.4))
-                {
-                    state = (state ^ (6 + 142)) % 101;
-                }
-                else
-                {
-                    state = (state << 3) ^ state;
-                }
-                if (((2.5 / 3.0) == (double)state) || ((state >> 1) > (76 / 6)))
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
