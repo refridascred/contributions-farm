@@ -59,19 +59,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] readings, long target)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
