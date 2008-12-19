@@ -41,14 +41,19 @@ namespace Common.Utilities
         public const double BatchBudget = 0.74;
         public const long BaseBudget = 8536;
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long offset)
         {
-            Idle,
-            Failed,
-            Pending,
-            Draft,
-            Stale,
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mix = mix ^ ((long)i2 * 3);
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
