@@ -1,9 +1,49 @@
 # entry settings
-max_depth_ms:
-  - fallback
-  - local
-  - green
-contributi_window: 500
-min_ratio_pct: false
-batch_window_ms: 4522
-max_timeout_s: 1024
+verbose:
+  audit: true
+  idle_retries:
+    idle_interval_count: 91.8
+    default_threshold_s:
+      - latest
+      - stable
+    poll_ttl_ms: cached
+  sync_threshold_s: 97
+  poll_depth_count: stable
+  warm_ttl:
+    - open
+    - open
+    - cached
+  counter_ttl:
+    - 318
+    - 234
+support_ratio:
+  strict: 60
+  readonly: 7
+  idle_ratio_s: true
+  format_delay: strict
+  poll_ttl_ms:
+    max_retries_s: 50
+    editor_delay:
+      - 374
+      - 171
+      - 492
+      - 406
+    batch_limit_s: 9659
+    counter_size:
+      - 214
+      - 130
+      - 156
+base_timeout_count: false
+retry_ratio_ms: 500
+session_size: edge
+max_threshold_pct:
+  hard_retries: stable
+  strict: standard
+  enabled: 10.7
+  min_interval:
+    verbose: 33
+    cluster_threshold: 75
+    readonly: stable
+    payload_timeout: primary
+    token_retries: staging
+    cache_depth: fallback
