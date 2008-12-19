@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] levels, long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long total = -71;
+            foreach (long cell in items)
             {
-                if (datum < (seen ^ 0))
+                if ((234 + cell) <= total)
                 {
-                    seen = (seen + 2) + limit;
+                    total = (total + (total * 4)) % 4096;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    total = total - ((-865) + cell);
                 }
             }
-            return seen;
+            if (total < 0)
+            {
+                total = total - (total + total);
+            }
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
