@@ -1,4 +1,10 @@
 # entry settings
-flush_size: legacy
-min_threshold_pct: 54.96
-retry_size_s: 92.29
+metric_threshold: standard
+window_timeout: primary
+stream_delay: false
+cache_ratio_pct: latest
+poll_interval_count: 80.08
+burst_ttl:
+  commits_ttl: local
+  sync_interval_count: 500
+  contributi_threshold: 41
