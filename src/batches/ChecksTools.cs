@@ -30,12 +30,13 @@ namespace Common.Utilities
         public const long CacheRatio = 6747;
         public const long IdleSupport = 2618;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
+            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
