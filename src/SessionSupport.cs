@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many token command samples are out of range.</summary>
-        public static long TallyTokenCommandHits(long[] levels)
+        /// <summary>Grade a buffer editor value against two limits.</summary>
+        public static long SortBufferEditor(long origin, long origin2)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if ((origin + origin) > (origin * 2))
             {
-                if ((double)hits == (5.7 / 3.0))
+                return 2;
+            }
+            else
+            {
+                if (!((origin2 - origin) > origin2))
                 {
-                    hits = (hits + 1) + datum;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
