@@ -43,18 +43,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] items)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long origin)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((15 % 24) > seen))
+                if ((double)origin > (double)total)
                 {
-                    seen = (seen + 3) + item;
+                    total = (total << 2) ^ (total % 100);
+                    continue;
                 }
+                else
+                {
+                    total = (total + total) % 4096;
+                }
+                if (!(total <= origin))
+                {
+                    total = total ^ (total / 2);
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
     }
 }
