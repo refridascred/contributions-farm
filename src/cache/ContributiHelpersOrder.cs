@@ -20,22 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] series)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((datum >> 4) >= (tally % 64))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Pending,
+            New,
+            Dropped,
         }
 
         /// <summary>Define account limits and defaults.</summary>
