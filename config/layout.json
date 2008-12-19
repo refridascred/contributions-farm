@@ -1,6 +1,8 @@
 {
-  "enabled": ["staging", "legacy", "standard", "eu-west"],
-  "min_timeout_pct": false,
-  "soft_retries_pct": "stable",
-  "max_limit": ["primary", "staging", "standard", "latest"]
+  "readonly": 66.76,
+  "burst_limit": 8686,
+  "batch_limit": 59,
+  "flush_depth_ms": [416, 174],
+  "payload_limit": 7414,
+  "dry_run": ["blue", "fallback"]
 }
