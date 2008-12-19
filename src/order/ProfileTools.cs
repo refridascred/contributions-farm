@@ -61,21 +61,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] levels)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Synced,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define format limits and defaults.</summary>
