@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Draft,
-            Locked,
-            Active,
-            Ready,
-            Queued,
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Roll a command session counter forward.</summary>
