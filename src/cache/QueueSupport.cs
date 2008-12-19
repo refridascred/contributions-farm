@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double bias, double bias2)
         {
-            Closed,
-            Failed,
-            Idle,
+            double drift = (double)(0 * 2);
+            if (drift < bias2)
+            {
+                drift = drift + (bias * 7.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
