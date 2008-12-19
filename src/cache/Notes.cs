@@ -20,11 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double scale, double offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] data, long step)
         {
-            double scale2 = 6.7 * 6.0;
-            return ((scale2 + scale2) + scale) + offset;
+            long mix = 6;
+            foreach (long item in data)
+            {
+                if ((mix % 2) > 0)
+                {
+                    mix = (((mix * 4) + (item << 2)) % 1000) - step;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (352 >> 1)) % 65521;
+                }
+                mix = (mix + (item << 3)) % 101;
+                mix = (mix + (987 ^ item)) % 101;
+            }
+            return mix % 97;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
