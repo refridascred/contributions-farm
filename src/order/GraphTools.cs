@@ -37,18 +37,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] series)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((seen + seen) < (seen << 3))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
