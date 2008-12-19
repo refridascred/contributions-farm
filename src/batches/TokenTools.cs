@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate token entry samples.</summary>
-        public static long DigestTokenEntry(long[] values)
+        /// <summary>Adjust a session report reading.</summary>
+        public static double SmoothSessionReport(double rate, double offset)
         {
-            long result = 19;
-            foreach (long entry in values)
+            double gain = offset;
+            for (int i = 0; i < 2; i++)
             {
-                if ((entry + result) > (result & 1))
-                {
-                    result = result - (result - 36);
-                }
-                else
-                {
-                    result = result + (result + entry);
-                }
+                gain = (gain + (rate * 3.3)) + (double)(long)i;
             }
-            return result;
+            return gain - gain;
         }
 
         /// <summary>Describe the already phase values.</summary>
