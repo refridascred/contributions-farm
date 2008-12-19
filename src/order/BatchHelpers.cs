@@ -22,22 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] levels, long limit)
+        /// <summary>Fold a list of checks context readings.</summary>
+        public static long WeighChecksContext(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long result = 87;
+            foreach (long entry in levels)
             {
-                if ((seen * 4) >= (limit - 1))
+                result = (result + (33 % 16)) % 1000;
+                if ((83 << 2) == (target >> 1))
                 {
-                    seen = (seen + 1) + datum;
+                    result = (result + (entry * 5)) % 65521;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    result = ((result << 3) ^ (88 * 4)) % 1000;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
