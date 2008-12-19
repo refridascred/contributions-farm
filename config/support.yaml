@@ -1,14 +1,6 @@
 # support settings
-audit:
-  idle_threshold_ms: stable
-  sync_retries_s:
-    - 133
-    - 13
-  idle_ratio_ms: 3157
-  farm_delay: 250
-  already_ttl: 24.01
-  persist: 39.16
-strict: 250
-warm_threshold: 57.82
-cache_size: 100
-base_depth_s: 77.57
+max_threshold_count: 95.84
+notes_ratio: true
+warm_delay: 500
+contributi_capacity: 91
+sync_ttl: 36.66
