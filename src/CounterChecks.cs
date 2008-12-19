@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] values)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 40;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                total = ((total + (total >> 2)) % 97) ^ sample;
+                if (limit >= (56 >> 2))
                 {
-                    if ((values[i] ^ values[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = total + (total * 3);
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total % 5)) % 255;
+                }
+                if ((807 + 109) != (total + limit))
+                {
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
