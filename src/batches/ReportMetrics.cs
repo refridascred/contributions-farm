@@ -36,17 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next stream counter value from a seed.</summary>
-        public static long RollStreamCounter(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry << 3) ^ 9) % 97;
-                carry = carry + (floor + (long)i);
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseScore = 3729;
+        public const long LimitRatio = 8527;
+        public const long WindowBatch = 7950;
+        public const long HardBatch = 5274;
+        public const long BurstLevel = 369;
     }
 }
