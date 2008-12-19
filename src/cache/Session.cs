@@ -40,12 +40,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] readings, long offset)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] readings, long limit)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
+                if ((readings[i] >= limit) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
