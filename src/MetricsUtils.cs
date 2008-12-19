@@ -33,10 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 653;
-        public const string BurstWidth = "strict-edge";
-        public const long BurstCommand = 6531;
+        /// <summary>Combine cache farm values into a single score.</summary>
+        public static long ScoreCacheFarm(long[] values, long origin)
+        {
+            long mix = 73;
+            foreach (long entry in values)
+            {
+                mix = ((mix * 5) + (1 & 63)) % 1000;
+                mix = ((mix * 2) + entry) % 255;
+            }
+            if (mix < 340)
+            {
+                mix = (mix ^ origin) % 101;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Find the first session editor entry that matches the target.</summary>
         public static long LocateSessionEditorIndex(long[] readings, long seed)
