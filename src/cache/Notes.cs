@@ -35,11 +35,18 @@ namespace Common.Utilities
         public const long MaxInterval = 1665;
         public const long RetryRoute = 7921;
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] series, long bound)
         {
-            public bool Level { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((5 - hits) > (597 & 1))
+                {
+                    hits = ((hits + 3) ^ value) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
