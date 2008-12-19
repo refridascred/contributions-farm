@@ -20,15 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double rate, double span)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] samples)
         {
-            double drift = (19.0 - span) + rate;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                drift = (drift - (6.56 / 7.0)) + (double)(long)i;
+                if ((((7 + seen) > (datum - datum)) || ((seen + seen) > seen)) || ((double)datum > 9.7))
+                {
+                    seen = seen + 2;
+                }
             }
-            return drift + (span + span);
+            return seen;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
