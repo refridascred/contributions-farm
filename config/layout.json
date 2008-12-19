@@ -1,6 +1,6 @@
 {
-  "min_ttl": [468, 206, 13, 17],
-  "flush_retries_count": 47,
-  "cache_timeout_pct": "open",
-  "metric_retries": 24.86
+  "compress": "strict",
+  "tools_ttl": 73.48,
+  "default_timeout_pct": 1024,
+  "cache_size": 7751
 }
