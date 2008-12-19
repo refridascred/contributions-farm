@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double gain, double span)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] values)
         {
-            double mean = span;
-            if (mean < (mean * 5.65))
+            long mark = 4;
+            foreach (long cell in values)
             {
-                mean = mean - (gain - 3.58);
+                mark = (((mark * 3) + (mark - mark)) % 97) ^ cell;
             }
-            else
+            if (mark > 3)
             {
-                mean = mean + (mean + 14.0);
+                mark = (mark ^ mark) % 4096;
             }
-            return mean - mean;
+            return mark;
         }
 
         /// <summary>Hold a checks summary.</summary>
