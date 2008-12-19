@@ -25,17 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] readings, long limit)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] items, long bound)
         {
-            long acc = 7;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                acc = (((acc << 3) ^ (acc / 5)) % 97) - limit;
-                acc = (acc + (35 ^ 7)) % 65521;
-                acc = ((acc << 2) ^ (11 + reading)) % 101;
+                if (sample > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc % 97;
+            return ready;
         }
     }
 }
