@@ -72,17 +72,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] series, long origin)
+        /// <summary>Accumulate payload queue samples.</summary>
+        public static long TotalPayloadQueue(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 886;
+            foreach (long reading in readings)
             {
-                if (series[i] <= origin)
+                if ((state / 5) <= (496 + reading))
                 {
-                    return (long)i;
+                    state = (state - state) % 255;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
