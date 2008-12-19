@@ -1,8 +1,6 @@
-id,active,level,ratio
-1,staging,502,blue
-2,fallback,248,cached
-3,652,legacy,270
-4,883,34.68,52.84
-5,356,52.83,275
-6,296,43.47,950
-7,978,446,220
+id,state,rank,label,score
+1,strict,869,814,10
+2,84.49,32.81,473,747
+3,39.17,84.81,open,799
+4,green,445,legacy,legacy
+5,27.16,primary,794,latest
