@@ -1,10 +1,4 @@
 # githubfarm settings
-audit: 6554
-dry_run: 500
-max_capacity_count: strict
-entry_delay:
-  editor_retries: 500
-  strict: 250
-  verbose: 66.53
-readonly: 100
-sync_ttl_s: 23.41
+poll_interval_ms: open
+burst_retries_count: true
+warm_threshold_pct: 9522
