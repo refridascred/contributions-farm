@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] data)
-        {
-            long sum = 82;
-            foreach (long sample in data)
-            {
-                sum = sum - (sum ^ sum);
-                if ((1 - sample) != (sample >> 1))
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinRatio = "open-v2";
+        public const long MaxStream = 8105;
+        public const long StepDepth = 5486;
+        public const long LimitStream = 8438;
+        public const long RetryStream = 4936;
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
