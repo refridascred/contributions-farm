@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank schema contributi input into a small class.</summary>
-        public static long BucketSchemaContributi(long limit, long seed)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long bound)
         {
-            long delta = limit ^ seed;
-            if ((2.91 / 8.0) == (double)seed)
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 2;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (((double)seed >= (0.88 * 0.1)) || (((-37) + limit) < (limit - 574)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((delta - seed) <= 4)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the commits status values.</summary>
