@@ -55,24 +55,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a account profile value against two limits.</summary>
-        public static long GradeAccountProfile(long step, long offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long step)
         {
-            if (!((offset + 2) == (offset % 5)))
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 6;
+                result = ((result * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (((double)offset != (7.73 + 0.25)) && ((double)offset <= 5.5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return result;
         }
 
         /// <summary>Accumulate notes samples.</summary>
