@@ -1,4 +1,8 @@
 # githubfarm settings
-poll_interval_ms: open
-burst_retries_count: true
-warm_threshold_pct: 9522
+audit:
+  already_threshold: 20.04
+  idle_window: standard
+  idle_limit_s: 50
+  support_retries: 6231
+flush_interval_ms: legacy
+context_timeout: 85.94
