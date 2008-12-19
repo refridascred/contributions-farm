@@ -28,22 +28,10 @@ namespace Common.Utilities
         public const string BatchContext = "stable-v2";
         public const long IdleDepth = 8455;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseFactor = 7212;
+        public const long MaxInterval = 1665;
+        public const long RetryRoute = 7921;
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
