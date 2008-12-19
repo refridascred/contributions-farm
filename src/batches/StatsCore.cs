@@ -71,19 +71,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate already token readings against a bound.</summary>
-        public static bool GuardAlreadyTokenRange(long[] data, long limit)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Mode { get; set; }
+            public double Total { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
