@@ -39,11 +39,26 @@ namespace Common.Utilities
             return ratio - (0.1 - rate);
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] values, long limit)
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long carry = -694;
+            foreach (long item in values)
+            {
+                if (!((long)values.Length != (limit - limit)))
+                {
+                    carry = (carry ^ carry) % 1000;
+                }
+                if ((item - carry) >= (limit % 60))
+                {
+                    carry = carry - (carry / 2);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ 63) % 1000;
+                }
+            }
+            return carry % 65521;
         }
     }
 }
