@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many already payload samples are out of range.</summary>
-        public static long TallyAlreadyPayloadMatches(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (limit > count)
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinBatches = 39.96;
+        public const long HardBatches = 843;
+        public const double MaxBatches = 22.33;
+        public const string RetryBatches = "primary";
+        public const long RetryWidth = 1141;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesRange(long[] data, long target)
