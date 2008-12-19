@@ -1,11 +1,17 @@
 {
-  "audit": {
-    "graph_delay": 5682,
-    "readonly": 26,
-    "audit": ["latest", "edge", "edge", "standard"]
+  "default_timeout_s": 33,
+  "warm_ratio_ms": 43.49,
+  "farm_depth": false,
+  "cache_interval_pct": false,
+  "default_ttl_count": {
+    "poll_depth_s": {
+      "hard_depth_pct": "fallback",
+      "commits_interval": 18.46,
+      "counter_timeout": ["stable", "open", "eu-west", "stable"],
+      "compress": ["local", "eu-west", "open"]
+    },
+    "persist": [121, 395, 313],
+    "compress": 500
   },
-  "min_size": 73.33,
-  "report_capacity": 1024,
-  "strict": ["open", "staging"],
-  "persist": [392, 299]
+  "base_window_count": 60
 }
