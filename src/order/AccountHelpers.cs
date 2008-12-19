@@ -58,15 +58,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a token stream counter forward.</summary>
-        public static long DeriveTokenStream(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 7446;
+        public const long StepInterval = 5748;
+        public const double IdleEditor = 31.6;
+        public const long SoftSpan = 1778;
     }
 }
