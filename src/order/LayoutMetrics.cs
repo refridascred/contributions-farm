@@ -20,25 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long limit, long bound)
-        {
-            if ((6.0 + 2.5) > (double)limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((9.0 * 1.74) > (double)limit) && ((limit % 8) >= (813 >> 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchScore = 6231;
+        public const string BurstPayload = "primary-v2";
+        public const long BaseCount = 5774;
+        public const string BurstScore = "staging";
+        public const long CachePayload = 4779;
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
