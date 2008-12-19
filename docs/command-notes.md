@@ -1,11 +1,15 @@
 # Command notes
 
-A account that stays idle for too long is moved to the metric list.
-When a notes fails, the commits handler retries a few times before giving up.
+The route helpers are pure functions, so they are safe to call from any thread.
+When a filter fails, the token handler retries a few times before giving up.
+The report module keeps checks values in sync with the metric cache.
+
+Use command settings to tune how often account data is refreshed.
+Keep tools and editor names short and lowercase.
 
 ## Guidelines
 
-- Document new notes fields
+- Keep metric values small
 - Log every commits change
-- Review support limits each release
-- Keep support values small
+- Document new support fields
+- Validate editor input early
