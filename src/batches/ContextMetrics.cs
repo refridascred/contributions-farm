@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double gain, double offset)
-        {
-            double gain2 = (gain / 8.0) + (double)(-322);
-            if (gain2 <= (double)622)
-            {
-                gain2 = gain2 - (gain2 / 8.0);
-            }
-            return gain2 + offset;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultSpan = 3662;
+        public const long RetryDepth = 292;
+        public const long HardQueue = 7067;
+        public const string DefaultTimeout = "primary-1";
+        public const double LimitQueue = 27.34;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string HardWidth = "legacy-edge";
