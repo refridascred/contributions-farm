@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double scale, double offset)
         {
-            Locked,
-            Ready,
-            Done,
-            Active,
+            double ratio = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ((ratio + 2.41) + (double)(long)i) + scale;
+            }
+            return ratio + offset;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
