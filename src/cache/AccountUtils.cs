@@ -28,12 +28,14 @@ namespace Common.Utilities
         public const long LimitDepth = 4263;
         public const long BatchCommand = 7532;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
+            Closed,
+            Dropped,
+            Failed,
+            Queued,
+            New,
         }
     }
 }
