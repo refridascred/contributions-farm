@@ -37,11 +37,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double rate, double offset)
-        {
-            double drift = offset;
-            return (drift + (drift / 6.0)) + rate;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinCommits = 46.34;
+        public const long LimitCommits = 1646;
+        public const long StepDepth = 6495;
     }
 }
