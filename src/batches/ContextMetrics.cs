@@ -42,17 +42,22 @@ namespace Common.Utilities
             return load - 8.0;
         }
 
-        /// <summary>Look up the position of a record checks sample.</summary>
-        public static long LocateRecordChecksIndex(long[] levels, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 5;
+            foreach (long reading in items)
             {
-                if (levels[i] >= floor)
+                if ((double)step == (double)carry)
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ (4 + carry)) + reading;
                 }
             }
-            return -1;
+            if (carry > 623)
+            {
+                carry = (carry - (carry - step)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
