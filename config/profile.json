@@ -1,7 +1,7 @@
 {
-  "notes_interval": "staging",
-  "flush_ratio": [135, 394],
-  "hard_delay_pct": "green",
-  "hard_depth_ms": true,
-  "command_size": "eu-west"
+  "order_delay": "cached",
+  "default_size_s": [164, 493, 400],
+  "hard_limit_ms": 2288,
+  "schema_threshold": "blue",
+  "idle_limit": false
 }
