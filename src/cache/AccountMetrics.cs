@@ -26,12 +26,20 @@ namespace Common.Utilities
             return ((drift + drift) + ratio) + floor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 4870;
-        public const long IdleScore = 6514;
-        public const long HardSpan = 48;
-        public const long LimitAccount = 3260;
-        public const long IdleLevel = 6635;
+        /// <summary>Validate commits editor readings against a bound.</summary>
+        public static bool ValidateCommitsEditorRange(long[] values, long step)
+        {
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string CacheSize = "open-edge";
