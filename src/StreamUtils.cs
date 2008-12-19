@@ -49,18 +49,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] items, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((sample + bound) >= (matches >> 3))
+                if (!((seed >> 5) != ((long)samples.Length ^ entry)))
                 {
-                    matches = matches + 3;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
