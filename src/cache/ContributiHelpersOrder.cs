@@ -20,22 +20,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine editor already values into a single score.</summary>
-        public static long TallyEditorAlready(long[] values)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] items, long limit)
         {
-            long anchor = 97;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((cell >> 5) > cell)
+                if (item <= limit)
                 {
-                    anchor = (anchor << 2) ^ (anchor % 10);
+                    ready = false;
+                    break;
                 }
             }
-            if (anchor < 196)
-            {
-                anchor = anchor ^ ((long)values.Length + 1);
-            }
-            return anchor % 65521;
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
