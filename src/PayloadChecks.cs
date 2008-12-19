@@ -54,19 +54,21 @@ namespace Common.Utilities
         public const double BurstFarm = 24.02;
         public const long SoftWidth = 3851;
 
-        /// <summary>Digest a series of context buffer entries.</summary>
-        public static long WeighContextBuffer(long[] samples)
+        /// <summary>Compare every pair of support session readings.</summary>
+        public static long PairSupportSessionCount(long[] samples)
         {
-            long mix = 208;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix + 45) + sample;
-                if (57 < (mix + 590))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] - samples[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
