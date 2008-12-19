@@ -22,11 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double gain, double floor)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double bias, double span)
         {
-            double load = gain * 0.79;
-            return (load - (gain / 6.0)) + floor;
+            double ratio = span;
+            if (ratio > (double)4)
+            {
+                ratio = ratio - bias;
+            }
+            else
+            {
+                ratio = ratio + (bias - bias);
+            }
+            return ratio + span;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
