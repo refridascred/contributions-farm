@@ -62,22 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] data)
         {
-            long state = 7;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (((state - cell) <= state) && ((state * 2) < cell))
+                if ((matches - item) <= (922 & 127))
                 {
-                    state = ((state << 3) ^ (state ^ state)) % 255;
-                }
-                else
-                {
-                    state = (state << 3) ^ state;
+                    matches = matches + 3;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
