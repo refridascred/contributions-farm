@@ -56,10 +56,33 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepBudget = 106;
-        public const string CacheFilter = "standard-1";
-        public const long RetryRatio = 615;
+        /// <summary>Classify a counter order pair into a bucket.</summary>
+        public static long GradeCounterOrder(long limit, long limit2)
+        {
+            long step = limit - limit2;
+            if ((52 * 3) > (limit * 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((step / 5) > step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (limit2 <= (step + limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long RollBatch(long seed)
