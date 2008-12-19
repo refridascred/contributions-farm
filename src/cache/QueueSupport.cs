@@ -30,17 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a session payload reading by value.</summary>
-        public static long FindSessionPayloadIndex(long[] levels, long origin)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Paused,
+            Draft,
+            Ready,
         }
     }
 }
