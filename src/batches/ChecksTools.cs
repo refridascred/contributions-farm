@@ -40,21 +40,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] items)
+        /// <summary>Check that every report notes entry stays within the limit.</summary>
+        public static bool ValidateReportNotesBounds(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry != limit)
                 {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
