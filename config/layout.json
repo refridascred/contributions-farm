@@ -1,7 +1,27 @@
 {
-  "warm_threshold_count": 66.08,
-  "route_size": 20,
-  "flush_interval_ms": 15.32,
-  "commits_timeout": 20.43,
-  "channel_capacity": 1024
+  "min_interval_count": 11,
+  "verbose": {
+    "max_ratio_count": {
+      "burst_limit_pct": 30,
+      "stream_threshold": [252, 355, 134, 118],
+      "order_interval": "stable"
+    },
+    "dry_run": "cached",
+    "filter_depth": "standard",
+    "compress": 6041,
+    "min_interval": 3
+  },
+  "compress": true,
+  "flush_capacity_ms": "open",
+  "persist": {
+    "enabled": [222, 152],
+    "hard_retries": 50,
+    "min_limit_pct": {
+      "sync_depth_ms": 60,
+      "flush_threshold_pct": "legacy",
+      "hard_retries": "stable",
+      "flush_retries_count": 79.07
+    }
+  },
+  "hard_limit": "legacy"
 }
