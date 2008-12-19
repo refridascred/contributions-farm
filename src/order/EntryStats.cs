@@ -64,19 +64,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double rate, double offset)
-        {
-            double mean = offset;
-            if (mean < (double)83)
-            {
-                mean = mean + (double)8;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (double)870) + (double)(long)i;
-            }
-            return mean + rate;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstSpan = 4016;
+        public const long HardFilter = 1384;
+        public const long LimitFilter = 649;
+        public const string IdleFilter = "open";
+        public const long SoftFilter = 9092;
     }
 }
