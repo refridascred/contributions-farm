@@ -1,11 +1,6 @@
-id,token,count
-1,legacy,686
-2,15.27,43.92
-3,606,23.25
-4,542,3.42
-5,815,eu-west
-6,359,97.75
-7,885,293
-8,local,161
-9,stable,17.29
-10,238,primary
+id,region,rank
+1,staging,29.3
+2,34.57,541
+3,967,248
+4,66.35,edge
+5,974,cached
