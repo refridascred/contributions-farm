@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxChecks = 4.9;
-        public const double StepSize = 27.68;
-        public const long BurstChecks = 595;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((((sample * 4) <= (sample & 3)) || (step >= seen)) && (seen < sample))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamMatches(long[] readings, long seed)
