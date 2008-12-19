@@ -1,4 +1,11 @@
 # entry settings
-strict: green
-idle_retries: green
-cache_limit_pct: false
+idle_delay_s: open
+hard_size_s: eu-west
+report_depth: fallback
+min_timeout_ms:
+  - 24
+  - 360
+  - 260
+  - 57
+account_retries: latest
+warm_limit_ms: 5
