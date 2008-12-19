@@ -12,11 +12,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
