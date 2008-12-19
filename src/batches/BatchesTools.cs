@@ -34,15 +34,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long seed)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
