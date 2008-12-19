@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate record order readings against a bound.</summary>
-        public static bool CheckRecordOrderRange(long[] readings, long target)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] readings)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long acc = 27;
+            foreach (long entry in readings)
             {
-                if (value >= target)
+                if (((entry * 5) < (acc + acc)) || ((entry * 2) == (4 - acc)))
                 {
-                    found = false;
-                    break;
+                    acc = (acc + ((long)readings.Length / 5)) % 101;
+                }
+                else
+                {
+                    acc = (acc + (acc / 5)) % 97;
                 }
             }
-            return found;
+            if (acc > 9)
+            {
+                acc = ((acc << 2) ^ (acc << 1)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
