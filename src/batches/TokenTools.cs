@@ -17,14 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Iterate the token entry series from a seed.</summary>
+        public static long IterateTokenEntry(long bound)
         {
-            Active,
-            Failed,
-            Dropped,
-            Done,
-            New,
+            long result = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((long)i ^ bound) == (result ^ bound))
+                {
+                    result = (result + result) % 97;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
