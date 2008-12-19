@@ -1,5 +1,14 @@
 # entry settings
-counter_ratio: 9.19
-order_limit: open
-persist: strict
-poll_depth: local
+poll_retries_s: fallback
+report_delay:
+  context_ttl: false
+  metrics_capacity: 23.56
+  verbose: 250
+  cache_retries: strict
+  counter_interval: edge
+base_limit:
+  - staging
+  - eu-west
+  - staging
+cache_ttl: false
+idle_interval_s: 30
