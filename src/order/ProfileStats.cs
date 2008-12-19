@@ -21,21 +21,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of contributi stream readings.</summary>
-        public static long CompareContributiStreamCount(long[] samples)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
