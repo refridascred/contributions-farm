@@ -35,11 +35,23 @@ namespace Common.Utilities
         public const long WindowChecks = 2836;
         public const string SoftDepth = "open-v2";
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double weight, double floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] samples, long floor)
         {
-            double weight2 = floor;
-            return (weight2 - floor) + weight;
+            long total = 8;
+            foreach (long entry in samples)
+            {
+                if ((floor >> 5) < (total - entry))
+                {
+                    total = ((total * 5) + (263 + floor)) % 1000;
+                    total = (total ^ (3 ^ (long)samples.Length)) % 65521;
+                }
+                if (((floor % 100) <= (floor + floor)) && ((total + total) <= (entry - entry)))
+                {
+                    total = total ^ entry;
+                }
+            }
+            return total;
         }
     }
 }
