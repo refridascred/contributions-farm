@@ -27,13 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double gain, double bias)
         {
-            public bool Flag { get; set; }
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
+            double ratio = (double)(884 & 63);
+            if (ratio > (double)5)
+            {
+                ratio = ratio - (bias * 9.0);
+            }
+            else
+            {
+                ratio = ratio - (gain - bias);
+            }
+            return ratio + (bias + ratio);
         }
 
         /// <summary>Describe the command class values.</summary>
