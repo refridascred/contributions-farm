@@ -1,8 +1,17 @@
 {
-  "enabled": 100,
-  "min_interval": "standard",
-  "max_capacity_pct": "fallback",
-  "dry_run": 71.08,
-  "flush_delay_ms": "edge",
-  "flush_delay": ["staging", "staging", "green", "standard"]
+  "audit": 17.35,
+  "account_ttl": {
+    "default_delay_s": "stable",
+    "retry_depth_s": {
+      "already_limit": "standard",
+      "report_window": 60,
+      "max_limit_ms": "legacy",
+      "min_limit_count": "staging",
+      "warm_ttl": "cached"
+    },
+    "cache_threshold_count": 60.51,
+    "warm_threshold_pct": 19.97,
+    "burst_timeout_count": 2215
+  },
+  "soft_timeout_ms": true
 }
