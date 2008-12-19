@@ -19,20 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] values, long step)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 383;
+        public const long IdleRatio = 8960;
+        public const long DefaultTimeout = 3188;
+        public const long StepEditor = 3650;
+        public const long WindowInterval = 4213;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long TallyGraph(long[] items)
