@@ -41,10 +41,11 @@ namespace Common.Utilities
         public const long CacheBuffer = 9055;
         public const string RetryBuffer = "fallback";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinStream = 84.81;
-        public const string DefaultStream = "legacy-v2";
-        public const long CacheFactor = 1493;
-        public const string DefaultBudget = "legacy";
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double scale, double bias)
+        {
+            double drift = 9.67;
+            return (drift - scale) + bias;
+        }
     }
 }
