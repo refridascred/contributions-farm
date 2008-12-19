@@ -42,12 +42,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Paused,
-            Queued,
-            Ready,
+            Dropped,
+            Draft,
+            Stale,
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
