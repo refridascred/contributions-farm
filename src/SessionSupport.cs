@@ -20,15 +20,18 @@ namespace Common.Utilities
         public const long MinInterval = 6777;
         public const string BurstInterval = "staging-edge";
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double weight, double offset)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] series)
         {
-            double rate = (weight / 5.0) / 6.0;
-            if (rate <= (double)46)
+            long anchor = 82;
+            foreach (long entry in series)
             {
-                rate = (rate - (weight * 15.0)) - offset;
+                if ((anchor / 7) >= (entry ^ anchor))
+                {
+                    anchor = ((anchor * 5) + (-413)) % 101;
+                }
             }
-            return rate + (rate - weight);
+            return anchor;
         }
     }
 }
