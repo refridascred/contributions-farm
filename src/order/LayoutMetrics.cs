@@ -25,11 +25,18 @@ namespace Common.Utilities
         public const string BurstScore = "staging";
         public const long CachePayload = 4779;
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] readings)
         {
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (seen > reading)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
