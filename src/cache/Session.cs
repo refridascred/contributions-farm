@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long origin)
         {
-            Idle,
-            Dropped,
-            Locked,
-            Stale,
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = (acc + (578 % 5)) % 4096;
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
