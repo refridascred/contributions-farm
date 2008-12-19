@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long limit)
         {
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
-            public long Level { get; set; }
-            public double Rank { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((anchor & 63) < anchor)
+                {
+                    anchor = (anchor << 3) ^ (limit + (long)i);
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    anchor = ((anchor << 3) ^ (limit + anchor)) + (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
