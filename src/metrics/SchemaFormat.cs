@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Schema format helpers.</summary>
     public static class SchemaFormat
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long origin, long bound)
+        /// <summary>Look up the position of a booking route sample.</summary>
+        public static long LookupBookingRouteIndex(long[] readings, long limit)
         {
-            if ((12.0 < (double)origin) && ((33 + bound) > 151))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((391 - origin) < 2)
+                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two report measurements.</summary>
