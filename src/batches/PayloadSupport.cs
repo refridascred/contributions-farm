@@ -13,12 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Validate commits checks readings against a bound.</summary>
+        public static bool GuardCommitsChecksRange(long[] series, long offset)
         {
-            New,
-            Idle,
-            Failed,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of report channel readings.</summary>
