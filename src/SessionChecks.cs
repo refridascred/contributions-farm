@@ -44,10 +44,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseSession = "local-1";
-        public const double BurstSession = 61.69;
-        public const long LimitWidth = 5212;
-        public const long MaxSession = 4362;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((matches & 3) >= (matches - entry))
+                {
+                    matches = (matches + 2) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
