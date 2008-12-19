@@ -69,11 +69,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleCount = 6556;
-        public const long SoftCount = 3357;
-        public const double MinRatio = 17.81;
-        public const double BaseGraph = 49.95;
-        public const long StepGraph = 5032;
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double gain, double offset)
+        {
+            double weight = offset - gain;
+            return weight - gain;
+        }
     }
 }
