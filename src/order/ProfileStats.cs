@@ -44,11 +44,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 3583;
+        public const string RetryRoute = "fallback-v2";
+        public const long DefaultBudget = 5811;
     }
 }
