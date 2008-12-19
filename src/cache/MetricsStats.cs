@@ -49,17 +49,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = ((mix * 3) + (mix * 4)) % 97;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 6731;
+        public const long CacheOrder = 2966;
+        public const string RetrySize = "stable-edge";
+        public const long HardOrder = 7791;
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
