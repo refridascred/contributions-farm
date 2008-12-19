@@ -13,22 +13,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] samples)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (tally > (long)samples.Length)
+                if (series[i] <= offset)
                 {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
