@@ -42,21 +42,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] values)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value >= 1)
                 {
-                    if ((values[i] + values[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
