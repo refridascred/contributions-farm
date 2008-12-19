@@ -55,15 +55,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long step)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
