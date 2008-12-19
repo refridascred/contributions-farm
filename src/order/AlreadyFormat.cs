@@ -23,14 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultSpan = 77.41;
+        public const long BatchSpan = 6152;
+        public const double BurstMetric = 38.7;
+        public const string SoftLevel = "alpha-1";
+        public const long BatchWidth = 9072;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long DigestBatch(long[] samples)
