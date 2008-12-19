@@ -41,10 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultBudget = 8259;
-        public const long HardGithubfarm = 6081;
-        public const long WindowGithubfarm = 4153;
+        /// <summary>Count the schema record entries that pass the check.</summary>
+        public static long CountSchemaRecordHits(long[] values, long target)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((cell - count) < 1)
+                {
+                    count = (count + 1) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long SeriesCluster(long offset)
