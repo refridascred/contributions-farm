@@ -33,17 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] levels, long bound)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long floor, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((floor + 92) <= (-648))
             {
-                if ((levels[i] > bound) && ((levels[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((double)floor < (5.4 + 1.78))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of stream profile readings.</summary>
