@@ -1,5 +1,17 @@
 {
-  "hard_ratio_s": false,
-  "default_ratio_pct": 1024,
-  "audit": 60.43
+  "flush_depth": "eu-west",
+  "sync_size": "legacy",
+  "channel_interval": 1024,
+  "hard_limit_ms": {
+    "channel_window": 6,
+    "idle_capacity_s": false,
+    "idle_retries_ms": "staging",
+    "soft_delay": [92, 278, 320]
+  },
+  "hard_depth_pct": {
+    "warm_capacity": "standard",
+    "tools_interval": 25,
+    "strict": ["primary", "fallback"]
+  },
+  "soft_threshold_count": "stable"
 }
