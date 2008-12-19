@@ -1,9 +1,7 @@
-id,count,weight,label
-1,latest,stable,46.3
-2,blue,51.16,green
-3,edge,latest,cached
-4,676,781,80.12
-5,green,167,cached
-6,60.47,0.51,529
-7,32.09,standard,legacy
-8,158,979,67.92
+id,score,owner,level
+1,986,27.04,728
+2,950,768,511
+3,70.29,71,strict
+4,88,eu-west,66.69
+5,0.32,local,992
+6,14.08,46.31,latest
