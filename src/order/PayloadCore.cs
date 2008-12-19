@@ -14,11 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultStream = "strict";
-        public const string BurstSpan = "local";
-        public const string BaseWidth = "open-edge";
-        public const long StepStream = 8624;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheMatches(long[] samples, long target)
