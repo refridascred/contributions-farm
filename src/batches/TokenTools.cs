@@ -33,18 +33,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many format report samples are out of range.</summary>
-        public static long MeasureFormatReportGaps(long[] levels)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double gain = scale;
+            if (gain <= 3.6)
             {
-                if ((double)matches == (4.29 - 7.91))
-                {
-                    matches = (matches + 2) + reading;
-                }
+                gain = gain + 5.67;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - floor) - (double)(long)i;
+            }
+            return gain + (scale - floor);
         }
     }
 }
