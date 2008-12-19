@@ -1,11 +1,5 @@
 # entry settings
-idle_delay_s: open
-hard_size_s: eu-west
-report_depth: fallback
-min_timeout_ms:
-  - 24
-  - 360
-  - 260
-  - 57
-account_retries: latest
-warm_limit_ms: 5
+counter_ratio: 9.19
+order_limit: open
+persist: strict
+poll_depth: local
