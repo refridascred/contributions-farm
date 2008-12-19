@@ -73,16 +73,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Check that every session filter entry stays within the limit.</summary>
+        public static bool GuardSessionFilterRange(long[] data, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                anchor = (anchor + (floor - floor)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (reading < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
     }
 }
