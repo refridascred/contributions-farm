@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((step - step) >= carry)
-                {
-                    break;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Fold a list of stream profile readings.</summary>
