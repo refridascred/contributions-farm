@@ -1,6 +1,9 @@
 # githubfarm settings
-persist: true
-batch_size_count: 30
-batch_threshold_count: 4139
-filter_capacity: true
-batches_timeout: 21.84
+dry_run: 60
+retry_size_ms: stable
+batch_ratio:
+  - 324
+  - 284
+  - 109
+retry_timeout_count: 57.2
+batch_interval_ms: 82.99
