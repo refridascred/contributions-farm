@@ -55,22 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] data)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits & 3) >= entry)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Done,
+            Closed,
+            Pending,
         }
 
         /// <summary>Validate stats metrics readings against a bound.</summary>
