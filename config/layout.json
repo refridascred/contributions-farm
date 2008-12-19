@@ -1,6 +1,6 @@
 {
-  "idle_delay": 5876,
-  "max_ttl": 61.79,
-  "hard_delay_ms": "strict",
-  "entry_size": true
+  "hard_interval_pct": ["open", "latest", "stable", "standard"],
+  "compress": ["staging", "legacy", "open", "standard"],
+  "hard_size_pct": true,
+  "warm_ratio": 16.93
 }
