@@ -52,18 +52,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] values, long floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long step, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            if ((8.0 / 6.0) < (double)bound)
             {
-                if ((floor << 1) > sample)
+                return 5;
+            }
+            else
+            {
+                if ((6.7 * 4.0) == (double)bound)
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step >= (6.0 + 5.87))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
