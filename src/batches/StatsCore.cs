@@ -52,32 +52,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a counter order pair into a bucket.</summary>
-        public static long GradeCounterOrder(long limit, long limit2)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] data, long floor)
         {
-            long step = limit - limit2;
-            if ((52 * 3) > (limit * 5))
+            long total = 3;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((step / 5) > step))
+                if ((item << 2) < (floor % 64))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (limit2 <= (step + limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    total = (total << 3) ^ (item + item);
                 }
             }
+            return total;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
