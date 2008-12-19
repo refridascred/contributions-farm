@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] items, long offset)
+        /// <summary>Find the first channel cache entry that matches the target.</summary>
+        public static long FindChannelCacheIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] > offset)
+                if (samples[i] >= bound)
                 {
                     return (long)i;
                 }
