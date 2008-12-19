@@ -67,38 +67,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long seed, long target)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] samples, long target)
         {
-            if (!((target * 3) == (54 % 8)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed ^ seed) > (target * 2))
+                if ((samples[i] <= target) && ((samples[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (target >= seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed & 63) >= (seed + target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
