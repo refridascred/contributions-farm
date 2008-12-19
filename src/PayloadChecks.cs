@@ -40,18 +40,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit checks filter readings against a rule.</summary>
-        public static long CountChecksFilterGaps(long[] items, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((cell <= (count - count)) || ((double)bound > 5.9))
+                if ((double)tally <= 2.0)
                 {
-                    count = count + 3;
+                    tally = ((tally + 2) ^ item) - floor;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
