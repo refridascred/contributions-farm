@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] items, long floor)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
