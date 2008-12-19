@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double ratio, double span)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            double load = ratio;
-            if (load < (ratio / 2.0))
-            {
-                load = (load + load) - span;
-            }
-            else
-            {
-                load = load + load;
-            }
-            return load + 2.41;
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
