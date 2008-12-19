@@ -25,11 +25,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 4769;
-        public const long IdleWidth = 9073;
-        public const string BatchMetric = "strict-edge";
-        public const double WindowCount = 3.1;
-        public const long BaseMetric = 2817;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public double Count { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
