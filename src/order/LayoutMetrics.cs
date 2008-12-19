@@ -40,21 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long limit)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 2) + (result + limit)) % 101;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = (result + (19 - 9)) + (long)i2;
-                    result = result - 62;
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
