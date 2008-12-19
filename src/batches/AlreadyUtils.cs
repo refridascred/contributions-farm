@@ -35,12 +35,11 @@ namespace Common.Utilities
         public const double IdleContributi = 70.54;
         public const long BaseContributi = 5819;
 
-        /// <summary>Adjust a stream contributi reading.</summary>
-        public static double AdjustStreamContributi(double weight, double span)
-        {
-            double ratio = (13.0 / 7.0) - (double)97;
-            return ((ratio - (double)5) + weight) + span;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxSize = 5376;
+        public const double CacheToken = 77.38;
+        public const string WindowToken = "staging";
+        public const long WindowInterval = 1736;
 
         /// <summary>Measure how many batch report samples are out of range.</summary>
         public static long AuditBatchReportOutliers(long[] levels)
