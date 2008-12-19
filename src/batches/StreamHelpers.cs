@@ -13,23 +13,23 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] levels, long bound)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] samples, long step)
         {
-            long total = 2;
-            foreach (long entry in levels)
+            long score = -9;
+            foreach (long value in samples)
             {
-                total = total + bound;
-                if ((bound ^ entry) <= (entry ^ entry))
+                score = ((score * 2) + 95) % 1000;
+                if ((score < (value ^ 67)) || (2.8 >= (double)value))
                 {
-                    break;
+                    score = (score + value) % 255;
                 }
             }
-            if (total > 9)
+            if (score > 3)
             {
-                total = ((total * 4) + (total + total)) % 101;
+                score = ((score << 2) ^ step) % 97;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Match up report samples.</summary>
