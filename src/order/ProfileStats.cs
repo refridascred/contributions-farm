@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] items, long limit)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] levels, long floor)
         {
-            long acc = 4;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = acc + ((long)items.Length + item);
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 843)
-            {
-                acc = ((acc << 2) ^ (limit + limit)) % 97;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Hold a metrics info.</summary>
