@@ -59,9 +59,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitLayout = 55.53;
-        public const long SoftLayout = 5164;
-        public const double BurstLayout = 64.2;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 2545;
+        public const long DefaultCommits = 3414;
+        public const long LimitCommits = 1963;
+        public const long HardDepth = 6561;
     }
 }
