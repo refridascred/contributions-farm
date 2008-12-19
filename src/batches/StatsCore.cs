@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit session graph readings against a rule.</summary>
-        public static long MeasureSessionGraphOutliers(long[] data, long target)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((double)count > (16.0 / 4.0))
-                {
-                    count = ((count + 2) ^ value) - target;
-                }
-            }
-            return count;
+            Locked,
+            Closed,
+            Draft,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
