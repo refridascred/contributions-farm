@@ -33,13 +33,38 @@ namespace Common.Utilities
             return drift + (span + span);
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Rank buffer profile input into a small class.</summary>
+        public static long SortBufferProfile(long step, long step2)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
+            if ((step <= step2) || (step <= (step2 - step2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (87 >= (step2 + step2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step2 <= (step2 * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step << 3) > (step2 ^ step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many metric session samples are out of range.</summary>
