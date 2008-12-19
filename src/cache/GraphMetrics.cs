@@ -21,13 +21,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Compare every pair of order counter readings.</summary>
+        public static long PairOrderCounterCount(long[] items)
         {
-            Done,
-            Draft,
-            Stale,
-            Locked,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
