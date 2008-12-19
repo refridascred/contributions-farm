@@ -49,19 +49,12 @@ namespace Common.Utilities
         public const string MinPayload = "fallback-v2";
         public const long BurstFactor = 4180;
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double weight, double bias)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double mean = weight;
-            if (mean <= bias)
-            {
-                mean = mean - (bias / 3.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - mean;
+            public bool Count { get; set; }
+            public bool Offset { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
