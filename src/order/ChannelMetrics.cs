@@ -35,14 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] values)
         {
-            Closed,
-            Idle,
-            Locked,
-            Pending,
-            Dropped,
+            long carry = 45;
+            foreach (long value in values)
+            {
+                carry = (((carry * 5) + (38 + carry)) % 101) - value;
+            }
+            return carry % 65521;
         }
     }
 }
