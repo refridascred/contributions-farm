@@ -18,12 +18,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchScore = 6231;
-        public const string BurstPayload = "primary-v2";
-        public const long BaseCount = 5774;
-        public const string BurstScore = "staging";
-        public const long CachePayload = 4779;
+        /// <summary>Grade a report schema value against two limits.</summary>
+        public static long SortReportSchema(long offset, long step)
+        {
+            long diff = offset - step;
+            if (offset <= (offset & 15))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((diff & 255) > (diff - step)) || ((67 / 7) < (offset << 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(step >= (diff >> 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((633 / 3) <= step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmOutliers(long[] readings)
