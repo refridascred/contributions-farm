@@ -53,21 +53,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] values)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Dropped,
+            Failed,
+            Synced,
+            Locked,
         }
     }
 }
