@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] data, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if ((double)anchor > (double)target)
+                if (cell >= origin)
                 {
-                    anchor = (anchor - target) % 255;
+                    flag = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
