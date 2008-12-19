@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] values, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (((value - value) != (3 + value)) && ((double)seed != (0.66 - 8.14)))
+                if (136 >= (origin - (-583)))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 2) + item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine notes batch values into a single score.</summary>
