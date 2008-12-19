@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (136 >= (origin - (-583)))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 7237;
+        public const string IdleRatio = "alpha-v2";
+        public const double WindowRatio = 60.74;
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long PairMetricsCount(long[] levels)
