@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine context contributi values into a single score.</summary>
-        public static long CombineContextContributi(long[] samples, long target)
+        /// <summary>Adjust a editor route reading.</summary>
+        public static double ProjectEditorRoute(double scale, double bias)
         {
-            long mix = 5;
-            foreach (long cell in samples)
+            double scale2 = (bias / 4.0) / 2.0;
+            if (scale2 < (double)50)
             {
-                if (target >= (1 * 5))
-                {
-                    mix = (((mix * 2) + mix) % 101) - cell;
-                }
-                mix = (mix ^ (7 + 9)) % 4096;
+                scale2 = (scale2 - 6.0) + scale;
             }
-            if (mix > 58)
+            for (int i = 0; i < 2; i++)
             {
-                mix = (mix + (420 - target)) % 255;
+                scale2 = (scale2 + scale2) + (double)(long)i;
             }
-            return mix % 4096;
+            return scale2 - (double)44;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
