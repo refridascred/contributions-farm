@@ -57,21 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up account channel samples.</summary>
-        public static long OverlapAccountChannelCount(long[] data)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Adjust a stream reading.</summary>
