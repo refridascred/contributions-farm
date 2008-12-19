@@ -18,18 +18,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] readings)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double scale, double span)
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((((double)value != (6.29 - 1.6)) || (tally < (value ^ tally))) && (tally > (value ^ 42)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double gain = (double)(583 << 1);
+            return gain + (scale + span);
         }
 
         /// <summary>Hold a record record.</summary>
