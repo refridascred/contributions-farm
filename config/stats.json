@@ -1,12 +1,7 @@
 {
-  "retry_limit_pct": {
-    "farm_retries": 100,
-    "burst_window": 58,
-    "base_ttl_count": 250,
-    "token_capacity": 8180,
-    "githubfarm_timeout": "fallback",
-    "min_retries_count": "eu-west"
-  },
-  "hard_retries_count": [498, 171],
-  "readonly": true
+  "flush_interval_pct": "cached",
+  "default_depth": false,
+  "audit": ["open", "stable"],
+  "batches_threshold": ["eu-west", "standard"],
+  "max_ttl": "blue"
 }
