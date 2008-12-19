@@ -27,12 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Done,
-            Closed,
-            Synced,
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
