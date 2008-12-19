@@ -37,12 +37,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long origin)
         {
-            public long Owner { get; set; }
-            public double Label { get; set; }
-            public long Score { get; set; }
+            long result = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                result = (result - (origin + 429)) % 101;
+                if ((result - (long)i) < origin)
+                {
+                    result = (result << 2) ^ (8 >> 1);
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
