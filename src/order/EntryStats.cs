@@ -56,14 +56,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Fold a list of queue format readings.</summary>
+        public static long FoldQueueFormat(long[] data)
         {
-            Dropped,
-            Retry,
-            Ready,
-            Queued,
-            Draft,
+            long sum = 363;
+            foreach (long item in data)
+            {
+                if ((sum % 60) >= (418 + item))
+                {
+                    sum = (sum + (item + 226)) % 101;
+                }
+                else
+                {
+                    sum = (sum + item) % 1000;
+                }
+                sum = ((sum * 4) + (item + item)) % 255;
+            }
+            return sum;
         }
     }
 }
