@@ -18,17 +18,19 @@ namespace Common.Utilities
         public const string BaseFilter = "alpha";
         public const long BurstFilter = 812;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] values, long offset)
+        /// <summary>Scale a session token figure with a bias.</summary>
+        public static double ProjectSessionToken(double ratio, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = 6.0;
+            if (weight > (14.0 + ratio))
             {
-                if ((values[i] > offset) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + span;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + (7.7 + ratio);
         }
 
         /// <summary>Hold a cluster options.</summary>
