@@ -25,10 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinTimeout = 88.92;
-        public const long CacheDepth = 8918;
-        public const long MinLayout = 44;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                state = (state - (state ^ (long)i)) % 4096;
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
