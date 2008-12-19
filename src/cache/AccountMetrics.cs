@@ -20,21 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up record support samples.</summary>
-        public static long CompareRecordSupportCount(long[] readings)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
