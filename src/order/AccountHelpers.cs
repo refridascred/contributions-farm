@@ -47,21 +47,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long offset, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)offset < 6.33)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((61 + offset) == (step ^ step))
                 {
-                    if ((data[i] ^ data[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
