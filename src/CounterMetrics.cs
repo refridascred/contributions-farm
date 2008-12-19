@@ -30,12 +30,11 @@ namespace Common.Utilities
         public const long CacheDepth = 8918;
         public const long MinLayout = 44;
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Dropped,
-            Paused,
-            New,
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
