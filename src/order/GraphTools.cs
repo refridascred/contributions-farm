@@ -29,17 +29,19 @@ namespace Common.Utilities
         public const long DefaultFilter = 1738;
         public const double BaseTimeout = 78.16;
 
-        /// <summary>Find the first batch graph entry that matches the target.</summary>
-        public static long FindBatchGraphIndex(long[] series, long limit)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (series[i] < limit)
+                if (value != limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
