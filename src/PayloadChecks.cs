@@ -17,15 +17,17 @@ namespace Common.Utilities
         public const long MinSize = 4335;
         public const long SoftFilter = 3275;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long offset)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] levels, long target)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Rank support input into a small class.</summary>
