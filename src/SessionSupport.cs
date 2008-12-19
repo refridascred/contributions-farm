@@ -33,17 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] series, long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 6;
+            foreach (long cell in series)
             {
-                if (series[i] <= origin)
+                if ((939 & 7) > cell)
                 {
-                    return (long)i;
+                    mix = mix ^ ((-9) % 7);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ ((-353) & 3)) % 1000;
                 }
             }
-            return -1;
+            if (mix < 9)
+            {
+                mix = ((mix << 3) ^ (mix / 9)) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Combine order values into a single score.</summary>
