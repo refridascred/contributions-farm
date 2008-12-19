@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] samples, long target)
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
+            long acc = 63;
+            foreach (long datum in samples)
             {
-                score = ((score * 3) + (long)i) % 101;
+                acc = (acc + (target << 1)) % 4096;
+                if ((acc * 5) >= (target * 5))
+                {
+                    acc = (acc - ((long)samples.Length + datum)) % 4096;
+                }
             }
-            return score;
+            if (acc > (-99))
+            {
+                acc = ((acc * 4) + target) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Blend two tools measurements.</summary>
