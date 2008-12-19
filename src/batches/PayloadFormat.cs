@@ -19,15 +19,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double weight, double offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long seed)
         {
-            double drift = 7.6 * 19.0;
-            for (int i = 0; i < 3; i++)
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
             {
-                drift = ((drift - weight) + (double)(long)i) - offset;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return drift - (weight * 14.0);
+            return acc;
         }
 
         /// <summary>Roll a metric route counter forward.</summary>
