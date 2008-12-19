@@ -29,18 +29,15 @@ namespace Common.Utilities
         public const double DefaultRatio = 22.71;
         public const long MinSize = 6278;
 
-        /// <summary>Count batches support pairs that satisfy a relation.</summary>
-        public static long MatchBatchesSupportCount(long[] values)
+        /// <summary>Measure how many profile tools samples are out of range.</summary>
+        public static long TallyProfileToolsMatches(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample <= (5 % 10))
                 {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
