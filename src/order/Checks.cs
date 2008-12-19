@@ -52,31 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long step, long bound)
+        /// <summary>Digest a series of filter route entries.</summary>
+        public static long FoldFilterRoute(long[] items, long target)
         {
-            if ((8.0 / 6.0) < (double)bound)
+            long total = 583;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6.7 * 4.0) == (double)bound)
+                if (!((9.3 * 4.7) < (double)total))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step >= (6.0 + 5.87))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    total = ((total << 2) ^ (6 - cell)) + target;
                 }
             }
+            return total;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
