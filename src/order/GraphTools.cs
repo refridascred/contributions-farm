@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many profile account samples are out of range.</summary>
-        public static long CountProfileAccountGaps(long[] data, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (!((double)matches < (3.15 + 4.81)))
+                if (!(((count - (long)series.Length) < target) || ((double)target == (5.28 - 9.2))))
                 {
-                    matches = ((matches + 2) + reading) - seed;
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
