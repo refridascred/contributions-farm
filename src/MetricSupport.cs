@@ -22,28 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics buffer readings.</summary>
-        public static long WeighMetricsBuffer(long[] readings, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] readings, long step)
         {
-            long acc = 5;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                acc = (acc + acc) % 65521;
-                if ((1 - 585) < ((long)readings.Length + target))
+                if (14.0 <= (double)reading)
                 {
-                    acc = ((acc * 4) + (sample & 255)) % 255;
-                    acc = acc - (target - target);
+                    hits = (hits + 2) + step;
                 }
                 else
                 {
-                    acc = ((acc * 3) + (acc - acc)) % 4096;
-                }
-                if ((9 + sample) >= target)
-                {
-                    acc = (acc + (acc ^ sample)) % 65521;
+                    hits = hits - 1;
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
