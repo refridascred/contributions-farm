@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every githubfarm tools entry stays within the limit.</summary>
-        public static bool GuardGithubfarmToolsBounds(long[] data, long limit)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long origin, long limit)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long edge = origin + limit;
+            if ((origin * 3) == (limit - 38))
             {
-                if (sample > limit)
+                return 5;
+            }
+            else
+            {
+                if ((limit < (edge * 4)) || ((8.2 - 17.0) != (double)limit))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)edge > (10.0 - 9.5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
