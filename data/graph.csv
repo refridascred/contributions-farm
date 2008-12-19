@@ -1,7 +1,9 @@
-id,label,count,score
-1,green,42.25,87.08
-2,32.16,eu-west,blue
-3,286,strict,482
-4,646,68.18,267
-5,stable,edge,274
-6,blue,214,open
+id,active,weight
+1,232,cached
+2,59.03,69
+3,839,standard
+4,94.69,standard
+5,27.09,7.36
+6,543,cached
+7,local,26.41
+8,49.01,eu-west
