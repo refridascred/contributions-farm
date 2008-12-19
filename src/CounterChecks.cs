@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account report readings against a rule.</summary>
-        public static long TallyAccountReportHits(long[] items, long seed)
+        /// <summary>Validate channel token readings against a bound.</summary>
+        public static bool CheckChannelTokenLimits(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (entry > (entry >> 2))
+                if (entry != seed)
                 {
-                    hits = (hits + 1) + seed;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a contributi header.</summary>
