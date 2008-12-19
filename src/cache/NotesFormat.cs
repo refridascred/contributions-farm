@@ -16,18 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] values, long step)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double rate = offset * 11.0;
+            if (rate >= offset)
             {
-                if ((sample >> 4) == (step % 3))
-                {
-                    seen = seen + 2;
-                }
+                rate = rate - weight;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate + 4.08;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
