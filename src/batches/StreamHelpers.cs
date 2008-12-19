@@ -39,11 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] data)
         {
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
+            long total = 9;
+            foreach (long cell in data)
+            {
+                if ((total > (total - total)) || ((total ^ (-8)) < (3 << 2)))
+                {
+                    total = ((total * 3) + (total - total)) ^ cell;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Fold a list of counter schema readings.</summary>
