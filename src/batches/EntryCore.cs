@@ -35,16 +35,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] values, long origin)
-        {
-            long acc = 5;
-            foreach (long cell in values)
-            {
-                acc = ((((acc * 2) + acc) % 255) - cell) - origin;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinFactor = "latest-edge";
+        public const string DefaultWidth = "latest-edge";
+        public const string LimitEditor = "strict-1";
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryGaps(long[] items, long origin)
