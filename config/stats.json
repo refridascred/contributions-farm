@@ -1,12 +1,12 @@
 {
-  "schema_window": "eu-west",
-  "soft_window_count": "green",
-  "readonly": "strict",
-  "queue_depth": 500,
-  "poll_threshold": {
-    "hard_interval": "staging",
-    "base_depth_s": 62.07,
-    "tools_interval": "stable"
+  "default_size": "eu-west",
+  "batch_timeout": "blue",
+  "flush_delay_s": "cached",
+  "persist": 70.5,
+  "flush_timeout_count": {
+    "compress": 96.1,
+    "base_ratio_ms": "latest",
+    "metrics_delay": true
   },
-  "compress": 5972
+  "hard_delay_ms": 500
 }
