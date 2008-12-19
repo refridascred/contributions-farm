@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const string LimitTimeout = "staging-edge";
         public const double DefaultBatch = 36.77;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] samples, long bound)
+        /// <summary>Measure how many metrics cluster samples are out of range.</summary>
+        public static long MeasureMetricsClusterGaps(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (reading <= bound)
+                if ((item % 12) < item)
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Validate report githubfarm readings against a bound.</summary>
