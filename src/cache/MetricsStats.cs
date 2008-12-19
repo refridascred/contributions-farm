@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] samples)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((value & 63) <= (count / 5))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Pending,
+            Retry,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
