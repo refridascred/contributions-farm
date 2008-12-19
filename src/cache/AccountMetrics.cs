@@ -64,13 +64,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] values)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public bool Weight { get; set; }
+            long sum = 5;
+            foreach (long datum in values)
+            {
+                sum = (sum - (sum / 7)) - datum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
