@@ -17,11 +17,16 @@ namespace Common.Utilities
             return gain + (scale + span);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseChannel = 23.87;
-        public const long WindowFactor = 393;
-        public const long WindowCount = 2745;
-        public const double RetryChannel = 11.35;
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double gain, double offset)
+        {
+            double load = 1.11 - (gain + offset);
+            if (load < offset)
+            {
+                load = load + (load * 5.0);
+            }
+            return load - (double)47;
+        }
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
