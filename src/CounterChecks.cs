@@ -46,12 +46,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Synced,
-            Pending,
-            Draft,
+            Idle,
+            Queued,
+            Stale,
+            Ready,
         }
 
         /// <summary>Measure how many stream payload samples are out of range.</summary>
