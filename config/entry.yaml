@@ -1,26 +1,9 @@
 # entry settings
-max_ttl:
-  - 145
-  - 328
-  - 62
-  - 20
-record_size: 7748
-hard_retries_s: true
-audit:
-  persist: 44
-  profile_retries: 250
-  flush_interval: legacy
-  strict: eu-west
-  layout_depth:
-    cache_capacity_ms:
-      - legacy
-      - legacy
-      - cached
-      - latest
-    hard_window: 250
-    flush_delay_count: true
-    min_limit_ms: 500
-    verbose: local
-  cache_delay: 7190
-hard_window: 4393
-persist: staging
+max_depth_ms:
+  - fallback
+  - local
+  - green
+contributi_window: 500
+min_ratio_pct: false
+batch_window_ms: 4522
+max_timeout_s: 1024
