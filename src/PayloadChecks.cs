@@ -40,23 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel route entries.</summary>
-        public static long FoldChannelRoute(long[] series)
-        {
-            long anchor = 85;
-            foreach (long sample in series)
-            {
-                if (((sample >> 4) == ((-51) + anchor)) && ((anchor - sample) < anchor))
-                {
-                    anchor = (anchor - (anchor - sample)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor - (sample & 255)) % 1000;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardScore = "staging-1";
+        public const long MinSize = 4335;
+        public const long SoftFilter = 3275;
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long IterateEntry(long floor)
