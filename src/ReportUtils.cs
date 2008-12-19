@@ -75,11 +75,13 @@ namespace Common.Utilities
             return bias2 - 3.0;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public double Score { get; set; }
+            public double Total { get; set; }
         }
     }
 }
