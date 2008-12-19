@@ -1,11 +1,11 @@
 # Command notes
 
-The session report groups every buffer by schema.
-The channel report groups every graph by stream.
+Run the payload check before changing any cluster limits.
+A format that stays idle for too long is moved to the tools list.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Keep commits values small
-- Validate cache input early
-- Review notes limits each release
+- Document new metric fields
+- Prefer checks defaults
+- Review cache limits each release
+- Log every commits change
