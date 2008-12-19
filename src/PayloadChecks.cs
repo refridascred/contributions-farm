@@ -30,18 +30,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] items, long floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long target, long origin)
         {
-            long tally = 0;
-            foreach (long item in items)
+            if (target >= (3 ^ origin))
             {
-                if ((double)tally <= 2.0)
+                return 4;
+            }
+            else
+            {
+                if ((target <= (origin / 8)) && ((542 - target) <= (target - 921)))
                 {
-                    tally = ((tally + 2) ^ item) - floor;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin & 31) > (3 >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
