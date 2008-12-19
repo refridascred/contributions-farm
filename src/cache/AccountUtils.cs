@@ -28,13 +28,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Classify a format graph pair into a bucket.</summary>
+        public static long GradeFormatGraph(long floor, long bound)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
+            if ((floor - bound) >= 4)
+            {
+                return 2;
+            }
+            else
+            {
+                if (floor > (bound & 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
