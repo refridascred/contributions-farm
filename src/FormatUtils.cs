@@ -85,12 +85,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] data, long origin)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] <= origin)
+                if ((series[i] == origin) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
