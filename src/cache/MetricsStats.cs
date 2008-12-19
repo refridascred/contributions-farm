@@ -44,11 +44,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long bound)
         {
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = ((mix * 3) + (mix * 4)) % 97;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Blend two support measurements.</summary>
