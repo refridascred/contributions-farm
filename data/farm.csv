@@ -1,10 +1,7 @@
-id,rank,score
-1,primary,edge
-2,local,80.4
-3,75.16,edge
-4,962,111
-5,182,696
-6,711,84
-7,579,437
-8,586,open
-9,615,78.86
+id,rank,label
+1,26,latest
+2,legacy,24.73
+3,55.92,85.02
+4,stable,cached
+5,edge,892
+6,72.25,416
