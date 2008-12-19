@@ -53,18 +53,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] samples)
+        /// <summary>Count githubfarm commits pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCommitsCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits + 365) <= (hits << 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 2) ^ reading;
+                    if ((readings[i] - readings[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
