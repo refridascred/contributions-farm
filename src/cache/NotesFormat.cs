@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next queue commits value from a seed.</summary>
-        public static long IterateQueueCommits(long origin)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long step)
         {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
+            long score = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((origin & 15) <= ((long)i % 97)))
-                {
-                    score = (score * 2) + score;
-                }
-                score = ((score * 4) + (long)i) % 101;
+                score = ((score * 3) + (long)i) % 101;
             }
             return score;
         }
