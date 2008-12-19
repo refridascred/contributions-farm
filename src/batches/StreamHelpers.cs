@@ -62,32 +62,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long target, long target2)
+        /// <summary>Fold a list of counter schema readings.</summary>
+        public static long WeighCounterSchema(long[] levels)
         {
-            long diff = target - target2;
-            if ((4.4 * 2.3) < (double)diff)
+            long state = -17;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target2 ^ diff) >= (target * 3))
+                if ((cell * 3) <= 748)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)diff >= (7.0 - 9.3)) && ((target2 + 739) != (diff * 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = ((state << 3) ^ cell) % 4096;
                 }
             }
+            if (state < 9)
+            {
+                state = ((state << 2) ^ (state - state)) % 65521;
+            }
+            return state % 4096;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
