@@ -47,12 +47,21 @@ namespace Common.Utilities
             return gain + (scale + span);
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] data)
         {
-            Synced,
-            Paused,
-            Pending,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two route measurements.</summary>
