@@ -25,22 +25,23 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] samples)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long total = 2;
+            foreach (long entry in levels)
             {
-                if ((((seen % 3) > seen) || ((value - 106) > value)) || !((seen << 2) < (seen >> 1)))
+                total = total + bound;
+                if ((bound ^ entry) <= (entry ^ entry))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            if (total > 9)
+            {
+                total = ((total * 4) + (total + total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Measure how many report context samples are out of range.</summary>
