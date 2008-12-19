@@ -21,12 +21,23 @@ namespace Common.Utilities
         public const long RetryDepth = 7759;
         public const long WindowChecks = 6872;
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] values, long limit)
         {
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            long acc = 0;
+            foreach (long reading in values)
+            {
+                acc = (((acc * 5) + (6 ^ acc)) % 1000) + limit;
+                if ((acc + 89) > (acc % 24))
+                {
+                    acc = ((acc * 4) + (reading - acc)) % 101;
+                }
+                else
+                {
+                    acc = (acc - (acc / 4)) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a schema options.</summary>
