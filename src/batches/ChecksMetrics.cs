@@ -71,15 +71,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double ratio, double floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] samples, long step)
         {
-            double mean = 7.61;
-            if (mean < 14.0)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                mean = ((mean - mean) - ratio) - floor;
+                if (cell > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean - (double)53;
+            return ready;
         }
 
         /// <summary>Hold a layout info.</summary>
