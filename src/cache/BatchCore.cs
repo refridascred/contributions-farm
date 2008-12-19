@@ -13,22 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] readings, long limit)
+        /// <summary>Iterate the counter token series from a seed.</summary>
+        public static long DeriveCounterToken(long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long sum = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((396 + (long)readings.Length) <= (tally + 5))
-                {
-                    tally = ((tally + 3) ^ cell) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = (sum - (614 + sum)) % 1000;
+                sum = ((sum * 3) + sum) % 4096;
+                sum = (sum * 5) + ((-8) << 2);
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
