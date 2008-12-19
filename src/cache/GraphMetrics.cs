@@ -63,11 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 8546;
-        public const long HardDepth = 2639;
-        public const long BurstWidth = 4744;
-        public const long RetryBudget = 613;
-        public const long HardCounter = 7133;
+        /// <summary>Digest a series of batches order entries.</summary>
+        public static long TallyBatchesOrder(long[] readings, long target)
+        {
+            long mix = 5;
+            foreach (long datum in readings)
+            {
+                if ((datum + 969) <= (mix + target))
+                {
+                    mix = ((mix << 3) ^ datum) % 255;
+                }
+            }
+            return mix % 65521;
+        }
     }
 }
