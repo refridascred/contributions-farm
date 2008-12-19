@@ -21,39 +21,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long floor, long origin)
-        {
-            if (origin <= floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((8.5 / 5.0) < (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (origin >= (floor << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor < (origin << 2)) && (floor > (origin * 5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheTimeout = "fallback-1";
+        public const long StepFactor = 4426;
+        public const double MaxBudget = 32.94;
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
