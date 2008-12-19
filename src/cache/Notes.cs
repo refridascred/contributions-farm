@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] values)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long total = 320;
+            foreach (long entry in samples)
             {
-                if (!((double)tally < 4.7))
-                {
-                    tally = (tally + 3) + entry;
-                }
+                total = (((total * 4) + ((-311) - 215)) % 97) - entry;
             }
-            return tally;
+            if (total > 999)
+            {
+                total = total + step;
+            }
+            return total;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
