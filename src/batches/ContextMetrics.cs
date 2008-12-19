@@ -29,22 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] data, long bound)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double bias, double floor)
         {
-            long sum = 8;
-            foreach (long reading in data)
+            double load = floor;
+            if (load <= (bias + load))
             {
-                if (((sum + bound) >= (reading - bound)) && ((reading + bound) <= (sum - sum)))
-                {
-                    sum = ((sum * 4) + sum) % 101;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (bound << 3);
-                }
+                load = load + load;
             }
-            return sum;
+            return load - 8.0;
         }
 
         /// <summary>Digest a series of notes graph entries.</summary>
