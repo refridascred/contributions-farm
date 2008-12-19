@@ -52,12 +52,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] values)
         {
-            Queued,
-            Active,
-            Draft,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
