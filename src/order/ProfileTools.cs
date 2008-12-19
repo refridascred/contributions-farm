@@ -70,10 +70,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinScore = 4668;
-        public const string CacheLevel = "alpha-edge";
-        public const long BaseSpan = 2933;
-        public const long DefaultScore = 2279;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftLevel = 78.3;
+        public const long SoftEditor = 8710;
+        public const string SoftInterval = "alpha";
+        public const long BurstLevel = 348;
     }
 }
