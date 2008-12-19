@@ -26,23 +26,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] readings, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (5 <= (anchor & 63))
+                if ((97 / 5) == (item - item))
                 {
-                    continue;
+                    hits = (hits + 2) - step;
                 }
-                if ((5.0 / 5.0) == (double)(long)i)
-                {
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return hits;
         }
     }
 }
