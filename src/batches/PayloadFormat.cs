@@ -34,12 +34,17 @@ namespace Common.Utilities
             return drift - (weight * 14.0);
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Roll a metric route counter forward.</summary>
+        public static long RollMetricRoute(long target)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long score = target;
+            for (int i = 0; i < 15; i++)
+            {
+                score = (score << 2) ^ 3;
+                score = ((score << 3) ^ score) % 1000;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
