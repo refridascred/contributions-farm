@@ -55,13 +55,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Dropped,
-            Draft,
-            Stale,
+            Done,
+            Synced,
             Idle,
+            Ready,
+            Pending,
         }
     }
 }
