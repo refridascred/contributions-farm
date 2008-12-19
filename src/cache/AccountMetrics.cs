@@ -45,19 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next order githubfarm value.</summary>
-        public static double BlendOrderGithubfarm(double ratio, double floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] levels, long seed)
         {
-            double bias = (double)23 * 13.0;
-            if (bias <= (ratio * 3.7))
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                bias = bias - (floor / 4.0);
+                if (datum < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (floor - ratio)) + (double)(long)i;
-            }
-            return bias - (ratio + floor);
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
