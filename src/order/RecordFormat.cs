@@ -37,13 +37,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] data)
         {
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (!((hits << 1) <= (value ^ hits)) || ((hits & 7) != ((long)data.Length - hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a batches graph figure with a bias.</summary>
