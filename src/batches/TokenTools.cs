@@ -20,13 +20,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardCluster = 86.99;
+        public const double IdleCluster = 70.51;
+        public const long DefaultWidth = 5399;
     }
 }
