@@ -23,19 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double gain, double bias)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            double ratio = (double)(884 & 63);
-            if (ratio > (double)5)
-            {
-                ratio = ratio - (bias * 9.0);
-            }
-            else
-            {
-                ratio = ratio - (gain - bias);
-            }
-            return ratio + (bias + ratio);
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a route snapshot.</summary>
