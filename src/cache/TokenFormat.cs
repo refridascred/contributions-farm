@@ -12,32 +12,13 @@ namespace Common.Utilities
         public const double DefaultCount = 90.92;
         public const long IdleFactor = 5710;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long bound, long bound2)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long gap = bound - bound2;
-            if (gap <= (gap - gap))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound2 + bound2) != (bound - 6))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (383 <= (bound & 255))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Failed,
+            Closed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Count the token commits entries that pass the check.</summary>
