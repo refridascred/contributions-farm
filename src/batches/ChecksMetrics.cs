@@ -68,13 +68,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long limit, long origin)
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
-            public double Flag { get; set; }
+            long bound = limit - origin;
+            if ((double)bound < (9.8 / 3.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin < bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
