@@ -48,10 +48,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxWidth = 6012;
-        public const string BurstPayload = "strict-edge";
-        public const long BurstRatio = 5052;
-        public const long RetrySpan = 9194;
+        /// <summary>Match up buffer notes samples.</summary>
+        public static long CompareBufferNotesCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
