@@ -36,21 +36,11 @@ namespace Common.Utilities
         public const long BurstRoute = 9449;
         public const string CacheLevel = "cached-1";
 
-        /// <summary>Match up queue channel samples.</summary>
-        public static long PairQueueChannelCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 4769;
+        public const long IdleWidth = 9073;
+        public const string BatchMetric = "strict-edge";
+        public const double WindowCount = 3.1;
+        public const long BaseMetric = 2817;
     }
 }
