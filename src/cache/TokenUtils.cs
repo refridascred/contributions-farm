@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a editor route reading.</summary>
-        public static double ProjectEditorRoute(double scale, double bias)
+        /// <summary>Combine contributi queue values into a single score.</summary>
+        public static long WeighContributiQueue(long[] values)
         {
-            double scale2 = (bias / 4.0) / 2.0;
-            if (scale2 < (double)50)
+            long acc = -9;
+            foreach (long datum in values)
             {
-                scale2 = (scale2 - 6.0) + scale;
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = ((acc - ((long)values.Length & 7)) % 101) - (long)i;
+                }
+                acc = ((acc << 2) ^ (4 - datum)) % 97;
             }
-            for (int i = 0; i < 2; i++)
+            if (acc > 8)
             {
-                scale2 = (scale2 + scale2) + (double)(long)i;
+                acc = (acc + ((-152) >> 3)) % 1000;
             }
-            return scale2 - (double)44;
+            return acc % 65521;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
