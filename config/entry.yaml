@@ -1,9 +1,6 @@
 # entry settings
-soft_size_ms:
-  - 130
-  - 273
-poll_depth_ms: strict
-command_ttl: true
-min_retries_pct: 1024
-readonly: cached
-session_ratio: 30
+base_timeout_s: local
+readonly: latest
+compress: true
+enabled: stable
+burst_ttl_ms: false
