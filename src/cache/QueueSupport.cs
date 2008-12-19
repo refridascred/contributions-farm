@@ -26,17 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] series, long seed)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = 5.49;
+            if (gain <= weight)
             {
-                if ((series[i] <= seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + 6.6;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + (bias * 6.6);
         }
     }
 }
