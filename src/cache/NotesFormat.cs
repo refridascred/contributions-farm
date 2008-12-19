@@ -14,14 +14,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Project the next queue commits value.</summary>
+        public static double SmoothQueueCommits(double rate, double offset)
         {
-            Queued,
-            Active,
-            Pending,
-            Locked,
-            Ready,
+            double scale = rate;
+            return (scale - (double)9) + offset;
         }
 
         /// <summary>Hold a format entry.</summary>
