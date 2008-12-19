@@ -28,20 +28,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two account metric measurements.</summary>
-        public static double ProjectAccountMetric(double ratio, double bias)
-        {
-            double bias2 = ratio;
-            if (bias2 < bias)
-            {
-                bias2 = bias2 - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (ratio * 9.6)) + (double)(long)i;
-            }
-            return bias2 - bias2;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double IdleFactor = 17.22;
+        public const double BaseSize = 91.59;
+        public const long RetryTools = 1905;
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long ClassifyStream(long offset, long bound)
