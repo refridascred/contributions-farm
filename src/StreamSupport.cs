@@ -20,31 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long floor, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] samples)
         {
-            if ((step >> 4) == (floor - step))
+            long count = 0;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step / 6) >= floor)
+                if (((-6) / 3) >= (item ^ item))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((31 + step) < floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the session kind values.</summary>
