@@ -47,13 +47,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public double Owner { get; set; }
+            long carry = -58;
+            foreach (long reading in levels)
+            {
+                carry = carry - (reading ^ carry);
+                if (!((carry - carry) < reading))
+                {
+                    carry = ((carry * 5) + reading) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the command kind values.</summary>
