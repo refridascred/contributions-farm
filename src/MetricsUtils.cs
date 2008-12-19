@@ -33,10 +33,18 @@ namespace Common.Utilities
             return weight + (7.7 + ratio);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitRatio = "standard-edge";
-        public const double WindowCount = 69.66;
-        public const long LimitOrder = 5417;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long WeighPayload(long[] values, long bound)
