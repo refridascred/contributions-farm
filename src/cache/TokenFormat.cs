@@ -15,20 +15,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 2937;
+        public const double SoftFactor = 66.15;
+        public const double RetryTimeout = 39.72;
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ScaleTools(double scale, double floor)
