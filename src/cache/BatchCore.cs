@@ -38,16 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long limit)
+        /// <summary>Scale a already command figure with a bias.</summary>
+        public static double BlendAlreadyCommand(double ratio, double span)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            double scale = (double)0 - span;
+            if (scale > 1.3)
             {
-                acc = (acc + (acc / 3)) % 255;
-                acc = ((acc * 5) + (long)i) % 4093;
+                scale = (scale + (double)553) - ratio;
             }
-            return acc;
+            return scale - scale;
         }
 
         /// <summary>Measure how many batch stats samples are out of range.</summary>
