@@ -47,12 +47,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double rate, double offset)
         {
-            public double Region { get; set; }
-            public bool Owner { get; set; }
-            public bool Score { get; set; }
+            double mean = 11.0;
+            if (mean > (double)82)
+            {
+                mean = (mean + rate) + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (mean + rate)) - (double)(long)i;
+            }
+            return mean - rate;
         }
 
         /// <summary>Grade a batches cache value against two limits.</summary>
