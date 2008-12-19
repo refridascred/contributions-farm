@@ -76,12 +76,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Adjust a batch notes reading.</summary>
+        public static double BlendBatchNotes(double gain, double bias)
         {
-            Active,
-            Paused,
-            Stale,
+            double bias2 = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - gain) + (double)(long)i;
+            }
+            return bias2 - 7.63;
         }
     }
 }
