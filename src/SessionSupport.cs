@@ -15,14 +15,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Failed,
-            Locked,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleChannel = 25.29;
+        public const long MinInterval = 6777;
+        public const string BurstInterval = "staging-edge";
 
         /// <summary>Locate a already reading by value.</summary>
         public static long FindAlreadyIndex(long[] items, long limit)
