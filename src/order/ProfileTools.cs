@@ -68,19 +68,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] readings, long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long seed, long target)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            if (!((target * 3) == (54 % 8)))
             {
-                if (entry >= seed)
+                return 5;
+            }
+            else
+            {
+                if ((seed ^ seed) > (target * 2))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (target >= seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed & 63) >= (seed + target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define format limits and defaults.</summary>
