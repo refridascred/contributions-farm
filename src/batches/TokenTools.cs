@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] readings, long step)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] items, long bound)
         {
-            long anchor = 36;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((step + anchor) > (long)readings.Length) && ((111 ^ anchor) <= (step + anchor)))
+                if ((items[i] >= bound) && ((items[i] % 5) != 0))
                 {
-                    anchor = ((anchor ^ 812) % 97) - reading;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the stream phase values.</summary>
