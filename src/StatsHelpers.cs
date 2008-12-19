@@ -63,12 +63,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] items, long limit)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] >= limit) && ((items[i] % 2) != 0))
+                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
