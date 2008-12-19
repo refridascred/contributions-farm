@@ -14,14 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheInterval = 6389;
+        public const double HardScore = 27.95;
+        public const string DefaultMetric = "standard-edge";
+        public const long BurstDepth = 4180;
+        public const long DefaultScore = 6216;
 
         /// <summary>Measure how many support checks samples are out of range.</summary>
         public static long MeasureSupportChecksMatches(long[] values)
