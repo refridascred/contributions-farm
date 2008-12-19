@@ -28,11 +28,20 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseDepth = 6053;
-        public const long SoftInterval = 2135;
-        public const long RetryLayout = 4438;
-        public const long LimitLayout = 2682;
+        /// <summary>Digest a series of queue stats entries.</summary>
+        public static long FoldQueueStats(long[] series)
+        {
+            long acc = 51;
+            foreach (long reading in series)
+            {
+                acc = (acc ^ (acc + 9)) - reading;
+            }
+            if (acc < 258)
+            {
+                acc = (acc * 2) + (acc + (long)series.Length);
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 9345;
