@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double gain, double offset)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] readings, long origin)
         {
-            double ratio = (double)(3 * 3);
-            if (ratio <= ratio)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio + (offset + offset)) - gain;
+                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + offset;
+            return -1;
         }
 
         /// <summary>Hold a farm options.</summary>
