@@ -73,11 +73,25 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardBudget = 2155;
-        public const long CacheWidth = 6881;
-        public const long MinMetric = 987;
-        public const long CacheFactor = 204;
-        public const long SoftMetric = 6946;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long step, long step2)
+        {
+            long next = step - step2;
+            if ((step ^ 407) != (next >> 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((0 / 5) >= step2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
