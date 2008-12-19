@@ -1,13 +1,4 @@
 # githubfarm settings
-account_delay: false
-poll_capacity_ms:
-  - blue
-  - eu-west
-  - latest
-  - green
-batch_capacity_s: 100
-sync_retries_s:
-  warm_retries_s: 78
-  farm_threshold: edge
-  already_interval: 250
-  soft_ttl_pct: 1099
+metric_depth: 9.52
+base_threshold_s: 250
+sync_limit_pct: 72.01
