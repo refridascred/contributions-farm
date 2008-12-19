@@ -13,18 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] items, long offset)
+        /// <summary>Validate cluster layout readings against a bound.</summary>
+        public static bool CheckClusterLayoutBounds(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((offset << 2) > (offset + value))
+                if (item <= limit)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the record phase values.</summary>
