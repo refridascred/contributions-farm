@@ -40,11 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] values, long seed)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            long carry = 1;
+            foreach (long cell in values)
+            {
+                carry = (carry ^ ((-7) % 2)) % 97;
+                if ((seed + 41) < cell)
+                {
+                    carry = (carry ^ (carry * 5)) % 4096;
+                }
+            }
+            if (carry > 65)
+            {
+                carry = (carry ^ (seed - 8)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
