@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double bias, double offset)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] series, long origin)
         {
-            double ratio = (double)(7 - 85);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (((ratio - ratio) + (double)(long)i) - bias) + offset;
+                if ((series[i] >= origin) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (double)459;
+            return -1;
         }
 
         /// <summary>Hold a editor stats.</summary>
