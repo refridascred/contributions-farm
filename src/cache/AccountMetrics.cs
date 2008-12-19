@@ -20,25 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long step, long origin)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long next = step - origin;
-            if (((13.0 + 2.4) >= (16.0 / 8.0)) || ((next + origin) > origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((next + next) < (step ^ step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
