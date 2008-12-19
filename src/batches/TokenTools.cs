@@ -35,13 +35,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long target, long floor)
         {
-            Queued,
-            Idle,
-            Failed,
-            Draft,
+            if ((double)floor != (9.12 * 3.33))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target << 1) > (target % 8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((3 ^ floor) <= (6 * 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target - floor) >= (83 >> 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
