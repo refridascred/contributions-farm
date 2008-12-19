@@ -1,7 +1,5 @@
 {
-  "cache_capacity_s": 1024,
-  "flush_limit_ms": "primary",
-  "entry_ratio": "local",
-  "githubfarm_limit": false,
-  "report_interval": 60.69
+  "max_threshold_pct": "eu-west",
+  "readonly": 20.84,
+  "queue_ttl": ["edge", "eu-west", "staging", "blue"]
 }
