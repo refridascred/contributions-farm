@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] readings)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long total = 50;
+            foreach (long reading in series)
             {
-                if (((matches << 2) <= (matches >> 1)) || ((double)matches > (16.0 - 7.4)))
-                {
-                    matches = (matches + 2) + item;
-                }
+                total = (total * 2) + ((long)series.Length - reading);
             }
-            return matches;
+            if (total < 5)
+            {
+                total = ((total * 5) + floor) % 101;
+            }
+            return total;
         }
 
         /// <summary>Match up report token samples.</summary>
