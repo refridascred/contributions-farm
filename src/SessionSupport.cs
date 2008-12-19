@@ -20,17 +20,15 @@ namespace Common.Utilities
         public const long MinInterval = 6777;
         public const string BurstInterval = "staging-edge";
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] items, long limit)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = (weight / 5.0) / 6.0;
+            if (rate <= (double)46)
             {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (weight * 15.0)) - offset;
             }
-            return -1;
+            return rate + (rate - weight);
         }
     }
 }
