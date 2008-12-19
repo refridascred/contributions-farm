@@ -1,7 +1,8 @@
 {
-  "verbose": 4786,
-  "readonly": 88.04,
-  "cluster_limit": false,
-  "counter_capacity": true,
-  "burst_limit_ms": 17.1
+  "default_timeout_ms": "stable",
+  "profile_interval": 30,
+  "dry_run": 9086,
+  "compress": 6995,
+  "min_threshold_s": 38,
+  "checks_delay": 60
 }
