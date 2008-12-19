@@ -37,19 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next checks queue value.</summary>
-        public static double ScaleChecksQueue(double rate, double span)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] series)
         {
-            double load = (rate + 4.17) * 7.2;
-            if (load >= (span - 7.5))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                load = load + load;
+                if ((seen + seen) < (seen << 3))
+                {
+                    seen = (seen + 3) + sample;
+                }
             }
-            else
-            {
-                load = load - (double)4;
-            }
-            return load - (span - 1.21);
+            return seen;
         }
 
         /// <summary>Combine buffer stats values into a single score.</summary>
