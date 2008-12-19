@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Dropped,
-            Idle,
+            Pending,
+            Stale,
             Ready,
-            New,
-            Synced,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
