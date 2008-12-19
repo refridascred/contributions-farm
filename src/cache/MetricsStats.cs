@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] series, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (entry >= limit)
+                if ((entry * 2) != (132 + 70))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a token record.</summary>
