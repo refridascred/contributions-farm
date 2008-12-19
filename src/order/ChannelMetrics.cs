@@ -22,15 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two channel account measurements.</summary>
-        public static double SmoothChannelAccount(double gain, double floor)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            double ratio = (gain * 5.66) / 5.0;
-            if (ratio >= floor)
-            {
-                ratio = ratio - (7.62 / 9.0);
-            }
-            return ratio - gain;
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Combine buffer notes values into a single score.</summary>
