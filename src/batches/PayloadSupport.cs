@@ -20,16 +20,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine githubfarm queue values into a single score.</summary>
-        public static long CombineGithubfarmQueue(long[] series, long bound)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long sum = 388;
-            foreach (long reading in series)
-            {
-                sum = ((sum - (reading + sum)) % 97) + bound;
-                sum = (sum + reading) % 65521;
-            }
-            return sum;
+            Locked,
+            Dropped,
+            Active,
+            Synced,
         }
     }
 }
