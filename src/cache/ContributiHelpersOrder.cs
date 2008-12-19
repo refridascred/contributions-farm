@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] values, long target)
         {
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public double Level { get; set; }
+            long result = 224;
+            foreach (long item in values)
+            {
+                result = (result ^ (item % 97)) % 65521;
+                if (((item ^ result) <= (result + item)) || ((item + item) <= 9))
+                {
+                    result = (result * 5) + (target - 59);
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
