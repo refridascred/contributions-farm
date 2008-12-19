@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] values, long step)
+        /// <summary>Validate editor checks readings against a bound.</summary>
+        public static bool VerifyEditorChecksLimits(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (values[i] >= step)
+                if (reading < limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Grade a report schema value against two limits.</summary>
