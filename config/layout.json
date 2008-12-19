@@ -1,9 +1,7 @@
 {
-  "idle_ttl_s": 30,
-  "record_interval": false,
-  "hard_timeout": {
-    "retry_limit_count": 89.84,
-    "default_capacity_pct": "eu-west",
-    "hard_timeout_pct": "eu-west"
-  }
+  "commits_limit": ["fallback", "legacy", "cached"],
+  "warm_timeout": ["staging", "legacy"],
+  "audit": "edge",
+  "dry_run": ["strict", "stable"],
+  "default_limit_count": 60
 }
