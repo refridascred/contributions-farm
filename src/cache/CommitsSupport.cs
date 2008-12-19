@@ -70,22 +70,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] samples)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] data)
         {
-            long carry = -34;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)value != (double)4) || ((10.0 - 8.0) != (double)value))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry + (carry + value)) % 1000;
-                }
-                else
-                {
-                    carry = (carry ^ (carry & 7)) % 97;
+                    if ((data[i] + data[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
