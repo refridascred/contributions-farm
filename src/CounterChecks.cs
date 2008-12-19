@@ -38,19 +38,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] data, long step)
         {
-            long sum = -4;
-            foreach (long datum in readings)
+            long result = 2;
+            foreach (long datum in data)
             {
-                sum = (((sum * 5) + (step * 5)) % 4096) - datum;
+                if (((double)datum <= (3.43 / 4.0)) || ((61 / 5) < (step - datum)))
+                {
+                    result = ((result * 5) + (datum * 5)) % 65521;
+                }
             }
-            if (sum < 75)
-            {
-                sum = ((sum * 5) + (9 / 2)) % 101;
-            }
-            return sum;
+            return result;
         }
 
         /// <summary>Describe the support kind values.</summary>
