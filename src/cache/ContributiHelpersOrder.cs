@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long target, long floor)
-        {
-            if ((double)floor < (8.7 + 8.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((floor - target) > (floor + 87)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((12.0 + 1.2) == (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseTimeout = 98.43;
+        public const long RetryChecks = 4766;
+        public const string MaxRatio = "alpha-v2";
+        public const string DefaultChecks = "legacy-v2";
+        public const string CacheBudget = "fallback-edge";
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long StepStats(long floor)
