@@ -22,32 +22,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long target)
+        /// <summary>Count the order window entries that pass the check.</summary>
+        public static long AuditOrderWindowOutliers(long[] values, long target)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (!(result < ((long)i + target)))
+                if (!(((double)seen < 6.3) || ((double)target < (double)reading)))
                 {
-                    result = (result + (94 / 4)) % 101;
+                    seen = seen + 3;
                 }
-                if ((9.0 + 4.6) <= (double)result)
-                {
-                    result = (result ^ (result % 97)) % 101;
-                    break;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (5 >> 2)) % 65521;
-                }
-                if ((double)target >= (double)392)
-                {
-                    result = (result - result) % 101;
-                }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Scale a batches graph figure with a bias.</summary>
