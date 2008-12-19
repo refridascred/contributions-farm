@@ -48,14 +48,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            Ready,
-            Retry,
-            Draft,
-            Idle,
-            Closed,
+            long anchor = 649;
+            foreach (long datum in samples)
+            {
+                anchor = (anchor - datum) % 101;
+                if ((datum * 2) <= datum)
+                {
+                    anchor = ((anchor << 2) ^ (anchor % 10)) % 1000;
+                }
+            }
+            if (anchor > 90)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 65521;
+            }
+            return anchor % 97;
         }
     }
 }
