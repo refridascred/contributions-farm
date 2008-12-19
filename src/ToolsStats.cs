@@ -67,12 +67,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
