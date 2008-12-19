@@ -30,32 +30,23 @@ namespace Common.Utilities
         public const long LimitFormat = 9171;
         public const double StepDepth = 1.0;
 
-        /// <summary>Grade a batch report value against two limits.</summary>
-        public static long GradeBatchReport(long target, long floor)
+        /// <summary>Adjust a route stream reading.</summary>
+        public static double SmoothRouteStream(double rate, double floor)
         {
-            long prev = target - floor;
-            if (((prev / 9) <= (228 - (-289))) || ((5.9 / 9.0) != (double)floor))
+            double drift = (floor / 6.0) / 4.0;
+            if (drift <= (double)6)
             {
-                return 5;
+                drift = drift - drift;
             }
             else
             {
-                if (floor < (791 ^ target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (prev <= (prev + prev))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                drift = drift - drift;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + rate) + (double)(long)i;
+            }
+            return drift + floor;
         }
     }
 }
