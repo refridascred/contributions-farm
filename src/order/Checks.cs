@@ -68,18 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already counter readings against a rule.</summary>
-        public static long TallyAlreadyCounterOutliers(long[] levels)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((11.0 * 2.0) > (double)matches)
+                if (item < target)
                 {
-                    matches = (matches + 3) ^ datum;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
