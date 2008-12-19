@@ -1,13 +1,19 @@
 {
-  "strict": 100,
-  "audit": [83, 427, 179, 14],
-  "batch_ttl": ["green", "local", "open"],
-  "default_size": {
-    "cache_size": ["eu-west", "primary"],
-    "idle_ttl_s": 72.17,
-    "cache_limit_pct": true,
-    "enabled": 54.21,
-    "token_capacity": "blue",
-    "batch_depth_count": false
-  }
+  "readonly": {
+    "channel_timeout": 18.24,
+    "filter_capacity": "legacy",
+    "warm_ttl": {
+      "batches_timeout": true,
+      "report_threshold": "green",
+      "batch_timeout": [261, 233, 420],
+      "strict": 47,
+      "max_size": "stable",
+      "batch_size": "eu-west"
+    }
+  },
+  "batch_timeout": "strict",
+  "flush_window_count": false,
+  "entry_retries": "primary",
+  "burst_ratio": 95,
+  "retry_size": [8, 132, 246, 102]
 }
