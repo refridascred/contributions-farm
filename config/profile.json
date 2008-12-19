@@ -1,5 +1,19 @@
 {
-  "warm_interval_s": 73.14,
-  "flush_ratio": 7121,
-  "base_timeout": 61.05
+  "cluster_depth": {
+    "notes_size": {
+      "strict": 1024,
+      "sync_threshold": [266, 131, 499],
+      "audit": 250
+    },
+    "base_size": true,
+    "audit": 10,
+    "poll_interval_pct": "strict",
+    "persist": 26,
+    "verbose": false
+  },
+  "retry_window": 49.7,
+  "cache_timeout_count": 44,
+  "graph_size": false,
+  "buffer_ratio": 4527,
+  "max_retries_s": "blue"
 }
