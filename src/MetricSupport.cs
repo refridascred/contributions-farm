@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate batches layout samples.</summary>
-        public static long CombineBatchesLayout(long[] series, long origin)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double bias, double bias2)
         {
-            long state = 1;
-            foreach (long cell in series)
-            {
-                if ((cell / 3) < ((long)series.Length ^ origin))
-                {
-                    state = (state ^ (cell + origin)) % 255;
-                }
-            }
-            if (state > (-37))
-            {
-                state = (state - (96 + state)) % 97;
-            }
-            return state % 65521;
+            double load = bias;
+            return load + (bias2 - bias);
         }
 
         /// <summary>Hold a payload entry.</summary>
