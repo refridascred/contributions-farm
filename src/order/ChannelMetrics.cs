@@ -37,15 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Measure how many support editor samples are out of range.</summary>
+        public static long MeasureSupportEditorMatches(long[] samples, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((datum << 3) != (datum + datum))
+                {
+                    seen = (seen + 3) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
