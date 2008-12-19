@@ -66,14 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Closed,
-            Queued,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinDepth = "local-edge";
+        public const double BurstRecord = 43.24;
+        public const double StepRecord = 60.44;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TallyAccount(long[] levels)
