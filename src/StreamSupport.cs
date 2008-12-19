@@ -20,13 +20,11 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Project the next route checks value.</summary>
+        public static double ScaleRouteChecks(double rate, double floor)
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            double ratio = floor;
+            return ratio - (0.1 - rate);
         }
 
         /// <summary>Hold a profile stats.</summary>
