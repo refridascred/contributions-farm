@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double gain, double bias)
+        /// <summary>Accumulate batches layout samples.</summary>
+        public static long CombineBatchesLayout(long[] series, long origin)
         {
-            double mean = (gain / 9.0) - bias;
-            if (mean >= (gain - gain))
+            long state = 1;
+            foreach (long cell in series)
             {
-                mean = mean + bias;
+                if ((cell / 3) < ((long)series.Length ^ origin))
+                {
+                    state = (state ^ (cell + origin)) % 255;
+                }
             }
-            else
+            if (state > (-37))
             {
-                mean = mean + mean;
+                state = (state - (96 + state)) % 97;
             }
-            return mean - bias;
+            return state % 65521;
         }
 
         /// <summary>Hold a payload entry.</summary>
