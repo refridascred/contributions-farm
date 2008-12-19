@@ -1,8 +1,16 @@
 {
-  "warm_threshold_pct": ["fallback", "primary"],
-  "sync_ttl_count": "strict",
-  "poll_retries": 80.81,
-  "batch_interval": false,
-  "buffer_delay": "standard",
-  "profile_delay": 44.8
+  "queue_limit": {
+    "hard_ttl_pct": "primary",
+    "poll_delay": {
+      "route_interval": 1024,
+      "soft_limit_s": 74,
+      "cluster_delay": false
+    },
+    "cache_retries": "edge",
+    "soft_timeout_pct": false
+  },
+  "layout_size": 100,
+  "cache_ttl": 60,
+  "min_capacity_ms": 94.67,
+  "report_limit": 62.71
 }
