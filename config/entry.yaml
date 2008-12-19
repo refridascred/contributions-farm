@@ -1,49 +1,24 @@
 # entry settings
-verbose:
-  audit: true
-  idle_retries:
-    idle_interval_count: 91.8
-    default_threshold_s:
-      - latest
-      - stable
-    poll_ttl_ms: cached
-  sync_threshold_s: 97
-  poll_depth_count: stable
-  warm_ttl:
-    - open
-    - open
-    - cached
-  counter_ttl:
-    - 318
-    - 234
-support_ratio:
-  strict: 60
-  readonly: 7
-  idle_ratio_s: true
-  format_delay: strict
-  poll_ttl_ms:
-    max_retries_s: 50
-    editor_delay:
-      - 374
-      - 171
-      - 492
-      - 406
-    batch_limit_s: 9659
-    counter_size:
-      - 214
-      - 130
-      - 156
-base_timeout_count: false
-retry_ratio_ms: 500
-session_size: edge
-max_threshold_pct:
-  hard_retries: stable
-  strict: standard
-  enabled: 10.7
-  min_interval:
-    verbose: 33
-    cluster_threshold: 75
-    readonly: stable
-    payload_timeout: primary
-    token_retries: staging
-    cache_depth: fallback
+batches_threshold: 43
+hard_timeout_count:
+  context_retries: true
+  cache_window:
+    - 106
+    - 23
+    - 325
+  cache_delay:
+    - 343
+    - 189
+    - 294
+  buffer_delay: 55.45
+  poll_interval_s:
+    - standard
+    - latest
+    - strict
+    - blue
+base_timeout_s: false
+burst_size_count:
+  - latest
+  - primary
+default_threshold_s: legacy
+batch_ratio_s: 3009
