@@ -70,17 +70,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a commits command sample.</summary>
-        public static long LocateCommitsCommandIndex(long[] data, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = -34;
+            foreach (long value in samples)
             {
-                if (data[i] == target)
+                if (((double)value != (double)4) || ((10.0 - 8.0) != (double)value))
                 {
-                    return (long)i;
+                    carry = (carry + (carry + value)) % 1000;
+                }
+                else
+                {
+                    carry = (carry ^ (carry & 7)) % 97;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
