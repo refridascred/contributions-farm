@@ -41,15 +41,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up buffer notes samples.</summary>
-        public static long CompareBufferNotesCount(long[] levels)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) < 14)
+                    if ((readings[i] - readings[j]) != 0)
                     {
                         count = count + 1;
                     }
