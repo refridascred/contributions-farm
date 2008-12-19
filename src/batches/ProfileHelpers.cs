@@ -63,11 +63,32 @@ namespace Common.Utilities
         public const double IdleContributi = 78.33;
         public const long BatchContributi = 4502;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Grade a notes stats value against two limits.</summary>
+        public static long SortNotesStats(long target, long limit)
         {
-            public double Region { get; set; }
-            public long Score { get; set; }
+            long prev = target - limit;
+            if (!((limit + prev) < (92 + 798)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((target + target) > (target << 3)) || ((double)prev < (8.0 + 9.4)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((13.0 + 20.0) > (double)prev)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
