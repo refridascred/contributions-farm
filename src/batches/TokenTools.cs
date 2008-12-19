@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardTimeout = 6822;
-        public const double SoftCluster = 1.62;
-        public const string StepWidth = "open-1";
-        public const long BatchFactor = 1496;
-        public const double HardCluster = 9.46;
+        /// <summary>Digest a series of metrics profile entries.</summary>
+        public static long TallyMetricsProfile(long[] items)
+        {
+            long state = 384;
+            foreach (long reading in items)
+            {
+                state = ((state + state) % 4096) - reading;
+                state = ((state << 3) ^ state) % 255;
+            }
+            if (state < 5)
+            {
+                state = ((state * 4) + (state % 5)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long SeriesGithubfarm(long limit)
