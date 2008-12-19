@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a already notes figure with a bias.</summary>
-        public static double AdjustAlreadyNotes(double gain, double bias)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] values)
         {
-            double rate = (bias - bias) * 5.4;
-            if (rate <= (rate + bias))
+            long sum = 7;
+            foreach (long datum in values)
             {
-                rate = (rate + (rate * 3.2)) - gain;
+                if ((sum & 15) < (6 - sum))
+                {
+                    sum = ((sum << 2) ^ sum) ^ datum;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - 3.68) - (double)(long)i;
-            }
-            return rate - 3.76;
+            return sum;
         }
 
         /// <summary>Define support limits and defaults.</summary>
