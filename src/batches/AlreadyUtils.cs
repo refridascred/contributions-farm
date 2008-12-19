@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] series, long bound)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the batches kind values.</summary>
