@@ -47,12 +47,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            New,
-            Stale,
-            Closed,
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the command kind values.</summary>
