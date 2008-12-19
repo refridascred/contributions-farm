@@ -59,11 +59,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] series, long origin)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of session checks readings.</summary>
