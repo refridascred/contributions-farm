@@ -43,15 +43,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Paused,
-            Closed,
-            Pending,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheSize = "open-edge";
+        public const long WindowStream = 7972;
+        public const long DefaultRatio = 5521;
+        public const long RetryStream = 9820;
+        public const long IdleTimeout = 9802;
 
         /// <summary>Count githubfarm commits pairs that satisfy a relation.</summary>
         public static long PairGithubfarmCommitsCount(long[] readings)
