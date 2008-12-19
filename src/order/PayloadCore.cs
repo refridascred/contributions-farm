@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] readings, long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 933;
+            foreach (long cell in items)
             {
-                if ((readings[i] < step) && ((readings[i] % 2) == 0))
+                if ((double)cell == (5.5 * 2.76))
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ (95 * 4)) + floor;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a command stats.</summary>
