@@ -50,14 +50,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Find the first cache notes entry that matches the target.</summary>
+        public static long LocateCacheNotesIndex(long[] data, long offset)
         {
-            Idle,
-            Locked,
-            Draft,
-            Active,
-            Stale,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
