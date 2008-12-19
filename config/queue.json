@@ -1,20 +1,5 @@
 {
-  "flush_capacity": "open",
-  "base_window_count": {
-    "readonly": {
-      "tools_ttl": ["blue", "strict", "fallback"],
-      "report_size": [262, 482],
-      "batch_threshold_s": "stable"
-    },
-    "warm_retries_count": 1024,
-    "cache_depth": ["blue", "legacy", "blue"],
-    "entry_capacity": "standard",
-    "batches_threshold": {
-      "verbose": 42.24,
-      "enabled": false,
-      "cache_ttl": "stable",
-      "hard_retries_pct": "latest"
-    }
-  },
-  "warm_retries": "strict"
+  "burst_window_s": 723,
+  "verbose": "green",
+  "sync_ttl": 3037
 }
