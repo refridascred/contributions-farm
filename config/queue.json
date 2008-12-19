@@ -1,8 +1,5 @@
 {
-  "payload_ttl": true,
-  "base_retries_ms": 30,
-  "max_ratio_s": 55.18,
-  "record_ttl": 5231,
-  "soft_limit": 250,
-  "soft_limit_pct": false
+  "persist": "green",
+  "batch_delay_s": true,
+  "min_window_pct": true
 }
