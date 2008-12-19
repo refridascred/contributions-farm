@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] levels, long target)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long target, long limit)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long next = target + limit;
+            if (target <= (limit >> 2))
             {
-                if ((seen / 5) != (seen & 3))
+                return 4;
+            }
+            else
+            {
+                if ((target >> 3) > next)
                 {
-                    seen = ((seen + 3) + entry) - target;
+                    return 6;
+                }
+                else
+                {
+                    if (next >= ((-303) & 63))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit * 4) > (next ^ 13))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
