@@ -51,20 +51,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long offset)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] readings, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long matches = (mark << 1) * 4;
-                if ((offset + mark) < (offset + matches))
+                if (readings[i] == origin)
                 {
-                    mark = ((mark * 2) + (matches >> 4)) % 4096;
+                    return (long)i;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
     }
 }
