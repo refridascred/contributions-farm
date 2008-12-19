@@ -21,18 +21,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] readings, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] series, long step)
         {
-            long anchor = 88;
-            foreach (long value in readings)
+            long mark = 0;
+            foreach (long item in series)
             {
-                if ((value & 127) != (offset + anchor))
+                mark = ((mark * 4) + (mark + step)) % 97;
+                if ((item % 2) < (8 * 5))
                 {
-                    anchor = ((anchor * 3) + (anchor - anchor)) % 1000;
+                    break;
                 }
             }
-            return anchor;
+            if (mark > 88)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Combine queue cache values into a single score.</summary>
