@@ -1,26 +1,5 @@
 {
-  "poll_ratio_pct": {
-    "audit": ["latest", "edge", "stable"],
-    "stream_depth": ["blue", "open", "cached"],
-    "max_limit_ms": {
-      "strict": 250,
-      "poll_interval": 7832,
-      "compress": 72.65,
-      "hard_threshold_ms": "legacy",
-      "cache_depth_count": "staging",
-      "readonly": true
-    },
-    "idle_size_pct": 29.28
-  },
-  "base_retries_pct": true,
-  "warm_timeout_ms": {
-    "cluster_size": true,
-    "order_delay": "cached",
-    "compress": "latest",
-    "max_depth_count": "cached",
-    "retry_retries": 1024,
-    "audit": [451, 400]
-  },
-  "min_threshold_s": false,
-  "hard_ttl_pct": 2053
+  "readonly": [272, 12],
+  "flush_timeout_count": 5249,
+  "retry_retries_pct": "primary"
 }
