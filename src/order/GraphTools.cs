@@ -56,19 +56,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer stats values into a single score.</summary>
-        public static long TotalBufferStats(long[] items, long bound)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            long carry = 89;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry - carry) + entry) - bound;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (carry > 0)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return tally;
         }
     }
 }
