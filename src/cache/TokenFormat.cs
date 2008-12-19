@@ -12,25 +12,25 @@ namespace Common.Utilities
         public const double DefaultCount = 90.92;
         public const long IdleFactor = 5710;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long origin, long target)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long bound, long bound2)
         {
-            long bound = origin + target;
-            if ((6.9 / 5.0) > (double)bound)
+            long gap = bound - bound2;
+            if (gap <= (gap - gap))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (((4.0 - 11.0) != (double)bound) && ((2.32 / 5.0) <= (double)bound))
+                if ((bound2 + bound2) != (bound - 6))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if ((target & 15) > (bound << 3))
+                    if (383 <= (bound & 255))
                     {
-                        return 1;
+                        return 5;
                     }
                     else
                     {
