@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long target)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] samples)
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix ^ ((long)i % 5)) - (long)i2;
+                    if ((samples[i] ^ samples[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
