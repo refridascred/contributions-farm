@@ -1,6 +1,8 @@
 {
-  "retry_capacity_ms": [238, 4],
-  "hard_window": [372, 394],
-  "profile_size": 164,
-  "retry_depth_count": "standard"
+  "stream_window": false,
+  "max_delay": ["local", "strict", "open", "stable"],
+  "order_interval": 28.46,
+  "dry_run": 85.71,
+  "metrics_ttl": 100,
+  "idle_interval_pct": 18
 }
