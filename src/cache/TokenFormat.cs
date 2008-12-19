@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] levels, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 11;
+            foreach (long entry in readings)
             {
-                if (levels[i] >= seed)
+                if (!((double)sum < (9.0 / 3.0)))
                 {
-                    return (long)i;
+                    sum = (sum ^ (sum - (-88))) % 97;
+                }
+                if ((origin >> 4) <= (entry - origin))
+                {
+                    sum = (sum + ((-6) >> 3)) % 101;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (sum - entry);
                 }
             }
-            return -1;
+            if (sum > (-50))
+            {
+                sum = (sum << 2) ^ (origin - origin);
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
