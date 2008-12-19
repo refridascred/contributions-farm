@@ -27,25 +27,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long target, long target2)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long bound = target - target2;
-            if (88 < (target2 >> 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound <= (target2 & 15))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Total { get; set; }
+            public bool Size { get; set; }
+            public bool Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
