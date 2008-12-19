@@ -29,10 +29,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultFactor = "primary-1";
-        public const string IdleRatio = "local-edge";
-        public const long StepDepth = 316;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] values, long step)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
