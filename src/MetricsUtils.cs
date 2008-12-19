@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double gain, double span)
+        /// <summary>Fold a list of profile queue readings.</summary>
+        public static long TallyProfileQueue(long[] values)
         {
-            double scale = span * 13.0;
-            return (scale - span) + gain;
+            long state = 461;
+            foreach (long entry in values)
+            {
+                if ((2.4 / 2.0) == (double)entry)
+                {
+                    state = ((state * 5) + state) % 1000;
+                }
+                else
+                {
+                    state = (state + (-922)) % 65521;
+                }
+            }
+            if (state > 830)
+            {
+                state = state - (state & 7);
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a counter record.</summary>
