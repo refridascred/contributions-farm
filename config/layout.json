@@ -1,16 +1,6 @@
 {
-  "poll_limit_s": ["staging", "strict"],
-  "batch_depth_ms": [200, 400, 29],
-  "idle_ttl": {
-    "contributi_capacity": ["local", "blue", "fallback"],
-    "hard_interval_s": ["edge", "legacy"],
-    "retry_retries_pct": "strict",
-    "batch_capacity": {
-      "queue_limit": 60,
-      "burst_window": 1197,
-      "dry_run": 1024,
-      "batch_depth_ms": ["standard", "legacy", "local"],
-      "min_ttl": "strict"
-    }
-  }
+  "warm_limit_ms": true,
+  "flush_threshold_pct": true,
+  "session_ratio": 3,
+  "warm_capacity_count": false
 }
