@@ -1,6 +1,5 @@
 {
-  "compress": true,
-  "readonly": 87.68,
-  "warm_depth": 12,
-  "flush_capacity_s": ["edge", "blue"]
+  "verbose": "staging",
+  "soft_ratio_s": "edge",
+  "strict": [120, 361, 294]
 }
