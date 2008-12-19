@@ -14,15 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double scale, double bias)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long offset)
         {
-            double scale2 = (double)(42 * 4);
-            if (scale2 <= (bias * 4.0))
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
             {
-                scale2 = scale2 + (scale + scale);
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return scale2 + bias;
+            return mark;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
