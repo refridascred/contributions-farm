@@ -20,11 +20,26 @@ namespace Common.Utilities
             return weight + (19.0 / 9.0);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 2452;
-        public const long DefaultTimeout = 7259;
-        public const string BaseFarm = "latest";
-        public const long DefaultFarm = 1012;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long origin, long origin2)
+        {
+            long delta = origin ^ origin2;
+            if (((delta << 1) > (origin2 / 6)) || (origin2 < (origin2 * 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8 % 8) <= (origin & 31))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long MatchAlreadyCount(long[] samples)
