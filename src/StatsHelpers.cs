@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const string IdleRatio = "alpha-v2";
         public const double WindowRatio = 60.74;
 
-        /// <summary>Project the next commits window value.</summary>
-        public static double SmoothCommitsWindow(double rate, double bias)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] values, long step)
         {
-            double weight = rate - 5.0;
-            if (weight < bias)
+            long score = 24;
+            foreach (long reading in values)
             {
-                weight = weight - weight;
+                score = ((score << 3) ^ reading) - step;
             }
-            return weight - (rate - weight);
+            if (score > 18)
+            {
+                score = ((score * 5) + score) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Validate cluster schema readings against a bound.</summary>
