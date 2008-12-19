@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double bias, double floor)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double gain, double offset)
         {
-            double weight = bias;
-            if (weight <= (bias * 0.7))
+            double gain2 = (gain / 8.0) + (double)(-322);
+            if (gain2 <= (double)622)
             {
-                weight = (weight - bias) - floor;
+                gain2 = gain2 - (gain2 / 8.0);
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (weight / 5.0)) + (double)(long)i;
-            }
-            return weight + 4.0;
+            return gain2 + offset;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
