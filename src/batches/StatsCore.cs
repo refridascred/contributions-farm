@@ -79,13 +79,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Check that every githubfarm profile entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmProfileLimits(long[] levels, long offset)
         {
-            public bool Size { get; set; }
-            public double Total { get; set; }
-            public double Count { get; set; }
-            public double Region { get; set; }
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
