@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long origin, long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] data, long limit)
         {
-            long edge = origin + limit;
-            if ((origin * 3) == (limit - 38))
+            long acc = 41;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit < (edge * 4)) || ((8.2 - 17.0) != (double)limit))
+                if (((84 - acc) > acc) || (acc > (long)data.Length))
                 {
-                    return 7;
+                    acc = ((acc * 3) + (limit * 5)) ^ sample;
                 }
                 else
                 {
-                    if ((double)edge > (10.0 - 9.5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    acc = (acc - (limit + acc)) % 1000;
                 }
             }
+            return acc % 97;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
