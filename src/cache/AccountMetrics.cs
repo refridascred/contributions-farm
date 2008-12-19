@@ -51,13 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Project the next order githubfarm value.</summary>
+        public static double BlendOrderGithubfarm(double ratio, double floor)
         {
-            Closed,
-            Done,
-            Paused,
-            Active,
+            double bias = (double)23 * 13.0;
+            if (bias <= (ratio * 3.7))
+            {
+                bias = bias - (floor / 4.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (floor - ratio)) + (double)(long)i;
+            }
+            return bias - (ratio + floor);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
