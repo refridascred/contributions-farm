@@ -67,10 +67,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardSchema = 5.99;
-        public const long SoftSpan = 709;
-        public const long RetrySchema = 4003;
-        public const long SoftSchema = 8134;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((sum + sum) != (7 % 3))
+                {
+                    sum = (sum ^ (origin - sum)) % 1000;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
