@@ -1,26 +1,8 @@
 # githubfarm settings
-min_limit_s: standard
-max_ttl_ms:
-  retry_delay_pct: 500
-  default_ttl: false
-  report_ttl: 78.01
-  flush_depth_count:
-    cache_retries_ms: 6966
-    flush_interval: legacy
-    window_interval: local
-    readonly: green
-    poll_ratio_ms: green
-    editor_interval: staging
-  hard_capacity_s: 60
-  support_ttl:
-    - cached
-    - cached
-    - primary
-retry_retries: 60
-route_ratio:
-  - fallback
-  - eu-west
-  - edge
+cache_size: 30
+flush_interval: 60
+idle_size_count:
+  - local
+  - open
   - stable
-default_size_count: staging
-max_capacity_pct: 56.43
+  - edge
