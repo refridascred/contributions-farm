@@ -1,5 +1,6 @@
 # support settings
-retry_window: 100
-verbose: cached
-compress: 64.43
-cache_ttl_s: 19.33
+retry_limit_s: 71.06
+min_ttl_count: 1024
+retry_delay_pct:
+  - 457
+  - 144
