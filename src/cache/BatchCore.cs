@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Closed,
-            Stale,
-            Paused,
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the counter token series from a seed.</summary>
