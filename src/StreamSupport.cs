@@ -20,11 +20,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next route checks value.</summary>
-        public static double ScaleRouteChecks(double rate, double floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long floor, long step)
         {
-            double ratio = floor;
-            return ratio - (0.1 - rate);
+            if ((step >> 4) == (floor - step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step / 6) >= floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((31 + step) < floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the session kind values.</summary>
