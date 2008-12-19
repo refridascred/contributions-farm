@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a route token counter forward.</summary>
-        public static long SeriesRouteToken(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((mix - 4) == (mix % 10)) && ((bound >> 4) != (mix + (long)i)))
-                {
-                    mix = mix - (mix << 1);
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = (mix - ((-807) % 12)) - (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultSpan = 50.9;
+        public const long BaseTimeout = 3599;
+        public const long CacheScore = 3370;
+        public const long WindowToken = 7778;
+        public const string MaxToken = "legacy-1";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MinRoute = 8117;
