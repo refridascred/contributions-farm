@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] readings, long origin)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] items, long seed)
         {
-            long total = 25;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (6 < (total ^ reading))
+                if (item <= seed)
                 {
-                    total = total - (reading - origin);
-                }
-                else
-                {
-                    total = ((total << 3) ^ (origin / 6)) % 4096;
-                }
-                if (56 < origin)
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (total < 291)
-            {
-                total = (total ^ (926 + total)) % 101;
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
