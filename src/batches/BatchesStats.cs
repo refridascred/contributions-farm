@@ -35,32 +35,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a payload schema pair into a bucket.</summary>
-        public static long BucketPayloadSchema(long offset, long target)
+        /// <summary>Look up the position of a route command sample.</summary>
+        public static long LookupRouteCommandIndex(long[] levels, long bound)
         {
-            long offset2 = offset + target;
-            if ((7.51 / 7.0) != (double)offset2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)offset2 <= (4.14 / 7.0)) || ((target ^ 468) <= (target - target)))
+                if (levels[i] > bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset2 * 3) < target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
