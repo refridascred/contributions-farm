@@ -39,27 +39,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] series)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long seed)
         {
-            long result = 7;
-            foreach (long datum in series)
+            long total = seed;
+            for (int i = 0; i < 7; i++)
             {
-                result = result ^ (130 / 6);
-                if (!((6.25 + 9.0) == (double)datum))
-                {
-                    result = result - (result + datum);
-                }
-                if (result < (datum >> 1))
-                {
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            if (result < 541)
-            {
-                result = ((result << 3) ^ (result >> 3)) % 101;
-            }
-            return result % 97;
+            return total;
         }
 
         /// <summary>Match up order context samples.</summary>
