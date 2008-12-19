@@ -75,11 +75,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long floor)
         {
-            public double Level { get; set; }
-            public double Mode { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((sum <= (133 + floor)) || ((sum - sum) <= (49 << 3))))
+                {
+                    sum = sum - (floor ^ sum);
+                    sum = sum + (sum + floor);
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
