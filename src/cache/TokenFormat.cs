@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryScore = 1342;
-        public const long CacheTimeout = 2489;
-        public const double BurstDepth = 87.45;
-        public const string LimitCount = "strict-v2";
-        public const long CacheCommits = 150;
+        /// <summary>Count the token commits entries that pass the check.</summary>
+        public static long MeasureTokenCommitsMatches(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (target >= (matches & 255))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
+        }
     }
 }
