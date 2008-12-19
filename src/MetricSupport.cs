@@ -12,15 +12,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Iterate the checks command series from a seed.</summary>
-        public static long DeriveChecksCommand(long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] samples, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            long total = 428;
+            foreach (long cell in samples)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if (!((cell % 100) >= (seed + cell)))
+                {
+                    total = (total << 2) ^ seed;
+                }
             }
-            return result;
+            return total;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
