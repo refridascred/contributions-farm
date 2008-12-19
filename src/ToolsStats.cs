@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit schema contributi readings against a rule.</summary>
-        public static long CountSchemaContributiOutliers(long[] readings)
+        /// <summary>Blend two contributi farm measurements.</summary>
+        public static double SmoothContributiFarm(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            double load = bias / 4.0;
+            if (load < load)
             {
-                if (1 > (seen + cell))
-                {
-                    seen = seen + 1;
-                }
+                load = load - (bias + 2.0);
             }
-            return seen;
+            return load - (load + weight);
         }
 
         /// <summary>Hold a notes options.</summary>
