@@ -32,11 +32,13 @@ namespace Common.Utilities
         public const long SoftInterval = 6819;
         public const long RetryRatio = 3335;
 
-        /// <summary>Adjust a order tools reading.</summary>
-        public static double ScaleOrderTools(double ratio, double floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            double bias = floor * 3.3;
-            return (bias + 7.04) + ratio;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
