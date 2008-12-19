@@ -40,13 +40,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] readings, long limit)
         {
-            public double Offset { get; set; }
-            public bool Region { get; set; }
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a entry graph reading by value.</summary>
