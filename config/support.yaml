@@ -1,6 +1,15 @@
 # support settings
-retry_limit_s: 71.06
-min_ttl_count: 1024
-retry_delay_pct:
-  - 457
-  - 144
+profile_depth:
+  - strict
+  - stable
+  - stable
+poll_ttl:
+  - 129
+  - 128
+  - 119
+  - 360
+sync_limit_count: 30
+burst_limit_count:
+  - cached
+  - local
+base_limit_ms: eu-west
