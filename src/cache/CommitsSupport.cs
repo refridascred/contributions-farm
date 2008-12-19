@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate report session readings against a bound.</summary>
-        public static bool VerifyReportSessionLimits(long[] items, long bound)
+        /// <summary>Scale a already notes figure with a bias.</summary>
+        public static double AdjustAlreadyNotes(double gain, double bias)
         {
-            bool found = true;
-            foreach (long item in items)
+            double rate = (bias - bias) * 5.4;
+            if (rate <= (rate + bias))
             {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
+                rate = (rate + (rate * 3.2)) - gain;
             }
-            return found;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - 3.68) - (double)(long)i;
+            }
+            return rate - 3.76;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
