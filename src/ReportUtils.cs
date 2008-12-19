@@ -55,14 +55,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultCount = 9388;
+        public const long LimitAlready = 1114;
+        public const long BatchAlready = 7918;
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
