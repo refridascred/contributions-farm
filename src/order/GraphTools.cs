@@ -39,14 +39,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] items, long step)
         {
-            Idle,
-            Ready,
-            Draft,
-            Queued,
-            Retry,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
