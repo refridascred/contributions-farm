@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double rate, double span)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double rate, double bias)
         {
-            double weight = 8.62;
-            if (weight <= (double)(-4))
+            double drift = rate;
+            if (drift < drift)
             {
-                weight = weight - (span - rate);
+                drift = (drift - rate) + bias;
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 9; i++)
             {
-                weight = (weight - rate) + (double)(long)i;
+                drift = (drift - (rate / 5.0)) + (double)(long)i;
             }
-            return weight + (19.0 / 9.0);
+            return drift - drift;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
