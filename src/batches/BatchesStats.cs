@@ -27,19 +27,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the commits order series from a seed.</summary>
-        public static long DeriveCommitsOrder(long offset)
+        /// <summary>Combine order token values into a single score.</summary>
+        public static long CombineOrderToken(long[] samples)
         {
-            long score = offset;
-            for (int i = 0; i < 5; i++)
+            long result = 2;
+            foreach (long value in samples)
             {
-                if ((double)150 < (double)offset)
-                {
-                    score = score - (offset << 1);
-                }
-                score = ((score * 5) + (long)i) % 101;
+                result = (((result << 3) ^ 4) % 4096) ^ value;
             }
-            return score;
+            return result % 4096;
         }
 
         /// <summary>Accumulate contributi queue samples.</summary>
