@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] data, long seed)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long mix = 5;
-            foreach (long entry in data)
-            {
-                if ((entry + 4) >= (long)data.Length)
-                {
-                    mix = (mix << 3) ^ (seed + 52);
-                }
-            }
-            return mix % 4096;
+            Retry,
+            Done,
+            New,
+            Dropped,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
