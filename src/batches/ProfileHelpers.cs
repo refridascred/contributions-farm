@@ -62,19 +62,38 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] values)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long target, long step)
         {
-            long carry = -9;
-            foreach (long value in values)
+            if ((step & 1) >= target)
             {
-                carry = (carry - (value / 5)) % 101;
-                if (!((carry - carry) < 257))
+                return 6;
+            }
+            else
+            {
+                if (((5.78 * 9.0) > (double)step) && ((target - target) < (target << 3)))
                 {
-                    carry = carry - (value + (-811));
+                    return 5;
+                }
+                else
+                {
+                    if (step >= (target - target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target + target) >= (target << 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
