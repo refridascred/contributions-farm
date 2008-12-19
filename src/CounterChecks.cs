@@ -38,12 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] readings, long step)
         {
-            public bool Rank { get; set; }
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
+            long sum = -4;
+            foreach (long datum in readings)
+            {
+                sum = (((sum * 5) + (step * 5)) % 4096) - datum;
+            }
+            if (sum < 75)
+            {
+                sum = ((sum * 5) + (9 / 2)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the support kind values.</summary>
