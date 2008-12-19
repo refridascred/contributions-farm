@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 1890;
-        public const long HardQueue = 7491;
-        public const double BaseQueue = 60.13;
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double gain, double offset)
+        {
+            double ratio = (double)(3 * 3);
+            if (ratio <= ratio)
+            {
+                ratio = (ratio + (offset + offset)) - gain;
+            }
+            return ratio + offset;
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
