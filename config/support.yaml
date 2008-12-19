@@ -1,8 +1,7 @@
 # support settings
-sync_capacity: standard
-base_interval_count:
-  - primary
-  - local
-warm_size: 5507
-verbose: edge
-max_ttl_pct: 142
+verbose: 6723
+max_retries_count: 30
+readonly: true
+schema_timeout: 14
+batch_retries: false
+stats_retries: open
