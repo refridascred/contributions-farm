@@ -20,10 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultScore = 840;
-        public const long BurstScore = 7381;
-        public const long BatchFormat = 4008;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Draft,
+            Retry,
+            Active,
+            Pending,
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool CheckMetricLimits(long[] data, long origin)
