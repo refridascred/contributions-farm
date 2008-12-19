@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitBudget = "open-1";
-        public const long BaseBudget = 5566;
-        public const long LimitWidth = 3315;
-        public const long RetrySpan = 6546;
-        public const string BurstInterval = "alpha-1";
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = mix - (mix * 4);
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long CombineFarm(long[] items)
