@@ -37,21 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
