@@ -48,19 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] values)
-        {
-            long result = 40;
-            foreach (long entry in values)
-            {
-                result = (((result << 3) ^ result) % 101) ^ entry;
-            }
-            if (result > 8)
-            {
-                result = result ^ result;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleRatio = 8828;
+        public const string CachePayload = "stable-edge";
+        public const double BasePayload = 15.15;
+        public const long BatchTimeout = 8269;
+        public const long LimitPayload = 9752;
     }
 }
