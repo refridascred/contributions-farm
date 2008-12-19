@@ -24,21 +24,19 @@ namespace Common.Utilities
         public const string HardCounter = "staging-v2";
         public const string BaseCounter = "latest";
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] readings)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample > bound)
                 {
-                    if ((readings[i] ^ readings[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Grade a buffer metric value against two limits.</summary>
