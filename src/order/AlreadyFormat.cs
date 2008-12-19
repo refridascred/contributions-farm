@@ -27,12 +27,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultSpan = 77.41;
-        public const long BatchSpan = 6152;
-        public const double BurstMetric = 38.7;
-        public const string SoftLevel = "alpha-1";
-        public const long BatchWidth = 9072;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long target, long target2)
+        {
+            long bound = target - target2;
+            if (88 < (target2 >> 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound <= (target2 & 15))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long DigestBatch(long[] samples)
