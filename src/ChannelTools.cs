@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] levels)
         {
-            public double Weight { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample <= (8.3 * 7.0))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit account stream readings against a rule.</summary>
