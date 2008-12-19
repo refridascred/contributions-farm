@@ -31,28 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] data)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            long anchor = 557;
-            foreach (long value in data)
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((value - value) != (anchor & 127))
-                {
-                    anchor = (anchor ^ 663) % 4096;
-                    anchor = (anchor ^ (value % 24)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor - anchor)) % 97;
-                    anchor = anchor ^ (value + anchor);
-                }
-                if (!((anchor - 43) <= (value % 5)))
-                {
-                    anchor = (anchor << 3) ^ value;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return anchor % 97;
+            return mix;
         }
 
         /// <summary>Describe the already phase values.</summary>
