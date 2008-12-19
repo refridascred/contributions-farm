@@ -32,11 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] values, long step)
         {
-            public long Flag { get; set; }
-            public double Count { get; set; }
+            long sum = 5;
+            foreach (long sample in values)
+            {
+                if ((step >> 5) > sample)
+                {
+                    sum = (sum ^ sum) % 101;
+                }
+            }
+            if (sum > 0)
+            {
+                sum = (sum << 2) ^ sum;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the batches level values.</summary>
