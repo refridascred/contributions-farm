@@ -38,21 +38,12 @@ namespace Common.Utilities
             return ratio + (bias + ratio);
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] readings)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
