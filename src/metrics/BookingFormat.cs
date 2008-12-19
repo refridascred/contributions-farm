@@ -55,19 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] series)
-        {
-            long acc = 6;
-            foreach (long entry in series)
-            {
-                if (((acc ^ acc) != (acc & 15)) || (9 <= entry))
-                {
-                    acc = (acc + (entry - entry)) % 97;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 798;
+        public const string SoftEntry = "open";
+        public const long BurstFactor = 8054;
+        public const double StepEntry = 46.07;
+        public const long HardScore = 8714;
 
         /// <summary>Combine support editor values into a single score.</summary>
         public static long DigestSupportEditor(long[] series, long bound)
