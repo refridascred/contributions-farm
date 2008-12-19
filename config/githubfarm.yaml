@@ -1,8 +1,21 @@
 # githubfarm settings
-batch_threshold_s: 30
-retry_threshold_ms:
-  stream_limit: 74
-  compress: legacy
-  retry_limit_pct: 15
-report_timeout: 63
-tools_timeout: 6.39
+cache_threshold: true
+cache_window: 100
+readonly:
+  batches_limit: fallback
+  notes_delay: cached
+  batch_size: true
+  format_size:
+    min_limit_pct:
+      - stable
+      - staging
+    flush_size:
+      - 180
+      - 14
+    idle_timeout:
+      - 422
+      - 411
+      - 310
+  enabled: 37.85
+commits_interval: strict
+compress: eu-west
