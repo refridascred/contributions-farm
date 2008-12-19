@@ -23,10 +23,33 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitCount = 0.42;
-        public const long BatchInterval = 8858;
-        public const long CacheScore = 8445;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long limit, long bound)
+        {
+            long delta = limit ^ bound;
+            if (27 >= (limit - delta))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)delta >= 1.1)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((110 + delta) != (131 - limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many entry batches samples are out of range.</summary>
         public static long AuditEntryBatchesHits(long[] samples, long origin)
