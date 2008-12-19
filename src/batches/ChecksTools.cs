@@ -38,21 +38,21 @@ namespace Common.Utilities
         public const long CacheRatio = 6747;
         public const long IdleSupport = 2618;
 
-        /// <summary>Compare every pair of stats window readings.</summary>
-        public static long CompareStatsWindowCount(long[] values)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) == 17)
+                    if ((items[i] ^ items[j]) > 17)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
