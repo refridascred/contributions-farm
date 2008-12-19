@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxFactor = 4401;
-        public const string BurstSpan = "open-v2";
-        public const long MaxContributi = 1418;
-        public const long BatchContributi = 7722;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long step, long target)
+        {
+            long step2 = step + target;
+            if (((step2 << 1) < (target & 63)) && ((step2 * 3) == (step / 7)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target >> 3) > step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
