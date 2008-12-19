@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double bias, double bias2)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] series)
         {
-            double load = bias;
-            return load + (bias2 - bias);
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
