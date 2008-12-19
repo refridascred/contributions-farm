@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long origin, long bound)
+        /// <summary>Combine context contributi values into a single score.</summary>
+        public static long CombineContextContributi(long[] samples, long target)
         {
-            if (!((origin % 64) < (origin + bound)))
+            long mix = 5;
+            foreach (long cell in samples)
             {
-                return 7;
+                if (target >= (1 * 5))
+                {
+                    mix = (((mix * 2) + mix) % 101) - cell;
+                }
+                mix = (mix ^ (7 + 9)) % 4096;
             }
-            else
+            if (mix > 58)
             {
-                if ((3.92 + 19.0) != (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
+                mix = (mix + (420 - target)) % 255;
             }
+            return mix % 4096;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
