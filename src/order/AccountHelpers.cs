@@ -15,17 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the window record series from a seed.</summary>
-        public static long RollWindowRecord(long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] data, long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                mark = ((mark * 5) + target) % 255;
-                mark = (mark ^ (target - (long)i)) % 255;
-                mark = ((mark * 4) + (long)i) % 101;
+                if (datum != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
