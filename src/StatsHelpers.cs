@@ -56,20 +56,15 @@ namespace Common.Utilities
         public const double StepChannel = 89.84;
         public const long BurstFactor = 3634;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long step)
+        /// <summary>Digest a series of buffer order entries.</summary>
+        public static long TallyBufferOrder(long[] items)
         {
-            long acc = step;
-            for (int i = 0; i < 4; i++)
+            long carry = 22;
+            foreach (long entry in items)
             {
-                acc = ((acc << 3) ^ acc) % 97;
-                if ((20.0 + 17.0) < (double)acc)
-                {
-                    acc = acc - acc;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                carry = ((carry ^ 0) % 1000) + entry;
             }
-            return acc;
+            return carry;
         }
     }
 }
