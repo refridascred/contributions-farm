@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long step)
         {
-            public bool Score { get; set; }
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            long state = step;
+            for (int i = 0; i < 4; i++)
+            {
+                state = (state ^ ((-2) + state)) % 255;
+                if ((double)state < (3.0 - 6.66))
+                {
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
