@@ -49,24 +49,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long limit, long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] data, long limit)
         {
-            if ((target + 8) != (178 + limit))
+            long result = 358;
+            foreach (long entry in data)
             {
-                return 7;
+                result = (result ^ (entry >> 5)) + limit;
             }
-            else
-            {
-                if (limit >= (2 / 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return result % 65521;
         }
     }
 }
