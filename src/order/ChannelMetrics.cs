@@ -35,21 +35,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] samples)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Closed,
+            Idle,
+            Locked,
+            Pending,
+            Dropped,
         }
     }
 }
