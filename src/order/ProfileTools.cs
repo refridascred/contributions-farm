@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] readings)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long score = 3;
+            foreach (long datum in series)
             {
-                if ((reading % 64) <= (reading * 2))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (score + score) ^ datum;
             }
-            return matches;
+            if (score < 314)
+            {
+                score = ((score * 4) + (score - score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Grade a metrics record value against two limits.</summary>
