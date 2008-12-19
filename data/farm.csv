@@ -1,7 +1,7 @@
-id,rank,count
-1,944,56.81
-2,610,108
-3,staging,624
-4,legacy,3.4
-5,fallback,eu-west
-6,standard,open
+id,token,count,ratio
+1,86.2,626,895
+2,67.53,staging,419
+3,489,648,594
+4,160,98.76,62.24
+5,19.39,latest,cached
+6,staging,126,cached
