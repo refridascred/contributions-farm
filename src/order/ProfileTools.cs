@@ -67,17 +67,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] samples, long target)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] <= target) && ((samples[i] % 2) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
