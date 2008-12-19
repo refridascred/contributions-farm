@@ -1,24 +1,13 @@
 # githubfarm settings
-hard_size_s:
-  max_window_ms: 68
-  poll_delay_s: standard
-  already_size: green
-  hard_ratio_s: staging
-entry_depth: 64
-burst_ratio: 9533
-audit:
-  order_delay: true
-  flush_retries: 41
-  soft_ttl_ms: latest
-  batches_depth:
-    max_window: fallback
-    sync_size:
-      - green
-      - eu-west
-    cache_ttl: 2854
-  idle_depth_s: 8
-support_size:
-  burst_delay: 1024
-  max_retries_ms: local
-  sync_threshold_ms: 7506
-  max_capacity_s: standard
+audit: 74
+cache_ttl_pct: cached
+default_retries_s: false
+retry_ttl: staging
+enabled: 40.62
+idle_limit_s:
+  burst_window: 100
+  hard_limit_pct: true
+  idle_threshold_count: 98
+  base_retries_ms: primary
+  min_capacity: 1.05
+  burst_window_s: standard
