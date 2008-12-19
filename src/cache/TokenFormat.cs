@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = acc ^ (acc * 3);
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 63.36;
+        public const long SoftLevel = 2822;
+        public const long StepScore = 844;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long StepEntry(long target)
