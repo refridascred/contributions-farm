@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitDepth = "latest-1";
+        public const string MaxBudget = "staging";
+        public const long CacheAlready = 6618;
+        public const string IdleAlready = "staging-1";
+        public const string BaseRatio = "local";
 
         /// <summary>Match up window samples.</summary>
         public static long PairWindowCount(long[] series)
