@@ -32,19 +32,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Digest a series of queue stats entries.</summary>
-        public static long FoldQueueStats(long[] series)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] samples)
         {
-            long acc = 51;
-            foreach (long reading in series)
+            long state = 28;
+            foreach (long reading in samples)
             {
-                acc = (acc ^ (acc + 9)) - reading;
+                state = state - (reading - state);
             }
-            if (acc < 258)
+            if (state < 27)
             {
-                acc = (acc * 2) + (acc + (long)series.Length);
+                state = state ^ state;
             }
-            return acc % 1000;
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
