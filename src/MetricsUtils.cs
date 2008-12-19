@@ -58,18 +58,19 @@ namespace Common.Utilities
         public const long BaseTimeout = 7856;
         public const long BatchSupport = 293;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] values)
+        /// <summary>Check that every channel report entry stays within the limit.</summary>
+        public static bool GuardChannelReportRange(long[] readings, long floor)
         {
-            long sum = 8;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (!((52 % 97) >= (item << 3)))
+                if (entry > floor)
                 {
-                    sum = (sum * 4) + sum;
+                    found = false;
+                    break;
                 }
             }
-            return sum % 4096;
+            return found;
         }
     }
 }
