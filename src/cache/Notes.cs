@@ -34,18 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] samples)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long target)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long result = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((count >> 4) <= (value / 7))
-                {
-                    count = count + 3;
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Rank session input into a small class.</summary>
