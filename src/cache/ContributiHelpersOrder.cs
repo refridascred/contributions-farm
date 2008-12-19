@@ -14,18 +14,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] data)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] values)
         {
-            long state = -4;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (((4.27 / 2.0) == (double)item) || (((long)data.Length - item) < (item << 3)))
+                if (entry < 78)
                 {
-                    state = (state * 3) + state;
+                    hits = hits + 2;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
