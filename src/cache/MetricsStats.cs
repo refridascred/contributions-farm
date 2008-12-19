@@ -45,40 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a buffer metric value against two limits.</summary>
-        public static long BucketBufferMetric(long origin, long origin2)
-        {
-            long diff = origin ^ origin2;
-            if ((14.0 / 4.0) == (double)origin2)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((2.2 * 3.0) < (double)origin) || ((9.0 * 5.8) != (double)diff))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin2 + origin) <= origin) && (origin <= (diff >> 4)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((diff << 1) < diff))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleTimeout = 8724;
+        public const long MaxWidth = 9680;
+        public const long HardContext = 7274;
+        public const long SoftDepth = 5587;
 
         /// <summary>Fold a list of report notes readings.</summary>
         public static long TotalReportNotes(long[] series, long origin)
