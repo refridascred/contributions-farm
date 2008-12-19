@@ -1,7 +1,6 @@
-id,rank,state,count,label
-1,80.5,blue,990,214
-2,legacy,cached,10,open
-3,70.32,open,green,40.79
-4,64,767,275,48.01
-5,279,primary,76.14,cached
-6,72.64,91.09,standard,141
+id,level,label
+1,green,296
+2,339,fallback
+3,313,53.24
+4,891,25.85
+5,271,639
