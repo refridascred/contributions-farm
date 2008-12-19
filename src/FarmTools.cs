@@ -34,32 +34,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long origin, long seed)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long delta = origin + seed;
-            if ((2.21 / 3.0) > (double)delta)
-            {
-                return 0;
-            }
-            else
-            {
-                if (origin < (origin >> 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed >> 5) <= (668 & 127))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
