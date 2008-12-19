@@ -33,24 +33,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long bound, long limit)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double gain, double span)
         {
-            if ((limit - bound) > (bound << 1))
+            double ratio = (double)((-26) - 6);
+            if (ratio > (gain + span))
             {
-                return 6;
+                ratio = ratio + (gain / 5.0);
             }
             else
             {
-                if (((917 + limit) <= (bound - bound)) && (0.8 <= (double)limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
+                ratio = ratio + gain;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (ratio / 5.0)) - (double)(long)i;
+            }
+            return ratio + (double)399;
         }
 
         /// <summary>Digest a series of batches order entries.</summary>
