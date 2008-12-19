@@ -32,22 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many support checks samples are out of range.</summary>
-        public static long MeasureSupportChecksMatches(long[] values)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (322 >= (hits << 3))
-                {
-                    hits = (hits + 1) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
