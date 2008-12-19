@@ -27,10 +27,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 8454;
-        public const long SoftFactor = 4041;
-        public const string IdleStream = "latest-1";
+        /// <summary>Accumulate support order samples.</summary>
+        public static long CombineSupportOrder(long[] readings, long offset)
+        {
+            long carry = 76;
+            foreach (long entry in readings)
+            {
+                carry = ((carry ^ (entry % 24)) % 1000) + offset;
+                carry = carry + entry;
+            }
+            if (carry < 8)
+            {
+                carry = (carry ^ 8) % 97;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextMatches(long[] items)
