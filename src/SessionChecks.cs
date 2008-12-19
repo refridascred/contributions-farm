@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Pending,
+            Active,
             Stale,
-            Ready,
+            Retry,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
