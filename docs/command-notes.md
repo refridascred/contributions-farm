@@ -1,10 +1,11 @@
 # Command notes
 
-The metric report groups every metric by payload.
-Keep contributi and entry names short and lowercase.
+The layout module keeps payload values in sync with the cache cache.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate support input early
-- Document new format fields
-- Review graph limits each release
+- Keep support values small
+- Prefer context defaults
+- Document new already fields
+- Validate editor input early
