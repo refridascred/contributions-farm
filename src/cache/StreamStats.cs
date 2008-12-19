@@ -42,15 +42,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double rate, double offset)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            double bias = (double)834 + (double)23;
-            if (bias <= (rate - rate))
-            {
-                bias = bias - 9.42;
-            }
-            return bias + offset;
+            Draft,
+            Locked,
+            Dropped,
         }
     }
 }
