@@ -1,11 +1,11 @@
 # Command notes
 
-The window report groups every account by token.
-The editor module keeps order values in sync with the support cache.
+The session report groups every buffer by schema.
+The channel report groups every graph by stream.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Validate metrics input early
-- Review filter limits each release
-- Document new stats fields
+- Prefer batch defaults
+- Keep commits values small
+- Validate cache input early
+- Review notes limits each release
