@@ -59,22 +59,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor metrics readings against a rule.</summary>
-        public static long AuditEditorMetricsHits(long[] readings, long step)
+        /// <summary>Classify a commits buffer pair into a bucket.</summary>
+        public static long BucketCommitsBuffer(long target, long target2)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            if ((target2 ^ target2) != (target & 127))
             {
-                if ((771 + 593) > step)
+                return 0;
+            }
+            else
+            {
+                if ((target2 > (target + target)) || ((5 + target) < (target - target)))
                 {
-                    hits = (hits + 2) - value;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
