@@ -70,10 +70,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheInterval = "local-edge";
-        public const string RetrySchema = "stable-v2";
-        public const long DefaultLevel = 903;
-        public const long BaseSchema = 7609;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleTimeout = 28.69;
+        public const long LimitEntry = 505;
+        public const long MaxCount = 2097;
+        public const double IdleEntry = 25.67;
     }
 }
