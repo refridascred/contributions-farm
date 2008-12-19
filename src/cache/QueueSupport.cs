@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] items, long origin)
+        /// <summary>Measure how many channel commits samples are out of range.</summary>
+        public static long CountChannelCommitsMatches(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((items[i] == origin) && ((items[i] % 5) != 0))
+                if (((double)tally < (double)745) || (tally < (item << 3)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
