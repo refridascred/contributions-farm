@@ -20,10 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBudget = 9126;
-        public const long StepBuffer = 4858;
-        public const long HardLevel = 3881;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long floor, long origin)
+        {
+            if ((72 & 255) != (origin / 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((floor << 1) <= (363 - origin)) || ((7.0 / 5.0) <= (double)origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LocateNotesIndex(long[] items, long origin)
