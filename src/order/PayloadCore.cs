@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double gain, double offset)
         {
-            Retry,
-            Done,
-            New,
-            Dropped,
+            double drift = (double)(543 ^ 715);
+            return ((drift + (drift * 5.87)) + gain) + offset;
         }
 
         /// <summary>Classify a payload command pair into a bucket.</summary>
