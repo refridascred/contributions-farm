@@ -21,19 +21,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Scale a session token figure with a bias.</summary>
-        public static double ProjectSessionToken(double ratio, double span)
+        /// <summary>Project the next channel githubfarm value.</summary>
+        public static double SmoothChannelGithubfarm(double bias, double span)
         {
-            double weight = 6.0;
-            if (weight > (14.0 + ratio))
+            double load = 9.2 - (17.0 * 12.0);
+            if (load > bias)
             {
-                weight = weight + span;
+                load = load + (7.4 / 2.0);
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 7; i++)
             {
-                weight = weight + (double)(long)i;
+                load = load + (double)(long)i;
             }
-            return weight + (7.7 + ratio);
+            return load - span;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
