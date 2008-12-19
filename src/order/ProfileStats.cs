@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] samples, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long acc = 4;
+            foreach (long item in items)
             {
-                if (entry > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = acc + ((long)items.Length + item);
             }
-            return flag;
+            if (acc > 843)
+            {
+                acc = ((acc << 2) ^ (limit + limit)) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a metrics info.</summary>
