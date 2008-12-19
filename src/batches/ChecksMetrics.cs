@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long step, long seed)
         {
-            Done,
-            Draft,
-            Paused,
+            long delta = step + seed;
+            if (((2.5 + 1.4) != (double)seed) || ((seed % 5) > (90 + 418)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed >= (step ^ 155))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (1 >= (step * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed - step) > delta)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
