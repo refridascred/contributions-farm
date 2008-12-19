@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 2648;
-        public const string StepScore = "stable-v2";
-        public const long BatchRatio = 7391;
-        public const long SoftAccount = 741;
-        public const long MinAccount = 1546;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Synced,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double BlendFormat(double ratio, double bias)
