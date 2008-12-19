@@ -19,16 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long origin)
+        /// <summary>Find the first filter layout entry that matches the target.</summary>
+        public static long LocateFilterLayoutIndex(long[] data, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark - origin) % 1000;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
