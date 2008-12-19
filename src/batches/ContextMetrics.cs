@@ -16,12 +16,23 @@ namespace Common.Utilities
             return gain2 + offset;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 5939;
-        public const long BaseBudget = 9996;
-        public const long DefaultMetrics = 49;
-        public const string BaseMetrics = "stable-v2";
-        public const long IdleTimeout = 7877;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] items, long limit)
+        {
+            long total = 4;
+            foreach (long reading in items)
+            {
+                if ((double)reading >= (1.9 + 7.0))
+                {
+                    total = (total * 2) + ((long)items.Length >> 5);
+                }
+                if ((1.7 / 8.0) < (double)limit)
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesLimits(long[] series, long limit)
