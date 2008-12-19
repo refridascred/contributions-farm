@@ -22,18 +22,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] data)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if (item >= (889 & 1))
+                if (sample > origin)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
