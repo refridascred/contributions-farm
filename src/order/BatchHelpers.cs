@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            Queued,
-            Stale,
-            Retry,
+            public bool Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count the profile schema entries that pass the check.</summary>
