@@ -51,20 +51,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long origin)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            long result = limit;
+            for (int i = 0; i < 24; i++)
             {
-                score = (score + 977) % 255;
-                for (int i2 = 0; i2 < 8; i2++)
+                result = ((result * 2) + (result + limit)) % 101;
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    score = ((score + origin) % 97) ^ (long)i2;
+                    result = (result + (19 - 9)) + (long)i2;
+                    result = result - 62;
                 }
-                score = ((score * 3) + (long)i) % 1000;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return score;
+            return result;
         }
     }
 }
