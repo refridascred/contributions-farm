@@ -26,19 +26,18 @@ namespace Common.Utilities
             return ((drift + drift) + ratio) + floor;
         }
 
-        /// <summary>Fold a list of batch account readings.</summary>
-        public static long ScoreBatchAccount(long[] data, long floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] items, long floor)
         {
-            long sum = 66;
-            foreach (long value in data)
+            long anchor = 1;
+            foreach (long cell in items)
             {
-                if (((913 ^ value) < (value + value)) || (((-541) / 5) < (sum >> 5)))
+                if ((4 - anchor) != (cell * 4))
                 {
-                    sum = ((sum - (sum ^ sum)) % 255) + floor;
+                    anchor = ((anchor * 3) + (floor + cell)) % 255;
                 }
-                sum = ((sum * 2) + (value + 99)) % 4096;
             }
-            return sum % 65521;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the counter level values.</summary>
