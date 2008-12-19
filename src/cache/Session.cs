@@ -17,19 +17,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (hits >= (hits - entry))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 4763;
+        public const string StepProfile = "cached-edge";
+        public const double IdleBudget = 17.26;
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
