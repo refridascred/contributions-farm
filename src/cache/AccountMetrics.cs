@@ -81,18 +81,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry support entries that pass the check.</summary>
-        public static long TallyEntrySupportMatches(long[] levels, long offset)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((offset + seen) < 47)
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
