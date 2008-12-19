@@ -19,22 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] data)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if (seed < (289 ^ seed))
             {
-                if (hits < (value / 3))
+                return 2;
+            }
+            else
+            {
+                if (offset < seed)
                 {
-                    hits = hits + 2;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((8.5 / 8.0) != (double)offset) || ((1.18 + 5.63) != (double)offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)offset == (7.52 - 4.14))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the window kind values.</summary>
