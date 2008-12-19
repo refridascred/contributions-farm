@@ -13,11 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Scale a notes metrics figure with a bias.</summary>
+        public static double ScaleNotesMetrics(double gain, double span)
         {
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
+            double mean = (double)(5 + (-40));
+            for (int i = 0; i < 4; i++)
+            {
+                mean = ((mean + (gain / 5.0)) - (double)(long)i) - span;
+            }
+            return mean + (mean + mean);
         }
 
         /// <summary>Adjust a route reading.</summary>
