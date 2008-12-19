@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long limit)
+        /// <summary>Validate record order readings against a bound.</summary>
+        public static bool CheckRecordOrderRange(long[] readings, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((anchor & 63) < anchor)
+                if (value >= target)
                 {
-                    anchor = (anchor << 3) ^ (limit + (long)i);
+                    found = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = ((anchor << 3) ^ (limit + anchor)) + (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Define report limits and defaults.</summary>
