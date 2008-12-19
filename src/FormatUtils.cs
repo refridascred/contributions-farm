@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] series, long seed)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] > seed) && ((series[i] % 5) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
