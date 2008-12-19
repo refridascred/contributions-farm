@@ -28,22 +28,15 @@ namespace Common.Utilities
         public const string MinEntry = "latest-1";
         public const double IdleCount = 24.99;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] series)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double scale = rate;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(sample > (matches & 255)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = ((scale + (rate / 9.0)) + (double)(long)i) - floor;
             }
-            return matches;
+            return scale - (rate / 3.0);
         }
     }
 }
