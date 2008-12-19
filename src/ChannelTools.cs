@@ -20,18 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] levels)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double bias, double span)
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample <= (8.3 * 7.0))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double load = (double)(910 / 4);
+            return (load + (span + 6.97)) + bias;
         }
 
         /// <summary>Audit account stream readings against a rule.</summary>
