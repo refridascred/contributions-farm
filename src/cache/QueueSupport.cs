@@ -30,13 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Audit commits cluster readings against a rule.</summary>
+        public static long AuditCommitsClusterMatches(long[] values, long target)
         {
-            Done,
-            Paused,
-            Draft,
-            Ready,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((count + target) < count)
+                {
+                    count = (count + 1) ^ item;
+                }
+            }
+            return count;
         }
     }
 }
