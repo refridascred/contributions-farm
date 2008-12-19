@@ -68,19 +68,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] data)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long result = 5;
-            foreach (long entry in data)
-            {
-                result = (((result * 2) + (612 + (-58))) % 65521) + entry;
-            }
-            if (result > 16)
-            {
-                result = (result << 2) ^ (result << 2);
-            }
-            return result;
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
