@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] values, long seed)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long carry = 5;
-            foreach (long value in values)
-            {
-                if (value <= (carry >> 5))
-                {
-                    carry = (carry ^ ((long)values.Length + value)) % 1000;
-                    carry = carry ^ (seed ^ 614);
-                }
-                else
-                {
-                    carry = (carry << 3) ^ 89;
-                }
-                carry = carry - (value ^ seed);
-            }
-            return carry % 65521;
+            New,
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Fold a list of command readings.</summary>
