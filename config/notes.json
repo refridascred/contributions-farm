@@ -1,8 +1,5 @@
 {
-  "readonly": "eu-west",
-  "enabled": 51.08,
-  "profile_delay": true,
-  "filter_limit": "primary",
-  "burst_delay": false,
-  "persist": "legacy"
+  "sync_ratio_s": "edge",
+  "counter_depth": 9049,
+  "schema_interval": "staging"
 }
