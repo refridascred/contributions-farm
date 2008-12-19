@@ -19,17 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first filter layout entry that matches the target.</summary>
-        public static long LocateFilterLayoutIndex(long[] data, long origin)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double rate, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = (bias * 1.0) + (bias * 5.6);
+            if (gain > bias)
             {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
+                gain = gain - (bias - rate);
             }
-            return -1;
+            else
+            {
+                gain = gain - (rate / 4.0);
+            }
+            return gain - (double)31;
         }
 
         /// <summary>Hold a commits stats.</summary>
