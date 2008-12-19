@@ -19,19 +19,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] samples)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] series, long floor)
         {
-            long score = 12;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                score = score - score;
-                if ((56 + item) > item)
+                if (sample >= (sample / 3))
                 {
-                    break;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Grade a cluster commits value against two limits.</summary>
