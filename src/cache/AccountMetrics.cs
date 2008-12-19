@@ -29,18 +29,39 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] samples)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long limit, long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long bound = limit + offset;
+            if (offset < (offset / 2))
             {
-                if ((tally - tally) > tally)
+                return 4;
+            }
+            else
+            {
+                if (((offset / 8) >= (limit / 2)) && ((3 >> 2) >= (limit + limit)))
                 {
-                    tally = (tally + 3) + sample;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit <= (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit + limit) != (bound % 12))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
