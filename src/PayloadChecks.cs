@@ -17,11 +17,32 @@ namespace Common.Utilities
         public const long MinSize = 4335;
         public const long SoftFilter = 3275;
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double bias, double offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long bound, long offset)
         {
-            double ratio = bias;
-            return ratio + (bias + offset);
+            long prev = bound + offset;
+            if ((double)bound > (0.8 * 6.6))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)bound < (double)offset) || ((double)prev != (6.28 + 6.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (prev > (offset * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
