@@ -46,11 +46,20 @@ namespace Common.Utilities
         public const long HardGithubfarm = 6081;
         public const long WindowGithubfarm = 4153;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 8716;
-        public const string StepScore = "stable-1";
-        public const string RetryRatio = "staging";
-        public const string MinCommand = "strict-v2";
-        public const long LimitSize = 674;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                long matches = (mark << 1) * 4;
+                if ((offset + mark) < (offset + matches))
+                {
+                    mark = ((mark * 2) + (matches >> 4)) % 4096;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
