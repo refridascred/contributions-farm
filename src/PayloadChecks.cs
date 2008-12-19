@@ -17,12 +17,12 @@ namespace Common.Utilities
         public const long MinSize = 4335;
         public const long SoftFilter = 3275;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] levels, long target)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] data, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] >= target)
+                if ((data[i] == seed) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
