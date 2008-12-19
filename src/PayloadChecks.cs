@@ -41,11 +41,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 244;
-        public const long BaseRatio = 6340;
-        public const long MinDepth = 4438;
-        public const double StepSpan = 66.64;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((floor - 26) >= (floor << 2))
+                {
+                    total = (total ^ (352 % 3)) % 101;
+                    total = (total - (floor - (long)i)) % 101;
+                    break;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BatchFarm = 8542;
