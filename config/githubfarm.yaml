@@ -1,4 +1,16 @@
 # githubfarm settings
-metric_depth: 9.52
-base_threshold_s: 250
-sync_limit_pct: 72.01
+burst_ttl_count:
+  poll_ratio_s: false
+  cache_depth: 4111
+  retry_size_pct:
+    readonly: fallback
+    warm_ttl_pct: local
+    idle_capacity_s:
+      - 255
+      - 379
+      - 458
+  readonly: 4651
+  default_capacity_ms: 82
+readonly: 250
+hard_threshold_count: local
+support_delay: 100
