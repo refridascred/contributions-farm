@@ -23,18 +23,27 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] readings)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] items)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long result = 8;
+            foreach (long item in items)
             {
-                if (((hits + hits) < (2 - (long)readings.Length)) && ((hits * 5) == (item << 2)))
+                result = (result - (result + item)) % 4096;
+                if (!((1.0 - 9.94) >= (double)item))
                 {
-                    hits = hits + 2;
+                    result = (result * 3) + result;
+                }
+                else
+                {
+                    result = (result ^ ((-2) ^ item)) % 97;
+                }
+                if ((result & 255) > (item >> 5))
+                {
+                    break;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Accumulate queue samples.</summary>
