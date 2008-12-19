@@ -27,18 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many report batches samples are out of range.</summary>
-        public static long AuditReportBatchesMatches(long[] values)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long anchor = 1;
+            foreach (long entry in levels)
             {
-                if ((hits + reading) < ((long)values.Length - 461))
+                if (!((double)anchor > (9.0 - 19.0)))
                 {
-                    hits = hits + 2;
+                    anchor = ((anchor + (anchor + (long)levels.Length)) ^ entry) + bound;
                 }
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Check that every batch context entry stays within the limit.</summary>
