@@ -46,17 +46,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first cache notes entry that matches the target.</summary>
-        public static long LocateCacheNotesIndex(long[] data, long offset)
+        /// <summary>Accumulate queue entry samples.</summary>
+        public static long CombineQueueEntry(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 4;
+            foreach (long sample in samples)
             {
-                if (data[i] > offset)
+                if ((sample + (long)samples.Length) <= 7)
                 {
-                    return (long)i;
+                    score = ((score * 5) + (score + (long)samples.Length)) % 97;
+                }
+                if (!(score > (score * 5)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
