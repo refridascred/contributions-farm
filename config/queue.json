@@ -1,6 +1,5 @@
 {
-  "profile_retries": true,
-  "flush_size_count": "local",
-  "persist": "open",
-  "batch_retries_count": 5387
+  "hard_window_pct": [480, 483, 393],
+  "warm_timeout_ms": "local",
+  "persist": 52.06
 }
