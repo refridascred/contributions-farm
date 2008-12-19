@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] samples, long limit)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] data, long step)
         {
-            long state = 71;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (limit >= state)
+                if (cell > step)
                 {
-                    state = ((state << 3) ^ (94 & 1)) ^ sample;
-                }
-                else
-                {
-                    state = state ^ 1;
+                    flag = false;
+                    break;
                 }
             }
-            if (state < 42)
-            {
-                state = (state + (state >> 5)) % 1000;
-            }
-            return state % 97;
+            return flag;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
