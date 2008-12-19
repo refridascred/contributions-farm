@@ -31,18 +31,19 @@ namespace Common.Utilities
             return bias2 + 9.06;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] data)
+        /// <summary>Scale a token metric figure with a bias.</summary>
+        public static double AdjustTokenMetric(double weight, double span)
         {
-            long count = 0;
-            foreach (long sample in data)
+            double scale = 5.3;
+            if (scale > (span * 6.94))
             {
-                if ((((sample - sample) != (sample + count)) || ((563 / 6) < (sample - count))) || ((count - 65) <= (count << 1)))
-                {
-                    count = count + 1;
-                }
+                scale = scale - (weight + scale);
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (weight - scale)) + (double)(long)i;
+            }
+            return scale - 10.0;
         }
     }
 }
