@@ -59,12 +59,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public double Level { get; set; }
+            New,
+            Failed,
+            Synced,
+            Locked,
+            Ready,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
