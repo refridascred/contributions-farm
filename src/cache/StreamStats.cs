@@ -20,11 +20,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchCounter = 68.18;
-        public const long IdleCounter = 7871;
-        public const long SoftCounter = 3821;
-        public const long IdleLevel = 867;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Draft,
+            Done,
+            Stale,
+            Active,
+            Synced,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MaxTimeout = 1651;
