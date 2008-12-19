@@ -1,20 +1,8 @@
 {
-  "strict": false,
-  "compress": "green",
-  "batch_ttl_pct": {
-    "cache_capacity_s": {
-      "burst_depth_count": 24.23,
-      "queue_retries": true,
-      "hard_threshold": 27
-    },
-    "batch_size": true,
-    "idle_retries": {
-      "min_limit_pct": false,
-      "report_ttl": 60.4,
-      "poll_timeout_s": false
-    },
-    "batch_interval_count": "primary"
-  },
-  "max_window": [77, 309, 370, 468],
-  "hard_ratio_count": 60
+  "farm_capacity": [69, 230, 431],
+  "readonly": "edge",
+  "flush_retries": 49,
+  "audit": "standard",
+  "cluster_timeout": 33,
+  "account_ttl": true
 }
