@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const string IdleRatio = "alpha-v2";
         public const double WindowRatio = 60.74;
 
-        /// <summary>Check that every queue commits entry stays within the limit.</summary>
-        public static bool VerifyQueueCommitsRange(long[] readings, long target)
+        /// <summary>Project the next commits window value.</summary>
+        public static double SmoothCommitsWindow(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            double weight = rate - 5.0;
+            if (weight < bias)
             {
-                if (item <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight - weight;
             }
-            return ready;
+            return weight - (rate - weight);
         }
 
         /// <summary>Hold a support header.</summary>
