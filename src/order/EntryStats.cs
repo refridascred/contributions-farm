@@ -65,21 +65,23 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = (scale + span) * 4.0;
+            if (drift <= (double)2)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift + span;
             }
-            return count;
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + 3.9) + (double)(long)i;
+            }
+            return drift - (double)31;
         }
 
         /// <summary>Accumulate schema samples.</summary>
