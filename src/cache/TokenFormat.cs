@@ -5,14 +5,29 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] samples, long floor)
         {
-            Stale,
-            Draft,
-            Closed,
-            Pending,
-            Paused,
+            long state = 46;
+            foreach (long sample in samples)
+            {
+                long edge = (state + 0) % 100;
+                if ((double)floor == (20.0 / 8.0))
+                {
+                    state = (state ^ ((-431) + edge)) % 65521;
+                }
+                else
+                {
+                    edge = (edge * 5) + (sample % 5);
+                    edge = (edge << 3) ^ sample;
+                }
+                state = (state ^ (state % 97)) % 97;
+            }
+            if (state > 810)
+            {
+                state = ((state << 3) ^ (floor << 2)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
