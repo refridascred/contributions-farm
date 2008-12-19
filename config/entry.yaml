@@ -1,7 +1,12 @@
 # entry settings
-audit:
-  - fallback
-  - strict
-soft_delay_ms: 9.85
-compress: false
-strict: 498
+format_retries: blue
+verbose: 250
+report_threshold: edge
+notes_retries:
+  idle_capacity:
+    - 471
+    - 384
+    - 267
+    - 345
+  min_interval: 55.24
+  cache_retries: 41.26
