@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double bias, double floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] items, long target)
         {
-            double rate = 7.05;
-            if (rate < (double)512)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                rate = (rate + rate) - bias;
+                if ((2.82 / 2.0) == (double)tally)
+                {
+                    tally = ((tally + 2) - datum) - target;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (4.5 + rate)) - (double)(long)i;
-            }
-            return rate + floor;
+            return tally;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
