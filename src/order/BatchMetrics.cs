@@ -60,22 +60,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] levels, long target)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((double)hits >= (18.0 * 9.0))
-                {
-                    hits = ((hits + 3) ^ item) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double load = floor;
+            return (load + (double)7) + weight;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
