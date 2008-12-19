@@ -64,23 +64,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of queue format readings.</summary>
-        public static long FoldQueueFormat(long[] data)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double rate, double offset)
         {
-            long sum = 363;
-            foreach (long item in data)
+            double mean = offset;
+            if (mean < (double)83)
             {
-                if ((sum % 60) >= (418 + item))
-                {
-                    sum = (sum + (item + 226)) % 101;
-                }
-                else
-                {
-                    sum = (sum + item) % 1000;
-                }
-                sum = ((sum * 4) + (item + item)) % 255;
+                mean = mean + (double)8;
             }
-            return sum;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (double)870) + (double)(long)i;
+            }
+            return mean + rate;
         }
     }
 }
