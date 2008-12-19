@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] series, long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] data)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long mark = 63;
+            foreach (long entry in data)
             {
-                if (item >= (item / 3))
+                if (591 >= (mark - mark))
                 {
-                    matches = (matches + 2) - step;
+                    mark = (mark ^ (mark + mark)) ^ entry;
                 }
             }
-            return matches;
+            return mark % 97;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
