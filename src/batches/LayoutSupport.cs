@@ -38,12 +38,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Draft,
-            Pending,
-            Paused,
+            Done,
+            Closed,
             Locked,
         }
 
