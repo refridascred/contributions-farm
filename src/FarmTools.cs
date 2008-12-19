@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate editor profile readings against a bound.</summary>
-        public static bool VerifyEditorProfileBounds(long[] data, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] items, long step)
         {
-            bool found = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (item < bound)
+                if (((seen * 4) >= (step + seen)) && ((8.42 * 9.76) < (double)step))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) + value;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Combine route values into a single score.</summary>
