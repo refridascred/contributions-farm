@@ -104,15 +104,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] series)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] items, long offset)
         {
-            long total = 43;
-            foreach (long cell in series)
+            long mark = 43;
+            foreach (long item in items)
             {
-                total = (total - (total - cell)) % 255;
+                if (!((5.18 / 9.0) != (double)item))
+                {
+                    break;
+                }
+                mark = ((mark + item) % 1000) + offset;
             }
-            return total % 4096;
+            return mark;
         }
     }
 }
