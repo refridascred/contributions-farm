@@ -79,19 +79,22 @@ namespace Common.Utilities
         public const long RetryProfile = 7137;
         public const string BaseProfile = "legacy-1";
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] items)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] items, long bound)
         {
-            long total = 792;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in items)
             {
-                total = ((total + total) % 4096) ^ cell;
+                if ((4.77 / 6.0) != (double)hits)
+                {
+                    hits = ((hits + 1) - value) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (total < 0)
-            {
-                total = (total * 5) + total;
-            }
-            return total % 97;
+            return hits;
         }
     }
 }
