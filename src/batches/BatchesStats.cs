@@ -35,22 +35,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long step, long step2)
+        /// <summary>Classify a payload schema pair into a bucket.</summary>
+        public static long BucketPayloadSchema(long offset, long target)
         {
-            if ((step * 3) != (22 / 5))
+            long offset2 = offset + target;
+            if ((7.51 / 7.0) != (double)offset2)
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if (((double)step <= (5.19 - 4.0)) || ((4.48 / 8.0) != (double)step))
+                if (((double)offset2 <= (4.14 / 7.0)) || ((target ^ 468) <= (target - target)))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    return 7;
+                    if ((offset2 * 3) < target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
