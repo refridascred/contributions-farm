@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] series, long bound)
+        /// <summary>Rank schema contributi input into a small class.</summary>
+        public static long BucketSchemaContributi(long limit, long seed)
         {
-            long sum = 7;
-            foreach (long reading in series)
+            long delta = limit ^ seed;
+            if ((2.91 / 8.0) == (double)seed)
             {
-                sum = ((sum * 5) + (reading - bound)) % 1000;
+                return 2;
             }
-            return sum % 65521;
+            else
+            {
+                if (((double)seed >= (0.88 * 0.1)) || (((-37) + limit) < (limit - 574)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((delta - seed) <= 4)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits status values.</summary>
