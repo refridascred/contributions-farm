@@ -68,19 +68,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] items, long offset)
+        /// <summary>Rank notes editor input into a small class.</summary>
+        public static long ClassifyNotesEditor(long target, long origin)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            if ((402 << 1) < (origin - target))
             {
-                if (reading <= offset)
+                return 5;
+            }
+            else
+            {
+                if (target < (origin / 5))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target < (6.0 * 4.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)target == (double)44) && ((origin % 7) >= (origin + target)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
