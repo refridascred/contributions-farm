@@ -32,14 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSize = 2460;
+        public const long HardBudget = 7753;
+        public const long StepSupport = 4343;
+        public const string IdleSupport = "primary-edge";
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long PairClusterCount(long[] items)
