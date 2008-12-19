@@ -22,22 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] readings, long floor)
+        /// <summary>Classify a contributi cache pair into a bucket.</summary>
+        public static long SortContributiCache(long limit, long origin)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            if ((0.23 + 5.0) < (double)origin)
             {
-                if ((double)datum != (13.0 + 4.67))
+                return 0;
+            }
+            else
+            {
+                if ((double)origin != (20.0 * 11.0))
                 {
-                    count = (count + 2) + floor;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many profile tools samples are out of range.</summary>
