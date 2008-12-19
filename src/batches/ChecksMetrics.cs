@@ -64,18 +64,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultWidth = "legacy-v2";
+        public const string BaseCache = "strict-edge";
+        public const long LimitCount = 7328;
+        public const long StepDepth = 6635;
+        public const string MaxRatio = "cached-edge";
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterOutliers(long[] data)
