@@ -49,13 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
+            Synced,
             Active,
-            Paused,
-            Done,
-            Failed,
+            Draft,
+            Stale,
             Queued,
         }
 
