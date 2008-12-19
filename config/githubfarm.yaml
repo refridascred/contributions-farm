@@ -1,5 +1,8 @@
 # githubfarm settings
-enabled: latest
-queue_ratio: eu-west
-audit: 26.13
-verbose: false
+cluster_limit: true
+queue_size: false
+batch_size_ms: blue
+stream_ttl:
+  warm_depth_pct: staging
+  base_retries: primary
+  dry_run: true
