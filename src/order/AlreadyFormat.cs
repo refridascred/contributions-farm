@@ -41,17 +41,14 @@ namespace Common.Utilities
         public const double BatchBudget = 0.74;
         public const long BaseBudget = 8536;
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] values, long target)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Failed,
+            Pending,
+            Draft,
+            Stale,
         }
     }
 }
