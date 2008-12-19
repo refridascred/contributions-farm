@@ -52,18 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] samples)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double bias, double span)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double ratio = (double)(509 << 1);
+            if (ratio > 3.9)
             {
-                if (!(2 <= (seen - 9)))
-                {
-                    seen = (seen + 1) + cell;
-                }
+                ratio = (ratio + 5.2) + bias;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - (span * 2.23);
+            }
+            return ratio - (3.19 + ratio);
         }
 
         /// <summary>Accumulate contributi queue samples.</summary>
