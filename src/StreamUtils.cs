@@ -18,39 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch window input into a small class.</summary>
-        public static long ClassifyBatchWindow(long origin, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] values)
         {
-            long delta = origin ^ offset;
-            if (origin >= 300)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin == (9.0 / 2.0))
+                if ((double)datum < 1.0)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)delta <= (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((delta << 3) < (delta * 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Blend two commits measurements.</summary>
