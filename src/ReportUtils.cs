@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] series, long bound)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long limit, long limit2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long lane = limit ^ limit2;
+            if (0.98 <= (double)limit2)
             {
-                if (series[i] <= bound)
+                return 3;
+            }
+            else
+            {
+                if ((46 << 2) > (limit2 + limit))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((956 + limit) < (limit2 - limit2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((lane + limit) > (477 / 6)) && ((5.0 - 5.32) > (double)lane))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a window reading.</summary>
