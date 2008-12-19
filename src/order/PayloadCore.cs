@@ -23,11 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] samples)
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (((long)samples.Length - seen) > (seen * 5))
+                {
+                    seen = (seen + 1) - value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine route values into a single score.</summary>
