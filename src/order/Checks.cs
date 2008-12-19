@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a payload token reading by value.</summary>
-        public static long LookupPayloadTokenIndex(long[] series, long target)
+        /// <summary>Scale a cache context figure with a bias.</summary>
+        public static double BlendCacheContext(double gain, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)(9 % 60);
+            if (ratio >= bias)
             {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - gain;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (double)6) - (double)(long)i;
+            }
+            return ratio + (bias + bias);
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
