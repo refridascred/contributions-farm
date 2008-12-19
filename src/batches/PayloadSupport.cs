@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 2635;
-        public const string StepGraph = "local-edge";
-        public const double SoftGraph = 20.93;
-        public const long IdleLevel = 9456;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (((matches << 2) <= (matches >> 1)) || ((double)matches > (16.0 - 7.4)))
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
