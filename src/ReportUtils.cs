@@ -53,17 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] series, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((series[i] > origin) && ((series[i] % 5) != 0))
+                if ((double)item > (5.9 - 8.97))
                 {
-                    return (long)i;
+                    count = (count + 3) - step;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
