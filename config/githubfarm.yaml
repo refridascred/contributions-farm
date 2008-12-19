@@ -1,21 +1,5 @@
 # githubfarm settings
-cache_threshold: true
-cache_window: 100
-readonly:
-  batches_limit: fallback
-  notes_delay: cached
-  batch_size: true
-  format_size:
-    min_limit_pct:
-      - stable
-      - staging
-    flush_size:
-      - 180
-      - 14
-    idle_timeout:
-      - 422
-      - 411
-      - 310
-  enabled: 37.85
-commits_interval: strict
-compress: eu-west
+base_window: true
+warm_interval_count: true
+default_ttl: 31.12
+readonly: true
