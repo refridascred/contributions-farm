@@ -25,32 +25,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long target, long limit)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long slot = target - limit;
-            if (!((double)limit <= 9.1))
-            {
-                return 4;
-            }
-            else
-            {
-                if (slot < limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((slot + target) >= target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a buffer header.</summary>
