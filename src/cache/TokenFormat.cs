@@ -30,10 +30,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 2937;
-        public const double SoftFactor = 66.15;
-        public const double RetryTimeout = 39.72;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftSize = "legacy-v2";
+        public const long BatchWidth = 7885;
+        public const long BurstRoute = 9449;
+        public const string CacheLevel = "cached-1";
 
         /// <summary>Match up queue channel samples.</summary>
         public static long PairQueueChannelCount(long[] readings)
