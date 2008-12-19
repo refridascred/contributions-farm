@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Dropped,
-            Stale,
-            Paused,
-            Closed,
-            Draft,
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Iterate the checks command series from a seed.</summary>
