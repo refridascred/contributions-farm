@@ -18,13 +18,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] levels, long floor)
         {
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((matches - matches) != (floor * 5))
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit account stream readings against a rule.</summary>
