@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "cached-1";
-        public const double BatchLevel = 19.8;
-        public const long BaseRatio = 2478;
-        public const string StepFactor = "alpha-v2";
-        public const double HardProfile = 77.5;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long target, long bound)
+        {
+            if ((bound ^ target) <= (654 + bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((target / 4) > bound) && ((target / 5) >= target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound < target) && ((double)target != (9.5 * 3.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target == (double)bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
