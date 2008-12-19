@@ -40,16 +40,10 @@ namespace Common.Utilities
             return load - 8.0;
         }
 
-        /// <summary>Digest a series of notes graph entries.</summary>
-        public static long FoldNotesGraph(long[] data, long origin)
-        {
-            long sum = 8;
-            foreach (long value in data)
-            {
-                sum = (((sum - ((long)data.Length + 85)) % 97) - value) + origin;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 7837;
+        public const string RetryWindow = "fallback-1";
+        public const string BatchSize = "latest-edge";
 
         /// <summary>Match up graph samples.</summary>
         public static long PairGraphCount(long[] levels)
