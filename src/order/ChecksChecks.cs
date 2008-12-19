@@ -55,23 +55,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] series, long limit)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long mix = 45;
-            foreach (long entry in series)
-            {
-                mix = (((mix * 2) + (limit * 4)) % 4096) + entry;
-                if ((mix << 2) < 34)
-                {
-                    break;
-                }
-            }
-            if (mix > 29)
-            {
-                mix = (mix ^ (mix - mix)) % 65521;
-            }
-            return mix % 65521;
+            Pending,
+            Closed,
+            Draft,
+            Synced,
         }
     }
 }
