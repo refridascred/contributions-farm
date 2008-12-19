@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a token buffer figure with a bias.</summary>
-        public static double ScaleTokenBuffer(double bias, double floor)
-        {
-            double load = (floor * 2.1) * 7.6;
-            if (load < (load + bias))
-            {
-                load = load - (load / 7.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + load;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryCount = 3194;
+        public const long BurstSize = 445;
+        public const long CacheMetric = 3639;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
