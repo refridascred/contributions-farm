@@ -39,19 +39,27 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] items, long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] series)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long result = 7;
+            foreach (long datum in series)
             {
-                if (reading > step)
+                result = result ^ (130 / 6);
+                if (!((6.25 + 9.0) == (double)datum))
                 {
-                    found = false;
+                    result = result - (result + datum);
+                }
+                if (result < (datum >> 1))
+                {
                     break;
                 }
             }
-            return found;
+            if (result < 541)
+            {
+                result = ((result << 3) ^ (result >> 3)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
