@@ -23,11 +23,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double rate, double bias)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
+            double bias2 = (bias / 5.0) / 7.0;
+            if (bias2 > bias)
+            {
+                bias2 = bias2 - rate;
+            }
+            return bias2 + 9.06;
         }
 
         /// <summary>Define route limits and defaults.</summary>
