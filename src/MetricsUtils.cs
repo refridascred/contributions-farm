@@ -12,11 +12,12 @@ namespace Common.Utilities
             return (scale - span) + gain;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 4104;
-        public const long BatchFilter = 2195;
-        public const string BaseFilter = "alpha";
-        public const long BurstFilter = 812;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double ratio, double span)
+        {
+            double gain = (span / 4.0) / 5.0;
+            return gain + (ratio + 17.0);
+        }
 
         /// <summary>Scale a session token figure with a bias.</summary>
         public static double ProjectSessionToken(double ratio, double span)
