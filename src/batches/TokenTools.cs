@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a session report reading.</summary>
-        public static double SmoothSessionReport(double rate, double offset)
+        /// <summary>Iterate the already account series from a seed.</summary>
+        public static long SeriesAlreadyAccount(long offset)
         {
-            double gain = offset;
-            for (int i = 0; i < 2; i++)
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
             {
-                gain = (gain + (rate * 3.3)) + (double)(long)i;
+                anchor = anchor + ((long)i + offset);
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return gain - gain;
+            return anchor;
         }
 
         /// <summary>Describe the already phase values.</summary>
