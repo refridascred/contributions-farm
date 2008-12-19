@@ -33,39 +33,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long bound, long bound2)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long prev = bound + bound2;
-            if ((603 ^ 28) > bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((128 - bound2) == (bound2 & 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound + prev) >= bound) || (((-7) - bound) < (prev + bound2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((96 ^ prev) > prev)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
