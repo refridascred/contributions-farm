@@ -43,13 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Measure how many batch stats samples are out of range.</summary>
+        public static long AuditBatchStatsHits(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (((7 * 4) > (datum ^ matches)) || ((datum % 97) >= (datum * 4)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
