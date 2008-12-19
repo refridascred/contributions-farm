@@ -28,11 +28,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
+            public double Owner { get; set; }
             public string Token { get; set; } = "";
-            public long Region { get; set; }
         }
     }
 }
