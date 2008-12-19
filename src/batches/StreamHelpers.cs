@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] data, long step)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long result = 78;
-            foreach (long item in data)
-            {
-                result = ((result + (step & 1)) % 255) ^ item;
-                result = (result * 2) + (result + (long)data.Length);
-            }
-            if (result < 625)
-            {
-                result = (result << 3) ^ step;
-            }
-            return result;
+            Stale,
+            Idle,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a githubfarm info.</summary>
