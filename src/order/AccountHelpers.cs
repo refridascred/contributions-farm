@@ -28,17 +28,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] levels, long bound)
+        /// <summary>Blend two session token measurements.</summary>
+        public static double ProjectSessionToken(double ratio, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = ratio;
+            if (rate < (span * 0.74))
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - rate;
             }
-            return -1;
+            return rate - (double)66;
         }
 
         /// <summary>Hold a profile record.</summary>
