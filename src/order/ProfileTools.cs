@@ -51,17 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a support account reading by value.</summary>
-        public static long LookupSupportAccountIndex(long[] levels, long step)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the metrics mode values.</summary>
