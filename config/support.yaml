@@ -1,8 +1,5 @@
 # support settings
-cache_window: 25.84
-enabled: 66.74
-audit: 11.67
-compress:
-  - 431
-  - 82
-  - 470
+min_depth_ms: 97.79
+flush_threshold: 8514
+batches_retries: 87.95
+warm_depth: primary
