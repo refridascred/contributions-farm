@@ -1,7 +1,7 @@
 # entry settings
-enabled: primary
-hard_ttl_s: 8034
-hard_ratio_count:
-  - legacy
-  - strict
-  - fallback
+queue_ttl: true
+token_capacity: 1024
+hard_ttl_s: 31.12
+warm_retries_pct: eu-west
+default_window_count: staging
+audit: stable
