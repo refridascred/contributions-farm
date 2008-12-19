@@ -41,11 +41,9 @@ namespace Common.Utilities
         public const long CacheBuffer = 9055;
         public const string RetryBuffer = "fallback";
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double scale, double bias)
-        {
-            double drift = 9.67;
-            return (drift - scale) + bias;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftScore = 89.02;
+        public const string StepWindow = "strict-v2";
+        public const long IdleWindow = 6295;
     }
 }
