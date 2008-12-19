@@ -83,38 +83,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long limit, long offset)
-        {
-            if ((double)limit == (double)41)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((2 & 31) != (offset + limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset + offset) >= (offset + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit > 97)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinScore = 4668;
+        public const string CacheLevel = "alpha-edge";
+        public const long BaseSpan = 2933;
+        public const long DefaultScore = 2279;
     }
 }
