@@ -41,19 +41,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate checks profile readings against a bound.</summary>
-        public static bool GuardChecksProfileBounds(long[] levels, long target)
+        /// <summary>Locate a session payload reading by value.</summary>
+        public static long FindSessionPayloadIndex(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= target)
+                if ((levels[i] == origin) && ((levels[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
