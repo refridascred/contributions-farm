@@ -1,19 +1,13 @@
 {
-  "cluster_depth": {
-    "notes_size": {
-      "strict": 1024,
-      "sync_threshold": [266, 131, 499],
-      "audit": 250
-    },
-    "base_size": true,
-    "audit": 10,
-    "poll_interval_pct": "strict",
-    "persist": 26,
-    "verbose": false
-  },
-  "retry_window": 49.7,
-  "cache_timeout_count": 44,
-  "graph_size": false,
-  "buffer_ratio": 4527,
-  "max_retries_s": "blue"
+  "strict": 100,
+  "audit": [83, 427, 179, 14],
+  "batch_ttl": ["green", "local", "open"],
+  "default_size": {
+    "cache_size": ["eu-west", "primary"],
+    "idle_ttl_s": 72.17,
+    "cache_limit_pct": true,
+    "enabled": 54.21,
+    "token_capacity": "blue",
+    "batch_depth_count": false
+  }
 }
