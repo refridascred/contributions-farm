@@ -58,22 +58,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] items)
-        {
-            long sum = -4;
-            foreach (long value in items)
-            {
-                if ((double)value == (7.0 / 6.0))
-                {
-                    sum = (sum + value) % 4096;
-                }
-                else
-                {
-                    sum = sum - (value - sum);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 8546;
+        public const long HardDepth = 2639;
+        public const long BurstWidth = 4744;
+        public const long RetryBudget = 613;
+        public const long HardCounter = 7133;
     }
 }
