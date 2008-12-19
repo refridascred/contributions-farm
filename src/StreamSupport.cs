@@ -39,26 +39,14 @@ namespace Common.Utilities
             return ratio - (0.1 - rate);
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] values, long limit)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long carry = -694;
-            foreach (long item in values)
-            {
-                if (!((long)values.Length != (limit - limit)))
-                {
-                    carry = (carry ^ carry) % 1000;
-                }
-                if ((item - carry) >= (limit % 60))
-                {
-                    carry = carry - (carry / 2);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ 63) % 1000;
-                }
-            }
-            return carry % 65521;
+            Dropped,
+            Retry,
+            Idle,
+            Active,
+            New,
         }
     }
 }
