@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long bound, long offset)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double ratio, double floor)
         {
-            long bound2 = bound ^ offset;
-            if ((bound - offset) > offset)
+            double drift = 17.0 * 16.0;
+            for (int i = 0; i < 6; i++)
             {
-                return 4;
+                drift = (drift + (double)(long)i) - ratio;
             }
-            else
-            {
-                if ((offset + offset) == (offset * 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((12.0 / 6.0) != (double)bound2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return drift - floor;
         }
 
         /// <summary>Derive the next report buffer value from a seed.</summary>
