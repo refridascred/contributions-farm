@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long limit, long bound)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] samples, long step)
         {
-            if (!((limit & 7) == (bound - 344)))
+            long state = -61;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)bound >= (0.3 * 2.0)))
+                state = state ^ 973;
+                if (!((datum * 4) > (-9)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit + bound) != (bound - bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    state = state - step;
                 }
             }
+            return state;
         }
 
         /// <summary>Project the next route checks value.</summary>
