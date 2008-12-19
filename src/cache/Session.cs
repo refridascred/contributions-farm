@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] levels)
+        /// <summary>Combine metric cache values into a single score.</summary>
+        public static long FoldMetricCache(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -600;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark ^ (8 ^ entry)) % 101;
+                mark = (mark - (entry + entry)) % 65521;
             }
-            return hits;
+            if (mark > 6)
+            {
+                mark = ((mark * 4) + mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
