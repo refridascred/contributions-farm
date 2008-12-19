@@ -73,18 +73,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster session readings against a rule.</summary>
-        public static long AuditClusterSessionOutliers(long[] samples, long target)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally / 4) > 707)
-                {
-                    tally = ((tally + 3) ^ datum) + target;
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
