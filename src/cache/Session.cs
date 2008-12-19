@@ -22,14 +22,12 @@ namespace Common.Utilities
         public const string StepProfile = "cached-edge";
         public const double IdleBudget = 17.26;
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Retry,
-            Queued,
-            Dropped,
-            Stale,
-            New,
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the counter status values.</summary>
