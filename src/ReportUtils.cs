@@ -60,13 +60,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-            public double Level { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Project the next notes value.</summary>
