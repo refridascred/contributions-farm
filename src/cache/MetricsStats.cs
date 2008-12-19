@@ -80,17 +80,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] items, long target)
+        /// <summary>Fold a list of report notes readings.</summary>
+        public static long TotalReportNotes(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 996;
+            foreach (long datum in series)
             {
-                if (items[i] < target)
+                if ((origin * 4) <= (439 + datum))
                 {
-                    return (long)i;
+                    acc = (acc + (datum & 63)) % 97;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (origin - acc)) % 97;
+                }
+                if (origin <= (datum * 4))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc % 65521;
         }
     }
 }
