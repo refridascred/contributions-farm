@@ -25,13 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 2635;
+        public const string StepGraph = "local-edge";
+        public const double SoftGraph = 20.93;
+        public const long IdleLevel = 9456;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
