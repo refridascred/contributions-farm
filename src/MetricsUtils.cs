@@ -36,19 +36,29 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Project the next channel githubfarm value.</summary>
-        public static double SmoothChannelGithubfarm(double bias, double span)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] items)
         {
-            double load = 9.2 - (17.0 * 12.0);
-            if (load > bias)
+            long mark = 830;
+            foreach (long reading in items)
             {
-                load = load + (7.4 / 2.0);
+                if ((double)mark < (8.0 / 3.0))
+                {
+                    mark = ((mark * 2) + (mark << 2)) % 1000;
+                    mark = (mark ^ (8 + mark)) % 1000;
+                    break;
+                }
+                mark = ((mark << 3) ^ (reading - 5)) % 255;
+                if ((mark + reading) < (mark ^ mark))
+                {
+                    mark = mark + reading;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (mark < 59)
             {
-                load = load + (double)(long)i;
+                mark = mark ^ mark;
             }
-            return load - span;
+            return mark;
         }
 
         /// <summary>Define support limits and defaults.</summary>
