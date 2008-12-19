@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] data)
         {
-            Closed,
-            Paused,
-            Pending,
+            long sum = 82;
+            foreach (long sample in data)
+            {
+                sum = sum - (sum ^ sum);
+                if ((1 - sample) != (sample >> 1))
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Check that every checks stats entry stays within the limit.</summary>
