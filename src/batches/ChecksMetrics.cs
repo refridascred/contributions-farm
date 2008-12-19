@@ -23,39 +23,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long bound, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] samples)
         {
-            long delta = bound ^ floor;
-            if ((double)delta <= (6.16 * 9.7))
+            long mix = 7;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 15) == (delta + bound))
+                if ((datum / 6) != (mix + datum))
                 {
-                    return 1;
+                    mix = ((mix * 4) + 4) % 65521;
                 }
-                else
+                if ((mix % 2) != (178 << 1))
                 {
-                    if ((delta >> 4) < delta)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (471 < (bound / 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mix < 35)
+            {
+                mix = ((mix << 3) ^ mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
