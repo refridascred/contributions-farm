@@ -1,8 +1,6 @@
 {
-  "default_timeout_ms": "stable",
-  "profile_interval": 30,
-  "dry_run": 9086,
-  "compress": 6995,
-  "min_threshold_s": 38,
-  "checks_delay": 60
+  "cache_delay": "fallback",
+  "dry_run": 97.2,
+  "flush_depth": true,
+  "persist": "strict"
 }
