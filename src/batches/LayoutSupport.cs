@@ -36,18 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] levels)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (!((long)levels.Length > (tally * 4)))
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
+            Pending,
+            Queued,
+            Synced,
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
