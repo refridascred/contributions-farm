@@ -44,19 +44,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every batch context entry stays within the limit.</summary>
-        public static bool VerifyBatchContextRange(long[] series, long floor)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Locked,
+            Active,
         }
 
         /// <summary>Classify a counter order pair into a bucket.</summary>
