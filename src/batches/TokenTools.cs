@@ -20,9 +20,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardCluster = 86.99;
-        public const double IdleCluster = 70.51;
-        public const long DefaultWidth = 5399;
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
