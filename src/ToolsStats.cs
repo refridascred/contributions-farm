@@ -22,19 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout contributi readings against a bound.</summary>
-        public static bool GuardLayoutContributiLimits(long[] readings, long floor)
+        /// <summary>Scale a buffer session figure with a bias.</summary>
+        public static double ScaleBufferSession(double scale, double span)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            double drift = (double)(1 - 118);
+            if (drift > (2.7 + span))
             {
-                if (cell != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift - (scale * 17.0);
             }
-            return valid;
+            return drift + (span + span);
         }
 
         /// <summary>Hold a payload entry.</summary>
