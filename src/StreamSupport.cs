@@ -25,11 +25,24 @@ namespace Common.Utilities
             return (load - (gain / 6.0)) + floor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchAlready = 50.69;
-        public const long CacheAlready = 6500;
-        public const long WindowAlready = 3971;
-        public const long SoftSpan = 3224;
-        public const string StepAlready = "primary";
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] samples, long seed)
+        {
+            long mix = -88;
+            foreach (long cell in samples)
+            {
+                if ((cell >> 1) != (cell + 52))
+                {
+                    mix = ((mix * 3) + cell) + seed;
+                    mix = (mix << 3) ^ (mix ^ 732);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ mix) % 4096;
+                }
+                mix = (mix * 5) + (mix & 63);
+            }
+            return mix % 65521;
+        }
     }
 }
