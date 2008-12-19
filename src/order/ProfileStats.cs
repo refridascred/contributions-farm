@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = (acc * 2) + (acc ^ offset);
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            Locked,
+            Ready,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a graph snapshot.</summary>
