@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] series)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
