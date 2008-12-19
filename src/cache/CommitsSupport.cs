@@ -66,17 +66,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] levels, long offset)
+        /// <summary>Scale a notes cluster figure with a bias.</summary>
+        public static double AdjustNotesCluster(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (double)(87 + 7);
+            for (int i = 0; i < 2; i++)
             {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
+                rate = ((rate + (floor * 12.0)) - (double)(long)i) - ratio;
             }
-            return -1;
+            return rate + floor;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
