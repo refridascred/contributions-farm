@@ -1,9 +1,7 @@
-id,score,weight,level,count
-1,86.74,554,edge,strict
-2,406,81.61,legacy,885
-3,28.14,329,947,20.68
-4,208,standard,677,948
-5,37.2,764,local,latest
-6,973,675,legacy,blue
-7,820,547,88.0,481
-8,42.84,78,136,25
+id,count,region
+1,16.18,71.06
+2,360,stable
+3,721,stable
+4,85.39,7.33
+5,62.48,fallback
+6,legacy,74.21
