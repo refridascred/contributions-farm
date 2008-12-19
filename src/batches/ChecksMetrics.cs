@@ -66,12 +66,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] data)
         {
-            Retry,
-            Done,
-            Locked,
+            long state = 7;
+            foreach (long cell in data)
+            {
+                if (((state - cell) <= state) && ((state * 2) < cell))
+                {
+                    state = ((state << 3) ^ (state ^ state)) % 255;
+                }
+                else
+                {
+                    state = (state << 3) ^ state;
+                }
+            }
+            return state;
         }
     }
 }
