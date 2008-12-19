@@ -31,17 +31,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first record commits entry that matches the target.</summary>
-        public static long FindRecordCommitsIndex(long[] data, long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 7;
+            foreach (long cell in levels)
             {
-                if (data[i] <= step)
+                if ((12.0 - 4.0) != (double)bound)
                 {
-                    return (long)i;
+                    sum = ((sum * 3) + sum) ^ cell;
                 }
             }
-            return -1;
+            if (sum > 7)
+            {
+                sum = sum + 67;
+            }
+            return sum % 1000;
         }
     }
 }
