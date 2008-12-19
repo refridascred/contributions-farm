@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] samples, long floor)
+        /// <summary>Validate farm counter readings against a bound.</summary>
+        public static bool GuardFarmCounterBounds(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (samples[i] < floor)
+                if (item >= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
