@@ -41,19 +41,21 @@ namespace Common.Utilities
             return scale - (scale * 4.13);
         }
 
-        /// <summary>Validate route githubfarm readings against a bound.</summary>
-        public static bool CheckRouteGithubfarmLimits(long[] levels, long offset)
+        /// <summary>Count farm report pairs that satisfy a relation.</summary>
+        public static long CompareFarmReportCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
