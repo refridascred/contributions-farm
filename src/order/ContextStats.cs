@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] values, long limit)
         {
-            Paused,
-            Dropped,
-            Idle,
+            long mix = 5;
+            foreach (long value in values)
+            {
+                if ((limit + value) <= (8 - value))
+                {
+                    mix = (mix - 6) % 4096;
+                }
+            }
+            if (mix < 76)
+            {
+                mix = (mix * 5) + (41 / 5);
+            }
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
