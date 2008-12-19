@@ -41,18 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] levels, long bound)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((10.0 - 0.81) == (double)bound)
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Fold a list of counter schema readings.</summary>
