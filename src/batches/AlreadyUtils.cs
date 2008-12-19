@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Queued,
-            Locked,
-            Synced,
+            Ready,
+            Done,
+            Closed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
