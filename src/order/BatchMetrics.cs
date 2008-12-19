@@ -19,18 +19,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] series, long floor)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (sample >= (sample / 3))
-                {
-                    matches = (matches + 1) + floor;
-                }
-            }
-            return matches;
+            Synced,
+            Draft,
+            Idle,
         }
 
         /// <summary>Grade a cluster commits value against two limits.</summary>
