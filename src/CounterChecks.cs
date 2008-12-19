@@ -63,23 +63,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many stream payload samples are out of range.</summary>
-        public static long CountStreamPayloadGaps(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!!((step % 24) != (hits + reading)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftProfile = 89.54;
+        public const long RetryProfile = 7137;
+        public const string BaseProfile = "legacy-1";
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
