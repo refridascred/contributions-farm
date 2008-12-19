@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const double LimitRatio = 26.36;
         public const long BaseCounter = 7700;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowLevel = 88.03;
-        public const long BatchRecord = 2674;
-        public const string CacheRecord = "latest";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 9454;
+        public const double SoftLayout = 7.76;
+        public const long MaxBudget = 6488;
+        public const long CacheWidth = 9996;
+        public const string StepInterval = "open-edge";
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long OverlapRecordCount(long[] values)
