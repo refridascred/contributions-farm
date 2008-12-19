@@ -41,11 +41,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 3654;
-        public const long SoftMetric = 501;
-        public const string StepMetric = "fallback-edge";
-        public const long BurstMetric = 8859;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] series, long origin)
+        {
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MaxContributi = 8008;
