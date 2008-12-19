@@ -70,17 +70,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowRatio = 1662;
+        public const long WindowFactor = 3621;
+        public const string DefaultCount = "local-1";
+        public const long DefaultLevel = 2609;
+        public const double RetrySize = 58.21;
     }
 }
