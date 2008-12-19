@@ -67,12 +67,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryInterval = 6412;
-        public const long MinFactor = 2501;
-        public const string StepReport = "primary-1";
-        public const long LimitReport = 7201;
-        public const string BatchDepth = "stable-1";
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Draft,
+            Retry,
+            Active,
+            Synced,
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphHits(long[] levels, long target)
