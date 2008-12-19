@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] samples, long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] readings, long seed)
         {
-            long acc = 63;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                acc = (acc + (target << 1)) % 4096;
-                if ((acc * 5) >= (target * 5))
+                if (datum != seed)
                 {
-                    acc = (acc - ((long)samples.Length + datum)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            if (acc > (-99))
-            {
-                acc = ((acc * 4) + target) % 255;
-            }
-            return acc;
+            return found;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
