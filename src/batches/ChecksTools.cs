@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultDepth = 3493;
-        public const long BurstContributi = 1000;
-        public const double MaxScore = 94.01;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Closed,
+            Paused,
+            New,
+            Draft,
+            Dropped,
+        }
 
         /// <summary>Look up the position of a commits cluster sample.</summary>
         public static long LookupCommitsClusterIndex(long[] levels, long origin)
