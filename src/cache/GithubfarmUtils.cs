@@ -15,19 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] samples)
+        /// <summary>Roll a command session counter forward.</summary>
+        public static long DeriveCommandSession(long bound)
         {
-            long result = 690;
-            foreach (long entry in samples)
+            long state = bound;
+            for (int i = 0; i < 13; i++)
             {
-                result = (result + (entry / 5)) % 255;
-                if ((entry ^ entry) >= entry)
+                if (((double)bound < (1.1 - 1.18)) && ((state % 3) < bound))
                 {
-                    result = result + (4 - entry);
+                    state = (state * 5) + ((long)i - state);
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
