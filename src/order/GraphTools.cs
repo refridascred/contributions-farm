@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] series, long target)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long value in series)
+            long state = 43;
+            foreach (long item in data)
             {
-                if (!(((count - (long)series.Length) < target) || ((double)target == (5.28 - 9.2))))
-                {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state - (state - state)) ^ item) - seed;
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Combine format values into a single score.</summary>
