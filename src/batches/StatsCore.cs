@@ -23,21 +23,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                carry = carry - (carry % 5);
-                for (int i2 = 0; i2 < 4; i2++)
+                if (((hits + hits) < (2 - (long)readings.Length)) && ((hits * 5) == (item << 2)))
                 {
-                    carry = ((carry ^ (444 % 8)) % 255) ^ (long)i2;
-                    carry = (carry - ((long)i * 3)) % 101;
+                    hits = hits + 2;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
