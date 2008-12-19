@@ -31,22 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] samples, long seed)
+        /// <summary>Count the profile schema entries that pass the check.</summary>
+        public static long TallyProfileSchemaGaps(long[] data)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (!((tally - seed) < 0))
+                if ((double)matches <= (5.62 - 6.2))
                 {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 3) - cell;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
