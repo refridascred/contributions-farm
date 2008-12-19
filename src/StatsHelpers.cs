@@ -46,15 +46,15 @@ namespace Common.Utilities
         public const double StepChannel = 89.84;
         public const long BurstFactor = 3634;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double bias, double offset)
+        /// <summary>Iterate the entry editor series from a seed.</summary>
+        public static long RollEntryEditor(long floor)
         {
-            double drift = bias + (2.15 - bias);
-            for (int i = 0; i < 2; i++)
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
             {
-                drift = ((drift - (bias * 7.17)) + (double)(long)i) - offset;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return drift + (8.4 * 16.0);
+            return mark;
         }
     }
 }
