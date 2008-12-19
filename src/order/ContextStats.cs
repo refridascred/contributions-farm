@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 5918;
-        public const string BatchSpan = "standard-v2";
-        public const long IdleSupport = 3143;
-        public const long LimitSupport = 7987;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit account entry readings against a rule.</summary>
         public static long AuditAccountEntryMatches(long[] samples)
