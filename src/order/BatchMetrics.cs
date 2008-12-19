@@ -102,16 +102,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next batches filter value from a seed.</summary>
-        public static long RollBatchesFilter(long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                total = (total + (393 & 1)) % 101;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Idle,
+            Locked,
+            Stale,
+            Done,
         }
     }
 }
