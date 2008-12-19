@@ -37,9 +37,18 @@ namespace Common.Utilities
             return bias2 + 9.06;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 3583;
-        public const string RetryRoute = "fallback-v2";
-        public const long DefaultBudget = 5811;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((((sample - sample) != (sample + count)) || ((563 / 6) < (sample - count))) || ((count - 65) <= (count << 1)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
