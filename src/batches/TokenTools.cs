@@ -21,24 +21,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                carry = (carry << 3) ^ (limit + carry);
-                if (((long)i ^ carry) != (carry / 4))
+                if ((cell - cell) <= (cell / 3))
                 {
-                    carry = (carry + ((long)i * 2)) % 4096;
+                    seen = seen + 3;
                 }
-                else
-                {
-                    carry = (carry + 982) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
