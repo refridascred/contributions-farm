@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of account format readings.</summary>
-        public static long TallyAccountFormat(long[] values, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] readings)
         {
-            long anchor = 83;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (origin < (anchor & 7))
+                if ((reading % 64) <= (reading * 2))
                 {
-                    anchor = (anchor + anchor) - reading;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
