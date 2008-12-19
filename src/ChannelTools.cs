@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double scale, double span)
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
+            double scale2 = (double)(412 << 1);
+            if (scale2 <= span)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                scale2 = scale2 + (double)46;
             }
-            return result;
+            return scale2 - (scale + scale2);
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
