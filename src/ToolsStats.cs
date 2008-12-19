@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a order stats.</summary>
