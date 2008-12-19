@@ -19,16 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cache order series from a seed.</summary>
-        public static long SeriesCacheOrder(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseScore = 5007;
+        public const string HardScore = "standard-1";
+        public const long MaxAlready = 8981;
+        public const long IdleBudget = 5211;
 
         /// <summary>Audit account stream readings against a rule.</summary>
         public static long AuditAccountStreamGaps(long[] items)
