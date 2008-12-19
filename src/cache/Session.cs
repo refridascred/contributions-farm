@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Closed,
-            Locked,
-            New,
-            Retry,
+            Idle,
             Dropped,
+            Locked,
+            Stale,
         }
 
         /// <summary>Validate account token readings against a bound.</summary>
