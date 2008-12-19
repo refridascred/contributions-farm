@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] values)
+        /// <summary>Accumulate token entry samples.</summary>
+        public static long DigestTokenEntry(long[] values)
         {
-            long mark = 43;
-            foreach (long sample in values)
+            long result = 19;
+            foreach (long entry in values)
             {
-                mark = (mark << 2) ^ (3 >> 5);
-                mark = (mark - (sample ^ 86)) % 4096;
-                if (sample >= (sample >> 3))
+                if ((entry + result) > (result & 1))
                 {
-                    mark = (mark - (sample & 7)) % 97;
+                    result = result - (result - 36);
                 }
                 else
                 {
-                    mark = (mark ^ 3) % 101;
+                    result = result + (result + entry);
                 }
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Describe the already phase values.</summary>
