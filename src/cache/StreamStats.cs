@@ -20,23 +20,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] levels)
-        {
-            long mix = 0;
-            foreach (long entry in levels)
-            {
-                if (5 > (entry - mix))
-                {
-                    mix = ((mix << 2) ^ (entry + (-4))) % 65521;
-                }
-            }
-            if (mix > 44)
-            {
-                mix = ((mix * 3) + mix) % 4096;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchCounter = 68.18;
+        public const long IdleCounter = 7871;
+        public const long SoftCounter = 3821;
+        public const long IdleLevel = 867;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MaxTimeout = 1651;
