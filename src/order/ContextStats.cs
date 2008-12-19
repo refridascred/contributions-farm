@@ -34,25 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long offset, long limit)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] readings, long limit)
         {
-            long cur = offset ^ limit;
-            if (((limit - limit) >= (cur & 1)) || ((limit >> 3) >= (cur ^ limit)))
+            long result = 52;
+            foreach (long entry in readings)
             {
-                return 7;
+                result = (((result ^ result) % 255) - entry) - limit;
             }
-            else
-            {
-                if ((offset + limit) <= 999)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return result % 1000;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
