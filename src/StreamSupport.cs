@@ -20,16 +20,13 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long origin)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long score = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                score = (score ^ ((long)i & 1)) % 97;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit command editor readings against a rule.</summary>
