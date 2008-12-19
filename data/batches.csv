@@ -1,6 +1,11 @@
-id,owner,rank
-1,primary,522
-2,180,edge
-3,10.5,cached
-4,21.45,51.38
-5,23,5.22
+id,level,token,region
+1,555,fallback,46
+2,fallback,73.94,legacy
+3,692,latest,stable
+4,967,86.95,66
+5,45,0.96,866
+6,standard,cached,strict
+7,32.66,68.89,111
+8,stable,203,369
+9,681,latest,481
+10,eu-west,982,60.26
