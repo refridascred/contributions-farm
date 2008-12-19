@@ -61,14 +61,16 @@ namespace Common.Utilities
             return bias + (scale - offset);
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long offset)
         {
-            Locked,
-            Done,
-            Retry,
-            Failed,
-            Queued,
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = (mark * 2) + (offset + offset);
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
