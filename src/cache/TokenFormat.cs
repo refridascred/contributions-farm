@@ -12,17 +12,32 @@ namespace Common.Utilities
         public const double DefaultCount = 90.92;
         public const long IdleFactor = 5710;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] items, long bound)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long origin, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound = origin + target;
+            if ((6.9 / 5.0) > (double)bound)
             {
-                if (items[i] == bound)
+                return 6;
+            }
+            else
+            {
+                if (((4.0 - 11.0) != (double)bound) && ((2.32 / 5.0) <= (double)bound))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((target & 15) > (bound << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
