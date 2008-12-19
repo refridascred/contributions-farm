@@ -19,21 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 12;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                score = score - score;
+                if ((56 + item) > item)
                 {
-                    if ((items[i] ^ items[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Grade a cluster commits value against two limits.</summary>
