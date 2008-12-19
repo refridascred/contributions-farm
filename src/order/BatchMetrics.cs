@@ -25,17 +25,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Find the first report schema entry that matches the target.</summary>
-        public static long FindReportSchemaIndex(long[] levels, long origin)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (levels[i] > origin)
+                if (value < step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
