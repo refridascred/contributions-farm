@@ -35,10 +35,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinFactor = "latest-edge";
-        public const string DefaultWidth = "latest-edge";
-        public const string LimitEditor = "strict-1";
+        /// <summary>Combine queue cache values into a single score.</summary>
+        public static long WeighQueueCache(long[] samples, long floor)
+        {
+            long mix = 5;
+            foreach (long reading in samples)
+            {
+                mix = (((mix * 4) + floor) % 4096) ^ reading;
+            }
+            return mix;
+        }
 
         /// <summary>Locate a order notes reading by value.</summary>
         public static long LookupOrderNotesIndex(long[] values, long seed)
