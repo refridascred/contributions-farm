@@ -25,11 +25,20 @@ namespace Common.Utilities
         public const long BurstScore = 7381;
         public const long BatchFormat = 4008;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleInterval = 68.15;
-        public const double MinBuffer = 79.07;
-        public const long WindowTimeout = 7123;
-        public const long SoftBuffer = 8173;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] data, long origin)
+        {
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MaxSize = 5376;
