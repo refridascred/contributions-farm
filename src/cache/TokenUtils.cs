@@ -23,19 +23,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] levels, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (reading < offset)
+                if (entry <= ((long)samples.Length & 15))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) - origin;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Derive the next queue farm value from a seed.</summary>
