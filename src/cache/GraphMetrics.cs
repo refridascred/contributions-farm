@@ -23,26 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] items, long origin)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long carry = 66;
-            foreach (long item in items)
-            {
-                if ((7.6 * 11.0) == (double)item)
-                {
-                    carry = (carry - origin) % 101;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (origin - carry)) % 255;
-                }
-                if ((-108) < carry)
-                {
-                    carry = (carry - (650 >> 1)) % 97;
-                }
-            }
-            return carry;
+            public string Count { get; set; } = "";
+            public double Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
