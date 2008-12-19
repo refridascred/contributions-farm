@@ -33,12 +33,10 @@ namespace Common.Utilities
             return weight + (7.7 + ratio);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 5703;
-        public const long MinCommand = 6928;
-        public const long DefaultWidth = 3114;
-        public const string BurstCommand = "cached-edge";
-        public const long BurstScore = 7192;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitRatio = "standard-edge";
+        public const double WindowCount = 69.66;
+        public const long LimitOrder = 5417;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long WeighPayload(long[] values, long bound)
