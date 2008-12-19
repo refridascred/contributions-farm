@@ -13,15 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double rate, double floor)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            double rate2 = (double)9;
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (((rate2 + rate2) - (double)(long)i) - rate) + floor;
-            }
-            return rate2 + rate2;
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
