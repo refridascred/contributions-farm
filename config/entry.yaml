@@ -1,12 +1,4 @@
 # entry settings
-format_retries: blue
-verbose: 250
-report_threshold: edge
-notes_retries:
-  idle_capacity:
-    - 471
-    - 384
-    - 267
-    - 345
-  min_interval: 55.24
-  cache_retries: 41.26
+support_delay: false
+sync_limit_count: true
+tools_retries: strict
