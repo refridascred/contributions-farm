@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const long SoftAccount = 741;
         public const long MinAccount = 1546;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] items, long target)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double ratio, double bias)
         {
-            long sum = 6;
-            foreach (long value in items)
+            double drift = (bias / 9.0) + (double)851;
+            if (drift > bias)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = ((sum * 4) + (value - target)) ^ (long)i;
-                }
-                sum = ((sum << 2) ^ (value + sum)) % 255;
+                drift = drift + 7.0;
             }
-            if (sum < 46)
+            for (int i = 0; i < 8; i++)
             {
-                sum = sum - target;
+                drift = (drift - (bias + ratio)) + (double)(long)i;
             }
-            return sum % 97;
+            return drift - drift;
         }
 
         /// <summary>Accumulate channel samples.</summary>
