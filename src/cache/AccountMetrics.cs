@@ -48,19 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] levels, long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (datum < seed)
+                if ((double)tally != (double)datum)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
