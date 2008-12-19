@@ -55,10 +55,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultCount = 9388;
-        public const long LimitAlready = 1114;
-        public const long BatchAlready = 7918;
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double weight, double bias)
+        {
+            double bias2 = 4.17;
+            if (bias2 > weight)
+            {
+                bias2 = bias2 + (bias - weight);
+            }
+            return bias2 - 3.0;
+        }
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
