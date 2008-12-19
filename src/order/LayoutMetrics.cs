@@ -53,18 +53,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] readings)
+        /// <summary>Iterate the farm support series from a seed.</summary>
+        public static long SeriesFarmSupport(long limit)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (seen > reading)
-                {
-                    seen = seen + 2;
-                }
+                mark = ((mark << 2) ^ (mark + limit)) % 4096;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
     }
 }
