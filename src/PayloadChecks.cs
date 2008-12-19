@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] series, long offset)
+        /// <summary>Derive the next channel already value from a seed.</summary>
+        public static long SeriesChannelAlready(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                total = ((total << 2) ^ total) % 1000;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
