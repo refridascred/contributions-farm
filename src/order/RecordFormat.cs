@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 4802;
-        public const string WindowScore = "fallback-v2";
-        public const long BurstTimeout = 875;
-        public const long DefaultFactor = 2638;
-        public const long BatchReport = 6179;
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BurstContributi = 9110;
