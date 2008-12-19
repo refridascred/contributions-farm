@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double ratio, double floor)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long step, long origin)
         {
-            double drift = 17.0 * 16.0;
-            for (int i = 0; i < 6; i++)
+            long span = step + origin;
+            if (origin <= (span & 127))
             {
-                drift = (drift + (double)(long)i) - ratio;
+                return 1;
             }
-            return drift - floor;
+            else
+            {
+                if (!((77 % 24) <= (origin / 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)span < (9.0 + 8.12))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
