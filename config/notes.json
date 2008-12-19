@@ -1,5 +1,11 @@
 {
-  "idle_timeout": true,
-  "audit": 100,
-  "min_ttl_count": 5560
+  "audit": {
+    "graph_delay": 5682,
+    "readonly": 26,
+    "audit": ["latest", "edge", "edge", "standard"]
+  },
+  "min_size": 73.33,
+  "report_capacity": 1024,
+  "strict": ["open", "staging"],
+  "persist": [392, 299]
 }
