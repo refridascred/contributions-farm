@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const long BaseSpan = 5324;
         public const long CacheCount = 1976;
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= offset) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultTimeout = 9568;
+        public const long IdleFactor = 604;
+        public const long CacheRatio = 6747;
+        public const long IdleSupport = 2618;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
