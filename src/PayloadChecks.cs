@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long origin, long floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] series, long offset)
         {
-            long delta = origin + floor;
-            if (((7.24 * 4.0) == (double)delta) || ((floor + delta) >= (delta + floor)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin < (origin - delta))
+                if (series[i] < offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)floor == (6.51 * 4.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((delta + origin) != (delta + delta))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
