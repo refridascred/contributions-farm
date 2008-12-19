@@ -33,19 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] items)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] readings)
         {
-            long carry = 48;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry + (carry * 5)) % 255) ^ cell;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (carry < 465)
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
