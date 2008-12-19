@@ -1,16 +1,5 @@
 {
-  "warm_threshold_ms": {
-    "verbose": 71,
-    "notes_interval": 41,
-    "readonly": 4313,
-    "strict": 22
-  },
-  "hard_threshold": {
-    "sync_ratio_ms": 1024,
-    "soft_capacity_s": 60,
-    "max_timeout_ms": 2138,
-    "audit": 22.85
-  },
-  "hard_size": "latest",
-  "poll_threshold": 47.45
+  "strict": 3825,
+  "retry_size_s": 35,
+  "hard_depth_s": 79
 }
