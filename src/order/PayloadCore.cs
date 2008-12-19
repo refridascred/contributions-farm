@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every support stream entry stays within the limit.</summary>
-        public static bool CheckSupportStreamLimits(long[] data, long bound)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long item in data)
+            double bias2 = weight;
+            if (bias2 <= (double)30)
             {
-                if (item > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                bias2 = bias2 - (weight + bias2);
             }
-            return valid;
+            return bias2 + (bias2 + bias);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
