@@ -73,15 +73,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a batches tools reading.</summary>
-        public static double SmoothBatchesTools(double weight, double offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long offset, long step)
         {
-            double scale = offset / 8.0;
-            if (scale < 3.6)
+            long cur = offset + step;
+            if ((cur / 6) >= (270 - offset))
             {
-                scale = scale - (weight + offset);
+                return 3;
             }
-            return scale + (8.0 + offset);
+            else
+            {
+                if ((step - step) < cur)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
