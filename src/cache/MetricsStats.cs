@@ -57,11 +57,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleTimeout = 8724;
-        public const long MaxWidth = 9680;
-        public const long HardContext = 7274;
-        public const long SoftDepth = 5587;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleFactor = 7226;
+        public const string BurstLevel = "legacy";
+        public const long BurstContributi = 4537;
 
         /// <summary>Blend two support measurements.</summary>
         public static double AdjustSupport(double ratio, double bias)
