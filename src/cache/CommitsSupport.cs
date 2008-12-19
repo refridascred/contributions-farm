@@ -42,21 +42,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((origin + (-46)) <= origin)
                 {
-                    if ((data[i] - data[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) + entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Scale a notes cluster figure with a bias.</summary>
