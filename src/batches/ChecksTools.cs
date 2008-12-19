@@ -19,10 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchWidth = 3609;
-        public const long BaseSpan = 5324;
-        public const long CacheCount = 1976;
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
+        {
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long DefaultTimeout = 9568;
