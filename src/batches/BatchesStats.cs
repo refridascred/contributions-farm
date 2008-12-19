@@ -20,13 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double bias, double bias2)
         {
-            Retry,
-            Active,
-            Pending,
-            Paused,
+            double rate = bias2 + (bias / 6.0);
+            if (rate > (rate + rate))
+            {
+                rate = rate + (4.32 / 7.0);
+            }
+            return rate + (bias2 / 2.0);
         }
 
         /// <summary>Describe the editor level values.</summary>
