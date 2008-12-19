@@ -69,10 +69,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheProfile = 84.51;
-        public const long BaseSpan = 84;
-        public const long StepFactor = 3090;
-        public const string SoftProfile = "standard";
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = (anchor + (floor - floor)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
