@@ -15,14 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryInterval = 1441;
+        public const long BatchRatio = 2373;
+        public const string StepScore = "legacy-v2";
+        public const long MaxCount = 4365;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long CombineCache(long[] data)
