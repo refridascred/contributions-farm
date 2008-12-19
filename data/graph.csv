@@ -1,10 +1,7 @@
-id,ratio,active,level,rank
-1,2.52,707,blue,fallback
-2,175,eu-west,743,406
-3,36.95,42.6,524,169
-4,26.82,74.46,primary,48.63
-5,879,79.24,eu-west,14.53
-6,71.54,969,37.06,501
-7,cached,360,471,833
-8,open,80.75,35.62,blue
-9,75.45,834,10.75,69.19
+id,label,count,score
+1,green,42.25,87.08
+2,32.16,eu-west,blue
+3,286,strict,482
+4,646,68.18,267
+5,stable,edge,274
+6,blue,214,open
