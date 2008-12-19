@@ -1,19 +1,21 @@
 # support settings
-stream_ttl: standard
-graph_window:
-  compress: 8982
-  persist: edge
-  verbose:
-    min_retries: 33.16
-    burst_capacity_s: 60
-    strict: false
-    base_depth_pct: 1024
-    max_interval_count: 12.68
-    payload_delay:
-      - 19
-      - 388
-      - 195
-  poll_timeout_pct: 30.33
-  schema_size: open
-  burst_size: 92
-max_depth: open
+min_ratio_count: 9.39
+warm_timeout: latest
+buffer_size: 6109
+flush_interval_ms:
+  burst_threshold_ms:
+    - 250
+    - 33
+    - 147
+    - 81
+  retry_window_count: primary
+  flush_threshold_count: true
+  sync_ttl_s:
+    format_capacity: 100
+    context_window: 100
+    soft_ttl_count: eu-west
+    hard_ttl_pct: 4290
+    metric_threshold: true
+    poll_window_s: 31
+  idle_threshold: 10
+  retry_capacity_count: 8.82
