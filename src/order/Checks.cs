@@ -26,18 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] samples, long limit)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((matches & 1) != (matches + reading))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    matches = (matches + 3) - limit;
+                    sum = ((sum + (sum + limit)) % 255) ^ (long)i2;
+                    sum = (sum + (limit - limit)) % 255;
                 }
+                sum = (sum + (limit - (long)i)) % 101;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
