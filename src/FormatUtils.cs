@@ -56,14 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Digest a series of support session entries.</summary>
+        public static long FoldSupportSession(long[] items)
         {
-            Active,
-            Idle,
-            Retry,
-            Stale,
-            Failed,
+            long carry = -558;
+            foreach (long reading in items)
+            {
+                carry = (carry * 4) + (4 - reading);
+            }
+            if (carry > 793)
+            {
+                carry = (carry + (carry % 3)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
