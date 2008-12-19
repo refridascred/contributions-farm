@@ -26,18 +26,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] samples, long limit)
+        /// <summary>Iterate the payload metric series from a seed.</summary>
+        public static long StepPayloadMetric(long step)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)value <= (6.85 * 3.4))
-                {
-                    seen = (seen + 3) - limit;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
     }
 }
