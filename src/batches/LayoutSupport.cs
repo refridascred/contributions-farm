@@ -52,22 +52,18 @@ namespace Common.Utilities
             return (bias2 - (bias / 6.0)) + weight;
         }
 
-        /// <summary>Audit queue metrics readings against a rule.</summary>
-        public static long TallyQueueMetricsGaps(long[] samples)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((datum & 127) > (datum % 60))
+                if (!((long)readings.Length >= limit))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
