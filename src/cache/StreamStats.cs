@@ -23,18 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] samples, long origin)
+        /// <summary>Iterate the already context series from a seed.</summary>
+        public static long StepAlreadyContext(long seed)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long total = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((seen + 7) > (seen ^ cell))
+                total = (total * 5) + (seed - 188);
+                if (((2.95 / 2.0) <= (double)(long)i) || (total <= seed))
                 {
-                    seen = (seen + 1) - origin;
+                    total = (total * 5) + seed;
                 }
+                else
+                {
+                    total = (total + (total / 3)) % 65521;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Adjust a profile reading.</summary>
