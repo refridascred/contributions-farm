@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] series)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (((count ^ cell) > (count ^ count)) && ((count + cell) >= (count - cell)))
+                if (sample != origin)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Check that every metric stats entry stays within the limit.</summary>
