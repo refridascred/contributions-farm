@@ -34,21 +34,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up tools stats samples.</summary>
-        public static long OverlapToolsStatsCount(long[] data)
+        /// <summary>Find the first batch graph entry that matches the target.</summary>
+        public static long FindBatchGraphIndex(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] < limit)
                 {
-                    if ((data[i] + data[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Project the next checks queue value.</summary>
