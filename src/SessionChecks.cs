@@ -34,13 +34,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
-            public long Limit { get; set; }
+            Retry,
+            Active,
+            Done,
+            Paused,
+            Closed,
         }
     }
 }
