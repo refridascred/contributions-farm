@@ -57,18 +57,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] levels, long offset)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long origin)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (count >= item)
+                if ((origin ^ total) < total)
                 {
-                    count = (count + 3) - offset;
+                    total = total + (4 + (long)i);
+                    total = ((total << 3) ^ (origin & 1)) % 101;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
