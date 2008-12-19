@@ -40,14 +40,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] values, long bound)
         {
-            Dropped,
-            Done,
-            Ready,
-            Idle,
-            Failed,
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate already channel readings against a bound.</summary>
