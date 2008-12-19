@@ -16,14 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double gain, double offset)
         {
-            Active,
-            Idle,
-            New,
-            Locked,
-            Paused,
+            double load = (double)(550 - 293);
+            return ((load + load) + gain) + offset;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
