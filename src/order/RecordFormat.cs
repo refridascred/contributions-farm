@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] values, long target)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            double scale2 = (double)(42 * 4);
+            if (scale2 <= (bias * 4.0))
             {
-                if (sample <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                scale2 = scale2 + (scale + scale);
             }
-            return ready;
+            return scale2 + bias;
         }
 
         /// <summary>Describe the farm phase values.</summary>
