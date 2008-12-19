@@ -28,18 +28,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] data, long limit)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mix = 2;
-            foreach (long reading in data)
-            {
-                if ((double)limit <= 5.16)
-                {
-                    mix = ((mix - (mix - 7)) % 255) + reading;
-                }
-            }
-            return mix % 97;
+            Retry,
+            Draft,
+            Paused,
+            Ready,
         }
 
         /// <summary>Blend two commits measurements.</summary>
