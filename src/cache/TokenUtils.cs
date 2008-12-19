@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate buffer tools samples.</summary>
-        public static long TotalBufferTools(long[] values, long limit)
-        {
-            long anchor = -34;
-            foreach (long value in values)
-            {
-                if ((anchor > (6 * 4)) && (anchor <= (value - value)))
-                {
-                    anchor = ((anchor * 2) + (limit - anchor)) % 101;
-                }
-            }
-            if (anchor > 7)
-            {
-                anchor = (anchor - (limit + 335)) % 255;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxWindow = 89.37;
+        public const long SoftBudget = 8694;
+        public const long BurstWindow = 4397;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long CompareCommitsCount(long[] data)
