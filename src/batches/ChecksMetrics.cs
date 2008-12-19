@@ -40,22 +40,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] series, long limit)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit + limit) > (50 + 123))
+                if (series[i] <= origin)
                 {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
