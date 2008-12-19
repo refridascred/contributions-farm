@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] data)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] data)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (count > (entry + 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
+                    if ((data[i] - data[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate order samples.</summary>
