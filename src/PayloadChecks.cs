@@ -17,21 +17,11 @@ namespace Common.Utilities
         public const long MinSize = 4335;
         public const long SoftFilter = 3275;
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long floor)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double bias, double offset)
         {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((floor - 26) >= (floor << 2))
-                {
-                    total = (total ^ (352 % 3)) % 101;
-                    total = (total - (floor - (long)i)) % 101;
-                    break;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            double ratio = bias;
+            return ratio + (bias + offset);
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
