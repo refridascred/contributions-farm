@@ -41,18 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] readings)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((1.45 - 1.46) == (double)cell)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
