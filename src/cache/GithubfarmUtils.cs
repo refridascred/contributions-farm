@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftSpan = "legacy-v2";
+        public const string BatchSupport = "strict";
+        public const long StepRatio = 613;
+        public const double RetryInterval = 37.69;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BatchSize = 7426;
