@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a cache context figure with a bias.</summary>
-        public static double BlendCacheContext(double gain, double bias)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            double ratio = (double)(9 % 60);
-            if (ratio >= bias)
-            {
-                ratio = ratio - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (double)6) - (double)(long)i;
-            }
-            return ratio + (bias + bias);
+            Retry,
+            Failed,
+            Closed,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
