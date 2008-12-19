@@ -15,13 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Failed,
+            Stale,
             Closed,
-            Pending,
-            Synced,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
