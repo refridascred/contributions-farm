@@ -37,17 +37,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a metric route counter forward.</summary>
-        public static long RollMetricRoute(long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] levels, long step)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long total = 99;
+            foreach (long cell in levels)
             {
-                score = (score << 2) ^ 3;
-                score = ((score << 3) ^ score) % 1000;
-                score = ((score * 4) + (long)i) % 1000;
+                total = (total << 3) ^ (cell << 2);
+                total = (total ^ (total & 1)) % 1000;
             }
-            return score;
+            if (total < 5)
+            {
+                total = (total - (step + 2)) % 1000;
+            }
+            return total;
         }
     }
 }
