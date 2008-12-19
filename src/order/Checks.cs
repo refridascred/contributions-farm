@@ -43,31 +43,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long seed, long bound)
+        /// <summary>Audit cache token readings against a rule.</summary>
+        public static long AuditCacheTokenGaps(long[] levels)
         {
-            if (((bound ^ 6) <= (242 >> 4)) || ((double)seed < 13.0))
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7.44 - 5.0) <= (double)bound)
+                if ((double)matches >= 1.5)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(((-841) * 4) == (seed & 7)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = (matches + 1) ^ sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
