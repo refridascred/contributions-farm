@@ -34,11 +34,17 @@ namespace Common.Utilities
             return ratio + (bias + ratio);
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Locate a metrics counter reading by value.</summary>
+        public static long FindMetricsCounterIndex(long[] samples, long origin)
         {
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batch status values.</summary>
