@@ -31,20 +31,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine order farm values into a single score.</summary>
-        public static long FoldOrderFarm(long[] readings, long limit)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long acc = -592;
-            foreach (long sample in readings)
-            {
-                if ((double)(-3) < (double)(long)readings.Length)
-                {
-                    acc = ((acc << 2) ^ (sample + 40)) % 97;
-                    break;
-                }
-                acc = ((acc << 2) ^ limit) % 97;
-            }
-            return acc;
+            Closed,
+            Idle,
+            Active,
+            Synced,
         }
     }
 }
