@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double gain, double bias)
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            double mean = (gain / 9.0) - bias;
+            if (mean >= (gain - gain))
+            {
+                mean = mean + bias;
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean - bias;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
