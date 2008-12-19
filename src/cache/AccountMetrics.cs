@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] items)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)floor <= 1.0)
                 {
-                    if ((items[i] - items[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) + sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Blend two checks measurements.</summary>
