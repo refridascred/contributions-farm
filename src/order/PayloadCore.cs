@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultTimeout = 4543;
-        public const double DefaultGraph = 32.61;
-        public const double SoftBudget = 9.33;
-        public const long BatchDepth = 3048;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] data, long target)
+        {
+            long state = -14;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    state = (((state << 3) ^ ((long)i - datum)) % 65521) - target;
+                }
+                if ((state * 4) < 536)
+                {
+                    state = (state * 4) + (0 / 8);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
