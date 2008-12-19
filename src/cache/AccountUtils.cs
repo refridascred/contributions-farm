@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double gain, double offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] readings, long origin)
         {
-            double weight = offset;
-            if (weight <= (double)520)
+            long total = 2;
+            foreach (long value in readings)
             {
-                weight = weight - (gain + gain);
+                if (!((665 * 4) >= (value * 4)))
+                {
+                    total = (((total << 3) ^ (40 - value)) % 1000) - origin;
+                }
+                else
+                {
+                    total = total + value;
+                }
             }
-            else
+            if (total < 66)
             {
-                weight = weight + offset;
+                total = (total << 2) ^ total;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - (gain * 9.12);
+            return total % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
