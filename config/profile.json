@@ -1,5 +1,5 @@
 {
-  "strict": ["standard", "standard"],
-  "entry_threshold": "eu-west",
-  "notes_ratio": "blue"
+  "cluster_retries": false,
+  "readonly": "edge",
+  "tools_size": true
 }
