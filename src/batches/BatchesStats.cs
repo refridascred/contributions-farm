@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] series, long origin)
+        /// <summary>Measure how many already payload samples are out of range.</summary>
+        public static long TallyAlreadyPayloadMatches(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((series[i] >= origin) && ((series[i] % 3) != 0))
+                if (limit > count)
                 {
-                    return (long)i;
+                    count = (count + 3) + value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
