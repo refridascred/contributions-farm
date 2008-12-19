@@ -29,15 +29,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] readings, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                result = ((result * 3) + (long)i) % 97;
+                if (reading >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Rank session input into a small class.</summary>
