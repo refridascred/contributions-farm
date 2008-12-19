@@ -29,18 +29,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] data, long bound)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(bound < item))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((samples[i] ^ samples[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
