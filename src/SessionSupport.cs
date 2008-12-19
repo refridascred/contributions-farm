@@ -25,14 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Find the first buffer profile entry that matches the target.</summary>
+        public static long LocateBufferProfileIndex(long[] series, long offset)
         {
-            Stale,
-            Queued,
-            Done,
-            Failed,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
