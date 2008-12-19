@@ -34,17 +34,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a session report sample.</summary>
-        public static long LookupSessionReportIndex(long[] levels, long limit)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (levels[i] < limit)
+                if ((double)limit < (double)82)
                 {
-                    return (long)i;
+                    total = total + (limit / 6);
                 }
+                else
+                {
+                    total = (total + total) % 255;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
     }
 }
