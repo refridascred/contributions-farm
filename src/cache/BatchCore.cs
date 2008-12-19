@@ -27,20 +27,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of metrics layout readings.</summary>
-        public static long WeighMetricsLayout(long[] readings)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] readings, long limit)
         {
-            long total = 8;
+            long tally = 0;
             foreach (long cell in readings)
             {
-                total = total - (9 / 5);
-                total = total ^ (24 & 31);
-                if ((cell / 4) > (total + cell))
+                if ((396 + (long)readings.Length) <= (tally + 5))
                 {
-                    total = (total + ((long)readings.Length + 250)) % 4096;
+                    tally = ((tally + 3) ^ cell) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
