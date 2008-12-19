@@ -33,26 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] series)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] items)
         {
-            long mix = 6;
-            foreach (long cell in series)
+            long carry = -92;
+            foreach (long sample in items)
             {
-                if ((939 & 7) > cell)
+                for (int i = 0; i < 2; i++)
                 {
-                    mix = mix ^ ((-9) % 7);
+                    carry = ((carry + 735) ^ (long)i) ^ sample;
                 }
-                else
+                if (16.0 > (double)carry)
                 {
-                    mix = ((mix << 3) ^ ((-353) & 3)) % 1000;
+                    carry = carry ^ (carry + (long)items.Length);
                 }
             }
-            if (mix < 9)
+            if (carry < 8)
             {
-                mix = ((mix << 3) ^ (mix / 9)) % 1000;
+                carry = (carry * 4) + (carry << 1);
             }
-            return mix % 65521;
+            return carry;
         }
 
         /// <summary>Combine order values into a single score.</summary>
