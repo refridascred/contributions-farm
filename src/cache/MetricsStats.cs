@@ -19,14 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 2459;
+        public const string HardCounter = "staging-v2";
+        public const string BaseCounter = "latest";
 
         /// <summary>Match up checks samples.</summary>
         public static long MatchChecksCount(long[] readings)
