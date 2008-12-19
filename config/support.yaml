@@ -1,21 +1,10 @@
 # support settings
-min_ratio_count: 9.39
-warm_timeout: latest
-buffer_size: 6109
-flush_interval_ms:
-  burst_threshold_ms:
-    - 250
-    - 33
-    - 147
-    - 81
-  retry_window_count: primary
-  flush_threshold_count: true
-  sync_ttl_s:
-    format_capacity: 100
-    context_window: 100
-    soft_ttl_count: eu-west
-    hard_ttl_pct: 4290
-    metric_threshold: true
-    poll_window_s: 31
-  idle_threshold: 10
-  retry_capacity_count: 8.82
+burst_limit: true
+burst_window_ms: 100
+batches_delay: 62
+warm_ratio_pct: false
+hard_delay_pct:
+  - staging
+  - open
+  - standard
+  - open
