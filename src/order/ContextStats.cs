@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] values)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (!((double)seen < (0.1 + 17.0)))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            Paused,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
