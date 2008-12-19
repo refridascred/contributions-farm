@@ -53,16 +53,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                score = (score + (score << 3)) % 65521;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
