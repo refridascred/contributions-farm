@@ -1,10 +1,12 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    weight REAL,
-    token TEXT,
-    created_at TIMESTAMP,
-    score REAL NOT NULL DEFAULT 0
+    state TEXT NOT NULL DEFAULT 'new',
+    owner TEXT NOT NULL,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
+CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
+
+INSERT INTO commits_records (state, owner, count) VALUES ('edge', 'strict', 12);
+INSERT INTO commits_records (state, owner, count) VALUES ('blue', 'strict', 69);
