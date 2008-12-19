@@ -28,17 +28,22 @@ namespace Common.Utilities
         public const long BatchDepth = 2293;
         public const string BatchRatio = "cached";
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] data, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 77;
+            foreach (long datum in levels)
             {
-                if (data[i] <= limit)
+                if ((total + step) >= (datum - total))
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ (datum + step)) % 255;
                 }
             }
-            return -1;
+            if (total > 7)
+            {
+                total = (total ^ step) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the stats state values.</summary>
