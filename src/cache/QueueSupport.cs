@@ -22,11 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double bias, double floor)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] items, long origin)
         {
-            double gain = (floor * 4.2) - (double)9;
-            return (gain - floor) + bias;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
