@@ -53,17 +53,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] series, long offset)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((series[i] > offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
     }
 }
