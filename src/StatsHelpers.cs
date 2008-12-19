@@ -42,15 +42,13 @@ namespace Common.Utilities
         public const double StepChannel = 89.84;
         public const long BurstFactor = 3634;
 
-        /// <summary>Iterate the entry editor series from a seed.</summary>
-        public static long RollEntryEditor(long floor)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long mark = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Pending,
+            Failed,
+            Locked,
+            Retry,
         }
     }
 }
