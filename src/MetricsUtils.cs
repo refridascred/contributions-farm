@@ -12,11 +12,13 @@ namespace Common.Utilities
             return (scale - span) + gain;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double ratio, double span)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            double gain = (span / 4.0) / 5.0;
-            return gain + (ratio + 17.0);
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Scale a session token figure with a bias.</summary>
