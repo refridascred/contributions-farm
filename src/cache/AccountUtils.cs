@@ -27,12 +27,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 5672;
-        public const long WindowLevel = 3013;
-        public const long IdleChannel = 3044;
-        public const long HardTimeout = 2857;
-        public const string IdleWidth = "legacy";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheTimeout = "open-edge";
+        public const long SoftInterval = 6819;
+        public const long RetryRatio = 3335;
 
         /// <summary>Adjust a order tools reading.</summary>
         public static double ScaleOrderTools(double ratio, double floor)
