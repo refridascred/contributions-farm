@@ -63,11 +63,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitBudget = 68.58;
-        public const double MinProfile = 47.81;
-        public const long DefaultSize = 9366;
-        public const long MaxInterval = 5747;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepBudget = 106;
+        public const string CacheFilter = "standard-1";
+        public const long RetryRatio = 615;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long RollBatch(long seed)
