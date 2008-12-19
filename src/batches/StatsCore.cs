@@ -77,12 +77,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Queued,
-            Locked,
-            Active,
+            Stale,
+            Closed,
+            Failed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Hold a token summary.</summary>
