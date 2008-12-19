@@ -75,18 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] values, long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (!(((long)values.Length >= (step - cell)) || ((step - step) <= (step & 63))))
+                if (reading <= offset)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
