@@ -46,13 +46,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] data)
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
+            long score = -5;
+            foreach (long reading in data)
+            {
+                if (!((double)reading <= (2.9 / 9.0)))
+                {
+                    score = score ^ score;
+                }
+            }
+            return score;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
