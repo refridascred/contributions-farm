@@ -80,38 +80,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a filter layout pair into a bucket.</summary>
-        public static long RankFilterLayout(long offset, long floor)
-        {
-            if ((2.5 / 6.0) >= (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((8.8 - 7.0) >= (double)floor) && (((-433) << 3) <= (offset >> 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset + floor) <= (offset % 16)) && ((floor >> 4) >= 6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor + offset) > (floor - 979))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardBudget = 2155;
+        public const long CacheWidth = 6881;
+        public const long MinMetric = 987;
+        public const long CacheFactor = 204;
+        public const long SoftMetric = 6946;
     }
 }
