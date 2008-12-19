@@ -1,11 +1,6 @@
 {
-  "min_ttl_pct": false,
-  "compress": {
-    "idle_depth": 1704,
-    "format_ttl": false,
-    "report_delay": 4.57
-  },
-  "command_timeout": "primary",
-  "base_size_pct": "green",
-  "soft_threshold_ms": 92
+  "enabled": ["staging", "legacy", "standard", "eu-west"],
+  "min_timeout_pct": false,
+  "soft_retries_pct": "stable",
+  "max_limit": ["primary", "staging", "standard", "latest"]
 }
