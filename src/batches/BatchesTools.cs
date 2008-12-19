@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double bias, double bias2)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double ratio, double offset)
         {
-            double load = (double)411 + bias2;
-            if (load < (double)2)
+            double load = ratio;
+            if (load <= ratio)
             {
-                load = (load + load) - bias;
+                load = load - (offset / 6.0);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                load = load - (double)(-87);
+                load = (load - (double)(-644)) + (double)(long)i;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - bias2) + (double)(long)i;
-            }
-            return load + (double)4;
+            return load + offset;
         }
 
         /// <summary>Accumulate order samples.</summary>
