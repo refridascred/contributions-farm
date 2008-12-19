@@ -1,8 +1,6 @@
 # githubfarm settings
-cache_size: 30
-flush_interval: 60
-idle_size_count:
-  - local
-  - open
-  - stable
-  - edge
+retry_window_ms: local
+editor_interval: 5831
+entry_threshold: true
+default_ratio: green
+base_threshold: standard
