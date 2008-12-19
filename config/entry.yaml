@@ -1,10 +1,6 @@
 # entry settings
-dry_run: staging
-default_delay: open
-verbose:
-  - 490
-  - 168
-default_capacity_ms:
-  sync_ratio_pct: staging
-  window_interval: open
-  payload_limit: 7342
+cache_size_s: 8578
+retry_interval_s:
+  - 123
+  - 378
+min_depth: latest
