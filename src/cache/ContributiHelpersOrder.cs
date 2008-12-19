@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long floor)
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((6.0 + 8.9) != (double)anchor)
+                {
+                    anchor = ((anchor * 4) + (511 * 4)) % 97;
+                    anchor = (anchor + floor) % 1000;
+                }
+                if ((anchor * 3) < anchor)
+                {
+                    anchor = anchor ^ (anchor + anchor);
+                }
+                anchor = (anchor - (anchor - (long)i)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the graph level values.</summary>
