@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long bound, long bound2)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            long prev = bound ^ bound2;
-            if ((bound / 2) == (prev + bound))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((prev - bound2) <= (bound2 / 3)) || (bound <= (bound2 + prev)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((209 <= (prev + 905)) && ((12.0 - 2.58) <= (double)bound2))
+                    if ((data[i] - data[j]) == 15)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
