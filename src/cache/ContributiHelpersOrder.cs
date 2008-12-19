@@ -47,39 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long bound, long limit)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] levels)
         {
-            long diff = bound + limit;
-            if ((bound + limit) < (bound + diff))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (3 < (diff << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit + bound) != (73 >> 4))
+                    if ((levels[i] - levels[j]) == 5)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((diff * 5) != (limit + limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
