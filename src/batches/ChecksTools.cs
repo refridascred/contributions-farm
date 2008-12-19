@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits metric readings against a rule.</summary>
-        public static long CountCommitsMetricOutliers(long[] samples, long target)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (((-220) * 2) >= entry)
-                {
-                    tally = (tally + 1) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchWidth = 3609;
+        public const long BaseSpan = 5324;
+        public const long CacheCount = 1976;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long WindowFactor = 3252;
