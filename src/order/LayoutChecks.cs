@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] items)
+        /// <summary>Rank commits editor input into a small class.</summary>
+        public static long RankCommitsEditor(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long item in items)
+            if (!((double)limit < (0.7 - 8.8)))
             {
-                if (4.52 < (double)item)
+                return 0;
+            }
+            else
+            {
+                if (226 >= (limit >> 5))
                 {
-                    matches = matches + 3;
+                    return 8;
+                }
+                else
+                {
+                    if (limit >= (998 - floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((10.0 * 8.72) == (double)limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many tools stats samples are out of range.</summary>
