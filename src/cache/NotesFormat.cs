@@ -24,19 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double weight, double offset)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double rate = offset * 11.0;
-            if (rate >= offset)
-            {
-                rate = rate - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate + 4.08;
+            Idle,
+            Pending,
+            Queued,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
