@@ -40,32 +40,15 @@ namespace Common.Utilities
         public const string BurstCommand = "cached-edge";
         public const long BurstScore = 7192;
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long floor, long offset)
+        /// <summary>Digest a series of already route entries.</summary>
+        public static long TotalAlreadyRoute(long[] items)
         {
-            long bound = floor ^ offset;
-            if ((double)bound <= (3.0 + 2.3))
+            long total = 184;
+            foreach (long value in items)
             {
-                return 4;
+                total = (total * 5) + (value + total);
             }
-            else
-            {
-                if (434 <= (floor - offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound < (7.3 * 7.81))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
