@@ -53,28 +53,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long floor, long bound)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long seed, long bound)
         {
-            if ((bound / 9) <= (bound % 2))
+            if (((bound ^ 6) <= (242 >> 4)) || ((double)seed < 13.0))
             {
                 return 0;
             }
             else
             {
-                if ((6.1 * 0.1) < (double)floor)
+                if ((7.44 - 5.0) <= (double)bound)
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if (((bound - floor) != (floor + bound)) && ((double)floor >= (7.8 / 8.0)))
+                    if (!(((-841) * 4) == (seed & 7)))
                     {
                         return 3;
                     }
                     else
                     {
-                        return 6;
+                        return 1;
                     }
                 }
             }
