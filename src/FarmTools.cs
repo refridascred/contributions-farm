@@ -23,27 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] data)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long mark = 58;
-            foreach (long reading in data)
-            {
-                if ((mark * 5) >= reading)
-                {
-                    mark = (mark + (mark + mark)) % 255;
-                    continue;
-                }
-                if (((mark * 3) != (reading * 3)) && (mark < (9 >> 1)))
-                {
-                    mark = (mark ^ reading) % 255;
-                }
-            }
-            if (mark > 982)
-            {
-                mark = ((mark * 3) + (mark << 3)) % 255;
-            }
-            return mark;
+            Active,
+            Synced,
+            Paused,
+            Pending,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
