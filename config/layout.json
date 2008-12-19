@@ -1,12 +1,6 @@
 {
-  "persist": "local",
-  "sync_ratio_pct": {
-    "audit": true,
-    "counter_threshold": 98,
-    "batch_depth": "stable"
-  },
-  "flush_timeout_count": "green",
-  "payload_limit": true,
-  "soft_threshold_pct": false,
-  "default_timeout": 500
+  "strict": "open",
+  "soft_retries": 1024,
+  "soft_threshold_ms": 44.81,
+  "batch_ratio_pct": true
 }
