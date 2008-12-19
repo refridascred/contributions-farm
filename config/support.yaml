@@ -1,9 +1,7 @@
 # support settings
-verbose: true
-record_size: staging
-default_size_pct: false
-dry_run:
-  - stable
-  - eu-west
-  - blue
-  - green
+support_delay: 36.58
+window_depth: staging
+githubfarm_interval: edge
+poll_timeout_count: 100
+max_capacity: staging
+enabled: 37.85
