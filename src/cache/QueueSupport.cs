@@ -37,21 +37,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = (anchor << 3) ^ step;
-                if (((-557) ^ anchor) == (long)i)
-                {
-                    anchor = (anchor - anchor) % 101;
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 8686;
+        public const long StepCluster = 7006;
+        public const long CacheCluster = 2387;
     }
 }
