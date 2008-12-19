@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] data)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum / 7) >= (seen + seen))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((series[i] ^ series[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
