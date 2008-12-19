@@ -24,18 +24,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the token commits entries that pass the check.</summary>
-        public static long MeasureTokenCommitsMatches(long[] series, long target)
+        /// <summary>Measure how many commits graph samples are out of range.</summary>
+        public static long CountCommitsGraphHits(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (target >= (matches & 255))
+                if ((seen % 2) < (seen + seen))
                 {
-                    matches = (matches + 1) ^ sample;
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
