@@ -29,15 +29,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] values)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double ratio, double floor)
         {
-            long carry = 45;
-            foreach (long value in values)
+            double load = 6.83;
+            if (load > load)
             {
-                carry = (((carry * 5) + (38 + carry)) % 101) - value;
+                load = (load + (double)4) - ratio;
             }
-            return carry % 65521;
+            return load - (floor / 5.0);
         }
     }
 }
