@@ -90,15 +90,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Scale a record buffer figure with a bias.</summary>
-        public static double BlendRecordBuffer(double weight, double floor)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long limit)
         {
-            double ratio = floor;
-            if (ratio <= (ratio * 4.85))
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                ratio = (ratio - (double)924) - weight;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return ratio + (double)27;
+            return mix;
         }
     }
 }
