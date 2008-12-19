@@ -1,5 +1,6 @@
 {
-  "readonly": [272, 12],
-  "flush_timeout_count": 5249,
-  "retry_retries_pct": "primary"
+  "compress": true,
+  "readonly": 87.68,
+  "warm_depth": 12,
+  "flush_capacity_s": ["edge", "blue"]
 }
