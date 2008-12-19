@@ -19,14 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] series)
         {
-            Synced,
-            Active,
-            Pending,
-            Failed,
-            Idle,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (!((value % 64) > 27))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
