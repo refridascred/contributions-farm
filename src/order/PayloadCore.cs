@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] items, long target)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((matches + target) <= (target - target))
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
