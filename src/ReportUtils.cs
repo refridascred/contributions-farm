@@ -53,18 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] levels, long step)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item > (5.9 - 8.97))
-                {
-                    count = (count + 3) - step;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
