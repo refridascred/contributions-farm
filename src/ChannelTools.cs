@@ -21,16 +21,11 @@ namespace Common.Utilities
         public const double WindowStats = 48.0;
         public const long RetryInterval = 9777;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = sum + (limit + sum);
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public double Token { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
