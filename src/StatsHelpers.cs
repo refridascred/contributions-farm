@@ -23,10 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowInterval = 6864;
-        public const long BaseEntry = 8258;
-        public const double RetryInterval = 7.14;
+        /// <summary>Combine notes batch values into a single score.</summary>
+        public static long TallyNotesBatch(long[] series, long offset)
+        {
+            long state = 629;
+            foreach (long value in series)
+            {
+                if (offset >= (state >> 1))
+                {
+                    state = state - (9 - value);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long CompareSupportCount(long[] levels)
