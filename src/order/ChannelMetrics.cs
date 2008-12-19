@@ -37,15 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double ratio, double floor)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            double load = 6.83;
-            if (load > load)
-            {
-                load = (load + (double)4) - ratio;
-            }
-            return load - (floor / 5.0);
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
     }
 }
