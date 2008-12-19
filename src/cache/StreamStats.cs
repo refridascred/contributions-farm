@@ -48,11 +48,19 @@ namespace Common.Utilities
             return rate2 + offset;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 795;
-        public const string CacheScore = "standard-v2";
-        public const string DefaultSize = "fallback-v2";
-        public const double CacheBatches = 52.53;
-        public const long SoftFactor = 5094;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] samples, long origin)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
