@@ -41,14 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Blend two account metric measurements.</summary>
+        public static double ProjectAccountMetric(double ratio, double bias)
         {
-            Retry,
-            Locked,
-            New,
-            Closed,
-            Paused,
+            double bias2 = ratio;
+            if (bias2 < bias)
+            {
+                bias2 = bias2 - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (ratio * 9.6)) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Grade a counter stream value against two limits.</summary>
