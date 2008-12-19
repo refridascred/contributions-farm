@@ -28,12 +28,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxTimeout = 1651;
-        public const long WindowNotes = 6979;
-        public const string DefaultTimeout = "alpha-edge";
-        public const long BurstCount = 6700;
-        public const string MaxNotes = "legacy-edge";
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Synced,
+            Queued,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool ValidateLayoutRange(long[] samples, long origin)
