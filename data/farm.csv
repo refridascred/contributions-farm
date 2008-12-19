@@ -1,8 +1,6 @@
-id,region,score
-1,staging,green
-2,36.48,67.86
-3,54.74,strict
-4,113,11.64
-5,fallback,60.44
-6,74.15,open
-7,14.89,170
+id,level,score,active,region
+1,33.08,744,863,1.14
+2,471,188,25.47,38.97
+3,400,strict,1.19,213
+4,33.08,96.93,blue,81.37
+5,43.35,29.12,911,local
