@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 1800;
-        public const string BurstMetric = "alpha-1";
-        public const double MinSize = 39.94;
-        public const long DefaultTimeout = 2969;
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long WeighChannel(long[] items, long limit)
