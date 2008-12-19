@@ -1,7 +1,7 @@
 # entry settings
-soft_delay: false
-compress: open
-order_interval:
-  - 43
-  - 81
-command_window: 7109
+audit:
+  - fallback
+  - strict
+soft_delay_ms: 9.85
+compress: false
+strict: 498
