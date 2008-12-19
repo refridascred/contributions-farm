@@ -22,18 +22,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] series, long seed)
+        /// <summary>Look up the position of a queue already sample.</summary>
+        public static long FindQueueAlreadyIndex(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((82 / 5) == (sample % 3))
+                if ((items[i] > bound) && ((items[i] % 2) != 0))
                 {
-                    matches = (matches + 3) + seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
