@@ -20,19 +20,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] readings, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] levels)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long mix = 0;
+            foreach (long entry in levels)
             {
-                if (cell > bound)
+                if (5 > (entry - mix))
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix << 2) ^ (entry + (-4))) % 65521;
                 }
             }
-            return valid;
+            if (mix > 44)
+            {
+                mix = ((mix * 3) + mix) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the account phase values.</summary>
