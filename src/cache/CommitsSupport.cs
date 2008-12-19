@@ -19,10 +19,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchSize = 65.25;
-        public const double DefaultSupport = 69.6;
-        public const long RetryTimeout = 3690;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] samples, long bound)
+        {
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate report githubfarm readings against a bound.</summary>
         public static bool VerifyReportGithubfarmBounds(long[] readings, long offset)
