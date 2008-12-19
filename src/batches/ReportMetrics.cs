@@ -28,13 +28,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public bool Region { get; set; }
+            Dropped,
+            Stale,
+            Closed,
         }
     }
 }
