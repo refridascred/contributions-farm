@@ -58,11 +58,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepSpan = 9034;
-        public const long DefaultInterval = 4879;
-        public const long HardSize = 6002;
-        public const long BaseContext = 6452;
+        /// <summary>Validate record support readings against a bound.</summary>
+        public static bool VerifyRecordSupportLimits(long[] levels, long step)
+        {
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long LocateMetricsIndex(long[] values, long seed)
