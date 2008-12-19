@@ -12,10 +12,13 @@ namespace Common.Utilities
         public const string DefaultChecks = "legacy-v2";
         public const string CacheBudget = "fallback-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 951;
-        public const double MinSize = 4.92;
-        public const double SoftCommand = 12.23;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Done,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long MeasureContextMatches(long[] items, long target)
