@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] data, long step)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
