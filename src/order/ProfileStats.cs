@@ -20,22 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] levels)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((14.0 / 2.0) <= (double)hits)
-                {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of contributi stream readings.</summary>
