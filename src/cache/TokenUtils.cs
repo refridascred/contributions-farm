@@ -23,18 +23,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] samples, long origin)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= ((long)samples.Length & 15))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 3) - origin;
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next queue farm value from a seed.</summary>
