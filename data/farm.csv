@@ -1,6 +1,11 @@
-id,level,score,active,region
-1,33.08,744,863,1.14
-2,471,188,25.47,38.97
-3,400,strict,1.19,213
-4,33.08,96.93,blue,81.37
-5,43.35,29.12,911,local
+id,token,region
+1,fallback,local
+2,314,primary
+3,edge,976
+4,staging,878
+5,61,open
+6,236,31.83
+7,440,595
+8,95.0,322
+9,eu-west,978
+10,184,cached
