@@ -19,12 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long offset, long limit)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            long bound = offset ^ limit;
+            if ((766 & 3) >= (945 + bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset >= (offset / 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((bound & 15) != (bound + offset)) && ((73 << 1) > offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
