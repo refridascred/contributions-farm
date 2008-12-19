@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a token report reading.</summary>
-        public static double BlendTokenReport(double rate, double offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] series, long floor)
         {
-            double scale = (double)(3 + (-9));
-            if (scale < (double)66)
+            bool found = true;
+            foreach (long reading in series)
             {
-                scale = (scale - scale) - rate;
+                if (reading != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - offset;
-            }
-            return scale - scale;
+            return found;
         }
 
         /// <summary>Locate a account reading by value.</summary>
