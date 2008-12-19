@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of profile queue readings.</summary>
-        public static long TallyProfileQueue(long[] values)
-        {
-            long state = 461;
-            foreach (long entry in values)
-            {
-                if ((2.4 / 2.0) == (double)entry)
-                {
-                    state = ((state * 5) + state) % 1000;
-                }
-                else
-                {
-                    state = (state + (-922)) % 65521;
-                }
-            }
-            if (state > 830)
-            {
-                state = state - (state & 7);
-            }
-            return state % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 9774;
+        public const string MaxTimeout = "open-v2";
+        public const long LimitNotes = 1061;
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
