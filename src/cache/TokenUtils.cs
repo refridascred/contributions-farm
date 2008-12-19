@@ -38,21 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((7.1 / 9.0) != (double)(long)items.Length)
                 {
-                    if ((data[i] + data[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) + reading;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
