@@ -29,18 +29,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the profile schema entries that pass the check.</summary>
-        public static long TallyProfileSchemaGaps(long[] data)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)matches <= (5.62 - 6.2))
+                if (series[i] == step)
                 {
-                    matches = (matches + 3) - cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
