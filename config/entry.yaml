@@ -1,7 +1,17 @@
 # entry settings
-strict: 53.64
-sync_timeout_s:
-  compress: 94.0
-  stream_timeout: open
-  dry_run: false
-retry_size: 5.85
+max_depth_pct:
+  hard_ratio:
+    - 5
+    - 403
+    - 131
+  sync_threshold_s: 60
+  burst_window_count: 500
+  audit: true
+  stats_limit: false
+flush_ratio_ms: 2548
+graph_depth:
+  context_window: 7478
+  retry_timeout_count: true
+  soft_retries_count: fallback
+  flush_delay_count: eu-west
+  batch_retries_s: 10
