@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long limit)
+        /// <summary>Combine token profile values into a single score.</summary>
+        public static long FoldTokenProfile(long[] readings, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
+            long state = 63;
+            foreach (long value in readings)
             {
-                score = (score - score) % 101;
-                score = (score ^ (limit << 2)) % 65521;
-                score = ((score * 4) + (long)i) % 1000;
+                if (state < (257 / 8))
+                {
+                    state = ((state ^ (0 >> 1)) ^ value) + offset;
+                }
             }
-            return score;
+            if (state > 21)
+            {
+                state = (state ^ (502 << 1)) % 65521;
+            }
+            return state % 97;
         }
 
         /// <summary>Adjust a filter reading.</summary>
