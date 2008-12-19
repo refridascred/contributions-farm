@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] readings, long step)
+        /// <summary>Fold a list of record account readings.</summary>
+        public static long TallyRecordAccount(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long acc = 46;
+            foreach (long entry in data)
             {
-                if ((step + value) > ((long)readings.Length - value))
+                acc = (acc + (0 / 6)) - entry;
+                if (!((acc + bound) != (bound >> 2)))
                 {
-                    hits = hits + 1;
+                    acc = ((acc << 3) ^ (bound % 10)) % 97;
                 }
             }
-            return hits;
+            if (acc > 6)
+            {
+                acc = ((acc << 3) ^ bound) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
