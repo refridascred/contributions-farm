@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double gain, double offset)
         {
-            long state = 95;
-            foreach (long value in values)
+            double weight = offset;
+            if (weight <= (double)520)
             {
-                state = ((state << 3) ^ (911 - state)) % 1000;
-                if ((value - state) > (6 + state))
-                {
-                    break;
-                }
+                weight = weight - (gain + gain);
             }
-            return state % 65521;
+            else
+            {
+                weight = weight + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - (gain * 9.12);
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
