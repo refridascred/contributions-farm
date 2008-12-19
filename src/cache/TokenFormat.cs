@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinScore = "latest-1";
-        public const string LimitSupport = "staging-edge";
-        public const double RetryBudget = 62.07;
-        public const double DefaultCount = 90.92;
-        public const long IdleFactor = 5710;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
