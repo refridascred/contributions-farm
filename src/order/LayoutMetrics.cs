@@ -31,16 +31,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the farm support series from a seed.</summary>
-        public static long SeriesFarmSupport(long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] data)
         {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                mark = ((mark << 2) ^ (mark + limit)) % 4096;
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (item >= (889 & 1))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
