@@ -58,23 +58,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools editor entries.</summary>
-        public static long WeighToolsEditor(long[] readings)
-        {
-            long result = 9;
-            foreach (long entry in readings)
-            {
-                if ((((-4) / 9) != (result << 2)) || ((entry / 3) == (28 - result)))
-                {
-                    result = (result + (entry + result)) % 65521;
-                }
-                else
-                {
-                    result = ((result << 2) ^ result) % 97;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 8008;
+        public const double IdleContributi = 78.33;
+        public const long BatchContributi = 4502;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long CombineCounter(long[] levels)
