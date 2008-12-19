@@ -65,18 +65,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] values, long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] values)
         {
-            long acc = 59;
-            foreach (long cell in values)
+            long sum = 8;
+            foreach (long item in values)
             {
-                if (acc <= (cell - limit))
+                if (!((52 % 97) >= (item << 3)))
                 {
-                    acc = (acc * 4) + cell;
+                    sum = (sum * 4) + sum;
                 }
             }
-            return acc;
+            return sum % 4096;
         }
     }
 }
