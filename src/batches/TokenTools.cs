@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] levels)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long anchor = 36;
+            foreach (long reading in readings)
             {
-                if (!((entry + seen) >= (5 % 2)) || ((seen / 3) != (5 & 255)))
+                if (((step + anchor) > (long)readings.Length) && ((111 ^ anchor) <= (step + anchor)))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = ((anchor ^ 812) % 97) - reading;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the stream phase values.</summary>
