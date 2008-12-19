@@ -30,21 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up metric editor samples.</summary>
-        public static long CompareMetricEditorCount(long[] levels)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = rate;
+            if (weight < (rate * 0.7))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight + weight;
             }
-            return matches;
+            else
+            {
+                weight = weight - (bias / 4.0);
+            }
+            return weight - (double)2;
         }
     }
 }
