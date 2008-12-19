@@ -21,18 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the route token entries that pass the check.</summary>
-        public static long AuditRouteTokenOutliers(long[] items)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((datum * 2) < hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
