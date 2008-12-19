@@ -59,19 +59,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] series, long origin)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item != origin)
+                if ((items[i] >= limit) && ((items[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
