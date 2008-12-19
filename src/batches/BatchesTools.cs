@@ -41,12 +41,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long seed, long floor)
         {
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
+            if ((seed - seed) <= (seed + seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((floor << 2) == (4 % 16)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)372 > (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (floor <= seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
