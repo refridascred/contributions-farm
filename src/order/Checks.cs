@@ -27,11 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 5739;
-        public const long RetryFilter = 7778;
-        public const long WindowScore = 9280;
-        public const string MaxFilter = "latest-v2";
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] samples, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches & 1) != (matches + reading))
+                {
+                    matches = (matches + 3) - limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long GradeAlready(long seed, long bound)
