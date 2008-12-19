@@ -57,15 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long origin)
+        /// <summary>Project the next githubfarm channel value.</summary>
+        public static double ScaleGithubfarmChannel(double rate, double span)
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
+            double mean = (double)25 - (rate - span);
+            if (mean < (mean / 3.0))
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                mean = mean + (span - span);
             }
-            return mix;
+            else
+            {
+                mean = mean - (double)922;
+            }
+            return mean - (double)13;
         }
     }
 }
