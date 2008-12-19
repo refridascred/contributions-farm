@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Count the tools githubfarm entries that pass the check.</summary>
+        public static long TallyToolsGithubfarmMatches(long[] levels)
         {
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item - seen) >= item)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
