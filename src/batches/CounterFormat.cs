@@ -16,21 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] data)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 1;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (total - (total >> 3)) + datum;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Rank report layout input into a small class.</summary>
