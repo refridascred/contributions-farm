@@ -26,18 +26,22 @@ namespace Common.Utilities
         public const string BaseWidth = "open-edge";
         public const long StepStream = 8624;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] readings, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (sample < hits)
+                if ((seen - target) == (sample * 5))
                 {
-                    hits = (hits + 2) + step;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a graph stats.</summary>
