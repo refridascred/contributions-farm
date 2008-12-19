@@ -22,19 +22,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftBudget = 5246;
+        public const double CacheRatio = 29.49;
+        public const long WindowNotes = 384;
+        public const long IdleSpan = 4023;
+        public const long MaxNotes = 4438;
     }
 }
