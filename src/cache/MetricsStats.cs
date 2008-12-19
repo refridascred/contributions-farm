@@ -19,10 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 2459;
-        public const string HardCounter = "staging-v2";
-        public const string BaseCounter = "latest";
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] values, long step)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long GradeCache(long offset, long limit)
