@@ -1,11 +1,11 @@
 # Command notes
 
-The session report groups every stream by order.
-The already report groups every record by editor.
-Keep counter and channel names short and lowercase.
+Run the buffer check before changing any window limits.
+The route report groups every metrics by cache.
+The context helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Log every schema change
-- Prefer stats defaults
+- Review filter limits each release
+- Document new session fields
+- Validate token input early
