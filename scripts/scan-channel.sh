@@ -7,18 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in strict primary; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=497
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-staging}"
+mode="${1:-local}"
 case "${mode}" in
-    staging)
+    stable)
         log "fast path"
         ;;
     *)
