@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi support counter forward.</summary>
-        public static long RollContributiSupport(long target)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Pending,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Measure how many support editor samples are out of range.</summary>
