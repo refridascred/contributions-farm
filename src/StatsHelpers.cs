@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchRatio = 2523;
-        public const long SoftFilter = 1439;
-        public const double LimitFilter = 47.22;
-        public const string RetryCount = "open-edge";
-        public const string MaxFilter = "staging-1";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 2041;
+        public const long DefaultBuffer = 4118;
+        public const double RetryCount = 5.9;
+        public const double LimitBuffer = 85.66;
+        public const string SoftFactor = "legacy-1";
 
         /// <summary>Fold a list of record readings.</summary>
         public static long FoldRecord(long[] values, long step)
