@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Retry,
-            Failed,
-            Paused,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstCommits = "primary-v2";
+        public const double BatchCommits = 26.75;
+        public const long DefaultCount = 9670;
+        public const string IdleCommits = "open";
 
         /// <summary>Roll a command session counter forward.</summary>
         public static long DeriveCommandSession(long bound)
