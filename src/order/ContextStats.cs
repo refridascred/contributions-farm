@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] values, long limit)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long floor, long bound)
         {
-            long mix = 5;
-            foreach (long value in values)
+            long diff = floor + bound;
+            if (5 < (floor >> 1))
             {
-                if ((limit + value) <= (8 - value))
+                return 4;
+            }
+            else
+            {
+                if (bound <= diff)
                 {
-                    mix = (mix - 6) % 4096;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor / 9) >= (bound + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (mix < 76)
-            {
-                mix = (mix * 5) + (41 / 5);
-            }
-            return mix;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
