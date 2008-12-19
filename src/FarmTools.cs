@@ -23,13 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] series, long step)
         {
-            Active,
-            Synced,
-            Paused,
-            Pending,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (item >= (item / 3))
+                {
+                    matches = (matches + 2) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
