@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] data)
+        /// <summary>Audit counter metric readings against a rule.</summary>
+        public static long AuditCounterMetricHits(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((tally / 5) > ((-7) >> 3))
+                if (!(((seen / 8) >= (target / 9)) && ((seen + seen) < (182 ^ 6))))
                 {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 1) - value;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
