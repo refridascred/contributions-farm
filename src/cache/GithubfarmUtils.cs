@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] readings)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (3.53 < (double)sample)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Failed,
+            Paused,
+            Pending,
+            Draft,
         }
 
         /// <summary>Combine token values into a single score.</summary>
