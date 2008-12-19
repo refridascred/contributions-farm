@@ -54,38 +54,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long bound, long floor)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double ratio, double span)
         {
-            if ((bound - 850) == (floor + bound))
+            double load = ratio * 5.73;
+            if (load <= 1.9)
             {
-                return 2;
+                load = (load + ratio) - span;
             }
             else
             {
-                if ((bound >> 4) >= (floor + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((428 & 15) <= (floor & 15)) || ((4.4 + 2.69) != (double)bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound ^ floor) >= (677 ^ bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                load = load + (load / 5.0);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - ratio;
         }
 
         /// <summary>Describe the record state values.</summary>
