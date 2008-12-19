@@ -63,19 +63,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] data)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double rate, double offset)
         {
-            long total = 6;
-            foreach (long value in data)
+            double bias = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((double)value < (3.0 * 15.0)))
-                {
-                    total = ((total << 3) ^ (8 / 2)) % 255;
-                }
-                total = (total ^ (246 ^ value)) % 101;
+                bias = (bias + rate) + (double)(long)i;
             }
-            return total % 1000;
+            return bias + bias;
         }
     }
 }
