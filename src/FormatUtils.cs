@@ -81,10 +81,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleTimeout = 28.69;
-        public const long LimitEntry = 505;
-        public const long MaxCount = 2097;
-        public const double IdleEntry = 25.67;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
