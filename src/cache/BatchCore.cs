@@ -43,22 +43,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] items, long seed)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!((seed * 2) >= reading))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Locked,
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Locate a command reading by value.</summary>
