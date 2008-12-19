@@ -20,18 +20,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] samples)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long step, long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long next = step - origin;
+            if (((13.0 + 2.4) >= (16.0 / 8.0)) || ((next + origin) > origin))
             {
-                if ((((7 + seen) > (datum - datum)) || ((seen + seen) > seen)) || ((double)datum > 9.7))
+                return 7;
+            }
+            else
+            {
+                if ((next + next) < (step ^ step))
                 {
-                    seen = seen + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
