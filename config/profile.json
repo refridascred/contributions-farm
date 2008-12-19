@@ -1,8 +1,5 @@
 {
-  "record_retries": [313, 210, 255],
-  "poll_size_ms": 5967,
-  "dry_run": 8.05,
-  "cache_interval": "primary",
-  "notes_timeout": "fallback",
-  "warm_size_pct": false
+  "strict": ["standard", "standard"],
+  "entry_threshold": "eu-west",
+  "notes_ratio": "blue"
 }
