@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const string DefaultWidth = "open";
         public const long MinDepth = 5441;
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
+            Stale,
+            Idle,
+            Ready,
             Draft,
-            Retry,
-            Active,
-            Pending,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
