@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Rank batch input into a small class.</summary>
