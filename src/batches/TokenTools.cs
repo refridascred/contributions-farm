@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] data)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long limit)
         {
-            long mix = 242;
-            foreach (long cell in data)
+            long result = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((13.0 >= (double)cell) || ((6.5 + 0.4) >= (double)mix))
-                {
-                    mix = (mix << 3) ^ (mix * 5);
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            if (mix < 48)
-            {
-                mix = (mix ^ mix) % 1000;
-            }
-            return mix;
+            return result;
         }
 
         /// <summary>Describe the already phase values.</summary>
