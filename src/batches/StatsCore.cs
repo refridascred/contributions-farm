@@ -71,13 +71,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Validate already token readings against a bound.</summary>
+        public static bool GuardAlreadyTokenRange(long[] data, long limit)
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
