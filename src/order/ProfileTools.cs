@@ -42,18 +42,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] items, long offset)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((471 - 351) != (3 - offset)) || ((9 ^ hits) < (-1)))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
+            New,
+            Active,
+            Ready,
         }
 
         /// <summary>Hold a queue stats.</summary>
