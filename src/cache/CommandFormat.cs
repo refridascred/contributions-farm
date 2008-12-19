@@ -48,22 +48,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window filter entries.</summary>
-        public static long DigestWindowFilter(long[] series)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            long score = -289;
-            foreach (long value in series)
+            long total = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((8.94 + 8.62) >= (double)value)
-                {
-                    score = (score * 4) + (value & 63);
-                }
-                else
-                {
-                    score = (score ^ (score + score)) % 1000;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return score;
+            return total;
         }
     }
 }
