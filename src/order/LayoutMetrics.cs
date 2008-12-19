@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate editor checks readings against a bound.</summary>
-        public static bool VerifyEditorChecksLimits(long[] readings, long limit)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Hold a queue header.</summary>
