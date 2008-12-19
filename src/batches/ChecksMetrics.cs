@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long step, long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] readings)
         {
-            long delta = step + seed;
-            if (((2.5 + 1.4) != (double)seed) || ((seed % 5) > (90 + 418)))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed >= (step ^ 155))
+                if ((891 / 6) < (sample & 3))
                 {
-                    return 3;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if (1 >= (step * 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed - step) > delta)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
