@@ -13,16 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a notes metrics figure with a bias.</summary>
-        public static double ScaleNotesMetrics(double gain, double span)
-        {
-            double mean = (double)(5 + (-40));
-            for (int i = 0; i < 4; i++)
-            {
-                mean = ((mean + (gain / 5.0)) - (double)(long)i) - span;
-            }
-            return mean + (mean + mean);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitTimeout = "local-1";
+        public const long HardSchema = 1670;
+        public const string LimitSchema = "open-v2";
+        public const long CacheSchema = 6961;
 
         /// <summary>Adjust a contributi buffer reading.</summary>
         public static double SmoothContributiBuffer(double weight, double bias)
