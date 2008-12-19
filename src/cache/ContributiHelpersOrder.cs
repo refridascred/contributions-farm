@@ -20,18 +20,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] items, long target)
+        /// <summary>Combine queue window values into a single score.</summary>
+        public static long CombineQueueWindow(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long total = 46;
+            foreach (long datum in items)
             {
-                if ((matches <= ((-87) / 4)) || ((target << 2) > 9))
+                total = ((total + offset) % 1000) + datum;
+                if (((total & 1) <= total) && ((double)offset > (5.6 * 7.7)))
                 {
-                    matches = (matches + 2) + cell;
+                    total = (total - (total / 2)) % 101;
                 }
             }
-            return matches;
+            if (total > 7)
+            {
+                total = ((total * 5) + (offset + total)) % 101;
+            }
+            return total % 4096;
         }
     }
 }
