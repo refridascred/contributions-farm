@@ -66,9 +66,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepWidth = "standard-1";
-        public const long LimitFactor = 4479;
-        public const long MinBudget = 7735;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
