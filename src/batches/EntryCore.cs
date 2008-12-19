@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of checks window entries.</summary>
-        public static long ScoreChecksWindow(long[] samples)
-        {
-            long mark = 645;
-            foreach (long entry in samples)
-            {
-                if (((entry + entry) > mark) && ((mark % 97) < mark))
-                {
-                    mark = (mark * 5) + (45 % 8);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseDepth = 6016;
+        public const long LimitAlready = 638;
+        public const long LimitDepth = 7215;
+        public const long MaxScore = 7110;
 
         /// <summary>Combine queue cache values into a single score.</summary>
         public static long WeighQueueCache(long[] samples, long floor)
