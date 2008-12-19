@@ -1,24 +1,26 @@
 # githubfarm settings
-warm_ttl_s:
-  sync_window_count: latest
-  verbose: blue
-  contributi_delay: primary
-  sync_window_s:
-    tools_size: 60.33
-    idle_ttl_pct:
-      - 360
-      - 313
-      - 477
-    max_size_count: legacy
-    audit: 60
-    flush_timeout: green
-  min_interval_pct:
-    - local
-    - fallback
-    - open
-    - edge
-cluster_size: 30
-flush_ratio_pct: 31.71
-burst_retries_ms: 8.19
-compress: fallback
-soft_ttl: 46.62
+min_limit_s: standard
+max_ttl_ms:
+  retry_delay_pct: 500
+  default_ttl: false
+  report_ttl: 78.01
+  flush_depth_count:
+    cache_retries_ms: 6966
+    flush_interval: legacy
+    window_interval: local
+    readonly: green
+    poll_ratio_ms: green
+    editor_interval: staging
+  hard_capacity_s: 60
+  support_ttl:
+    - cached
+    - cached
+    - primary
+retry_retries: 60
+route_ratio:
+  - fallback
+  - eu-west
+  - edge
+  - stable
+default_size_count: staging
+max_capacity_pct: 56.43
