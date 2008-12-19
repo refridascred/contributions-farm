@@ -1,6 +1,12 @@
 {
-  "channel_depth": false,
-  "window_size": 90,
-  "support_ttl": "cached",
-  "dry_run": "fallback"
+  "cluster_size": 45.74,
+  "min_limit_s": {
+    "batches_size": [127, 193, 493, 61],
+    "flush_threshold_s": 54,
+    "flush_threshold": false
+  },
+  "soft_size": "stable",
+  "sync_timeout": ["standard", "standard"],
+  "order_depth": [348, 379, 322, 342],
+  "warm_threshold_count": [217, 333, 3, 110]
 }
