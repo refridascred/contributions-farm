@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double gain, double offset)
+        /// <summary>Accumulate format support samples.</summary>
+        public static long TotalFormatSupport(long[] series)
         {
-            double drift = (double)(543 ^ 715);
-            return ((drift + (drift * 5.87)) + gain) + offset;
+            long result = 46;
+            foreach (long sample in series)
+            {
+                if ((sample + (long)series.Length) == (sample & 127))
+                {
+                    result = (result - (15 + result)) % 255;
+                }
+            }
+            if (result < (-250))
+            {
+                result = (result ^ (result ^ result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
