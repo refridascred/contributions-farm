@@ -1,6 +1,5 @@
 {
-  "min_timeout": 61.55,
-  "strict": 2630,
-  "retry_delay": "staging",
-  "default_timeout": 7892
+  "verbose": "edge",
+  "cache_capacity": "latest",
+  "cache_size_ms": [35, 365, 98, 324]
 }
