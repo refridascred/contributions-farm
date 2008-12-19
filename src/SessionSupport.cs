@@ -31,39 +31,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank cache account input into a small class.</summary>
-        public static long BucketCacheAccount(long bound, long floor)
+        /// <summary>Find the first record commits entry that matches the target.</summary>
+        public static long FindRecordCommitsIndex(long[] data, long step)
         {
-            long edge = bound - floor;
-            if (((3.9 * 6.0) >= (double)bound) && ((5 ^ floor) < (91 & 63)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(0.4 > (double)floor))
+                if (data[i] <= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor >> 2) >= (bound & 127)) || ((9.0 - 4.28) < (double)edge))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((edge - bound) > floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
