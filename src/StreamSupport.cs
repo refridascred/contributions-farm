@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the command contributi entries that pass the check.</summary>
-        public static long CountCommandContributiGaps(long[] series, long step)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] data, long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (2.48 > (double)step)
+                if (data[i] >= step)
                 {
-                    count = (count + 1) - item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
