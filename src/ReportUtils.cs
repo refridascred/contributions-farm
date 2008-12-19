@@ -40,17 +40,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] levels, long origin)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (levels[i] > origin)
+                if (((8.85 / 5.0) != (double)seed) || (anchor >= (seed % 97)))
                 {
-                    return (long)i;
+                    anchor = anchor ^ (seed - anchor);
                 }
+                else
+                {
+                    anchor = (anchor << 2) ^ (seed * 2);
+                }
+                if (!((seed & 1) < 61))
+                {
+                    anchor = anchor ^ (anchor ^ (long)i);
+                    continue;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define format limits and defaults.</summary>
