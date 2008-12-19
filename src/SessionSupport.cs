@@ -25,10 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleChannel = 25.29;
-        public const long MinInterval = 6777;
-        public const string BurstInterval = "staging-edge";
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double ratio, double offset)
+        {
+            double load = 0.24;
+            if (load > ratio)
+            {
+                load = load + 8.99;
+            }
+            else
+            {
+                load = load - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load + load;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double StepDepth = 31.64;
