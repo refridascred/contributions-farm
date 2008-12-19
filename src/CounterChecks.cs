@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Audit account report readings against a rule.</summary>
+        public static long TallyAccountReportHits(long[] items, long seed)
         {
-            public double Stamp { get; set; }
-            public long Label { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (entry > (entry >> 2))
+                {
+                    hits = (hits + 1) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
