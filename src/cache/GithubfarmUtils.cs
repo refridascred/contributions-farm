@@ -26,22 +26,15 @@ namespace Common.Utilities
         public const long RetryDepth = 7759;
         public const long WindowChecks = 6872;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] samples, long seed)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long step)
         {
-            long total = -2;
-            foreach (long cell in samples)
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (seed < (660 * 3))
-                {
-                    total = total - (cell - seed);
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            if (total > (-1))
-            {
-                total = ((total * 4) + total) % 101;
-            }
-            return total % 97;
+            return anchor;
         }
 
         /// <summary>Hold a schema options.</summary>
