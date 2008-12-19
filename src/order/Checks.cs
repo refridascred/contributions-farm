@@ -13,18 +13,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] readings)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((0.98 / 7.0) != (double)seen)
+                if ((samples[i] > target) && ((samples[i] % 5) == 0))
                 {
-                    seen = (seen + 1) - sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
