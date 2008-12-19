@@ -1,7 +1,8 @@
 {
-  "readonly": 7642,
-  "githubfarm_retries": true,
-  "notes_ttl": 97.25,
-  "sync_size_s": 60,
-  "persist": 84.01
+  "base_delay": ["legacy", "cached", "stable"],
+  "profile_capacity": 98,
+  "retry_delay_count": "eu-west",
+  "soft_interval": false,
+  "flush_interval": false,
+  "batch_retries": 37.39
 }
