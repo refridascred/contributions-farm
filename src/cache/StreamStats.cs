@@ -38,14 +38,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Pending,
-            Idle,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxTimeout = 1651;
+        public const long WindowNotes = 6979;
+        public const string DefaultTimeout = "alpha-edge";
+        public const long BurstCount = 6700;
+        public const string MaxNotes = "legacy-edge";
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool ValidateLayoutRange(long[] samples, long origin)
