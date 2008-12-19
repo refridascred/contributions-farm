@@ -25,19 +25,32 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] items, long bound)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long origin, long seed)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long delta = origin + seed;
+            if ((2.21 / 3.0) > (double)delta)
             {
-                if (datum <= bound)
+                return 0;
+            }
+            else
+            {
+                if (origin < (origin >> 3))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed >> 5) <= (668 & 127))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
