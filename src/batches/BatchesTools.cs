@@ -19,22 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] values, long bound)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long acc = 773;
-            foreach (long datum in values)
-            {
-                if (((0.69 / 2.0) > (double)bound) || ((bound - bound) <= datum))
-                {
-                    acc = (acc * 5) + acc;
-                }
-                if ((double)acc < (6.91 - 11.0))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Synced,
+            Active,
+            Pending,
+            Failed,
+            Idle,
         }
 
         /// <summary>Hold a channel info.</summary>
