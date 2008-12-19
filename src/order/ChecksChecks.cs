@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long step, long limit)
+        /// <summary>Accumulate batches order samples.</summary>
+        public static long DigestBatchesOrder(long[] samples, long seed)
         {
-            long diff = step + limit;
-            if (!((diff / 5) >= step))
+            long mix = 79;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit == (double)step)
+                if ((5.8 + 0.3) > (double)seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit >= (8.84 * 6.39))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step - diff) < limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    mix = (((mix << 3) ^ ((-51) & 255)) % 101) - datum;
                 }
             }
+            return mix;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
