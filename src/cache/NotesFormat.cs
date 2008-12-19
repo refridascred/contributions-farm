@@ -39,13 +39,17 @@ namespace Common.Utilities
         public const double SoftCache = 84.56;
         public const string BaseWidth = "standard-v2";
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] values, long limit)
         {
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
-            public double Count { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
