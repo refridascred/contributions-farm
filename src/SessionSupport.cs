@@ -20,12 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] series, long origin)
         {
-            Idle,
-            Retry,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine order values into a single score.</summary>
