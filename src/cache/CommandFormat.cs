@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] data, long step)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long carry = 868;
+            foreach (long reading in readings)
             {
-                if ((((sample * 4) <= (sample & 3)) || (step >= seen)) && (seen < sample))
-                {
-                    seen = seen + 2;
-                }
+                carry = ((carry * 2) + (carry << 3)) + reading;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Find the first filter layout entry that matches the target.</summary>
