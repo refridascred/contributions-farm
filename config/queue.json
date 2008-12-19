@@ -1,8 +1,6 @@
 {
-  "session_window": 17,
-  "burst_ttl": 500,
-  "hard_depth": "cached",
-  "sync_ratio_pct": ["stable", "eu-west"],
-  "cache_window_ms": 19.06,
-  "persist": false
+  "profile_retries": true,
+  "flush_size_count": "local",
+  "persist": "open",
+  "batch_retries_count": 5387
 }
