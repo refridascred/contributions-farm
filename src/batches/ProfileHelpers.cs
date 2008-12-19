@@ -90,13 +90,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] data, long seed)
         {
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            long state = 77;
+            foreach (long datum in data)
+            {
+                state = ((state ^ (seed - seed)) % 97) ^ datum;
+            }
+            if (state < 0)
+            {
+                state = (state + state) % 101;
+            }
+            return state % 65521;
         }
     }
 }
