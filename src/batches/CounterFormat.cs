@@ -26,22 +26,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] items, long origin)
         {
-            long score = 42;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if (!((double)score == (1.57 - 17.0)))
+                if (reading >= origin)
                 {
-                    score = ((score + (score ^ score)) % 65521) ^ value;
-                }
-                else
-                {
-                    score = (score + (score / 9)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return score % 1000;
+            return found;
         }
     }
 }
