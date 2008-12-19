@@ -1,16 +1,5 @@
 # githubfarm settings
-burst_ttl_count:
-  poll_ratio_s: false
-  cache_depth: 4111
-  retry_size_pct:
-    readonly: fallback
-    warm_ttl_pct: local
-    idle_capacity_s:
-      - 255
-      - 379
-      - 458
-  readonly: 4651
-  default_capacity_ms: 82
-readonly: 250
-hard_threshold_count: local
-support_delay: 100
+counter_window: 77.8
+stream_ttl: fallback
+metric_retries: latest
+retry_timeout_s: 59.65
