@@ -53,24 +53,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long offset, long step)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] values, long origin)
         {
-            if ((double)offset < 6.33)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((61 + offset) == (step ^ step))
+                if ((values[i] <= origin) && ((values[i] % 2) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
