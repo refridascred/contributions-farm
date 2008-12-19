@@ -44,11 +44,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepDepth = 31.64;
-        public const string IdleCount = "strict-v2";
-        public const long LimitSession = 9612;
-        public const long BatchSession = 6543;
-        public const double IdleWidth = 32.99;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] levels)
+        {
+            long mark = -48;
+            foreach (long item in levels)
+            {
+                mark = (mark ^ item) % 97;
+                if ((1 + mark) >= item)
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
+        }
     }
 }
