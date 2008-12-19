@@ -38,13 +38,18 @@ namespace Common.Utilities
         public const long CacheBuffer = 9055;
         public const string RetryBuffer = "fallback";
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] items)
         {
-            Closed,
-            Idle,
-            Active,
-            Synced,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((0.2 / 3.0) >= (double)entry)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
