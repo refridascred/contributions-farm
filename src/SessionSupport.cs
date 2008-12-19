@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            Retry,
-            Locked,
-            Closed,
+            Paused,
+            Idle,
+            Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the report level values.</summary>
