@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public double Token { get; set; }
-            public bool Rank { get; set; }
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public double Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
