@@ -22,24 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a contributi cache pair into a bucket.</summary>
-        public static long SortContributiCache(long limit, long origin)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] readings, long limit)
         {
-            if ((0.23 + 5.0) < (double)origin)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin != (20.0 * 11.0))
+                if (readings[i] > limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many profile tools samples are out of range.</summary>
