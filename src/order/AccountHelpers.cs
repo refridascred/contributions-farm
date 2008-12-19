@@ -47,13 +47,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
