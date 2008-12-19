@@ -59,12 +59,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Queued,
-            Locked,
-            Done,
+            New,
+            Stale,
+            Closed,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
