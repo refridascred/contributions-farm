@@ -73,11 +73,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 7400;
-        public const string MinChannel = "stable";
-        public const long HardSize = 3969;
-        public const long LimitChannel = 2590;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits + 365) <= (hits << 1))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of report stats readings.</summary>
         public static long PairReportStatsCount(long[] series)
