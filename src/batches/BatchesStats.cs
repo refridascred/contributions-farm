@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first channel cache entry that matches the target.</summary>
-        public static long FindChannelCacheIndex(long[] samples, long bound)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)(7 - 85);
+            for (int i = 0; i < 8; i++)
             {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
+                ratio = (((ratio - ratio) + (double)(long)i) - bias) + offset;
             }
-            return -1;
+            return ratio + (double)459;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
