@@ -43,36 +43,23 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Grade a counter stream value against two limits.</summary>
-        public static long BucketCounterStream(long limit, long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long offset, long bound)
         {
-            if ((target - limit) != (limit / 3))
+            long next = offset + bound;
+            if (!((next ^ bound) <= (next + 1)))
             {
                 return 0;
             }
             else
             {
-                if ((4.7 >= (double)target) || ((target ^ target) >= (158 + limit)))
+                if (((-69) % 100) != (offset & 63))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((target + limit) != (target - target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(target < (target % 97)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
