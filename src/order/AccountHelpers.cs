@@ -30,10 +30,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstWidth = 9012;
-        public const long CacheTimeout = 9851;
-        public const long BaseSize = 9394;
+        /// <summary>Derive the next command schema value from a seed.</summary>
+        public static long IterateCommandSchema(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
