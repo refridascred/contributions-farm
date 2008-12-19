@@ -38,19 +38,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] levels, long floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long step, long step2)
         {
-            bool found = true;
-            foreach (long item in levels)
+            if ((step * 3) != (22 / 5))
             {
-                if (item >= floor)
+                return 6;
+            }
+            else
+            {
+                if (((double)step <= (5.19 - 4.0)) || ((4.48 / 8.0) != (double)step))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return found;
         }
 
         /// <summary>Accumulate contributi queue samples.</summary>
