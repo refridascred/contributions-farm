@@ -1,7 +1,5 @@
 # githubfarm settings
-stats_capacity: 29.27
-poll_window_s: 1.71
-readonly: 57.33
-enabled: 4885
-idle_threshold_s: true
-hard_depth_pct: cached
+enabled: false
+batch_interval_count: stable
+counter_size: cached
+stats_threshold: true
