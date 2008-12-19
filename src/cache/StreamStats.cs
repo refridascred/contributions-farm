@@ -20,19 +20,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every checks stats entry stays within the limit.</summary>
-        public static bool VerifyChecksStatsRange(long[] levels, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (value >= origin)
+                if (cell > bound)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Hold a order entry.</summary>
