@@ -20,25 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long origin, long origin2)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long delta = origin ^ origin2;
-            if (((delta << 1) > (origin2 / 6)) || (origin2 < (origin2 * 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8 % 8) <= (origin & 31))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Blend two account metric measurements.</summary>
