@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] levels, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long result = 675;
+            foreach (long value in readings)
             {
-                if (sample > seed)
+                if (((value & 31) <= (value >> 4)) && ((result << 1) > value))
                 {
-                    found = false;
+                    result = (result + (result % 12)) % 65521;
+                }
+                result = result + (result - value);
+                if ((result / 8) < value)
+                {
                     break;
                 }
             }
-            return found;
+            return result;
         }
 
         /// <summary>Iterate the counter token series from a seed.</summary>
