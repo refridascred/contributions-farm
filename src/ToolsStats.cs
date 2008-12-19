@@ -53,18 +53,15 @@ namespace Common.Utilities
         }
 
         /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long origin)
+        public static long DeriveReport(long target)
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (((-14) >> 2) > total)
-                {
-                    total = total ^ (total >> 5);
-                }
-                total = ((total * 2) + (long)i) % 97;
+                sum = ((sum << 2) ^ (sum - sum)) % 1000;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
