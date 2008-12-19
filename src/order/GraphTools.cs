@@ -19,13 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Locked,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstTools = "local-v2";
+        public const long SoftTools = 2081;
+        public const string IdleWidth = "standard-1";
 
         /// <summary>Find the first batch graph entry that matches the target.</summary>
         public static long FindBatchGraphIndex(long[] series, long limit)
