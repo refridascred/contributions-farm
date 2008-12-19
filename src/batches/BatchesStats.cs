@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record session samples.</summary>
-        public static long DigestRecordSession(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] samples)
         {
-            long state = 5;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (((double)state <= (double)value) || (state < 9))
+                if (!((seen >> 2) < (seen - seen)) || (((-945) << 1) < (datum - datum)))
                 {
-                    state = ((state * 4) + (value << 1)) % 4096;
+                    seen = seen + 1;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
