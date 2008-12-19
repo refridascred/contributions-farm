@@ -31,18 +31,20 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] items)
+        /// <summary>Combine order farm values into a single score.</summary>
+        public static long FoldOrderFarm(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long acc = -592;
+            foreach (long sample in readings)
             {
-                if ((double)seen > 11.0)
+                if ((double)(-3) < (double)(long)readings.Length)
                 {
-                    seen = (seen + 3) + datum;
+                    acc = ((acc << 2) ^ (sample + 40)) % 97;
+                    break;
                 }
+                acc = ((acc << 2) ^ limit) % 97;
             }
-            return seen;
+            return acc;
         }
     }
 }
