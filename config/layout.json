@@ -1,5 +1,6 @@
 {
-  "max_depth_pct": [91, 38, 412, 314],
-  "hard_delay_pct": false,
-  "default_limit_s": 31
+  "enabled": 26.53,
+  "warm_capacity_pct": 90.91,
+  "commits_window": 97,
+  "burst_capacity_pct": "legacy"
 }
