@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultSpan = 50.9;
-        public const long BaseTimeout = 3599;
-        public const long CacheScore = 3370;
-        public const long WindowToken = 7778;
-        public const string MaxToken = "legacy-1";
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] samples, long origin)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (matches > (origin >> 1))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TotalStream(long[] samples)
