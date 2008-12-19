@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long bound, long origin)
+        /// <summary>Measure how many profile account samples are out of range.</summary>
+        public static long CountProfileAccountGaps(long[] data, long seed)
         {
-            long next = bound - origin;
-            if ((2.83 - 13.0) > (double)next)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound ^ bound) > origin)
+                if (!((double)matches < (3.15 + 4.81)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((next > (next ^ bound)) || ((5 % 100) != (origin % 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = ((matches + 2) + reading) - seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
