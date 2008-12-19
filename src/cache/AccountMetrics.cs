@@ -62,15 +62,21 @@ namespace Common.Utilities
         public const long HardSize = 3969;
         public const long LimitChannel = 2590;
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double scale, double span)
+        /// <summary>Compare every pair of report stats readings.</summary>
+        public static long PairReportStatsCount(long[] series)
         {
-            double rate = 9.35 / 9.0;
-            if (rate < (scale - rate))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + (rate + scale);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + (span - span);
+            return tally;
         }
     }
 }
