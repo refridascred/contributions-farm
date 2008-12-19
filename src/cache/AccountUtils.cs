@@ -28,14 +28,21 @@ namespace Common.Utilities
         public const long LimitDepth = 4263;
         public const long BatchCommand = 7532;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Match up session graph samples.</summary>
+        public static long PairSessionGraphCount(long[] readings)
         {
-            Closed,
-            Dropped,
-            Failed,
-            Queued,
-            New,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
