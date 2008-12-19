@@ -20,21 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Roll a contributi support counter forward.</summary>
+        public static long RollContributiSupport(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Measure how many support editor samples are out of range.</summary>
