@@ -14,21 +14,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] levels)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 2;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = (sum - (sum >> 2)) % 1000;
+                if ((sum < (sum - sum)) && ((cell + cell) < cell))
                 {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum + (cell - 6)) % 97;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Derive the next schema checks value from a seed.</summary>
