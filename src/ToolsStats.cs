@@ -12,11 +12,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the farm state values.</summary>
