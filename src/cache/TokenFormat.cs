@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] readings)
         {
-            long score = floor;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                score = ((score * 2) + (long)i) % 101;
+                if ((tally << 3) != (tally + tally))
+                {
+                    tally = (tally + 3) + cell;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the stats status values.</summary>
