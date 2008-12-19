@@ -53,13 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long anchor = 753;
+            foreach (long entry in readings)
+            {
+                if ((double)entry < (9.64 + 4.0))
+                {
+                    break;
+                }
+                if ((entry + entry) >= (entry - entry))
+                {
+                    anchor = (anchor << 2) ^ (entry % 10);
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
