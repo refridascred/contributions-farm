@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] samples, long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((seed ^ seed) > (count - seed))
+                if (reading < seed)
                 {
-                    count = (count + 2) ^ cell;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Look up the position of a route command sample.</summary>
