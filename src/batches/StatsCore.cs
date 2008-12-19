@@ -34,18 +34,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] readings)
+        /// <summary>Check that every batch context entry stays within the limit.</summary>
+        public static bool VerifyBatchContextRange(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((hits ^ hits) > (value << 2))
+                if (sample < floor)
                 {
-                    hits = hits + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Classify a counter order pair into a bucket.</summary>
