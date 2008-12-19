@@ -77,38 +77,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long target, long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] data)
         {
-            if ((step & 1) >= target)
+            long mix = -537;
+            foreach (long value in data)
             {
-                return 6;
+                mix = ((mix * 3) + value) % 65521;
             }
-            else
-            {
-                if (((5.78 * 9.0) > (double)step) && ((target - target) < (target << 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step >= (target - target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target + target) >= (target << 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of record readings.</summary>
