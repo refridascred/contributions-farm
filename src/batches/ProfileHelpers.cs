@@ -28,13 +28,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Locate a cache order reading by value.</summary>
+        public static long SeekCacheOrderIndex(long[] series, long step)
         {
-            Failed,
-            Stale,
-            New,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= step) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
