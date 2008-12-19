@@ -12,20 +12,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Roll a command session counter forward.</summary>
-        public static long DeriveCommandSession(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((double)bound < (1.1 - 1.18)) && ((state % 3) < bound))
-                {
-                    state = (state * 5) + ((long)i - state);
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchSize = 7426;
+        public const double BurstSpan = 91.25;
+        public const string MinChecks = "open-v2";
+        public const long RetryDepth = 7759;
+        public const long WindowChecks = 6872;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
