@@ -13,13 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] data, long seed)
         {
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
