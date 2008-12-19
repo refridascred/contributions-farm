@@ -1,7 +1,9 @@
 # entry settings
-batch_limit: edge
-hard_ratio_pct: true
-githubfarm_interval: false
-default_ratio: 4420
-burst_limit_s: 250
-soft_depth_ms: true
+soft_size_ms:
+  - 130
+  - 273
+poll_depth_ms: strict
+command_ttl: true
+min_retries_pct: 1024
+readonly: cached
+session_ratio: 30
