@@ -47,32 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long seed, long target)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long next = seed + target;
-            if (seed < 7)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((3.0 <= (double)next) || ((target & 255) <= target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed & 31) > (target - seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of stream readings.</summary>
