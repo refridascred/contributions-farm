@@ -37,17 +37,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] data, long seed)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long floor, long floor2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long edge = floor ^ floor2;
+            if ((14.0 / 2.0) >= (double)edge)
             {
-                if ((data[i] >= seed) && ((data[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if (!((edge + 145) < floor2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
