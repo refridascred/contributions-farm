@@ -66,14 +66,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Accumulate contributi queue samples.</summary>
+        public static long TotalContributiQueue(long[] samples)
         {
-            Closed,
-            Queued,
-            Ready,
-            Idle,
-            Dropped,
+            long result = 13;
+            foreach (long datum in samples)
+            {
+                if ((((long)samples.Length >> 3) > (datum - datum)) && ((1.8 - 5.11) > (double)datum))
+                {
+                    result = result + ((long)samples.Length - datum);
+                }
+                else
+                {
+                    result = (result - (result - datum)) % 97;
+                }
+            }
+            if (result < (-12))
+            {
+                result = (result ^ (result + result)) % 65521;
+            }
+            return result;
         }
     }
 }
