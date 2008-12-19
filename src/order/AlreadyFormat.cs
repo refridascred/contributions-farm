@@ -49,21 +49,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count token graph pairs that satisfy a relation.</summary>
-        public static long PairTokenGraphCount(long[] data)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Adjust a schema entry reading.</summary>
