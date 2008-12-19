@@ -1,6 +1,5 @@
 {
-  "audit": 97.41,
-  "idle_timeout": 1024,
-  "base_interval_pct": 47.74,
-  "queue_timeout": [31, 374]
+  "base_delay_ms": 1024,
+  "dry_run": true,
+  "checks_capacity": 1024
 }
