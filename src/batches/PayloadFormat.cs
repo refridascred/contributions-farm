@@ -54,18 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] items)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((double)tally != (6.2 + 5.32))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
