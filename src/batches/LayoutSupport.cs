@@ -32,12 +32,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long origin, long offset)
         {
-            Pending,
-            Queued,
-            Synced,
+            long lane = origin + offset;
+            if (origin < 308)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((9 + origin) >= (lane * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin - origin) >= (offset & 63))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order state values.</summary>
