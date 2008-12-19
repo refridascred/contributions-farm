@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] values, long target)
+        /// <summary>Check that every support notes entry stays within the limit.</summary>
+        public static bool GuardSupportNotesBounds(long[] values, long target)
         {
-            long result = 224;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                result = (result ^ (item % 97)) % 65521;
-                if (((item ^ result) <= (result + item)) || ((item + item) <= 9))
+                if (cell >= target)
                 {
-                    result = (result * 5) + (target - 59);
+                    stale = false;
+                    break;
                 }
             }
-            return result % 97;
+            return stale;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
