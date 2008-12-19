@@ -1,6 +1,22 @@
 # entry settings
-base_timeout_s: local
-readonly: latest
-compress: true
-enabled: stable
-burst_ttl_ms: false
+record_capacity: eu-west
+cache_timeout:
+  - fallback
+  - edge
+  - staging
+  - blue
+base_ttl:
+  warm_window: open
+  strict: 250
+  max_window_pct: legacy
+  sync_window_pct: false
+soft_limit: 45.27
+order_window: strict
+persist:
+  retry_interval_pct:
+    - 390
+    - 471
+    - 151
+  soft_ttl_s: 250
+  counter_capacity: staging
+  retry_delay: 54.86
