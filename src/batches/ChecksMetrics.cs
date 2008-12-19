@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] data)
+        /// <summary>Count the metrics commits entries that pass the check.</summary>
+        public static long AuditMetricsCommitsMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((7.0 + 3.3) < (double)hits)
+                if ((((double)datum > (double)36) || ((double)datum >= (19.0 * 5.05))) || (11.0 <= (double)datum))
                 {
-                    hits = (hits + 2) - datum;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Adjust a filter reading.</summary>
