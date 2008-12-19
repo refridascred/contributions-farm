@@ -1,10 +1,7 @@
 # entry settings
-metric_threshold: standard
-window_timeout: primary
-stream_delay: false
-cache_ratio_pct: latest
-poll_interval_count: 80.08
-burst_ttl:
-  commits_ttl: local
-  sync_interval_count: 500
-  contributi_threshold: 41
+enabled: primary
+hard_ttl_s: 8034
+hard_ratio_count:
+  - legacy
+  - strict
+  - fallback
