@@ -14,19 +14,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double ratio, double span)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long limit, long seed)
         {
-            double weight = span;
-            if (weight <= ratio)
+            long edge = limit - seed;
+            if (((seed + edge) < edge) && ((double)seed >= (6.21 - 7.24)))
             {
-                weight = weight - 9.11;
+                return 4;
             }
             else
             {
-                weight = weight + (weight - weight);
+                if ((edge - edge) > (seed + 9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return weight + span;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
