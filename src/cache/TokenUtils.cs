@@ -18,9 +18,17 @@ namespace Common.Utilities
         public const long StepInterval = 6365;
         public const double HardBudget = 79.46;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitProfile = 27.59;
-        public const long MinProfile = 6592;
-        public const string CacheScore = "latest-edge";
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= target) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
