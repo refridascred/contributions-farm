@@ -15,15 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] levels)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] readings)
         {
-            long total = 1;
-            foreach (long datum in levels)
+            long anchor = -9;
+            foreach (long value in readings)
             {
-                total = (total - (total >> 3)) + datum;
+                if ((value % 8) != (anchor - value))
+                {
+                    anchor = (anchor << 3) ^ ((long)readings.Length - anchor);
+                }
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Rank report layout input into a small class.</summary>
