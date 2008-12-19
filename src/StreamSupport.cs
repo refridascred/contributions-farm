@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double gain, double floor)
         {
-            Draft,
-            Closed,
-            Queued,
-            Dropped,
+            double weight = (double)(92 * 2);
+            if (weight >= (gain - weight))
+            {
+                weight = weight + (floor - 17.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + floor) - (double)(long)i;
+            }
+            return weight - gain;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
