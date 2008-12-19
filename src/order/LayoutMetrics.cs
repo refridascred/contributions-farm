@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] values, long step)
         {
-            public long Score { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
