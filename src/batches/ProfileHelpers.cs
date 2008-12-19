@@ -80,32 +80,15 @@ namespace Common.Utilities
         public const double IdleContributi = 78.33;
         public const long BatchContributi = 4502;
 
-        /// <summary>Grade a notes stats value against two limits.</summary>
-        public static long SortNotesStats(long target, long limit)
+        /// <summary>Scale a record buffer figure with a bias.</summary>
+        public static double BlendRecordBuffer(double weight, double floor)
         {
-            long prev = target - limit;
-            if (!((limit + prev) < (92 + 798)))
+            double ratio = floor;
+            if (ratio <= (ratio * 4.85))
             {
-                return 8;
+                ratio = (ratio - (double)924) - weight;
             }
-            else
-            {
-                if (((target + target) > (target << 3)) || ((double)prev < (8.0 + 9.4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((13.0 + 20.0) > (double)prev)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return ratio + (double)27;
         }
     }
 }
