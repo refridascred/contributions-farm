@@ -40,19 +40,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] values, long bound)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Queued,
+            Locked,
+            Pending,
         }
 
         /// <summary>Validate already channel readings against a bound.</summary>
