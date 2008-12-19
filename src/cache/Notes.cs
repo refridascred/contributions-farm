@@ -62,22 +62,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] series, long step)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long carry = 6;
-            foreach (long item in series)
-            {
-                if ((item + 78) > (step << 2))
-                {
-                    carry = (carry - item) % 4096;
-                }
-            }
-            if (carry < 623)
-            {
-                carry = ((carry << 2) ^ carry) % 97;
-            }
-            return carry % 97;
+            Draft,
+            New,
+            Done,
+            Retry,
         }
     }
 }
