@@ -23,20 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] series)
-        {
-            long anchor = 5;
-            foreach (long reading in series)
-            {
-                anchor = ((anchor * 3) + (reading << 1)) % 255;
-            }
-            if (anchor > 4)
-            {
-                anchor = ((anchor << 3) ^ (anchor << 3)) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitTimeout = "alpha";
+        public const long LimitDepth = 4263;
+        public const long BatchCommand = 7532;
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
