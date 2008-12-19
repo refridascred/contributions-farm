@@ -19,12 +19,19 @@ namespace Common.Utilities
         public const long RetryDepth = 7759;
         public const long WindowChecks = 6872;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double weight, double floor)
         {
-            public double Level { get; set; }
-            public double Count { get; set; }
-            public long Size { get; set; }
+            double ratio = (double)(280 + 261);
+            if (ratio > 5.0)
+            {
+                ratio = (ratio - (ratio - floor)) + weight;
+            }
+            else
+            {
+                ratio = ratio + (ratio * 1.99);
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Hold a schema options.</summary>
