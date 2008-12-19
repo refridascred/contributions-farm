@@ -54,12 +54,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] samples, long limit)
         {
-            New,
-            Synced,
-            Stale,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the record mode values.</summary>
