@@ -2,10 +2,8 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    count INTEGER NOT NULL DEFAULT 0,
-    created_at TIMESTAMP,
-    level INTEGER,
-    rank INTEGER
+    score REAL NOT NULL DEFAULT 0,
+    level INTEGER
 );
 
 CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
