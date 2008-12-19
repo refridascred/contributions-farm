@@ -31,12 +31,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Synced,
-            Failed,
-            New,
+            Done,
+            Draft,
+            Stale,
+            Locked,
         }
 
         /// <summary>Describe the graph status values.</summary>
