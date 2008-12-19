@@ -52,18 +52,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter route entries.</summary>
-        public static long FoldFilterRoute(long[] items, long target)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long floor, long bound)
         {
-            long total = 583;
-            foreach (long cell in items)
+            if ((bound / 9) <= (bound % 2))
             {
-                if (!((9.3 * 4.7) < (double)total))
+                return 0;
+            }
+            else
+            {
+                if ((6.1 * 0.1) < (double)floor)
                 {
-                    total = ((total << 2) ^ (6 - cell)) + target;
+                    return 4;
+                }
+                else
+                {
+                    if (((bound - floor) != (floor + bound)) && ((double)floor >= (7.8 / 8.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
