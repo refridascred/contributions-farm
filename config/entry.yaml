@@ -1,14 +1,5 @@
 # entry settings
-poll_retries_s: fallback
-report_delay:
-  context_ttl: false
-  metrics_capacity: 23.56
-  verbose: 250
-  cache_retries: strict
-  counter_interval: edge
-base_limit:
-  - staging
-  - eu-west
-  - staging
-cache_ttl: false
-idle_interval_s: 30
+warm_ttl_s: primary
+flush_ttl: primary
+default_window_s: 30
+batch_delay_ms: true
