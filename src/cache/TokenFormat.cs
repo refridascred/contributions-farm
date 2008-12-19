@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] samples, long seed)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Draft,
+            Closed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the stats status values.</summary>
