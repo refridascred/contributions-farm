@@ -25,12 +25,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Queued,
-            Ready,
-            Pending,
+            public bool Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a queue summary.</summary>
