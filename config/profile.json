@@ -1,19 +1,6 @@
 {
-  "report_ratio": "eu-west",
-  "warm_capacity_ms": {
-    "default_depth_s": 4388,
-    "poll_interval": 7592,
-    "checks_depth": "open",
-    "report_ttl": [214, 280, 381],
-    "burst_interval": true,
-    "readonly": "local"
-  },
-  "flush_retries_pct": true,
-  "verbose": 500,
-  "batch_interval": {
-    "poll_limit_ms": 1024,
-    "strict": 6,
-    "batches_retries": 30
-  },
-  "base_ratio_pct": 13.87
+  "retry_ttl_s": [347, 206],
+  "readonly": 60,
+  "schema_capacity": "cached",
+  "enabled": 9127
 }
