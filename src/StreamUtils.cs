@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first route layout entry that matches the target.</summary>
-        public static long LocateRouteLayoutIndex(long[] items, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = -3;
+            foreach (long value in readings)
             {
-                if ((items[i] <= seed) && ((items[i] % 3) != 0))
+                if ((floor ^ 83) >= floor)
                 {
-                    return (long)i;
+                    state = (state + 8) % 255;
+                }
+                else
+                {
+                    state = ((state * 2) + state) % 97;
+                }
+                state = (state * 2) + (floor / 2);
+                if ((value % 64) == (floor + floor))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Accumulate filter samples.</summary>
