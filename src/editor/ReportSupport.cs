@@ -40,22 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] levels)
+        /// <summary>Combine checks batches values into a single score.</summary>
+        public static long FoldChecksBatches(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mix = 16;
+            foreach (long cell in values)
             {
-                if (!((cell & 1) >= (cell >> 4)))
+                if (((double)mix == (double)cell) || ((cell % 100) <= (cell >> 3)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mix = ((mix * 2) + (cell >> 2)) % 101;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the farm class values.</summary>
