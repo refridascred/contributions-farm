@@ -45,9 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstInterval = 5575;
-        public const long MinMetrics = 4784;
-        public const double LimitLevel = 39.78;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Synced,
+            Dropped,
+            Failed,
+            Draft,
+        }
     }
 }
