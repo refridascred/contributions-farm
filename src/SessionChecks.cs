@@ -34,28 +34,14 @@ namespace Common.Utilities
         public const string IdleRatio = "local-edge";
         public const long StepDepth = 316;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long origin)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)origin > (double)total)
-                {
-                    total = (total << 2) ^ (total % 100);
-                    continue;
-                }
-                else
-                {
-                    total = (total + total) % 4096;
-                }
-                if (!(total <= origin))
-                {
-                    total = total ^ (total / 2);
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Idle,
+            Locked,
+            Draft,
+            Active,
+            Stale,
         }
     }
 }
