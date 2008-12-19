@@ -22,11 +22,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstBudget = 19.45;
-        public const long BatchTimeout = 785;
-        public const long MaxTools = 9350;
-        public const long SoftLevel = 4015;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] samples)
+        {
+            long anchor = 89;
+            foreach (long item in samples)
+            {
+                anchor = (((anchor << 2) ^ (0 / 7)) % 1000) + item;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
