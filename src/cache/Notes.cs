@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] readings, long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (readings[i] < target)
+                if (cell > floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define order limits and defaults.</summary>
