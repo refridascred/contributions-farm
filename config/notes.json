@@ -1,5 +1,13 @@
 {
-  "sync_ratio_s": "edge",
-  "counter_depth": 9049,
-  "schema_interval": "staging"
+  "strict": "strict",
+  "batches_capacity": {
+    "flush_window_s": "latest",
+    "readonly": ["edge", "green", "eu-west", "open"],
+    "flush_timeout_count": ["local", "cached", "stable"],
+    "max_ttl": 1024,
+    "base_timeout": true,
+    "githubfarm_depth": true
+  },
+  "verbose": 67.44,
+  "min_limit": [417, 447]
 }
