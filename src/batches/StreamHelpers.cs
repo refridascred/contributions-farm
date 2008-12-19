@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] data, long offset)
         {
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((double)3 <= (double)offset)
+                {
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the route token entries that pass the check.</summary>
