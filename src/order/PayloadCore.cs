@@ -37,10 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 3099;
-        public const long CacheNotes = 2450;
-        public const long BatchWidth = 8595;
-        public const long RetryNotes = 2291;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Dropped,
+            Draft,
+            Stale,
+            Idle,
+        }
     }
 }
