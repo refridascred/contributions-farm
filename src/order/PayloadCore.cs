@@ -33,22 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] samples, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((seen - target) == (sample * 5))
+                if ((0.35 * 6.4) >= (double)matches)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 2) + value;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the cache class values.</summary>
