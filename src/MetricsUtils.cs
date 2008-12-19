@@ -46,18 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] values, long bound)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long sum = 71;
-            foreach (long item in values)
-            {
-                if ((double)230 <= (1.1 / 5.0))
-                {
-                    sum = (sum << 2) ^ (bound - item);
-                }
-            }
-            return sum % 4096;
+            Done,
+            Paused,
+            Queued,
         }
     }
 }
