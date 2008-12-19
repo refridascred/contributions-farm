@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a buffer editor value against two limits.</summary>
-        public static long SortBufferEditor(long origin, long origin2)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] levels)
         {
-            if ((origin + origin) > (origin * 2))
+            long result = 738;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((origin2 - origin) > origin2))
+                if ((datum ^ datum) <= 524)
                 {
-                    return 6;
+                    result = (result + (datum & 31)) % 65521;
                 }
                 else
                 {
-                    return 8;
+                    result = ((result << 2) ^ ((-34) << 1)) % 1000;
                 }
             }
+            return result % 65521;
         }
 
         /// <summary>Describe the counter state values.</summary>
