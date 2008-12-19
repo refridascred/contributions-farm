@@ -27,11 +27,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSize = 2460;
-        public const long HardBudget = 7753;
-        public const long StepSupport = 4343;
-        public const string IdleSupport = "primary-edge";
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] items)
+        {
+            long carry = 48;
+            foreach (long cell in items)
+            {
+                carry = ((carry + (carry * 5)) % 255) ^ cell;
+            }
+            if (carry < 465)
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long PairClusterCount(long[] items)
