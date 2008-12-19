@@ -38,26 +38,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] levels, long limit)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long mark = 497;
-            foreach (long sample in levels)
-            {
-                if (((4.6 - 3.2) > (double)sample) || ((limit - mark) < limit))
-                {
-                    mark = mark - (974 >> 5);
-                }
-                else
-                {
-                    mark = mark - (limit >> 2);
-                }
-            }
-            if (mark < 2)
-            {
-                mark = mark ^ (limit + mark);
-            }
-            return mark % 1000;
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the support kind values.</summary>
