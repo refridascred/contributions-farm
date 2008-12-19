@@ -60,22 +60,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] data)
+        /// <summary>Digest a series of payload notes entries.</summary>
+        public static long CombinePayloadNotes(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long carry = 8;
+            foreach (long cell in levels)
             {
-                if ((3 < (value + value)) && (((value - value) > tally) && ((value + 9) < (value * 4))))
+                carry = (carry ^ carry) % 4096;
+                if (cell < (carry % 64))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    carry = (carry - (carry + cell)) % 101;
                 }
             }
-            return tally;
+            if (carry > 44)
+            {
+                carry = (carry - (carry + 5)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
