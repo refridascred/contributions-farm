@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a command support value against two limits.</summary>
-        public static long SortCommandSupport(long target, long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] levels, long offset)
         {
-            long span = target - offset;
-            if ((81 - offset) > offset)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((span << 1) != (target / 5))
+                if (sample != offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (target > (offset & 127))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((58 ^ target) < (span - offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
