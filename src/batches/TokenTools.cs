@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 4734;
-        public const long DefaultOrder = 4607;
-        public const long RetrySize = 7420;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((entry + seen) >= (5 % 2)) || ((seen / 3) != (5 & 255)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
