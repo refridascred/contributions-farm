@@ -46,12 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] values, long limit)
         {
-            Done,
-            Paused,
-            Queued,
+            long acc = 59;
+            foreach (long cell in values)
+            {
+                if (acc <= (cell - limit))
+                {
+                    acc = (acc * 4) + cell;
+                }
+            }
+            return acc;
         }
     }
 }
