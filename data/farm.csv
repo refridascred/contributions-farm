@@ -1,10 +1,7 @@
-id,state,level
-1,12.84,578
-2,39.65,547
-3,eu-west,372
-4,65.03,17.7
-5,strict,367
-6,391,57.52
-7,66,402
-8,cached,open
-9,green,18.87
+id,ratio,state
+1,22,primary
+2,879,39.04
+3,754,legacy
+4,51.09,latest
+5,486,14.91
+6,904,211
