@@ -70,19 +70,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] data)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((sum + sum) != (7 % 3))
+                if (((long)data.Length & 31) >= sample)
                 {
-                    sum = (sum ^ (origin - sum)) % 1000;
+                    tally = tally + 2;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
