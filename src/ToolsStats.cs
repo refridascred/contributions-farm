@@ -52,12 +52,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long origin)
         {
-            New,
-            Retry,
-            Pending,
+            long total = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((-14) >> 2) > total)
+                {
+                    total = total ^ (total >> 5);
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
