@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] series, long offset)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long acc = 7;
-            foreach (long entry in series)
-            {
-                if (((offset << 1) <= (offset & 1)) && ((5.15 + 5.5) < (double)offset))
-                {
-                    acc = (acc * 3) + entry;
-                }
-                else
-                {
-                    acc = (acc ^ (entry & 63)) % 101;
-                }
-            }
-            if (acc > 399)
-            {
-                acc = ((acc * 4) + (acc - acc)) % 65521;
-            }
-            return acc;
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Locate a filter reading by value.</summary>
