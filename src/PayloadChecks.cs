@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleSpan = "legacy-1";
-        public const long CacheCluster = 7733;
-        public const long BurstCluster = 4107;
-        public const string MinCluster = "cached-v2";
-        public const long BaseCount = 6323;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string HardScore = "staging-1";
