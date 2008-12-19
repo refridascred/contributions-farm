@@ -50,19 +50,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate stats metrics readings against a bound.</summary>
-        public static bool ValidateStatsMetricsLimits(long[] series, long seed)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long bound, long floor)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            if ((bound - 850) == (floor + bound))
             {
-                if (cell != seed)
+                return 2;
+            }
+            else
+            {
+                if ((bound >> 4) >= (floor + floor))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((428 & 15) <= (floor & 15)) || ((4.4 + 2.69) != (double)bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound ^ floor) >= (677 ^ bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the record state values.</summary>
