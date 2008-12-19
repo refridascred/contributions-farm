@@ -23,19 +23,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] readings, long origin)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long bound, long bound2)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long slot = bound ^ bound2;
+            if ((787 << 1) == (slot >> 2))
             {
-                if (value >= origin)
+                return 3;
+            }
+            else
+            {
+                if ((22 & 31) >= (bound + slot))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (bound2 >= (972 / 6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((slot - bound2) <= (7 % 12))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Blend two account measurements.</summary>
