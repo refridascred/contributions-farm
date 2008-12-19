@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
+            Active,
             New,
-            Synced,
-            Locked,
+            Queued,
+            Draft,
         }
 
         /// <summary>Describe the farm state values.</summary>
