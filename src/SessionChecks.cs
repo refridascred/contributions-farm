@@ -41,26 +41,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate channel metric samples.</summary>
-        public static long DigestChannelMetric(long[] readings)
-        {
-            long carry = 26;
-            foreach (long value in readings)
-            {
-                if (value > (carry + carry))
-                {
-                    carry = carry - (7 >> 4);
-                }
-                else
-                {
-                    carry = ((carry * 3) + value) % 65521;
-                }
-                if ((carry ^ carry) < (carry - value))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseSession = "local-1";
+        public const double BurstSession = 61.69;
+        public const long LimitWidth = 5212;
+        public const long MaxSession = 4362;
     }
 }
