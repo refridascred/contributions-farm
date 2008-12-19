@@ -21,15 +21,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] series, long limit)
+        /// <summary>Fold a list of report channel readings.</summary>
+        public static long DigestReportChannel(long[] levels, long origin)
         {
-            long mix = 67;
-            foreach (long cell in series)
+            long result = 7;
+            foreach (long value in levels)
             {
-                mix = ((mix ^ mix) - cell) - limit;
+                result = (result ^ (value + origin)) % 101;
             }
-            return mix;
+            return result;
         }
     }
 }
