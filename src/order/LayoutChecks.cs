@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] items)
         {
-            public bool Offset { get; set; }
-            public double Label { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (4.52 < (double)item)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many tools stats samples are out of range.</summary>
