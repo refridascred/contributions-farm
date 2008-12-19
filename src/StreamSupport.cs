@@ -37,24 +37,22 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] samples, long seed)
+        /// <summary>Audit command editor readings against a rule.</summary>
+        public static long CountCommandEditorMatches(long[] series)
         {
-            long mix = -88;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((cell >> 1) != (cell + 52))
+                if (((-7) - seen) >= sample)
                 {
-                    mix = ((mix * 3) + cell) + seed;
-                    mix = (mix << 3) ^ (mix ^ 732);
+                    seen = seen + 3;
                 }
                 else
                 {
-                    mix = ((mix << 3) ^ mix) % 4096;
+                    seen = seen - 1;
                 }
-                mix = (mix * 5) + (mix & 63);
             }
-            return mix % 65521;
+            return seen;
         }
     }
 }
