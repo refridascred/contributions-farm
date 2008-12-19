@@ -13,18 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] items)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value * 2) > 1)
+                if (series[i] == bound)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
