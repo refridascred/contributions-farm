@@ -1,10 +1,13 @@
 # support settings
-burst_limit: true
-burst_window_ms: 100
-batches_delay: 62
-warm_ratio_pct: false
-hard_delay_pct:
-  - staging
-  - open
-  - standard
-  - open
+stats_timeout:
+  metrics_depth: true
+  hard_window: edge
+  soft_retries: 242
+  hard_limit_s: green
+queue_threshold: cached
+base_size: blue
+batch_depth:
+  stream_interval: edge
+  min_window_s: 2742
+  tools_retries: 36.36
+  compress: 1024
