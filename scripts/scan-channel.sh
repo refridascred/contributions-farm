@@ -12,6 +12,5 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-for item in latest edge; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=174
+log "limit is ${CHANNEL_LIMIT}"
