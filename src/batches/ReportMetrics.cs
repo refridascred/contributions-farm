@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] readings, long seed)
+        /// <summary>Measure how many counter already samples are out of range.</summary>
+        public static long CountCounterAlreadyGaps(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (readings[i] >= seed)
+                if (hits < (cell >> 2))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + limit;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
