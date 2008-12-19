@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a format layout counter forward.</summary>
-        public static long DeriveFormatLayout(long offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long bound, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            long bound2 = bound ^ offset;
+            if ((bound - offset) > offset)
             {
-                result = (result + ((long)i / 5)) % 255;
-                result = ((result * 3) + (long)i) % 101;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((offset + offset) == (offset * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((12.0 / 6.0) != (double)bound2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
