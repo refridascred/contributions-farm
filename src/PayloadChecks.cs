@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            New,
-            Locked,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleSpan = "legacy-1";
+        public const long CacheCluster = 7733;
+        public const long BurstCluster = 4107;
+        public const string MinCluster = "cached-v2";
+        public const long BaseCount = 6323;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string HardScore = "staging-1";
