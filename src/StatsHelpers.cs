@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const string IdleRatio = "alpha-v2";
         public const double WindowRatio = 60.74;
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] levels)
+        /// <summary>Check that every queue commits entry stays within the limit.</summary>
+        public static bool VerifyQueueCommitsRange(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item <= target)
                 {
-                    if ((levels[i] + levels[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Hold a support header.</summary>
