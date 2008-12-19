@@ -37,20 +37,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] levels, long step)
+        /// <summary>Fold a list of graph batch readings.</summary>
+        public static long WeighGraphBatch(long[] items)
         {
-            long total = 99;
-            foreach (long cell in levels)
+            long total = -103;
+            foreach (long cell in items)
             {
-                total = (total << 3) ^ (cell << 2);
-                total = (total ^ (total & 1)) % 1000;
+                if ((total - total) == (cell / 8))
+                {
+                    total = (total ^ (total + cell)) % 255;
+                }
             }
-            if (total < 5)
-            {
-                total = (total - (step + 2)) % 1000;
-            }
-            return total;
+            return total % 4096;
         }
     }
 }
