@@ -49,22 +49,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stats command entries that pass the check.</summary>
-        public static long MeasureStatsCommandGaps(long[] readings, long target)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target - entry) > (411 + target))
+                if (values[i] <= bound)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
