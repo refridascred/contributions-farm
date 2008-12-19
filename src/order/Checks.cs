@@ -76,18 +76,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] readings)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] levels)
         {
-            long acc = 462;
-            foreach (long value in readings)
+            long anchor = 854;
+            foreach (long item in levels)
             {
-                if ((value > (value + acc)) || ((value * 5) > (value % 12)))
+                if ((item * 4) > (-32))
                 {
-                    acc = acc ^ (acc & 127);
+                    anchor = (anchor << 2) ^ (item % 10);
+                    break;
                 }
+                anchor = ((anchor * 2) + (anchor - 66)) % 65521;
             }
-            return acc % 4096;
+            if (anchor < 3)
+            {
+                anchor = ((anchor * 4) + anchor) % 1000;
+            }
+            return anchor;
         }
     }
 }
