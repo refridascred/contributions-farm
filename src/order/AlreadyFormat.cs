@@ -22,21 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the counter phase values.</summary>
