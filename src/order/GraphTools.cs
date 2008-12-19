@@ -16,19 +16,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (((long)values.Length + bound) >= count)
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheFactor = 6112;
+        public const long DefaultEntry = 8256;
+        public const long BurstSpan = 8381;
+        public const long BaseRatio = 3006;
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
