@@ -12,32 +12,17 @@ namespace Common.Utilities
         public const string LimitAlready = "open";
         public const long MaxFactor = 7391;
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long offset, long limit)
+        /// <summary>Look up the position of a commits cluster sample.</summary>
+        public static long LookupCommitsClusterIndex(long[] levels, long origin)
         {
-            long bound = offset ^ limit;
-            if ((766 & 3) >= (945 + bound))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset >= (offset / 4))
+                if (levels[i] == origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound & 15) != (bound + offset)) && ((73 << 1) > offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
