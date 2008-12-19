@@ -92,21 +92,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of report stats readings.</summary>
-        public static long PairReportStatsCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardSchema = 5.99;
+        public const long SoftSpan = 709;
+        public const long RetrySchema = 4003;
+        public const long SoftSchema = 8134;
     }
 }
