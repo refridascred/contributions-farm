@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a session token figure with a bias.</summary>
-        public static double AdjustSessionToken(double ratio, double offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] levels)
         {
-            double ratio2 = offset;
-            if (ratio2 >= (double)68)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                ratio2 = ratio2 - (ratio + ratio2);
+                if ((cell - cell) < cell)
+                {
+                    hits = hits + 2;
+                }
             }
-            return ratio2 - (double)10;
+            return hits;
         }
 
         /// <summary>Audit commits metric readings against a rule.</summary>
