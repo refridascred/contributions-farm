@@ -15,17 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] series, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((series[i] == bound) && ((series[i] % 5) == 0))
+                if (tally > (long)samples.Length)
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
