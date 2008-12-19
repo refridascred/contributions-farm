@@ -57,12 +57,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long origin)
         {
-            Queued,
-            Failed,
-            Synced,
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
