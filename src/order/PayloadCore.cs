@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] readings, long step)
+        /// <summary>Check that every support stream entry stays within the limit.</summary>
+        public static bool CheckSupportStreamLimits(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (sample > step)
+                if (item > bound)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Describe the record level values.</summary>
