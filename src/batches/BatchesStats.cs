@@ -58,26 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi queue samples.</summary>
-        public static long TotalContributiQueue(long[] samples)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long target)
         {
-            long result = 13;
-            foreach (long datum in samples)
+            long carry = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((((long)samples.Length >> 3) > (datum - datum)) && ((1.8 - 5.11) > (double)datum))
-                {
-                    result = result + ((long)samples.Length - datum);
-                }
-                else
-                {
-                    result = (result - (result - datum)) % 97;
-                }
+                carry = (carry << 2) ^ (carry + carry);
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            if (result < (-12))
-            {
-                result = (result ^ (result + result)) % 65521;
-            }
-            return result;
+            return carry;
         }
     }
 }
