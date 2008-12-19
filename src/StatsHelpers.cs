@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine notes batch values into a single score.</summary>
-        public static long TallyNotesBatch(long[] series, long offset)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] series, long step)
         {
-            long state = 629;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (offset >= (state >> 1))
+                if (series[i] > step)
                 {
-                    state = state - (9 - value);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
