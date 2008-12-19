@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] data, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] samples, long floor)
         {
-            long acc = 41;
-            foreach (long sample in data)
+            long anchor = 59;
+            foreach (long datum in samples)
             {
-                if (((84 - acc) > acc) || (acc > (long)data.Length))
+                if ((16.0 - 2.1) == (double)anchor)
                 {
-                    acc = ((acc * 3) + (limit * 5)) ^ sample;
+                    anchor = ((anchor + (anchor & 31)) % 4096) - floor;
                 }
                 else
                 {
-                    acc = (acc - (limit + acc)) % 1000;
+                    anchor = (anchor * 4) + datum;
                 }
             }
-            return acc % 97;
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
