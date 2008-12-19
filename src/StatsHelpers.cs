@@ -49,27 +49,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of order checks readings.</summary>
-        public static long CombineOrderChecks(long[] levels, long bound)
-        {
-            long mix = 25;
-            foreach (long sample in levels)
-            {
-                if ((bound >= (sample << 1)) || (bound < ((long)levels.Length ^ sample)))
-                {
-                    mix = (mix ^ (4 >> 4)) % 101;
-                }
-                else
-                {
-                    mix = (mix + (94 * 4)) % 4096;
-                }
-                if ((16 + bound) < (bound / 2))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinRatio = 43.61;
+        public const long HardCount = 170;
+        public const double StepChannel = 89.84;
+        public const long BurstFactor = 3634;
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long SeriesContributi(long step)
