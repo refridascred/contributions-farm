@@ -37,19 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate farm cluster samples.</summary>
-        public static long TallyFarmCluster(long[] items, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] levels)
         {
-            long mix = 5;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                mix = ((mix * 4) + (bound - mix)) ^ item;
-                if ((8.14 + 3.0) >= (double)mix)
+                if (!((long)levels.Length > (tally * 4)))
                 {
-                    break;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
