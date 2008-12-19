@@ -64,18 +64,15 @@ namespace Common.Utilities
             return ratio + (double)399;
         }
 
-        /// <summary>Digest a series of batches order entries.</summary>
-        public static long TallyBatchesOrder(long[] readings, long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] samples)
         {
-            long mix = 5;
-            foreach (long datum in readings)
+            long result = 553;
+            foreach (long sample in samples)
             {
-                if ((datum + 969) <= (mix + target))
-                {
-                    mix = ((mix << 3) ^ datum) % 255;
-                }
+                result = (((result << 3) ^ (4 % 8)) % 4096) ^ sample;
             }
-            return mix % 65521;
+            return result;
         }
     }
 }
