@@ -45,12 +45,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            Dropped,
-            Paused,
+            Ready,
             New,
+            Dropped,
+            Active,
+            Stale,
         }
     }
 }
