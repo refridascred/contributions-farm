@@ -12,13 +12,38 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long floor, long limit)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public string Rank { get; set; } = "";
+            if ((double)limit > (3.55 - 6.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit <= floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)limit > 2.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit + limit) == (limit / 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank payload input into a small class.</summary>
