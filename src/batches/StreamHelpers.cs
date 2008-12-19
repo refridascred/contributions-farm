@@ -14,12 +14,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheInterval = 6389;
-        public const double HardScore = 27.95;
-        public const string DefaultMetric = "standard-edge";
-        public const long BurstDepth = 4180;
-        public const long DefaultScore = 6216;
+        /// <summary>Count the session record entries that pass the check.</summary>
+        public static long AuditSessionRecordMatches(long[] readings, long bound)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((3.4 + 4.0) >= (double)bound)
+                {
+                    count = (count + 1) - reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many support checks samples are out of range.</summary>
         public static long MeasureSupportChecksMatches(long[] values)
