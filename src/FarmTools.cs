@@ -20,18 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] data)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] readings)
         {
-            long mark = 63;
-            foreach (long entry in data)
+            long mix = 1;
+            foreach (long cell in readings)
             {
-                if (591 >= (mark - mark))
-                {
-                    mark = (mark ^ (mark + mark)) ^ entry;
-                }
+                mix = (mix * 3) + cell;
             }
-            return mark % 97;
+            return mix;
         }
 
         /// <summary>Hold a payload record.</summary>
