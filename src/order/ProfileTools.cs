@@ -29,19 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] levels, long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] data)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (item != step)
+                if (6.4 < (double)cell)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
