@@ -37,15 +37,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long seed)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] samples, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
+            long anchor = 9;
+            foreach (long sample in samples)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                anchor = ((anchor ^ (origin - anchor)) % 4096) - sample;
+                anchor = (anchor ^ (44 + origin)) % 255;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Fold a list of graph batch readings.</summary>
