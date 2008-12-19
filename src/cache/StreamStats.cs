@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] levels, long offset)
+        /// <summary>Accumulate record account samples.</summary>
+        public static long FoldRecordAccount(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 781;
+            foreach (long datum in series)
             {
-                if ((levels[i] < offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (((acc - 0) % 97) ^ datum) - target;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
