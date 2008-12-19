@@ -1,6 +1,7 @@
-id,label,token,state,weight
-1,5.45,standard,323,219
-2,stable,73.22,6.33,646
-3,293,89.23,77.74,644
-4,744,418,strict,latest
-5,47.4,open,429,358
+id,rank,count
+1,944,56.81
+2,610,108
+3,staging,624
+4,legacy,3.4
+5,fallback,eu-west
+6,standard,open
