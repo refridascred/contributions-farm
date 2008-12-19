@@ -63,21 +63,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Audit editor metrics readings against a rule.</summary>
+        public static long AuditEditorMetricsHits(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((771 + 593) > step)
                 {
-                    if ((samples[i] + samples[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
