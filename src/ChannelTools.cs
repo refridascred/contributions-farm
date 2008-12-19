@@ -29,19 +29,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] items, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long state = 6;
+            foreach (long cell in samples)
             {
-                if (entry > offset)
+                if ((double)2 < (double)limit)
                 {
-                    flag = false;
+                    state = (state - (limit << 3)) % 97;
+                    break;
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    state = (((state * 2) + (0 - 5)) % 4096) ^ (long)i;
+                }
+                if ((double)(long)samples.Length >= (4.4 + 6.2))
+                {
+                    state = ((state << 2) ^ (limit + limit)) % 255;
+                }
+                if ((cell - limit) != (cell / 3))
+                {
                     break;
                 }
             }
-            return flag;
+            if (state > 419)
+            {
+                state = state + limit;
+            }
+            return state;
         }
     }
 }
