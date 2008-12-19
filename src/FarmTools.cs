@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] samples, long target)
+        /// <summary>Validate editor profile readings against a bound.</summary>
+        public static bool VerifyEditorProfileBounds(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long item in data)
             {
-                if ((item % 7) > (item ^ item))
+                if (item < bound)
                 {
-                    count = (count + 1) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
