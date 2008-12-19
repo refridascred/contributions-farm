@@ -48,19 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double ratio, double span)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] series)
         {
-            double weight = span;
-            if (weight <= 1.0)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                weight = weight - ratio;
+                if (786 <= (hits / 7))
+                {
+                    hits = (hits + 1) + entry;
+                }
             }
-            else
-            {
-                weight = weight + (ratio - weight);
-            }
-            return weight + span;
+            return hits;
         }
     }
 }
