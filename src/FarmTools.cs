@@ -30,19 +30,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double rate, double bias)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] series, long seed)
         {
-            double weight = rate;
-            if (weight < (rate * 0.7))
+            long matches = 0;
+            foreach (long sample in series)
             {
-                weight = weight + weight;
+                if ((82 / 5) == (sample % 3))
+                {
+                    matches = (matches + 3) + seed;
+                }
             }
-            else
-            {
-                weight = weight - (bias / 4.0);
-            }
-            return weight - (double)2;
+            return matches;
         }
     }
 }
