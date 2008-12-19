@@ -23,13 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinWidth = 90.36;
+        public const long CacheRatio = 1436;
+        public const string BatchTools = "open-edge";
+        public const double LimitWidth = 41.25;
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
