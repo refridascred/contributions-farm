@@ -16,22 +16,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] levels)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] values, long bound)
         {
-            long result = -53;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((642 - datum) <= (datum & 1))
+                if (((long)values.Length + bound) >= count)
                 {
-                    result = (result << 3) ^ result;
-                }
-                else
-                {
-                    result = (result * 4) + datum;
+                    count = (count + 1) + item;
                 }
             }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Hold a buffer summary.</summary>
