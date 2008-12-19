@@ -1,10 +1,6 @@
 {
-  "persist": true,
-  "default_capacity": {
-    "cache_window_s": 81.28,
-    "warm_window": 66.39,
-    "burst_interval_pct": "fallback"
-  },
-  "readonly": false,
-  "verbose": 65.66
+  "idle_limit_count": ["primary", "fallback"],
+  "warm_threshold_s": "eu-west",
+  "min_interval_count": "edge",
+  "hard_ratio_pct": false
 }
