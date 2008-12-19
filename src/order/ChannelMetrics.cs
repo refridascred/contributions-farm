@@ -49,21 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metrics record readings.</summary>
-        public static long PairMetricsRecordCount(long[] samples)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 949;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((6.0 / 8.0) <= (double)total)
                 {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total ^ 48) % 1000) ^ sample;
                 }
             }
-            return count;
+            return total;
         }
     }
 }
