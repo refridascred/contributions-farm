@@ -79,9 +79,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepContext = 87.23;
-        public const double BaseTimeout = 82.94;
-        public const long IdleContext = 124;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public bool Size { get; set; }
+            public double Total { get; set; }
+            public double Count { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
