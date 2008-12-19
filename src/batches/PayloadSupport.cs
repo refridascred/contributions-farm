@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long target, long bound)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long offset, long floor)
         {
-            if ((bound ^ target) <= (654 + bound))
+            if ((floor + offset) >= 97)
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if (((target / 4) > bound) && ((target / 5) >= target))
+                if (((floor + offset) >= (176 - offset)) || ((floor >> 1) > floor))
                 {
                     return 6;
                 }
                 else
                 {
-                    if ((bound < target) && ((double)target != (9.5 * 3.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target == (double)bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
