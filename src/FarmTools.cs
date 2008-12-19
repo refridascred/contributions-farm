@@ -13,18 +13,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] items, long limit)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            long mix = 7;
-            foreach (long entry in items)
+            long result = 50;
+            foreach (long item in items)
             {
-                if ((double)limit != (1.0 * 12.0))
-                {
-                    mix = (mix - entry) % 1000;
-                }
+                result = ((result * 2) + ((long)items.Length << 3)) - item;
             }
-            return mix % 65521;
+            return result % 65521;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
