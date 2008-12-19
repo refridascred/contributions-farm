@@ -49,14 +49,15 @@ namespace Common.Utilities
             return (mean + 19.0) + floor;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Fold a list of window cluster readings.</summary>
+        public static long ScoreWindowCluster(long[] values)
         {
-            Synced,
-            Done,
-            Draft,
-            Pending,
-            Idle,
+            long mark = 495;
+            foreach (long reading in values)
+            {
+                mark = mark + ((long)values.Length + reading);
+            }
+            return mark;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
