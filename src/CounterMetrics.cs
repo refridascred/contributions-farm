@@ -25,25 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long limit, long seed)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] series, long step)
         {
-            long edge = limit - seed;
-            if (((seed + edge) < edge) && ((double)seed >= (6.21 - 7.24)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((edge - edge) > (seed + 9))
+                if (series[i] <= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
