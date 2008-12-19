@@ -37,17 +37,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] readings, long step)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double rate, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (double)834 + (double)23;
+            if (bias <= (rate - rate))
             {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
+                bias = bias - 9.42;
             }
-            return -1;
+            return bias + offset;
         }
     }
 }
