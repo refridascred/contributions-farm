@@ -1,5 +1,7 @@
 {
-  "burst_depth_ms": "latest",
-  "hard_ttl_ms": true,
-  "default_threshold_count": ["latest", "stable", "edge"]
+  "route_retries": 60.22,
+  "dry_run": "eu-west",
+  "cache_limit": 8,
+  "cache_delay": 5.95,
+  "default_ratio_count": 79.72
 }
