@@ -38,18 +38,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many batch stream samples are out of range.</summary>
-        public static long TallyBatchStreamMatches(long[] items, long target)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (!(((873 - 3) > tally) || ((tally % 100) < entry)))
+                if (cell <= bound)
                 {
-                    tally = (tally + 1) - target;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Roll a report counter forward.</summary>
