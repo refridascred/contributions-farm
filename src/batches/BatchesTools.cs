@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] data)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)411 + bias2;
+            if (load < (double)2)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load + load) - bias;
             }
-            return hits;
+            else
+            {
+                load = load - (double)(-87);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - bias2) + (double)(long)i;
+            }
+            return load + (double)4;
         }
 
         /// <summary>Accumulate order samples.</summary>
