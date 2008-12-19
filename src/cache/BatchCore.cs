@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] series, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] readings)
         {
-            long state = -7;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long item in readings)
             {
-                state = ((state - (9 >> 1)) % 101) + bound;
-                if ((datum ^ datum) < state)
+                if (6.5 <= (double)item)
                 {
-                    break;
+                    count = count + 3;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Accumulate layout samples.</summary>
