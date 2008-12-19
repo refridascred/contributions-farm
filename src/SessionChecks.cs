@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] levels)
         {
-            Active,
-            Stale,
-            Retry,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((tally + sample) != (255 << 3)) || ((tally << 2) <= (-945)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
