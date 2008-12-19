@@ -1,11 +1,13 @@
 # Command notes
 
-The layout module keeps payload values in sync with the cache cache.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
+A token that stays idle for too long is moved to the profile list.
+The account report groups every format by tools.
+
+Keep commits and buffer names short and lowercase.
+Defaults for cache live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep support values small
-- Prefer context defaults
-- Document new already fields
-- Validate editor input early
+- Review account limits each release
+- Keep batches values small
+- Document new context fields
