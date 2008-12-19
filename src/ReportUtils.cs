@@ -40,23 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] values, long seed)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] levels, long origin)
         {
-            long carry = 1;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry ^ ((-7) % 2)) % 97;
-                if ((seed + 41) < cell)
+                if (levels[i] > origin)
                 {
-                    carry = (carry ^ (carry * 5)) % 4096;
+                    return (long)i;
                 }
             }
-            if (carry > 65)
-            {
-                carry = (carry ^ (seed - 8)) % 101;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
