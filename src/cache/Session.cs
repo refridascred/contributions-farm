@@ -14,10 +14,28 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 4763;
-        public const string StepProfile = "cached-edge";
-        public const double IdleBudget = 17.26;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] readings, long target)
+        {
+            long mark = 29;
+            foreach (long value in readings)
+            {
+                mark = (mark * 5) + (mark + target);
+                if ((mark + mark) >= (value + target))
+                {
+                    mark = (mark * 4) + (long)readings.Length;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (value % 8);
+                }
+                if (mark > (5 + (-39)))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
