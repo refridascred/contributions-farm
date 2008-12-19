@@ -19,38 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long floor, long limit)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double ratio, double floor)
         {
-            if ((double)limit > (3.55 - 6.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit <= floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)limit > 2.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit + limit) == (limit / 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double drift = (double)(53 + 99);
+            return ((drift + drift) + ratio) + floor;
         }
 
         /// <summary>Fold a list of batch account readings.</summary>
