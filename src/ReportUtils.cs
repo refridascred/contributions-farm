@@ -32,26 +32,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] items, long bound)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long carry = 455;
-            foreach (long sample in items)
-            {
-                if ((bound + carry) < (sample - carry))
-                {
-                    carry = ((carry * 3) + (sample * 3)) % 1000;
-                }
-                else
-                {
-                    carry = (carry ^ (sample + bound)) % 65521;
-                }
-                if ((carry * 2) != (sample * 2))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a channel record.</summary>
