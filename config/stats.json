@@ -1,12 +1,11 @@
 {
-  "default_size": "eu-west",
-  "batch_timeout": "blue",
-  "flush_delay_s": "cached",
-  "persist": 70.5,
-  "flush_timeout_count": {
-    "compress": 96.1,
-    "base_ratio_ms": "latest",
-    "metrics_delay": true
+  "default_delay_ms": {
+    "window_ttl": false,
+    "persist": false,
+    "min_timeout": "blue"
   },
-  "hard_delay_ms": 500
+  "default_limit": false,
+  "sync_ttl_s": ["blue", "latest"],
+  "cache_retries_count": true,
+  "idle_window": "latest"
 }
