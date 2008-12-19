@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] readings)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            double rate = 7.05;
+            if (rate < (double)512)
             {
-                if ((seen / 2) < seen)
-                {
-                    seen = (seen + 2) + entry;
-                }
+                rate = (rate + rate) - bias;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (4.5 + rate)) - (double)(long)i;
+            }
+            return rate + floor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
