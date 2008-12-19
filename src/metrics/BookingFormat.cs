@@ -20,15 +20,21 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double gain, double bias)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] readings)
         {
-            double gain2 = gain;
-            if (gain2 >= bias)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain2 = gain2 - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain2 + (gain / 6.0);
+            return tally;
         }
 
         /// <summary>Audit batches report readings against a rule.</summary>
