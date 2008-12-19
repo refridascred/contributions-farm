@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] data, long limit)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((double)item <= (double)limit)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Queued,
+            Closed,
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Hold a tools header.</summary>
