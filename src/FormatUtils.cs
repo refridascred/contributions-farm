@@ -65,25 +65,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a commits buffer pair into a bucket.</summary>
-        public static long BucketCommitsBuffer(long target, long target2)
-        {
-            if ((target2 ^ target2) != (target & 127))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target2 > (target + target)) || ((5 + target) < (target - target)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 1361;
+        public const double MinCounter = 34.17;
+        public const long LimitCounter = 6278;
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LocateBufferIndex(long[] series, long origin)
