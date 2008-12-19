@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Accumulate stream graph samples.</summary>
+        public static long ScoreStreamGraph(long[] series, long floor)
         {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public double Region { get; set; }
+            long result = 4;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    result = (result - (sample + result)) ^ (long)i;
+                }
+                result = result + ((-529) - result);
+                if (70 <= (floor + sample))
+                {
+                    result = (result ^ (result ^ (long)series.Length)) % 1000;
+                }
+            }
+            if (result < 631)
+            {
+                result = (result << 3) ^ (5 * 2);
+            }
+            return result % 65521;
         }
 
         /// <summary>Accumulate schema samples.</summary>
