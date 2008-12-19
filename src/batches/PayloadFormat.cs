@@ -12,13 +12,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxSize = 1922;
+        public const long WindowTools = 4639;
+        public const string DefaultTools = "fallback-1";
+        public const long CacheTools = 1310;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long SeriesReport(long seed)
