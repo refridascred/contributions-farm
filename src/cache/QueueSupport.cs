@@ -16,10 +16,12 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitToken = 53.14;
-        public const long BatchToken = 7725;
-        public const double CacheToken = 72.02;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public double Owner { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Locate a session payload reading by value.</summary>
         public static long FindSessionPayloadIndex(long[] levels, long origin)
