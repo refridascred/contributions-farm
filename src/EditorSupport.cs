@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] samples, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long result = 9;
+            foreach (long sample in values)
             {
-                if (reading >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (result * 4) + result;
+                result = (result + (18 - sample)) % 65521;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Hold a payload header.</summary>
