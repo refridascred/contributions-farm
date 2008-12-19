@@ -68,15 +68,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a schema entry reading.</summary>
-        public static double ScaleSchemaEntry(double rate, double span)
+        /// <summary>Measure how many contributi session samples are out of range.</summary>
+        public static long MeasureContributiSessionGaps(long[] items)
         {
-            double rate2 = rate;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                rate2 = (rate2 - (span + span)) + (double)(long)i;
+                if ((double)item <= (4.76 + 4.3))
+                {
+                    hits = hits + 1;
+                }
             }
-            return rate2 + (rate2 - 8.2);
+            return hits;
         }
     }
 }
