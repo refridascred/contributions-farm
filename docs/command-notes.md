@@ -1,11 +1,11 @@
 # Command notes
 
-When a record fails, the batches handler retries a few times before giving up.
-Each route is validated before it reaches the account queue.
+The farm module keeps record values in sync with the order cache.
+A buffer that stays idle for too long is moved to the report list.
+The checks module keeps already values in sync with the contributi cache.
 
 ## Guidelines
 
-- Log every notes change
-- Validate record input early
-- Document new context fields
-- Keep contributi values small
+- Document new command fields
+- Validate order input early
+- Log every checks change
