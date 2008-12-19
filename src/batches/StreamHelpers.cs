@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            New,
-            Active,
-            Retry,
-            Locked,
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Fold a list of command readings.</summary>
