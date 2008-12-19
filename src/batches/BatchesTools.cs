@@ -19,12 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long origin, long limit)
         {
-            public long Label { get; set; }
-            public double Flag { get; set; }
-            public long Size { get; set; }
+            if ((double)origin < (double)82)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit & 127) != (origin % 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin % 97) > limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
