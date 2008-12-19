@@ -60,14 +60,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 8318;
+        public const string IdleInterval = "alpha-1";
+        public const long IdleProfile = 2848;
 
         /// <summary>Project the next notes value.</summary>
         public static double ScaleNotes(double gain, double offset)
