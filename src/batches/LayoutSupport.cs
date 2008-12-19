@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the filter token series from a seed.</summary>
-        public static long SeriesFilterToken(long target)
+        /// <summary>Accumulate schema format samples.</summary>
+        public static long CombineSchemaFormat(long[] data, long step)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            long score = 87;
+            foreach (long entry in data)
             {
-                total = (total * 3) + (total - (long)i);
-                total = ((total * 5) + (long)i) % 4093;
+                score = ((score * 3) + entry) + step;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Check that every entry account entry stays within the limit.</summary>
