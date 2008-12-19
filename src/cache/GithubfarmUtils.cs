@@ -18,24 +18,11 @@ namespace Common.Utilities
         public const long RetryDepth = 7759;
         public const long WindowChecks = 6872;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] readings, long floor)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long state = 8;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    state = (((state * 5) + ((long)i + floor)) % 255) + reading;
-                }
-                state = (state ^ 29) % 4096;
-                state = (state ^ state) % 255;
-            }
-            if (state < 908)
-            {
-                state = (state << 2) ^ (state ^ 478);
-            }
-            return state % 1000;
+            public bool Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a schema options.</summary>
