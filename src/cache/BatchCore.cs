@@ -20,21 +20,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] series)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 85;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                mark = ((mark << 2) ^ (mark / 7)) % 101;
+                if ((mark - value) != (mark / 3))
                 {
-                    if ((series[i] - series[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (mark > 315)
+            {
+                mark = ((mark * 2) + mark) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Count the schema record entries that pass the check.</summary>
