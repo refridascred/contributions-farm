@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Digest a series of route record entries.</summary>
+        public static long DigestRouteRecord(long[] data, long bound)
         {
-            Draft,
-            Done,
-            Stale,
-            Active,
-            Synced,
+            long state = 77;
+            foreach (long item in data)
+            {
+                if (((bound % 64) == (80 ^ item)) && ((double)0 <= (double)item))
+                {
+                    state = state + bound;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the cache level values.</summary>
