@@ -34,11 +34,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double rate, double offset)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            double scale = rate - (offset + 1.3);
-            return scale - (scale * 4.13);
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count farm report pairs that satisfy a relation.</summary>
