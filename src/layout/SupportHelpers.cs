@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Support helpers helpers.</summary>
     public static class SupportHelpers
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
             Queued,
-            Synced,
+            Draft,
+            Ready,
             Pending,
+            Dropped,
         }
 
         /// <summary>Digest a series of record batches entries.</summary>
