@@ -15,14 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] values, long offset)
         {
-            Idle,
-            New,
-            Paused,
-            Retry,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
