@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] items, long limit)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (7.0 < (double)cell)
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
