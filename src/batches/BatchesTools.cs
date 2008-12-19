@@ -19,38 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long bound, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] items, long offset)
         {
-            if ((bound & 127) < 8)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset <= 20.0)
+                if (787 >= (offset * 4))
                 {
-                    return 8;
+                    hits = (hits + 1) - cell;
                 }
                 else
                 {
-                    if (bound < offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)bound < 4.46))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
