@@ -25,15 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] readings, long limit)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double bias, double offset)
         {
-            long result = 52;
-            foreach (long entry in readings)
+            double mean = offset;
+            if (mean > (double)4)
             {
-                result = (((result ^ result) % 255) - entry) - limit;
+                mean = mean - offset;
             }
-            return result % 1000;
+            else
+            {
+                mean = mean - (bias / 4.0);
+            }
+            return mean - (double)0;
         }
 
         /// <summary>Describe the entry kind values.</summary>
