@@ -82,10 +82,13 @@ namespace Common.Utilities
             return mean - (double)53;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxSize = 5824;
-        public const long IdleInterval = 601;
-        public const long MaxInterval = 9037;
-        public const string RetrySize = "open-edge";
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
