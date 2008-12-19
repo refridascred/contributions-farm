@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] levels, long target)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long state = 247;
-            foreach (long sample in levels)
-            {
-                if ((0 + target) < 66)
-                {
-                    state = (state << 3) ^ (state << 1);
-                }
-                if ((target << 3) < sample)
-                {
-                    break;
-                }
-            }
-            if (state > 2)
-            {
-                state = state + target;
-            }
-            return state;
+            Closed,
+            Pending,
+            Locked,
+            Ready,
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
