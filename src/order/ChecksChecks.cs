@@ -57,19 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next githubfarm channel value.</summary>
-        public static double ScaleGithubfarmChannel(double rate, double span)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double mean = (double)25 - (rate - span);
-            if (mean < (mean / 3.0))
-            {
-                mean = mean + (span - span);
-            }
-            else
-            {
-                mean = mean - (double)922;
-            }
-            return mean - (double)13;
+            Ready,
+            Queued,
+            Paused,
+            New,
         }
     }
 }
