@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] data, long seed)
+        /// <summary>Audit schema contributi readings against a rule.</summary>
+        public static long CountSchemaContributiOutliers(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (cell >= seed)
+                if (1 > (seen + cell))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
