@@ -1,12 +1,6 @@
 {
-  "stats_window": false,
-  "base_size": true,
-  "audit": "cached",
-  "strict": {
-    "account_delay": 46.45,
-    "sync_capacity_ms": false,
-    "cache_threshold": 9
-  },
-  "hard_window_s": [36, 374, 95, 449],
-  "warm_window_pct": "green"
+  "idle_delay": 5876,
+  "max_ttl": 61.79,
+  "hard_delay_ms": "strict",
+  "entry_size": true
 }
