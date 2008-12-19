@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] samples, long bound)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((bound - count) != (cell ^ 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Look up the position of a token sample.</summary>
