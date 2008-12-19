@@ -37,9 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinCommits = 46.34;
-        public const long LimitCommits = 1646;
-        public const long StepDepth = 6495;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
