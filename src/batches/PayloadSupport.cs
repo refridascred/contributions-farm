@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] samples, long offset)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double scale, double offset)
         {
-            long state = -998;
-            foreach (long datum in samples)
+            double bias = (scale + scale) + (double)86;
+            if (bias < (scale * 2.85))
             {
-                if (((datum & 1) != (datum % 2)) && ((717 >> 2) < (offset ^ datum)))
-                {
-                    state = ((state * 5) + (datum + offset)) % 101;
-                }
-                else
-                {
-                    state = (state - offset) % 65521;
-                }
-                if ((datum + state) >= (datum * 3))
-                {
-                    break;
-                }
+                bias = (bias + (5.59 + 7.4)) - offset;
             }
-            return state;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - scale) + (double)(long)i;
+            }
+            return bias + scale;
         }
 
         /// <summary>Accumulate batches samples.</summary>
