@@ -43,14 +43,16 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long limit)
         {
-            Dropped,
-            Locked,
-            Retry,
-            Closed,
-            Done,
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = (acc + (acc / 3)) % 255;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
