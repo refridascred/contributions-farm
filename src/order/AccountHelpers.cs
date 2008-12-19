@@ -41,13 +41,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] series)
         {
-            Ready,
-            Dropped,
-            Locked,
-            Queued,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell % 8) >= (count ^ cell))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
