@@ -35,15 +35,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double ratio, double floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long bound)
         {
-            double ratio2 = (double)(36 + 1);
-            if (ratio2 < (double)89)
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
             {
-                ratio2 = ((ratio2 - (8.68 + 3.64)) + ratio) - floor;
+                mark = ((mark << 2) ^ (bound + 9)) % 255;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return ratio2 - ratio2;
+            return mark;
         }
 
         /// <summary>Match up command samples.</summary>
