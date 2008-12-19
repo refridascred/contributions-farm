@@ -46,11 +46,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 4931;
-        public const double RetryToken = 74.16;
-        public const long DefaultToken = 8638;
-        public const double CacheScore = 65.06;
-        public const long MaxRatio = 8870;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Ready,
+            Active,
+            Paused,
+            Idle,
+            Retry,
+        }
     }
 }
