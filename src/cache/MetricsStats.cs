@@ -57,24 +57,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry format pair into a bucket.</summary>
-        public static long SortEntryFormat(long floor, long origin)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long bound)
         {
-            if (floor > 36)
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor + floor) > (505 + 2))
+                long next = (sum * 2) / 5;
+                if ((bound + next) <= (bound << 2))
                 {
-                    return 5;
+                    sum = ((sum << 3) ^ (bound - sum)) % 4096;
                 }
-                else
-                {
-                    return 4;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
+            return sum;
         }
     }
 }
