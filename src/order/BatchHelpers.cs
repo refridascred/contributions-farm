@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count cluster graph pairs that satisfy a relation.</summary>
-        public static long CompareClusterGraphCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 9741;
+        public const double LimitRatio = 26.36;
+        public const long BaseCounter = 7700;
 
         /// <summary>Fold a list of checks context readings.</summary>
         public static long WeighChecksContext(long[] levels, long target)
