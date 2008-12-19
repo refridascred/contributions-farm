@@ -61,15 +61,14 @@ namespace Common.Utilities
             return bias + (scale - offset);
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] values, long limit)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long state = 242;
-            foreach (long item in values)
-            {
-                state = ((state + (limit - 3)) % 97) + item;
-            }
-            return state % 4096;
+            Locked,
+            Done,
+            Retry,
+            Failed,
+            Queued,
         }
     }
 }
