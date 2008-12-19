@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long floor, long bound)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] readings)
         {
-            long diff = floor + bound;
-            if (5 < (floor >> 1))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound <= diff)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor / 9) >= (bound + floor))
+                    if ((readings[i] - readings[j]) != 13)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
