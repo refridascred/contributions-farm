@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] values)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long result = 9;
-            foreach (long sample in values)
-            {
-                result = (result * 4) + result;
-                result = (result + (18 - sample)) % 65521;
-            }
-            return result;
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a payload header.</summary>
