@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank commits editor input into a small class.</summary>
-        public static long RankCommitsEditor(long floor, long limit)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            if (!((double)limit < (0.7 - 8.8)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (226 >= (limit >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (limit >= (998 - floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((10.0 * 8.72) == (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Queued,
+            Idle,
+            New,
         }
 
         /// <summary>Measure how many tools stats samples are out of range.</summary>
