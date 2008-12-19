@@ -49,19 +49,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate already channel readings against a bound.</summary>
-        public static bool ValidateAlreadyChannelRange(long[] levels, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long mark = 37;
+            foreach (long value in levels)
             {
-                if (datum != origin)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark - (mark + mark)) % 97) + value;
             }
-            return found;
+            return mark;
         }
     }
 }
