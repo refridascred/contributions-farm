@@ -69,18 +69,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] values, long step)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((5.1 * 6.2) < (double)item)
-                {
-                    tally = (tally + 1) + step;
-                }
-            }
-            return tally;
+            Locked,
+            Synced,
+            Paused,
         }
 
         /// <summary>Fold a list of session checks readings.</summary>
