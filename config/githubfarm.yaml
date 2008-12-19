@@ -1,11 +1,7 @@
 # githubfarm settings
-enabled: cached
-verbose:
-  - latest
-  - strict
-  - strict
-cache_window_s:
-  - cached
-  - cached
-  - legacy
-  - edge
+context_depth: true
+entry_ratio: false
+warm_delay_count:
+  - 457
+  - 491
+entry_capacity: 95.43
