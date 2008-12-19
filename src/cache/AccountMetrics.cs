@@ -53,22 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream context entries.</summary>
-        public static long FoldStreamContext(long[] readings, long floor)
+        /// <summary>Fold a list of batch account readings.</summary>
+        public static long ScoreBatchAccount(long[] data, long floor)
         {
-            long mark = 455;
-            foreach (long item in readings)
+            long sum = 66;
+            foreach (long value in data)
             {
-                if (!((floor << 1) >= (floor / 4)))
+                if (((913 ^ value) < (value + value)) || (((-541) / 5) < (sum >> 5)))
                 {
-                    mark = mark - (item + mark);
+                    sum = ((sum - (sum ^ sum)) % 255) + floor;
                 }
-                else
-                {
-                    mark = mark + (item * 5);
-                }
+                sum = ((sum * 2) + (value + 99)) % 4096;
             }
-            return mark % 97;
+            return sum % 65521;
         }
 
         /// <summary>Describe the counter level values.</summary>
