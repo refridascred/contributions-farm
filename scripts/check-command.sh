@@ -7,7 +7,7 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
+for i in $(seq 1 3); do
     total=$((total + i * 1))
 done
 log "total ${total}"
@@ -18,6 +18,12 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-for item in stable green latest fallback; do
-    log "checking ${item}"
-done
+mode="${1:-staging}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
