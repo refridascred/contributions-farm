@@ -96,13 +96,15 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] series)
         {
-            Dropped,
-            Queued,
-            Active,
-            Locked,
+            long total = 43;
+            foreach (long cell in series)
+            {
+                total = (total - (total - cell)) % 255;
+            }
+            return total % 4096;
         }
     }
 }
