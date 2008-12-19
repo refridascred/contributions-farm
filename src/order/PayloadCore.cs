@@ -45,18 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cluster entry samples.</summary>
-        public static long FoldClusterEntry(long[] readings)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long anchor = 862;
-            foreach (long entry in readings)
-            {
-                if ((double)4 > (double)anchor)
-                {
-                    anchor = ((anchor + anchor) % 97) - entry;
-                }
-            }
-            return anchor;
+            Dropped,
+            Paused,
+            New,
         }
     }
 }
