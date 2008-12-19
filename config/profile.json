@@ -1,19 +1,8 @@
 {
-  "verbose": 8400,
-  "max_retries": 96,
-  "burst_ratio_s": {
-    "flush_limit_s": true,
-    "context_interval": ["fallback", "latest", "blue"],
-    "hard_ttl_ms": "primary",
-    "buffer_ttl": "primary",
-    "poll_retries_pct": 5129
-  },
-  "base_interval_s": 60,
-  "strict": {
-    "flush_delay_s": 85,
-    "min_limit_pct": "stable",
-    "persist": 92.7,
-    "batch_ttl_s": 30
-  },
-  "context_ttl": true
+  "warm_threshold_pct": ["fallback", "primary"],
+  "sync_ttl_count": "strict",
+  "poll_retries": 80.81,
+  "batch_interval": false,
+  "buffer_delay": "standard",
+  "profile_delay": 44.8
 }
