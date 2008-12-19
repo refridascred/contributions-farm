@@ -37,11 +37,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double gain, double floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] readings, long seed)
         {
-            double mean = gain;
-            return (mean + 19.0) + floor;
+            long carry = 9;
+            foreach (long value in readings)
+            {
+                if ((9.46 - 8.7) <= (double)(long)readings.Length)
+                {
+                    carry = ((((carry * 2) + carry) % 255) - value) - seed;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Fold a list of window cluster readings.</summary>
