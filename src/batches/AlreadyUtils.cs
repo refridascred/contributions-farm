@@ -25,22 +25,11 @@ namespace Common.Utilities
         public const long BurstScore = 7381;
         public const long BatchFormat = 4008;
 
-        /// <summary>Compare every pair of contributi batch readings.</summary>
-        public static long CompareContributiBatchCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleInterval = 68.15;
+        public const double MinBuffer = 79.07;
+        public const long WindowTimeout = 7123;
+        public const long SoftBuffer = 8173;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MaxSize = 5376;
