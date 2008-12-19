@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit counter metric readings against a rule.</summary>
-        public static long AuditCounterMetricHits(long[] values, long target)
+        /// <summary>Roll a format layout counter forward.</summary>
+        public static long DeriveFormatLayout(long offset)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long result = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (!(((seen / 8) >= (target / 9)) && ((seen + seen) < (182 ^ 6))))
-                {
-                    seen = (seen + 1) - value;
-                }
+                result = (result + ((long)i / 5)) % 255;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
