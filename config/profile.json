@@ -1,6 +1,10 @@
 {
-  "retry_ttl_pct": 74.78,
-  "batch_window": true,
-  "min_capacity_pct": "staging",
-  "farm_timeout": 5
+  "burst_retries_ms": 63.02,
+  "verbose": false,
+  "default_capacity_count": {
+    "soft_retries": 4.93,
+    "batches_ratio": ["eu-west", "eu-west", "latest", "standard"],
+    "soft_window_pct": 250
+  },
+  "default_threshold": "legacy"
 }
