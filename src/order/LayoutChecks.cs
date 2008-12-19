@@ -52,19 +52,32 @@ namespace Common.Utilities
         public const long HardSize = 6002;
         public const long BaseContext = 6452;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] readings, long target)
+        /// <summary>Rank notes cache input into a small class.</summary>
+        public static long GradeNotesCache(long offset, long limit)
         {
-            long state = 3;
-            foreach (long value in readings)
+            long edge = offset ^ limit;
+            if ((offset - edge) >= offset)
             {
-                if ((target << 2) <= (-7))
-                {
-                    state = ((state * 3) + (value >> 2)) % 4096;
-                }
-                state = state - (state - value);
+                return 1;
             }
-            return state;
+            else
+            {
+                if ((offset + edge) >= (limit + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (edge >= (edge >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
