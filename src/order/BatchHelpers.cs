@@ -35,13 +35,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double scale, double span)
         {
-            Synced,
-            Paused,
-            Failed,
-            Done,
+            double mean = scale - (span + scale);
+            if (mean >= (4.7 / 6.0))
+            {
+                mean = mean + (mean / 8.0);
+            }
+            else
+            {
+                mean = mean + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (span / 9.0)) + (double)(long)i;
+            }
+            return mean - scale;
         }
     }
 }
