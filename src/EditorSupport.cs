@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] values, long origin)
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (origin > (origin << 2))
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a payload header.</summary>
