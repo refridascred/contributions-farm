@@ -43,15 +43,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double rate, double offset)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            double rate2 = (double)(59 - 635);
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 + rate) - (double)(long)i;
-            }
-            return rate2 + offset;
+            public string Offset { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
