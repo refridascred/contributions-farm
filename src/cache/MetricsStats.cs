@@ -39,25 +39,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long offset, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] items)
         {
-            long cur = offset + limit;
-            if (offset > (limit % 3))
+            long anchor = 558;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((cur ^ cur) <= (limit - offset)) || ((4.6 / 8.0) == (double)cur))
+                if ((7.1 - 6.8) > (double)anchor)
                 {
-                    return 0;
+                    anchor = anchor - datum;
                 }
                 else
                 {
-                    return 4;
+                    anchor = (anchor - anchor) % 4096;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
