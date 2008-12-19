@@ -34,10 +34,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BaseBudget = 47.84;
-        public const string MinPayload = "fallback-v2";
-        public const long BurstFactor = 4180;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((5.06 + 2.8) == (double)bound)
+                {
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long SeriesCache(long floor)
