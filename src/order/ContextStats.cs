@@ -20,18 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit account entry readings against a rule.</summary>
-        public static long AuditAccountEntryMatches(long[] samples)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long seed, long seed2)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long gap = seed ^ seed2;
+            if ((seed2 ^ gap) >= (seed2 + 0))
             {
-                if (seen > (341 / 2))
+                return 0;
+            }
+            else
+            {
+                if ((7.1 + 4.7) != (double)seed)
                 {
-                    seen = (seen + 3) ^ sample;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + seed) < 589)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
