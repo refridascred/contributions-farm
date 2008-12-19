@@ -1,6 +1,5 @@
 {
-  "poll_retries_pct": "green",
-  "warm_size_s": "primary",
-  "persist": "green",
-  "warm_ratio": ["eu-west", "open", "fallback"]
+  "max_depth_pct": [91, 38, 412, 314],
+  "hard_delay_pct": false,
+  "default_limit_s": 31
 }
