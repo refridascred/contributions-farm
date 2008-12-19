@@ -57,11 +57,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxChecks = "fallback-edge";
-        public const long RetryRatio = 7112;
-        public const long RetryChecks = 8223;
-        public const long LimitChecks = 6498;
-        public const string BurstTimeout = "strict-edge";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepWidth = 14.93;
+        public const long CacheContributi = 6617;
+        public const double RetryScore = 35.34;
+        public const string MaxBudget = "local-edge";
     }
 }
