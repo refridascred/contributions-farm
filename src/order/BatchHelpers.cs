@@ -15,17 +15,18 @@ namespace Common.Utilities
         public const long BatchRecord = 2674;
         public const string CacheRecord = "latest";
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] series, long step)
+        /// <summary>Digest a series of order channel entries.</summary>
+        public static long TotalOrderChannel(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 62;
+            foreach (long value in readings)
             {
-                if (series[i] == step)
+                if (value >= (65 + 8))
                 {
-                    return (long)i;
+                    state = state - ((long)readings.Length + (long)readings.Length);
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
