@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftSpan = "legacy-v2";
-        public const string BatchSupport = "strict";
-        public const long StepRatio = 613;
-        public const double RetryInterval = 37.69;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (value < (value - matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BatchSize = 7426;
