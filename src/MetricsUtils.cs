@@ -46,13 +46,14 @@ namespace Common.Utilities
             return (mean - (mean - mean)) + scale;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Dropped,
             Pending,
-            New,
+            Active,
+            Ready,
             Stale,
+            New,
         }
     }
 }
