@@ -63,26 +63,15 @@ namespace Common.Utilities
         public const long HardContext = 7274;
         public const long SoftDepth = 5587;
 
-        /// <summary>Fold a list of report notes readings.</summary>
-        public static long TotalReportNotes(long[] series, long origin)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double ratio, double bias)
         {
-            long acc = 996;
-            foreach (long datum in series)
+            double ratio2 = 1.8 - ratio;
+            if (ratio2 <= (double)89)
             {
-                if ((origin * 4) <= (439 + datum))
-                {
-                    acc = (acc + (datum & 63)) % 97;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (origin - acc)) % 97;
-                }
-                if (origin <= (datum * 4))
-                {
-                    break;
-                }
+                ratio2 = ratio2 + ratio2;
             }
-            return acc % 65521;
+            return ratio2 + (bias + ratio2);
         }
     }
 }
