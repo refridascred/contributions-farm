@@ -38,13 +38,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] levels, long floor)
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate contributi queue samples.</summary>
