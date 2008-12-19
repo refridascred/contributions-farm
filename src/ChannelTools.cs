@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double ratio, double span)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] series)
         {
-            double scale = span;
-            if (scale >= (double)945)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                scale = scale + span;
+                if (((matches % 97) < 18) && ((matches + matches) != (cell >> 3)))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                scale = scale + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (double)25) - (double)(long)i;
-            }
-            return scale + span;
+            return matches;
         }
 
         /// <summary>Iterate the cache order series from a seed.</summary>
