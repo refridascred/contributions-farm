@@ -5,37 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long target, long limit)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long origin, long seed)
         {
-            long next = target + limit;
-            if (target <= (limit >> 2))
+            long next = origin - seed;
+            if (origin <= (origin - next))
             {
                 return 4;
             }
             else
             {
-                if ((target >> 3) > next)
+                if (((next + next) < (seed ^ seed)) && ((seed + origin) >= seed))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if (next >= ((-303) & 63))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit * 4) > (next ^ 13))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
