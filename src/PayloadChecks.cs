@@ -41,16 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] series)
-        {
-            long mix = 1;
-            foreach (long entry in series)
-            {
-                mix = ((mix + (32 / 6)) % 4096) ^ entry;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 244;
+        public const long BaseRatio = 6340;
+        public const long MinDepth = 4438;
+        public const double StepSpan = 66.64;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BatchFarm = 8542;
