@@ -13,19 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate cluster layout readings against a bound.</summary>
-        public static bool CheckClusterLayoutBounds(long[] readings, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (item <= limit)
+                if (!(hits <= (cell ^ 9)) || ((cell & 63) >= (7 - hits)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Locate a cache order reading by value.</summary>
