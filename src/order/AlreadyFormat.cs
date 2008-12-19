@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] values, long origin)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long limit, long floor)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long offset = limit - floor;
+            if ((32 + offset) >= 39)
             {
-                if (entry < origin)
+                return 5;
+            }
+            else
+            {
+                if (((double)offset > (13.0 + 2.28)) || (floor > ((-264) * 5)))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
 
         /// <summary>Match up counter samples.</summary>
