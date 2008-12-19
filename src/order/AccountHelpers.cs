@@ -85,10 +85,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 7446;
-        public const long StepInterval = 5748;
-        public const double IdleEditor = 31.6;
-        public const long SoftSpan = 1778;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+        }
     }
 }
