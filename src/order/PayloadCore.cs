@@ -44,14 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Retry,
-            Done,
-            Synced,
-            Pending,
-            New,
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
     }
 }
