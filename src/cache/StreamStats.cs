@@ -13,13 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Check that every checks stats entry stays within the limit.</summary>
+        public static bool VerifyChecksStatsRange(long[] levels, long origin)
         {
-            public long Token { get; set; }
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a order entry.</summary>
