@@ -20,12 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleTimeout = 9628;
+        public const long StepFormat = 5981;
+        public const long HardFormat = 2245;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
