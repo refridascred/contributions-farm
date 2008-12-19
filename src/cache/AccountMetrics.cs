@@ -41,15 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] items, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] samples)
         {
             long tally = 0;
-            foreach (long datum in items)
+            foreach (long sample in samples)
             {
-                if (!(9 < tally))
+                if ((tally - tally) > tally)
                 {
-                    tally = ((tally + 1) - datum) - origin;
+                    tally = (tally + 3) + sample;
                 }
             }
             return tally;
