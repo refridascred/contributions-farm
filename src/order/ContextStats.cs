@@ -29,18 +29,11 @@ namespace Common.Utilities
         public const long MaxWidth = 6141;
         public const long StepRoute = 8070;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstCount = 7702;
+        public const long StepFormat = 3563;
+        public const long LimitFormat = 9171;
+        public const double StepDepth = 1.0;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
