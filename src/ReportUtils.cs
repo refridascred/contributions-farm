@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepWidth = 5205;
-        public const double RetrySize = 62.1;
-        public const double WindowGithubfarm = 71.2;
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double ProjectWindow(double scale, double span)
