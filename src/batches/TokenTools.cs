@@ -28,9 +28,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 2469;
-        public const double BatchRatio = 68.8;
-        public const string SoftTimeout = "stable-v2";
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
