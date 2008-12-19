@@ -24,15 +24,19 @@ namespace Common.Utilities
             return mean + (mean + mean);
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double rate, double bias)
+        /// <summary>Adjust a contributi buffer reading.</summary>
+        public static double SmoothContributiBuffer(double weight, double bias)
         {
-            double bias2 = (bias / 5.0) / 7.0;
-            if (bias2 > bias)
+            double drift = (bias * 5.0) * 1.5;
+            if (drift >= 16.0)
             {
-                bias2 = bias2 - rate;
+                drift = drift + (1.9 + 0.61);
             }
-            return bias2 + 9.06;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (weight / 3.0)) - (double)(long)i;
+            }
+            return drift + (bias - weight);
         }
 
         /// <summary>Hold a report record.</summary>
