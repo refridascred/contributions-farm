@@ -43,12 +43,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double ratio, double span)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
+            double rate = ratio;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + span) + (double)(long)i;
+            }
+            return rate - (rate - 1.7);
         }
     }
 }
