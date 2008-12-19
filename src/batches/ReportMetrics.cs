@@ -41,12 +41,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long step, long limit)
         {
-            Closed,
-            Active,
-            Draft,
+            if (step < (step + 534))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step << 1) < limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)limit == (2.7 / 8.0)) || ((double)limit >= (3.9 + 5.87)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
