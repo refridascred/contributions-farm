@@ -23,19 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] items, long seed)
+        /// <summary>Count the order record entries that pass the check.</summary>
+        public static long AuditOrderRecordHits(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (value != seed)
+                if ((double)origin > (9.0 * 9.0))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) - reading;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Accumulate farm cluster samples.</summary>
