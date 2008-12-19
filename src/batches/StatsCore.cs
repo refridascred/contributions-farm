@@ -13,18 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] samples, long origin)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((origin << 2) < (45 << 2))
+                carry = carry - (carry % 5);
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    matches = (matches + 1) - entry;
+                    carry = ((carry ^ (444 % 8)) % 255) ^ (long)i2;
+                    carry = (carry - ((long)i * 3)) % 101;
                 }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
