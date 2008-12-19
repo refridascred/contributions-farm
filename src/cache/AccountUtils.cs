@@ -39,38 +39,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command profile pair into a bucket.</summary>
-        public static long BucketCommandProfile(long limit, long target)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] data, long step)
         {
-            if (((double)limit > (3.0 + 17.0)) && ((double)target > 1.5))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit - target) < target)
+                if (data[i] <= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(target >= (limit % 12)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit + limit) < limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
