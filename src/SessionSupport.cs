@@ -25,17 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first buffer profile entry that matches the target.</summary>
-        public static long LocateBufferProfileIndex(long[] series, long offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Locked,
+            Active,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
