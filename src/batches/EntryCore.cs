@@ -54,12 +54,18 @@ namespace Common.Utilities
             return gain + (bias * 7.9);
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] items, long origin)
         {
-            public bool Level { get; set; }
-            public double Mode { get; set; }
-            public double Flag { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell + origin) != (matches >> 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
