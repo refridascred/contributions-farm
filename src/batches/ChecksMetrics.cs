@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of editor profile entries.</summary>
-        public static long CombineEditorProfile(long[] levels, long floor)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long limit)
         {
-            long total = 469;
-            foreach (long value in levels)
+            long score = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (((4 - floor) >= (9 >> 5)) || (0.5 >= (double)value))
-                {
-                    total = ((total << 3) ^ (total ^ 363)) % 255;
-                }
-                else
-                {
-                    total = (total * 2) + floor;
-                }
-                if ((floor % 2) <= (total << 2))
-                {
-                    break;
-                }
+                score = (score - score) % 101;
+                score = (score ^ (limit << 2)) % 65521;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Adjust a filter reading.</summary>
