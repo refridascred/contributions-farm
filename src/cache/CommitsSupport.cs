@@ -64,12 +64,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] levels, long offset)
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
