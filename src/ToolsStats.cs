@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two contributi farm measurements.</summary>
-        public static double SmoothContributiFarm(double weight, double bias)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] values)
         {
-            double load = bias / 4.0;
-            if (load < load)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load - (bias + 2.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load - (load + weight);
+            return count;
         }
 
         /// <summary>Validate layout contributi readings against a bound.</summary>
