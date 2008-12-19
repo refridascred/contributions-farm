@@ -1,7 +1,14 @@
 # support settings
-support_delay: 36.58
-window_depth: staging
-githubfarm_interval: edge
-poll_timeout_count: 100
-max_capacity: staging
-enabled: 37.85
+audit:
+  idle_threshold_ms: stable
+  sync_retries_s:
+    - 133
+    - 13
+  idle_ratio_ms: 3157
+  farm_delay: 250
+  already_ttl: 24.01
+  persist: 39.16
+strict: 250
+warm_threshold: 57.82
+cache_size: 100
+base_depth_s: 77.57
