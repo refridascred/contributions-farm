@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] items)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long total = 322;
-            foreach (long sample in items)
-            {
-                total = (total - (total >> 3)) - sample;
-            }
-            if (total < 217)
-            {
-                total = ((total << 3) ^ total) % 65521;
-            }
-            return total;
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a command info.</summary>
