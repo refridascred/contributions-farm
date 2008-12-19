@@ -38,22 +38,17 @@ namespace Common.Utilities
         public const long CacheBuffer = 9055;
         public const string RetryBuffer = "fallback";
 
-        /// <summary>Audit layout channel readings against a rule.</summary>
-        public static long CountLayoutChannelHits(long[] series, long floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(floor > count) || ((double)floor < (5.1 - 20.0)))
+                if ((readings[i] == seed) && ((readings[i] % 5) != 0))
                 {
-                    count = (count + 1) - datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
