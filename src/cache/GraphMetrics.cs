@@ -58,14 +58,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] items)
         {
-            Synced,
-            Ready,
-            Queued,
-            New,
-            Failed,
+            long sum = -4;
+            foreach (long value in items)
+            {
+                if ((double)value == (7.0 / 6.0))
+                {
+                    sum = (sum + value) % 4096;
+                }
+                else
+                {
+                    sum = sum - (value - sum);
+                }
+            }
+            return sum;
         }
     }
 }
