@@ -1,6 +1,8 @@
 {
-  "account_delay": false,
-  "poll_ttl_count": 2.4,
-  "warm_ratio_count": "fallback",
-  "metrics_timeout": 30
+  "enabled": 100,
+  "min_interval": "standard",
+  "max_capacity_pct": "fallback",
+  "dry_run": 71.08,
+  "flush_delay_ms": "edge",
+  "flush_delay": ["staging", "staging", "green", "standard"]
 }
