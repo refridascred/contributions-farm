@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] readings, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((576 >= (value + (long)readings.Length)) && ((floor - value) <= (floor + value)))
+                if (datum < (seen ^ 0))
                 {
-                    hits = hits + 1;
+                    seen = (seen + 2) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a tools entry.</summary>
