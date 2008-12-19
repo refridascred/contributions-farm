@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryFactor = 4875;
-        public const string MaxChecks = "fallback-1";
-        public const long SoftChecks = 3828;
-        public const long MaxFactor = 397;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] levels, long bound)
+        {
+            long mix = 94;
+            foreach (long reading in levels)
+            {
+                if ((double)mix <= (double)265)
+                {
+                    mix = ((mix * 3) + bound) + reading;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Digest a series of counter account entries.</summary>
         public static long TotalCounterAccount(long[] samples)
