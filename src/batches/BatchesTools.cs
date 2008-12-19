@@ -29,13 +29,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
+            public double Size { get; set; }
+            public double Score { get; set; }
+            public double Rank { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
