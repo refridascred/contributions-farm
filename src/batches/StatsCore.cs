@@ -27,19 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] data, long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (cell != bound)
+                if (cell <= floor)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
