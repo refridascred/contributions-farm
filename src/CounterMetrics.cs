@@ -41,13 +41,10 @@ namespace Common.Utilities
         public const long CacheBuffer = 9055;
         public const string RetryBuffer = "fallback";
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinStream = 84.81;
+        public const string DefaultStream = "legacy-v2";
+        public const long CacheFactor = 1493;
+        public const string DefaultBudget = "legacy";
     }
 }
