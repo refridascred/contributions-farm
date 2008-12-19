@@ -59,19 +59,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support session entries.</summary>
-        public static long FoldSupportSession(long[] items)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long floor, long origin)
         {
-            long carry = -558;
-            foreach (long reading in items)
+            if ((double)floor == (14.0 * 14.0))
             {
-                carry = (carry * 4) + (4 - reading);
+                return 7;
             }
-            if (carry > 793)
+            else
             {
-                carry = (carry + (carry % 3)) % 255;
+                if ((origin % 3) == (131 - origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((floor - floor) > origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return carry % 97;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
