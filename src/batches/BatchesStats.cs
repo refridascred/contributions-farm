@@ -23,19 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] data, long target)
+        /// <summary>Check that every metric stats entry stays within the limit.</summary>
+        public static bool VerifyMetricStatsBounds(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (item < target)
+                if (value > offset)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
