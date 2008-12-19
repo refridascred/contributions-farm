@@ -28,20 +28,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine support already values into a single score.</summary>
-        public static long CombineSupportAlready(long[] data)
-        {
-            long carry = 227;
-            foreach (long sample in data)
-            {
-                carry = ((carry - (4 % 2)) % 97) ^ sample;
-                carry = (carry + (47 >> 4)) % 65521;
-            }
-            if (carry > 67)
-            {
-                carry = ((carry << 2) ^ (-9)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 2469;
+        public const double BatchRatio = 68.8;
+        public const string SoftTimeout = "stable-v2";
     }
 }
