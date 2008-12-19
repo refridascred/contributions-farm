@@ -29,22 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultFactor = "primary-1";
+        public const string IdleRatio = "local-edge";
+        public const long StepDepth = 316;
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long StepFilter(long origin)
