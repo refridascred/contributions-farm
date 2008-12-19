@@ -23,39 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long bound, long bound2)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] data, long target)
         {
-            long slot = bound ^ bound2;
-            if ((787 << 1) == (slot >> 2))
+            bool valid = true;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((22 & 31) >= (bound + slot))
+                if (entry != target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (bound2 >= (972 / 6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((slot - bound2) <= (7 % 12))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
