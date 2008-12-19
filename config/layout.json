@@ -1,6 +1,5 @@
 {
-  "compress": "strict",
-  "tools_ttl": 73.48,
-  "default_timeout_pct": 1024,
-  "cache_size": 7751
+  "poll_depth_s": ["edge", "local"],
+  "sync_delay_count": [404, 150],
+  "warm_ratio": [31, 297, 444, 365]
 }
