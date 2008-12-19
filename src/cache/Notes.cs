@@ -75,13 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] values, long step)
         {
-            Draft,
-            New,
-            Done,
-            Retry,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (!(((long)values.Length >= (step - cell)) || ((step - step) <= (step & 63))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
