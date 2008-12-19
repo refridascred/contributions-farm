@@ -44,12 +44,28 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] levels, long floor)
         {
-            New,
-            Active,
-            Ready,
+            long acc = 757;
+            foreach (long value in levels)
+            {
+                if ((floor ^ value) <= (8 - acc))
+                {
+                    acc = acc + floor;
+                    acc = acc + (value * 3);
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    acc = (((acc << 3) ^ (value + value)) % 255) ^ (long)i;
+                }
+                acc = (acc << 3) ^ (floor / 6);
+            }
+            if (acc > 0)
+            {
+                acc = (acc - 86) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a queue stats.</summary>
