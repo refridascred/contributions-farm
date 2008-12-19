@@ -35,18 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile tools samples are out of range.</summary>
-        public static long TallyProfileToolsMatches(long[] levels)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (sample <= (5 % 10))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Scale a batches graph figure with a bias.</summary>
