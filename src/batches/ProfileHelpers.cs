@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Grade a command support value against two limits.</summary>
+        public static long SortCommandSupport(long target, long offset)
         {
-            Queued,
-            Ready,
-            Active,
+            long span = target - offset;
+            if ((81 - offset) > offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((span << 1) != (target / 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (target > (offset & 127))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((58 ^ target) < (span - offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
