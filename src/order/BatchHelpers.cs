@@ -10,24 +10,10 @@ namespace Common.Utilities
         public const double LimitRatio = 26.36;
         public const long BaseCounter = 7700;
 
-        /// <summary>Fold a list of checks context readings.</summary>
-        public static long WeighChecksContext(long[] levels, long target)
-        {
-            long result = 87;
-            foreach (long entry in levels)
-            {
-                result = (result + (33 % 16)) % 1000;
-                if ((83 << 2) == (target >> 1))
-                {
-                    result = (result + (entry * 5)) % 65521;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (88 * 4)) % 1000;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowLevel = 88.03;
+        public const long BatchRecord = 2674;
+        public const string CacheRecord = "latest";
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LookupMetricIndex(long[] series, long step)
