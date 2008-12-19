@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double rate, double bias)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] samples, long floor)
         {
-            double drift = rate;
-            if (drift < drift)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                drift = (drift - rate) + bias;
+                if (reading >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (rate / 5.0)) + (double)(long)i;
-            }
-            return drift - drift;
+            return ready;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
