@@ -38,13 +38,11 @@ namespace Common.Utilities
             return ratio + (bias + ratio);
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Pending,
-            Closed,
-            New,
-            Paused,
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
