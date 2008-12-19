@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of account context entries.</summary>
-        public static long WeighAccountContext(long[] data, long step)
+        /// <summary>Fold a list of commits batch readings.</summary>
+        public static long TotalCommitsBatch(long[] levels)
         {
-            long score = 269;
-            foreach (long sample in data)
+            long result = 4;
+            foreach (long item in levels)
             {
-                if ((step % 97) <= (score >> 5))
+                if (((item - result) >= item) || ((407 - result) > item))
                 {
-                    score = (score ^ 43) - sample;
+                    result = ((result * 3) + (37 + item)) % 65521;
                 }
-                else
+                if ((item & 31) != (result * 2))
                 {
-                    score = ((score << 2) ^ 470) % 101;
+                    break;
                 }
             }
-            if (score > 861)
-            {
-                score = (score + (score - 985)) % 1000;
-            }
-            return score % 97;
+            return result;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
