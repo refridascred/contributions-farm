@@ -1,6 +1,7 @@
 {
-  "min_ratio_count": true,
-  "soft_capacity_pct": "open",
-  "farm_limit": "strict",
-  "layout_delay": ["latest", "stable", "staging"]
+  "notes_interval": "staging",
+  "flush_ratio": [135, 394],
+  "hard_delay_pct": "green",
+  "hard_depth_ms": true,
+  "command_size": "eu-west"
 }
