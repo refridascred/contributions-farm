@@ -28,35 +28,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] data)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] levels, long bound)
         {
-            long mark = -307;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
                 {
-                    mark = (mark - (mark - mark)) + (long)i;
-                }
-                if ((mark + entry) >= (mark * 2))
-                {
-                    mark = mark - (mark + mark);
-                    mark = mark ^ mark;
-                }
-                if ((double)entry == (15.0 / 5.0))
-                {
-                    mark = (mark + (entry & 63)) % 101;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (mark & 127)) % 65521;
+                    return (long)i;
                 }
             }
-            if (mark < (-6))
-            {
-                mark = ((mark * 2) + (784 - mark)) % 65521;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
