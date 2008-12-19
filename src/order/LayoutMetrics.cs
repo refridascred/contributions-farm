@@ -28,11 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftBudget = 5246;
-        public const double CacheRatio = 29.49;
-        public const long WindowNotes = 384;
-        public const long IdleSpan = 4023;
-        public const long MaxNotes = 4438;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double weight, double bias)
+        {
+            double gain = (double)(7 + 1);
+            if (gain < weight)
+            {
+                gain = (gain + weight) - bias;
+            }
+            else
+            {
+                gain = gain - (6.1 + gain);
+            }
+            return gain - (double)9;
+        }
     }
 }
