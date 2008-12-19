@@ -1,14 +1,6 @@
 {
-  "cache_delay": 56,
-  "retry_size": {
-    "metric_ratio": ["blue", "fallback"],
-    "idle_threshold": 8818,
-    "token_limit": "legacy",
-    "verbose": 25.74,
-    "idle_interval": ["blue", "blue", "open", "primary"],
-    "retry_ratio_ms": 95
-  },
-  "dry_run": 57.61,
-  "hard_ratio_ms": "blue",
-  "readonly": 77.79
+  "retry_ttl_pct": 74.78,
+  "batch_window": true,
+  "min_capacity_pct": "staging",
+  "farm_timeout": 5
 }
