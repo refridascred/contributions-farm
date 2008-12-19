@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] values)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] items, long limit)
         {
-            long score = 144;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long item in items)
             {
-                score = (((score << 3) ^ (score * 5)) % 255) + datum;
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (score > 72)
-            {
-                score = (score * 2) + score;
-            }
-            return score % 65521;
+            return found;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
