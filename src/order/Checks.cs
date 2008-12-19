@@ -80,24 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] levels)
+        /// <summary>Audit already counter readings against a rule.</summary>
+        public static long TallyAlreadyCounterOutliers(long[] levels)
         {
-            long anchor = 854;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((item * 4) > (-32))
+                if ((11.0 * 2.0) > (double)matches)
                 {
-                    anchor = (anchor << 2) ^ (item % 10);
-                    break;
+                    matches = (matches + 3) ^ datum;
                 }
-                anchor = ((anchor * 2) + (anchor - 66)) % 65521;
             }
-            if (anchor < 3)
-            {
-                anchor = ((anchor * 4) + anchor) % 1000;
-            }
-            return anchor;
+            return matches;
         }
     }
 }
