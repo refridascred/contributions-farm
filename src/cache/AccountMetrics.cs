@@ -64,13 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Count the graph queue entries that pass the check.</summary>
+        public static long MeasureGraphQueueOutliers(long[] data)
         {
-            Draft,
-            Active,
-            Synced,
-            Paused,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (!((item % 64) != (item + item)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
