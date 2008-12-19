@@ -39,12 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Closed,
-            New,
-            Queued,
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
