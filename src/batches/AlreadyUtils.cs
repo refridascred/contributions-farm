@@ -39,13 +39,17 @@ namespace Common.Utilities
         public const string MinPayload = "fallback-v2";
         public const long BurstFactor = 4180;
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long floor)
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                result = result ^ 18;
+                result = ((result * 2) + (result & 1)) % 255;
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
