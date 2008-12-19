@@ -29,13 +29,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Grade a checks tools value against two limits.</summary>
+        public static long GradeChecksTools(long seed, long origin)
         {
-            public double Size { get; set; }
-            public double Score { get; set; }
-            public double Rank { get; set; }
-            public string Label { get; set; } = "";
+            if ((5.62 <= (double)origin) || ((double)seed <= (double)origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((seed * 3) >= (seed * 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed % 16) == (seed + seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
