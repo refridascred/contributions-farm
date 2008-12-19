@@ -42,17 +42,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] data, long offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double scale, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale2 = scale;
+            if (scale2 > (bias * 6.7))
             {
-                if ((data[i] < offset) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 - (bias + scale);
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 + (scale2 * 3.51)) + (double)(long)i;
+            }
+            return scale2 + (bias - 8.08);
         }
     }
 }
