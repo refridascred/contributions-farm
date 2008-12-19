@@ -1,17 +1,6 @@
 {
-  "default_timeout_s": 33,
-  "warm_ratio_ms": 43.49,
-  "farm_depth": false,
-  "cache_interval_pct": false,
-  "default_ttl_count": {
-    "poll_depth_s": {
-      "hard_depth_pct": "fallback",
-      "commits_interval": 18.46,
-      "counter_timeout": ["stable", "open", "eu-west", "stable"],
-      "compress": ["local", "eu-west", "open"]
-    },
-    "persist": [121, 395, 313],
-    "compress": 500
-  },
-  "base_window_count": 60
+  "cache_retries": 88,
+  "batch_interval": true,
+  "poll_ratio": 35.46,
+  "record_size": 83.33
 }
