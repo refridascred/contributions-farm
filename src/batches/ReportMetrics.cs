@@ -23,12 +23,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Dropped,
-            Stale,
-            Closed,
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
