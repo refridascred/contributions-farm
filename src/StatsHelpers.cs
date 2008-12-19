@@ -31,12 +31,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleDepth = 42.59;
-        public const long LimitContext = 575;
-        public const long BurstWidth = 9847;
-        public const long RetrySpan = 7252;
-        public const string DefaultContext = "cached";
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public double Offset { get; set; }
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double MinRatio = 43.61;
