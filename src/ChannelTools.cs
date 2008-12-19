@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] readings, long offset)
+        /// <summary>Roll a tools payload counter forward.</summary>
+        public static long DeriveToolsPayload(long floor)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading > offset)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = (carry << 2) ^ (floor >> 3);
+                carry = (carry + (floor << 1)) % 255;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Hold a buffer header.</summary>
