@@ -23,13 +23,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double gain, double floor)
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
+            double load = gain * 0.79;
+            return (load - (gain / 6.0)) + floor;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
