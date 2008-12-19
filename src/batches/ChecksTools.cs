@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long limit)
         {
-            Closed,
-            Paused,
-            New,
-            Draft,
-            Dropped,
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = (anchor * 5) + (anchor ^ limit);
+                anchor = ((anchor * 3) + (anchor & 63)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a commits cluster sample.</summary>
