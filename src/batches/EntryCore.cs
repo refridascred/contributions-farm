@@ -47,15 +47,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] data, long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] items, long seed)
         {
-            long result = 358;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long item in items)
             {
-                result = (result ^ (entry >> 5)) + limit;
+                if (item < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result % 65521;
+            return found;
         }
     }
 }
