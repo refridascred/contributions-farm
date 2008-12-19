@@ -28,18 +28,11 @@ namespace Common.Utilities
         public const long MinInterval = 6777;
         public const string BurstInterval = "staging-edge";
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] series)
-        {
-            long anchor = 82;
-            foreach (long entry in series)
-            {
-                if ((anchor / 7) >= (entry ^ anchor))
-                {
-                    anchor = ((anchor * 5) + (-413)) % 101;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepDepth = 31.64;
+        public const string IdleCount = "strict-v2";
+        public const long LimitSession = 9612;
+        public const long BatchSession = 6543;
+        public const double IdleWidth = 32.99;
     }
 }
