@@ -1,6 +1,19 @@
 # support settings
-max_threshold_count: 95.84
-notes_ratio: true
-warm_delay: 500
-contributi_capacity: 91
-sync_ttl: 36.66
+stream_ttl: standard
+graph_window:
+  compress: 8982
+  persist: edge
+  verbose:
+    min_retries: 33.16
+    burst_capacity_s: 60
+    strict: false
+    base_depth_pct: 1024
+    max_interval_count: 12.68
+    payload_delay:
+      - 19
+      - 388
+      - 195
+  poll_timeout_pct: 30.33
+  schema_size: open
+  burst_size: 92
+max_depth: open
