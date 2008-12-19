@@ -27,13 +27,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
+            public double Limit { get; set; }
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
             public bool Label { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
