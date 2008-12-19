@@ -1,12 +1,12 @@
 {
-  "cluster_size": 45.74,
-  "min_limit_s": {
-    "batches_size": [127, 193, 493, 61],
-    "flush_threshold_s": 54,
-    "flush_threshold": false
+  "persist": "local",
+  "sync_ratio_pct": {
+    "audit": true,
+    "counter_threshold": 98,
+    "batch_depth": "stable"
   },
-  "soft_size": "stable",
-  "sync_timeout": ["standard", "standard"],
-  "order_depth": [348, 379, 322, 342],
-  "warm_threshold_count": [217, 333, 3, 110]
+  "flush_timeout_count": "green",
+  "payload_limit": true,
+  "soft_threshold_pct": false,
+  "default_timeout": 500
 }
