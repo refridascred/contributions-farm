@@ -22,14 +22,14 @@ namespace Common.Utilities
         public const string StepProfile = "cached-edge";
         public const double IdleBudget = 17.26;
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Paused,
-            Draft,
-            Done,
+            Retry,
+            Queued,
+            Dropped,
             Stale,
-            Idle,
+            New,
         }
 
         /// <summary>Describe the counter status values.</summary>
