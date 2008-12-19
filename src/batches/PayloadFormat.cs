@@ -23,11 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxSize = 1922;
-        public const long WindowTools = 4639;
-        public const string DefaultTools = "fallback-1";
-        public const long CacheTools = 1310;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinTimeout = 6935;
+        public const long LimitCount = 2953;
+        public const double BurstLevel = 65.07;
+        public const long BurstWidth = 8428;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long SeriesReport(long seed)
