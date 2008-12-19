@@ -38,13 +38,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public string Offset { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-            public long Score { get; set; }
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
