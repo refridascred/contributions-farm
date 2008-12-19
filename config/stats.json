@@ -1,9 +1,7 @@
 {
-  "layout_ratio": {
-    "soft_ratio": [232, 53, 368, 437],
-    "soft_ratio_ms": 1,
-    "retry_retries": 6226
-  },
-  "min_delay_s": 54,
-  "base_depth": ["cached", "strict"]
+  "verbose": 4786,
+  "readonly": 88.04,
+  "cluster_limit": false,
+  "counter_capacity": true,
+  "burst_limit_ms": 17.1
 }
