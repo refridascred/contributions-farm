@@ -30,10 +30,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryBudget = 9776;
-        public const double IdleContributi = 70.54;
-        public const long BaseContributi = 5819;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                if (371 > (anchor & 7))
+                {
+                    anchor = ((anchor * 5) + (floor + anchor)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor + (floor + anchor)) % 1000;
+                    anchor = anchor - (floor << 3);
+                }
+                anchor = (anchor + (anchor >> 2)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MaxSize = 5376;
