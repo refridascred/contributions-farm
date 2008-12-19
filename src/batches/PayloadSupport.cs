@@ -27,24 +27,16 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long origin, long bound)
+        /// <summary>Combine githubfarm queue values into a single score.</summary>
+        public static long CombineGithubfarmQueue(long[] series, long bound)
         {
-            if ((50 - origin) == (27 - origin))
+            long sum = 388;
+            foreach (long reading in series)
             {
-                return 5;
+                sum = ((sum - (reading + sum)) % 97) + bound;
+                sum = (sum + reading) % 65521;
             }
-            else
-            {
-                if ((origin - origin) < origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return sum;
         }
     }
 }
