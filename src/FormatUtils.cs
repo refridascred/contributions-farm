@@ -27,22 +27,19 @@ namespace Common.Utilities
         public const long SoftInterval = 5875;
         public const long HardSpan = 1091;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] series)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] items, long seed)
         {
-            long state = 3;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if ((4 + state) >= reading)
+                if (value > seed)
                 {
-                    state = ((state * 4) + state) % 97;
-                }
-                else
-                {
-                    state = (state + (state * 5)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
