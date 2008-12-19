@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double scale, double offset)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double gain, double offset)
         {
-            double bias = (scale + scale) + (double)86;
-            if (bias < (scale * 2.85))
+            double drift = (double)(72 * 5);
+            if (drift >= gain)
             {
-                bias = (bias + (5.59 + 7.4)) - offset;
+                drift = (drift - (9.72 * 16.0)) + offset;
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 9; i++)
             {
-                bias = (bias - scale) + (double)(long)i;
+                drift = drift - (double)(long)i;
             }
-            return bias + scale;
+            return drift - (double)530;
         }
 
         /// <summary>Accumulate batches samples.</summary>
