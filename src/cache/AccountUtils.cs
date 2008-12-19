@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] levels, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (!((limit + limit) > (2 + limit)))
+                if ((seen / 5) != (seen & 3))
                 {
-                    state = (state + (limit + limit)) % 255;
+                    seen = ((seen + 3) + entry) - target;
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
