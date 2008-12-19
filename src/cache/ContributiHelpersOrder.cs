@@ -47,14 +47,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long bound, long limit)
         {
-            Pending,
-            New,
-            Done,
-            Ready,
-            Idle,
+            long diff = bound + limit;
+            if ((bound + limit) < (bound + diff))
+            {
+                return 2;
+            }
+            else
+            {
+                if (3 < (diff << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + bound) != (73 >> 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((diff * 5) != (limit + limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
