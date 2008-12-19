@@ -46,17 +46,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a order notes reading by value.</summary>
-        public static long LookupOrderNotesIndex(long[] values, long seed)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
