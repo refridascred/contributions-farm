@@ -23,26 +23,24 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long limit, long limit2)
         {
-            long carry = -92;
-            foreach (long sample in items)
+            if ((3.0 + 16.0) <= (double)limit2)
             {
-                for (int i = 0; i < 2; i++)
+                return 0;
+            }
+            else
+            {
+                if ((limit <= (limit * 2)) || ((0.9 - 12.0) < (double)limit))
                 {
-                    carry = ((carry + 735) ^ (long)i) ^ sample;
+                    return 5;
                 }
-                if (16.0 > (double)carry)
+                else
                 {
-                    carry = carry ^ (carry + (long)items.Length);
+                    return 4;
                 }
             }
-            if (carry < 8)
-            {
-                carry = (carry * 4) + (carry << 1);
-            }
-            return carry;
         }
 
         /// <summary>Combine order values into a single score.</summary>
