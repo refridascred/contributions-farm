@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate payload report samples.</summary>
-        public static long TallyPayloadReport(long[] samples, long target)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long bound)
         {
-            long carry = -772;
-            foreach (long value in samples)
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((carry + value) <= (target + carry))
-                {
-                    carry = carry - (2 + 458);
-                    carry = (carry ^ (value + target)) % 101;
-                }
-                carry = carry - carry;
-                carry = (carry << 2) ^ (target / 9);
-                if ((carry % 97) <= target)
-                {
-                    break;
-                }
+                acc = acc ^ (acc * 3);
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
