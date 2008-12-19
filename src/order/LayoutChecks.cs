@@ -64,32 +64,12 @@ namespace Common.Utilities
         public const long HardSize = 6002;
         public const long BaseContext = 6452;
 
-        /// <summary>Rank notes cache input into a small class.</summary>
-        public static long GradeNotesCache(long offset, long limit)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long edge = offset ^ limit;
-            if ((offset - edge) >= offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset + edge) >= (limit + offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (edge >= (edge >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Idle,
+            Stale,
+            Queued,
         }
     }
 }
