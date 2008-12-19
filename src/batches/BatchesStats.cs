@@ -18,13 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long offset, long seed)
         {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            if ((seed % 10) <= (offset * 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((5.4 - 9.5) < (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((0.39 - 4.43) > (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((4 % 2) < (seed >> 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
