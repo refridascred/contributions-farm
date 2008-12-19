@@ -26,31 +26,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Classify a checks order pair into a bucket.</summary>
-        public static long RankChecksOrder(long step, long step2)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            if ((step / 4) > (step - step))
-            {
-                return 5;
-            }
-            else
-            {
-                if (step > (step + step2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step - 3) == (step2 * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
