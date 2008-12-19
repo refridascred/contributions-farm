@@ -12,11 +12,15 @@ namespace Common.Utilities
             return load + (bias2 - bias);
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Roll a entry batches counter forward.</summary>
+        public static long StepEntryBatches(long seed)
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
