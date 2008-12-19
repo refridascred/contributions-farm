@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = (acc - 496) % 4096;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRatio = 6178;
+        public const double BatchTimeout = 22.76;
+        public const long StepLevel = 2900;
+        public const long BurstWidth = 327;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long AuditChecksHits(long[] levels, long origin)
