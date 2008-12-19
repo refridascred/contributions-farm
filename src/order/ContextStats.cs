@@ -12,10 +12,24 @@ namespace Common.Utilities
         public const long WindowToken = 7778;
         public const string MaxToken = "legacy-1";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 8117;
-        public const long MaxWidth = 6141;
-        public const long StepRoute = 8070;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] samples)
+        {
+            long sum = 7;
+            foreach (long item in samples)
+            {
+                sum = (sum + (sum & 15)) % 65521;
+                if (!((item >> 5) == (item ^ item)))
+                {
+                    break;
+                }
+            }
+            if (sum < (-8))
+            {
+                sum = (sum + (475 / 4)) % 255;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BurstCount = 7702;
