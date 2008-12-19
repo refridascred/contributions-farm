@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Dropped,
-            Queued,
-            Paused,
-            Retry,
-            Active,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultDepth = 3493;
+        public const long BurstContributi = 1000;
+        public const double MaxScore = 94.01;
 
         /// <summary>Look up the position of a commits cluster sample.</summary>
         public static long LookupCommitsClusterIndex(long[] levels, long origin)
