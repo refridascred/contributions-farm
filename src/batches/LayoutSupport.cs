@@ -47,20 +47,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double rate, double offset)
-        {
-            double mean = 11.0;
-            if (mean > (double)82)
-            {
-                mean = (mean + rate) + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (mean + rate)) - (double)(long)i;
-            }
-            return mean - rate;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultScore = 5022;
+        public const long MaxTimeout = 7675;
+        public const double IdleCount = 81.65;
 
         /// <summary>Grade a batches cache value against two limits.</summary>
         public static long GradeBatchesCache(long limit, long step)
