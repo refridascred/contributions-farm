@@ -52,14 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            New,
             Dropped,
-            Failed,
-            Synced,
-            Locked,
+            Pending,
+            New,
+            Stale,
         }
     }
 }
