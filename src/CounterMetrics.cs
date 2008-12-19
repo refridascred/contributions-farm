@@ -22,31 +22,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a batch buffer pair into a bucket.</summary>
-        public static long ClassifyBatchBuffer(long step, long step2)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            if ((step >> 4) < (step & 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step > (91 + 90)) && (867 > (step2 + step)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.0 <= (double)step2) || ((double)step2 <= 4.41))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
