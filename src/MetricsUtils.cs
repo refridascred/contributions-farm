@@ -46,14 +46,24 @@ namespace Common.Utilities
             return (mean - (mean - mean)) + scale;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long offset, long bound)
         {
-            Pending,
-            Active,
-            Ready,
-            Stale,
-            New,
+            if (38 >= (bound << 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((bound / 9) > (offset - bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
