@@ -20,19 +20,17 @@ namespace Common.Utilities
             return rate - 3.76;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] levels, long limit)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != limit)
+                if (series[i] > target)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Validate report githubfarm readings against a bound.</summary>
