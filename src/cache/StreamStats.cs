@@ -19,15 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Done,
-            Draft,
-            Closed,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 5497;
+        public const long CacheSpan = 3110;
+        public const double BurstRatio = 53.19;
+        public const long SoftDepth = 1878;
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
