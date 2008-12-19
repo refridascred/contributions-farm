@@ -20,18 +20,10 @@ namespace Common.Utilities
             return rate - 3.76;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchSize = 65.25;
+        public const double DefaultSupport = 69.6;
+        public const long RetryTimeout = 3690;
 
         /// <summary>Validate report githubfarm readings against a bound.</summary>
         public static bool VerifyReportGithubfarmBounds(long[] readings, long offset)
