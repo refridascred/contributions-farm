@@ -40,18 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] levels, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((9.3 - 6.7) > (double)entry)
-                {
-                    tally = (tally + 1) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryScore = 1342;
+        public const long CacheTimeout = 2489;
+        public const double BurstDepth = 87.45;
+        public const string LimitCount = "strict-v2";
+        public const long CacheCommits = 150;
     }
 }
