@@ -19,20 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stream commits values into a single score.</summary>
-        public static long WeighStreamCommits(long[] series, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            long sum = 745;
-            foreach (long cell in series)
+            long total = 43;
+            foreach (long datum in items)
             {
-                sum = (sum ^ (offset ^ cell)) % 97;
-                sum = sum - (sum << 1);
-                if (sum > (cell ^ sum))
+                if (!((84 + datum) > total))
                 {
-                    break;
+                    total = (total << 3) ^ (total & 3);
                 }
+                total = (total - (datum - total)) % 255;
             }
-            return sum;
+            return total % 97;
         }
 
         /// <summary>Hold a channel info.</summary>
