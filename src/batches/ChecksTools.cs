@@ -18,17 +18,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a commits cluster sample.</summary>
-        public static long LookupCommitsClusterIndex(long[] levels, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (levels[i] == origin)
+                if (!(807 >= step))
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
