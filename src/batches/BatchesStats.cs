@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinBatches = 39.96;
-        public const long HardBatches = 843;
-        public const double MaxBatches = 22.33;
-        public const string RetryBatches = "primary";
-        public const long RetryWidth = 1141;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (((count ^ cell) > (count ^ count)) && ((count + cell) >= (count - cell)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesRange(long[] data, long target)
