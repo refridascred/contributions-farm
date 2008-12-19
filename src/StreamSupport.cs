@@ -20,18 +20,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] samples)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long target, long floor)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long diff = target + floor;
+            if ((double)floor <= (double)diff)
             {
-                if (((-6) / 3) >= (item ^ item))
+                return 7;
+            }
+            else
+            {
+                if ((floor - diff) > (floor + diff))
                 {
-                    count = count + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((27 - (-9)) > diff)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the route class values.</summary>
