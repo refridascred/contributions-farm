@@ -46,11 +46,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Accumulate channel metric samples.</summary>
+        public static long DigestChannelMetric(long[] readings)
         {
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
+            long carry = 26;
+            foreach (long value in readings)
+            {
+                if (value > (carry + carry))
+                {
+                    carry = carry - (7 >> 4);
+                }
+                else
+                {
+                    carry = ((carry * 3) + value) % 65521;
+                }
+                if ((carry ^ carry) < (carry - value))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
