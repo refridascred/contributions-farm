@@ -16,11 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double gain, double offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            double load = (double)(550 - 293);
-            return ((load + load) + gain) + offset;
+            Dropped,
+            Stale,
+            Locked,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
