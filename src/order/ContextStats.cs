@@ -44,12 +44,19 @@ namespace Common.Utilities
         public const long LimitFormat = 9171;
         public const double StepDepth = 1.0;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Check that every channel profile entry stays within the limit.</summary>
+        public static bool GuardChannelProfileBounds(long[] values, long floor)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
