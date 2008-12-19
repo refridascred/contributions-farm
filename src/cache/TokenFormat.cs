@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftSize = "legacy-v2";
-        public const long BatchWidth = 7885;
-        public const long BurstRoute = 9449;
-        public const string CacheLevel = "cached-1";
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long RetryMetric = 4769;
