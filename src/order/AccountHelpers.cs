@@ -47,17 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] values, long origin)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Dropped,
+            Locked,
+            Queued,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
