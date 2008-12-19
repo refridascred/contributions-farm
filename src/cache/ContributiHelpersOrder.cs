@@ -5,25 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long target, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            if ((double)floor < (8.7 + 8.0))
             {
-                if ((6.0 + 8.9) != (double)anchor)
-                {
-                    anchor = ((anchor * 4) + (511 * 4)) % 97;
-                    anchor = (anchor + floor) % 1000;
-                }
-                if ((anchor * 3) < anchor)
-                {
-                    anchor = anchor ^ (anchor + anchor);
-                }
-                anchor = (anchor - (anchor - (long)i)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if (!((floor - target) > (floor + 87)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((12.0 + 1.2) == (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph level values.</summary>
