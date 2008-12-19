@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long offset)
+        /// <summary>Accumulate batches stream samples.</summary>
+        public static long TotalBatchesStream(long[] readings)
         {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
+            long state = 492;
+            foreach (long datum in readings)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                state = (state << 3) ^ (50 ^ state);
+                state = (state * 2) + (datum << 1);
+                if (((state % 5) == (state + datum)) && ((state >> 5) < (datum + state)))
+                {
+                    state = ((state << 3) ^ state) % 255;
+                }
+                if (datum >= (datum + datum))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (state > 4)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
