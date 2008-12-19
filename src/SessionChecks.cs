@@ -34,22 +34,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] series, long target)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((matches & 3) >= (matches - entry))
-                {
-                    matches = (matches + 2) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
