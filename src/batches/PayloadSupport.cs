@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate commits checks readings against a bound.</summary>
-        public static bool GuardCommitsChecksRange(long[] series, long offset)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Fold a list of report channel readings.</summary>
