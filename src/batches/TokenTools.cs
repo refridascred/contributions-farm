@@ -33,19 +33,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double scale, double floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] data, long limit)
         {
-            double gain = scale;
-            if (gain <= 3.6)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain + 5.67;
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - floor) - (double)(long)i;
-            }
-            return gain + (scale - floor);
+            return -1;
         }
     }
 }
