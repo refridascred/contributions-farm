@@ -34,13 +34,21 @@ namespace Common.Utilities
         public const long CacheRatio = 6747;
         public const long IdleSupport = 2618;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Compare every pair of stats window readings.</summary>
+        public static long CompareStatsWindowCount(long[] values)
         {
-            public bool Score { get; set; }
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public bool Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
