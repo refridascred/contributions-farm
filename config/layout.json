@@ -1,6 +1,7 @@
 {
-  "warm_limit_ms": true,
-  "flush_threshold_pct": true,
-  "session_ratio": 3,
-  "warm_capacity_count": false
+  "warm_threshold_count": 66.08,
+  "route_size": 20,
+  "flush_interval_ms": 15.32,
+  "commits_timeout": 20.43,
+  "channel_capacity": 1024
 }
