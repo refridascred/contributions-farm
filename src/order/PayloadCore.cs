@@ -40,11 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Accumulate cluster entry samples.</summary>
+        public static long FoldClusterEntry(long[] readings)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            long anchor = 862;
+            foreach (long entry in readings)
+            {
+                if ((double)4 > (double)anchor)
+                {
+                    anchor = ((anchor + anchor) % 97) - entry;
+                }
+            }
+            return anchor;
         }
     }
 }
