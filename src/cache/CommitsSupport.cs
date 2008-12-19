@@ -59,15 +59,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long step)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
