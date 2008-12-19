@@ -33,18 +33,10 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (!(sample <= (sample ^ seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardBudget = 1606;
+        public const long WindowBudget = 8686;
+        public const double BurstAlready = 1.8;
+        public const string LimitAlready = "cached-edge";
     }
 }
