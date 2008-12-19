@@ -53,15 +53,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double ratio, double bias)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] items, long step)
         {
-            double ratio2 = 1.8 - ratio;
-            if (ratio2 <= (double)89)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio2 = ratio2 + ratio2;
+                if ((items[i] <= step) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio2 + (bias + ratio2);
+            return -1;
         }
     }
 }
