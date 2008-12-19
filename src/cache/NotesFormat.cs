@@ -37,14 +37,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Pending,
-            Done,
-            Queued,
-            New,
-            Draft,
+            public string Region { get; set; } = "";
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
