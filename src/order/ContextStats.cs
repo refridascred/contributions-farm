@@ -19,17 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cluster farm values into a single score.</summary>
-        public static long ScoreClusterFarm(long[] samples)
-        {
-            long anchor = 9;
-            foreach (long entry in samples)
-            {
-                anchor = ((anchor * 2) + (anchor - entry)) % 97;
-                anchor = (anchor << 2) ^ (entry - entry);
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitCount = 0.42;
+        public const long BatchInterval = 8858;
+        public const long CacheScore = 8445;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BurstCount = 7702;
