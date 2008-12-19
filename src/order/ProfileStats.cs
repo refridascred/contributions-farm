@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double scale, double offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] levels, long limit)
         {
-            double ratio = offset;
-            for (int i = 0; i < 8; i++)
+            long mark = 34;
+            foreach (long entry in levels)
             {
-                ratio = ((ratio + 2.41) + (double)(long)i) + scale;
+                if (((-43) + entry) <= ((long)levels.Length * 5))
+                {
+                    mark = (mark ^ ((long)levels.Length % 60)) - limit;
+                }
             }
-            return ratio + offset;
+            return mark % 65521;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
