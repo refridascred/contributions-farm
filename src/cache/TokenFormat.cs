@@ -15,13 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Stale,
-            Closed,
-            Idle,
-            Dropped,
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
