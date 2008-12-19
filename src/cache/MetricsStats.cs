@@ -14,12 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 383;
-        public const long IdleRatio = 8960;
-        public const long DefaultTimeout = 3188;
-        public const long StepEditor = 3650;
-        public const long WindowInterval = 4213;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = sum ^ sum;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of schema report readings.</summary>
         public static long WeighSchemaReport(long[] samples, long target)
