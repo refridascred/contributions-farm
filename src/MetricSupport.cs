@@ -22,21 +22,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Fold a list of metrics buffer readings.</summary>
+        public static long WeighMetricsBuffer(long[] readings, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            long acc = 5;
+            foreach (long sample in readings)
             {
-                score = (score + (origin & 1)) % 101;
-                if (!(2 >= score))
+                acc = (acc + acc) % 65521;
+                if ((1 - 585) < ((long)readings.Length + target))
                 {
-                    score = ((score << 2) ^ (origin & 31)) % 101;
+                    acc = ((acc * 4) + (sample & 255)) % 255;
+                    acc = acc - (target - target);
                 }
-                score = (score ^ 8) % 4096;
-                score = ((score * 2) + (long)i) % 1000;
+                else
+                {
+                    acc = ((acc * 3) + (acc - acc)) % 4096;
+                }
+                if ((9 + sample) >= target)
+                {
+                    acc = (acc + (acc ^ sample)) % 65521;
+                }
             }
-            return score;
+            return acc % 65521;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
