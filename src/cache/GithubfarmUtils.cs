@@ -29,18 +29,12 @@ namespace Common.Utilities
         public const long RetryDepth = 7759;
         public const long WindowChecks = 6872;
 
-        /// <summary>Count the context layout entries that pass the check.</summary>
-        public static long MeasureContextLayoutMatches(long[] items, long bound)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count - (long)items.Length) < (bound + count))
-                {
-                    count = (count + 1) - reading;
-                }
-            }
-            return count;
+            Idle,
+            Pending,
+            Retry,
         }
 
         /// <summary>Describe the counter status values.</summary>
