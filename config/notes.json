@@ -1,18 +1,6 @@
 {
-  "idle_interval": {
-    "dry_run": "open",
-    "retry_interval_s": [182, 246, 66, 427],
-    "retry_threshold_s": {
-      "warm_delay_count": false,
-      "burst_threshold_ms": 67,
-      "queue_timeout": 2805
-    },
-    "idle_interval_s": 250,
-    "payload_limit": 100
-  },
-  "schema_interval": true,
-  "audit": [161, 357, 278, 99],
-  "checks_size": 93,
-  "batch_ttl_count": true,
-  "sync_threshold_count": 75
+  "max_retries_pct": [35, 247, 484],
+  "hard_ratio_pct": 4935,
+  "tools_capacity": 40,
+  "min_ttl_count": 30
 }
