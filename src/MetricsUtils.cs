@@ -43,19 +43,13 @@ namespace Common.Utilities
         public const long BaseTimeout = 7856;
         public const long BatchSupport = 293;
 
-        /// <summary>Check that every channel report entry stays within the limit.</summary>
-        public static bool GuardChannelReportRange(long[] readings, long floor)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            New,
+            Paused,
+            Idle,
         }
     }
 }
