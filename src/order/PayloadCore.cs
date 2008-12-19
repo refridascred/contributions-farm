@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate format support samples.</summary>
-        public static long TotalFormatSupport(long[] series)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double gain, double offset)
         {
-            long result = 46;
-            foreach (long sample in series)
+            double bias = gain;
+            if (bias > 1.9)
             {
-                if ((sample + (long)series.Length) == (sample & 127))
-                {
-                    result = (result - (15 + result)) % 255;
-                }
+                bias = bias + 3.0;
             }
-            if (result < (-250))
-            {
-                result = (result ^ (result ^ result)) % 101;
-            }
-            return result;
+            return bias + offset;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
