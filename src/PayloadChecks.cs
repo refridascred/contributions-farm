@@ -40,17 +40,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] items, long seed)
+        /// <summary>Audit checks filter readings against a rule.</summary>
+        public static long CountChecksFilterGaps(long[] items, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((items[i] < seed) && ((items[i] % 2) == 0))
+                if ((cell <= (count - count)) || ((double)bound > 5.9))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
