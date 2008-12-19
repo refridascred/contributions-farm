@@ -23,10 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheContext = 69.79;
-        public const string BatchContext = "stable-v2";
-        public const long IdleDepth = 8455;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheSize = "legacy";
+        public const long MinNotes = 7580;
+        public const long HardInterval = 4064;
+        public const long SoftSpan = 9676;
+        public const long IdleNotes = 7632;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BaseFactor = 7212;
