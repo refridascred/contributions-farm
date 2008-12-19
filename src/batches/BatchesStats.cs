@@ -52,19 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double bias, double span)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] items, long bound)
         {
-            double ratio = (double)(509 << 1);
-            if (ratio > 3.9)
+            bool found = true;
+            foreach (long item in items)
             {
-                ratio = (ratio + 5.2) + bias;
+                if (item > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (span * 2.23);
-            }
-            return ratio - (3.19 + ratio);
+            return found;
         }
 
         /// <summary>Accumulate contributi queue samples.</summary>
