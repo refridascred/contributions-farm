@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double bias, double span)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] series, long floor)
         {
-            double scale = (double)(2 - 95);
-            if (scale < (double)44)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale - (20.0 / 4.0)) - span;
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + bias;
+            return -1;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
