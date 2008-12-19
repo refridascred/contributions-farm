@@ -37,18 +37,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] items)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long step, long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long edge = step ^ target;
+            if ((185 >> 3) < (edge - edge))
             {
-                if ((7.1 / 9.0) != (double)(long)items.Length)
+                return 2;
+            }
+            else
+            {
+                if (4 >= (edge / 8))
                 {
-                    tally = (tally + 3) + reading;
+                    return 1;
+                }
+                else
+                {
+                    if (!((edge << 2) > edge))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)target != (2.4 * 0.2)) && ((3.0 - 3.0) <= (double)step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
