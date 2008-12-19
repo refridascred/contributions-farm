@@ -49,22 +49,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] items, long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] items, long limit)
         {
-            long acc = 689;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if ((step << 3) == (long)items.Length)
+                if (item < limit)
                 {
-                    acc = (((acc * 3) + (step << 1)) % 4096) - value;
-                }
-                else
-                {
-                    acc = acc - (acc % 8);
+                    valid = false;
+                    break;
                 }
             }
-            return acc;
+            return valid;
         }
     }
 }
