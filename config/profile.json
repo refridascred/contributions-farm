@@ -1,16 +1,6 @@
 {
-  "queue_limit": {
-    "hard_ttl_pct": "primary",
-    "poll_delay": {
-      "route_interval": 1024,
-      "soft_limit_s": 74,
-      "cluster_delay": false
-    },
-    "cache_retries": "edge",
-    "soft_timeout_pct": false
-  },
-  "layout_size": 100,
-  "cache_ttl": 60,
-  "min_capacity_ms": 94.67,
-  "report_limit": 62.71
+  "min_ratio_count": true,
+  "soft_capacity_pct": "open",
+  "farm_limit": "strict",
+  "layout_delay": ["latest", "stable", "staging"]
 }
