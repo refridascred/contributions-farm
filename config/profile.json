@@ -1,5 +1,5 @@
 {
-  "cluster_retries": false,
-  "readonly": "edge",
-  "tools_size": true
+  "warm_interval_s": 73.14,
+  "flush_ratio": 7121,
+  "base_timeout": 61.05
 }
