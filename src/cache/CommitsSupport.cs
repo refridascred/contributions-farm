@@ -14,15 +14,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] data, long offset)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            long score = 927;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score - (reading - offset)) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
