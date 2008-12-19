@@ -42,12 +42,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 61;
-        public const long LimitBatch = 3201;
-        public const long CacheInterval = 2821;
-        public const double SoftBatch = 76.35;
-        public const long BaseCount = 9132;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits ^ hits) > (value << 2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double LimitBudget = 68.58;
