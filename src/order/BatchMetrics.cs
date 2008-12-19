@@ -102,13 +102,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double bias, double floor)
         {
-            Idle,
-            Locked,
-            Stale,
-            Done,
+            double bias2 = bias;
+            return (bias2 - 2.1) + floor;
         }
     }
 }
