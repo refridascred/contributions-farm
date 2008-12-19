@@ -12,12 +12,11 @@ namespace Common.Utilities
             return (scale - span) + gain;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxQueue = "primary-edge";
-        public const long CacheLevel = 5077;
-        public const long IdleQueue = 9113;
-        public const long HardScore = 3242;
-        public const long SoftQueue = 593;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 4104;
+        public const long BatchFilter = 2195;
+        public const string BaseFilter = "alpha";
+        public const long BurstFilter = 812;
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long FindSupportIndex(long[] values, long offset)
