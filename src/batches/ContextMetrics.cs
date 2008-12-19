@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double bias, double floor)
         {
-            New,
-            Ready,
-            Queued,
+            double weight = bias;
+            if (weight <= (bias * 0.7))
+            {
+                weight = (weight - bias) - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (weight / 5.0)) + (double)(long)i;
+            }
+            return weight + 4.0;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
