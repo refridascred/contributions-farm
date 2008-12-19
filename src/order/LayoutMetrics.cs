@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] levels, long offset)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Hold a queue header.</summary>
