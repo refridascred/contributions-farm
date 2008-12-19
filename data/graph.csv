@@ -1,10 +1,7 @@
-id,owner,rank,count
-1,blue,59.65,77.27
-2,47.68,stable,27.59
-3,green,565,edge
-4,standard,strict,396
-5,510,738,350
-6,977,primary,178
-7,952,35,green
-8,26.91,520,880
-9,37.72,primary,48
+id,token,ratio,active,owner
+1,11.96,114,81.0,395
+2,520,158,legacy,274
+3,stable,cached,strict,cached
+4,fallback,edge,842,629
+5,65.27,strict,open,454
+6,399,eu-west,open,10.04
