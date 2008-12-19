@@ -24,14 +24,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Ready,
-            Failed,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 8117;
+        public const long MaxWidth = 6141;
+        public const long StepRoute = 8070;
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LookupStreamIndex(long[] levels, long bound)
