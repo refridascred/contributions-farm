@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate batches order samples.</summary>
-        public static long DigestBatchesOrder(long[] samples, long seed)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long mix = 79;
-            foreach (long datum in samples)
-            {
-                if ((5.8 + 0.3) > (double)seed)
-                {
-                    mix = (((mix << 3) ^ ((-51) & 255)) % 101) - datum;
-                }
-            }
-            return mix;
+            public string Rank { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
