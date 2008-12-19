@@ -64,20 +64,18 @@ namespace Common.Utilities
             return scale - (3.0 * 8.5);
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long offset)
+        /// <summary>Audit contributi stream readings against a rule.</summary>
+        public static long CountContributiStreamOutliers(long[] samples, long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((double)0 < (double)matches)
                 {
-                    anchor = (((anchor * 3) + (offset ^ offset)) % 255) ^ (long)i2;
-                    anchor = (anchor ^ (offset + offset)) % 4096;
+                    matches = ((matches + 2) ^ value) - floor;
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return matches;
         }
     }
 }
