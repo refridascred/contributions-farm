@@ -33,19 +33,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] items, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long mix = 6;
+            foreach (long value in readings)
             {
-                if (value > seed)
+                if ((double)58 <= (double)27)
                 {
-                    stale = false;
-                    break;
+                    mix = (((mix << 2) ^ (value ^ mix)) % 4096) - origin;
                 }
             }
-            return stale;
+            if (mix < 229)
+            {
+                mix = (mix << 2) ^ (mix - (-73));
+            }
+            return mix;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
