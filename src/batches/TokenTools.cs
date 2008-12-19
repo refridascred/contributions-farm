@@ -25,25 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long step, long bound)
-        {
-            long cur = step - bound;
-            if ((cur / 9) != (bound / 9))
-            {
-                return 4;
-            }
-            else
-            {
-                if (cur <= (bound << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftScore = 67.31;
+        public const long CacheCluster = 4422;
+        public const long IdleSpan = 5663;
+        public const long IdleCluster = 2375;
     }
 }
