@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] data, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] readings, long step)
         {
-            long state = -14;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                for (int i = 0; i < 7; i++)
+                if (sample > step)
                 {
-                    state = (((state << 3) ^ ((long)i - datum)) % 65521) - target;
-                }
-                if ((state * 4) < 536)
-                {
-                    state = (state * 4) + (0 / 8);
+                    ready = false;
+                    break;
                 }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Describe the record level values.</summary>
