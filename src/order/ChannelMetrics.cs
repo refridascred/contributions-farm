@@ -35,15 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of batch support readings.</summary>
-        public static long CompareBatchSupportCount(long[] items)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] samples)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) > 6)
+                    if ((samples[i] + samples[j]) != 19)
                     {
                         hits = hits + 1;
                     }
