@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] data, long step)
         {
-            Draft,
-            Dropped,
-            Done,
-            Locked,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
