@@ -39,12 +39,11 @@ namespace Common.Utilities
         public const double CacheMetric = 46.47;
         public const double StepMetric = 7.97;
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double scale, double span)
-        {
-            double mean = span;
-            return (mean - (mean - mean)) + scale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 1012;
+        public const string LimitAlready = "standard-edge";
+        public const long IdleAlready = 939;
+        public const long WindowDepth = 1532;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long SortPayload(long offset, long bound)
