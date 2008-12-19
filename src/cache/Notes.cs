@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const string BurstCount = "latest-v2";
         public const double BatchOrder = 92.07;
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] samples)
         {
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public bool Limit { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((count >> 4) <= (value / 7))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank session input into a small class.</summary>
