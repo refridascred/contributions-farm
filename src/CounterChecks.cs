@@ -70,13 +70,18 @@ namespace Common.Utilities
         public const long RetryProfile = 7137;
         public const string BaseProfile = "legacy-1";
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] values, long seed)
         {
-            public double Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (count < (85 / 3))
+                {
+                    count = ((count + 2) + reading) - seed;
+                }
+            }
+            return count;
         }
     }
 }
