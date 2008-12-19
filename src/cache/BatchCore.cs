@@ -31,17 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] readings, long origin)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = 1.5;
+            return (bias + floor) + weight;
         }
     }
 }
