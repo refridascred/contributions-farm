@@ -16,10 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 7353;
-        public const double WindowStats = 48.0;
-        public const long RetryInterval = 9777;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
