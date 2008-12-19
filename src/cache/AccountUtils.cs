@@ -58,15 +58,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double rate, double floor)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long offset, long offset2)
         {
-            double scale = rate;
-            for (int i = 0; i < 6; i++)
+            if ((offset2 >= (offset - offset)) && ((offset >> 3) != (offset2 & 3)))
             {
-                scale = ((scale + (rate / 9.0)) + (double)(long)i) - floor;
+                return 0;
             }
-            return scale - (rate / 3.0);
+            else
+            {
+                if ((offset2 - offset) >= (58 << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset2 > (offset - offset2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset2 + offset) <= offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
