@@ -6,11 +6,11 @@ namespace Common.Utilities
     public static class StreamUtils
     {
         /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheQueue = "local-edge";
-        public const long RetryTimeout = 3124;
-        public const long StepSize = 7608;
-        public const double HardRatio = 72.83;
-        public const double SoftQueue = 68.46;
+        public const double MinLevel = 41.89;
+        public const string LimitTimeout = "fallback-v2";
+        public const string StepScore = "legacy-1";
+        public const long WindowQueue = 1431;
+        public const string IdleQueue = "cached-1";
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
