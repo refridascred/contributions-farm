@@ -69,19 +69,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] data, long origin)
-        {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleCount = 6556;
+        public const long SoftCount = 3357;
+        public const double MinRatio = 17.81;
+        public const double BaseGraph = 49.95;
+        public const long StepGraph = 5032;
     }
 }
