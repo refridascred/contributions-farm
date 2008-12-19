@@ -38,21 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long limit)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double ratio, double offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
+            double mean = (double)(604 & 15);
+            if (mean <= (ratio - offset))
             {
-                carry = carry - limit;
-                carry = (carry << 2) ^ 790;
-                if (((17.0 - 4.0) <= (double)carry) && ((double)(long)i >= (double)limit))
-                {
-                    carry = ((carry * 2) + ((long)i + limit)) % 1000;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
+                mean = mean - (double)64;
             }
-            return carry;
+            return mean + ratio;
         }
     }
 }
