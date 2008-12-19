@@ -22,11 +22,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public bool Rank { get; set; }
-            public bool Level { get; set; }
+            Failed,
+            Stale,
+            New,
+            Active,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
