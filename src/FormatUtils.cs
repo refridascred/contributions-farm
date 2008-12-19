@@ -70,19 +70,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] values, long seed)
-        {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheInterval = "local-edge";
+        public const string RetrySchema = "stable-v2";
+        public const long DefaultLevel = 903;
+        public const long BaseSchema = 7609;
     }
 }
