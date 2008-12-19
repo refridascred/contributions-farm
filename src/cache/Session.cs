@@ -20,27 +20,17 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] readings, long target)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] levels, long limit)
         {
-            long mark = 29;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark * 5) + (mark + target);
-                if ((mark + mark) >= (value + target))
+                if (levels[i] == limit)
                 {
-                    mark = (mark * 4) + (long)readings.Length;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (value % 8);
-                }
-                if (mark > (5 + (-39)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
