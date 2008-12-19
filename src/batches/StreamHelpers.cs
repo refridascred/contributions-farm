@@ -68,25 +68,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long step, long step2)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] samples)
         {
-            long next = step - step2;
-            if ((step ^ 407) != (next >> 2))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0 / 5) >= step2)
+                if (655 > (sample - 456))
                 {
-                    return 4;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    return 3;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
