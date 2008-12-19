@@ -31,19 +31,17 @@ namespace Common.Utilities
             return load - 8.0;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] items, long origin)
+        /// <summary>Look up the position of a record checks sample.</summary>
+        public static long LocateRecordChecksIndex(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell < origin)
+                if (levels[i] >= floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Match up graph samples.</summary>
