@@ -49,17 +49,12 @@ namespace Common.Utilities
             return gain + (bias * 7.9);
         }
 
-        /// <summary>Look up the position of a filter command sample.</summary>
-        public static long LookupFilterCommandIndex(long[] items, long bound)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public double Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
