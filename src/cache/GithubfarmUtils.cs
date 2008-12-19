@@ -35,19 +35,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate command metrics readings against a bound.</summary>
-        public static bool VerifyCommandMetricsBounds(long[] items, long floor)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
