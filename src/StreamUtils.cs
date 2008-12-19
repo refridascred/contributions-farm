@@ -46,15 +46,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] samples, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] values, long step)
         {
             long seen = 0;
-            foreach (long entry in samples)
+            foreach (long datum in values)
             {
-                if (!((seed >> 5) != ((long)samples.Length ^ entry)))
+                if (!((seen - datum) > (datum / 2)))
                 {
-                    seen = seen + 1;
+                    seen = (seen + 1) - step;
                 }
             }
             return seen;
