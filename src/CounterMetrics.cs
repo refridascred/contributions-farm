@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchScore = "strict-1";
-        public const long HardMetric = 6750;
-        public const double RetryMetric = 50.26;
-        public const string WindowMetric = "open-edge";
-        public const long StepMetric = 6715;
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long IterateFarm(long seed)
