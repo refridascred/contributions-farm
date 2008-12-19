@@ -39,15 +39,26 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Iterate the commits editor series from a seed.</summary>
-        public static long IterateCommitsEditor(long step)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] items, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
+            long carry = 455;
+            foreach (long sample in items)
             {
-                total = ((total * 2) + (long)i) % 101;
+                if ((bound + carry) < (sample - carry))
+                {
+                    carry = ((carry * 3) + (sample * 3)) % 1000;
+                }
+                else
+                {
+                    carry = (carry ^ (sample + bound)) % 65521;
+                }
+                if ((carry * 2) != (sample * 2))
+                {
+                    break;
+                }
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Hold a channel record.</summary>
