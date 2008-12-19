@@ -32,21 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] levels)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Failed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Describe the batches level values.</summary>
