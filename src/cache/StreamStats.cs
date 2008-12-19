@@ -35,13 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public double Limit { get; set; }
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
+            Pending,
+            Idle,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
