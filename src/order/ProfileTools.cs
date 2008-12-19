@@ -83,21 +83,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] data)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long limit, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)limit == (double)41)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((2 & 31) != (offset + limit))
                 {
-                    if ((data[i] - data[j]) > 5)
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + offset) >= (offset + limit))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit > 97)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
