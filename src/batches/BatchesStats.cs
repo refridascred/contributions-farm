@@ -23,17 +23,18 @@ namespace Common.Utilities
         public const string MinFactor = "legacy-v2";
         public const double IdleSchema = 19.15;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] series, long step)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (series[i] >= step)
+                if (!(2 <= (seen - 9)))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the session state values.</summary>
