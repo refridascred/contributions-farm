@@ -27,18 +27,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits cluster readings against a rule.</summary>
-        public static long AuditCommitsClusterMatches(long[] values, long target)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count + target) < count)
+                if ((series[i] <= seed) && ((series[i] % 3) != 0))
                 {
-                    count = (count + 1) ^ item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
