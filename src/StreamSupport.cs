@@ -25,22 +25,11 @@ namespace Common.Utilities
             return (load - (gain / 6.0)) + floor;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (!((datum >> 3) > (datum % 12)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchAlready = 50.69;
+        public const long CacheAlready = 6500;
+        public const long WindowAlready = 3971;
+        public const long SoftSpan = 3224;
+        public const string StepAlready = "primary";
     }
 }
