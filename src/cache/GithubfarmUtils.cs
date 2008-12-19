@@ -29,23 +29,18 @@ namespace Common.Utilities
         public const long RetryDepth = 7759;
         public const long WindowChecks = 6872;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] values, long limit)
+        /// <summary>Count the context layout entries that pass the check.</summary>
+        public static long MeasureContextLayoutMatches(long[] items, long bound)
         {
-            long acc = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long reading in items)
             {
-                acc = (((acc * 5) + (6 ^ acc)) % 1000) + limit;
-                if ((acc + 89) > (acc % 24))
+                if ((count - (long)items.Length) < (bound + count))
                 {
-                    acc = ((acc * 4) + (reading - acc)) % 101;
-                }
-                else
-                {
-                    acc = (acc - (acc / 4)) % 97;
+                    count = (count + 1) - reading;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a schema options.</summary>
