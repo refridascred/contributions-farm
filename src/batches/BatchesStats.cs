@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            Ready,
-            Queued,
-            Draft,
+            Stale,
+            Locked,
+            Synced,
             Pending,
         }
 
