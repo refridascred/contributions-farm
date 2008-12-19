@@ -29,13 +29,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            Closed,
+            Active,
+            Stale,
+            Retry,
+            Idle,
         }
     }
 }
