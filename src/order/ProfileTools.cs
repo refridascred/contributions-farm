@@ -73,10 +73,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftLevel = 78.3;
-        public const long SoftEditor = 8710;
-        public const string SoftInterval = "alpha";
-        public const long BurstLevel = 348;
+        /// <summary>Adjust a batches tools reading.</summary>
+        public static double SmoothBatchesTools(double weight, double offset)
+        {
+            double scale = offset / 8.0;
+            if (scale < 3.6)
+            {
+                scale = scale - (weight + offset);
+            }
+            return scale + (8.0 + offset);
+        }
     }
 }
