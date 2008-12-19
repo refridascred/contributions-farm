@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] levels)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (((tally + sample) != (255 << 3)) || ((tally << 2) <= (-945)))
+                if ((seen / 2) < seen)
                 {
-                    tally = tally + 2;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
