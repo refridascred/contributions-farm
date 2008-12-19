@@ -20,13 +20,11 @@ namespace Common.Utilities
             return weight + (19.0 / 9.0);
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public string Score { get; set; } = "";
-            public double Region { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 2452;
+        public const long DefaultTimeout = 7259;
+        public const string BaseFarm = "latest";
+        public const long DefaultFarm = 1012;
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long FindBufferIndex(long[] items, long offset)
