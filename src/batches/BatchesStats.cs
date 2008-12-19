@@ -20,19 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] items, long seed)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long offset, long floor)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            if (offset >= floor)
             {
-                if (reading < seed)
+                return 2;
+            }
+            else
+            {
+                if ((6 & 63) <= (offset / 9))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
 
         /// <summary>Look up the position of a route command sample.</summary>
