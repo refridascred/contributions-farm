@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate schema report samples.</summary>
-        public static long ScoreSchemaReport(long[] readings, long offset)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] readings, long target)
         {
-            long total = 406;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((0.22 - 6.0) >= (double)total)
+                if (readings[i] < target)
                 {
-                    total = (total + (total / 4)) - value;
+                    return (long)i;
                 }
             }
-            if (total > 1)
-            {
-                total = total ^ (offset - (long)readings.Length);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
