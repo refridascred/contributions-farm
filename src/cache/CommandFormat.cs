@@ -32,21 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
