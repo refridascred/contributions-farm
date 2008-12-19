@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] data, long offset)
+        /// <summary>Count the command contributi entries that pass the check.</summary>
+        public static long CountCommandContributiGaps(long[] series, long step)
         {
-            long carry = 530;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((carry <= (cell % 60)) || ((cell >> 1) == (cell << 2)))
+                if (2.48 > (double)step)
                 {
-                    carry = ((carry + (cell / 7)) % 101) - offset;
-                }
-                if ((7.1 + 9.9) != (double)cell)
-                {
-                    break;
+                    count = (count + 1) - item;
                 }
             }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
