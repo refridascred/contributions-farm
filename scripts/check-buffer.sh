@@ -6,13 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+BUFFER_LIMIT=371
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-edge}"
+mode="${1:-eu-west}"
 case "${mode}" in
     primary)
         log "fast path"
