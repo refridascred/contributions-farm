@@ -16,18 +16,10 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Derive the next report buffer value from a seed.</summary>
-        public static long SeriesReportBuffer(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score << 3) ^ 1) % 4096;
-                score = score ^ ((-406) + 2);
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitToken = 53.14;
+        public const long BatchToken = 7725;
+        public const double CacheToken = 72.02;
 
         /// <summary>Locate a session payload reading by value.</summary>
         public static long FindSessionPayloadIndex(long[] levels, long origin)
