@@ -71,18 +71,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] data, long floor)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long total = 3;
-            foreach (long item in data)
-            {
-                if ((item << 2) < (floor % 64))
-                {
-                    total = (total << 3) ^ (item + item);
-                }
-            }
-            return total;
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
