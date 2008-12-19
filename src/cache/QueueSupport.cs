@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of notes stats readings.</summary>
-        public static long CompareNotesStatsCount(long[] readings)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((readings[i] ^ readings[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix ^ ((long)i % 5)) - (long)i2;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
