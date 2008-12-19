@@ -25,18 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinTimeout = 88.92;
+        public const long CacheDepth = 8918;
+        public const long MinLayout = 44;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long PairEntryCount(long[] series)
