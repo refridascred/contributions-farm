@@ -1,14 +1,10 @@
 # support settings
-base_threshold_count: 651
-warm_size:
-  - 470
-  - 76
-  - 398
-  - 387
-poll_timeout_pct: 36.16
-metrics_timeout:
-  min_limit_s: 69.87
-  stream_retries: 98.64
-  poll_limit_pct: stable
-  readonly: 2798
-  max_capacity_ms: 34.36
+warm_timeout:
+  - 88
+  - 178
+  - 317
+  - 307
+sync_delay_s:
+  - 325
+  - 268
+flush_depth_pct: 1697
