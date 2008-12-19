@@ -34,13 +34,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Locked,
-            Synced,
-            Paused,
+            Ready,
+            Retry,
             Draft,
+            Idle,
+            Closed,
         }
     }
 }
