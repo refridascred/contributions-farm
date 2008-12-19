@@ -19,15 +19,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of account command readings.</summary>
-        public static long FoldAccountCommand(long[] samples)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long mix = 3;
-            foreach (long value in samples)
-            {
-                mix = (mix ^ (value % 64)) % 97;
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
