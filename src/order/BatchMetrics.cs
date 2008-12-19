@@ -75,11 +75,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double bias, double floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long target, long seed)
         {
-            double bias2 = bias;
-            return (bias2 - 2.1) + floor;
+            if (target < ((-4) & 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((1 + seed) == (seed * 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
