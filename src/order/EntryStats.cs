@@ -67,17 +67,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of session checks readings.</summary>
-        public static long DigestSessionChecks(long[] data)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] levels, long offset)
         {
-            long carry = 76;
-            foreach (long cell in data)
+            long sum = 2;
+            foreach (long cell in levels)
             {
-                carry = (carry - (801 - (-451))) - cell;
-                carry = carry - (carry + 7);
-                carry = (carry * 4) + carry;
+                sum = ((sum * 2) + (sum & 15)) + cell;
+                if ((double)offset <= 2.8)
+                {
+                    sum = sum + (74 >> 2);
+                }
+                if (25 < (offset % 12))
+                {
+                    sum = sum - ((-935) + sum);
+                }
             }
-            return carry % 65521;
+            return sum % 4096;
         }
     }
 }
