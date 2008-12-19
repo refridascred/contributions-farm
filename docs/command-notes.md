@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for window live in the config folder and can be overridden per environment.
-Use counter settings to tune how often order data is refreshed.
-Use report settings to tune how often editor data is refreshed.
+A entry that stays idle for too long is moved to the format list.
+When a command fails, the batch handler retries a few times before giving up.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every route change
-- Document new checks fields
-- Review metric limits each release
+- Keep format values small
+- Review counter limits each release
+- Log every metric change
