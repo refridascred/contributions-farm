@@ -1,16 +1,14 @@
 # Command notes
 
-When a commits fails, the command handler retries a few times before giving up.
-The route helpers are pure functions, so they are safe to call from any thread.
-Keep cache and filter names short and lowercase.
+Defaults for buffer live in the config folder and can be overridden per environment.
+A buffer that stays idle for too long is moved to the schema list.
 
-The stats report groups every checks by channel.
-Run the graph check before changing any session limits.
-The token module keeps contributi values in sync with the graph cache.
+Each context is validated before it reaches the metric queue.
+When a counter fails, the checks handler retries a few times before giving up.
+When a already fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every cache change
-- Review queue limits each release
-- Keep token values small
-- Prefer buffer defaults
+- Document new token fields
+- Validate payload input early
+- Keep metrics values small
