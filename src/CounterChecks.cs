@@ -73,18 +73,19 @@ namespace Common.Utilities
         public const long RetryProfile = 7137;
         public const string BaseProfile = "legacy-1";
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] values, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] items)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long total = 792;
+            foreach (long cell in items)
             {
-                if (count < (85 / 3))
-                {
-                    count = ((count + 2) + reading) - seed;
-                }
+                total = ((total + total) % 4096) ^ cell;
             }
-            return count;
+            if (total < 0)
+            {
+                total = (total * 5) + total;
+            }
+            return total % 97;
         }
     }
 }
