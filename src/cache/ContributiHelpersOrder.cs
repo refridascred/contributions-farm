@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] items, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] series)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (item <= limit)
+                if ((datum >> 4) >= (tally % 64))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
