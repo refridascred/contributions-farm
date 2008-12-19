@@ -25,15 +25,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double ratio, double span)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long step, long bound)
         {
-            double rate = ratio;
-            for (int i = 0; i < 6; i++)
+            long cur = step - bound;
+            if ((cur / 9) != (bound / 9))
             {
-                rate = (rate + span) + (double)(long)i;
+                return 4;
             }
-            return rate - (rate - 1.7);
+            else
+            {
+                if (cur <= (bound << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
