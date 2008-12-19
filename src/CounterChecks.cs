@@ -39,12 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchNotes = 83.05;
-        public const long MinLevel = 7936;
-        public const long WindowNotes = 8496;
-        public const long MinNotes = 2817;
-        public const string MaxRatio = "latest";
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public bool Rank { get; set; }
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Roll a notes editor counter forward.</summary>
         public static long IterateNotesEditor(long bound)
