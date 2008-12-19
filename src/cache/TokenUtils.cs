@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Accumulate buffer tools samples.</summary>
+        public static long TotalBufferTools(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -34;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((anchor > (6 * 4)) && (anchor <= (value - value)))
                 {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor * 2) + (limit - anchor)) % 101;
                 }
             }
-            return hits;
+            if (anchor > 7)
+            {
+                anchor = (anchor - (limit + 335)) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
