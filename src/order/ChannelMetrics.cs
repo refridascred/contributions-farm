@@ -20,13 +20,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] values)
         {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public bool Rank { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
