@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] levels, long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long state = 95;
+            foreach (long value in values)
             {
-                if (sample < tally)
+                state = ((state << 3) ^ (911 - state)) % 1000;
+                if ((value - state) > (6 + state))
                 {
-                    tally = (tally + 2) + bound;
+                    break;
                 }
             }
-            return tally;
+            return state % 65521;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
