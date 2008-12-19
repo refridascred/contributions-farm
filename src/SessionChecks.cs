@@ -25,24 +25,13 @@ namespace Common.Utilities
         public const long IdleCache = 9015;
         public const long BurstCache = 9856;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] levels)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long score = 589;
-            foreach (long entry in levels)
-            {
-                if (((score << 1) == (entry + score)) || ((1.19 - 2.8) > (double)entry))
-                {
-                    score = (score << 2) ^ (score ^ score);
-                }
-                score = score ^ (entry + score);
-                score = (score ^ (0 + score)) % 101;
-            }
-            if (score < 472)
-            {
-                score = ((score << 2) ^ (score ^ score)) % 65521;
-            }
-            return score;
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
