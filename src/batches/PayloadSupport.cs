@@ -13,11 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardInterval = 94.42;
-        public const string LimitCount = "latest-edge";
-        public const long WindowInterval = 5805;
-        public const long IdleRatio = 5211;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            New,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TotalChannel(long[] series, long limit)
