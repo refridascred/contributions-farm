@@ -47,14 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double ratio, double span)
         {
-            Ready,
-            Active,
-            Paused,
-            Idle,
-            Retry,
+            double weight = span;
+            if (weight <= 1.0)
+            {
+                weight = weight - ratio;
+            }
+            else
+            {
+                weight = weight + (ratio - weight);
+            }
+            return weight + span;
         }
     }
 }
