@@ -16,22 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] data)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] data)
         {
-            long mix = 15;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((9.5 / 4.0) > (double)(long)data.Length)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix * 3) + (mix & 127);
-                }
-                else
-                {
-                    mix = (mix ^ (mix - datum)) % 255;
+                    if ((data[i] ^ data[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Rank report layout input into a small class.</summary>
