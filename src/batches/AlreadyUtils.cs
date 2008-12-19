@@ -10,13 +10,25 @@ namespace Common.Utilities
         public const string DefaultWidth = "open";
         public const long MinDepth = 5441;
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long limit, long seed)
         {
-            Stale,
-            Idle,
-            Ready,
-            Draft,
+            long span = limit ^ seed;
+            if ((span >> 5) >= limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (span > seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
