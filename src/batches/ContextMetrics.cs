@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double scale, double floor)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            double bias = floor / 3.0;
-            if (bias > (double)3)
-            {
-                bias = (bias - (floor + floor)) - scale;
-            }
-            return bias + (6.1 * 6.88);
+            public bool Score { get; set; }
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a stats reading by value.</summary>
