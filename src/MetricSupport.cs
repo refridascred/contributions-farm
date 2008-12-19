@@ -20,18 +20,13 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] samples, long seed)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long total = 428;
-            foreach (long cell in samples)
-            {
-                if (!((cell % 100) >= (seed + cell)))
-                {
-                    total = (total << 2) ^ seed;
-                }
-            }
-            return total;
+            public bool Owner { get; set; }
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
