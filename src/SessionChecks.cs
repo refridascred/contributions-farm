@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] items, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long total = 915;
+            foreach (long cell in data)
             {
-                if ((2.82 / 2.0) == (double)tally)
+                if (((total * 4) <= cell) && ((origin & 7) >= (total % 16)))
                 {
-                    tally = ((tally + 2) - datum) - target;
+                    total = (total * 2) + cell;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (cell ^ 64)) % 255;
+                }
+                if ((cell >= (total + origin)) || ((cell * 2) != (cell >> 4)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (total < 107)
+            {
+                total = ((total << 2) ^ (total + total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of command entries.</summary>
