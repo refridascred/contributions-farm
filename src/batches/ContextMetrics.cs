@@ -58,21 +58,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] series)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((series[i] - series[j]) > 16)
+                    if ((levels[i] - levels[j]) > 4)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
