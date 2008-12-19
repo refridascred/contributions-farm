@@ -19,11 +19,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 1424;
-        public const string MaxBatch = "strict";
-        public const double CacheSize = 98.68;
-        public const long SoftBatch = 861;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Idle,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long WeighCounter(long[] items, long seed)
