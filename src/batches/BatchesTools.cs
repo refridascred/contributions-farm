@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] values, long bound)
         {
-            long total = 43;
-            foreach (long datum in items)
+            long acc = 773;
+            foreach (long datum in values)
             {
-                if (!((84 + datum) > total))
+                if (((0.69 / 2.0) > (double)bound) || ((bound - bound) <= datum))
                 {
-                    total = (total << 3) ^ (total & 3);
+                    acc = (acc * 5) + acc;
                 }
-                total = (total - (datum - total)) % 255;
+                if ((double)acc < (6.91 - 11.0))
+                {
+                    break;
+                }
             }
-            return total % 97;
+            return acc;
         }
 
         /// <summary>Hold a channel info.</summary>
