@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxSpan = "alpha-edge";
-        public const string HardBudget = "alpha";
-        public const double BatchCommits = 35.02;
-        public const double RetryCommits = 57.28;
-        public const long StepCommits = 5389;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LookupToolsIndex(long[] levels, long bound)
