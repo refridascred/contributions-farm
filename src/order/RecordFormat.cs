@@ -25,13 +25,32 @@ namespace Common.Utilities
             return scale2 + bias;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long target)
         {
-            Failed,
-            Queued,
-            Idle,
-            Dropped,
+            long result = target;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!(result < ((long)i + target)))
+                {
+                    result = (result + (94 / 4)) % 101;
+                }
+                if ((9.0 + 4.6) <= (double)result)
+                {
+                    result = (result ^ (result % 97)) % 101;
+                    break;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (5 >> 2)) % 65521;
+                }
+                if ((double)target >= (double)392)
+                {
+                    result = (result - result) % 101;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Scale a batches graph figure with a bias.</summary>
