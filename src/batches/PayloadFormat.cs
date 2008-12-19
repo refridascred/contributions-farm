@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] levels, long floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item <= floor)
+                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a metrics info.</summary>
