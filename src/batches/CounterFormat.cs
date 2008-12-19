@@ -16,12 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            Dropped,
-            Stale,
-            Locked,
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
