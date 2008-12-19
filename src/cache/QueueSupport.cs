@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstDepth = 34.88;
-        public const double BurstToken = 65.62;
-        public const string BatchSize = "alpha-v2";
-        public const long DefaultDepth = 9126;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((value * 2) > 1)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit commits cluster readings against a rule.</summary>
         public static long AuditCommitsClusterMatches(long[] values, long target)
