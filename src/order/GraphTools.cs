@@ -16,11 +16,20 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheFactor = 6112;
-        public const long DefaultEntry = 8256;
-        public const long BurstSpan = 8381;
-        public const long BaseRatio = 3006;
+        /// <summary>Check that every editor githubfarm entry stays within the limit.</summary>
+        public static bool GuardEditorGithubfarmLimits(long[] series, long target)
+        {
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
