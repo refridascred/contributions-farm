@@ -53,32 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long origin, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] levels, long offset)
         {
-            long delta = origin ^ floor;
-            if ((2.2 - 15.0) < (double)floor)
+            long count = 0;
+            foreach (long item in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((delta - floor) >= (origin + delta))
+                if (count >= item)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor << 1) < (floor - delta))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = (count + 3) - offset;
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
