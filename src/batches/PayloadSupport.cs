@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((seed << 3) <= hits) || (((6 + reading) < reading) && ((hits + reading) < (seed + hits))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "cached-1";
+        public const double BatchLevel = 19.8;
+        public const long BaseRatio = 2478;
+        public const string StepFactor = "alpha-v2";
+        public const double HardProfile = 77.5;
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
