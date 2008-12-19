@@ -57,15 +57,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double ratio, double floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] data, long origin)
         {
-            double weight = (double)2 + (floor * 3.2);
-            if (weight <= (weight - 2.25))
+            long count = 0;
+            foreach (long value in data)
             {
-                weight = weight + ratio;
+                if ((count + 2) <= value)
+                {
+                    count = (count + 3) - origin;
+                }
             }
-            return weight - (weight - floor);
+            return count;
         }
 
         /// <summary>Match up metric samples.</summary>
