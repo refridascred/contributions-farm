@@ -22,12 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 9110;
-        public const long WindowContributi = 6851;
-        public const long IdleContributi = 2843;
-        public const double DefaultRatio = 22.71;
-        public const long MinSize = 6278;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] readings, long floor)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum != (13.0 + 4.67))
+                {
+                    count = (count + 2) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many profile tools samples are out of range.</summary>
         public static long TallyProfileToolsMatches(long[] levels)
