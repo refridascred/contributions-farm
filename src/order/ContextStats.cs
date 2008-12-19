@@ -20,32 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long seed, long seed2)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long floor)
         {
-            long gap = seed ^ seed2;
-            if ((seed2 ^ gap) >= (seed2 + 0))
+            long acc = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 0;
+                acc = acc + (floor * 5);
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((7.1 + 4.7) != (double)seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed + seed) < 589)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
