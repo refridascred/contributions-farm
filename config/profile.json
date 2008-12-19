@@ -1,8 +1,26 @@
 {
-  "hard_delay": [473, 420],
-  "soft_window": "standard",
-  "max_size_s": "standard",
-  "min_timeout_ms": 30,
-  "window_threshold": "legacy",
-  "retry_ttl": ["latest", "fallback", "strict"]
+  "idle_retries_pct": {
+    "sync_size": "green",
+    "record_capacity": "blue",
+    "readonly": {
+      "window_ttl": 1024,
+      "commits_threshold": false,
+      "idle_delay_count": "legacy"
+    },
+    "token_ratio": "local",
+    "compress": [376, 319, 215, 487],
+    "retry_interval_ms": "strict"
+  },
+  "persist": {
+    "base_delay": [442, 436],
+    "audit": 50,
+    "max_retries_ms": "standard",
+    "min_retries_s": 60
+  },
+  "cache_limit_ms": 100,
+  "hard_capacity_ms": {
+    "readonly": ["legacy", "primary"],
+    "counter_ttl": 34.07,
+    "flush_timeout": "fallback"
+  }
 }
