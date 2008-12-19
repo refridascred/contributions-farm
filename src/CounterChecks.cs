@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long limit, long origin)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            if ((775 << 3) <= (68 + origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((59 & 7) >= origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
