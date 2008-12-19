@@ -54,20 +54,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long bound)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] items, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                long next = (sum * 2) / 5;
-                if ((bound + next) <= (bound << 2))
+                if (items[i] < target)
                 {
-                    sum = ((sum << 3) ^ (bound - sum)) % 4096;
+                    return (long)i;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return -1;
         }
     }
 }
