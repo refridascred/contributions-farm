@@ -23,14 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowInterval = 6864;
+        public const long BaseEntry = 8258;
+        public const double RetryInterval = 7.14;
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long CompareSupportCount(long[] levels)
