@@ -26,18 +26,17 @@ namespace Common.Utilities
         public const string StepProfile = "cached-edge";
         public const double IdleBudget = 17.26;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] items)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(7.1 >= (double)(long)items.Length) || ((item << 2) < (item ^ matches)))
+                if (values[i] == origin)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the counter status values.</summary>
