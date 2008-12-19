@@ -1,5 +1,7 @@
 # entry settings
-warm_ttl_s: primary
-flush_ttl: primary
-default_window_s: 30
-batch_delay_ms: true
+batch_limit: edge
+hard_ratio_pct: true
+githubfarm_interval: false
+default_ratio: 4420
+burst_limit_s: 250
+soft_depth_ms: true
