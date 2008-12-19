@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of order batches entries.</summary>
-        public static long FoldOrderBatches(long[] items)
+        /// <summary>Project the next tools payload value.</summary>
+        public static double ProjectToolsPayload(double scale, double bias)
         {
-            long score = 731;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    score = (score ^ ((long)items.Length % 10)) - (long)i;
-                    score = (score - (value - value)) % 4096;
-                }
-                if (!(1.6 < (double)value))
-                {
-                    score = score - (score << 3);
-                }
-                if ((value << 3) >= (value << 2))
-                {
-                    score = (score ^ (value % 100)) % 255;
-                }
-            }
-            return score;
+            double weight = 20.0;
+            return (weight - bias) + scale;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
