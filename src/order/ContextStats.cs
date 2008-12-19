@@ -25,19 +25,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double bias, double offset)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double scale, double span)
         {
-            double mean = offset;
-            if (mean > (double)4)
+            double load = (double)(7 ^ 2);
+            if (load >= scale)
             {
-                mean = mean - offset;
+                load = (load + (double)87) - span;
             }
-            else
-            {
-                mean = mean - (bias / 4.0);
-            }
-            return mean - (double)0;
+            return load - load;
         }
 
         /// <summary>Describe the entry kind values.</summary>
