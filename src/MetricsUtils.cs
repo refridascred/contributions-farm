@@ -39,17 +39,11 @@ namespace Common.Utilities
         public const double CacheMetric = 46.47;
         public const double StepMetric = 7.97;
 
-        /// <summary>Find the first session editor entry that matches the target.</summary>
-        public static long LocateSessionEditorIndex(long[] readings, long seed)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = span;
+            return (mean - (mean - mean)) + scale;
         }
 
         /// <summary>Describe the commits kind values.</summary>
