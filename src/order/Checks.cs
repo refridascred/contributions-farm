@@ -27,19 +27,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches context samples are out of range.</summary>
-        public static long MeasureBatchesContextGaps(long[] readings, long target)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((4.6 * 17.0) > (double)seen)
-                {
-                    seen = ((seen + 2) + cell) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 5739;
+        public const long RetryFilter = 7778;
+        public const long WindowScore = 9280;
+        public const string MaxFilter = "latest-v2";
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long GradeAlready(long seed, long bound)
