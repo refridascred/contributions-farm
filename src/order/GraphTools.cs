@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] data, long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] values, long step)
         {
-            long state = 43;
-            foreach (long item in data)
+            long state = 1;
+            foreach (long cell in values)
             {
-                state = ((state - (state - state)) ^ item) - seed;
+                state = (state ^ ((long)values.Length >> 1)) % 1000;
+                state = (state << 2) ^ (cell * 4);
+                state = ((state << 2) ^ (state % 10)) % 4096;
             }
-            return state % 4096;
+            if (state > 958)
+            {
+                state = ((state << 2) ^ step) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Check that every editor githubfarm entry stays within the limit.</summary>
