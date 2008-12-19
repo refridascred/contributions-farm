@@ -12,14 +12,15 @@ namespace Common.Utilities
         public const double IdleSupport = 56.39;
         public const string BurstFactor = "alpha-edge";
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long limit)
         {
-            Queued,
-            Pending,
-            New,
-            Synced,
-            Ready,
+            long score = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
