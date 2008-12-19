@@ -37,11 +37,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinBudget = "latest-1";
-        public const long BurstSpan = 706;
-        public const long BaseCommits = 1109;
-        public const long BatchCommits = 148;
-        public const double HardCount = 28.01;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
+        }
     }
 }
