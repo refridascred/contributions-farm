@@ -34,21 +34,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] items)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) == 14)
+                    if ((samples[i] - samples[j]) != 13)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
