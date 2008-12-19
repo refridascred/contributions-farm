@@ -39,10 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSpan = 1380;
-        public const long IdleSchema = 9169;
-        public const long BaseDepth = 487;
+        /// <summary>Measure how many cache command samples are out of range.</summary>
+        public static long TallyCacheCommandHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum + datum) >= ((long)samples.Length + datum))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long AuditMetricsMatches(long[] levels)
