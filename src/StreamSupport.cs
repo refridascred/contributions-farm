@@ -20,29 +20,29 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long target, long floor)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long origin, long offset)
         {
-            long diff = target + floor;
-            if ((double)floor <= (double)diff)
+            long lane = origin - offset;
+            if (!((double)offset <= 8.0))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if ((floor - diff) > (floor + diff))
+                if ((66 + origin) < lane)
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((27 - (-9)) > diff)
+                    if ((304 - 652) == (offset + lane))
                     {
-                        return 0;
+                        return 7;
                     }
                     else
                     {
-                        return 1;
+                        return 0;
                     }
                 }
             }
