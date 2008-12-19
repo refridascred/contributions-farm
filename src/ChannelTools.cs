@@ -16,17 +16,25 @@ namespace Common.Utilities
             return scale2 - (scale + scale2);
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] values, long offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long limit, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long gap = limit ^ target;
+            if ((limit - 7) >= gap)
             {
-                if (values[i] == offset)
+                return 6;
+            }
+            else
+            {
+                if ((18.0 * 9.62) == (double)gap)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
