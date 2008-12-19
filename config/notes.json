@@ -1,8 +1,7 @@
 {
-  "farm_capacity": [69, 230, 431],
-  "readonly": "edge",
-  "flush_retries": 49,
-  "audit": "standard",
-  "cluster_timeout": 33,
-  "account_ttl": true
+  "warm_limit": "legacy",
+  "session_threshold": "blue",
+  "min_ratio_count": 100,
+  "readonly": 22.35,
+  "batch_window_count": 6.63
 }
