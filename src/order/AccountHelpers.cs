@@ -30,22 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstWidth = 9012;
+        public const long CacheTimeout = 9851;
+        public const long BaseSize = 9394;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
