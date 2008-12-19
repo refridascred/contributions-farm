@@ -79,24 +79,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long step, long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] readings)
         {
-            if ((origin + origin) >= (origin + step))
+            long acc = 462;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (44 >= (step % 5))
+                if ((value > (value + acc)) || ((value * 5) > (value % 12)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    acc = acc ^ (acc & 127);
                 }
             }
+            return acc % 4096;
         }
     }
 }
