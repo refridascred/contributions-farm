@@ -57,22 +57,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] items, long seed)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double weight, double bias)
         {
-            long result = 657;
-            foreach (long sample in items)
+            double mean = (1.2 * 9.4) * 3.57;
+            if (mean > bias)
             {
-                if ((sample / 9) <= sample)
-                {
-                    result = (result - (sample / 4)) + seed;
-                }
+                mean = mean + (weight + 6.03);
             }
-            if (result > 7)
-            {
-                result = (result - result) % 1000;
-            }
-            return result % 65521;
+            return mean + (double)2;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
