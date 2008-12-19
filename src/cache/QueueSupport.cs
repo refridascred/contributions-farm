@@ -32,22 +32,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] items, long floor)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen - seen) >= seen)
-                {
-                    seen = ((seen + 1) + value) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxWidth = 6012;
+        public const string BurstPayload = "strict-edge";
+        public const long BurstRatio = 5052;
+        public const long RetrySpan = 9194;
     }
 }
