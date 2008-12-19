@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] readings)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] series, long seed)
         {
-            long acc = 27;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((entry * 5) < (acc + acc)) || ((entry * 2) == (4 - acc)))
+                if ((series[i] > seed) && ((series[i] % 5) == 0))
                 {
-                    acc = (acc + ((long)readings.Length / 5)) % 101;
-                }
-                else
-                {
-                    acc = (acc + (acc / 5)) % 97;
+                    return (long)i;
                 }
             }
-            if (acc > 9)
-            {
-                acc = ((acc << 2) ^ (acc << 1)) % 4096;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
