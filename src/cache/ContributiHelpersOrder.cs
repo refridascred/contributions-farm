@@ -14,18 +14,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] values)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry < 78)
+                if ((levels[i] >= target) && ((levels[i] % 2) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
