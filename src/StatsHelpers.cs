@@ -31,20 +31,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate cluster schema readings against a bound.</summary>
-        public static bool CheckClusterSchemaBounds(long[] series, long floor)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleDepth = 42.59;
+        public const long LimitContext = 575;
+        public const long BurstWidth = 9847;
+        public const long RetrySpan = 7252;
+        public const string DefaultContext = "cached";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double MinRatio = 43.61;
