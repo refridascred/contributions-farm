@@ -1,16 +1,7 @@
 # githubfarm settings
-format_timeout: 2014
-retry_window_count:
-  - strict
-  - local
-contributi_limit: 41.32
-dry_run: true
-metrics_delay:
-  audit:
-    poll_limit_s: 739
-    enabled: staging
-    cache_delay_count: 500
-    counter_interval: 7691
-  batch_depth_ms: true
-  default_capacity_ms: 30
-  poll_ratio: stable
+retry_timeout: 15
+batch_timeout_s: 54.08
+poll_depth: false
+base_ttl: latest
+min_timeout_count: 8243
+enabled: true
