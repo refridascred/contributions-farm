@@ -32,11 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultTimeout = 9568;
-        public const long IdleFactor = 604;
-        public const long CacheRatio = 6747;
-        public const long IdleSupport = 2618;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Retry,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Match up context samples.</summary>
         public static long PairContextCount(long[] items)
