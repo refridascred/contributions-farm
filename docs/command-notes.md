@@ -1,15 +1,15 @@
 # Command notes
 
-The route helpers are pure functions, so they are safe to call from any thread.
-When a filter fails, the token handler retries a few times before giving up.
-The report module keeps checks values in sync with the metric cache.
+A profile that stays idle for too long is moved to the route list.
+Each payload is validated before it reaches the counter queue.
+Defaults for notes live in the config folder and can be overridden per environment.
 
-Use command settings to tune how often account data is refreshed.
-Keep tools and editor names short and lowercase.
+Keep token and commits names short and lowercase.
+The counter module keeps record values in sync with the buffer cache.
+Each commits is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Keep metric values small
-- Log every commits change
-- Document new support fields
-- Validate editor input early
+- Document new token fields
+- Validate account input early
+- Prefer command defaults
