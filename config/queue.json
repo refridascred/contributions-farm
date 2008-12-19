@@ -1,7 +1,6 @@
 {
-  "sync_window": ["open", "standard", "blue"],
-  "sync_capacity_ms": 47,
-  "retry_capacity": false,
-  "idle_retries_count": "cached",
-  "persist": ["primary", "open"]
+  "hard_limit_pct": "stable",
+  "window_capacity": [229, 332],
+  "enabled": [474, 259],
+  "persist": 54
 }
