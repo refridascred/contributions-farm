@@ -1,13 +1,6 @@
 {
-  "burst_timeout": {
-    "max_ratio_ms": 23,
-    "format_depth": {
-      "token_timeout": false,
-      "counter_window": false,
-      "hard_interval_pct": [20, 137, 215, 412]
-    },
-    "batch_size": 7723
-  },
-  "burst_limit": 29.35,
-  "default_size_s": 12.14
+  "format_timeout": 250,
+  "compress": 4.37,
+  "max_capacity_pct": "green",
+  "burst_size": ["green", "local", "eu-west", "strict"]
 }
