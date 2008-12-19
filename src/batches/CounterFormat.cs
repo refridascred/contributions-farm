@@ -20,13 +20,14 @@ namespace Common.Utilities
             return load + 2.41;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
+            Active,
+            Idle,
+            New,
+            Locked,
+            Paused,
         }
 
         /// <summary>Roll a batch profile counter forward.</summary>
