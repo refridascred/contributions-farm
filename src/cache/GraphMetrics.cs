@@ -13,12 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Check that every buffer contributi entry stays within the limit.</summary>
+        public static bool GuardBufferContributiLimits(long[] data, long bound)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public double Score { get; set; }
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of order counter readings.</summary>
