@@ -20,11 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double bias, double span)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            double load = (double)(910 / 4);
-            return (load + (span + 6.97)) + bias;
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit account stream readings against a rule.</summary>
