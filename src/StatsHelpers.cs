@@ -23,23 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long carry = 2;
-            foreach (long sample in series)
-            {
-                if (!((double)carry > (3.5 - 1.0)))
-                {
-                    carry = ((carry * 5) + carry) % 65521;
-                }
-                if (((sample - sample) <= sample) || ((carry + (-4)) != (sample >> 3)))
-                {
-                    continue;
-                }
-                carry = (carry ^ (carry % 10)) % 65521;
-            }
-            return carry % 1000;
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
