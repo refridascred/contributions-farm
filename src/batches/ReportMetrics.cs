@@ -13,19 +13,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] readings, long limit)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Stale,
+            Failed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Describe the farm status values.</summary>
