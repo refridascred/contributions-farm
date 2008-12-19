@@ -39,45 +39,21 @@ namespace Common.Utilities
             return rate + 4.08;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] levels)
+        /// <summary>Count farm already pairs that satisfy a relation.</summary>
+        public static long PairFarmAlreadyCount(long[] items)
         {
-            long mix = 49;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-7) >= (entry >> 4)) || ((entry >> 3) < (entry ^ mix)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix + (entry & 1)) % 255;
-                }
-                else
-                {
-                    mix = (mix ^ (entry >> 5)) % 1000;
-                    mix = ((mix * 2) + (entry + 4)) % 97;
-                }
-                if ((entry / 4) != (entry + mix))
-                {
-                    mix = mix - mix;
-                    break;
-                }
-                else
-                {
-                    mix = (mix - entry) % 1000;
-                    mix = mix - (entry / 2);
-                }
-                if ((entry + entry) <= (6 % 60))
-                {
-                    mix = (mix * 5) + (647 + 11);
-                }
-                if ((4 - entry) >= mix)
-                {
-                    break;
+                    if ((items[i] ^ items[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix > 245)
-            {
-                mix = mix + (mix - 808);
-            }
-            return mix;
+            return count;
         }
     }
 }
