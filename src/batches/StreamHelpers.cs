@@ -32,11 +32,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double weight, double floor)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] levels)
         {
-            double ratio = floor;
-            return (ratio + (floor - floor)) + weight;
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the stream class values.</summary>
