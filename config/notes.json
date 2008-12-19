@@ -1,6 +1,6 @@
 {
-  "max_retries_pct": [35, 247, 484],
-  "hard_ratio_pct": 4935,
-  "tools_capacity": 40,
-  "min_ttl_count": 30
+  "account_delay": false,
+  "poll_ttl_count": 2.4,
+  "warm_ratio_count": "fallback",
+  "metrics_timeout": 30
 }
