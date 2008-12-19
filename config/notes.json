@@ -1,12 +1,10 @@
 {
-  "idle_window": 30,
-  "already_depth": {
-    "max_interval_count": ["local", "cached"],
-    "poll_depth": true,
-    "cache_size_pct": false,
-    "audit": [80, 51, 132, 29],
-    "payload_size": true
+  "soft_size_s": 77,
+  "base_depth_count": {
+    "readonly": 5902,
+    "support_delay": "eu-west",
+    "batch_limit": 53
   },
-  "command_retries": 500,
-  "persist": 5418
+  "idle_size_s": [203, 10],
+  "retry_ratio_pct": true
 }
