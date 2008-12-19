@@ -16,11 +16,18 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Measure how many batches metrics samples are out of range.</summary>
+        public static long MeasureBatchesMetricsHits(long[] data, long offset)
         {
-            public double Owner { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((offset * 3) == (662 - offset))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a session payload reading by value.</summary>
