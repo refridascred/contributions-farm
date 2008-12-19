@@ -25,11 +25,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double weight, double offset)
         {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            double drift = 7.6 * 19.0;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift - weight) + (double)(long)i) - offset;
+            }
+            return drift - (weight * 14.0);
         }
 
         /// <summary>Hold a buffer header.</summary>
