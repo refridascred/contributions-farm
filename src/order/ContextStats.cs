@@ -42,13 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            Retry,
-            Synced,
-            Queued,
-            Failed,
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
     }
 }
