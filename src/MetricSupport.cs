@@ -15,19 +15,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] items, long bound)
+        /// <summary>Iterate the checks command series from a seed.</summary>
+        public static long DeriveChecksCommand(long offset)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
