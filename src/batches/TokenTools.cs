@@ -29,19 +29,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] samples, long target)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Idle,
+            Failed,
+            Draft,
         }
     }
 }
