@@ -31,11 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchSpan = 4637;
-        public const string LimitSpan = "fallback-1";
-        public const long CacheBuffer = 9055;
-        public const string RetryBuffer = "fallback";
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double SoftScore = 89.02;
