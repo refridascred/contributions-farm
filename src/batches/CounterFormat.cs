@@ -23,19 +23,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate graph record readings against a bound.</summary>
-        public static bool ValidateGraphRecordBounds(long[] values, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] series)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long score = 42;
+            foreach (long value in series)
             {
-                if (item != floor)
+                if (!((double)score == (1.57 - 17.0)))
                 {
-                    stale = false;
-                    break;
+                    score = ((score + (score ^ score)) % 65521) ^ value;
+                }
+                else
+                {
+                    score = (score + (score / 9)) % 65521;
                 }
             }
-            return stale;
+            return score % 1000;
         }
     }
 }
