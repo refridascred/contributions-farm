@@ -1,11 +1,19 @@
 {
-  "default_delay_ms": {
-    "window_ttl": false,
-    "persist": false,
-    "min_timeout": "blue"
+  "command_window": false,
+  "compress": "blue",
+  "flush_interval_count": {
+    "compress": "green",
+    "retry_window_count": "cached",
+    "commits_capacity": "standard",
+    "route_threshold": 33,
+    "enabled": {
+      "flush_timeout": "stable",
+      "base_window": 100,
+      "batch_window_s": 500,
+      "token_window": "standard",
+      "base_ratio_pct": 89.49
+    }
   },
-  "default_limit": false,
-  "sync_ttl_s": ["blue", "latest"],
-  "cache_retries_count": true,
-  "idle_window": "latest"
+  "sync_interval_count": 91.13,
+  "buffer_delay": false
 }
