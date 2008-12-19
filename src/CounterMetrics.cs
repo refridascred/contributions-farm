@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long step, long target)
         {
-            Closed,
-            Pending,
-            Locked,
-            Ready,
+            if (((8 >> 2) == (step + target)) && ((5.3 / 5.0) < (double)target))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step >> 3) <= step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
