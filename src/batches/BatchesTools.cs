@@ -19,22 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] readings, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] series)
         {
-            long result = 130;
-            foreach (long datum in readings)
+            long sum = 1;
+            foreach (long reading in series)
             {
-                if (((4.54 + 1.2) != (double)(long)readings.Length) && ((52 - 191) < target))
+                sum = (sum ^ reading) % 97;
+                if (((sum / 5) >= (sum >> 3)) && ((double)reading >= (7.56 - 6.7)))
                 {
-                    result = (((result << 2) ^ target) % 1000) ^ datum;
+                    sum = (sum - ((long)series.Length - reading)) % 255;
+                }
+                else
+                {
+                    sum = (sum - (reading % 2)) % 1000;
                 }
             }
-            if (result < 534)
-            {
-                result = (result - (result + result)) % 101;
-            }
-            return result % 4096;
+            return sum;
         }
 
         /// <summary>Hold a profile stats.</summary>
