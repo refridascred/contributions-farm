@@ -15,18 +15,21 @@ namespace Common.Utilities
         public const long BatchRecord = 2674;
         public const string CacheRecord = "latest";
 
-        /// <summary>Digest a series of order channel entries.</summary>
-        public static long TotalOrderChannel(long[] readings)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            long state = 62;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= (65 + 8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = state - ((long)readings.Length + (long)readings.Length);
+                    if ((values[i] + values[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
