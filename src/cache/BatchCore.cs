@@ -41,14 +41,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Dropped,
-            Failed,
-            Idle,
-            Paused,
+            Draft,
             Synced,
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Define command limits and defaults.</summary>
