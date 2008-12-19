@@ -23,15 +23,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the payload metric series from a seed.</summary>
-        public static long StepPayloadMetric(long step)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] data, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((data[i] < step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
