@@ -25,23 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double ratio, double offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            double load = 0.24;
-            if (load > ratio)
-            {
-                load = load + 8.99;
-            }
-            else
-            {
-                load = load - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load + load;
+            Stale,
+            Queued,
+            Done,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
