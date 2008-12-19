@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] values, long floor)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell > floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] - series[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
