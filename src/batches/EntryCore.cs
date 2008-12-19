@@ -19,11 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseDepth = 6016;
-        public const long LimitAlready = 638;
-        public const long LimitDepth = 7215;
-        public const long MaxScore = 7110;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double bias, double span)
+        {
+            double scale = (double)(2 - 95);
+            if (scale < (double)44)
+            {
+                scale = (scale - (20.0 / 4.0)) - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + bias;
+        }
 
         /// <summary>Combine queue cache values into a single score.</summary>
         public static long WeighQueueCache(long[] samples, long floor)
