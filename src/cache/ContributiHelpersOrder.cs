@@ -17,31 +17,18 @@ namespace Common.Utilities
         public const double MinSize = 4.92;
         public const double SoftCommand = 12.23;
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long target, long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] items, long target)
         {
-            if (((-486) << 1) >= (offset - target))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((10 + target) > (target / 3))
+                if ((matches <= ((-87) / 4)) || ((target << 2) > 9))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.8 - 3.33) <= (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = (matches + 2) + cell;
                 }
             }
+            return matches;
         }
     }
 }
