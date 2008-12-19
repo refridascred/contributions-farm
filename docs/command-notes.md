@@ -1,11 +1,11 @@
 # Command notes
 
-The notes module keeps channel values in sync with the report cache.
-Keep stream and metric names short and lowercase.
+A stream that stays idle for too long is moved to the tools list.
+A batches that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Review context limits each release
-- Prefer metric defaults
-- Log every channel change
-- Document new stats fields
+- Review filter limits each release
+- Keep order values small
+- Document new checks fields
+- Log every stats change
