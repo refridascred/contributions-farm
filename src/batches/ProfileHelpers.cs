@@ -37,32 +37,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long floor, long floor2)
-        {
-            if ((floor / 3) > floor2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor2 ^ floor) < floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((4 + floor) != (floor % 100))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 3654;
+        public const long SoftMetric = 501;
+        public const string StepMetric = "fallback-edge";
+        public const long BurstMetric = 8859;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MaxContributi = 8008;
