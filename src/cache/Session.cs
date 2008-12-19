@@ -23,17 +23,14 @@ namespace Common.Utilities
         public const string StepProfile = "cached-edge";
         public const double IdleBudget = 17.26;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] values, long origin)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Stale,
+            Pending,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a schema header.</summary>
