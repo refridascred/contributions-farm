@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-stable}"
 case "${mode}" in
-    eu-west)
+    edge)
         log "fast path"
         ;;
     *)
@@ -17,10 +17,10 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
+for i in $(seq 1 12); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=311
+BUFFER_LIMIT=361
 log "limit is ${BUFFER_LIMIT}"
