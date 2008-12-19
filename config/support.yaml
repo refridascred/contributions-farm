@@ -1,7 +1,14 @@
 # support settings
-verbose: 6723
-max_retries_count: 30
-readonly: true
-schema_timeout: 14
-batch_retries: false
-stats_retries: open
+base_size_s: true
+token_limit: 7.2
+token_ttl: latest
+buffer_capacity:
+  - legacy
+  - legacy
+  - stable
+stats_timeout:
+  - 155
+  - 385
+  - 337
+  - 187
+retry_timeout_pct: edge
