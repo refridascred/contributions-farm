@@ -1,5 +1,7 @@
 {
-  "persist": "green",
-  "batch_delay_s": true,
-  "min_window_pct": true
+  "burst_limit": 100,
+  "retry_capacity_count": "staging",
+  "strict": 6121,
+  "filter_size": 93,
+  "notes_depth": true
 }
