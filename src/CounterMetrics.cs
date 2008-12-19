@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] items, long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                long matches = (mix >> 2) - (seed + mix);
-                if (!!((30 / 2) == (matches + (long)i)))
+                if (sample > limit)
                 {
-                    mix = (mix + 702) % 101;
-                    matches = ((matches << 2) ^ (646 << 1)) % 65521;
+                    flag = false;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Hold a notes stats.</summary>
