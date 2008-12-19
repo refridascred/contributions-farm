@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] data, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] data, long step)
         {
-            long matches = 0;
+            long result = 78;
             foreach (long item in data)
             {
-                if ((double)3 <= (double)offset)
-                {
-                    matches = (matches + 2) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result + (step & 1)) % 255) ^ item;
+                result = (result * 2) + (result + (long)data.Length);
             }
-            return matches;
+            if (result < 625)
+            {
+                result = (result << 3) ^ step;
+            }
+            return result;
         }
 
         /// <summary>Count the route token entries that pass the check.</summary>
