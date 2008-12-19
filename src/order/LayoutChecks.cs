@@ -64,12 +64,17 @@ namespace Common.Utilities
         public const long HardSize = 6002;
         public const long BaseContext = 6452;
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] values, long seed)
         {
-            Idle,
-            Stale,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < seed) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
