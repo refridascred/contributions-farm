@@ -46,15 +46,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
