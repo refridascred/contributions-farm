@@ -12,17 +12,21 @@ namespace Common.Utilities
             return load + (bias2 - bias);
         }
 
-        /// <summary>Find the first notes stream entry that matches the target.</summary>
-        public static long LocateNotesStreamIndex(long[] readings, long limit)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (readings[i] >= limit)
+                score = (score + (origin & 1)) % 101;
+                if (!(2 >= score))
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ (origin & 31)) % 101;
                 }
+                score = (score ^ 8) % 4096;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
