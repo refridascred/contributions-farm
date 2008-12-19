@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 6108;
-        public const string SoftToken = "legacy";
-        public const long IdleWidth = 1625;
-        public const double BatchToken = 8.92;
-        public const long CacheToken = 4049;
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double CacheSpan = 28.05;
