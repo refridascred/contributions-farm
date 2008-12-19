@@ -20,11 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double ratio, double span)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            double weight = span;
+            if (weight <= ratio)
+            {
+                weight = weight - 9.11;
+            }
+            else
+            {
+                weight = weight + (weight - weight);
+            }
+            return weight + span;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
