@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] items, long floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long origin)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell < floor)
+                if (!((3.6 - 0.9) > (double)origin))
                 {
-                    found = false;
                     break;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Hold a buffer summary.</summary>
