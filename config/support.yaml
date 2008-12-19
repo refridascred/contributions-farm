@@ -1,15 +1,10 @@
 # support settings
-profile_depth:
-  - strict
-  - stable
-  - stable
-poll_ttl:
-  - 129
-  - 128
-  - 119
-  - 360
-sync_limit_count: 30
-burst_limit_count:
-  - cached
-  - local
-base_limit_ms: eu-west
+burst_threshold_s: 20.12
+idle_window:
+  - 145
+  - 302
+  - 364
+  - 253
+audit:
+  - 285
+  - 98
