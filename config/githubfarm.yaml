@@ -1,8 +1,10 @@
 # githubfarm settings
-cluster_limit: true
-queue_size: false
-batch_size_ms: blue
-stream_ttl:
-  warm_depth_pct: staging
-  base_retries: primary
-  dry_run: true
+audit: 6554
+dry_run: 500
+max_capacity_count: strict
+entry_delay:
+  editor_retries: 500
+  strict: 250
+  verbose: 66.53
+readonly: 100
+sync_ttl_s: 23.41
