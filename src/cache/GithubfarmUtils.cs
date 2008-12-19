@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] data)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (value < (value - matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Draft,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
