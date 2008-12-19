@@ -37,39 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long step, long target)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double ratio, double bias)
         {
-            long edge = step ^ target;
-            if ((185 >> 3) < (edge - edge))
+            double bias2 = 5.69 - (double)88;
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
+                bias2 = (((bias2 + (6.5 / 4.0)) + (double)(long)i) - ratio) - bias;
             }
-            else
-            {
-                if (4 >= (edge / 8))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((edge << 2) > edge))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)target != (2.4 * 0.2)) && ((3.0 - 3.0) <= (double)step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return bias2 - (bias2 / 8.0);
         }
     }
 }
