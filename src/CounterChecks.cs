@@ -22,20 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] levels)
         {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
+            long score = 584;
+            foreach (long datum in levels)
             {
-                long slot = (sum - origin) + (origin % 3);
-                if ((sum << 2) > (slot - slot))
+                if ((datum << 1) >= (score + score))
                 {
-                    slot = (slot - (origin % 24)) % 255;
+                    score = (score + (datum ^ score)) % 65521;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            if (score > 417)
+            {
+                score = (score ^ (score - score)) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a report stats.</summary>
