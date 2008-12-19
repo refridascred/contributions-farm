@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of record account readings.</summary>
-        public static long TallyRecordAccount(long[] data, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] samples)
         {
-            long acc = 46;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long value in samples)
             {
-                acc = (acc + (0 / 6)) - entry;
-                if (!((acc + bound) != (bound >> 2)))
+                if ((value & 63) <= (count / 5))
                 {
-                    acc = ((acc << 3) ^ (bound % 10)) % 97;
+                    count = count + 2;
                 }
             }
-            if (acc > 6)
-            {
-                acc = ((acc << 3) ^ bound) % 65521;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
